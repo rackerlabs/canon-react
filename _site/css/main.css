@@ -1,0 +1,18 @@
+.main-header-title-sub {
+  color: #333;
+  font-size: 22px;
+  line-height: 1.25;
+  font-family: source-sans-pro-light;
+  text-align: center; }
+
+.main-header-info-links {
+  margin-top: 2em;
+  margin-bottom: 0; }
+  .main-header-info-links a {
+    margin: 1em; }
+  .main-header-info-links span {
+    margin: 1em;
+    font-weight: bold; }
+
+.button-group {
+  margin-bottom: 20px; }

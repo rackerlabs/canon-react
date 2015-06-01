@@ -1,0 +1,30 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+---
+
+.main-header-title-sub {
+  color: #333;
+  font-size: 22px;
+  line-height: 1.25;
+  font-family: source-sans-pro-light;
+  text-align: center;
+}
+
+.main-header-info-links {
+  margin-top: 2em;
+  margin-bottom: 0;
+  
+  a {
+    margin: 1em;
+  }
+
+  span {
+    margin: 1em;
+    font-weight: bold;
+  }
+}
+
+.button-group {
+  margin-bottom: 20px;
+}
+
