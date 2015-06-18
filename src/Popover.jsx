@@ -27,8 +27,15 @@ var Popover = React.createClass({
   },
 
   render: function () {
+    var popoverClasses;
+
+    popoverClasses = ['rs-popover'];
+    if (this.props.className) {
+      popoverClasses.push(this.props.className);
+    }
+
     return (
-      <div className='rs-popover'>
+      <div className={popoverClasses.join(' ')}>
         <div className={this._arrowPlacement()}></div>
         <div className='rs-popover-content'>
             {this.props.children}

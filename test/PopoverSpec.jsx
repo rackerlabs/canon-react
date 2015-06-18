@@ -6,16 +6,24 @@ describe('Popover', function () {
 
   function renderPopover(placement) {
     popover = TestUtils.renderIntoDocument(
-      <Popover placement={placement}>
+      <Popover className='test-class' placement={placement}>
         Hello
       </Popover>
     );
   }
+renderPopover('right');
 
+    expect(popover.getDOMNode()).toHaveClass('rs-popover');
   it('renders a popover', function () {
     renderPopover('right');
 
     expect(popover.getDOMNode()).toHaveClass('rs-popover');
+  });
+
+  it('adds the specified classes to the popover', function () {
+    renderPopover('right');
+
+    expect(popover.getDOMNode()).toHaveClass('test-class');
   });
 
   it('renders children', function () {
