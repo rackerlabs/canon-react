@@ -11,9 +11,7 @@ describe('Popover', function () {
       </Popover>
     );
   }
-renderPopover('right');
 
-    expect(popover.getDOMNode()).toHaveClass('rs-popover');
   it('renders a popover', function () {
     renderPopover('right');
 
