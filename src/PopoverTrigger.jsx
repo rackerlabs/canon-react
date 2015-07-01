@@ -57,6 +57,7 @@ var PopoverTrigger = React.createClass({
   },
 
   _unrenderPopover: function () {
+    this._removeDocumentListeners();
     if (this._tether) {
       this._tether.destroy();
       this._tether = null;
@@ -67,8 +68,14 @@ var PopoverTrigger = React.createClass({
     }
   },
 
+  _removeDocumentListeners: function () {
+    document.removeEventListener('click', this._handleDocumentClick, false);
+    document.removeEventListener('keyup', this._handleEscapePress, false);
+  },
+
   _show: function () {
     this._renderPopover();
+    this._handleRootCloseEvents();
     this.setState({ isPopoverDisplayed: true});
   },
 
@@ -138,6 +145,32 @@ var PopoverTrigger = React.createClass({
     tetherConfig.element = React.findDOMNode(this._containerDiv);
     tetherConfig.target = React.findDOMNode(this);
     return tetherConfig;
+  },
+
+  _handleRootCloseEvents: function () {
+    this._handleClicksOutsideOfPopover();
+    this._handleEscape();
+  },
+
+  _handleClicksOutsideOfPopover: function () {
+    document.addEventListener('click', this._handleDocumentClick, false);
+  },
+
+  _handleDocumentClick: function (e) {
+    if (React.findDOMNode(this._popoverNode).contains(e.target)) {
+      return;
+    }
+    this._hide();
+  },
+
+  _handleEscape: function () {
+    document.addEventListener('keyup', this._handleEscapePress, false);
+  },
+
+  _handleEscapePress: function (e) {
+    if (e.keyCode === 27) {
+      this._hide();
+    }
   }
 });
 

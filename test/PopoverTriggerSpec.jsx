@@ -10,7 +10,7 @@ describe('PopoverTrigger', function () {
 
   function renderPopover(placement) {
     popoverTrigger = TestUtils.renderIntoDocument(
-      <PopoverTrigger placement={placement} popover={<Popover>Content</Popover>}>
+      <PopoverTrigger placement={placement} popover={<Popover><Button onClick={function(){}}>Hello</Button>Content</Popover>}>
         <Button>Hello</Button>
       </PopoverTrigger>
     );
@@ -129,6 +129,44 @@ describe('PopoverTrigger', function () {
 
       expect(tether.destroy).toHaveBeenCalled();
       expect(popoverTrigger._popoverNode).toBeNull();
+    });
+
+    it('hides the popover when pressing escape', function() {
+      var keyUpEvent;
+
+      renderPopover('right');
+      clickTrigger();
+
+      keyUpEvent = document.createEvent('CustomEvent');
+      keyUpEvent.initEvent('keyup', true, true);
+      keyUpEvent.keyCode = 27;
+      document.dispatchEvent(keyUpEvent);
+
+      expect(tether.destroy).toHaveBeenCalled();
+      expect(popoverTrigger._popoverNode).toBeNull();
+    });
+
+    it('hides the popover when clicking outside of the popover', function() {
+      renderPopover('right');
+      clickTrigger();
+
+      TestUtils.Simulate.click(React.findDOMNode(popoverTrigger));
+
+      expect(tether.destroy).toHaveBeenCalled();
+      expect(popoverTrigger._popoverNode).toBeNull();
+    });
+
+    it('does not hide the popover when clicking inside of the popover', function() {
+      var popoverButton;
+
+      renderPopover('right');
+      clickTrigger();
+
+      popoverButton = TestUtils.findRenderedComponentWithType(popoverTrigger._popoverNode, Button);
+      TestUtils.Simulate.click(React.findDOMNode(popoverButton));
+
+      expect(tether.destroy).not.toHaveBeenCalled();
+      expect(popoverTrigger._popoverNode).not.toBeNull();
     });
 
     it('cleans up when the component is unmounted', function () {
