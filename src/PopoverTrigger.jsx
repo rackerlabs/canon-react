@@ -73,15 +73,22 @@ var PopoverTrigger = React.createClass({
   },
 
   _renderPopover: function () {
-    this.popover = React.cloneElement(
+    var popover;
+
+    popover = React.cloneElement(
       this.props.popover,
       {
         placement: this.props.placement,
         hideCallback: this._hide
       }
     );
-    this._popoverNode = React.render(this.popover, this._containerDiv);
+    this._popoverNode = React.render(popover, this._containerDiv);
     this._tether = this._createTether(this._getTetherConfig());
+  },
+
+  // This is a seam for testing
+  _createTether: function (tetherConfig) {
+    return new Tether(tetherConfig);
   },
 
   _getTetherConfig: function () {
@@ -129,12 +136,8 @@ var PopoverTrigger = React.createClass({
     }
 
     tetherConfig.element = React.findDOMNode(this._containerDiv);
-    tetherConfig.target = React.findDOMNode(this.getDOMNode());
+    tetherConfig.target = React.findDOMNode(this);
     return tetherConfig;
-  },
-
-  _createTether: function (tetherConfig) {
-    return new Tether(tetherConfig);
   }
 });
 
