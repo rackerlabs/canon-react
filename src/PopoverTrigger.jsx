@@ -2,6 +2,16 @@ var Tether = require('tether');
 
 var PopoverTrigger = React.createClass({
 
+  propTypes: {
+    placement: React.PropTypes.oneOf(['right', 'bottom-right', 'left', 'bottom-left'])
+  },
+
+  getDefaultProps: function () {
+    return {
+      placement: 'right'
+    };
+  },
+
   getInitialState: function () {
     return {
       isPopoverDisplayed: false
@@ -65,16 +75,62 @@ var PopoverTrigger = React.createClass({
   _renderPopover: function () {
     this.popover = React.cloneElement(
       this.props.popover,
-      { hideCallback: this._hide }
+      {
+        placement: this.props.placement,
+        hideCallback: this._hide
+      }
     );
     this._popoverNode = React.render(this.popover, this._containerDiv);
-    this._tether = this._createTether({
-      element: React.findDOMNode(this._containerDiv),
-      target: React.findDOMNode(this.getDOMNode()),
-      attachment: 'middle left',
-      targetAttachment: 'middle right',
-      targetOffset: '-35px 20px'
-    });
+    this._tether = this._createTether(this._getTetherConfig());
+  },
+
+  _getTetherConfig: function () {
+    var tetherConfig, offsetWidth;
+
+    switch (this.props.placement) {
+      case 'left':
+        offsetWidth = React.findDOMNode(this._popoverNode).offsetWidth + 20;
+        tetherConfig = {
+          attachment: 'middle left',
+          targetAttachment: 'middle right',
+          offset: '0 ' + offsetWidth + 'px',
+          targetOffset: '-150% -100%'
+        };
+        break;
+      case 'bottom-left':
+        offsetWidth = React.findDOMNode(this._popoverNode).offsetWidth - 45;
+        tetherConfig = {
+          attachment: 'top left',
+          targetAttachment: 'bottom right',
+          offset: '-20px ' + offsetWidth + 'px',
+          targetOffset: '0 -100%'
+        };
+        break;
+      case 'bottom-right':
+        tetherConfig = {
+          attachment: 'top left',
+          targetAttachment: 'bottom right',
+          targetOffset: '20px -50%'
+        };
+        break;
+      case 'right':
+        tetherConfig = {
+          attachment: 'middle left',
+          targetAttachment: 'middle right',
+          targetOffset: '-150% 50%'
+        };
+        break;
+      default:
+        tetherConfig = {
+          attachment: 'middle left',
+          targetAttachment: 'middle right',
+          targetOffset: '-150% 50%'
+        };
+    }
+
+    tetherConfig.element = React.findDOMNode(this._containerDiv);
+    tetherConfig.target = React.findDOMNode(this.getDOMNode());
+    return tetherConfig;
   },
 
   _createTether: function (tetherConfig) {
