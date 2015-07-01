@@ -11,6 +11,12 @@ describe('ProcessingIndicator', function () {
     );
   });
 
+  afterEach(function () {
+    if (processingIndicator.isMounted()) {
+      React.unmountComponentAtNode(React.findDOMNode(processingIndicator).parentNode);
+    }
+  });
+
   it('has the rs-processing-indicator class', function () {
     expect(processingIndicator.getDOMNode()).toHaveClass('rs-processing-indicator');
   });

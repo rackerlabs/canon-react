@@ -12,6 +12,12 @@ describe('Popover', function () {
     );
   }
 
+  afterEach(function () {
+    if (popover.isMounted()) {
+      React.unmountComponentAtNode(React.findDOMNode(popover).parentNode);
+    }
+  });
+
   it('renders a popover', function () {
     renderPopover('right');
 

@@ -13,6 +13,12 @@ describe('PopoverBody', function () {
     );
   });
 
+  afterEach(function () {
+    if (popoverBody.isMounted()) {
+      React.unmountComponentAtNode(React.findDOMNode(popoverBody).parentNode);
+    }
+  });
+
   it('renders a popover body', function () {
     expect(popoverBody.getDOMNode()).toHaveClass('rs-popover-body');
   });
