@@ -19,6 +19,12 @@ describe('PopoverTrigger', function () {
     spyOn(popoverTrigger, '_createTether').andReturn(tether);
   }
 
+  afterEach(function () {
+    if (popoverTrigger.isMounted()) {
+      React.unmountComponentAtNode(React.findDOMNode(popoverTrigger).parentNode);
+    }
+  });
+
   it('renders the passed in trigger', function () {
     var button;
 
@@ -123,6 +129,18 @@ describe('PopoverTrigger', function () {
 
       expect(tether.destroy).toHaveBeenCalled();
       expect(popoverTrigger._popoverNode).toBeNull();
+    });
+
+    it('cleans up when the component is unmounted', function () {
+      renderPopover('right');
+      clickTrigger();
+
+      React.unmountComponentAtNode(React.findDOMNode(popoverTrigger).parentNode);
+
+      expect(tether.destroy).toHaveBeenCalled();
+      expect(popoverTrigger._tether).toBeNull();
+      expect(popoverTrigger._popoverNode).toBeNull();
+      expect(document.body.getElementsByClassName('popover-container').length).toEqual(0);
     });
   });
 });
