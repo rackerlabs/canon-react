@@ -14,6 +14,10 @@ describe('PopoverFooter', () => {
     );
   });
 
+  afterEach(() => {
+    React.unmountComponentAtNode(React.findDOMNode(popoverFooter).parentNode);
+  });
+
   it('renders a footer button group', () => {
     var buttonGroup;
 
