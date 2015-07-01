@@ -1,3 +1,5 @@
+var React = require('react');
+
 var Popover = React.createClass({
 
   propTypes: {

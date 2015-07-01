@@ -1,3 +1,4 @@
+var React = require('react');
 var Tether = require('tether');
 
 var PopoverTrigger = React.createClass({

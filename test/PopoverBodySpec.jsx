@@ -1,5 +1,6 @@
 var PopoverBody = require('../transpiled/PopoverBody');
 
+var React = require('react/addons');
 var TestUtils = React.addons.TestUtils;
 
 describe('PopoverBody', function () {

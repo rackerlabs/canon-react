@@ -1,3 +1,5 @@
+var React = require('react');
+
 var ButtonGroup = require('./ButtonGroup');
 
 var PopoverFooter = React.createClass({

@@ -2,7 +2,7 @@ var PopoverTrigger = require('../transpiled/PopoverTrigger');
 
 var Button = require('../transpiled/Button');
 var Popover = require('../transpiled/Popover');
-
+var React = require('react/addons');
 var TestUtils = React.addons.TestUtils;
 
 describe('PopoverTrigger', function () {

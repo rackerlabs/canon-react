@@ -1,4 +1,6 @@
 var Popover = require('../transpiled/Popover');
+
+var React = require('react/addons');
 var TestUtils = React.addons.TestUtils;
 
 describe('Popover', function () {

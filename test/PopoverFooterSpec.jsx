@@ -1,5 +1,6 @@
 var PopoverFooter = require('../transpiled/PopoverFooter');
 
+var React = require('react/addons');
 var TestUtils = React.addons.TestUtils;
 
 describe('PopoverFooter', function () {

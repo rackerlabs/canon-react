@@ -1,3 +1,5 @@
+var React = require('react');
+
 var PopoverBody = React.createClass({
 
   render: function () {
