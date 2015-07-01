@@ -6,14 +6,49 @@ var React = require('react');
 // var ButtonGroup = CanonReact.ButtonGroup;
 // var ProgressBar = CanonReact.ProgressBar;
 // var ProcessingIndicator = CanonReact.ProgressBar;
-// var StatusIndicator = CanonReact.StatusIndicator;
+// var Popover = CanonReact.Popover;
+// var PopoverBody = CanonReact.PopoverBody;
+// var PopoverFooter = CanonReact.PopoverFooter;
+// var PopoverTrigger = CanonReact.PopoverTrigger;
 
 //Enable these to test your local changes to components (for developers)
 var Button = require('./Button');
 var ButtonGroup = require('./ButtonGroup');
 var ProcessingIndicator = require('./ProcessingIndicator');
 var ProgressBar = require('./ProgressBar');
-var StatusIndicator = require('./StatusIndicator');
+var Popover = require('./Popover');
+var PopoverBody = require('./PopoverBody');
+var PopoverFooter = require('./PopoverFooter');
+var PopoverTrigger = require('./PopoverTrigger');
+var ProcessingIndicator = require('./ProcessingIndicator');
+
+var DemoPopover = React.createClass({
+  propType: {
+    hidden: React.PropTypes.bool
+  },
+
+  render: function () {
+    return (
+      <Popover placement={this.props.placement}>
+        <PopoverBody>
+          <form className='rs-form-horizontal rs-form-medium'>
+            <div className='rs-control-group'>
+              <label className='rs-control-label'>Field 1</label>
+              <div className='rs-controls'>
+                <input type='text'/>
+              </div>
+            </div>
+          </form>
+        </PopoverBody>
+        <PopoverFooter>
+          <Button type='primary' onClick={this.props.hideCallback}>Save</Button>
+          <Button type='link' onClick={this.props.hideCallback}>Cancel</Button>
+          <ProcessingIndicator hidden={true} />
+        </PopoverFooter>
+      </Popover>
+    );
+  }
+});
 
 (function () {
   React.render(
@@ -191,6 +226,7 @@ var StatusIndicator = require('./StatusIndicator');
           <ProgressBar progress={25} size='xlarge'/>
         </div>
       </div>
+
       <div className='rs-detail-section'>
         <div className='rs-detail-section-header'>
           <h2>Status Indicators</h2>
@@ -244,6 +280,43 @@ var StatusIndicator = require('./StatusIndicator');
           </table>
         </div>
       </div>
+
+      <div className='rs-detail-section'>
+        <div className='rs-detail-section-header'>
+          <h2>Popovers</h2>
+        </div>
+        <div className='rs-detail-section-body'>
+          <table>
+            <tbody>
+              <tr>
+                <td>
+                  <PopoverTrigger placement='right' popover={<DemoPopover/>}>
+                    <Button>Right</Button>
+                  </PopoverTrigger>
+                </td>
+                <td>
+                  <PopoverTrigger placement='left' popover={<DemoPopover/>}>
+                    <Button>Left</Button>
+                  </PopoverTrigger>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <PopoverTrigger placement='bottom-right' popover={<DemoPopover/>}>
+                    <Button>Bottom Right</Button>
+                  </PopoverTrigger>
+                </td>
+                <td>
+                  <PopoverTrigger placement='bottom-left' popover={<DemoPopover/>}>
+                    <Button>Bottom Left</Button>
+                  </PopoverTrigger>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      
     </div>,
     document.getElementById('content')
   );
