@@ -32,6 +32,14 @@
   ],
   "author": "Adam Pickeral <adam.pickeral@rackspace.com>",
   "license": "MIT",
+  "browserify": {
+    "transform": [
+      "browserify-shim"
+    ]
+  },
+  "browserify-shim": {
+    "react": "global:React"
+  },
   "dependencies": {
     "babel-runtime": "^5.5.8",
     "tether": "1.0.2"
