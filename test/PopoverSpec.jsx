@@ -20,10 +20,10 @@ describe('Popover', function () {
     }
   });
 
-  it('renders a popover', function () {
+  it('renders a popover with the provided class', function () {
     renderPopover('right');
 
-    expect(popover.getDOMNode()).toHaveClass('rs-popover');
+    expect(popover.getDOMNode()).toHaveClass('test-class');
   });
 
   it('adds the specified classes to the popover', function () {

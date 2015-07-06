@@ -55,7 +55,7 @@ describe('PopoverTrigger', function () {
       renderPopover('right');
       clickTrigger();
       
-      popoverContainer = document.querySelector('.popover-container');
+      popoverContainer = document.querySelector('.rs-popover');
 
       expect(popoverContainer).not.toBeNull();
       expect(popoverTrigger._popoverNode).not.toBeNull();
@@ -68,9 +68,9 @@ describe('PopoverTrigger', function () {
       expect(popoverTrigger._createTether).toHaveBeenCalledWith({
         element: React.findDOMNode(popoverTrigger._containerDiv),
         target: React.findDOMNode(popoverTrigger.getDOMNode()),
-        attachment: 'middle left',
+        attachment: 'top left',
         targetAttachment: 'middle right',
-        targetOffset: '-150% 50%'
+        offset: '38px -20px'
       });
     });
 
@@ -83,41 +83,33 @@ describe('PopoverTrigger', function () {
         target: React.findDOMNode(popoverTrigger.getDOMNode()),
         attachment: 'top left',
         targetAttachment: 'bottom right',
-        targetOffset: '20px -50%'
+        offset: '-20px 45px'
       });
     });
 
     it('renders the popover to the left of the trigger', function () {
-      var popoverWidth;
-
       renderPopover('left');
       clickTrigger();
 
-      popoverWidth = React.findDOMNode(popoverTrigger._popoverNode).offsetWidth + 20;
       expect(popoverTrigger._createTether).toHaveBeenCalledWith({
         element: React.findDOMNode(popoverTrigger._containerDiv),
         target: React.findDOMNode(popoverTrigger.getDOMNode()),
-        attachment: 'middle left',
-        targetAttachment: 'middle right',
-        offset: '0 ' + popoverWidth + 'px',
-        targetOffset: '-150% -100%'
+        attachment: 'top right',
+        targetAttachment: 'middle left',
+        offset: '38px 20px'
       });
     });
 
     it('renders the popover to the bottom left of the trigger', function () {
-      var popoverWidth;
-
       renderPopover('bottom-left');
       clickTrigger();
 
-      popoverWidth = React.findDOMNode(popoverTrigger._popoverNode).offsetWidth - 45;
       expect(popoverTrigger._createTether).toHaveBeenCalledWith({
         element: React.findDOMNode(popoverTrigger._containerDiv),
         target: React.findDOMNode(popoverTrigger.getDOMNode()),
-        attachment: 'top left',
-        targetAttachment: 'bottom right',
-        offset: '-20px ' + popoverWidth + 'px',
-        targetOffset: '0 -100%'
+        attachment: 'top right',
+        targetAttachment: 'bottom left',
+        offset: '-20px -45px'
       });
     });
 
@@ -178,7 +170,7 @@ describe('PopoverTrigger', function () {
       expect(tether.destroy).toHaveBeenCalled();
       expect(popoverTrigger._tether).toBeNull();
       expect(popoverTrigger._popoverNode).toBeNull();
-      expect(document.body.getElementsByClassName('popover-container').length).toEqual(0);
+      expect(document.body.getElementsByClassName('rs-popover').length).toEqual(0);
     });
   });
 });

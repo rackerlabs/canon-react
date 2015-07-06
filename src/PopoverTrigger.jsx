@@ -26,7 +26,6 @@ var PopoverTrigger = React.createClass({
 
   componentDidMount: function () {
     this._containerDiv = document.createElement('div');
-    this._containerDiv.className = 'popover-container';
     document.body.appendChild(this._containerDiv);
   },
 
@@ -59,6 +58,7 @@ var PopoverTrigger = React.createClass({
 
   _unrenderPopover: function () {
     this._removeDocumentListeners();
+    this._containerDiv.className = this._containerDiv.className.replace( /(?:^|\s)rs-popover(?!\S)/g , '' );
     if (this._tether) {
       this._tether.destroy();
       this._tether = null;
@@ -83,6 +83,7 @@ var PopoverTrigger = React.createClass({
   _renderPopover: function () {
     var popover;
 
+    this._containerDiv.className += ' rs-popover';
     popover = React.cloneElement(
       this.props.popover,
       {
@@ -100,46 +101,42 @@ var PopoverTrigger = React.createClass({
   },
 
   _getTetherConfig: function () {
-    var tetherConfig, offsetWidth;
+    var tetherConfig;
 
     switch (this.props.placement) {
       case 'left':
-        offsetWidth = React.findDOMNode(this._popoverNode).offsetWidth + 20;
         tetherConfig = {
-          attachment: 'middle left',
-          targetAttachment: 'middle right',
-          offset: '0 ' + offsetWidth + 'px',
-          targetOffset: '-150% -100%'
+          attachment: 'top right',
+          targetAttachment: 'middle left',
+          offset: '38px 20px'
         };
         break;
       case 'bottom-left':
-        offsetWidth = React.findDOMNode(this._popoverNode).offsetWidth - 45;
         tetherConfig = {
-          attachment: 'top left',
-          targetAttachment: 'bottom right',
-          offset: '-20px ' + offsetWidth + 'px',
-          targetOffset: '0 -100%'
+          attachment: 'top right',
+          targetAttachment: 'bottom left',
+          offset: '-20px -45px'
         };
         break;
       case 'bottom-right':
         tetherConfig = {
           attachment: 'top left',
           targetAttachment: 'bottom right',
-          targetOffset: '20px -50%'
+          offset: '-20px 45px'
         };
         break;
       case 'right':
         tetherConfig = {
-          attachment: 'middle left',
+          attachment: 'top left',
           targetAttachment: 'middle right',
-          targetOffset: '-150% 50%'
+          offset: '38px -20px'
         };
         break;
       default:
         tetherConfig = {
-          attachment: 'middle left',
+          attachment: 'top left',
           targetAttachment: 'middle right',
-          targetOffset: '-150% 50%'
+          offset: '38px -20px'
         };
     }
 
