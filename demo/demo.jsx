@@ -9,6 +9,7 @@ var React = require('react');
 
 //Enable these to test your local changes to components (for developers)
 var Button = require('./Button');
+var ActionButton = require('./ActionButton');
 var ButtonGroup = require('./ButtonGroup');
 var ProcessingIndicator = require('./ProcessingIndicator');
 var ProgressBar = require('./ProgressBar');
@@ -80,6 +81,13 @@ var StatusIndicator = require('./StatusIndicator');
                 <td>Plus</td>
                 <td><pre><code>{"<Button type='plus'>Plus</Button>"}</code></pre></td>
               </tr>
+              <tr>
+                <td>
+                  <ActionButton>Action</ActionButton>
+                </td>
+                <td>Plus</td>
+                <td><pre><code>{"<ActionButton>Action</ActionButton>"}</code></pre></td>
+              </tr>
             </tbody>
           </table>
         </div>
@@ -128,6 +136,13 @@ var StatusIndicator = require('./StatusIndicator');
                 </td>
                 <td>Edit</td>
                 <td><pre><code>{"<Button type='edit' enabled={false}>Edit</Button>"}</code></pre></td>
+              </tr>
+              <tr>
+                <td>
+                  <ActionButton enabled={false}>Action</ActionButton>
+                </td>
+                <td>Plus</td>
+                <td><pre><code>{"<ActionButton enabled={false}>Action</ActionButton>"}</code></pre></td>
               </tr>
             </tbody>
           </table>

@@ -35,7 +35,8 @@ var Button = React.createClass({
       'cog': 'rs-cog',
       'delete': 'rs-delete',
       'edit': 'rs-edit',
-      'plus': 'rs-plus'
+      'plus': 'rs-plus',
+      'action': 'rs-btn rs-btn-action'
     };
 
     classes = [];
