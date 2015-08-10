@@ -10,6 +10,7 @@ var React = require('react');
 // var PopoverBody = CanonReact.PopoverBody;
 // var PopoverFooter = CanonReact.PopoverFooter;
 // var PopoverOverlay = CanonReact.PopoverOverlay
+// var StatusIndicator = CanonReact.StatusIndicator
 
 //Enable these to test your local changes to components (for developers)
 var Button = require('./Button');
@@ -21,6 +22,7 @@ var PopoverBody = require('./PopoverBody');
 var PopoverFooter = require('./PopoverFooter');
 var PopoverOverlay = require('./PopoverOverlay');
 var ProcessingIndicator = require('./ProcessingIndicator');
+var StatusIndicator = require('./StatusIndicator');
 
 var DemoPopover = React.createClass({
   propType: {

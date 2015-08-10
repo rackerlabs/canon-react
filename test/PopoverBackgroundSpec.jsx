@@ -24,8 +24,8 @@ describe('PopoverBackground', function () {
     var backgroundStyle, backgroundElement;
 
     backgroundElement = TestUtils.findRenderedDOMComponentWithClass(popoverBackground, 'rs-popover-background-overlay');
-    console.log(backgroundElement);
     backgroundStyle = backgroundElement.getDOMNode().style;
+
     expect(backgroundStyle.position).toEqual('fixed');
     expect(backgroundStyle.left).toEqual('0px');
     expect(backgroundStyle.top).toEqual('0px');
