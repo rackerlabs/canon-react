@@ -19,11 +19,21 @@ var Popover = React.createClass({
   componentWillUnmount: function () {
     this._hide();
     document.body.removeChild(this._containerDiv);
+    document.body.removeChild(this._backgroundDiv);
   },
 
   componentDidMount: function () {
     this._containerDiv = document.createElement('div');
     document.body.appendChild(this._containerDiv);
+    this._backgroundDiv = document.createElement('div');
+    this._backgroundDiv.style.display = 'none';
+    this._backgroundDiv.style.position = 'fixed';
+    this._backgroundDiv.style.left = 0;
+    this._backgroundDiv.style.top = 0;
+    this._backgroundDiv.style.width = '100%';
+    this._backgroundDiv.style.height = '100%';
+    this._backgroundDiv.style.zIndex = 999;
+    document.body.appendChild(this._backgroundDiv);
     this._togglePopoverOverlay();
   },
 
@@ -45,6 +55,7 @@ var Popover = React.createClass({
 
   _hide: function () {
     this._removeDocumentListeners();
+    this._backgroundDiv.style.display = 'none';
     this._containerDiv.className = this._containerDiv.className.replace( /(?:^|\s)rs-popover(?!\S)/g , '' );
     if (this._tether) {
       this._tether.destroy();
@@ -69,6 +80,7 @@ var Popover = React.createClass({
   _renderPopoverOverlay: function () {
     var popover;
 
+    this._backgroundDiv.style.display = 'block';
     this._containerDiv.className += ' rs-popover';
 
     popover = React.cloneElement(
