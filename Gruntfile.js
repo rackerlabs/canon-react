@@ -82,7 +82,7 @@ module.exports = function (grunt) {
       },
       demo: {
         files: {
-          'demo/bundle.js': ['transpiled/demo.js']
+          'demo/bundle.js': ['transpiled/**/*.js']
         }
       }
     },
