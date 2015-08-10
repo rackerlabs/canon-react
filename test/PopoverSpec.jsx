@@ -117,19 +117,9 @@ describe('Popover', function () {
     it('when clicking outside of the popover', function() {
       renderPopover('right', true);
 
-      TestUtils.Simulate.click(React.findDOMNode(document.getElementById('content')));
+      TestUtils.Simulate.click(document.getElementsByClassName('rs-popover-background-overlay')[0]);
 
       expect(requestCloseCallback).toHaveBeenCalled();
-      // expect(tether.destroy).toHaveBeenCalled();
-      // expect(popover._popoverNode).toBeNull();
-    });
-
-    it('does not notify when clicking inside of the popover', function() {
-      renderPopover('right', true);
-
-      TestUtils.Simulate.click(React.findDOMNode(document.getElementById('content')));
-
-      expect(requestCloseCallback).not.toHaveBeenCalled();
     });
   });
 

@@ -1,5 +1,6 @@
 var React = require('react');
 var Tether = require('tether');
+var PopoverBackground = require('./PopoverBackground');
 
 var Popover = React.createClass({
 
@@ -27,12 +28,6 @@ var Popover = React.createClass({
     document.body.appendChild(this._containerDiv);
     this._backgroundDiv = document.createElement('div');
     this._backgroundDiv.style.display = 'none';
-    this._backgroundDiv.style.position = 'fixed';
-    this._backgroundDiv.style.left = 0;
-    this._backgroundDiv.style.top = 0;
-    this._backgroundDiv.style.width = '100%';
-    this._backgroundDiv.style.height = '100%';
-    this._backgroundDiv.style.zIndex = 999;
     document.body.appendChild(this._backgroundDiv);
     this._togglePopoverOverlay();
   },
@@ -54,8 +49,12 @@ var Popover = React.createClass({
   },
 
   _hide: function () {
+    this._hidePopoverOverlay();
+    this._hidePopoverBackgroundOverlay();
+  },
+
+  _hidePopoverOverlay: function () {
     this._removeDocumentListeners();
-    this._backgroundDiv.style.display = 'none';
     this._containerDiv.className = this._containerDiv.className.replace( /(?:^|\s)rs-popover(?!\S)/g , '' );
     if (this._tether) {
       this._tether.destroy();
@@ -67,20 +66,25 @@ var Popover = React.createClass({
     }
   },
 
+  _hidePopoverBackgroundOverlay: function () {
+    this._backgroundDiv.style.display = 'none';
+    React.unmountComponentAtNode(this._backgroundDiv);
+  },
+
   _removeDocumentListeners: function () {
-    document.removeEventListener('click', this._handleDocumentClick, false);
     document.removeEventListener('keyup', this._handleEscapePress, false);
   },
 
   _show: function () {
     this._renderPopoverOverlay();
-    this._handleRootCloseEvents();
+    this._listenForEscapePress();
   },
 
   _renderPopoverOverlay: function () {
     var popover;
 
     this._backgroundDiv.style.display = 'block';
+    React.render(<PopoverBackground onRequestClose={this.props.onRequestClose} />, this._backgroundDiv);
     this._containerDiv.className += ' rs-popover';
 
     popover = React.cloneElement(
@@ -143,24 +147,7 @@ var Popover = React.createClass({
     return tetherConfig;
   },
 
-  _handleRootCloseEvents: function () {
-    this._handleClicksOutsideOfPopover();
-    this._handleEscape();
-  },
-
-  _handleClicksOutsideOfPopover: function () {
-    document.addEventListener('click', this._handleDocumentClick, false);
-  },
-
-  _handleDocumentClick: function (e) {
-    console.log('hello')
-    if (React.findDOMNode(this._popoverNode).contains(e.target)) {
-      return;
-    }
-    this.props.onRequestClose();
-  },
-
-  _handleEscape: function () {
+  _listenForEscapePress: function () {
     document.addEventListener('keyup', this._handleEscapePress, false);
   },
 

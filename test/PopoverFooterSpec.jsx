@@ -14,12 +14,6 @@ describe('PopoverFooter', function () {
     );
   });
 
-  afterEach(function () {
-    if (popoverFooter.isMounted()) {
-      React.unmountComponentAtNode(React.findDOMNode(popoverFooter).parentNode);
-    }
-  });
-
   it('renders a footer button group', function () {
     var buttonGroup;
 
