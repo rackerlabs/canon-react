@@ -50,6 +50,7 @@
   "devDependencies": {
     "babel": "^5.5.8",
     "babelify": "^6.1.2",
+    "browserify": "<4.0.0",
     "browserify-shim": "3.8.9",
     "grunt": "~0.4.2",
     "grunt-babel": "^5.0.1",
