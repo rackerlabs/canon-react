@@ -11,6 +11,12 @@ describe('ProgressBar', function () {
     );
   });
 
+  afterEach(function () {
+    if (progressBar.isMounted()) {
+      React.unmountComponentAtNode(React.findDOMNode(progressBar).parentNode);
+    }
+  });
+
   it('renders the progress container', function () {
     expect(TestUtils.findRenderedDOMComponentWithClass(progressBar, 'rs-progress')).not.toBeNull();
   });

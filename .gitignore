@@ -8,4 +8,5 @@ transpiled
 test_bundle.js
 test-built
 test-results.xml
+npm-debug.log
 demo/bundle.js

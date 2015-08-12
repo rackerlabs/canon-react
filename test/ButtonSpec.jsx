@@ -13,6 +13,12 @@ describe('Button', function () {
     );
   });
 
+  afterEach(function () {
+    if (button.isMounted()) {
+      React.unmountComponentAtNode(React.findDOMNode(button).parentNode);
+    }
+  });
+
   it('is enabled by default', function () {
     expect(button.props.enabled).toBe(true);
     expect(button.getDOMNode()).not.toHaveClass('disabled');

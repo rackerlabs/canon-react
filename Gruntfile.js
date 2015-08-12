@@ -23,7 +23,7 @@ module.exports = function (grunt) {
           {
             expand: true,
             cwd: 'demo',
-            src: ['demo.jsx'],
+            src: ['**/*.jsx'],
             dest: 'transpiled',
             ext: '.js'
           }
