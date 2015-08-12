@@ -8,14 +8,14 @@ describe('ButtonGroup', function () {
 
   beforeEach(function () {
     buttonGroup = TestUtils.renderIntoDocument(
-      <ButtonGroup id='button-group'>
+      <ButtonGroup id='button-group' className="extra-class">
         <Button className='child-button'>Test</Button>
       </ButtonGroup>
     );
   });
 
-  it('has the rs-btn-group class', function () {
-    expect(buttonGroup.getDOMNode()).toHaveClass('rs-btn-group');
+  it('has the right classes', function () {
+    expect(buttonGroup.getDOMNode()).toHaveClass('rs-btn-group extra-class');
   });
 
   it('renders passed in props', function () {
