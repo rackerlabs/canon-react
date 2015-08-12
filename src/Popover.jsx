@@ -7,7 +7,8 @@ var Popover = React.createClass({
   propTypes: {
     placement: React.PropTypes.oneOf(['right', 'bottom-right', 'left', 'bottom-left']),
     isOpen: React.PropTypes.bool,
-    onRequestClose: React.PropTypes.func
+    onRequestClose: React.PropTypes.func,
+    target: React.PropTypes.string
   },
 
   getDefaultProps: function () {
