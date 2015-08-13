@@ -5,7 +5,7 @@ var PopoverBackground = React.createClass({
   propTypes: {
     onRequestClose: React.PropTypes.func
   },
-  
+
   render: function () {
     var style;
 

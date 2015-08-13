@@ -44,7 +44,7 @@ describe('StatusIndicator', function () {
     expect(statusIndicator.getDOMNode()).toHaveClass('rs-hidden');
   });
 
-  describe('statusindicator types', function (){
+  describe('statusindicator types', function () {
     it('ok', function () {
       statusIndicator = TestUtils.renderIntoDocument(
         <StatusIndicator status='ok'>StatusIndicator Text</StatusIndicator>

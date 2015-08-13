@@ -60,7 +60,7 @@ var Popover = React.createClass({
 
   _hidePopoverOverlay: function () {
     this._removeDocumentListeners();
-    this._containerDiv.className = this._containerDiv.className.replace( /(?:^|\s)rs-popover(?!\S)/g , '' );
+    this._containerDiv.className = this._containerDiv.className.replace( /(?:^|\s)rs-popover(?!\S)/g, '' );
     if (this._tether) {
       this._tether.destroy();
       this._tether = null;

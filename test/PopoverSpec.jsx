@@ -50,7 +50,7 @@ describe('Popover', function () {
     var popoverContainer;
 
     renderPopover('right', true);
-    
+
     popoverContainer = document.querySelector('.rs-popover');
 
     expect(popoverContainer).not.toBeNull();

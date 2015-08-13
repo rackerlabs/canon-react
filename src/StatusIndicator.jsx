@@ -5,7 +5,7 @@ var StatusIndicator = React.createClass({
     status: React.PropTypes.oneOf(['ok', 'error', 'processing', 'warning', 'disabled']),
     hidden: React.PropTypes.bool
   },
-  getDefaultProps: function (){
+  getDefaultProps: function () {
     return {
       status: 'ok',
       hidden: false
@@ -32,11 +32,11 @@ var StatusIndicator = React.createClass({
     classes = [];
     classes.push(this.props.className);
 
-    if(this.props.status && statusIndicatorTypes[this.props.status]){
+    if (this.props.status && statusIndicatorTypes[this.props.status]) {
       classes.push(statusIndicatorTypes[this.props.status]);
     }
 
-    if(this.props.hidden){
+    if (this.props.hidden) {
       classes.push('rs-hidden');
     }
 
