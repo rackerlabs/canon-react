@@ -26,6 +26,17 @@ module.exports = function (grunt) {
           }
         ]
       },
+      documentation: {
+        files: [
+          {
+            expand: true,
+            cwd: 'documentation',
+            src: ['**/*.jsx'],
+            dest: 'transpiled',
+            ext: '.js'
+          }
+        ]
+      },
       test: {
         files: [
           {
@@ -91,6 +102,11 @@ module.exports = function (grunt) {
           external: ['react/lib/ReactContext', 'react/lib/ExecutionEnvironment'],
           transform: [ 'browserify-shim' ]
         }
+      },
+      documentation: {
+        files: {
+          'documentation/bundle.js': ['transpiled/**/*.js']
+        }
       }
     },
 
@@ -148,6 +164,13 @@ module.exports = function (grunt) {
   ]);
 
   grunt.registerTask('lint', ['eslint']);
+
+  grunt.registerTask('documentation-build', [
+    'babel:src',
+    'babel:documentation',
+    'browserify:documentation',
+    'clean:transpiled'
+  ]);
 
   grunt.registerTask('default', ['build']);
 

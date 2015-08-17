@@ -1,4 +1,5 @@
 var ProgressBar = require('../transpiled/ProgressBar');
+var React = require('react/addons');
 var TestUtils = React.addons.TestUtils;
 
 describe('ProgressBar', function () {
@@ -8,6 +9,12 @@ describe('ProgressBar', function () {
     progressBar = TestUtils.renderIntoDocument(
       <ProgressBar/>
     );
+  });
+
+  afterEach(function () {
+    if (progressBar.isMounted()) {
+      React.unmountComponentAtNode(React.findDOMNode(progressBar).parentNode);
+    }
   });
 
   it('renders the progress container', function () {
@@ -59,23 +66,23 @@ describe('ProgressBar', function () {
 
     it('error', function () {
       renderWithStatus('error');
-      
+
       expect(statusBar.getDOMNode()).toHaveClass('rs-status-error');
     });
 
     it('warning', function () {
       renderWithStatus('warning');
-      
+
       expect(statusBar.getDOMNode()).toHaveClass('rs-status-warning');
     });
 
     it('info', function () {
       renderWithStatus('info');
-      
+
       expect(statusBar.getDOMNode()).toHaveClass('rs-status-info');
     });
   });
-  
+
   describe('type', function () {
     var statusBar;
 

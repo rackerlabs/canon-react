@@ -11,7 +11,8 @@
     "build": "scripts/cibuild",
     "clean": "./node_modules/.bin/grunt clean",
     "test": "scripts/cibuild",
-    "server": "scripts/server"
+    "server": "scripts/server",
+    "documentation-build": "./node_modules/.bin/grunt documentation-build"
   },
   "keywords": [
     "react",

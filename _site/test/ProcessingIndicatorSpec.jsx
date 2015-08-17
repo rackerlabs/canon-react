@@ -1,4 +1,5 @@
 var ProcessingIndicator = require('../transpiled/ProcessingIndicator');
+var React = require('react/addons');
 var TestUtils = React.addons.TestUtils;
 
 describe('ProcessingIndicator', function () {
@@ -8,6 +9,12 @@ describe('ProcessingIndicator', function () {
     processingIndicator = TestUtils.renderIntoDocument(
       <ProcessingIndicator></ProcessingIndicator>
     );
+  });
+
+  afterEach(function () {
+    if (processingIndicator.isMounted()) {
+      React.unmountComponentAtNode(React.findDOMNode(processingIndicator).parentNode);
+    }
   });
 
   it('has the rs-processing-indicator class', function () {

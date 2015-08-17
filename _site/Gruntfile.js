@@ -3,9 +3,9 @@ module.exports = function (grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
 
-    react: {
+    babel: {
       options: {
-        harmony: true
+        optional: ['runtime']
       },
       src: {
         files: [
@@ -23,7 +23,18 @@ module.exports = function (grunt) {
           {
             expand: true,
             cwd: 'demo',
-            src: ['demo.jsx'],
+            src: ['**/*.jsx'],
+            dest: 'transpiled',
+            ext: '.js'
+          }
+        ]
+      },
+      documentation: {
+        files: [
+          {
+            expand: true,
+            cwd: 'documentation',
+            src: ['**/*.jsx'],
             dest: 'transpiled',
             ext: '.js'
           }
@@ -44,7 +55,8 @@ module.exports = function (grunt) {
 
     clean: {
       transpiled: ['transpiled'],
-      test: ['test-built']
+      test: ['test-built'],
+      dist: ['canon-react.js', 'canon-react.min.js', './demo/bundle.js']
     },
 
     watch: {
@@ -83,6 +95,11 @@ module.exports = function (grunt) {
         files: {
           'demo/bundle.js': ['transpiled/**/*.js']
         }
+      },
+      documentation: {
+        files: {
+          'documentation/bundle.js': ['transpiled/**/*.js']
+        }
       }
     },
 
@@ -98,6 +115,7 @@ module.exports = function (grunt) {
 
     jshint: {
       options: {
+        esnext: true,
         eqeqeq: true,
         curly: true,
         funcscope: true,
@@ -117,7 +135,7 @@ module.exports = function (grunt) {
 
   grunt.loadNpmTasks('grunt-jsxhint');
   grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-react');
+  grunt.loadNpmTasks('grunt-babel');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-browserify');
@@ -125,18 +143,24 @@ module.exports = function (grunt) {
   grunt.registerTask('build', [
     'clean:test',
     'jshint',
-    'react:src',
-    'react:test',
+    'babel:src',
+    'babel:test',
     'browserify:test',
     'browserify:release',
     'uglify:build',
-    'clean:transpiled'
   ]);
 
   grunt.registerTask('demo-build', [
-    'react:src',
-    'react:demo',
+    'babel:src',
+    'babel:demo',
     'browserify:demo',
+    'clean:transpiled'
+  ]);
+
+  grunt.registerTask('documentation-build', [
+    'babel:src',
+    'babel:documentation',
+    'browserify:documentation',
     'clean:transpiled'
   ]);
 
