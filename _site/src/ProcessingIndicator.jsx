@@ -1,3 +1,5 @@
+var React = require('react');
+
 var ProcessingIndicator = React.createClass({
   propTypes: {
     hidden: React.PropTypes.bool
@@ -9,7 +11,7 @@ var ProcessingIndicator = React.createClass({
 
   render: function () {
     var classes;
-    
+
     classes = 'rs-processing-indicator';
 
     if (this.props.hidden) {

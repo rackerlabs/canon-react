@@ -1,4 +1,5 @@
 var Button = require('../transpiled/Button');
+var React = require('react/addons');
 var TestUtils = React.addons.TestUtils;
 
 describe('Button', function () {
@@ -10,6 +11,12 @@ describe('Button', function () {
     button = TestUtils.renderIntoDocument(
       <Button id='button-id' className='test-button-class' onClick={clickFunction}>Button Text</Button>
     );
+  });
+
+  afterEach(function () {
+    if (button.isMounted()) {
+      React.unmountComponentAtNode(React.findDOMNode(button).parentNode);
+    }
   });
 
   it('is enabled by default', function () {
