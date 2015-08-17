@@ -226,7 +226,7 @@ var ButtonsSection = React.createClass({
                     </tr>
                     <tr>
                       <td>
-                        <Button type='Edit' onClick={function () {alert('Edit');}}>Edit</Button>
+                        <Button type='edit' onClick={function () {alert('Edit');}}>Edit</Button>
                       </td>
                       <td>
                         <div className="highlight">
