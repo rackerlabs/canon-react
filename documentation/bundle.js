@@ -23836,7 +23836,7 @@ var ButtonsSection = React.createClass({
                       null,
                       React.createElement(
                         Button,
-                        { type: 'Edit', onClick: function () {
+                        { type: 'edit', onClick: function () {
                             alert('Edit');
                           } },
                         'Edit'
