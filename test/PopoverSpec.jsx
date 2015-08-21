@@ -8,15 +8,22 @@ var TestUtils = React.addons.TestUtils;
 describe('Popover', function () {
   var popover, tether, requestCloseCallback;
 
-  function renderPopover(placement, isOpen) {
+  function renderPopover(placement, isOpen, useTargetCallback) {
+    var target;
+
     setFixtures('<div id="content"><div id="some-element-id">The Target</div><div id="container"></div></div>');
 
     requestCloseCallback = jasmine.createSpy('requestCloseCallback');
     tether = jasmine.createSpyObj('tether', ['destroy']);
     spyOn(Popover.prototype.__reactAutoBindMap, '_createTether').andReturn(tether);
 
+    if (useTargetCallback) {
+      target = function () { return document.getElementById('some-element-id'); };
+    } else {
+      target = 'some-element-id';
+    }
     popover = React.render(
-      <Popover placement={placement} isOpen={isOpen} onRequestClose={requestCloseCallback} target='some-element-id'>
+      <Popover placement={placement} isOpen={isOpen} onRequestClose={requestCloseCallback} target={target}>
         <PopoverOverlay>
           This is the popover content
         </PopoverOverlay>
@@ -89,6 +96,18 @@ describe('Popover', function () {
 
     it('to the bottom left of the target', function () {
       renderPopover('bottom-left', true);
+
+      expect(Popover.prototype.__reactAutoBindMap._createTether).toHaveBeenCalledWith({
+        element: React.findDOMNode(popover._containerDiv),
+        target: React.findDOMNode(document.getElementById('some-element-id')),
+        attachment: 'top right',
+        targetAttachment: 'bottom left',
+        offset: '-20px -45px'
+      });
+    });
+
+    it('renders with a target function', function () {
+      renderPopover('bottom-left', true, true);
 
       expect(Popover.prototype.__reactAutoBindMap._createTether).toHaveBeenCalledWith({
         element: React.findDOMNode(popover._containerDiv),

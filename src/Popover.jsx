@@ -8,7 +8,10 @@ var Popover = React.createClass({
     placement: React.PropTypes.oneOf(['right', 'bottom-right', 'left', 'bottom-left']),
     isOpen: React.PropTypes.bool,
     onRequestClose: React.PropTypes.func,
-    target: React.PropTypes.string
+    target: React.PropTypes.oneOfType([
+      React.PropTypes.string,
+      React.PropTypes.instanceOf(Function)
+    ])
   },
 
   getDefaultProps: function () {
@@ -144,8 +147,20 @@ var Popover = React.createClass({
     }
 
     tetherConfig.element = React.findDOMNode(this._containerDiv);
-    tetherConfig.target = document.getElementById(this.props.target);
+    tetherConfig.target = this._getTarget();
     return tetherConfig;
+  },
+
+  _getTarget: function () {
+    var target;
+
+    target = this.props.target;
+
+    if (target instanceof Function) {
+      return this.props.target();
+    }
+
+    return document.getElementById(target);
   },
 
   _listenForEscapePress: function () {

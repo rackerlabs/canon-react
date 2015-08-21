@@ -29,6 +29,10 @@ var DemoPopoverSection = React.createClass({
     this.setState({bottomRightPopoverOpen: false});
   },
 
+  _getBottomLeftButton: function () {
+    return React.findDOMNode(this.refs.bottomLeftButton);
+  },
+
   render: function () {
     return (
       <div className='rs-detail-section'>
@@ -54,8 +58,8 @@ var DemoPopoverSection = React.createClass({
                   <DemoPopover placement='bottom-right' target='bottom-right-button-id' isOpen={this.state.bottomRightPopoverOpen} onRequestClose={this._shouldCloseBottomRightPopover}/>
                 </td>
                 <td>
-                  <Button id='bottom-left-button-id' onClick={function () {this.setState({bottomLeftPopoverOpen: true});}.bind(this)}>Bottom Left</Button>
-                  <DemoPopover placement='bottom-left' target='bottom-left-button-id' isOpen={this.state.bottomLeftPopoverOpen} onRequestClose={this._shouldCloseBottomLeftPopover}/>
+                  <Button id='bottom-left-button-id' ref='bottomLeftButton' onClick={function () {this.setState({bottomLeftPopoverOpen: true});}.bind(this)}>Bottom Left</Button>
+                  <DemoPopover placement='bottom-left' target={this._getBottomLeftButton} isOpen={this.state.bottomLeftPopoverOpen} onRequestClose={this._shouldCloseBottomLeftPopover}/>
                 </td>
               </tr>
             </tbody>
