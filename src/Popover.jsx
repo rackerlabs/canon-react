@@ -11,7 +11,8 @@ var Popover = React.createClass({
     target: React.PropTypes.oneOfType([
       React.PropTypes.string,
       React.PropTypes.instanceOf(Function)
-    ])
+    ]),
+    offset: React.PropTypes.string
   },
 
   getDefaultProps: function () {
@@ -146,6 +147,9 @@ var Popover = React.createClass({
         };
     }
 
+    if (this.props.offset) {
+      tetherConfig.offset = this.props.offset;
+    }
     tetherConfig.element = React.findDOMNode(this._containerDiv);
     tetherConfig.target = this._getTarget();
     return tetherConfig;
