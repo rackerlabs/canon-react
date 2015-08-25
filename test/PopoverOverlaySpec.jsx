@@ -70,5 +70,11 @@ describe('PopoverOverlay', function () {
 
       expect(arrow()).toHaveClass('rs-popover-arrow-top-right');
     });
+
+    it('is not rendered with center placement', function () {
+      renderPopover('center');
+
+      expect(TestUtils.scryRenderedDOMComponentsWithClass(popover, 'rs-popover-arrow').length).toBe(0);
+    });
   });
 });
