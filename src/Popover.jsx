@@ -5,7 +5,7 @@ var PopoverBackground = require('./PopoverBackground');
 var Popover = React.createClass({
 
   propTypes: {
-    placement: React.PropTypes.oneOf(['right', 'bottom-right', 'left', 'bottom-left']),
+    placement: React.PropTypes.oneOf(['right', 'bottom-right', 'left', 'bottom-left', 'center']),
     isOpen: React.PropTypes.bool,
     onRequestClose: React.PropTypes.func,
     target: React.PropTypes.oneOfType([
@@ -137,6 +137,13 @@ var Popover = React.createClass({
           attachment: 'top left',
           targetAttachment: 'middle right',
           offset: '38px -20px'
+        };
+        break;
+      case 'center':
+        tetherConfig = {
+          attachment: 'middle center',
+          targetAttachment: 'middle center',
+          targetModifier: 'visible'
         };
         break;
       default:

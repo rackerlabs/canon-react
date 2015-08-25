@@ -130,6 +130,18 @@ describe('Popover', function () {
         offset: '10px 10px'
       });
     });
+
+    it('on the center of the target', function () {
+      renderPopover('center', true);
+
+      expect(Popover.prototype.__reactAutoBindMap._createTether).toHaveBeenCalledWith({
+        element: React.findDOMNode(popover._containerDiv),
+        target: React.findDOMNode(document.getElementById('some-element-id')),
+        attachment: 'middle center',
+        targetAttachment: 'middle center',
+        targetModifier: 'visible'
+      });
+    });
   });
 
   describe('notifies parent of close request', function () {

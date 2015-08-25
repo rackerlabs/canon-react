@@ -9,7 +9,9 @@ var DemoPopoverSection = React.createClass({
       rightPopoverOpen: false,
       leftPopoverOpen: false,
       bottomRightPopoverOpen: false,
-      bottomLeftPopoverOpen: false
+      bottomLeftPopoverOpen: false,
+      bottomRightFunctionPopoverOpen: false,
+      bottomLeftModalPopoverOpen: false
     };
   },
 
@@ -27,6 +29,14 @@ var DemoPopoverSection = React.createClass({
 
   _shouldCloseBottomRightPopover: function () {
     this.setState({bottomRightPopoverOpen: false});
+  },
+
+  _shouldCloseBottomRightFunctionPopover: function () {
+    this.setState({bottomRightFunctionPopoverOpen: false});
+  },
+
+  _shouldCloseBottomLeftModalPopover: function () {
+    this.setState({bottomLeftModalPopoverOpen: false});
   },
 
   _getBottomLeftButton: function () {
@@ -60,6 +70,16 @@ var DemoPopoverSection = React.createClass({
                 <td>
                   <Button id='bottom-left-button-id' ref='bottomLeftButton' onClick={function () {this.setState({bottomLeftPopoverOpen: true});}.bind(this)}>Bottom Left</Button>
                   <DemoPopover placement='bottom-left' target={this._getBottomLeftButton} isOpen={this.state.bottomLeftPopoverOpen} onRequestClose={this._shouldCloseBottomLeftPopover}/>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <Button id='bottom-right-function-button-id' onClick={function () {this.setState({bottomRightFunctionPopoverOpen: true});}.bind(this)}>Bottom Right Function</Button>
+                  <DemoPopover placement='bottom-right' target={function () { return document.getElementById('bottom-right-function-button-id');} } isOpen={this.state.bottomRightFunctionPopoverOpen} onRequestClose={this._shouldCloseBottomRightFunctionPopover}/>
+                </td>
+                <td>
+                  <Button id='bottom-left-modal-button-id' onClick={function () {this.setState({bottomLeftModalPopoverOpen: true});}.bind(this)}>Modal</Button>
+                  <DemoPopover placement='center' target={function () { return document.body; } } isOpen={this.state.bottomLeftModalPopoverOpen} onRequestClose={this._shouldCloseBottomLeftModalPopover}/>
                 </td>
               </tr>
             </tbody>
