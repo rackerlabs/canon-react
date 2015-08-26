@@ -5,7 +5,7 @@ var SizeClasses = {
   'small': 'rs-progress-small',
   'medium': 'rs-progress-medium',
   'large': 'rs-progress-large',
-  'xlarge': 'rs-progress-xlarge',
+  'xlarge': 'rs-progress-xlarge'
 };
 
 var StatusClasses = {
