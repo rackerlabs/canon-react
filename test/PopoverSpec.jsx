@@ -145,7 +145,7 @@ describe('Popover', () => {
   });
 
   describe('notifies parent of close request', () => {
-    it('when pressing escape', function() {
+    it('when pressing escape', () => {
       let keyUpEvent;
 
       renderPopover('right', true);
