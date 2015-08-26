@@ -72,7 +72,7 @@ class Popover extends React.Component {
   }
 
   _renderPopoverOverlay() {
-    var popover;
+    let popover;
 
     this._backgroundDiv.style.display = 'block';
     React.render(<PopoverBackground onRequestClose={this.props.onRequestClose} />, this._backgroundDiv);
@@ -94,7 +94,7 @@ class Popover extends React.Component {
   }
 
   _getTetherConfig() {
-    var tetherConfig;
+    let tetherConfig;
 
     switch (this.props.placement) {
       case 'left':
@@ -149,7 +149,7 @@ class Popover extends React.Component {
   }
 
   _getTarget() {
-    var target;
+    let target;
 
     target = this.props.target;
 
