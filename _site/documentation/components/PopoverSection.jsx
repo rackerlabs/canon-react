@@ -84,6 +84,7 @@ var PopoverSection = React.createClass({
               <li><code>isOpen</code></li>
               <li><code>onRequestClose</code></li>
               <li><code>target</code></li>
+              <li><code>offset</code></li>
             </ul>
             <h6><code>placement</code></h6>
             <p><code>placement</code> defines the position of the popover in relation to its target. The following values are allowed:</p>
@@ -92,13 +93,21 @@ var PopoverSection = React.createClass({
               <li><code>bottom-right</code></li>
               <li><code>left</code></li>
               <li><code>bottom-left</code></li>
+              <li><code>center</code></li>
             </ul>
+            <p><code>center</code> behaves slightly differently than the other placement properties. The popover is placed over the center of the target element and no arrow is rendered. This positioning is useful for modal like behavior where the target is the document body.</p>
+
             <h6><code>isOpen</code></h6>
             <p><code>isOpen</code> accepts boolean values and defines whether or not the popover is open or clsoed. It is up to the parent component to decide whether or not a popover should be displayed. This is necessary to allow for such things as allowing the processing of a command to finish before closing a popover.</p>
+
             <h6><code>onRequestClose</code></h6>
             <p><code>onRequestClose</code> is a callback that is used to notify a parent component that some action has occured requesting the closing of a popover. This could be the clicking of a cancel link on the popover, pressing the escape key, or clicking off of the popover. The popover itself will monitor events for the escape key and clicking outside of the popover and will invoke the request close callback at such time.</p>
+
             <h6><code>target</code></h6>
-            <p><code>target</code> is the id of the element at which the popover will be pointing.</p>
+            <p><code>target</code> accepts either a string ID or a function that returns the element at which the popover will be pointing.</p>
+
+            <h6><code>offset</code></h6>
+            <p>canon-react uses <a href='http://tether.io/' target='_blank'>tether.io</a> for positioning of the popover. The popover component has an `offset` property that when specified will override the default offsets that canon-react is using to configure the tether. This property accepts a string in the same format that tether accepts.</p>
 
             <h5><code>PopoverOverlay</code></h5>
             <p>The <code>PopoverOverlay</code> component renders the outer markup of a popover, as well as the arrow of the popover. It accepts a <code>placement</code> prop (passed to it from the <code>Popover</code>) which is used to determine the position of the arrow relative to the target at which the popover will be pointing. The values accepted are the same as those of the <code>Popover</code>.</p>

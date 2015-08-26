@@ -5,10 +5,14 @@ var PopoverBackground = require('./PopoverBackground');
 var Popover = React.createClass({
 
   propTypes: {
-    placement: React.PropTypes.oneOf(['right', 'bottom-right', 'left', 'bottom-left']),
+    placement: React.PropTypes.oneOf(['right', 'bottom-right', 'left', 'bottom-left', 'center']),
     isOpen: React.PropTypes.bool,
     onRequestClose: React.PropTypes.func,
-    target: React.PropTypes.string
+    target: React.PropTypes.oneOfType([
+      React.PropTypes.string,
+      React.PropTypes.instanceOf(Function)
+    ]),
+    offset: React.PropTypes.string
   },
 
   getDefaultProps: function () {
@@ -135,6 +139,13 @@ var Popover = React.createClass({
           offset: '38px -20px'
         };
         break;
+      case 'center':
+        tetherConfig = {
+          attachment: 'middle center',
+          targetAttachment: 'middle center',
+          targetModifier: 'visible'
+        };
+        break;
       default:
         tetherConfig = {
           attachment: 'top left',
@@ -143,9 +154,24 @@ var Popover = React.createClass({
         };
     }
 
+    if (this.props.offset) {
+      tetherConfig.offset = this.props.offset;
+    }
     tetherConfig.element = React.findDOMNode(this._containerDiv);
-    tetherConfig.target = document.getElementById(this.props.target);
+    tetherConfig.target = this._getTarget();
     return tetherConfig;
+  },
+
+  _getTarget: function () {
+    var target;
+
+    target = this.props.target;
+
+    if (target instanceof Function) {
+      return this.props.target();
+    }
+
+    return document.getElementById(target);
   },
 
   _listenForEscapePress: function () {
