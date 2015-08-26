@@ -1,10 +1,10 @@
-var PopoverBackground = require('../transpiled/PopoverBackground');
+import PopoverBackground from '../transpiled/PopoverBackground';
 
-var React = require('react/addons');
-var TestUtils = React.addons.TestUtils;
+import React from 'react/addons';
+const TestUtils = React.addons.TestUtils;
 
 describe('PopoverBackground', function () {
-  var popoverBackground, requestClose;
+  let popoverBackground, requestClose;
 
   beforeEach(function () {
     requestClose = jasmine.createSpy('requestClose');
@@ -15,13 +15,11 @@ describe('PopoverBackground', function () {
   });
 
   afterEach(function () {
-    if (popoverBackground.isMounted()) {
-      React.unmountComponentAtNode(React.findDOMNode(popoverBackground).parentNode);
-    }
+    React.unmountComponentAtNode(React.findDOMNode(popoverBackground).parentNode);
   });
 
   it('renders over the entire page to block events from other elements', function () {
-    var backgroundStyle, backgroundElement;
+    let backgroundStyle, backgroundElement;
 
     backgroundElement = TestUtils.findRenderedDOMComponentWithClass(popoverBackground, 'rs-popover-background-overlay');
     backgroundStyle = backgroundElement.getDOMNode().style;
@@ -35,7 +33,7 @@ describe('PopoverBackground', function () {
   });
 
   it('calls the request close callback when clicked', function () {
-    TestUtils.Simulate.click(popoverBackground.getDOMNode());
+    TestUtils.Simulate.click(React.findDOMNode(popoverBackground));
 
     expect(requestClose).toHaveBeenCalled();
   });

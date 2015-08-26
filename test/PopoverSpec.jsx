@@ -1,13 +1,13 @@
-var Popover = require('../transpiled/Popover');
-var PopoverOverlay = require('../transpiled/PopoverOverlay');
-var React = require('react/addons');
-var TestUtils = React.addons.TestUtils;
+import Popover from '../transpiled/Popover';
+import PopoverOverlay from '../transpiled/PopoverOverlay';
+import React from 'react/addons';
+let TestUtils = React.addons.TestUtils;
 
 describe('Popover', () => {
-  var popover, tether, requestCloseCallback, closeCallBackCalled;
+  let popover, tether, requestCloseCallback, closeCallBackCalled;
 
   function renderPopover(placement, isOpen, useTargetCallback, offset) {
-    var target;
+    let target;
 
     setFixtures('<div id="content"><div id="some-element-id">The Target</div><div id="container"></div></div>');
 
@@ -47,7 +47,7 @@ describe('Popover', () => {
   });
 
   it('renders the popover overlay', () => {
-    var popoverContainer;
+    let popoverContainer;
 
     renderPopover('right', true);
 
@@ -146,7 +146,7 @@ describe('Popover', () => {
 
   describe('notifies parent of close request', () => {
     it('when pressing escape', function() {
-      var keyUpEvent;
+      let keyUpEvent;
 
       renderPopover('right', true);
 
