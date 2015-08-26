@@ -3,7 +3,7 @@ var React = require('react');
 var PopoverOverlay = React.createClass({
 
   propTypes: {
-    placement: React.PropTypes.oneOf(['right', 'bottom-right', 'left', 'bottom-left'])
+    placement: React.PropTypes.oneOf(['right', 'bottom-right', 'left', 'bottom-left', 'center'])
   },
 
   getDefaultProps: function () {
@@ -28,15 +28,29 @@ var PopoverOverlay = React.createClass({
     return arrowClasses.join(' ');
   },
 
+  _shouldShowArrow: function () {
+    return this.props.placement !== 'center';
+  },
+
   render: function () {
-    return (
-      <div className={this.props.className}>
-        <div className={this._arrowPlacement()}></div>
-        <div className='rs-popover-content'>
-          {this.props.children}
+    if (this._shouldShowArrow()) {
+      return (
+        <div className={this.props.className}>
+          <div className={this._arrowPlacement()}></div>
+          <div className='rs-popover-content'>
+            {this.props.children}
+          </div>
         </div>
-      </div>
-    );
+      );
+    } else {
+      return (
+        <div className={this.props.className}>
+          <div className='rs-popover-content'>
+            {this.props.children}
+          </div>
+        </div>
+      );
+    }
   }
 });
 
