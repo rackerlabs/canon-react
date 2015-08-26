@@ -1,12 +1,12 @@
-var ButtonGroup = require('../transpiled/ButtonGroup');
-var Button = require('../transpiled/Button');
-var React = require('react/addons');
-var TestUtils = React.addons.TestUtils;
+import ButtonGroup from '../transpiled/ButtonGroup';
+import Button from '../transpiled/Button';
+import React from 'react/addons';
+let TestUtils = React.addons.TestUtils;
 
-describe('ButtonGroup', function () {
+describe('ButtonGroup', () => {
   var buttonGroup;
 
-  beforeEach(function () {
+  beforeEach(() => {
     buttonGroup = TestUtils.renderIntoDocument(
       <ButtonGroup id='button-group' className="extra-class">
         <Button className='child-button'>Test</Button>
@@ -14,21 +14,19 @@ describe('ButtonGroup', function () {
     );
   });
 
-  afterEach(function () {
-    if (buttonGroup.isMounted()) {
-      React.unmountComponentAtNode(React.findDOMNode(buttonGroup).parentNode);
-    }
+  afterEach(() => {
+    React.unmountComponentAtNode(React.findDOMNode(buttonGroup).parentNode);
   });
 
-  it('has the right classes', function () {
-    expect(buttonGroup.getDOMNode()).toHaveClass('rs-btn-group extra-class');
+  it('has the right classes', () => {
+    expect(React.findDOMNode(buttonGroup)).toHaveClass('rs-btn-group extra-class');
   });
 
-  it('renders passed in props', function () {
-    expect(buttonGroup.getDOMNode().id).toBe('button-group');
+  it('renders passed in props', () => {
+    expect(React.findDOMNode(buttonGroup).id).toBe('button-group');
   });
 
-  it('renders passed in children', function () {
+  it('renders passed in children', () => {
     expect(TestUtils.findRenderedDOMComponentWithClass(buttonGroup, 'child-button')).not.toBeNull();
   });
 });
