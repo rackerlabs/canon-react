@@ -1,8 +1,8 @@
 ### Version 0.2.1:
 1. Popover Changes
-* Allow manual setting of tether's offset
-* `target` now accepts a string ID or a function returning the element at which the popover will be pointing
-* Added `center` placement option which places the popover over the center of the target and does not render an arrow
+ - Allow manual setting of tether's offset
+ - `target` now accepts a string ID or a function returning the element at which the popover will be pointing
+ - Added `center` placement option which places the popover over the center of the target and does not render an arrow
 
 ### Version 0.2.0:
 1. Popover
