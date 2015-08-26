@@ -1,19 +1,9 @@
-var React = require('react');
+import React from 'react';
 
-var PopoverOverlay = React.createClass({
+class PopoverOverlay extends React.Component {
 
-  propTypes: {
-    placement: React.PropTypes.oneOf(['right', 'bottom-right', 'left', 'bottom-left', 'center'])
-  },
-
-  getDefaultProps: function () {
-    return {
-      placement: 'right'
-    };
-  },
-
-  _arrowPlacement: function () {
-    var arrowClasses, arrowPositions;
+  _arrowPlacement() {
+    let arrowClasses, arrowPositions;
 
     arrowPositions = {
       'right': 'rs-popover-arrow-left-top',
@@ -26,13 +16,13 @@ var PopoverOverlay = React.createClass({
     arrowClasses.push(arrowPositions[this.props.placement]);
 
     return arrowClasses.join(' ');
-  },
+  }
 
-  _shouldShowArrow: function () {
+  _shouldShowArrow() {
     return this.props.placement !== 'center';
-  },
+  }
 
-  render: function () {
+  render() {
     if (this._shouldShowArrow()) {
       return (
         <div className={this.props.className}>
@@ -52,6 +42,16 @@ var PopoverOverlay = React.createClass({
       );
     }
   }
-});
+}
 
-module.exports = PopoverOverlay;
+PopoverOverlay.propTypes = {
+  placement: React.PropTypes.oneOf([
+    'right', 'bottom-right', 'left', 'bottom-left', 'center'
+  ])
+};
+
+PopoverOverlay.defaultProps = {
+  placement: 'right'
+};
+
+export default PopoverOverlay;

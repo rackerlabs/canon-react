@@ -1,77 +1,75 @@
-var PopoverOverlay = require('../transpiled/PopoverOverlay');
+import PopoverOverlay from '../transpiled/PopoverOverlay';
 
-var React = require('react/addons');
-var TestUtils = React.addons.TestUtils;
+import React from 'react/addons';
+let TestUtils = React.addons.TestUtils;
 
-describe('PopoverOverlay', function () {
-  var popover;
+describe('PopoverOverlay', () => {
+  let popover;
 
-  function renderPopover(placement) {
+  const renderPopover = (placement) => {
     popover = TestUtils.renderIntoDocument(
       <PopoverOverlay className='test-class' placement={placement}>
         Hello
       </PopoverOverlay>
     );
-  }
+  };
 
-  afterEach(function () {
-    if (popover.isMounted()) {
-      React.unmountComponentAtNode(React.findDOMNode(popover).parentNode);
-    }
+  afterEach(() => {
+    React.unmountComponentAtNode(React.findDOMNode(popover).parentNode);
   });
 
-  it('renders a popover with the provided class', function () {
+  it('renders a popover with the provided class', () => {
     renderPopover('right');
 
-    expect(popover.getDOMNode()).toHaveClass('test-class');
+    expect(React.findDOMNode(popover)).toHaveClass('test-class');
   });
 
-  it('adds the specified classes to the popover', function () {
+  it('adds the specified classes to the popover', () => {
     renderPopover('right');
 
-    expect(popover.getDOMNode()).toHaveClass('test-class');
+    expect(React.findDOMNode(popover)).toHaveClass('test-class');
   });
 
-  it('renders children', function () {
-    var popoverContent;
+  it('renders children', () => {
+    let popoverContent;
 
     renderPopover('right');
     popoverContent = TestUtils.findRenderedDOMComponentWithClass(popover, 'rs-popover-content');
 
-    expect(popoverContent.getDOMNode().textContent).toBe('Hello');
+    expect(React.findDOMNode(popoverContent).textContent).toBe('Hello');
   });
 
-  describe('arrow placement', function () {
+  describe('arrow placement', () => {
 
     function arrow() {
       return TestUtils.findRenderedDOMComponentWithClass(popover, 'rs-popover-arrow').getDOMNode();
     }
 
-    it('right', function () {
+    it('right', () => {
       renderPopover('right');
 
       expect(arrow()).toHaveClass('rs-popover-arrow-left-top');
     });
 
-    it('bottom right', function () {
+    it('bottom right', () => {
       renderPopover('bottom-right');
 
       expect(arrow()).toHaveClass('rs-popover-arrow-top-left');
     });
 
-    it('left', function () {
+    it('left', () => {
       renderPopover('left');
 
       expect(arrow()).toHaveClass('rs-popover-arrow-right-top');
     });
 
-    it('bottom left', function () {
+    it('bottom left', () => {
       renderPopover('bottom-left');
 
       expect(arrow()).toHaveClass('rs-popover-arrow-top-right');
     });
 
-    it('is not rendered with center placement', function () {
+    it('is not rendered with center placement', () => {
       renderPopover('center');
 
       expect(TestUtils.scryRenderedDOMComponentsWithClass(popover, 'rs-popover-arrow').length).toBe(0);

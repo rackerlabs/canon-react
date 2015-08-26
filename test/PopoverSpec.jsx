@@ -6,7 +6,7 @@ let TestUtils = React.addons.TestUtils;
 describe('Popover', () => {
   let popover, tether, requestCloseCallback, closeCallBackCalled;
 
-  function renderPopover(placement, isOpen, useTargetCallback, offset) {
+  const renderPopover = (placement, isOpen, useTargetCallback, offset) => {
     let target;
 
     setFixtures('<div id="content"><div id="some-element-id">The Target</div><div id="container"></div></div>');
@@ -29,7 +29,7 @@ describe('Popover', () => {
       </Popover>,
       document.getElementById('container')
     );
-  }
+  };
 
   beforeEach(() => {
     closeCallBackCalled = false;
