@@ -1,8 +1,8 @@
-var React = require('react');
+import React from 'react';
 
-var ButtonGroup = React.createClass({
-  render: function () {
-    var classes;
+class ButtonGroup extends React.Component {
+  render() {
+    let classes;
 
     classes = ['rs-btn-group'];
     if (this.props.className) {
@@ -15,6 +15,6 @@ var ButtonGroup = React.createClass({
       </div>
     );
   }
-});
+}
 
-module.exports = ButtonGroup;
+export default ButtonGroup;

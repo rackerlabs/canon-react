@@ -1,16 +1,9 @@
-var React = require('react');
+import React from 'react';
 
-var ProcessingIndicator = React.createClass({
-  propTypes: {
-    hidden: React.PropTypes.bool
-  },
+class ProcessingIndicator extends React.Component {
 
-  getDefaultProps: function () {
-    return { hidden: true };
-  },
-
-  render: function () {
-    var classes;
+  render() {
+    let classes;
 
     classes = 'rs-processing-indicator';
 
@@ -22,6 +15,14 @@ var ProcessingIndicator = React.createClass({
       <i className={classes}></i>
     );
   }
-});
+}
 
-module.exports = ProcessingIndicator;
+ProcessingIndicator.propTypes = {
+  hidden: React.PropTypes.bool
+};
+
+ProcessingIndicator.defaultProps = {
+  hidden: true
+};
+
+export default ProcessingIndicator;

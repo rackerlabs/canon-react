@@ -1,12 +1,12 @@
-var PopoverBody = require('../transpiled/PopoverBody');
+import PopoverBody from '../transpiled/PopoverBody';
 
-var React = require('react/addons');
-var TestUtils = React.addons.TestUtils;
+import React from 'react/addons';
+let TestUtils = React.addons.TestUtils;
 
-describe('PopoverBody', function () {
-  var popoverBody;
+describe('PopoverBody', () => {
+  let popoverBody;
 
-  beforeEach(function () {
+  beforeEach(() => {
     popoverBody = TestUtils.renderIntoDocument(
       <PopoverBody>
         Hello
@@ -14,17 +14,15 @@ describe('PopoverBody', function () {
     );
   });
 
-  afterEach(function () {
-    if (popoverBody.isMounted()) {
-      React.unmountComponentAtNode(React.findDOMNode(popoverBody).parentNode);
-    }
+  afterEach(() => {
+    React.unmountComponentAtNode(React.findDOMNode(popoverBody).parentNode);
   });
 
-  it('renders a popover body', function () {
-    expect(popoverBody.getDOMNode()).toHaveClass('rs-popover-body');
+  it('renders a popover body', () => {
+    expect(React.findDOMNode(popoverBody)).toHaveClass('rs-popover-body');
   });
 
-  it('renders children', function () {
-    expect(popoverBody.getDOMNode().textContent).toBe('Hello');
+  it('renders children', () => {
+    expect(React.findDOMNode(popoverBody).textContent).toBe('Hello');
   });
 });

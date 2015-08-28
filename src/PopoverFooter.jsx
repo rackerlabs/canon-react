@@ -1,16 +1,16 @@
-var React = require('react');
+import React from 'react';
 
-var ButtonGroup = require('./ButtonGroup');
+import ButtonGroup from './ButtonGroup';
 
-var PopoverFooter = React.createClass({
+class PopoverFooter extends React.Component {
 
-  render: function () {
+  render () {
     return (
       <ButtonGroup className='rs-popover-footer'>
         {this.props.children}
       </ButtonGroup>
     );
   }
-});
+}
 
-module.exports = PopoverFooter;
+export default PopoverFooter;

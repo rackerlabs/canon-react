@@ -1,12 +1,12 @@
-var PopoverFooter = require('../transpiled/PopoverFooter');
+import PopoverFooter from '../transpiled/PopoverFooter';
 
-var React = require('react/addons');
-var TestUtils = React.addons.TestUtils;
+import React from 'react/addons';
+let TestUtils = React.addons.TestUtils;
 
-describe('PopoverFooter', function () {
-  var popoverFooter;
+describe('PopoverFooter', () => {
+  let popoverFooter;
 
-  beforeEach(function () {
+  beforeEach(() => {
     popoverFooter = TestUtils.renderIntoDocument(
       <PopoverFooter>
         Hello
@@ -14,15 +14,15 @@ describe('PopoverFooter', function () {
     );
   });
 
-  it('renders a footer button group', function () {
+  it('renders a footer button group', () => {
     var buttonGroup;
 
     buttonGroup = TestUtils.findRenderedDOMComponentWithClass(popoverFooter, 'rs-popover-footer');
 
-    expect(buttonGroup.getDOMNode()).toHaveClass('rs-btn-group');
+    expect(React.findDOMNode(buttonGroup)).toHaveClass('rs-btn-group');
   });
 
-  it('renders children', function () {
-    expect(popoverFooter.getDOMNode().textContent).toBe('Hello');
+  it('renders children', () => {
+    expect(React.findDOMNode(popoverFooter).textContent).toBe('Hello');
   });
 });
