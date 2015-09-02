@@ -22,7 +22,7 @@ class TooltipTrigger extends React.Component {
     this._trigger = React.cloneElement(React.Children.only(this.props.children), triggerProps);
 
     return (
-      <div>
+      <trigger>
         {this._trigger}
         <Tooltip isOpen={this._shouldShowTooltip()}
           target={this._getTarget.bind(this)}
@@ -30,7 +30,7 @@ class TooltipTrigger extends React.Component {
           onMouseOver={this._mouseEnteringTooltip.bind(this)}>
           {this.props.content}
         </Tooltip>
-      </div>
+      </trigger>
     );
   }
 
