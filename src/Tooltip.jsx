@@ -67,7 +67,10 @@ class Tooltip extends React.Component {
       targetAttachment: 'bottom right',
       targetModifier: 'visible',
       element: React.findDOMNode(this._containerDiv),
-      target: this.props.target()
+      target: this.props.target(),
+      constraints: [
+        {to: 'window', pin: true, attachment: 'together'}
+      ]
     };
   }
 }
