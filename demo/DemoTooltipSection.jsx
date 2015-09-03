@@ -4,7 +4,7 @@ import TooltipTrigger from './TooltipTrigger';
 
 class DemoTooltipSection extends React.Component {
   render() {
-    const tooltipContent = (<div>This is a <strong>tooltip</strong></div>);
+    const tooltipContent = (<span>This is a tooltip</span>);
     return (
       <div className='rs-detail-section'>
         <div className='rs-detail-section-header'>

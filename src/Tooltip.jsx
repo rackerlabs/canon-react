@@ -45,11 +45,9 @@ class Tooltip extends React.Component {
   }
 
   _show() {
-    let tooltip;
-
     this._containerDiv.className += ' visible';
-    tooltip = React.render(
-      <TooltipInnerContent onMouseOver={this.props.onMouseOver} onMouseOut={this.props.onMouseOut}>
+    this._tooltipNode = React.render(
+      <TooltipInnerContent onMouseOver={this.props.onMouseOver} onMouseLeave={this.props.onMouse}>
         {this.props.children}
       </TooltipInnerContent>,
       this._containerDiv

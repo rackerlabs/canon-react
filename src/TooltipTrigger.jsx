@@ -14,8 +14,8 @@ class TooltipTrigger extends React.Component {
     let triggerProps;
 
     triggerProps = {
-      onMouseOver: (e) => { this._showTooltip() },
-      onMouseOut: () => { this._hideTooltip() },
+      onMouseOver: () => { this._showTooltip(); },
+      onMouseOut: () => { this._hideTooltip(); },
       ref: 'trigger'
     };
 
@@ -26,7 +26,7 @@ class TooltipTrigger extends React.Component {
         {this._trigger}
         <Tooltip isOpen={this._shouldShowTooltip()}
           target={this._getTarget.bind(this)}
-          onMouseOut={this._mouseLeavingTooltip.bind(this)}
+          onMouse={this._mouseLeavingTooltip.bind(this)}
           onMouseOver={this._mouseEnteringTooltip.bind(this)}>
           {this.props.content}
         </Tooltip>
@@ -34,12 +34,12 @@ class TooltipTrigger extends React.Component {
     );
   }
 
-  _showTooltip(e) {
-    setTimeout(() => {this.setState({isTooltipOpen: true});}, 200);
+  _showTooltip() {
+    setTimeout(() => {this.setState({isTooltipOpen: true}); }, 200);
   }
 
   _hideTooltip() {
-    setTimeout(() => {this.setState({isTooltipOpen: false});}, 200);
+    setTimeout(() => {this.setState({isTooltipOpen: false}); }, 200);
   }
 
   _shouldShowTooltip() {
