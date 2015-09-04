@@ -3,7 +3,7 @@ import TooltipInnerContent from '../transpiled/TooltipInnerContent';
 const TestUtils = React.addons.TestUtils;
 
 describe('TooltipInnerContent', () => {
-  var innerContent;
+  let innerContent;
 
   beforeEach(() => {
     innerContent = TestUtils.renderIntoDocument(
