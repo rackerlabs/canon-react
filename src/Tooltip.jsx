@@ -8,6 +8,7 @@ class Tooltip extends React.Component {
     this._containerDiv = document.createElement('div');
     this._containerDiv.className = 'rs-tooltip';
     document.body.appendChild(this._containerDiv);
+    this._toggleTooltip();
   }
 
   componentWillUnmount() {
@@ -47,7 +48,7 @@ class Tooltip extends React.Component {
   _show() {
     this._containerDiv.className += ' visible';
     this._tooltipNode = React.render(
-      <TooltipInnerContent onMouseOver={this.props.onMouseOver} onMouseLeave={this.props.onMouse}>
+      <TooltipInnerContent onMouseOver={this.props.onMouseOver} onMouseLeave={this.props.onMouseLeave}>
         {this.props.children}
       </TooltipInnerContent>,
       this._containerDiv
@@ -74,7 +75,10 @@ class Tooltip extends React.Component {
 }
 
 Tooltip.propTypes = {
-  isOpen: React.PropTypes.bool
+  isOpen: React.PropTypes.bool,
+  target: React.PropTypes.func.isRequired,
+  onMouseOver: React.PropTypes.func.isRequired,
+  onMouseLeave: React.PropTypes.func.isRequired
 };
 
 Tooltip.defaultProps = {
