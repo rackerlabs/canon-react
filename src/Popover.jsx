@@ -175,6 +175,7 @@ class Popover extends React.Component {
 }
 
 Popover.propTypes = {
+  children: React.PropTypes.element.isRequired,
   placement: React.PropTypes.oneOf(['right', 'bottom-right', 'left', 'bottom-left', 'center']),
   isOpen: React.PropTypes.bool,
   onRequestClose: React.PropTypes.func.isRequired,

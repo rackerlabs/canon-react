@@ -12,7 +12,8 @@
     "clean": "./node_modules/.bin/grunt clean",
     "demo-build": "./node_modules/.bin/grunt demo-build",
     "test-watch": "./node_modules/.bin/grunt watch 2>&1 >/dev/null & ./node_modules/karma/bin/karma start karma.dev.js",
-    "test": "./node_modules/.bin/grunt build && ./node_modules/karma/bin/karma start karma.ci.js"
+    "test": "./node_modules/.bin/grunt build && ./node_modules/karma/bin/karma start karma.ci.js",
+    "lint": "./node_modules/.bin/grunt lint"
   },
   "keywords": [
     "react",
@@ -49,6 +50,7 @@
   },
   "devDependencies": {
     "babel": "^5.5.8",
+    "babel-eslint": "^4.1.1",
     "babel-runtime": "^5.5.8",
     "babelify": "^6.1.2",
     "browserify": "<4.0.0",

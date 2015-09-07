@@ -20,7 +20,7 @@ const TypeClasses = {
   'striped': 'rs-bar-striped'
 };
 
-class ProgressBar extends React.Component{
+class ProgressBar extends React.Component {
 
   _getSizeClass() {
     var sizeClass;

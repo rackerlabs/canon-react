@@ -7,7 +7,7 @@ describe('ProcessingIndicator', () => {
 
   beforeEach(() => {
     processingIndicator = TestUtils.renderIntoDocument(
-      <ProcessingIndicator></ProcessingIndicator>
+      <ProcessingIndicator/>
     );
   });
 

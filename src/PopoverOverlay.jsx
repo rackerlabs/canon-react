@@ -45,6 +45,8 @@ class PopoverOverlay extends React.Component {
 }
 
 PopoverOverlay.propTypes = {
+  children: React.PropTypes.element.isRequired,
+  className: React.PropTypes.isRequired,
   placement: React.PropTypes.oneOf([
     'right', 'bottom-right', 'left', 'bottom-left', 'center'
   ])

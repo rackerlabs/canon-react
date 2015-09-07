@@ -25,7 +25,7 @@
     "radix": 2,
     "space-before-blocks": 2,
     "no-multiple-empty-lines": 2,
-    "one-var": 2,
+    "one-var": [2, { const: "never" }],
     "brace-style": [ 2, "1tbs", { "allowSingleLine": true }],
     "react/jsx-uses-vars": 1,
   },
