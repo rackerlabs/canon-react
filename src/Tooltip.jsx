@@ -61,16 +61,68 @@ class Tooltip extends React.Component {
   }
 
   _getTetherConfig() {
-    return {
-      attachment: 'top left',
-      targetAttachment: 'bottom right',
-      targetModifier: 'visible',
-      element: React.findDOMNode(this._containerDiv),
-      target: this.props.target(),
-      constraints: [
-        {to: 'window', pin: true, attachment: 'together'}
-      ]
-    };
+    let tetherConfig;
+
+    switch (this.props.placement) {
+      case 'left':
+        tetherConfig = {
+          attachment: 'middle right',
+          targetAttachment: 'middle left'
+        };
+        break;
+      case 'bottom-left':
+        tetherConfig = {
+          attachment: 'top right',
+          targetAttachment: 'bottom left'
+        };
+        break;
+      case 'top-left':
+        tetherConfig = {
+          attachment: 'bottom right',
+          targetAttachment: 'top left'
+        };
+        break;
+      case 'top':
+        tetherConfig = {
+          attachment: 'bottom middle',
+          targetAttachment: 'top middle'
+        };
+        break;
+      case 'bottom':
+        tetherConfig = {
+          attachment: 'top middle',
+          targetAttachment: 'bottom middle'
+        };
+        break;
+      case 'right':
+        tetherConfig = {
+          attachment: 'middle left',
+          targetAttachment: 'middle right'
+        };
+        break;
+      case 'top-right':
+        tetherConfig = {
+          attachment: 'bottom left',
+          targetAttachment: 'top right'
+        };
+        break;
+      case 'bottom-right':
+      default:
+        tetherConfig = {
+          attachment: 'top left',
+          targetAttachment: 'bottom right'
+        };
+      break;
+    }
+
+    tetherConfig.targetModifier = 'visible';
+    tetherConfig.element = React.findDOMNode(this._containerDiv);
+    tetherConfig.target = this.props.target();
+    tetherConfig.constraints = [
+      { to: 'window', pin: true, attachment: 'together' }
+    ];
+
+    return tetherConfig;
   }
 }
 
@@ -78,11 +130,22 @@ Tooltip.propTypes = {
   isOpen: React.PropTypes.bool,
   target: React.PropTypes.func.isRequired,
   onMouseOver: React.PropTypes.func.isRequired,
-  onMouseLeave: React.PropTypes.func.isRequired
+  onMouseLeave: React.PropTypes.func.isRequired,
+  placement: React.PropTypes.oneOf([
+    'right',
+    'bottom-right',
+    'top-right',
+    'top',
+    'left',
+    'bottom-left',
+    'top-left',
+    'bottom'
+  ])
 };
 
 Tooltip.defaultProps = {
-  isOpen: false
+  isOpen: false,
+  placement: 'bottom-right'
 };
 
 export default Tooltip;

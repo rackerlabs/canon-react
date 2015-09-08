@@ -6,7 +6,7 @@ describe('Tooltip', () => {
   let tooltip, tether, onMouseOverCallback, onMouseLeaveCallback,
     mouseOverCallbackCalled, mouseLeaveCallbackCalled;
 
-  const renderTooltip = (isOpen) => {
+  const renderTooltip = (isOpen, placement) => {
     setFixtures('<div id="content"><div id="some-element-id">The Target</div><div id="container"></div></div>');
 
     onMouseOverCallback = (e) => {
@@ -26,7 +26,8 @@ describe('Tooltip', () => {
       <Tooltip isOpen={isOpen}
        onMouseOver={onMouseOverCallback}
        onMouseLeave={onMouseLeaveCallback}
-       target={target}>
+       target={target}
+       placement={placement}>
           This is the tooltip content
       </Tooltip>,
       document.getElementById('container')
@@ -62,18 +63,140 @@ describe('Tooltip', () => {
     expect(tooltip._tooltipNode.props.onMouseOver).toBe(onMouseOverCallback);
   });
 
-  it('positions the tooltip next to the target', () => {
-    renderTooltip(true);
+  describe('placement', () => {
+    it('left', () => {
+      renderTooltip(true, 'left');
 
-    expect(Tooltip.prototype._createTether).toHaveBeenCalledWith({
-      element: React.findDOMNode(document.querySelector('.rs-tooltip')),
-      target: React.findDOMNode(document.getElementById('some-element-id')),
-      attachment: 'top left',
-      targetAttachment: 'bottom right',
-      targetModifier: 'visible',
-      constraints: [
-        {to: 'window', pin: true, attachment: 'together'}
-      ]
+      expect(Tooltip.prototype._createTether).toHaveBeenCalledWith({
+        element: React.findDOMNode(document.querySelector('.rs-tooltip')),
+        target: React.findDOMNode(document.getElementById('some-element-id')),
+        attachment: 'middle right',
+        targetAttachment: 'middle left',
+        targetModifier: 'visible',
+        constraints: [
+          {to: 'window', pin: true, attachment: 'together'}
+        ]
+      });
+    });
+
+    it('bottom left', () => {
+      renderTooltip(true, 'bottom-left');
+
+      expect(Tooltip.prototype._createTether).toHaveBeenCalledWith({
+        element: React.findDOMNode(document.querySelector('.rs-tooltip')),
+        target: React.findDOMNode(document.getElementById('some-element-id')),
+        attachment: 'top right',
+        targetAttachment: 'bottom left',
+        targetModifier: 'visible',
+        constraints: [
+          {to: 'window', pin: true, attachment: 'together'}
+        ]
+      });
+    });
+
+    it('top left', () => {
+      renderTooltip(true, 'top-left');
+
+      expect(Tooltip.prototype._createTether).toHaveBeenCalledWith({
+        element: React.findDOMNode(document.querySelector('.rs-tooltip')),
+        target: React.findDOMNode(document.getElementById('some-element-id')),
+        attachment: 'bottom right',
+        targetAttachment: 'top left',
+        targetModifier: 'visible',
+        constraints: [
+          {to: 'window', pin: true, attachment: 'together'}
+        ]
+      });
+    });
+
+    it('top', () => {
+      renderTooltip(true, 'top');
+
+      expect(Tooltip.prototype._createTether).toHaveBeenCalledWith({
+        element: React.findDOMNode(document.querySelector('.rs-tooltip')),
+        target: React.findDOMNode(document.getElementById('some-element-id')),
+        attachment: 'bottom middle',
+        targetAttachment: 'top middle',
+        targetModifier: 'visible',
+        constraints: [
+          {to: 'window', pin: true, attachment: 'together'}
+        ]
+      });
+    });
+
+    it('bottom', () => {
+      renderTooltip(true, 'bottom');
+
+      expect(Tooltip.prototype._createTether).toHaveBeenCalledWith({
+        element: React.findDOMNode(document.querySelector('.rs-tooltip')),
+        target: React.findDOMNode(document.getElementById('some-element-id')),
+        attachment: 'top middle',
+        targetAttachment: 'bottom middle',
+        targetModifier: 'visible',
+        constraints: [
+          {to: 'window', pin: true, attachment: 'together'}
+        ]
+      });
+    });
+
+    it('right', () => {
+      renderTooltip(true, 'right');
+
+      expect(Tooltip.prototype._createTether).toHaveBeenCalledWith({
+        element: React.findDOMNode(document.querySelector('.rs-tooltip')),
+        target: React.findDOMNode(document.getElementById('some-element-id')),
+        attachment: 'middle left',
+        targetAttachment: 'middle right',
+        targetModifier: 'visible',
+        constraints: [
+          {to: 'window', pin: true, attachment: 'together'}
+        ]
+      });
+    });
+
+    it('top right', () => {
+      renderTooltip(true, 'top-right');
+
+      expect(Tooltip.prototype._createTether).toHaveBeenCalledWith({
+        element: React.findDOMNode(document.querySelector('.rs-tooltip')),
+        target: React.findDOMNode(document.getElementById('some-element-id')),
+        attachment: 'bottom left',
+        targetAttachment: 'top right',
+        targetModifier: 'visible',
+        constraints: [
+          {to: 'window', pin: true, attachment: 'together'}
+        ]
+      });
+    });
+
+    it('bottom right', () => {
+      renderTooltip(true, 'bottom-right');
+
+      expect(Tooltip.prototype._createTether).toHaveBeenCalledWith({
+        element: React.findDOMNode(document.querySelector('.rs-tooltip')),
+        target: React.findDOMNode(document.getElementById('some-element-id')),
+        attachment: 'top left',
+        targetAttachment: 'bottom right',
+        targetModifier: 'visible',
+        constraints: [
+          {to: 'window', pin: true, attachment: 'together'}
+        ]
+      });
+    });
+
+    it('default is bottom right', () => {
+      renderTooltip(true);
+
+      expect(Tooltip.prototype._createTether).toHaveBeenCalledWith({
+        element: React.findDOMNode(document.querySelector('.rs-tooltip')),
+        target: React.findDOMNode(document.getElementById('some-element-id')),
+        attachment: 'top left',
+        targetAttachment: 'bottom right',
+        targetModifier: 'visible',
+        constraints: [
+          {to: 'window', pin: true, attachment: 'together'}
+        ]
+      });
     });
   });
 

@@ -11,13 +11,15 @@ class TooltipTrigger extends React.Component {
   }
 
   render() {
-    let triggerProps;
+    let triggerProps, showTooltipfunc, hideTooltipFunc;
 
+    showTooltipfunc = () => { this._showTooltip(); };
+    hideTooltipFunc = () => { this._hideTooltip(); };
     triggerProps = {
-      onMouseOver: () => { this._showTooltip(); },
-      onMouseLeave: () => { this._hideTooltip(); },
-      onFocus: () => { this._showTooltip(); },
-      onBlur: () => { this._hideTooltip(); },
+      onMouseOver: showTooltipfunc,
+      onMouseLeave: hideTooltipFunc,
+      onFocus: showTooltipfunc,
+      onBlur: hideTooltipFunc,
       ref: 'trigger'
     };
 
@@ -26,7 +28,7 @@ class TooltipTrigger extends React.Component {
     return (
       <trigger>
         {this._trigger}
-        <Tooltip isOpen={this._shouldShowTooltip()}
+        <Tooltip placement={this.props.placement} isOpen={this._shouldShowTooltip()}
           target={this._getTarget.bind(this)}
           onMouseLeave={this._mouseLeavingTooltip.bind(this)}
           onMouseOver={this._mouseEnteringTooltip.bind(this)}>
@@ -62,7 +64,21 @@ class TooltipTrigger extends React.Component {
 }
 
 TooltipTrigger.propTypes = {
-  content: React.PropTypes.node.isRequired
+  content: React.PropTypes.node.isRequired,
+  placement: React.PropTypes.oneOf([
+    'right',
+    'bottom-right',
+    'top-right',
+    'top',
+    'left',
+    'bottom-left',
+    'top-left',
+    'bottom'
+  ])
+};
+
+TooltipTrigger.defaultProps = {
+  placement: 'bottom-right'
 };
 
 export default TooltipTrigger;
