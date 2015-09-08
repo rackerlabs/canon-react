@@ -86,4 +86,69 @@ describe('TooltipTrigger', () => {
 
     expect(tooltip).not.toHaveClass('visible');
   });
+
+  it('shows the tooltip when hovering over the tooltip', () => {
+    let tooltip, target, tooltipContent;
+
+    jasmine.Clock.useMock();
+
+    target = TestUtils.findRenderedDOMComponentWithTag(trigger, 'span');
+    tooltip = document.getElementsByClassName('rs-tooltip')[0];
+    TestUtils.Simulate.mouseOver(target);
+    jasmine.Clock.tick(250);
+
+    tooltipContent = document.getElementsByClassName('rs-tooltip-inner')[0];
+    TestUtils.Simulate.mouseOver(tooltipContent);
+    TestUtils.SimulateNative.mouseOut(target);
+    jasmine.Clock.tick(250);
+
+    expect(tooltip).toHaveClass('visible');
+  });
+
+  it('hides the tooltip when leaving the tooltip', () => {
+    let tooltip, target, tooltipContent;
+
+    jasmine.Clock.useMock();
+
+    target = TestUtils.findRenderedDOMComponentWithTag(trigger, 'span');
+    tooltip = document.getElementsByClassName('rs-tooltip')[0];
+
+    TestUtils.Simulate.mouseOver(target);
+    jasmine.Clock.tick(250);
+
+    tooltipContent = document.getElementsByClassName('rs-tooltip-inner')[0];
+
+    TestUtils.SimulateNative.mouseOut(target);
+    TestUtils.Simulate.mouseOver(tooltipContent);
+    jasmine.Clock.tick(250);
+
+    TestUtils.SimulateNative.mouseOut(tooltipContent);
+    jasmine.Clock.tick(260);
+
+    expect(tooltip).not.toHaveClass('visible');
+  });
+
+  it('shows the tooltip when re-entering the tooltip before delay', () => {
+    let tooltip, target, tooltipContent;
+
+    jasmine.Clock.useMock();
+
+    target = TestUtils.findRenderedDOMComponentWithTag(trigger, 'span');
+    tooltip = document.getElementsByClassName('rs-tooltip')[0];
+
+    TestUtils.Simulate.mouseOver(target);
+    jasmine.Clock.tick(250);
+
+    tooltipContent = document.getElementsByClassName('rs-tooltip-inner')[0];
+
+    TestUtils.SimulateNative.mouseOut(target);
+    TestUtils.Simulate.mouseOver(tooltipContent);
+    jasmine.Clock.tick(250);
+
+    TestUtils.SimulateNative.mouseOut(tooltipContent);
+    TestUtils.Simulate.mouseOver(tooltipContent);
+    jasmine.Clock.tick(260);
+
+    expect(tooltip).toHaveClass('visible');
+  });
 });

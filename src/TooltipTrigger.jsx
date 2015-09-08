@@ -42,7 +42,6 @@ class TooltipTrigger extends React.Component {
     if (this._hideTimer) {
       clearInterval(this._hideTimer);
     }
-
     this._showTimer = setTimeout(() => { this.setState({isTooltipOpen: true}); }, 200);
   }
 
@@ -50,7 +49,6 @@ class TooltipTrigger extends React.Component {
     if (this._showTimer) {
       clearInterval(this._showTimer);
     }
-
     this._hideTimer = setTimeout(() => { this.setState({isTooltipOpen: false}); }, 200);
   }
 
@@ -63,10 +61,13 @@ class TooltipTrigger extends React.Component {
   }
 
   _mouseLeavingTooltip() {
-    this.setState({isMouseInTooltip: false});
+    this._hideOnLeavingTooltipTimer = setTimeout(() => { this.setState({isMouseInTooltip: false}); }, 250);
   }
 
   _mouseEnteringTooltip() {
+    if (this._hideOnLeavingTooltipTimer) {
+      clearInterval(this._hideOnLeavingTooltipTimer);
+    }
     this.setState({isMouseInTooltip: true});
   }
 }
