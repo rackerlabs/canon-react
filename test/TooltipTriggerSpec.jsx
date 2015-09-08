@@ -55,4 +55,35 @@ describe('TooltipTrigger', () => {
 
     expect(tooltip).not.toHaveClass('visible');
   });
+
+  it('shows the tooltip focusing on the target', () => {
+    let tooltip, target;
+
+    jasmine.Clock.useMock();
+
+    target = TestUtils.findRenderedDOMComponentWithTag(trigger, 'span');
+    tooltip = document.getElementsByClassName('rs-tooltip')[0];
+    TestUtils.Simulate.focus(target);
+
+    jasmine.Clock.tick(250);
+
+    expect(tooltip).toHaveClass('visible');
+  });
+
+  it('hides the tooltip on blur of the target', () => {
+    let tooltip, target;
+
+    jasmine.Clock.useMock();
+
+    target = TestUtils.findRenderedDOMComponentWithTag(trigger, 'span');
+    tooltip = document.getElementsByClassName('rs-tooltip')[0];
+
+    TestUtils.Simulate.focus(target);
+    jasmine.Clock.tick(250);
+
+    TestUtils.SimulateNative.blur(target);
+    jasmine.Clock.tick(250);
+
+    expect(tooltip).not.toHaveClass('visible');
+  });
 });

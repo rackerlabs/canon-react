@@ -12,7 +12,7 @@ class DemoTooltipSection extends React.Component {
         </div>
         <div className='rs-detail-section-body'>
           <TooltipTrigger content={tooltipContent}>
-            <span>Hello</span>
+            <button>Hello</button>
           </TooltipTrigger>
         </div>
       </div>

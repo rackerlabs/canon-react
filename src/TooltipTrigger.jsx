@@ -16,6 +16,8 @@ class TooltipTrigger extends React.Component {
     triggerProps = {
       onMouseOver: () => { this._showTooltip(); },
       onMouseLeave: () => { this._hideTooltip(); },
+      onFocus: () => { this._showTooltip(); },
+      onBlur: () => { this._hideTooltip(); },
       ref: 'trigger'
     };
 
