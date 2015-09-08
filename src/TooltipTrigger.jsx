@@ -13,8 +13,8 @@ class TooltipTrigger extends React.Component {
   render() {
     let triggerProps, showTooltipfunc, hideTooltipFunc;
 
-    showTooltipfunc = () => { this._showTooltipOnInterval(); };
-    hideTooltipFunc = () => { this._hideTooltipOnInterval(); };
+    showTooltipfunc = this._showTooltipOnInterval.bind(this);
+    hideTooltipFunc = this._hideTooltipOnInterval.bind(this);
     triggerProps = {
       onMouseOver: showTooltipfunc,
       onMouseLeave: hideTooltipFunc,
@@ -28,7 +28,8 @@ class TooltipTrigger extends React.Component {
     return (
       <trigger>
         {this._trigger}
-        <Tooltip placement={this.props.placement} isOpen={this._shouldShowTooltip()}
+        <Tooltip placement={this.props.placement}
+          isOpen={this._shouldShowTooltip()}
           target={this._getTarget.bind(this)}
           onMouseLeave={this._mouseLeavingTooltip.bind(this)}
           onMouseOver={this._mouseEnteringTooltip.bind(this)}>
