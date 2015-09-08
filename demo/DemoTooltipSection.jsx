@@ -20,20 +20,20 @@ class DemoTooltipSection extends React.Component {
                   </TooltipTrigger>
                 </td>
                 <td>
-                  <TooltipTrigger placement='top-right' content={tooltipContent}>
-                    <span>Top Right</span>
+                  <TooltipTrigger placement='bottom-left' content={tooltipContent}>
+                    <span>Bottom Left</span>
                   </TooltipTrigger>
                 </td>
                 <td>
-                  <TooltipTrigger placement='right' content={tooltipContent}>
-                    <span>Right</span>
+                  <TooltipTrigger placement='top' content={tooltipContent}>
+                    <span>Top</span>
                   </TooltipTrigger>
                 </td>
               </tr>
               <tr>
                 <td>
-                  <TooltipTrigger placement='bottom-left' content={tooltipContent}>
-                    <span>Bottom Left</span>
+                  <TooltipTrigger placement='top-right' content={tooltipContent}>
+                    <span>Top Right</span>
                   </TooltipTrigger>
                 </td>
                 <td>
@@ -42,20 +42,20 @@ class DemoTooltipSection extends React.Component {
                   </TooltipTrigger>
                 </td>
                 <td>
-                  <TooltipTrigger placement='left' content={tooltipContent}>
-                    <span>Left</span>
+                  <TooltipTrigger placement='bottom' content={tooltipContent}>
+                    <span>Bottom</span>
                   </TooltipTrigger>
                 </td>
               </tr>
               <tr>
                 <td>
-                  <TooltipTrigger placement='top' content={tooltipContent}>
-                    <span>Top</span>
+                  <TooltipTrigger placement='right' content={tooltipContent}>
+                    <span>Right</span>
                   </TooltipTrigger>
                 </td>
                 <td>
-                  <TooltipTrigger placement='bottom' content={tooltipContent}>
-                    <span>Bottom</span>
+                  <TooltipTrigger placement='left' content={tooltipContent}>
+                    <span>Left</span>
                   </TooltipTrigger>
                 </td>
                 <td>

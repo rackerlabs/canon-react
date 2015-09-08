@@ -1,6 +1,5 @@
 import React from 'react';
 import Tether from 'tether';
-import TooltipInnerContent from './TooltipInnerContent';
 
 class Tooltip extends React.Component {
 
@@ -48,9 +47,9 @@ class Tooltip extends React.Component {
   _show() {
     this._containerDiv.className += ' visible';
     this._tooltipNode = React.render(
-      <TooltipInnerContent onMouseOver={this.props.onMouseOver} onMouseLeave={this.props.onMouseLeave}>
+      <div className='rs-tooltip-inner' onMouseOver={this.props.onMouseOver} onMouseLeave={this.props.onMouseLeave}>
         {this.props.children}
-      </TooltipInnerContent>,
+      </div>,
       this._containerDiv
     );
     this._tether = this._createTether(this._getTetherConfig());
