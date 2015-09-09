@@ -11,7 +11,10 @@ describe('Popover', () => {
 
     setFixtures('<div id="content"><div id="some-element-id">The Target</div><div id="container"></div></div>');
 
-    requestCloseCallback = () => closeCallBackCalled = true;
+    requestCloseCallback = (e) => {
+      closeCallBackCalled = true;
+      return e;
+    };
     tether = jasmine.createSpyObj('tether', ['destroy']);
     spyOn(Popover.prototype, '_createTether').andReturn(tether);
 
