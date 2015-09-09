@@ -1,3 +1,7 @@
+### Version 0.2.2:
+1. Tooltips
+ - Created a `TooltipTrigger` component that can be used to create elements that will trigger the display of a tooltip when being hovered over or receiving focus
+
 ### Version 0.2.1:
 1. Popover Changes
  - Allow manual setting of tether's offset
