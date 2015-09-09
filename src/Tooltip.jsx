@@ -52,7 +52,9 @@ class Tooltip extends React.Component {
       </div>,
       this._containerDiv
     );
-    this._tether = this._createTether(this._getTetherConfig());
+    if (!this._tether) {
+      this._tether = this._createTether(this._getTetherConfig());
+    }
   }
 
   _createTether(tetherConfig) {
