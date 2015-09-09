@@ -85,7 +85,9 @@ class Popover extends React.Component {
       }
     );
     this._popoverNode = React.render(popover, this._containerDiv);
-    this._tether = this._createTether(this._getTetherConfig());
+    if (!this._tether) {
+      this._tether = this._createTether(this._getTetherConfig());
+    }
   }
 
   // This is a seam for testing

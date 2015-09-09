@@ -10,6 +10,20 @@ class TooltipTrigger extends React.Component {
     };
   }
 
+  componentWillUnmount() {
+    if (this._hideTimer) {
+      clearInterval(this._hideTimer);
+    }
+
+    if (this._showTimer) {
+      clearInterval(this._showTimer);
+    }
+
+    if (this._hideOnLeavingTooltipTimer) {
+      clearInterval(this._hideOnLeavingTooltipTimer);
+    }
+  }
+
   render() {
     let triggerProps, showTooltipfunc, hideTooltipFunc;
 
