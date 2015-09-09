@@ -1,3 +1,6 @@
+### Version 0.2.3:
+Fixed an issue where tethers were not getting cleaned up properly
+
 ### Version 0.2.2:
 1. Tooltips
  - Created a `TooltipTrigger` component that can be used to create elements that will trigger the display of a tooltip when being hovered over or receiving focus
