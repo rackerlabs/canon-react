@@ -1,3 +1,6 @@
+### Version 0.3.2:
+Refactored the tooltip trigger to not render a `<trigger>` element that wraps the actual trigger component.
+
 ### Version 0.2.3:
 Fixed an issue where tethers were not getting cleaned up properly
 
