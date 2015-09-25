@@ -1,31 +1,16 @@
-var React = require('react');
+import React from 'react';
 
-var Button = React.createClass({
-  propTypes: {
-    enabled: React.PropTypes.bool,
-    onClick: React.PropTypes.func,
-    type: React.PropTypes.string,
-    hidden: React.PropTypes.bool
-  },
-
-  getDefaultProps: function () {
-    return {
-      enabled: true,
-      type: 'secondary',
-      hidden: false
-    };
-  },
-
-  render: function () {
+class Button extends React.Component {
+  render() {
     return (
-      <button {...this.props} className={this._classes()} onClick={this._handleClick}>
+      <button {...this.props} className={this._classes()} onClick={this._handleClick.bind(this)}>
         {this.props.children}
       </button>
     );
-  },
+  }
 
-  _classes: function () {
-    var classes, buttonTypes;
+  _classes() {
+    let classes, buttonTypes;
 
     buttonTypes = {
       'primary': 'rs-btn rs-btn-primary',
@@ -54,15 +39,28 @@ var Button = React.createClass({
     }
 
     return classes.join(' ');
-  },
+  }
 
-  _handleClick: function (e) {
+  _handleClick(e) {
     if (this.props.enabled) {
       this.props.onClick(e);
       return e;
     }
     e.preventDefault();
   }
-});
+}
 
-module.exports = Button;
+Button.propTypes = {
+  enabled: React.PropTypes.bool,
+  onClick: React.PropTypes.func,
+  type: React.PropTypes.string,
+  hidden: React.PropTypes.bool
+};
+
+Button.defaultProps = {
+  enabled: true,
+  type: 'secondary',
+  hidden: false
+};
+
+export default Button;

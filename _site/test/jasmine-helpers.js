@@ -1,5 +1,4 @@
-/* jshint unused: false */
-function setFixtures (html) {
+function setFixtures (html) { //eslint-disable-line no-unused-vars
   jasmine.getFixtures().set(html);
 }
 

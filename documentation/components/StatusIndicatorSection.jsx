@@ -1,9 +1,8 @@
-var React = require('react');
+import React from 'react';
+import StatusIndicator from '../StatusIndicator';
 
-var StatusIndicator = require('../StatusIndicator');
-
-var StatusIndicatorSection = React.createClass({
-  render: function () {
+class StatusIndicatorSection extends React.Component {
+  render() {
     return (
       <div className="website-content-section">
         <div className="content-section-body">
@@ -102,6 +101,6 @@ var StatusIndicatorSection = React.createClass({
         </div>
       </div>);
   }
-});
+}
 
-module.exports = StatusIndicatorSection;
+export default StatusIndicatorSection;

@@ -22041,6 +22041,1332 @@ module.exports = exports['default'];
 },{"babel-runtime/helpers/class-call-check":6,"babel-runtime/helpers/create-class":7,"babel-runtime/helpers/extends":8,"babel-runtime/helpers/get":9,"babel-runtime/helpers/inherits":10,"babel-runtime/helpers/interop-require-default":11}],197:[function(require,module,exports){
 'use strict';
 
+var React = require('react');
+
+var Button = require('./Button');
+var ButtonGroup = require('./ButtonGroup');
+var ProcessingIndicator = require('./ProcessingIndicator');
+
+var DemoButtonGroupSection = React.createClass({
+  displayName: 'DemoButtonGroupSection',
+
+  render: function render() {
+    return React.createElement(
+      'div',
+      { className: 'rs-detail-section' },
+      React.createElement(
+        'div',
+        { className: 'rs-detail-section-header' },
+        React.createElement(
+          'h2',
+          null,
+          'Button Group'
+        )
+      ),
+      React.createElement(
+        'div',
+        { className: 'rs-detail-section-body' },
+        React.createElement(
+          ButtonGroup,
+          null,
+          React.createElement(
+            Button,
+            { type: 'primary', enabled: true },
+            'Primary'
+          ),
+          React.createElement(
+            Button,
+            { type: 'secondary', enabled: true },
+            'Secondary'
+          ),
+          React.createElement(
+            Button,
+            { type: 'link', enabled: true },
+            'Cancel'
+          ),
+          React.createElement(ProcessingIndicator, null)
+        )
+      ),
+      React.createElement(
+        'div',
+        { className: 'rs-detail-section-body' },
+        React.createElement(
+          'h3',
+          null,
+          'Submitting State'
+        ),
+        React.createElement(
+          ButtonGroup,
+          null,
+          React.createElement(
+            Button,
+            { type: 'primary', enabled: false },
+            'Primary'
+          ),
+          React.createElement(
+            Button,
+            { type: 'secondary', enabled: false },
+            'Secondary'
+          ),
+          React.createElement(
+            Button,
+            { type: 'link', enabled: false, hidden: true },
+            'Cancel'
+          ),
+          React.createElement(ProcessingIndicator, { hidden: false })
+        )
+      )
+    );
+  }
+});
+
+module.exports = DemoButtonGroupSection;
+
+},{"./Button":195,"./ButtonGroup":196,"./ProcessingIndicator":210,"react":193}],198:[function(require,module,exports){
+'use strict';
+
+var React = require('react');
+
+var Button = require('./Button');
+var ButtonGroup = require('./ButtonGroup');
+
+var DemoButtonSection = React.createClass({
+  displayName: 'DemoButtonSection',
+
+  render: function render() {
+    return React.createElement(
+      'div',
+      { className: 'rs-detail-section' },
+      React.createElement(
+        'div',
+        { className: 'rs-detail-section-header' },
+        React.createElement(
+          'h2',
+          null,
+          'Buttons'
+        )
+      ),
+      React.createElement(
+        'div',
+        { className: 'rs-detail-section-body' },
+        React.createElement(
+          'table',
+          null,
+          React.createElement(
+            'thead',
+            null,
+            React.createElement(
+              'tr',
+              null,
+              React.createElement(
+                'td',
+                null,
+                'Button'
+              ),
+              React.createElement(
+                'td',
+                null,
+                'Type'
+              ),
+              React.createElement(
+                'td',
+                null,
+                'Source'
+              )
+            )
+          ),
+          React.createElement(
+            'tbody',
+            null,
+            React.createElement(
+              'tr',
+              null,
+              React.createElement(
+                'td',
+                null,
+                React.createElement(
+                  Button,
+                  { type: 'primary' },
+                  'Primary'
+                )
+              ),
+              React.createElement(
+                'td',
+                null,
+                'Primary'
+              ),
+              React.createElement(
+                'td',
+                null,
+                React.createElement(
+                  'pre',
+                  null,
+                  React.createElement(
+                    'code',
+                    null,
+                    "<Button type='primary'>Primary</Button>"
+                  )
+                )
+              )
+            ),
+            React.createElement(
+              'tr',
+              null,
+              React.createElement(
+                'td',
+                null,
+                React.createElement(
+                  Button,
+                  { type: 'secondary' },
+                  'Secondary'
+                )
+              ),
+              React.createElement(
+                'td',
+                null,
+                'Secondary'
+              ),
+              React.createElement(
+                'td',
+                null,
+                React.createElement(
+                  'pre',
+                  null,
+                  React.createElement(
+                    'code',
+                    null,
+                    "<Button type='secondary'>Secondary</Button>"
+                  )
+                )
+              )
+            ),
+            React.createElement(
+              'tr',
+              null,
+              React.createElement(
+                'td',
+                null,
+                React.createElement(
+                  Button,
+                  { type: 'login' },
+                  'Login'
+                )
+              ),
+              React.createElement(
+                'td',
+                null,
+                'Login'
+              ),
+              React.createElement(
+                'td',
+                null,
+                React.createElement(
+                  'pre',
+                  null,
+                  React.createElement(
+                    'code',
+                    null,
+                    "<Button type='login'>Login</Button>"
+                  )
+                )
+              )
+            ),
+            React.createElement(
+              'tr',
+              null,
+              React.createElement(
+                'td',
+                null,
+                React.createElement(
+                  Button,
+                  { type: 'link' },
+                  'Cancel'
+                )
+              ),
+              React.createElement(
+                'td',
+                null,
+                'Link'
+              ),
+              React.createElement(
+                'td',
+                null,
+                React.createElement(
+                  'pre',
+                  null,
+                  React.createElement(
+                    'code',
+                    null,
+                    "<Button type='link'>Cancel</Button>"
+                  )
+                )
+              )
+            ),
+            React.createElement(
+              'tr',
+              null,
+              React.createElement(
+                'td',
+                null,
+                React.createElement(
+                  Button,
+                  { type: 'delete' },
+                  'Delete'
+                )
+              ),
+              React.createElement(
+                'td',
+                null,
+                'Delete'
+              ),
+              React.createElement(
+                'td',
+                null,
+                React.createElement(
+                  'pre',
+                  null,
+                  React.createElement(
+                    'code',
+                    null,
+                    "<Button type='delete'>Delete</Button>"
+                  )
+                )
+              )
+            ),
+            React.createElement(
+              'tr',
+              null,
+              React.createElement(
+                'td',
+                null,
+                React.createElement(
+                  Button,
+                  { type: 'edit' },
+                  'Edit'
+                )
+              ),
+              React.createElement(
+                'td',
+                null,
+                'Edit'
+              ),
+              React.createElement(
+                'td',
+                null,
+                React.createElement(
+                  'pre',
+                  null,
+                  React.createElement(
+                    'code',
+                    null,
+                    "<Button type='edit'>Edit</Button>"
+                  )
+                )
+              )
+            ),
+            React.createElement(
+              'tr',
+              null,
+              React.createElement(
+                'td',
+                null,
+                React.createElement(
+                  Button,
+                  { type: 'plus' },
+                  'Plus'
+                )
+              ),
+              React.createElement(
+                'td',
+                null,
+                'Plus'
+              ),
+              React.createElement(
+                'td',
+                null,
+                React.createElement(
+                  'pre',
+                  null,
+                  React.createElement(
+                    'code',
+                    null,
+                    "<Button type='plus'>Plus</Button>"
+                  )
+                )
+              )
+            )
+          )
+        )
+      ),
+      React.createElement(
+        'div',
+        { className: 'rs-detail-section-body' },
+        React.createElement(
+          'h3',
+          null,
+          'Disabled Buttons'
+        ),
+        React.createElement(
+          'table',
+          null,
+          React.createElement(
+            'thead',
+            null,
+            React.createElement(
+              'tr',
+              null,
+              React.createElement(
+                'td',
+                null,
+                'Button'
+              ),
+              React.createElement(
+                'td',
+                null,
+                'Type'
+              ),
+              React.createElement(
+                'td',
+                null,
+                'Source'
+              )
+            )
+          ),
+          React.createElement(
+            'tbody',
+            null,
+            React.createElement(
+              'tr',
+              null,
+              React.createElement(
+                'td',
+                null,
+                React.createElement(
+                  Button,
+                  { type: 'primary', enabled: false },
+                  'Primary'
+                )
+              ),
+              React.createElement(
+                'td',
+                null,
+                'Primary'
+              ),
+              React.createElement(
+                'td',
+                null,
+                React.createElement(
+                  'pre',
+                  null,
+                  React.createElement(
+                    'code',
+                    null,
+                    "<Button type='primary' enabled={false}>Primary</Button>"
+                  )
+                )
+              )
+            ),
+            React.createElement(
+              'tr',
+              null,
+              React.createElement(
+                'td',
+                null,
+                React.createElement(
+                  Button,
+                  { type: 'secondary', enabled: false },
+                  'Secondary'
+                )
+              ),
+              React.createElement(
+                'td',
+                null,
+                'Secondary'
+              ),
+              React.createElement(
+                'td',
+                null,
+                React.createElement(
+                  'pre',
+                  null,
+                  React.createElement(
+                    'code',
+                    null,
+                    "<Button type='secondary' enabled={false}>Secondary</Button>"
+                  )
+                )
+              )
+            ),
+            React.createElement(
+              'tr',
+              null,
+              React.createElement(
+                'td',
+                null,
+                React.createElement(
+                  Button,
+                  { type: 'login', enabled: false },
+                  'Login'
+                )
+              ),
+              React.createElement(
+                'td',
+                null,
+                'Login'
+              ),
+              React.createElement(
+                'td',
+                null,
+                React.createElement(
+                  'pre',
+                  null,
+                  React.createElement(
+                    'code',
+                    null,
+                    "<Button type='login' enabled={false}>Login</Button>"
+                  )
+                )
+              )
+            ),
+            React.createElement(
+              'tr',
+              null,
+              React.createElement(
+                'td',
+                null,
+                React.createElement(
+                  Button,
+                  { type: 'link', enabled: false },
+                  'Cancel'
+                )
+              ),
+              React.createElement(
+                'td',
+                null,
+                'Link'
+              ),
+              React.createElement(
+                'td',
+                null,
+                React.createElement(
+                  'pre',
+                  null,
+                  React.createElement(
+                    'code',
+                    null,
+                    "<Button type='link' enabled={false}>Cancel</Button>"
+                  )
+                )
+              )
+            ),
+            React.createElement(
+              'tr',
+              null,
+              React.createElement(
+                'td',
+                null,
+                React.createElement(
+                  Button,
+                  { type: 'edit', enabled: false },
+                  'Edit'
+                )
+              ),
+              React.createElement(
+                'td',
+                null,
+                'Edit'
+              ),
+              React.createElement(
+                'td',
+                null,
+                React.createElement(
+                  'pre',
+                  null,
+                  React.createElement(
+                    'code',
+                    null,
+                    "<Button type='edit' enabled={false}>Edit</Button>"
+                  )
+                )
+              )
+            )
+          )
+        )
+      )
+    );
+  }
+});
+
+module.exports = DemoButtonSection;
+
+},{"./Button":195,"./ButtonGroup":196,"react":193}],199:[function(require,module,exports){
+'use strict';
+
+var React = require('react');
+
+var Button = require('./Button');
+var Popover = require('./Popover');
+var PopoverOverlay = require('./PopoverOverlay');
+var PopoverBody = require('./PopoverBody');
+var PopoverFooter = require('./PopoverFooter');
+var ProcessingIndicator = require('./ProcessingIndicator');
+
+var DemoPopover = React.createClass({
+  displayName: 'DemoPopover',
+
+  propType: {
+    isOpen: React.PropTypes.bool,
+    onRequestClose: React.PropTypes.func
+  },
+
+  render: function render() {
+    return React.createElement(
+      Popover,
+      { placement: this.props.placement, isOpen: this.props.isOpen, onRequestClose: this.props.onRequestClose, target: this.props.target },
+      React.createElement(
+        PopoverOverlay,
+        null,
+        React.createElement(
+          PopoverBody,
+          null,
+          React.createElement(
+            'form',
+            { className: 'rs-form-horizontal rs-form-medium' },
+            React.createElement(
+              'div',
+              { className: 'rs-control-group' },
+              React.createElement(
+                'label',
+                { className: 'rs-control-label' },
+                'Field 1'
+              ),
+              React.createElement(
+                'div',
+                { className: 'rs-controls' },
+                React.createElement('input', { type: 'text' })
+              )
+            )
+          )
+        ),
+        React.createElement(
+          PopoverFooter,
+          null,
+          React.createElement(
+            Button,
+            { type: 'primary', onClick: this.props.onRequestClose },
+            'Save'
+          ),
+          React.createElement(
+            Button,
+            { type: 'link', onClick: this.props.onRequestClose },
+            'Cancel'
+          ),
+          React.createElement(ProcessingIndicator, { hidden: true })
+        )
+      )
+    );
+  }
+});
+
+module.exports = DemoPopover;
+
+},{"./Button":195,"./Popover":205,"./PopoverBody":207,"./PopoverFooter":208,"./PopoverOverlay":209,"./ProcessingIndicator":210,"react":193}],200:[function(require,module,exports){
+'use strict';
+
+var React = require('react');
+
+var Button = require('./Button');
+var DemoPopover = require('./DemoPopover');
+
+var DemoPopoverSection = React.createClass({
+  displayName: 'DemoPopoverSection',
+
+  getInitialState: function getInitialState() {
+    return {
+      rightPopoverOpen: false,
+      leftPopoverOpen: false,
+      bottomRightPopoverOpen: false,
+      bottomLeftPopoverOpen: false,
+      bottomRightFunctionPopoverOpen: false,
+      bottomLeftModalPopoverOpen: false
+    };
+  },
+
+  _shouldCloseRightPopover: function _shouldCloseRightPopover() {
+    this.setState({ rightPopoverOpen: false });
+  },
+
+  _shouldCloseLeftPopover: function _shouldCloseLeftPopover() {
+    this.setState({ leftPopoverOpen: false });
+  },
+
+  _shouldCloseBottomLeftPopover: function _shouldCloseBottomLeftPopover() {
+    this.setState({ bottomLeftPopoverOpen: false });
+  },
+
+  _shouldCloseBottomRightPopover: function _shouldCloseBottomRightPopover() {
+    this.setState({ bottomRightPopoverOpen: false });
+  },
+
+  _shouldCloseBottomRightFunctionPopover: function _shouldCloseBottomRightFunctionPopover() {
+    this.setState({ bottomRightFunctionPopoverOpen: false });
+  },
+
+  _shouldCloseBottomLeftModalPopover: function _shouldCloseBottomLeftModalPopover() {
+    this.setState({ bottomLeftModalPopoverOpen: false });
+  },
+
+  _getBottomLeftButton: function _getBottomLeftButton() {
+    return React.findDOMNode(this.refs.bottomLeftButton);
+  },
+
+  render: function render() {
+    return React.createElement(
+      'div',
+      { className: 'rs-detail-section' },
+      React.createElement(
+        'div',
+        { className: 'rs-detail-section-header' },
+        React.createElement(
+          'h2',
+          null,
+          'Popovers'
+        )
+      ),
+      React.createElement(
+        'div',
+        { className: 'rs-detail-section-body' },
+        React.createElement(
+          'table',
+          null,
+          React.createElement(
+            'tbody',
+            null,
+            React.createElement(
+              'tr',
+              null,
+              React.createElement(
+                'td',
+                null,
+                React.createElement(
+                  Button,
+                  { id: 'right-button-id', onClick: (function () {
+                      this.setState({ rightPopoverOpen: true });
+                    }).bind(this) },
+                  'Right'
+                ),
+                React.createElement(DemoPopover, { placement: 'right', target: 'right-button-id', isOpen: this.state.rightPopoverOpen, onRequestClose: this._shouldCloseRightPopover })
+              ),
+              React.createElement(
+                'td',
+                null,
+                React.createElement(
+                  Button,
+                  { id: 'left-button-id', onClick: (function () {
+                      this.setState({ leftPopoverOpen: true });
+                    }).bind(this) },
+                  'Left'
+                ),
+                React.createElement(DemoPopover, { placement: 'left', target: 'left-button-id', isOpen: this.state.leftPopoverOpen, onRequestClose: this._shouldCloseLeftPopover })
+              )
+            ),
+            React.createElement(
+              'tr',
+              null,
+              React.createElement(
+                'td',
+                null,
+                React.createElement(
+                  Button,
+                  { id: 'bottom-right-button-id', onClick: (function () {
+                      this.setState({ bottomRightPopoverOpen: true });
+                    }).bind(this) },
+                  'Bottom Right'
+                ),
+                React.createElement(DemoPopover, { placement: 'bottom-right', target: 'bottom-right-button-id', isOpen: this.state.bottomRightPopoverOpen, onRequestClose: this._shouldCloseBottomRightPopover })
+              ),
+              React.createElement(
+                'td',
+                null,
+                React.createElement(
+                  Button,
+                  { id: 'bottom-left-button-id', ref: 'bottomLeftButton', onClick: (function () {
+                      this.setState({ bottomLeftPopoverOpen: true });
+                    }).bind(this) },
+                  'Bottom Left'
+                ),
+                React.createElement(DemoPopover, { placement: 'bottom-left', target: this._getBottomLeftButton, isOpen: this.state.bottomLeftPopoverOpen, onRequestClose: this._shouldCloseBottomLeftPopover })
+              )
+            ),
+            React.createElement(
+              'tr',
+              null,
+              React.createElement(
+                'td',
+                null,
+                React.createElement(
+                  Button,
+                  { id: 'bottom-right-function-button-id', onClick: (function () {
+                      this.setState({ bottomRightFunctionPopoverOpen: true });
+                    }).bind(this) },
+                  'Bottom Right Function'
+                ),
+                React.createElement(DemoPopover, { placement: 'bottom-right', target: function () {
+                    return document.getElementById('bottom-right-function-button-id');
+                  }, isOpen: this.state.bottomRightFunctionPopoverOpen, onRequestClose: this._shouldCloseBottomRightFunctionPopover })
+              ),
+              React.createElement(
+                'td',
+                null,
+                React.createElement(
+                  Button,
+                  { id: 'bottom-left-modal-button-id', onClick: (function () {
+                      this.setState({ bottomLeftModalPopoverOpen: true });
+                    }).bind(this) },
+                  'Modal'
+                ),
+                React.createElement(DemoPopover, { placement: 'center', target: function () {
+                    return document.body;
+                  }, isOpen: this.state.bottomLeftModalPopoverOpen, onRequestClose: this._shouldCloseBottomLeftModalPopover })
+              )
+            )
+          )
+        )
+      )
+    );
+  }
+});
+
+module.exports = DemoPopoverSection;
+
+},{"./Button":195,"./DemoPopover":199,"react":193}],201:[function(require,module,exports){
+'use strict';
+
+var React = require('react');
+
+var ProgressBar = require('./ProgressBar');
+
+var DemoProgressBarSection = React.createClass({
+  displayName: 'DemoProgressBarSection',
+
+  render: function render() {
+    return React.createElement(
+      'div',
+      { className: 'rs-detail-section' },
+      React.createElement(
+        'div',
+        { className: 'rs-detail-section-header' },
+        React.createElement(
+          'h2',
+          null,
+          'Progress Bars'
+        )
+      ),
+      React.createElement(
+        'div',
+        { className: 'rs-detail-section-body' },
+        React.createElement(ProgressBar, { progress: 25, type: 'solid', status: 'ok' }),
+        React.createElement('br', null),
+        React.createElement(ProgressBar, { progress: 75, type: 'striped', status: 'ok' }),
+        React.createElement('br', null),
+        React.createElement(ProgressBar, { progress: 25, type: 'solid', status: 'warning' }),
+        React.createElement('br', null),
+        React.createElement(ProgressBar, { progress: 75, type: 'striped', status: 'warning' }),
+        React.createElement('br', null),
+        React.createElement(ProgressBar, { progress: 25, type: 'solid', status: 'error' }),
+        React.createElement('br', null),
+        React.createElement(ProgressBar, { progress: 75, type: 'striped', status: 'error' }),
+        React.createElement('br', null),
+        React.createElement(ProgressBar, { progress: 25, type: 'solid', status: 'info' }),
+        React.createElement('br', null),
+        React.createElement(ProgressBar, { progress: 75, type: 'striped', status: 'info' })
+      ),
+      React.createElement(
+        'div',
+        { className: 'rs-detail-section-body' },
+        React.createElement(
+          'h3',
+          null,
+          'Fixed Width'
+        ),
+        React.createElement(ProgressBar, { progress: 25, size: 'xsmall' }),
+        React.createElement('br', null),
+        React.createElement(ProgressBar, { progress: 25, size: 'small' }),
+        React.createElement('br', null),
+        React.createElement(ProgressBar, { progress: 25, size: 'medium' }),
+        React.createElement('br', null),
+        React.createElement(ProgressBar, { progress: 25, size: 'large' }),
+        React.createElement('br', null),
+        React.createElement(ProgressBar, { progress: 25, size: 'xlarge' })
+      )
+    );
+  }
+});
+
+module.exports = DemoProgressBarSection;
+
+},{"./ProgressBar":211,"react":193}],202:[function(require,module,exports){
+'use strict';
+
+var React = require('react');
+
+var StatusIndicator = require('./StatusIndicator');
+
+var DemoStatusIndicatorSection = React.createClass({
+  displayName: 'DemoStatusIndicatorSection',
+
+  render: function render() {
+    return React.createElement(
+      'div',
+      { className: 'rs-detail-section' },
+      React.createElement(
+        'div',
+        { className: 'rs-detail-section-header' },
+        React.createElement(
+          'h2',
+          null,
+          'Status Indicators'
+        )
+      ),
+      React.createElement(
+        'div',
+        { className: 'rs-detail-section-body' },
+        React.createElement(
+          'table',
+          null,
+          React.createElement(
+            'thead',
+            null,
+            React.createElement(
+              'tr',
+              null,
+              React.createElement(
+                'td',
+                null,
+                'Status Indicator'
+              ),
+              React.createElement(
+                'td',
+                null,
+                'Type'
+              ),
+              React.createElement(
+                'td',
+                null,
+                'Source'
+              )
+            )
+          ),
+          React.createElement(
+            'tbody',
+            null,
+            React.createElement(
+              'tr',
+              null,
+              React.createElement(
+                'td',
+                null,
+                React.createElement(
+                  StatusIndicator,
+                  { status: 'ok' },
+                  'Active'
+                )
+              ),
+              React.createElement(
+                'td',
+                null,
+                'Ok'
+              ),
+              React.createElement(
+                'td',
+                null,
+                React.createElement(
+                  'pre',
+                  null,
+                  React.createElement(
+                    'code',
+                    null,
+                    "<StatusIndicator status='ok'>Active</StatusIndicator>"
+                  )
+                )
+              )
+            ),
+            React.createElement(
+              'tr',
+              null,
+              React.createElement(
+                'td',
+                null,
+                React.createElement(
+                  StatusIndicator,
+                  { status: 'processing' },
+                  'Building'
+                )
+              ),
+              React.createElement(
+                'td',
+                null,
+                'Processing'
+              ),
+              React.createElement(
+                'td',
+                null,
+                React.createElement(
+                  'pre',
+                  null,
+                  React.createElement(
+                    'code',
+                    null,
+                    "<StatusIndicator status='processing'>Building</StatusIndicator>"
+                  )
+                )
+              )
+            ),
+            React.createElement(
+              'tr',
+              null,
+              React.createElement(
+                'td',
+                null,
+                React.createElement(
+                  StatusIndicator,
+                  { status: 'warning' },
+                  'Warning'
+                )
+              ),
+              React.createElement(
+                'td',
+                null,
+                'Warning'
+              ),
+              React.createElement(
+                'td',
+                null,
+                React.createElement(
+                  'pre',
+                  null,
+                  React.createElement(
+                    'code',
+                    null,
+                    "<StatusIndicator status='warning'>Warning</StatusIndicator>"
+                  )
+                )
+              )
+            ),
+            React.createElement(
+              'tr',
+              null,
+              React.createElement(
+                'td',
+                null,
+                React.createElement(
+                  StatusIndicator,
+                  { status: 'error' },
+                  'Error'
+                )
+              ),
+              React.createElement(
+                'td',
+                null,
+                'Error'
+              ),
+              React.createElement(
+                'td',
+                null,
+                React.createElement(
+                  'pre',
+                  null,
+                  React.createElement(
+                    'code',
+                    null,
+                    "<StatusIndicator status='error'>Warning</StatusIndicator>"
+                  )
+                )
+              )
+            ),
+            React.createElement(
+              'tr',
+              null,
+              React.createElement(
+                'td',
+                null,
+                React.createElement(
+                  StatusIndicator,
+                  { status: 'disabled' },
+                  'Disabled'
+                )
+              ),
+              React.createElement(
+                'td',
+                null,
+                'Disabled'
+              ),
+              React.createElement(
+                'td',
+                null,
+                React.createElement(
+                  'pre',
+                  null,
+                  React.createElement(
+                    'code',
+                    null,
+                    "<StatusIndicator status='disabled'>Disabled</StatusIndicator>"
+                  )
+                )
+              )
+            )
+          )
+        )
+      )
+    );
+  }
+});
+
+module.exports = DemoStatusIndicatorSection;
+
+},{"./StatusIndicator":212,"react":193}],203:[function(require,module,exports){
+'use strict';
+
+var _get = require('babel-runtime/helpers/get')['default'];
+
+var _inherits = require('babel-runtime/helpers/inherits')['default'];
+
+var _createClass = require('babel-runtime/helpers/create-class')['default'];
+
+var _classCallCheck = require('babel-runtime/helpers/class-call-check')['default'];
+
+var _interopRequireDefault = require('babel-runtime/helpers/interop-require-default')['default'];
+
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+
+var _Button = require('./Button');
+
+var _Button2 = _interopRequireDefault(_Button);
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _TooltipTrigger = require('./TooltipTrigger');
+
+var _TooltipTrigger2 = _interopRequireDefault(_TooltipTrigger);
+
+var DemoTooltipSection = (function (_React$Component) {
+  _inherits(DemoTooltipSection, _React$Component);
+
+  function DemoTooltipSection() {
+    _classCallCheck(this, DemoTooltipSection);
+
+    _get(Object.getPrototypeOf(DemoTooltipSection.prototype), 'constructor', this).apply(this, arguments);
+  }
+
+  _createClass(DemoTooltipSection, [{
+    key: 'render',
+    value: function render() {
+      var tooltipContent = _react2['default'].createElement(
+        'span',
+        null,
+        'This is a tooltip'
+      );
+      return _react2['default'].createElement(
+        'div',
+        { className: 'rs-detail-section' },
+        _react2['default'].createElement(
+          'div',
+          { className: 'rs-detail-section-header' },
+          _react2['default'].createElement(
+            'h2',
+            null,
+            'Tooltips'
+          )
+        ),
+        _react2['default'].createElement(
+          'div',
+          { className: 'rs-detail-section-body' },
+          _react2['default'].createElement(
+            'table',
+            null,
+            _react2['default'].createElement(
+              'tbody',
+              null,
+              _react2['default'].createElement(
+                'tr',
+                null,
+                _react2['default'].createElement(
+                  'td',
+                  null,
+                  _react2['default'].createElement(
+                    _TooltipTrigger2['default'],
+                    { placement: 'bottom-right', content: tooltipContent },
+                    _react2['default'].createElement(
+                      'span',
+                      null,
+                      'Bottom Right'
+                    )
+                  )
+                ),
+                _react2['default'].createElement(
+                  'td',
+                  null,
+                  _react2['default'].createElement(
+                    _TooltipTrigger2['default'],
+                    { placement: 'bottom-left', content: tooltipContent },
+                    _react2['default'].createElement(
+                      'span',
+                      null,
+                      'Bottom Left'
+                    )
+                  )
+                ),
+                _react2['default'].createElement(
+                  'td',
+                  null,
+                  _react2['default'].createElement(
+                    _TooltipTrigger2['default'],
+                    { placement: 'top', content: tooltipContent },
+                    _react2['default'].createElement(
+                      'span',
+                      null,
+                      'Top'
+                    )
+                  )
+                )
+              ),
+              _react2['default'].createElement(
+                'tr',
+                null,
+                _react2['default'].createElement(
+                  'td',
+                  null,
+                  _react2['default'].createElement(
+                    _TooltipTrigger2['default'],
+                    { placement: 'top-right', content: tooltipContent },
+                    _react2['default'].createElement(
+                      'span',
+                      null,
+                      'Top Right'
+                    )
+                  )
+                ),
+                _react2['default'].createElement(
+                  'td',
+                  null,
+                  _react2['default'].createElement(
+                    _TooltipTrigger2['default'],
+                    { placement: 'top-left', content: tooltipContent },
+                    _react2['default'].createElement(
+                      'span',
+                      null,
+                      'Top Left'
+                    )
+                  )
+                ),
+                _react2['default'].createElement(
+                  'td',
+                  null,
+                  _react2['default'].createElement(
+                    _TooltipTrigger2['default'],
+                    { placement: 'bottom', content: tooltipContent },
+                    _react2['default'].createElement(
+                      'span',
+                      null,
+                      'Bottom'
+                    )
+                  )
+                )
+              ),
+              _react2['default'].createElement(
+                'tr',
+                null,
+                _react2['default'].createElement(
+                  'td',
+                  null,
+                  _react2['default'].createElement(
+                    _TooltipTrigger2['default'],
+                    { placement: 'right', content: tooltipContent },
+                    _react2['default'].createElement(
+                      'span',
+                      null,
+                      'Right'
+                    )
+                  )
+                ),
+                _react2['default'].createElement(
+                  'td',
+                  null,
+                  _react2['default'].createElement(
+                    _TooltipTrigger2['default'],
+                    { placement: 'left', content: tooltipContent },
+                    _react2['default'].createElement(
+                      'span',
+                      null,
+                      'Left'
+                    )
+                  )
+                ),
+                _react2['default'].createElement(
+                  'td',
+                  null,
+                  _react2['default'].createElement(
+                    _TooltipTrigger2['default'],
+                    { content: tooltipContent },
+                    _react2['default'].createElement(
+                      'button',
+                      null,
+                      'Focus'
+                    )
+                  )
+                )
+              )
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return DemoTooltipSection;
+})(_react2['default'].Component);
+
+exports['default'] = DemoTooltipSection;
+module.exports = exports['default'];
+
+},{"./Button":195,"./TooltipTrigger":214,"babel-runtime/helpers/class-call-check":6,"babel-runtime/helpers/create-class":7,"babel-runtime/helpers/get":9,"babel-runtime/helpers/inherits":10,"babel-runtime/helpers/interop-require-default":11,"react":193}],204:[function(require,module,exports){
+'use strict';
+
+var React = require('react');
+
+var DemoButtonSection = require('./DemoButtonSection');
+var DemoButtonGroupSection = require('./DemoButtonGroupSection');
+var DemoPopoverSection = require('./DemoPopoverSection');
+var DemoProgressBarSection = require('./DemoProgressBarSection');
+var DemoStatusIndicatorSection = require('./DemoStatusIndicatorSection');
+var DemoTooltipSection = require('./DemoTooltipSection');
+
+var DemoView = React.createClass({
+  displayName: 'DemoView',
+
+  render: function render() {
+    return React.createElement(
+      'div',
+      null,
+      React.createElement(DemoButtonSection, null),
+      React.createElement(DemoButtonGroupSection, null),
+      React.createElement(DemoProgressBarSection, null),
+      React.createElement(DemoStatusIndicatorSection, null),
+      React.createElement(DemoPopoverSection, null),
+      React.createElement(DemoTooltipSection, null)
+    );
+  }
+});
+
+module.exports = DemoView;
+
+},{"./DemoButtonGroupSection":197,"./DemoButtonSection":198,"./DemoPopoverSection":200,"./DemoProgressBarSection":201,"./DemoStatusIndicatorSection":202,"./DemoTooltipSection":203,"react":193}],205:[function(require,module,exports){
+'use strict';
+
 var _get = require('babel-runtime/helpers/get')['default'];
 
 var _inherits = require('babel-runtime/helpers/inherits')['default'];
@@ -22275,7 +23601,7 @@ Popover.defaultProps = {
 exports['default'] = Popover;
 module.exports = exports['default'];
 
-},{"./PopoverBackground":198,"babel-runtime/helpers/class-call-check":6,"babel-runtime/helpers/create-class":7,"babel-runtime/helpers/get":9,"babel-runtime/helpers/inherits":10,"babel-runtime/helpers/interop-require-default":11,"react":193,"tether":194}],198:[function(require,module,exports){
+},{"./PopoverBackground":206,"babel-runtime/helpers/class-call-check":6,"babel-runtime/helpers/create-class":7,"babel-runtime/helpers/get":9,"babel-runtime/helpers/inherits":10,"babel-runtime/helpers/interop-require-default":11,"react":193,"tether":194}],206:[function(require,module,exports){
 'use strict';
 
 var _get = require('babel-runtime/helpers/get')['default'];
@@ -22333,7 +23659,7 @@ PopoverBackground.propTypes = {
 exports['default'] = PopoverBackground;
 module.exports = exports['default'];
 
-},{"babel-runtime/helpers/class-call-check":6,"babel-runtime/helpers/create-class":7,"babel-runtime/helpers/get":9,"babel-runtime/helpers/inherits":10,"babel-runtime/helpers/interop-require-default":11,"react":193}],199:[function(require,module,exports){
+},{"babel-runtime/helpers/class-call-check":6,"babel-runtime/helpers/create-class":7,"babel-runtime/helpers/get":9,"babel-runtime/helpers/inherits":10,"babel-runtime/helpers/interop-require-default":11,"react":193}],207:[function(require,module,exports){
 'use strict';
 
 var _get = require('babel-runtime/helpers/get')['default'];
@@ -22380,7 +23706,7 @@ var PopoverBody = (function (_React$Component) {
 exports['default'] = PopoverBody;
 module.exports = exports['default'];
 
-},{"babel-runtime/helpers/class-call-check":6,"babel-runtime/helpers/create-class":7,"babel-runtime/helpers/get":9,"babel-runtime/helpers/inherits":10,"babel-runtime/helpers/interop-require-default":11,"react":193}],200:[function(require,module,exports){
+},{"babel-runtime/helpers/class-call-check":6,"babel-runtime/helpers/create-class":7,"babel-runtime/helpers/get":9,"babel-runtime/helpers/inherits":10,"babel-runtime/helpers/interop-require-default":11,"react":193}],208:[function(require,module,exports){
 'use strict';
 
 var _get = require('babel-runtime/helpers/get')['default'];
@@ -22431,7 +23757,7 @@ var PopoverFooter = (function (_React$Component) {
 exports['default'] = PopoverFooter;
 module.exports = exports['default'];
 
-},{"./ButtonGroup":196,"babel-runtime/helpers/class-call-check":6,"babel-runtime/helpers/create-class":7,"babel-runtime/helpers/get":9,"babel-runtime/helpers/inherits":10,"babel-runtime/helpers/interop-require-default":11,"react":193}],201:[function(require,module,exports){
+},{"./ButtonGroup":196,"babel-runtime/helpers/class-call-check":6,"babel-runtime/helpers/create-class":7,"babel-runtime/helpers/get":9,"babel-runtime/helpers/inherits":10,"babel-runtime/helpers/interop-require-default":11,"react":193}],209:[function(require,module,exports){
 'use strict';
 
 var _get = require('babel-runtime/helpers/get')['default'];
@@ -22526,7 +23852,7 @@ PopoverOverlay.defaultProps = {
 exports['default'] = PopoverOverlay;
 module.exports = exports['default'];
 
-},{"babel-runtime/helpers/class-call-check":6,"babel-runtime/helpers/create-class":7,"babel-runtime/helpers/get":9,"babel-runtime/helpers/inherits":10,"babel-runtime/helpers/interop-require-default":11,"react":193}],202:[function(require,module,exports){
+},{"babel-runtime/helpers/class-call-check":6,"babel-runtime/helpers/create-class":7,"babel-runtime/helpers/get":9,"babel-runtime/helpers/inherits":10,"babel-runtime/helpers/interop-require-default":11,"react":193}],210:[function(require,module,exports){
 'use strict';
 
 var _get = require('babel-runtime/helpers/get')['default'];
@@ -22585,7 +23911,7 @@ ProcessingIndicator.defaultProps = {
 exports['default'] = ProcessingIndicator;
 module.exports = exports['default'];
 
-},{"babel-runtime/helpers/class-call-check":6,"babel-runtime/helpers/create-class":7,"babel-runtime/helpers/get":9,"babel-runtime/helpers/inherits":10,"babel-runtime/helpers/interop-require-default":11,"react":193}],203:[function(require,module,exports){
+},{"babel-runtime/helpers/class-call-check":6,"babel-runtime/helpers/create-class":7,"babel-runtime/helpers/get":9,"babel-runtime/helpers/inherits":10,"babel-runtime/helpers/interop-require-default":11,"react":193}],211:[function(require,module,exports){
 'use strict';
 
 var _get = require('babel-runtime/helpers/get')['default'];
@@ -22700,7 +24026,7 @@ ProgressBar.defaultProps = {
 exports['default'] = ProgressBar;
 module.exports = exports['default'];
 
-},{"babel-runtime/helpers/class-call-check":6,"babel-runtime/helpers/create-class":7,"babel-runtime/helpers/get":9,"babel-runtime/helpers/inherits":10,"babel-runtime/helpers/interop-require-default":11,"react":193}],204:[function(require,module,exports){
+},{"babel-runtime/helpers/class-call-check":6,"babel-runtime/helpers/create-class":7,"babel-runtime/helpers/get":9,"babel-runtime/helpers/inherits":10,"babel-runtime/helpers/interop-require-default":11,"react":193}],212:[function(require,module,exports){
 'use strict';
 
 var _get = require('babel-runtime/helpers/get')['default'];
@@ -22786,7 +24112,191 @@ StatusIndicator.defaultProps = {
 exports['default'] = StatusIndicator;
 module.exports = exports['default'];
 
-},{"babel-runtime/helpers/class-call-check":6,"babel-runtime/helpers/create-class":7,"babel-runtime/helpers/extends":8,"babel-runtime/helpers/get":9,"babel-runtime/helpers/inherits":10,"babel-runtime/helpers/interop-require-default":11,"react":193}],205:[function(require,module,exports){
+},{"babel-runtime/helpers/class-call-check":6,"babel-runtime/helpers/create-class":7,"babel-runtime/helpers/extends":8,"babel-runtime/helpers/get":9,"babel-runtime/helpers/inherits":10,"babel-runtime/helpers/interop-require-default":11,"react":193}],213:[function(require,module,exports){
+'use strict';
+
+var _get = require('babel-runtime/helpers/get')['default'];
+
+var _inherits = require('babel-runtime/helpers/inherits')['default'];
+
+var _createClass = require('babel-runtime/helpers/create-class')['default'];
+
+var _classCallCheck = require('babel-runtime/helpers/class-call-check')['default'];
+
+var _interopRequireDefault = require('babel-runtime/helpers/interop-require-default')['default'];
+
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _tether = require('tether');
+
+var _tether2 = _interopRequireDefault(_tether);
+
+var Tooltip = (function (_React$Component) {
+  _inherits(Tooltip, _React$Component);
+
+  function Tooltip() {
+    _classCallCheck(this, Tooltip);
+
+    _get(Object.getPrototypeOf(Tooltip.prototype), 'constructor', this).apply(this, arguments);
+  }
+
+  _createClass(Tooltip, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      this._containerDiv = document.createElement('div');
+      this._containerDiv.className = 'rs-tooltip';
+      document.body.appendChild(this._containerDiv);
+      this._toggleTooltip();
+    }
+  }, {
+    key: 'componentWillUnmount',
+    value: function componentWillUnmount() {
+      this._hide();
+      document.body.removeChild(this._containerDiv);
+    }
+  }, {
+    key: 'componentDidUpdate',
+    value: function componentDidUpdate() {
+      this._toggleTooltip();
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return null;
+    }
+  }, {
+    key: '_toggleTooltip',
+    value: function _toggleTooltip() {
+      if (this.props.isOpen) {
+        this._show();
+      } else {
+        this._hide();
+      }
+    }
+  }, {
+    key: '_hide',
+    value: function _hide() {
+      this._containerDiv.className = this._containerDiv.className.replace(/(?:^|\s)visible(?!\S)/g, '');
+      if (this._tether) {
+        this._tether.destroy();
+        this._tether = null;
+      }
+
+      if (this._tooltipNode) {
+        _react2['default'].unmountComponentAtNode(this._containerDiv);
+        this._tooltipNode = null;
+      }
+    }
+  }, {
+    key: '_show',
+    value: function _show() {
+      this._containerDiv.className += ' visible';
+      this._tooltipNode = _react2['default'].render(_react2['default'].createElement(
+        'div',
+        { className: 'rs-tooltip-inner', onMouseOver: this.props.onMouseOver, onMouseLeave: this.props.onMouseLeave },
+        this.props.children
+      ), this._containerDiv);
+      if (!this._tether) {
+        this._tether = this._createTether(this._getTetherConfig());
+      }
+    }
+  }, {
+    key: '_createTether',
+    value: function _createTether(tetherConfig) {
+      return new _tether2['default'](tetherConfig);
+    }
+  }, {
+    key: '_getTetherConfig',
+    value: function _getTetherConfig() {
+      var tetherConfig = undefined;
+
+      switch (this.props.placement) {
+        case 'left':
+          tetherConfig = {
+            attachment: 'middle right',
+            targetAttachment: 'middle left'
+          };
+          break;
+        case 'bottom-left':
+          tetherConfig = {
+            attachment: 'top right',
+            targetAttachment: 'bottom left'
+          };
+          break;
+        case 'top-left':
+          tetherConfig = {
+            attachment: 'bottom right',
+            targetAttachment: 'top left'
+          };
+          break;
+        case 'top':
+          tetherConfig = {
+            attachment: 'bottom middle',
+            targetAttachment: 'top middle'
+          };
+          break;
+        case 'bottom':
+          tetherConfig = {
+            attachment: 'top middle',
+            targetAttachment: 'bottom middle'
+          };
+          break;
+        case 'right':
+          tetherConfig = {
+            attachment: 'middle left',
+            targetAttachment: 'middle right'
+          };
+          break;
+        case 'top-right':
+          tetherConfig = {
+            attachment: 'bottom left',
+            targetAttachment: 'top right'
+          };
+          break;
+        case 'bottom-right':
+        default:
+          tetherConfig = {
+            attachment: 'top left',
+            targetAttachment: 'bottom right'
+          };
+          break;
+      }
+
+      tetherConfig.targetModifier = 'visible';
+      tetherConfig.element = _react2['default'].findDOMNode(this._containerDiv);
+      tetherConfig.target = this.props.target();
+      tetherConfig.constraints = [{ to: 'window', pin: true, attachment: 'together' }];
+
+      return tetherConfig;
+    }
+  }]);
+
+  return Tooltip;
+})(_react2['default'].Component);
+
+Tooltip.propTypes = {
+  isOpen: _react2['default'].PropTypes.bool,
+  target: _react2['default'].PropTypes.func.isRequired,
+  onMouseOver: _react2['default'].PropTypes.func.isRequired,
+  onMouseLeave: _react2['default'].PropTypes.func.isRequired,
+  placement: _react2['default'].PropTypes.oneOf(['right', 'bottom-right', 'top-right', 'top', 'left', 'bottom-left', 'top-left', 'bottom'])
+};
+
+Tooltip.defaultProps = {
+  isOpen: false,
+  placement: 'bottom-right'
+};
+
+exports['default'] = Tooltip;
+module.exports = exports['default'];
+
+},{"babel-runtime/helpers/class-call-check":6,"babel-runtime/helpers/create-class":7,"babel-runtime/helpers/get":9,"babel-runtime/helpers/inherits":10,"babel-runtime/helpers/interop-require-default":11,"react":193,"tether":194}],214:[function(require,module,exports){
 'use strict';
 
 var _get = require('babel-runtime/helpers/get')['default'];
@@ -22830,7 +24340,7 @@ var TooltipTrigger = (function (_React$Component) {
       this._containerDiv = document.createElement('div');
       this._containerDiv.className = 'rs-tooltip';
       document.body.appendChild(this._containerDiv);
-      this._updateTooltipVisibility();
+      this._toggleTooltip();
     }
   }, {
     key: 'componentWillUnmount',
@@ -22853,11 +24363,11 @@ var TooltipTrigger = (function (_React$Component) {
   }, {
     key: 'componentDidUpdate',
     value: function componentDidUpdate() {
-      this._updateTooltipVisibility();
+      this._toggleTooltip();
     }
   }, {
-    key: '_updateTooltipVisibility',
-    value: function _updateTooltipVisibility() {
+    key: '_toggleTooltip',
+    value: function _toggleTooltip() {
       if (this._shouldShowTooltip()) {
         this._showTooltip();
       } else {
@@ -22881,6 +24391,13 @@ var TooltipTrigger = (function (_React$Component) {
   }, {
     key: '_showTooltip',
     value: function _showTooltip() {
+      // <Tooltip placement={this.props.placement}
+      //       isOpen={this._shouldShowTooltip()}
+      //       target={this._getTarget.bind(this)}
+      //       onMouseLeave={this._mouseLeavingTooltip.bind(this)}
+      //       onMouseOver={this._mouseEnteringTooltip.bind(this)}>
+      //       {this.props.content}
+      //     </Tooltip>
       this._containerDiv.className += ' visible';
       this._tooltipNode = _react2['default'].render(_react2['default'].createElement(
         'div',
@@ -22979,6 +24496,14 @@ var TooltipTrigger = (function (_React$Component) {
         ref: 'trigger'
       };
 
+      // <Tooltip placement={this.props.placement}
+      //       isOpen={this._shouldShowTooltip()}
+      //       target={this._getTarget.bind(this)}
+      //       onMouseLeave={this._mouseLeavingTooltip.bind(this)}
+      //       onMouseOver={this._mouseEnteringTooltip.bind(this)}>
+      //       {this.props.content}
+      //     </Tooltip>
+
       return _react2['default'].cloneElement(_react2['default'].Children.only(this.props.children), triggerProps);
     }
   }, {
@@ -23049,4260 +24574,18 @@ TooltipTrigger.defaultProps = {
 exports['default'] = TooltipTrigger;
 module.exports = exports['default'];
 
-},{"babel-runtime/helpers/class-call-check":6,"babel-runtime/helpers/create-class":7,"babel-runtime/helpers/get":9,"babel-runtime/helpers/inherits":10,"babel-runtime/helpers/interop-require-default":11,"react":193,"tether":194}],206:[function(require,module,exports){
-'use strict';
-
-var _get = require('babel-runtime/helpers/get')['default'];
-
-var _inherits = require('babel-runtime/helpers/inherits')['default'];
-
-var _createClass = require('babel-runtime/helpers/create-class')['default'];
-
-var _classCallCheck = require('babel-runtime/helpers/class-call-check')['default'];
-
-var _interopRequireDefault = require('babel-runtime/helpers/interop-require-default')['default'];
-
-Object.defineProperty(exports, '__esModule', {
-  value: true
-});
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _Button = require('../Button');
-
-var _Button2 = _interopRequireDefault(_Button);
-
-var _ButtonGroup = require('../ButtonGroup');
-
-var _ButtonGroup2 = _interopRequireDefault(_ButtonGroup);
-
-var _ProcessingIndicator = require('../ProcessingIndicator');
-
-var _ProcessingIndicator2 = _interopRequireDefault(_ProcessingIndicator);
-
-var ButtonGroupSection = (function (_React$Component) {
-  _inherits(ButtonGroupSection, _React$Component);
-
-  function ButtonGroupSection() {
-    _classCallCheck(this, ButtonGroupSection);
-
-    _get(Object.getPrototypeOf(ButtonGroupSection.prototype), 'constructor', this).apply(this, arguments);
-  }
-
-  _createClass(ButtonGroupSection, [{
-    key: 'render',
-    value: function render() {
-      return _react2['default'].createElement(
-        'div',
-        { className: 'website-content-section' },
-        _react2['default'].createElement(
-          'div',
-          { className: 'content-section-body' },
-          _react2['default'].createElement(
-            'div',
-            { className: 'rs-row' },
-            _react2['default'].createElement(
-              'p',
-              null,
-              _react2['default'].createElement(
-                'a',
-                { href: 'http://rackerlabs.github.io/canon/ui-components/#button-groups', target: '_blank' },
-                'Button Groups'
-              ),
-              ' are used to lay out a set of related buttons. Button groups have two different states: normal and submitting'
-            )
-          ),
-          _react2['default'].createElement(
-            'div',
-            { className: 'rs-row' },
-            _react2['default'].createElement(
-              'div',
-              { className: 'span-3' },
-              _react2['default'].createElement(
-                'h3',
-                null,
-                'Normal'
-              ),
-              _react2['default'].createElement(
-                'p',
-                null,
-                'In a normal state the buttons are active and ready for interaction from the user. The ',
-                _react2['default'].createElement(
-                  'code',
-                  null,
-                  'ProcessingIndicator'
-                ),
-                ' is either hidden (by default) or not rendered.'
-              )
-            ),
-            _react2['default'].createElement(
-              'div',
-              { className: 'span-8 offset-1' },
-              _react2['default'].createElement(
-                'h4',
-                null,
-                'Example'
-              ),
-              _react2['default'].createElement(
-                _ButtonGroup2['default'],
-                null,
-                _react2['default'].createElement(
-                  _Button2['default'],
-                  { type: 'primary' },
-                  'Primary'
-                ),
-                _react2['default'].createElement(
-                  _Button2['default'],
-                  null,
-                  'Secondary'
-                ),
-                _react2['default'].createElement(
-                  _Button2['default'],
-                  { type: 'link' },
-                  'Cancel'
-                ),
-                _react2['default'].createElement(_ProcessingIndicator2['default'], null)
-              ),
-              _react2['default'].createElement(
-                'h4',
-                null,
-                'Source'
-              ),
-              _react2['default'].createElement(
-                'div',
-                { className: 'highlight button-group' },
-                _react2['default'].createElement(
-                  'pre',
-                  null,
-                  _react2['default'].createElement(
-                    'code',
-                    { className: 'html' },
-                    _react2['default'].createElement(
-                      'span',
-                      { className: 'nt' },
-                      '<ButtonGroup>'
-                    ),
-                    _react2['default'].createElement(
-                      'span',
-                      { className: 'nt' },
-                      '<Button'
-                    ),
-                    ' ',
-                    _react2['default'].createElement(
-                      'span',
-                      { className: 'na' },
-                      'type='
-                    ),
-                    _react2['default'].createElement(
-                      'span',
-                      { className: 's' },
-                      '"primary"'
-                    ),
-                    _react2['default'].createElement(
-                      'span',
-                      { className: 'nt' },
-                      '>'
-                    ),
-                    'Primary',
-                    _react2['default'].createElement(
-                      'span',
-                      { className: 'nt' },
-                      '</Button>'
-                    ),
-                    _react2['default'].createElement(
-                      'span',
-                      { className: 'nt' },
-                      '<Button'
-                    ),
-                    ' ',
-                    _react2['default'].createElement(
-                      'span',
-                      { className: 'na' },
-                      'type='
-                    ),
-                    _react2['default'].createElement(
-                      'span',
-                      { className: 's' },
-                      '"secondary"'
-                    ),
-                    _react2['default'].createElement(
-                      'span',
-                      { className: 'nt' },
-                      '>'
-                    ),
-                    'Secondary',
-                    _react2['default'].createElement(
-                      'span',
-                      { className: 'nt' },
-                      '</Button>'
-                    ),
-                    _react2['default'].createElement(
-                      'span',
-                      { className: 'nt' },
-                      '<Button'
-                    ),
-                    ' ',
-                    _react2['default'].createElement(
-                      'span',
-                      { className: 'na' },
-                      'type='
-                    ),
-                    _react2['default'].createElement(
-                      'span',
-                      { className: 's' },
-                      '"link"'
-                    ),
-                    _react2['default'].createElement(
-                      'span',
-                      { className: 'nt' },
-                      '>'
-                    ),
-                    'Cancel',
-                    _react2['default'].createElement(
-                      'span',
-                      { className: 'nt' },
-                      '</Button>'
-                    ),
-                    _react2['default'].createElement(
-                      'span',
-                      { className: 'nt' },
-                      '<ProcessingIndicator'
-                    ),
-                    ' ',
-                    _react2['default'].createElement(
-                      'span',
-                      { className: 'na' },
-                      'hidden='
-                    ),
-                    _react2['default'].createElement(
-                      'span',
-                      { className: 's' },
-                      "{true}"
-                    ),
-                    _react2['default'].createElement(
-                      'span',
-                      { className: 'nt' },
-                      '/>'
-                    ),
-                    _react2['default'].createElement(
-                      'span',
-                      { className: 'nt' },
-                      '</ButtonGroup>'
-                    )
-                  )
-                )
-              )
-            )
-          ),
-          _react2['default'].createElement(
-            'div',
-            { className: 'rs-row' },
-            _react2['default'].createElement(
-              'div',
-              { className: 'span-3' },
-              _react2['default'].createElement(
-                'h3',
-                null,
-                'Submitting'
-              ),
-              _react2['default'].createElement(
-                'p',
-                null,
-                'In a submitting state an action is being processed and the buttons are disabled. The ',
-                _react2['default'].createElement(
-                  'code',
-                  null,
-                  'ProcessingIndicator'
-                ),
-                ' is rendered with a property of ',
-                _react2['default'].createElement(
-                  'code',
-                  null,
-                  'hidden: false'
-                ),
-                '. Cancel links are also hidden with this pattern.'
-              )
-            ),
-            _react2['default'].createElement(
-              'div',
-              { className: 'span-8 offset-1' },
-              _react2['default'].createElement(
-                'h4',
-                null,
-                'Example'
-              ),
-              _react2['default'].createElement(
-                _ButtonGroup2['default'],
-                null,
-                _react2['default'].createElement(
-                  _Button2['default'],
-                  { type: 'primary', enabled: false },
-                  'Primary'
-                ),
-                _react2['default'].createElement(
-                  _Button2['default'],
-                  { enabled: false },
-                  'Secondary'
-                ),
-                _react2['default'].createElement(
-                  _Button2['default'],
-                  { type: 'link', enabled: false, hidden: true },
-                  'Cancel'
-                ),
-                _react2['default'].createElement(_ProcessingIndicator2['default'], { hidden: false })
-              ),
-              _react2['default'].createElement(
-                'h4',
-                null,
-                'Source'
-              ),
-              _react2['default'].createElement(
-                'div',
-                { className: 'highlight' },
-                _react2['default'].createElement(
-                  'pre',
-                  null,
-                  _react2['default'].createElement(
-                    'code',
-                    { className: 'html' },
-                    _react2['default'].createElement(
-                      'span',
-                      { className: 'nt' },
-                      '<ButtonGroup>'
-                    ),
-                    _react2['default'].createElement(
-                      'span',
-                      { className: 'nt' },
-                      '<Button'
-                    ),
-                    ' ',
-                    _react2['default'].createElement(
-                      'span',
-                      { className: 'na' },
-                      'type='
-                    ),
-                    _react2['default'].createElement(
-                      'span',
-                      { className: 's' },
-                      '"primary"'
-                    ),
-                    ' ',
-                    _react2['default'].createElement(
-                      'span',
-                      { className: 'na' },
-                      'enabled='
-                    ),
-                    _react2['default'].createElement(
-                      'span',
-                      { className: 's' },
-                      '"',
-                      false,
-                      '"'
-                    ),
-                    _react2['default'].createElement(
-                      'span',
-                      { className: 'nt' },
-                      '>'
-                    ),
-                    'Primary',
-                    _react2['default'].createElement(
-                      'span',
-                      { className: 'nt' },
-                      '</Button>'
-                    ),
-                    _react2['default'].createElement(
-                      'span',
-                      { className: 'nt' },
-                      '<Button'
-                    ),
-                    ' ',
-                    _react2['default'].createElement(
-                      'span',
-                      { className: 'na' },
-                      'type='
-                    ),
-                    _react2['default'].createElement(
-                      'span',
-                      { className: 's' },
-                      '"secondary"'
-                    ),
-                    ' ',
-                    _react2['default'].createElement(
-                      'span',
-                      { className: 'na' },
-                      'enabled='
-                    ),
-                    _react2['default'].createElement(
-                      'span',
-                      { className: 's' },
-                      '"',
-                      false,
-                      '"'
-                    ),
-                    _react2['default'].createElement(
-                      'span',
-                      { className: 'nt' },
-                      '>'
-                    ),
-                    'Secondary',
-                    _react2['default'].createElement(
-                      'span',
-                      { className: 'nt' },
-                      '</Button>'
-                    ),
-                    _react2['default'].createElement(
-                      'span',
-                      { className: 'nt' },
-                      '<Button'
-                    ),
-                    ' ',
-                    _react2['default'].createElement(
-                      'span',
-                      { className: 'na' },
-                      'type='
-                    ),
-                    _react2['default'].createElement(
-                      'span',
-                      { className: 's' },
-                      '"link"'
-                    ),
-                    ' ',
-                    _react2['default'].createElement(
-                      'span',
-                      { className: 'na' },
-                      'hidden='
-                    ),
-                    _react2['default'].createElement(
-                      'span',
-                      { className: 's' },
-                      '"',
-                      true,
-                      '"'
-                    ),
-                    _react2['default'].createElement(
-                      'span',
-                      { className: 'nt' },
-                      '>'
-                    ),
-                    'Cancel',
-                    _react2['default'].createElement(
-                      'span',
-                      { className: 'nt' },
-                      '</Button>'
-                    ),
-                    _react2['default'].createElement(
-                      'span',
-                      { className: 'nt' },
-                      '<ProcessingIndicator'
-                    ),
-                    ' ',
-                    _react2['default'].createElement(
-                      'span',
-                      { className: 'na' },
-                      'hidden='
-                    ),
-                    _react2['default'].createElement(
-                      'span',
-                      { className: 's' },
-                      '"',
-                      false,
-                      '"'
-                    ),
-                    _react2['default'].createElement(
-                      'span',
-                      { className: 'nt' },
-                      '/>'
-                    ),
-                    _react2['default'].createElement(
-                      'span',
-                      { className: 'nt' },
-                      '</ButtonGroup>'
-                    )
-                  )
-                )
-              )
-            )
-          )
-        )
-      );
-    }
-  }]);
-
-  return ButtonGroupSection;
-})(_react2['default'].Component);
-
-exports['default'] = ButtonGroupSection;
-module.exports = exports['default'];
-
-},{"../Button":195,"../ButtonGroup":196,"../ProcessingIndicator":202,"babel-runtime/helpers/class-call-check":6,"babel-runtime/helpers/create-class":7,"babel-runtime/helpers/get":9,"babel-runtime/helpers/inherits":10,"babel-runtime/helpers/interop-require-default":11,"react":193}],207:[function(require,module,exports){
-'use strict';
-
-var _get = require('babel-runtime/helpers/get')['default'];
-
-var _inherits = require('babel-runtime/helpers/inherits')['default'];
-
-var _createClass = require('babel-runtime/helpers/create-class')['default'];
-
-var _classCallCheck = require('babel-runtime/helpers/class-call-check')['default'];
-
-var _interopRequireDefault = require('babel-runtime/helpers/interop-require-default')['default'];
-
-Object.defineProperty(exports, '__esModule', {
-  value: true
-});
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _Button = require('../Button');
-
-var _Button2 = _interopRequireDefault(_Button);
-
-var ButtonsSection = (function (_React$Component) {
-  _inherits(ButtonsSection, _React$Component);
-
-  function ButtonsSection() {
-    _classCallCheck(this, ButtonsSection);
-
-    _get(Object.getPrototypeOf(ButtonsSection.prototype), 'constructor', this).apply(this, arguments);
-  }
-
-  _createClass(ButtonsSection, [{
-    key: 'render',
-    value: function render() {
-      return _react2['default'].createElement(
-        'div',
-        { className: 'website-content-section' },
-        _react2['default'].createElement(
-          'div',
-          { className: 'content-section-body' },
-          _react2['default'].createElement(
-            'div',
-            { className: 'rs-row' },
-            _react2['default'].createElement(
-              'p',
-              null,
-              'Canon offers a variety of different ',
-              _react2['default'].createElement(
-                'a',
-                { href: 'http://rackerlabs.github.io/canon/ui-components/#buttons', target: '_blank' },
-                'buttons'
-              ),
-              '. They are implemented with the ',
-              _react2['default'].createElement(
-                'code',
-                null,
-                'Button'
-              ),
-              ' component.'
-            )
-          ),
-          _react2['default'].createElement(
-            'div',
-            { className: 'rs-row' },
-            _react2['default'].createElement(
-              'h3',
-              null,
-              'Properties'
-            ),
-            _react2['default'].createElement(
-              'ul',
-              null,
-              _react2['default'].createElement(
-                'li',
-                null,
-                _react2['default'].createElement(
-                  'code',
-                  null,
-                  'onClick'
-                )
-              ),
-              _react2['default'].createElement(
-                'li',
-                null,
-                _react2['default'].createElement(
-                  'code',
-                  null,
-                  'enabled'
-                )
-              ),
-              _react2['default'].createElement(
-                'li',
-                null,
-                _react2['default'].createElement(
-                  'code',
-                  null,
-                  'hidden'
-                )
-              ),
-              _react2['default'].createElement(
-                'li',
-                null,
-                _react2['default'].createElement(
-                  'code',
-                  null,
-                  'type'
-                )
-              )
-            )
-          ),
-          _react2['default'].createElement(
-            'div',
-            { className: 'rs-row' },
-            _react2['default'].createElement(
-              'div',
-              { className: 'span-3' },
-              _react2['default'].createElement(
-                'h5',
-                null,
-                'onClick'
-              ),
-              _react2['default'].createElement(
-                'p',
-                null,
-                _react2['default'].createElement(
-                  'code',
-                  null,
-                  'onClick'
-                ),
-                ' takes the function that will be executed when the button is clicked.'
-              )
-            ),
-            _react2['default'].createElement(
-              'div',
-              { className: 'span-8 offset-1' },
-              _react2['default'].createElement(
-                'h4',
-                null,
-                'Example'
-              ),
-              _react2['default'].createElement(
-                'div',
-                null,
-                _react2['default'].createElement(
-                  'table',
-                  null,
-                  _react2['default'].createElement(
-                    'thead',
-                    null,
-                    _react2['default'].createElement(
-                      'tr',
-                      null,
-                      _react2['default'].createElement(
-                        'th',
-                        null,
-                        'Component'
-                      ),
-                      _react2['default'].createElement(
-                        'th',
-                        null,
-                        'Source'
-                      )
-                    )
-                  ),
-                  _react2['default'].createElement(
-                    'tbody',
-                    null,
-                    _react2['default'].createElement(
-                      'tr',
-                      null,
-                      _react2['default'].createElement(
-                        'td',
-                        null,
-                        _react2['default'].createElement(
-                          _Button2['default'],
-                          { onClick: function () {
-                              alert('Button');
-                            } },
-                          'Button'
-                        )
-                      ),
-                      _react2['default'].createElement(
-                        'td',
-                        null,
-                        _react2['default'].createElement(
-                          'div',
-                          { className: 'highlight' },
-                          _react2['default'].createElement(
-                            'pre',
-                            null,
-                            _react2['default'].createElement(
-                              'code',
-                              { className: 'html' },
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 'nt' },
-                                '<Button'
-                              ),
-                              ' ',
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 'na' },
-                                'onClick='
-                              ),
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 's' },
-                                "function () {alert('Button')}"
-                              ),
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 'nt' },
-                                '>'
-                              ),
-                              'Button',
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 'nt' },
-                                '</Button>'
-                              )
-                            )
-                          )
-                        )
-                      )
-                    )
-                  )
-                )
-              )
-            )
-          ),
-          _react2['default'].createElement(
-            'div',
-            { className: 'rs-row' },
-            _react2['default'].createElement(
-              'div',
-              { className: 'span-3' },
-              _react2['default'].createElement(
-                'h5',
-                null,
-                'enabled'
-              ),
-              _react2['default'].createElement(
-                'p',
-                null,
-                _react2['default'].createElement(
-                  'code',
-                  null,
-                  'enabled'
-                ),
-                ' takes a boolean value (',
-                _react2['default'].createElement(
-                  'code',
-                  null,
-                  'true'
-                ),
-                ' by default) that toggles whether or not the button is disabled. When ',
-                _react2['default'].createElement(
-                  'code',
-                  null,
-                  'enabled'
-                ),
-                ' is ',
-                _react2['default'].createElement(
-                  'code',
-                  null,
-                  'false'
-                ),
-                ' the ',
-                _react2['default'].createElement(
-                  'code',
-                  null,
-                  'onClick'
-                ),
-                ' function will not be executed.'
-              )
-            ),
-            _react2['default'].createElement(
-              'div',
-              { className: 'span-8 offset-1' },
-              _react2['default'].createElement(
-                'h4',
-                null,
-                'Example'
-              ),
-              _react2['default'].createElement(
-                'div',
-                null,
-                _react2['default'].createElement(
-                  'table',
-                  null,
-                  _react2['default'].createElement(
-                    'thead',
-                    null,
-                    _react2['default'].createElement(
-                      'tr',
-                      null,
-                      _react2['default'].createElement(
-                        'th',
-                        null,
-                        'Component'
-                      ),
-                      _react2['default'].createElement(
-                        'th',
-                        null,
-                        'Source'
-                      )
-                    )
-                  ),
-                  _react2['default'].createElement(
-                    'tbody',
-                    null,
-                    _react2['default'].createElement(
-                      'tr',
-                      null,
-                      _react2['default'].createElement(
-                        'td',
-                        null,
-                        _react2['default'].createElement(
-                          _Button2['default'],
-                          { onClick: function () {
-                              alert('Enabled');
-                            }, enabled: true },
-                          'Enabled'
-                        )
-                      ),
-                      _react2['default'].createElement(
-                        'td',
-                        null,
-                        _react2['default'].createElement(
-                          'div',
-                          { className: 'highlight' },
-                          _react2['default'].createElement(
-                            'pre',
-                            null,
-                            _react2['default'].createElement(
-                              'code',
-                              { className: 'html' },
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 'nt' },
-                                '<Button'
-                              ),
-                              ' ',
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 'na' },
-                                'onClick='
-                              ),
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 's' },
-                                "function () {alert('Enabled')}"
-                              ),
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 'nt' },
-                                '>'
-                              ),
-                              'Enabled',
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 'nt' },
-                                '</Button>'
-                              )
-                            )
-                          )
-                        )
-                      )
-                    ),
-                    _react2['default'].createElement(
-                      'tr',
-                      null,
-                      _react2['default'].createElement(
-                        'td',
-                        null,
-                        _react2['default'].createElement(
-                          _Button2['default'],
-                          { onClick: function () {
-                              alert('Disabled');
-                            }, enabled: false },
-                          'Disabled'
-                        )
-                      ),
-                      _react2['default'].createElement(
-                        'td',
-                        null,
-                        _react2['default'].createElement(
-                          'div',
-                          { className: 'highlight' },
-                          _react2['default'].createElement(
-                            'pre',
-                            null,
-                            _react2['default'].createElement(
-                              'code',
-                              { className: 'html' },
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 'nt' },
-                                '<Button'
-                              ),
-                              ' ',
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 'na' },
-                                'onClick='
-                              ),
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 's' },
-                                "function () {alert('Disabled')}"
-                              ),
-                              ' ',
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 'na' },
-                                'enabled='
-                              ),
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 's' },
-                                "{false}"
-                              ),
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 'nt' },
-                                '>'
-                              ),
-                              'Disabled',
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 'nt' },
-                                '</Button>'
-                              )
-                            )
-                          )
-                        )
-                      )
-                    )
-                  )
-                )
-              )
-            )
-          ),
-          _react2['default'].createElement(
-            'div',
-            { className: 'rs-row' },
-            _react2['default'].createElement(
-              'div',
-              { className: 'span-3' },
-              _react2['default'].createElement(
-                'h5',
-                null,
-                'hidden'
-              ),
-              _react2['default'].createElement(
-                'p',
-                null,
-                _react2['default'].createElement(
-                  'code',
-                  null,
-                  'hidden'
-                ),
-                ' takes a boolean value (',
-                _react2['default'].createElement(
-                  'code',
-                  null,
-                  'false'
-                ),
-                ' by default) that toggles whether or not the button is visible.'
-              )
-            ),
-            _react2['default'].createElement(
-              'div',
-              { className: 'span-8 offset-1' },
-              _react2['default'].createElement(
-                'h4',
-                null,
-                'Example'
-              ),
-              _react2['default'].createElement(
-                'div',
-                null,
-                _react2['default'].createElement(
-                  'table',
-                  null,
-                  _react2['default'].createElement(
-                    'thead',
-                    null,
-                    _react2['default'].createElement(
-                      'tr',
-                      null,
-                      _react2['default'].createElement(
-                        'th',
-                        null,
-                        'Component'
-                      ),
-                      _react2['default'].createElement(
-                        'th',
-                        null,
-                        'Source'
-                      )
-                    )
-                  ),
-                  _react2['default'].createElement(
-                    'tbody',
-                    null,
-                    _react2['default'].createElement(
-                      'tr',
-                      null,
-                      _react2['default'].createElement(
-                        'td',
-                        null,
-                        _react2['default'].createElement(
-                          _Button2['default'],
-                          { onClick: function () {
-                              alert('Visible');
-                            } },
-                          'Visible'
-                        )
-                      ),
-                      _react2['default'].createElement(
-                        'td',
-                        null,
-                        _react2['default'].createElement(
-                          'div',
-                          { className: 'highlight' },
-                          _react2['default'].createElement(
-                            'pre',
-                            null,
-                            _react2['default'].createElement(
-                              'code',
-                              { className: 'html' },
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 'nt' },
-                                '<Button'
-                              ),
-                              ' ',
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 'na' },
-                                'onClick='
-                              ),
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 's' },
-                                "function () {alert('Visible')}"
-                              ),
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 'nt' },
-                                '>'
-                              ),
-                              'Visible',
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 'nt' },
-                                '</Button>'
-                              )
-                            )
-                          )
-                        )
-                      )
-                    ),
-                    _react2['default'].createElement(
-                      'tr',
-                      null,
-                      _react2['default'].createElement(
-                        'td',
-                        null,
-                        _react2['default'].createElement(
-                          _Button2['default'],
-                          { hidden: true, onClick: function () {
-                              alert('Hidden');
-                            } },
-                          'Hidden'
-                        )
-                      ),
-                      _react2['default'].createElement(
-                        'td',
-                        null,
-                        _react2['default'].createElement(
-                          'div',
-                          { className: 'highlight' },
-                          _react2['default'].createElement(
-                            'pre',
-                            null,
-                            _react2['default'].createElement(
-                              'code',
-                              { className: 'html' },
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 'nt' },
-                                '<Button'
-                              ),
-                              ' ',
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 'na' },
-                                'onClick='
-                              ),
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 's' },
-                                "function () {alert('Hidden')}"
-                              ),
-                              ' ',
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 'na' },
-                                'hidden='
-                              ),
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 's' },
-                                '"',
-                                true,
-                                '"'
-                              ),
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 'nt' },
-                                '>'
-                              ),
-                              'Hidden',
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 'nt' },
-                                '</Button>'
-                              )
-                            )
-                          )
-                        )
-                      )
-                    )
-                  )
-                )
-              )
-            )
-          ),
-          _react2['default'].createElement(
-            'div',
-            { className: 'rs-row' },
-            _react2['default'].createElement(
-              'div',
-              { className: 'span-3' },
-              _react2['default'].createElement(
-                'h5',
-                null,
-                'type'
-              ),
-              _react2['default'].createElement(
-                'p',
-                null,
-                _react2['default'].createElement(
-                  'code',
-                  null,
-                  'type'
-                ),
-                ' takes a string value (',
-                _react2['default'].createElement(
-                  'code',
-                  null,
-                  '\'secondary\''
-                ),
-                ' by default) that controls the look and feel of the button. The following types are supported:'
-              ),
-              _react2['default'].createElement(
-                'p',
-                null,
-                _react2['default'].createElement(
-                  'ul',
-                  null,
-                  _react2['default'].createElement(
-                    'li',
-                    null,
-                    _react2['default'].createElement(
-                      'code',
-                      null,
-                      '\'primary\''
-                    )
-                  ),
-                  _react2['default'].createElement(
-                    'li',
-                    null,
-                    _react2['default'].createElement(
-                      'code',
-                      null,
-                      '\'secondary\''
-                    )
-                  ),
-                  _react2['default'].createElement(
-                    'li',
-                    null,
-                    _react2['default'].createElement(
-                      'code',
-                      null,
-                      '\'link\''
-                    )
-                  ),
-                  _react2['default'].createElement(
-                    'li',
-                    null,
-                    _react2['default'].createElement(
-                      'code',
-                      null,
-                      '\'login\''
-                    )
-                  ),
-                  _react2['default'].createElement(
-                    'li',
-                    null,
-                    _react2['default'].createElement(
-                      'code',
-                      null,
-                      '\'cog\''
-                    )
-                  ),
-                  _react2['default'].createElement(
-                    'li',
-                    null,
-                    _react2['default'].createElement(
-                      'code',
-                      null,
-                      '\'delete\''
-                    )
-                  ),
-                  _react2['default'].createElement(
-                    'li',
-                    null,
-                    _react2['default'].createElement(
-                      'code',
-                      null,
-                      '\'edit\''
-                    )
-                  ),
-                  _react2['default'].createElement(
-                    'li',
-                    null,
-                    _react2['default'].createElement(
-                      'code',
-                      null,
-                      '\'plus\''
-                    )
-                  )
-                )
-              )
-            ),
-            _react2['default'].createElement(
-              'div',
-              { className: 'span-8 offset-1' },
-              _react2['default'].createElement(
-                'h4',
-                null,
-                'Example'
-              ),
-              _react2['default'].createElement(
-                'div',
-                null,
-                _react2['default'].createElement(
-                  'table',
-                  null,
-                  _react2['default'].createElement(
-                    'thead',
-                    null,
-                    _react2['default'].createElement(
-                      'tr',
-                      null,
-                      _react2['default'].createElement(
-                        'th',
-                        null,
-                        'Component'
-                      ),
-                      _react2['default'].createElement(
-                        'th',
-                        null,
-                        'Source'
-                      )
-                    )
-                  ),
-                  _react2['default'].createElement(
-                    'tbody',
-                    null,
-                    _react2['default'].createElement(
-                      'tr',
-                      null,
-                      _react2['default'].createElement(
-                        'td',
-                        null,
-                        _react2['default'].createElement(
-                          _Button2['default'],
-                          { type: 'primary', onClick: function () {
-                              alert('Primary');
-                            } },
-                          'Primary'
-                        )
-                      ),
-                      _react2['default'].createElement(
-                        'td',
-                        null,
-                        _react2['default'].createElement(
-                          'div',
-                          { className: 'highlight' },
-                          _react2['default'].createElement(
-                            'pre',
-                            null,
-                            _react2['default'].createElement(
-                              'code',
-                              { className: 'html' },
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 'nt' },
-                                '<Button'
-                              ),
-                              ' ',
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 'na' },
-                                'onClick='
-                              ),
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 's' },
-                                "function () {alert('Primary')}"
-                              ),
-                              ' ',
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 'na' },
-                                'type='
-                              ),
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 's' },
-                                '"primary"'
-                              ),
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 'nt' },
-                                '>'
-                              ),
-                              'Primary',
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 'nt' },
-                                '</Button>'
-                              )
-                            )
-                          )
-                        )
-                      )
-                    ),
-                    _react2['default'].createElement(
-                      'tr',
-                      null,
-                      _react2['default'].createElement(
-                        'td',
-                        null,
-                        _react2['default'].createElement(
-                          _Button2['default'],
-                          { type: 'secondary', onClick: function () {
-                              alert('Secondary');
-                            } },
-                          'Secondary'
-                        )
-                      ),
-                      _react2['default'].createElement(
-                        'td',
-                        null,
-                        _react2['default'].createElement(
-                          'div',
-                          { className: 'highlight' },
-                          _react2['default'].createElement(
-                            'pre',
-                            null,
-                            _react2['default'].createElement(
-                              'code',
-                              { className: 'html' },
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 'nt' },
-                                '<Button'
-                              ),
-                              ' ',
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 'na' },
-                                'onClick='
-                              ),
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 's' },
-                                "function () {alert('Secondary')}"
-                              ),
-                              ' ',
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 'na' },
-                                'type='
-                              ),
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 's' },
-                                '"secondary"'
-                              ),
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 'nt' },
-                                '>'
-                              ),
-                              'Secondary',
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 'nt' },
-                                '</Button>'
-                              )
-                            )
-                          )
-                        )
-                      )
-                    ),
-                    _react2['default'].createElement(
-                      'tr',
-                      null,
-                      _react2['default'].createElement(
-                        'td',
-                        null,
-                        _react2['default'].createElement(
-                          _Button2['default'],
-                          { type: 'link', onClick: function () {
-                              alert('Link');
-                            } },
-                          'Link'
-                        )
-                      ),
-                      _react2['default'].createElement(
-                        'td',
-                        null,
-                        _react2['default'].createElement(
-                          'div',
-                          { className: 'highlight' },
-                          _react2['default'].createElement(
-                            'pre',
-                            null,
-                            _react2['default'].createElement(
-                              'code',
-                              { className: 'html' },
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 'nt' },
-                                '<Button'
-                              ),
-                              ' ',
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 'na' },
-                                'onClick='
-                              ),
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 's' },
-                                "function () {alert('Link')}"
-                              ),
-                              ' ',
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 'na' },
-                                'type='
-                              ),
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 's' },
-                                '"link"'
-                              ),
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 'nt' },
-                                '>'
-                              ),
-                              'Link',
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 'nt' },
-                                '</Button>'
-                              )
-                            )
-                          )
-                        )
-                      )
-                    ),
-                    _react2['default'].createElement(
-                      'tr',
-                      null,
-                      _react2['default'].createElement(
-                        'td',
-                        null,
-                        _react2['default'].createElement(
-                          _Button2['default'],
-                          { type: 'login', onClick: function () {
-                              alert('Login');
-                            } },
-                          'Login'
-                        )
-                      ),
-                      _react2['default'].createElement(
-                        'td',
-                        null,
-                        _react2['default'].createElement(
-                          'div',
-                          { className: 'highlight' },
-                          _react2['default'].createElement(
-                            'pre',
-                            null,
-                            _react2['default'].createElement(
-                              'code',
-                              { className: 'html' },
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 'nt' },
-                                '<Button'
-                              ),
-                              ' ',
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 'na' },
-                                'onClick='
-                              ),
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 's' },
-                                "function () {alert('Login')}"
-                              ),
-                              ' ',
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 'na' },
-                                'type='
-                              ),
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 's' },
-                                '"login"'
-                              ),
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 'nt' },
-                                '>'
-                              ),
-                              'Login',
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 'nt' },
-                                '</Button>'
-                              )
-                            )
-                          )
-                        )
-                      )
-                    ),
-                    _react2['default'].createElement(
-                      'tr',
-                      null,
-                      _react2['default'].createElement(
-                        'td',
-                        null,
-                        _react2['default'].createElement(
-                          _Button2['default'],
-                          { type: 'cog', onClick: function () {
-                              alert('Cog');
-                            } },
-                          'Cog'
-                        )
-                      ),
-                      _react2['default'].createElement(
-                        'td',
-                        null,
-                        _react2['default'].createElement(
-                          'div',
-                          { className: 'highlight' },
-                          _react2['default'].createElement(
-                            'pre',
-                            null,
-                            _react2['default'].createElement(
-                              'code',
-                              { className: 'html' },
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 'nt' },
-                                '<Button'
-                              ),
-                              ' ',
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 'na' },
-                                'onClick='
-                              ),
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 's' },
-                                "function () {alert('Cog')}"
-                              ),
-                              ' ',
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 'na' },
-                                'type='
-                              ),
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 's' },
-                                '"cog"'
-                              ),
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 'nt' },
-                                '>'
-                              ),
-                              'Cog',
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 'nt' },
-                                '</Button>'
-                              )
-                            )
-                          )
-                        )
-                      )
-                    ),
-                    _react2['default'].createElement(
-                      'tr',
-                      null,
-                      _react2['default'].createElement(
-                        'td',
-                        null,
-                        _react2['default'].createElement(
-                          _Button2['default'],
-                          { type: 'delete', onClick: function () {
-                              alert('Delete');
-                            } },
-                          'Delete'
-                        )
-                      ),
-                      _react2['default'].createElement(
-                        'td',
-                        null,
-                        _react2['default'].createElement(
-                          'div',
-                          { className: 'highlight' },
-                          _react2['default'].createElement(
-                            'pre',
-                            null,
-                            _react2['default'].createElement(
-                              'code',
-                              { className: 'html' },
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 'nt' },
-                                '<Button'
-                              ),
-                              ' ',
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 'na' },
-                                'onClick='
-                              ),
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 's' },
-                                "function () {alert('Delete')}"
-                              ),
-                              ' ',
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 'na' },
-                                'type='
-                              ),
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 's' },
-                                '"delete"'
-                              ),
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 'nt' },
-                                '>'
-                              ),
-                              'Delete',
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 'nt' },
-                                '</Button>'
-                              )
-                            )
-                          )
-                        )
-                      )
-                    ),
-                    _react2['default'].createElement(
-                      'tr',
-                      null,
-                      _react2['default'].createElement(
-                        'td',
-                        null,
-                        _react2['default'].createElement(
-                          _Button2['default'],
-                          { type: 'edit', onClick: function () {
-                              alert('Edit');
-                            } },
-                          'Edit'
-                        )
-                      ),
-                      _react2['default'].createElement(
-                        'td',
-                        null,
-                        _react2['default'].createElement(
-                          'div',
-                          { className: 'highlight' },
-                          _react2['default'].createElement(
-                            'pre',
-                            null,
-                            _react2['default'].createElement(
-                              'code',
-                              { className: 'html' },
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 'nt' },
-                                '<Button'
-                              ),
-                              ' ',
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 'na' },
-                                'onClick='
-                              ),
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 's' },
-                                "function () {alert('Edit')}"
-                              ),
-                              ' ',
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 'na' },
-                                'type='
-                              ),
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 's' },
-                                '"edit"'
-                              ),
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 'nt' },
-                                '>'
-                              ),
-                              'Edit',
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 'nt' },
-                                '</Button>'
-                              )
-                            )
-                          )
-                        )
-                      )
-                    ),
-                    _react2['default'].createElement(
-                      'tr',
-                      null,
-                      _react2['default'].createElement(
-                        'td',
-                        null,
-                        _react2['default'].createElement(
-                          _Button2['default'],
-                          { type: 'plus', onClick: function () {
-                              alert('Plus');
-                            } },
-                          'Plus'
-                        )
-                      ),
-                      _react2['default'].createElement(
-                        'td',
-                        null,
-                        _react2['default'].createElement(
-                          'div',
-                          { className: 'highlight' },
-                          _react2['default'].createElement(
-                            'pre',
-                            null,
-                            _react2['default'].createElement(
-                              'code',
-                              { className: 'html' },
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 'nt' },
-                                '<Button'
-                              ),
-                              ' ',
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 'na' },
-                                'onClick='
-                              ),
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 's' },
-                                "function () {alert('Plus')}"
-                              ),
-                              ' ',
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 'na' },
-                                'type='
-                              ),
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 's' },
-                                '"plus"'
-                              ),
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 'nt' },
-                                '>'
-                              ),
-                              'Plus',
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 'nt' },
-                                '</Button>'
-                              )
-                            )
-                          )
-                        )
-                      )
-                    )
-                  )
-                )
-              )
-            )
-          )
-        )
-      );
-    }
-  }]);
-
-  return ButtonsSection;
-})(_react2['default'].Component);
-
-exports['default'] = ButtonsSection;
-module.exports = exports['default'];
-
-},{"../Button":195,"babel-runtime/helpers/class-call-check":6,"babel-runtime/helpers/create-class":7,"babel-runtime/helpers/get":9,"babel-runtime/helpers/inherits":10,"babel-runtime/helpers/interop-require-default":11,"react":193}],208:[function(require,module,exports){
-'use strict';
-
-var _get = require('babel-runtime/helpers/get')['default'];
-
-var _inherits = require('babel-runtime/helpers/inherits')['default'];
-
-var _createClass = require('babel-runtime/helpers/create-class')['default'];
-
-var _classCallCheck = require('babel-runtime/helpers/class-call-check')['default'];
-
-var _interopRequireDefault = require('babel-runtime/helpers/interop-require-default')['default'];
-
-Object.defineProperty(exports, '__esModule', {
-  value: true
-});
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _Button = require('../Button');
-
-var _Button2 = _interopRequireDefault(_Button);
-
-var _Popover = require('../Popover');
-
-var _Popover2 = _interopRequireDefault(_Popover);
-
-var _PopoverOverlay = require('../PopoverOverlay');
-
-var _PopoverOverlay2 = _interopRequireDefault(_PopoverOverlay);
-
-var _PopoverBody = require('../PopoverBody');
-
-var _PopoverBody2 = _interopRequireDefault(_PopoverBody);
-
-var _PopoverFooter = require('../PopoverFooter');
-
-var _PopoverFooter2 = _interopRequireDefault(_PopoverFooter);
-
-var UpdateNamePopover = (function (_React$Component) {
-  _inherits(UpdateNamePopover, _React$Component);
-
-  function UpdateNamePopover() {
-    _classCallCheck(this, UpdateNamePopover);
-
-    _get(Object.getPrototypeOf(UpdateNamePopover.prototype), 'constructor', this).apply(this, arguments);
-  }
-
-  _createClass(UpdateNamePopover, [{
-    key: 'render',
-    value: function render() {
-      return _react2['default'].createElement(
-        _Popover2['default'],
-        { placement: this.props.placement,
-          isOpen: this.props.isOpen,
-          target: this.props.target,
-          onRequestClose: this.props.onRequestClose },
-        _react2['default'].createElement(
-          _PopoverOverlay2['default'],
-          null,
-          _react2['default'].createElement(
-            _PopoverBody2['default'],
-            null,
-            _react2['default'].createElement(
-              'form',
-              null,
-              _react2['default'].createElement(
-                'label',
-                null,
-                'Name'
-              ),
-              _react2['default'].createElement('input', { type: 'text' })
-            )
-          ),
-          _react2['default'].createElement(
-            _PopoverFooter2['default'],
-            null,
-            _react2['default'].createElement(
-              _Button2['default'],
-              { type: 'primary', onClick: this.props.onRequestClose },
-              'Save'
-            ),
-            _react2['default'].createElement(
-              _Button2['default'],
-              { type: 'link', onClick: this.props.onRequestClose },
-              'Cancel'
-            )
-          )
-        )
-      );
-    }
-  }]);
-
-  return UpdateNamePopover;
-})(_react2['default'].Component);
-
-var PopoverParent = (function (_React$Component2) {
-  _inherits(PopoverParent, _React$Component2);
-
-  function PopoverParent() {
-    _classCallCheck(this, PopoverParent);
-
-    _get(Object.getPrototypeOf(PopoverParent.prototype), 'constructor', this).call(this);
-    this.state = {
-      shouldShowUpdateNamePopover: false
-    };
-  }
-
-  _createClass(PopoverParent, [{
-    key: 'showUpdateNamePopover',
-    value: function showUpdateNamePopover() {
-      this.setState({ shouldShowUpdateNamePopover: true });
-    }
-  }, {
-    key: 'requestUpdateNameClose',
-    value: function requestUpdateNameClose() {
-      this.setState({ shouldShowUpdateNamePopover: false });
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      return _react2['default'].createElement(
-        'div',
-        null,
-        _react2['default'].createElement(
-          _Button2['default'],
-          { id: 'update-name-button', type: 'primary', onClick: this.showUpdateNamePopover.bind(this) },
-          'Update Name'
-        ),
-        _react2['default'].createElement(UpdateNamePopover, { placement: 'right',
-          target: 'update-name-button',
-          onRequestClose: this.requestUpdateNameClose.bind(this),
-          isOpen: this.state.shouldShowUpdateNamePopover })
-      );
-    }
-  }]);
-
-  return PopoverParent;
-})(_react2['default'].Component);
-
-var PopoverSection = (function (_React$Component3) {
-  _inherits(PopoverSection, _React$Component3);
-
-  function PopoverSection() {
-    _classCallCheck(this, PopoverSection);
-
-    _get(Object.getPrototypeOf(PopoverSection.prototype), 'constructor', this).apply(this, arguments);
-  }
-
-  _createClass(PopoverSection, [{
-    key: 'render',
-    value: function render() {
-      return _react2['default'].createElement(
-        'div',
-        { className: 'website-content-section' },
-        _react2['default'].createElement(
-          'div',
-          { className: 'content-section-body' },
-          _react2['default'].createElement(
-            'div',
-            { className: 'rs-row' },
-            _react2['default'].createElement(
-              'p',
-              null,
-              _react2['default'].createElement(
-                'a',
-                { href: 'http://rackerlabs.github.io/canon/ui-components/#popover', target: '_blank' },
-                'Popovers'
-              ),
-              ' are used to display more information or to perform some action on an entity.'
-            )
-          ),
-          _react2['default'].createElement(
-            'div',
-            { className: 'rs-row' },
-            _react2['default'].createElement(
-              'h3',
-              null,
-              'Components'
-            ),
-            _react2['default'].createElement(
-              'ul',
-              null,
-              _react2['default'].createElement(
-                'li',
-                null,
-                _react2['default'].createElement(
-                  'code',
-                  null,
-                  'Popover'
-                )
-              ),
-              _react2['default'].createElement(
-                'li',
-                null,
-                _react2['default'].createElement(
-                  'code',
-                  null,
-                  'PopoverOverlay'
-                )
-              ),
-              _react2['default'].createElement(
-                'li',
-                null,
-                _react2['default'].createElement(
-                  'code',
-                  null,
-                  'PopoverBody'
-                )
-              ),
-              _react2['default'].createElement(
-                'li',
-                null,
-                _react2['default'].createElement(
-                  'code',
-                  null,
-                  'PopoverFooter'
-                )
-              )
-            )
-          ),
-          _react2['default'].createElement(
-            'div',
-            { className: 'rs-row' },
-            _react2['default'].createElement(
-              'h5',
-              null,
-              _react2['default'].createElement(
-                'code',
-                null,
-                'Popover'
-              )
-            ),
-            _react2['default'].createElement(
-              'p',
-              null,
-              'The ',
-              _react2['default'].createElement(
-                'code',
-                null,
-                'Popover'
-              ),
-              ' component controls the behavior of the popover itself (positioning, open/closed, request for close, etc.). The ',
-              _react2['default'].createElement(
-                'code',
-                null,
-                'Popover'
-              ),
-              ' has four properties:'
-            ),
-            _react2['default'].createElement(
-              'ul',
-              null,
-              _react2['default'].createElement(
-                'li',
-                null,
-                _react2['default'].createElement(
-                  'code',
-                  null,
-                  'placement'
-                )
-              ),
-              _react2['default'].createElement(
-                'li',
-                null,
-                _react2['default'].createElement(
-                  'code',
-                  null,
-                  'isOpen'
-                )
-              ),
-              _react2['default'].createElement(
-                'li',
-                null,
-                _react2['default'].createElement(
-                  'code',
-                  null,
-                  'onRequestClose'
-                )
-              ),
-              _react2['default'].createElement(
-                'li',
-                null,
-                _react2['default'].createElement(
-                  'code',
-                  null,
-                  'target'
-                )
-              ),
-              _react2['default'].createElement(
-                'li',
-                null,
-                _react2['default'].createElement(
-                  'code',
-                  null,
-                  'offset'
-                )
-              )
-            ),
-            _react2['default'].createElement(
-              'h6',
-              null,
-              _react2['default'].createElement(
-                'code',
-                null,
-                'placement'
-              )
-            ),
-            _react2['default'].createElement(
-              'p',
-              null,
-              _react2['default'].createElement(
-                'code',
-                null,
-                'placement'
-              ),
-              ' defines the position of the popover in relation to its target. The following values are allowed:'
-            ),
-            _react2['default'].createElement(
-              'ul',
-              null,
-              _react2['default'].createElement(
-                'li',
-                null,
-                _react2['default'].createElement(
-                  'code',
-                  null,
-                  'right'
-                )
-              ),
-              _react2['default'].createElement(
-                'li',
-                null,
-                _react2['default'].createElement(
-                  'code',
-                  null,
-                  'bottom-right'
-                )
-              ),
-              _react2['default'].createElement(
-                'li',
-                null,
-                _react2['default'].createElement(
-                  'code',
-                  null,
-                  'left'
-                )
-              ),
-              _react2['default'].createElement(
-                'li',
-                null,
-                _react2['default'].createElement(
-                  'code',
-                  null,
-                  'bottom-left'
-                )
-              ),
-              _react2['default'].createElement(
-                'li',
-                null,
-                _react2['default'].createElement(
-                  'code',
-                  null,
-                  'center'
-                )
-              )
-            ),
-            _react2['default'].createElement(
-              'p',
-              null,
-              _react2['default'].createElement(
-                'code',
-                null,
-                'center'
-              ),
-              ' behaves slightly differently than the other placement properties. The popover is placed over the center of the target element and no arrow is rendered. This positioning is useful for modal like behavior where the target is the document body.'
-            ),
-            _react2['default'].createElement(
-              'h6',
-              null,
-              _react2['default'].createElement(
-                'code',
-                null,
-                'isOpen'
-              )
-            ),
-            _react2['default'].createElement(
-              'p',
-              null,
-              _react2['default'].createElement(
-                'code',
-                null,
-                'isOpen'
-              ),
-              ' accepts boolean values and defines whether or not the popover is open or clsoed. It is up to the parent component to decide whether or not a popover should be displayed. This is necessary to allow for such things as allowing the processing of a command to finish before closing a popover.'
-            ),
-            _react2['default'].createElement(
-              'h6',
-              null,
-              _react2['default'].createElement(
-                'code',
-                null,
-                'onRequestClose'
-              )
-            ),
-            _react2['default'].createElement(
-              'p',
-              null,
-              _react2['default'].createElement(
-                'code',
-                null,
-                'onRequestClose'
-              ),
-              ' is a callback that is used to notify a parent component that some action has occured requesting the closing of a popover. This could be the clicking of a cancel link on the popover, pressing the escape key, or clicking off of the popover. The popover itself will monitor events for the escape key and clicking outside of the popover and will invoke the request close callback at such time.'
-            ),
-            _react2['default'].createElement(
-              'h6',
-              null,
-              _react2['default'].createElement(
-                'code',
-                null,
-                'target'
-              )
-            ),
-            _react2['default'].createElement(
-              'p',
-              null,
-              _react2['default'].createElement(
-                'code',
-                null,
-                'target'
-              ),
-              ' accepts either a string ID or a function that returns the element at which the popover will be pointing.'
-            ),
-            _react2['default'].createElement(
-              'h6',
-              null,
-              _react2['default'].createElement(
-                'code',
-                null,
-                'offset'
-              )
-            ),
-            _react2['default'].createElement(
-              'p',
-              null,
-              'canon-react uses ',
-              _react2['default'].createElement(
-                'a',
-                { href: 'http://tether.io/', target: '_blank' },
-                'tether.io'
-              ),
-              ' for positioning of the popover. The popover component has an `offset` property that when specified will override the default offsets that canon-react is using to configure the tether. This property accepts a string in the same format that tether accepts.'
-            ),
-            _react2['default'].createElement(
-              'h5',
-              null,
-              _react2['default'].createElement(
-                'code',
-                null,
-                'PopoverOverlay'
-              )
-            ),
-            _react2['default'].createElement(
-              'p',
-              null,
-              'The ',
-              _react2['default'].createElement(
-                'code',
-                null,
-                'PopoverOverlay'
-              ),
-              ' component renders the outer markup of a popover, as well as the arrow of the popover. It accepts a ',
-              _react2['default'].createElement(
-                'code',
-                null,
-                'placement'
-              ),
-              ' prop (passed to it from the ',
-              _react2['default'].createElement(
-                'code',
-                null,
-                'Popover'
-              ),
-              ') which is used to determine the position of the arrow relative to the target at which the popover will be pointing. The values accepted are the same as those of the ',
-              _react2['default'].createElement(
-                'code',
-                null,
-                'Popover'
-              ),
-              '.'
-            ),
-            _react2['default'].createElement(
-              'h5',
-              null,
-              _react2['default'].createElement(
-                'code',
-                null,
-                'PopoverBody'
-              ),
-              ' and ',
-              _react2['default'].createElement(
-                'code',
-                null,
-                'PopoverFooter'
-              )
-            ),
-            _react2['default'].createElement(
-              'p',
-              null,
-              'These components should be used together when displaying a popover that will do some sort of form processing. If a popover is only being used to display information, these components aren\'t needed. The body and footer components simply wrap their children in the appropriate markup for a popover form. They don\'t do any special processing of the children to be rendered. any change of state of buttons rendered in the footer is the responsibilitiy of the consumer to update. This allows for greater flexibility of the what the body and footer can be composed of.'
-            )
-          ),
-          _react2['default'].createElement(
-            'div',
-            { className: 'rs-row' },
-            _react2['default'].createElement(
-              'h3',
-              null,
-              'Popover Example'
-            ),
-            _react2['default'].createElement(
-              'p',
-              null,
-              'A popover rendered to the right of the button:'
-            ),
-            _react2['default'].createElement(PopoverParent, null),
-            _react2['default'].createElement(
-              'h6',
-              null,
-              'Rendering the popover and trigger'
-            ),
-            _react2['default'].createElement(
-              'p',
-              null,
-              _react2['default'].createElement(
-                'pre',
-                null,
-                _react2['default'].createElement(
-                  'code',
-                  { className: 'html' },
-                  "var PopoverParent = React.createClass({\n" + "  showUpdateNamePopover: function () {\n" + "    this.setState({shouldShowUpdateNamePopover: true});\n" + "  },\n\n" + "  hideUpdateNamePopover: function () {\n" + "    this.setState({shouldShowUpdateNamePopover: false});\n" + "  },\n\n" + "  requestUpdateNameClose: function () {\n" + "    // if a request is not processing\n" + "    this.hideUpdateNamePopover();\n" + "  },\n\n" + "  render: function () {\n" + "    return (\n" + "      <div>\n" + "        <Button id='update-name-button' onClick={this.showUpdateNamePopover}>Update Name</Button>\n" + "        <UpdateNamePopover placement='right'\n" + "         isOpen={this.state.shouldShowUpdateNamePopover}\n" + "         onRequestClose={this.requestUpdateNameClose}\n" + "         target='update-name-button' />\n" + "      </div>\n" + "    );\n" + "  }\n" + "});"
-                )
-              )
-            ),
-            _react2['default'].createElement(
-              'h6',
-              null,
-              'Update Name Popover'
-            ),
-            _react2['default'].createElement(
-              'p',
-              null,
-              _react2['default'].createElement(
-                'pre',
-                null,
-                _react2['default'].createElement(
-                  'code',
-                  { className: 'html' },
-                  "var UpdateNamePopover = React.createClass({\n" + "  _processSave: function () {\n" + "    // perform the action needed to process the input of this form.\n" + "    // this will trigger a state update to indicate the action is processing.\n" + "    // this can be done through callbacks or with stores.\n" + "  },\n\n" + "  render: function () {\n" + "    return (\n" + "      <Popover placement={this.props.placement}\n" + "       isOpen={this.props.isOpen}\n" + "       onRequestClose={this.props.onRequestClose}\n" + "       target={this.props.target}>\n" + "        <PopoverOverlay>\n" + "         <PopoverBody>\n" + "           <form>\n" + "             <label>Name</label>\n" + "             <input type='text' />\n" + "           </form>\n" + "         </PopoverBody>\n" + "         <PopoverFooter>\n" + "           <Button type='primary' onClick={this._processSave}>Save</Button>\n" + "           <Button type='link' onClick={this.props.onRequestClose}>Cancel</Button>\n" + "           <ProcessingIndicator />\n" + "         </PopoverFooter>\n" + "        </PopoverOverlay>\n" + "      </Popover>\n" + "    );\n" + "  }\n" + "});"
-                )
-              )
-            )
-          )
-        )
-      );
-    }
-  }]);
-
-  return PopoverSection;
-})(_react2['default'].Component);
-
-exports['default'] = PopoverSection;
-module.exports = exports['default'];
-
-},{"../Button":195,"../Popover":197,"../PopoverBody":199,"../PopoverFooter":200,"../PopoverOverlay":201,"babel-runtime/helpers/class-call-check":6,"babel-runtime/helpers/create-class":7,"babel-runtime/helpers/get":9,"babel-runtime/helpers/inherits":10,"babel-runtime/helpers/interop-require-default":11,"react":193}],209:[function(require,module,exports){
+},{"babel-runtime/helpers/class-call-check":6,"babel-runtime/helpers/create-class":7,"babel-runtime/helpers/get":9,"babel-runtime/helpers/inherits":10,"babel-runtime/helpers/interop-require-default":11,"react":193,"tether":194}],215:[function(require,module,exports){
 'use strict';
 
 var React = require('react');
 
-var ProgressBar = require('../ProgressBar');
-
-var ProgressBarsSection = React.createClass({
-  displayName: 'ProgressBarsSection',
-
-  render: function render() {
-    return React.createElement(
-      'div',
-      { className: 'website-content-section' },
-      React.createElement(
-        'div',
-        { className: 'content-section-body' },
-        React.createElement(
-          'div',
-          { className: 'rs-row' },
-          React.createElement(
-            'p',
-            null,
-            React.createElement(
-              'a',
-              { href: 'http://rackerlabs.github.io/canon/ui-components/#progress-bars', target: '_blank' },
-              'Progress Bars'
-            ),
-            ' can be used to indicate both progress and state.'
-          )
-        ),
-        React.createElement(
-          'div',
-          { className: 'rs-row' },
-          React.createElement(
-            'h3',
-            null,
-            'Properties'
-          ),
-          React.createElement(
-            'ul',
-            null,
-            React.createElement(
-              'li',
-              null,
-              React.createElement(
-                'code',
-                null,
-                'progress'
-              )
-            ),
-            React.createElement(
-              'li',
-              null,
-              React.createElement(
-                'code',
-                null,
-                'status'
-              )
-            ),
-            React.createElement(
-              'li',
-              null,
-              React.createElement(
-                'code',
-                null,
-                'type'
-              )
-            ),
-            React.createElement(
-              'li',
-              null,
-              React.createElement(
-                'code',
-                null,
-                'size'
-              )
-            )
-          )
-        ),
-        React.createElement(
-          'div',
-          { className: 'rs-row' },
-          React.createElement(
-            'div',
-            { className: 'span-3' },
-            React.createElement(
-              'h5',
-              null,
-              'progress'
-            ),
-            React.createElement(
-              'p',
-              null,
-              React.createElement(
-                'code',
-                null,
-                'progress'
-              ),
-              ' takes a number between 0 and 100 that specifies the percentage of the data being represented.'
-            )
-          ),
-          React.createElement(
-            'div',
-            { className: 'span-8 offset-1' },
-            React.createElement(
-              'h4',
-              null,
-              'Example'
-            ),
-            React.createElement(
-              'div',
-              null,
-              React.createElement(
-                'table',
-                null,
-                React.createElement(
-                  'thead',
-                  null,
-                  React.createElement(
-                    'tr',
-                    null,
-                    React.createElement(
-                      'th',
-                      null,
-                      'Component'
-                    ),
-                    React.createElement(
-                      'th',
-                      null,
-                      'Source'
-                    )
-                  )
-                ),
-                React.createElement(
-                  'tbody',
-                  null,
-                  React.createElement(
-                    'tr',
-                    null,
-                    React.createElement(
-                      'td',
-                      null,
-                      React.createElement(ProgressBar, { progress: 60, status: 'info' })
-                    ),
-                    React.createElement(
-                      'td',
-                      null,
-                      React.createElement(
-                        'div',
-                        { className: 'highlight' },
-                        React.createElement(
-                          'pre',
-                          null,
-                          React.createElement(
-                            'code',
-                            { className: 'html' },
-                            React.createElement(
-                              'span',
-                              { className: 'nt' },
-                              '<ProgressBar'
-                            ),
-                            ' ',
-                            React.createElement(
-                              'span',
-                              { className: 'na' },
-                              'progress='
-                            ),
-                            React.createElement(
-                              'span',
-                              { className: 's' },
-                              '"60"'
-                            ),
-                            ' ',
-                            React.createElement(
-                              'span',
-                              { className: 'nt' },
-                              '/>'
-                            )
-                          )
-                        )
-                      )
-                    )
-                  )
-                )
-              )
-            )
-          )
-        ),
-        React.createElement(
-          'div',
-          { className: 'rs-row' },
-          React.createElement(
-            'div',
-            { className: 'span-3' },
-            React.createElement(
-              'h5',
-              null,
-              'status'
-            ),
-            React.createElement(
-              'p',
-              null,
-              React.createElement(
-                'code',
-                null,
-                'status'
-              ),
-              ' takes a string (',
-              React.createElement(
-                'code',
-                null,
-                'info'
-              ),
-              ' is the default) that specifies the state of the action that is in progress. Allowed Types are:'
-            ),
-            React.createElement(
-              'p',
-              null,
-              React.createElement(
-                'ul',
-                null,
-                React.createElement(
-                  'li',
-                  null,
-                  React.createElement(
-                    'code',
-                    null,
-                    'ok'
-                  )
-                ),
-                React.createElement(
-                  'li',
-                  null,
-                  React.createElement(
-                    'code',
-                    null,
-                    'error'
-                  )
-                ),
-                React.createElement(
-                  'li',
-                  null,
-                  React.createElement(
-                    'code',
-                    null,
-                    'warning'
-                  )
-                ),
-                React.createElement(
-                  'li',
-                  null,
-                  React.createElement(
-                    'code',
-                    null,
-                    'info'
-                  )
-                )
-              )
-            )
-          ),
-          React.createElement(
-            'div',
-            { className: 'span-8 offset-1' },
-            React.createElement(
-              'h4',
-              null,
-              'Example'
-            ),
-            React.createElement(
-              'div',
-              null,
-              React.createElement(
-                'table',
-                null,
-                React.createElement(
-                  'thead',
-                  null,
-                  React.createElement(
-                    'tr',
-                    null,
-                    React.createElement(
-                      'th',
-                      null,
-                      'Component'
-                    ),
-                    React.createElement(
-                      'th',
-                      null,
-                      'Source'
-                    )
-                  )
-                ),
-                React.createElement(
-                  'tbody',
-                  null,
-                  React.createElement(
-                    'tr',
-                    null,
-                    React.createElement(
-                      'td',
-                      null,
-                      React.createElement(ProgressBar, { progress: 60, status: 'ok' })
-                    ),
-                    React.createElement(
-                      'td',
-                      null,
-                      React.createElement(
-                        'div',
-                        { className: 'highlight' },
-                        React.createElement(
-                          'pre',
-                          null,
-                          React.createElement(
-                            'code',
-                            { className: 'html' },
-                            React.createElement(
-                              'span',
-                              { className: 'nt' },
-                              '<ProgressBar'
-                            ),
-                            ' ',
-                            React.createElement(
-                              'span',
-                              { className: 'na' },
-                              'progress='
-                            ),
-                            React.createElement(
-                              'span',
-                              { className: 's' },
-                              '"60"'
-                            ),
-                            ' ',
-                            React.createElement(
-                              'span',
-                              { className: 'na' },
-                              'status='
-                            ),
-                            React.createElement(
-                              'span',
-                              { className: 's' },
-                              '"ok"'
-                            ),
-                            ' ',
-                            React.createElement(
-                              'span',
-                              { className: 'nt' },
-                              '/>'
-                            )
-                          )
-                        )
-                      )
-                    )
-                  ),
-                  React.createElement(
-                    'tr',
-                    null,
-                    React.createElement(
-                      'td',
-                      null,
-                      React.createElement(ProgressBar, { progress: 60, status: 'error' })
-                    ),
-                    React.createElement(
-                      'td',
-                      null,
-                      React.createElement(
-                        'div',
-                        { className: 'highlight' },
-                        React.createElement(
-                          'pre',
-                          null,
-                          React.createElement(
-                            'code',
-                            { className: 'html' },
-                            React.createElement(
-                              'span',
-                              { className: 'nt' },
-                              '<ProgressBar'
-                            ),
-                            ' ',
-                            React.createElement(
-                              'span',
-                              { className: 'na' },
-                              'progress='
-                            ),
-                            React.createElement(
-                              'span',
-                              { className: 's' },
-                              '"60"'
-                            ),
-                            ' ',
-                            React.createElement(
-                              'span',
-                              { className: 'na' },
-                              'status='
-                            ),
-                            React.createElement(
-                              'span',
-                              { className: 's' },
-                              '"error"'
-                            ),
-                            ' ',
-                            React.createElement(
-                              'span',
-                              { className: 'nt' },
-                              '/>'
-                            )
-                          )
-                        )
-                      )
-                    )
-                  ),
-                  React.createElement(
-                    'tr',
-                    null,
-                    React.createElement(
-                      'td',
-                      null,
-                      React.createElement(ProgressBar, { progress: 60, status: 'warning' })
-                    ),
-                    React.createElement(
-                      'td',
-                      null,
-                      React.createElement(
-                        'div',
-                        { className: 'highlight' },
-                        React.createElement(
-                          'pre',
-                          null,
-                          React.createElement(
-                            'code',
-                            { className: 'html' },
-                            React.createElement(
-                              'span',
-                              { className: 'nt' },
-                              '<ProgressBar'
-                            ),
-                            ' ',
-                            React.createElement(
-                              'span',
-                              { className: 'na' },
-                              'progress='
-                            ),
-                            React.createElement(
-                              'span',
-                              { className: 's' },
-                              '"60"'
-                            ),
-                            ' ',
-                            React.createElement(
-                              'span',
-                              { className: 'na' },
-                              'status='
-                            ),
-                            React.createElement(
-                              'span',
-                              { className: 's' },
-                              '"warning"'
-                            ),
-                            ' ',
-                            React.createElement(
-                              'span',
-                              { className: 'nt' },
-                              '/>'
-                            )
-                          )
-                        )
-                      )
-                    )
-                  ),
-                  React.createElement(
-                    'tr',
-                    null,
-                    React.createElement(
-                      'td',
-                      null,
-                      React.createElement(ProgressBar, { progress: 60, status: 'info' })
-                    ),
-                    React.createElement(
-                      'td',
-                      null,
-                      React.createElement(
-                        'div',
-                        { className: 'highlight' },
-                        React.createElement(
-                          'pre',
-                          null,
-                          React.createElement(
-                            'code',
-                            { className: 'html' },
-                            React.createElement(
-                              'span',
-                              { className: 'nt' },
-                              '<ProgressBar'
-                            ),
-                            ' ',
-                            React.createElement(
-                              'span',
-                              { className: 'na' },
-                              'progress='
-                            ),
-                            React.createElement(
-                              'span',
-                              { className: 's' },
-                              '"60"'
-                            ),
-                            ' ',
-                            React.createElement(
-                              'span',
-                              { className: 'na' },
-                              'status='
-                            ),
-                            React.createElement(
-                              'span',
-                              { className: 's' },
-                              '"info"'
-                            ),
-                            ' ',
-                            React.createElement(
-                              'span',
-                              { className: 'nt' },
-                              '/>'
-                            )
-                          )
-                        )
-                      )
-                    )
-                  )
-                )
-              )
-            )
-          )
-        ),
-        React.createElement(
-          'div',
-          { className: 'rs-row' },
-          React.createElement(
-            'div',
-            { className: 'span-3' },
-            React.createElement(
-              'h5',
-              null,
-              'type'
-            ),
-            React.createElement(
-              'p',
-              null,
-              React.createElement(
-                'code',
-                null,
-                'type'
-              ),
-              ' takes a string (',
-              React.createElement(
-                'code',
-                null,
-                'solid'
-              ),
-              ' is the default). This is used to indicate additional information about work being done. The allowed types are:'
-            ),
-            React.createElement(
-              'p',
-              null,
-              React.createElement(
-                'ul',
-                null,
-                React.createElement(
-                  'li',
-                  null,
-                  React.createElement(
-                    'code',
-                    null,
-                    'solid'
-                  )
-                ),
-                React.createElement(
-                  'li',
-                  null,
-                  React.createElement(
-                    'code',
-                    null,
-                    'striped'
-                  )
-                )
-              )
-            )
-          ),
-          React.createElement(
-            'div',
-            { className: 'span-8 offset-1' },
-            React.createElement(
-              'h4',
-              null,
-              'Example'
-            ),
-            React.createElement(
-              'div',
-              null,
-              React.createElement(
-                'table',
-                null,
-                React.createElement(
-                  'thead',
-                  null,
-                  React.createElement(
-                    'tr',
-                    null,
-                    React.createElement(
-                      'th',
-                      null,
-                      'Component'
-                    ),
-                    React.createElement(
-                      'th',
-                      null,
-                      'Source'
-                    )
-                  )
-                ),
-                React.createElement(
-                  'tbody',
-                  null,
-                  React.createElement(
-                    'tr',
-                    null,
-                    React.createElement(
-                      'td',
-                      null,
-                      React.createElement(ProgressBar, { progress: 60, type: 'solid', status: 'info' })
-                    ),
-                    React.createElement(
-                      'td',
-                      null,
-                      React.createElement(
-                        'div',
-                        { className: 'highlight' },
-                        React.createElement(
-                          'pre',
-                          null,
-                          React.createElement(
-                            'code',
-                            { className: 'html' },
-                            React.createElement(
-                              'span',
-                              { className: 'nt' },
-                              '<ProgressBar'
-                            ),
-                            ' ',
-                            React.createElement(
-                              'span',
-                              { className: 'na' },
-                              'progress='
-                            ),
-                            React.createElement(
-                              'span',
-                              { className: 's' },
-                              '"60"'
-                            ),
-                            ' ',
-                            React.createElement(
-                              'span',
-                              { className: 'na' },
-                              'type='
-                            ),
-                            React.createElement(
-                              'span',
-                              { className: 's' },
-                              '"solid"'
-                            ),
-                            ' ',
-                            React.createElement(
-                              'span',
-                              { className: 'nt' },
-                              '/>'
-                            )
-                          )
-                        )
-                      )
-                    )
-                  ),
-                  React.createElement(
-                    'tr',
-                    null,
-                    React.createElement(
-                      'td',
-                      null,
-                      React.createElement(ProgressBar, { progress: 60, type: 'striped', status: 'info' })
-                    ),
-                    React.createElement(
-                      'td',
-                      null,
-                      React.createElement(
-                        'div',
-                        { className: 'highlight' },
-                        React.createElement(
-                          'pre',
-                          null,
-                          React.createElement(
-                            'code',
-                            { className: 'html' },
-                            React.createElement(
-                              'span',
-                              { className: 'nt' },
-                              '<ProgressBar'
-                            ),
-                            ' ',
-                            React.createElement(
-                              'span',
-                              { className: 'na' },
-                              'progress='
-                            ),
-                            React.createElement(
-                              'span',
-                              { className: 's' },
-                              '"60"'
-                            ),
-                            ' ',
-                            React.createElement(
-                              'span',
-                              { className: 'na' },
-                              'type='
-                            ),
-                            React.createElement(
-                              'span',
-                              { className: 's' },
-                              '"striped"'
-                            ),
-                            ' ',
-                            React.createElement(
-                              'span',
-                              { className: 'nt' },
-                              '/>'
-                            )
-                          )
-                        )
-                      )
-                    )
-                  )
-                )
-              )
-            )
-          )
-        ),
-        React.createElement(
-          'div',
-          { className: 'rs-row' },
-          React.createElement(
-            'div',
-            { className: 'span-3' },
-            React.createElement(
-              'h5',
-              null,
-              'size'
-            ),
-            React.createElement(
-              'p',
-              null,
-              'Progress bars can be given a fixed width with the ',
-              React.createElement(
-                'code',
-                null,
-                'size'
-              ),
-              ' property. The allowed sizes are:'
-            ),
-            React.createElement(
-              'p',
-              null,
-              React.createElement(
-                'ul',
-                null,
-                React.createElement(
-                  'li',
-                  null,
-                  React.createElement(
-                    'code',
-                    null,
-                    'xsmall'
-                  )
-                ),
-                React.createElement(
-                  'li',
-                  null,
-                  React.createElement(
-                    'code',
-                    null,
-                    'small'
-                  )
-                ),
-                React.createElement(
-                  'li',
-                  null,
-                  React.createElement(
-                    'code',
-                    null,
-                    'medium'
-                  )
-                ),
-                React.createElement(
-                  'li',
-                  null,
-                  React.createElement(
-                    'code',
-                    null,
-                    'large'
-                  )
-                ),
-                React.createElement(
-                  'li',
-                  null,
-                  React.createElement(
-                    'code',
-                    null,
-                    'xlarge'
-                  )
-                )
-              )
-            )
-          ),
-          React.createElement(
-            'div',
-            { className: 'span-8 offset-1' },
-            React.createElement(
-              'h4',
-              null,
-              'Example'
-            ),
-            React.createElement(
-              'div',
-              null,
-              React.createElement(
-                'table',
-                null,
-                React.createElement(
-                  'thead',
-                  null,
-                  React.createElement(
-                    'tr',
-                    null,
-                    React.createElement(
-                      'th',
-                      null,
-                      'Component'
-                    ),
-                    React.createElement(
-                      'th',
-                      null,
-                      'Source'
-                    )
-                  )
-                ),
-                React.createElement(
-                  'tbody',
-                  null,
-                  React.createElement(
-                    'tr',
-                    null,
-                    React.createElement(
-                      'td',
-                      null,
-                      React.createElement(ProgressBar, { progress: 60, size: 'xsmall', status: 'info' })
-                    ),
-                    React.createElement(
-                      'td',
-                      null,
-                      React.createElement(
-                        'div',
-                        { className: 'highlight' },
-                        React.createElement(
-                          'pre',
-                          null,
-                          React.createElement(
-                            'code',
-                            { className: 'html' },
-                            React.createElement(
-                              'span',
-                              { className: 'nt' },
-                              '<ProgressBar'
-                            ),
-                            ' ',
-                            React.createElement(
-                              'span',
-                              { className: 'na' },
-                              'progress='
-                            ),
-                            React.createElement(
-                              'span',
-                              { className: 's' },
-                              '"60"'
-                            ),
-                            ' ',
-                            React.createElement(
-                              'span',
-                              { className: 'na' },
-                              'size='
-                            ),
-                            React.createElement(
-                              'span',
-                              { className: 's' },
-                              '"xsmall"'
-                            ),
-                            ' ',
-                            React.createElement(
-                              'span',
-                              { className: 'nt' },
-                              '/>'
-                            )
-                          )
-                        )
-                      )
-                    )
-                  ),
-                  React.createElement(
-                    'tr',
-                    null,
-                    React.createElement(
-                      'td',
-                      null,
-                      React.createElement(ProgressBar, { progress: 60, size: 'small', status: 'info' })
-                    ),
-                    React.createElement(
-                      'td',
-                      null,
-                      React.createElement(
-                        'div',
-                        { className: 'highlight' },
-                        React.createElement(
-                          'pre',
-                          null,
-                          React.createElement(
-                            'code',
-                            { className: 'html' },
-                            React.createElement(
-                              'span',
-                              { className: 'nt' },
-                              '<ProgressBar'
-                            ),
-                            ' ',
-                            React.createElement(
-                              'span',
-                              { className: 'na' },
-                              'progress='
-                            ),
-                            React.createElement(
-                              'span',
-                              { className: 's' },
-                              '"60"'
-                            ),
-                            ' ',
-                            React.createElement(
-                              'span',
-                              { className: 'na' },
-                              'size='
-                            ),
-                            React.createElement(
-                              'span',
-                              { className: 's' },
-                              '"small"'
-                            ),
-                            ' ',
-                            React.createElement(
-                              'span',
-                              { className: 'nt' },
-                              '/>'
-                            )
-                          )
-                        )
-                      )
-                    )
-                  ),
-                  React.createElement(
-                    'tr',
-                    null,
-                    React.createElement(
-                      'td',
-                      null,
-                      React.createElement(ProgressBar, { progress: 60, size: 'medium', status: 'info' })
-                    ),
-                    React.createElement(
-                      'td',
-                      null,
-                      React.createElement(
-                        'div',
-                        { className: 'highlight' },
-                        React.createElement(
-                          'pre',
-                          null,
-                          React.createElement(
-                            'code',
-                            { className: 'html' },
-                            React.createElement(
-                              'span',
-                              { className: 'nt' },
-                              '<ProgressBar'
-                            ),
-                            ' ',
-                            React.createElement(
-                              'span',
-                              { className: 'na' },
-                              'progress='
-                            ),
-                            React.createElement(
-                              'span',
-                              { className: 's' },
-                              '"60"'
-                            ),
-                            ' ',
-                            React.createElement(
-                              'span',
-                              { className: 'na' },
-                              'size='
-                            ),
-                            React.createElement(
-                              'span',
-                              { className: 's' },
-                              '"medium"'
-                            ),
-                            ' ',
-                            React.createElement(
-                              'span',
-                              { className: 'nt' },
-                              '/>'
-                            )
-                          )
-                        )
-                      )
-                    )
-                  ),
-                  React.createElement(
-                    'tr',
-                    null,
-                    React.createElement(
-                      'td',
-                      null,
-                      React.createElement(ProgressBar, { progress: 60, size: 'large', status: 'info' })
-                    ),
-                    React.createElement(
-                      'td',
-                      null,
-                      React.createElement(
-                        'div',
-                        { className: 'highlight' },
-                        React.createElement(
-                          'pre',
-                          null,
-                          React.createElement(
-                            'code',
-                            { className: 'html' },
-                            React.createElement(
-                              'span',
-                              { className: 'nt' },
-                              '<ProgressBar'
-                            ),
-                            ' ',
-                            React.createElement(
-                              'span',
-                              { className: 'na' },
-                              'progress='
-                            ),
-                            React.createElement(
-                              'span',
-                              { className: 's' },
-                              '"60"'
-                            ),
-                            ' ',
-                            React.createElement(
-                              'span',
-                              { className: 'na' },
-                              'size='
-                            ),
-                            React.createElement(
-                              'span',
-                              { className: 's' },
-                              '"large"'
-                            ),
-                            ' ',
-                            React.createElement(
-                              'span',
-                              { className: 'nt' },
-                              '/>'
-                            )
-                          )
-                        )
-                      )
-                    )
-                  ),
-                  React.createElement(
-                    'tr',
-                    null,
-                    React.createElement(
-                      'td',
-                      null,
-                      React.createElement(ProgressBar, { progress: 60, size: 'xlarge', status: 'info' })
-                    ),
-                    React.createElement(
-                      'td',
-                      null,
-                      React.createElement(
-                        'div',
-                        { className: 'highlight' },
-                        React.createElement(
-                          'pre',
-                          null,
-                          React.createElement(
-                            'code',
-                            { className: 'html' },
-                            React.createElement(
-                              'span',
-                              { className: 'nt' },
-                              '<ProgressBar'
-                            ),
-                            ' ',
-                            React.createElement(
-                              'span',
-                              { className: 'na' },
-                              'progress='
-                            ),
-                            React.createElement(
-                              'span',
-                              { className: 's' },
-                              '"60"'
-                            ),
-                            ' ',
-                            React.createElement(
-                              'span',
-                              { className: 'na' },
-                              'size='
-                            ),
-                            React.createElement(
-                              'span',
-                              { className: 's' },
-                              '"xlarge"'
-                            ),
-                            ' ',
-                            React.createElement(
-                              'span',
-                              { className: 'nt' },
-                              '/>'
-                            )
-                          )
-                        )
-                      )
-                    )
-                  )
-                )
-              )
-            )
-          )
-        )
-      )
-    );
-  }
-});
-
-module.exports = ProgressBarsSection;
-
-},{"../ProgressBar":203,"react":193}],210:[function(require,module,exports){
-"use strict";
-
-var _get = require("babel-runtime/helpers/get")["default"];
-
-var _inherits = require("babel-runtime/helpers/inherits")["default"];
-
-var _createClass = require("babel-runtime/helpers/create-class")["default"];
-
-var _classCallCheck = require("babel-runtime/helpers/class-call-check")["default"];
-
-var _interopRequireDefault = require("babel-runtime/helpers/interop-require-default")["default"];
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var SectionHeader = (function (_React$Component) {
-  _inherits(SectionHeader, _React$Component);
-
-  function SectionHeader() {
-    _classCallCheck(this, SectionHeader);
-
-    _get(Object.getPrototypeOf(SectionHeader.prototype), "constructor", this).apply(this, arguments);
-  }
-
-  _createClass(SectionHeader, [{
-    key: "render",
-    value: function render() {
-      return _react2["default"].createElement(
-        "div",
-        { className: "header-section", id: this.props.id },
-        _react2["default"].createElement(
-          "div",
-          { className: "header-section-subtitle" },
-          "components"
-        ),
-        _react2["default"].createElement(
-          "div",
-          { className: "header-section-title" },
-          this.props.children
-        )
-      );
-    }
-  }]);
-
-  return SectionHeader;
-})(_react2["default"].Component);
-
-exports["default"] = SectionHeader;
-module.exports = exports["default"];
-
-},{"babel-runtime/helpers/class-call-check":6,"babel-runtime/helpers/create-class":7,"babel-runtime/helpers/get":9,"babel-runtime/helpers/inherits":10,"babel-runtime/helpers/interop-require-default":11,"react":193}],211:[function(require,module,exports){
-'use strict';
-
-var _get = require('babel-runtime/helpers/get')['default'];
-
-var _inherits = require('babel-runtime/helpers/inherits')['default'];
-
-var _createClass = require('babel-runtime/helpers/create-class')['default'];
-
-var _classCallCheck = require('babel-runtime/helpers/class-call-check')['default'];
-
-var _interopRequireDefault = require('babel-runtime/helpers/interop-require-default')['default'];
-
-Object.defineProperty(exports, '__esModule', {
-  value: true
-});
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _StatusIndicator = require('../StatusIndicator');
-
-var _StatusIndicator2 = _interopRequireDefault(_StatusIndicator);
-
-var StatusIndicatorSection = (function (_React$Component) {
-  _inherits(StatusIndicatorSection, _React$Component);
-
-  function StatusIndicatorSection() {
-    _classCallCheck(this, StatusIndicatorSection);
-
-    _get(Object.getPrototypeOf(StatusIndicatorSection.prototype), 'constructor', this).apply(this, arguments);
-  }
-
-  _createClass(StatusIndicatorSection, [{
-    key: 'render',
-    value: function render() {
-      return _react2['default'].createElement(
-        'div',
-        { className: 'website-content-section' },
-        _react2['default'].createElement(
-          'div',
-          { className: 'content-section-body' },
-          _react2['default'].createElement(
-            'div',
-            { className: 'rs-row' },
-            _react2['default'].createElement(
-              'p',
-              null,
-              _react2['default'].createElement(
-                'a',
-                { href: 'http://rackerlabs.github.io/canon/ui-components/#status-indicators', target: '_blank' },
-                'Status Indicators'
-              ),
-              ' are used to indicate the state of an entity that may impact a customer\'s experience.'
-            )
-          ),
-          _react2['default'].createElement(
-            'div',
-            { className: 'rs-row' },
-            _react2['default'].createElement(
-              'h3',
-              null,
-              'Properties'
-            ),
-            _react2['default'].createElement(
-              'ul',
-              null,
-              _react2['default'].createElement(
-                'li',
-                null,
-                _react2['default'].createElement(
-                  'code',
-                  null,
-                  'status'
-                )
-              ),
-              _react2['default'].createElement(
-                'li',
-                null,
-                _react2['default'].createElement(
-                  'code',
-                  null,
-                  'hidden'
-                )
-              )
-            )
-          ),
-          _react2['default'].createElement(
-            'div',
-            { className: 'rs-row' },
-            _react2['default'].createElement(
-              'div',
-              { className: 'span-3' },
-              _react2['default'].createElement(
-                'h5',
-                null,
-                'status'
-              ),
-              _react2['default'].createElement(
-                'p',
-                null,
-                _react2['default'].createElement(
-                  'code',
-                  null,
-                  'status'
-                ),
-                ' takes a string (',
-                _react2['default'].createElement(
-                  'code',
-                  null,
-                  'ok'
-                ),
-                ' is the default) that specifies the state of an entity. Allowed Types are:'
-              ),
-              _react2['default'].createElement(
-                'p',
-                null,
-                _react2['default'].createElement(
-                  'ul',
-                  null,
-                  _react2['default'].createElement(
-                    'li',
-                    null,
-                    _react2['default'].createElement(
-                      'code',
-                      null,
-                      'ok'
-                    )
-                  ),
-                  _react2['default'].createElement(
-                    'li',
-                    null,
-                    _react2['default'].createElement(
-                      'code',
-                      null,
-                      'error'
-                    )
-                  ),
-                  _react2['default'].createElement(
-                    'li',
-                    null,
-                    _react2['default'].createElement(
-                      'code',
-                      null,
-                      'processing'
-                    )
-                  ),
-                  _react2['default'].createElement(
-                    'li',
-                    null,
-                    _react2['default'].createElement(
-                      'code',
-                      null,
-                      'warning'
-                    )
-                  ),
-                  _react2['default'].createElement(
-                    'li',
-                    null,
-                    _react2['default'].createElement(
-                      'code',
-                      null,
-                      'disabled'
-                    )
-                  )
-                )
-              )
-            ),
-            _react2['default'].createElement(
-              'div',
-              { className: 'span-8 offset-1' },
-              _react2['default'].createElement(
-                'h4',
-                null,
-                'Example'
-              ),
-              _react2['default'].createElement(
-                'div',
-                null,
-                _react2['default'].createElement(
-                  'table',
-                  null,
-                  _react2['default'].createElement(
-                    'thead',
-                    null,
-                    _react2['default'].createElement(
-                      'tr',
-                      null,
-                      _react2['default'].createElement(
-                        'th',
-                        null,
-                        'Component'
-                      ),
-                      _react2['default'].createElement(
-                        'th',
-                        null,
-                        'Source'
-                      )
-                    )
-                  ),
-                  _react2['default'].createElement(
-                    'tbody',
-                    null,
-                    _react2['default'].createElement(
-                      'tr',
-                      null,
-                      _react2['default'].createElement(
-                        'td',
-                        null,
-                        _react2['default'].createElement(
-                          _StatusIndicator2['default'],
-                          { status: 'ok' },
-                          'OK'
-                        )
-                      ),
-                      _react2['default'].createElement(
-                        'td',
-                        null,
-                        _react2['default'].createElement(
-                          'div',
-                          { className: 'highlight' },
-                          _react2['default'].createElement(
-                            'pre',
-                            null,
-                            _react2['default'].createElement(
-                              'code',
-                              { className: 'html' },
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 'nt' },
-                                '<StatusIndicator'
-                              ),
-                              ' ',
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 'na' },
-                                'status='
-                              ),
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 's' },
-                                '"ok"'
-                              ),
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 'nt' },
-                                '>OK',
-                                _react2['default'].createElement(
-                                  'span',
-                                  { className: 'nt' },
-                                  '</StatusIndicator>'
-                                )
-                              )
-                            )
-                          )
-                        )
-                      )
-                    ),
-                    _react2['default'].createElement(
-                      'tr',
-                      null,
-                      _react2['default'].createElement(
-                        'td',
-                        null,
-                        _react2['default'].createElement(
-                          _StatusIndicator2['default'],
-                          { status: 'error' },
-                          'Error'
-                        )
-                      ),
-                      _react2['default'].createElement(
-                        'td',
-                        null,
-                        _react2['default'].createElement(
-                          'div',
-                          { className: 'highlight' },
-                          _react2['default'].createElement(
-                            'pre',
-                            null,
-                            _react2['default'].createElement(
-                              'code',
-                              { className: 'html' },
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 'nt' },
-                                '<StatusIndicator'
-                              ),
-                              ' ',
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 'na' },
-                                'status='
-                              ),
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 's' },
-                                '"error"'
-                              ),
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 'nt' },
-                                '>Error',
-                                _react2['default'].createElement(
-                                  'span',
-                                  { className: 'nt' },
-                                  '</StatusIndicator>'
-                                )
-                              )
-                            )
-                          )
-                        )
-                      )
-                    ),
-                    _react2['default'].createElement(
-                      'tr',
-                      null,
-                      _react2['default'].createElement(
-                        'td',
-                        null,
-                        _react2['default'].createElement(
-                          _StatusIndicator2['default'],
-                          { status: 'processing' },
-                          'Processing'
-                        )
-                      ),
-                      _react2['default'].createElement(
-                        'td',
-                        null,
-                        _react2['default'].createElement(
-                          'div',
-                          { className: 'highlight' },
-                          _react2['default'].createElement(
-                            'pre',
-                            null,
-                            _react2['default'].createElement(
-                              'code',
-                              { className: 'html' },
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 'nt' },
-                                '<StatusIndicator'
-                              ),
-                              ' ',
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 'na' },
-                                'status='
-                              ),
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 's' },
-                                '"processing"'
-                              ),
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 'nt' },
-                                '>Processing',
-                                _react2['default'].createElement(
-                                  'span',
-                                  { className: 'nt' },
-                                  '</StatusIndicator>'
-                                )
-                              )
-                            )
-                          )
-                        )
-                      )
-                    ),
-                    _react2['default'].createElement(
-                      'tr',
-                      null,
-                      _react2['default'].createElement(
-                        'td',
-                        null,
-                        _react2['default'].createElement(
-                          _StatusIndicator2['default'],
-                          { status: 'warning' },
-                          'Warning'
-                        )
-                      ),
-                      _react2['default'].createElement(
-                        'td',
-                        null,
-                        _react2['default'].createElement(
-                          'div',
-                          { className: 'highlight' },
-                          _react2['default'].createElement(
-                            'pre',
-                            null,
-                            _react2['default'].createElement(
-                              'code',
-                              { className: 'html' },
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 'nt' },
-                                '<StatusIndicator'
-                              ),
-                              ' ',
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 'na' },
-                                'status='
-                              ),
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 's' },
-                                '"warning"'
-                              ),
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 'nt' },
-                                '>Warning',
-                                _react2['default'].createElement(
-                                  'span',
-                                  { className: 'nt' },
-                                  '</StatusIndicator>'
-                                )
-                              )
-                            )
-                          )
-                        )
-                      )
-                    ),
-                    _react2['default'].createElement(
-                      'tr',
-                      null,
-                      _react2['default'].createElement(
-                        'td',
-                        null,
-                        _react2['default'].createElement(
-                          _StatusIndicator2['default'],
-                          { status: 'disabled' },
-                          'Disabled'
-                        )
-                      ),
-                      _react2['default'].createElement(
-                        'td',
-                        null,
-                        _react2['default'].createElement(
-                          'div',
-                          { className: 'highlight' },
-                          _react2['default'].createElement(
-                            'pre',
-                            null,
-                            _react2['default'].createElement(
-                              'code',
-                              { className: 'html' },
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 'nt' },
-                                '<StatusIndicator'
-                              ),
-                              ' ',
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 'na' },
-                                'status='
-                              ),
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 's' },
-                                '"disabled"'
-                              ),
-                              _react2['default'].createElement(
-                                'span',
-                                { className: 'nt' },
-                                '>Disabled',
-                                _react2['default'].createElement(
-                                  'span',
-                                  { className: 'nt' },
-                                  '</StatusIndicator>'
-                                )
-                              )
-                            )
-                          )
-                        )
-                      )
-                    )
-                  )
-                )
-              )
-            )
-          )
-        )
-      );
-    }
-  }]);
-
-  return StatusIndicatorSection;
-})(_react2['default'].Component);
-
-exports['default'] = StatusIndicatorSection;
-module.exports = exports['default'];
-
-},{"../StatusIndicator":204,"babel-runtime/helpers/class-call-check":6,"babel-runtime/helpers/create-class":7,"babel-runtime/helpers/get":9,"babel-runtime/helpers/inherits":10,"babel-runtime/helpers/interop-require-default":11,"react":193}],212:[function(require,module,exports){
-'use strict';
-
-var _get = require('babel-runtime/helpers/get')['default'];
-
-var _inherits = require('babel-runtime/helpers/inherits')['default'];
-
-var _createClass = require('babel-runtime/helpers/create-class')['default'];
-
-var _classCallCheck = require('babel-runtime/helpers/class-call-check')['default'];
-
-var _interopRequireDefault = require('babel-runtime/helpers/interop-require-default')['default'];
-
-Object.defineProperty(exports, '__esModule', {
-  value: true
-});
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _ButtonsSection = require('./ButtonsSection');
-
-var _ButtonsSection2 = _interopRequireDefault(_ButtonsSection);
-
-var _ButtonGroupSection = require('./ButtonGroupSection');
-
-var _ButtonGroupSection2 = _interopRequireDefault(_ButtonGroupSection);
-
-var _PopoverSection = require('./PopoverSection');
-
-var _PopoverSection2 = _interopRequireDefault(_PopoverSection);
-
-var _ProgressBarsSection = require('./ProgressBarsSection');
-
-var _ProgressBarsSection2 = _interopRequireDefault(_ProgressBarsSection);
-
-var _SectionHeader = require('./SectionHeader');
-
-var _SectionHeader2 = _interopRequireDefault(_SectionHeader);
-
-var _StatusIndicatorSection = require('./StatusIndicatorSection');
-
-var _StatusIndicatorSection2 = _interopRequireDefault(_StatusIndicatorSection);
-
-var View = (function (_React$Component) {
-  _inherits(View, _React$Component);
-
-  function View() {
-    _classCallCheck(this, View);
-
-    _get(Object.getPrototypeOf(View.prototype), 'constructor', this).apply(this, arguments);
-  }
-
-  _createClass(View, [{
-    key: 'render',
-    value: function render() {
-      return _react2['default'].createElement(
-        'div',
-        null,
-        _react2['default'].createElement(
-          'div',
-          { className: 'rs-inner' },
-          _react2['default'].createElement(
-            'div',
-            { className: 'rs-container' },
-            _react2['default'].createElement(
-              'div',
-              { className: 'rs-main' },
-              _react2['default'].createElement(
-                'div',
-                { className: 'rs-content rs-panel' },
-                _react2['default'].createElement(
-                  _SectionHeader2['default'],
-                  { id: 'buttons' },
-                  'Buttons'
-                ),
-                _react2['default'].createElement(_ButtonsSection2['default'], null),
-                _react2['default'].createElement(
-                  _SectionHeader2['default'],
-                  { id: 'button-groups' },
-                  'Button Groups'
-                ),
-                _react2['default'].createElement(_ButtonGroupSection2['default'], null),
-                _react2['default'].createElement(
-                  _SectionHeader2['default'],
-                  { id: 'progress-bars' },
-                  'Progress Bars'
-                ),
-                _react2['default'].createElement(_ProgressBarsSection2['default'], null),
-                _react2['default'].createElement(
-                  _SectionHeader2['default'],
-                  { id: 'status-indicators' },
-                  'Status Indicators'
-                ),
-                _react2['default'].createElement(_StatusIndicatorSection2['default'], null),
-                _react2['default'].createElement(
-                  _SectionHeader2['default'],
-                  { id: 'popovers' },
-                  'Popovers'
-                ),
-                _react2['default'].createElement(_PopoverSection2['default'], null)
-              )
-            )
-          )
-        ),
-        _react2['default'].createElement('div', { className: 'rs-push' })
-      );
-    }
-  }]);
-
-  return View;
-})(_react2['default'].Component);
-
-exports['default'] = View;
-module.exports = exports['default'];
-
-},{"./ButtonGroupSection":206,"./ButtonsSection":207,"./PopoverSection":208,"./ProgressBarsSection":209,"./SectionHeader":210,"./StatusIndicatorSection":211,"babel-runtime/helpers/class-call-check":6,"babel-runtime/helpers/create-class":7,"babel-runtime/helpers/get":9,"babel-runtime/helpers/inherits":10,"babel-runtime/helpers/interop-require-default":11,"react":193}],213:[function(require,module,exports){
-'use strict';
-
-var React = require('react');
-
-var ComponentsView = require('./components/View');
+var DemoView = require('./DemoView');
 
 (function () {
-  React.render(React.createElement(ComponentsView, null), document.getElementById('components-content'));
+  React.render(React.createElement(DemoView, null), document.getElementById('content'));
 })();
 
-},{"./components/View":212,"react":193}],214:[function(require,module,exports){
+},{"./DemoView":204,"react":193}],216:[function(require,module,exports){
 'use strict';
 
 var _interopRequireDefault = require('babel-runtime/helpers/interop-require-default')['default'];
@@ -27365,4 +24648,4 @@ exports['default'] = {
 };
 module.exports = exports['default'];
 
-},{"./Button":195,"./ButtonGroup":196,"./Popover":197,"./PopoverBody":199,"./PopoverFooter":200,"./PopoverOverlay":201,"./ProcessingIndicator":202,"./ProgressBar":203,"./StatusIndicator":204,"./TooltipTrigger":205,"babel-runtime/helpers/interop-require-default":11}]},{},[195,196,197,198,199,200,201,202,203,204,205,206,207,208,209,210,211,212,213,214])
+},{"./Button":195,"./ButtonGroup":196,"./Popover":205,"./PopoverBody":207,"./PopoverFooter":208,"./PopoverOverlay":209,"./ProcessingIndicator":210,"./ProgressBar":211,"./StatusIndicator":212,"./TooltipTrigger":214,"babel-runtime/helpers/interop-require-default":11}]},{},[195,196,197,198,199,200,201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216])

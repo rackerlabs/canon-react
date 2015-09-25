@@ -1,25 +1,17 @@
-var React = require('react');
+import React from 'react';
 
-var StatusIndicator = React.createClass({
-  propTypes: {
-    status: React.PropTypes.oneOf(['ok', 'error', 'processing', 'warning', 'disabled']),
-    hidden: React.PropTypes.bool
-  },
-  getDefaultProps: function (){
-    return {
-      status: 'ok',
-      hidden: false
-    };
-  },
-  render: function () {
+class StatusIndicator extends React.Component {
+
+  render() {
     return (
       <statusindicator {...this.props} className={this._classes()}>
         {this.props.children}
       </statusindicator>
     );
-  },
-  _classes: function () {
-    var classes, statusIndicatorTypes;
+  }
+
+  _classes() {
+    let classes, statusIndicatorTypes;
 
     statusIndicatorTypes = {
       'error': 'rs-status rs-status-error',
@@ -32,16 +24,26 @@ var StatusIndicator = React.createClass({
     classes = [];
     classes.push(this.props.className);
 
-    if(this.props.status && statusIndicatorTypes[this.props.status]){
+    if (this.props.status && statusIndicatorTypes[this.props.status]) {
       classes.push(statusIndicatorTypes[this.props.status]);
     }
 
-    if(this.props.hidden){
+    if (this.props.hidden) {
       classes.push('rs-hidden');
     }
 
     return classes.join(' ');
   }
-});
+}
 
-module.exports = StatusIndicator;
+StatusIndicator.propTypes = {
+  status: React.PropTypes.oneOf(['ok', 'error', 'processing', 'warning', 'disabled']),
+  hidden: React.PropTypes.bool
+};
+
+StatusIndicator.defaultProps = {
+  status: 'ok',
+  hidden: false
+};
+
+export default StatusIndicator;

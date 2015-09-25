@@ -1,66 +1,52 @@
-var React = require('react');
-var Tether = require('tether');
-var PopoverBackground = require('./PopoverBackground');
+import React from 'react';
+import Tether from 'tether';
+import PopoverBackground from './PopoverBackground';
 
-var Popover = React.createClass({
+class Popover extends React.Component {
 
-  propTypes: {
-    placement: React.PropTypes.oneOf(['right', 'bottom-right', 'left', 'bottom-left', 'center']),
-    isOpen: React.PropTypes.bool,
-    onRequestClose: React.PropTypes.func,
-    target: React.PropTypes.oneOfType([
-      React.PropTypes.string,
-      React.PropTypes.instanceOf(Function)
-    ]),
-    offset: React.PropTypes.string
-  },
+  constructor(props) {
+    super(props);
+  }
 
-  getDefaultProps: function () {
-    return {
-      placement: 'right',
-      isOpen: false
-    };
-  },
-
-  componentWillUnmount: function () {
+  componentWillUnmount() {
     this._hide();
     document.body.removeChild(this._containerDiv);
     document.body.removeChild(this._backgroundDiv);
-  },
+  }
 
-  componentDidMount: function () {
+  componentDidMount() {
     this._containerDiv = document.createElement('div');
     document.body.appendChild(this._containerDiv);
     this._backgroundDiv = document.createElement('div');
     this._backgroundDiv.style.display = 'none';
     document.body.appendChild(this._backgroundDiv);
     this._togglePopoverOverlay();
-  },
+  }
 
-  componentDidUpdate: function () {
+  componentDidUpdate() {
     this._togglePopoverOverlay();
-  },
+  }
 
-  render: function () {
+  render() {
     return null;
-  },
+  }
 
-  _togglePopoverOverlay: function () {
+  _togglePopoverOverlay() {
     if (this.props.isOpen) {
       this._show();
     } else {
       this._hide();
     }
-  },
+  }
 
-  _hide: function () {
+  _hide() {
     this._hidePopoverOverlay();
     this._hidePopoverBackgroundOverlay();
-  },
+  }
 
-  _hidePopoverOverlay: function () {
+  _hidePopoverOverlay() {
     this._removeDocumentListeners();
-    this._containerDiv.className = this._containerDiv.className.replace( /(?:^|\s)rs-popover(?!\S)/g , '' );
+    this._containerDiv.className = this._containerDiv.className.replace( /(?:^|\s)rs-popover(?!\S)/g, '' );
     if (this._tether) {
       this._tether.destroy();
       this._tether = null;
@@ -69,24 +55,24 @@ var Popover = React.createClass({
       React.unmountComponentAtNode(this._containerDiv);
       this._popoverNode = null;
     }
-  },
+  }
 
-  _hidePopoverBackgroundOverlay: function () {
+  _hidePopoverBackgroundOverlay() {
     this._backgroundDiv.style.display = 'none';
     React.unmountComponentAtNode(this._backgroundDiv);
-  },
+  }
 
-  _removeDocumentListeners: function () {
-    document.removeEventListener('keyup', this._handleEscapePress, false);
-  },
+  _removeDocumentListeners() {
+    document.removeEventListener('keyup', this._handleEscapePress.bind(this), false);
+  }
 
-  _show: function () {
+  _show() {
     this._renderPopoverOverlay();
     this._listenForEscapePress();
-  },
+  }
 
-  _renderPopoverOverlay: function () {
-    var popover;
+  _renderPopoverOverlay() {
+    let popover;
 
     this._backgroundDiv.style.display = 'block';
     React.render(<PopoverBackground onRequestClose={this.props.onRequestClose} />, this._backgroundDiv);
@@ -99,16 +85,18 @@ var Popover = React.createClass({
       }
     );
     this._popoverNode = React.render(popover, this._containerDiv);
-    this._tether = this._createTether(this._getTetherConfig());
-  },
+    if (!this._tether) {
+      this._tether = this._createTether(this._getTetherConfig());
+    }
+  }
 
   // This is a seam for testing
-  _createTether: function (tetherConfig) {
+  _createTether(tetherConfig) {
     return new Tether(tetherConfig);
-  },
+  }
 
-  _getTetherConfig: function () {
-    var tetherConfig;
+  _getTetherConfig() {
+    let tetherConfig;
 
     switch (this.props.placement) {
       case 'left':
@@ -160,10 +148,10 @@ var Popover = React.createClass({
     tetherConfig.element = React.findDOMNode(this._containerDiv);
     tetherConfig.target = this._getTarget();
     return tetherConfig;
-  },
+  }
 
-  _getTarget: function () {
-    var target;
+  _getTarget() {
+    let target;
 
     target = this.props.target;
 
@@ -172,17 +160,33 @@ var Popover = React.createClass({
     }
 
     return document.getElementById(target);
-  },
+  }
 
-  _listenForEscapePress: function () {
-    document.addEventListener('keyup', this._handleEscapePress, false);
-  },
+  _listenForEscapePress() {
+    document.addEventListener('keyup', this._handleEscapePress.bind(this), false);
+  }
 
-  _handleEscapePress: function (e) {
+  _handleEscapePress(e) {
     if (e.keyCode === 27) {
       this.props.onRequestClose();
     }
   }
-});
+}
 
-module.exports = Popover;
+Popover.propTypes = {
+  placement: React.PropTypes.oneOf(['right', 'bottom-right', 'left', 'bottom-left', 'center']),
+  isOpen: React.PropTypes.bool,
+  onRequestClose: React.PropTypes.func.isRequired,
+  target: React.PropTypes.oneOfType([
+    React.PropTypes.string,
+    React.PropTypes.func
+  ]).isRequired,
+  offset: React.PropTypes.string
+};
+
+Popover.defaultProps = {
+  placement: 'right',
+  isOpen: false
+};
+
+export default Popover;
