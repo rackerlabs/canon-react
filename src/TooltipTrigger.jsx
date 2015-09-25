@@ -14,7 +14,7 @@ class TooltipTrigger extends React.Component {
     this._containerDiv = document.createElement('div');
     this._containerDiv.className = 'rs-tooltip';
     document.body.appendChild(this._containerDiv);
-    this._toggleTooltip();
+    this._updateTooltipVisibility();
   }
 
   componentWillUnmount() {
@@ -35,10 +35,10 @@ class TooltipTrigger extends React.Component {
   }
 
   componentDidUpdate() {
-    this._toggleTooltip();
+    this._updateTooltipVisibility();
   }
 
-  _toggleTooltip() {
+  _updateTooltipVisibility() {
     if (this._shouldShowTooltip()) {
       this._showTooltip();
     } else {
@@ -155,14 +155,6 @@ class TooltipTrigger extends React.Component {
       onBlur: hideTooltipFunc,
       ref: 'trigger'
     };
-
-    // <Tooltip placement={this.props.placement}
-    //       isOpen={this._shouldShowTooltip()}
-    //       target={this._getTarget.bind(this)}
-    //       onMouseLeave={this._mouseLeavingTooltip.bind(this)}
-    //       onMouseOver={this._mouseEnteringTooltip.bind(this)}>
-    //       {this.props.content}
-    //     </Tooltip>
 
     return React.cloneElement(React.Children.only(this.props.children), triggerProps);
   }
