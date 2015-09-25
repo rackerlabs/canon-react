@@ -7,15 +7,17 @@ import ProcessingIndicator from './ProcessingIndicator';
 import PopoverOverlay from './PopoverOverlay';
 import ProgressBar from './ProgressBar';
 import StatusIndicator from './StatusIndicator';
+import TooltipTrigger from './TooltipTrigger';
 
-module.exports = {
-  Button,
-  ButtonGroup,
-  Popover,
-  PopoverBody,
-  PopoverFooter,
-  PopoverOverlay,
-  ProcessingIndicator,
-  ProgressBar,
-  StatusIndicator
+export default {
+  Button: Button,
+  ButtonGroup: ButtonGroup,
+  Popover: Popover,
+  PopoverBody: PopoverBody,
+  PopoverFooter: PopoverFooter,
+  ProcessingIndicator: ProcessingIndicator,
+  PopoverOverlay: PopoverOverlay,
+  ProgressBar: ProgressBar,
+  StatusIndicator: StatusIndicator,
+  TooltipTrigger: TooltipTrigger
 };

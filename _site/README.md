@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/rackerlabs/canon-react.svg)](https://travis-ci.org/rackerlabs/canon-react)
+[![npm version](https://badge.fury.io/js/canon-react.svg)](http://badge.fury.io/js/canon-react)
 
 CAUTION: This library is not ready for public use yet.
 
@@ -36,7 +37,6 @@ An example of how to use canon-react components can be found in `node_modules/ca
 
 # Roadmap
 This is a list of what is planned for the next release
-## v 0.3.0
+## v 0.4.0
 1. Action Button
 2. Action Dropdown
-3. Tooltips

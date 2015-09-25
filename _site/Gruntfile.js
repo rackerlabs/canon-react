@@ -113,27 +113,13 @@ module.exports = function (grunt) {
       }
     },
 
-    jshint: {
-      options: {
-        esnext: true,
-        eqeqeq: true,
-        curly: true,
-        funcscope: true,
-        undef: true,
-        unused: true,
-        browser: true,
-        jasmine: true,
-        browserify: true,
-        globals: {
-          React: true
-        }
-      },
-      files: ['Gruntfile.js', 'src/**/*', 'test/**/*.jsx', 'test/jasmine-helpers.js']
+    eslint: {
+      target: ['src/**/*', 'test/**/*.jsx', 'test/jasmine-helpers.js']
     }
 
   });
 
-  grunt.loadNpmTasks('grunt-jsxhint');
+  grunt.loadNpmTasks('grunt-eslint');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-babel');
   grunt.loadNpmTasks('grunt-contrib-clean');
@@ -142,7 +128,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build', [
     'clean:test',
-    'jshint',
+    'eslint',
     'babel:src',
     'babel:test',
     'browserify:test',

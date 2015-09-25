@@ -1,14 +1,14 @@
-var React = require('react');
+import React from 'react';
 
-var PopoverBody = React.createClass({
+class PopoverBody extends React.Component {
 
-  render: function () {
+  render() {
     return (
       <div className='rs-popover-body'>
         {this.props.children}
       </div>
     );
   }
-});
+}
 
-module.exports = PopoverBody;
+export default PopoverBody;

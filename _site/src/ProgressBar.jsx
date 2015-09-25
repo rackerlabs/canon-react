@@ -1,42 +1,28 @@
-var React = require('react');
+import React from 'react';
 
-var SizeClasses = {
+const SizeClasses = {
   'xsmall': 'rs-progress-xsmall',
   'small': 'rs-progress-small',
   'medium': 'rs-progress-medium',
   'large': 'rs-progress-large',
-  'xlarge': 'rs-progress-xlarge',
+  'xlarge': 'rs-progress-xlarge'
 };
 
-var StatusClasses = {
+const StatusClasses = {
   'ok': 'rs-status-ok',
   'error': 'rs-status-error',
   'warning': 'rs-status-warning',
   'info': 'rs-status-info'
 };
 
-var TypeClasses = {
+const TypeClasses = {
   'solid': 'rs-bar-solid',
   'striped': 'rs-bar-striped'
 };
 
-var ProgressBar = React.createClass({
-  propTypes: {
-    progress: React.PropTypes.number,
-    status: React.PropTypes.string,
-    type: React.PropTypes.string,
-    size: React.PropTypes.string
-  },
+class ProgressBar extends React.Component{
 
-  getDefaultProps: function () {
-    return {
-      progress: 0,
-      status: 'ok',
-      type: 'solid'
-    };
-  },
-
-  _getSizeClass: function () {
+  _getSizeClass() {
     var sizeClass;
 
     sizeClass = 'rs-progress';
@@ -45,18 +31,18 @@ var ProgressBar = React.createClass({
       sizeClass += ' ' + SizeClasses[this.props.size];
     }
     return sizeClass;
-  },
+  }
 
-  _getStatusClass: function () {
+  _getStatusClass() {
     var statusClass;
 
     statusClass = ['rs-bar'];
     statusClass.push(StatusClasses[this.props.status]);
     statusClass.push(TypeClasses[this.props.type]);
     return statusClass.join(' ');
-  },
+  }
 
-  render: function () {
+  render() {
     var style, width;
 
     width = this.props.progress + '%';
@@ -72,6 +58,19 @@ var ProgressBar = React.createClass({
       </div>
     );
   }
-});
+}
 
-module.exports = ProgressBar;
+ProgressBar.propTypes = {
+  progress: React.PropTypes.number,
+  status: React.PropTypes.string,
+  type: React.PropTypes.string,
+  size: React.PropTypes.string
+};
+
+ProgressBar.defaultProps = {
+  progress: 0,
+  status: 'ok',
+  type: 'solid'
+};
+
+export default ProgressBar;

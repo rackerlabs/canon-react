@@ -1,14 +1,14 @@
-var React = require('react');
+import React from 'react';
 
-var ButtonsSection = require('./ButtonsSection');
-var ButtonGroupSection = require('./ButtonGroupSection');
-var PopoverSection = require('./PopoverSection');
-var ProgressBarsSection = require('./ProgressBarsSection');
-var SectionHeader = require('./SectionHeader');
-var StatusIndicatorSection = require('./StatusIndicatorSection');
+import ButtonsSection from './ButtonsSection';
+import ButtonGroupSection from './ButtonGroupSection';
+import PopoverSection from './PopoverSection';
+import ProgressBarsSection from './ProgressBarsSection';
+import SectionHeader from './SectionHeader';
+import StatusIndicatorSection from './StatusIndicatorSection';
 
-var View = React.createClass({
-  render: function () {
+class View extends React.Component {
+  render() {
     return (
       <div>
         <div className="rs-inner">
@@ -40,6 +40,6 @@ var View = React.createClass({
       </div>
     );
   }
-});
+}
 
-module.exports = View;
+export default View;

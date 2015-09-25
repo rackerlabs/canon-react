@@ -1,9 +1,9 @@
-var React = require('react');
+import React from 'react';
 
-var Button = require('../Button');
+import Button from '../Button';
 
-var ButtonsSection = React.createClass({
-  render: function () {
+class ButtonsSection extends React.Component {
+  render() {
     return (
       <div className="website-content-section">
         <div className="content-section-body">
@@ -254,6 +254,6 @@ var ButtonsSection = React.createClass({
       </div>
     );
   }
-});
+}
 
-module.exports = ButtonsSection;
+export default ButtonsSection;

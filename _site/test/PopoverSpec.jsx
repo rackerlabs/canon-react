@@ -1,24 +1,25 @@
-var Popover = require('../transpiled/Popover');
+import Popover from '../transpiled/Popover';
+import PopoverOverlay from '../transpiled/PopoverOverlay';
+import React from 'react/addons';
+let TestUtils = React.addons.TestUtils;
 
-var Popover = require('../transpiled/Popover');
-var PopoverOverlay = require('../transpiled/PopoverOverlay');
-var React = require('react/addons');
-var TestUtils = React.addons.TestUtils;
+describe('Popover', () => {
+  let popover, tether, requestCloseCallback, closeCallBackCalled;
 
-describe('Popover', function () {
-  var popover, tether, requestCloseCallback;
-
-  function renderPopover(placement, isOpen, useTargetCallback, offset) {
-    var target;
+  const renderPopover = (placement, isOpen, useTargetCallback, offset) => {
+    let target;
 
     setFixtures('<div id="content"><div id="some-element-id">The Target</div><div id="container"></div></div>');
 
-    requestCloseCallback = jasmine.createSpy('requestCloseCallback');
+    requestCloseCallback = (e) => {
+      closeCallBackCalled = true;
+      return e;
+    };
     tether = jasmine.createSpyObj('tether', ['destroy']);
-    spyOn(Popover.prototype.__reactAutoBindMap, '_createTether').andReturn(tether);
+    spyOn(Popover.prototype, '_createTether').andReturn(tether);
 
     if (useTargetCallback) {
-      target = function () { return document.getElementById('some-element-id'); };
+      target = () => document.getElementById('some-element-id');
     } else {
       target = 'some-element-id';
     }
@@ -31,26 +32,28 @@ describe('Popover', function () {
       </Popover>,
       document.getElementById('container')
     );
-  }
+  };
 
-  afterEach(function () {
-    if (popover.isMounted()) {
-      React.unmountComponentAtNode(document.getElementById('container'));
-    }
+  beforeEach(() => {
+    closeCallBackCalled = false;
+  });
+
+  afterEach(() => {
+    React.unmountComponentAtNode(document.getElementById('container'));
     jasmine.getFixtures().cleanUp();
   });
 
-  it('does not display the popover', function () {
+  it('does not display the popover', () => {
     renderPopover('right', false);
 
     expect(popover._popoverNode).toEqual(null);
   });
 
-  it('renders the popover overlay', function () {
-    var popoverContainer;
+  it('renders the popover overlay', () => {
+    let popoverContainer;
 
     renderPopover('right', true);
-    
+
     popoverContainer = document.querySelector('.rs-popover');
 
     expect(popoverContainer).not.toBeNull();
@@ -58,11 +61,11 @@ describe('Popover', function () {
     expect(popover._popoverNode.props.placement).toBe('right');
   });
 
-  describe('placement', function () {
-    it('to the right of the target', function () {
+  describe('placement', () => {
+    it('to the right of the target', () => {
       renderPopover('right', true);
 
-      expect(Popover.prototype.__reactAutoBindMap._createTether).toHaveBeenCalledWith({
+      expect(Popover.prototype._createTether).toHaveBeenCalledWith({
         element: React.findDOMNode(popover._containerDiv),
         target: React.findDOMNode(document.getElementById('some-element-id')),
         attachment: 'top left',
@@ -71,10 +74,10 @@ describe('Popover', function () {
       });
     });
 
-    it('to the bottom right of the target', function () {
+    it('to the bottom right of the target', () => {
       renderPopover('bottom-right', true);
 
-      expect(Popover.prototype.__reactAutoBindMap._createTether).toHaveBeenCalledWith({
+      expect(Popover.prototype._createTether).toHaveBeenCalledWith({
         element: React.findDOMNode(popover._containerDiv),
         target: React.findDOMNode(document.getElementById('some-element-id')),
         attachment: 'top left',
@@ -83,10 +86,10 @@ describe('Popover', function () {
       });
     });
 
-    it('to the left of the target', function () {
+    it('to the left of the target', () => {
       renderPopover('left', true);
 
-      expect(Popover.prototype.__reactAutoBindMap._createTether).toHaveBeenCalledWith({
+      expect(Popover.prototype._createTether).toHaveBeenCalledWith({
         element: React.findDOMNode(popover._containerDiv),
         target: React.findDOMNode(document.getElementById('some-element-id')),
         attachment: 'top right',
@@ -95,10 +98,10 @@ describe('Popover', function () {
       });
     });
 
-    it('to the bottom left of the target', function () {
+    it('to the bottom left of the target', () => {
       renderPopover('bottom-left', true);
 
-      expect(Popover.prototype.__reactAutoBindMap._createTether).toHaveBeenCalledWith({
+      expect(Popover.prototype._createTether).toHaveBeenCalledWith({
         element: React.findDOMNode(popover._containerDiv),
         target: React.findDOMNode(document.getElementById('some-element-id')),
         attachment: 'top right',
@@ -107,10 +110,10 @@ describe('Popover', function () {
       });
     });
 
-    it('renders with a target function', function () {
+    it('renders with a target function', () => {
       renderPopover('bottom-left', true, true);
 
-      expect(Popover.prototype.__reactAutoBindMap._createTether).toHaveBeenCalledWith({
+      expect(Popover.prototype._createTether).toHaveBeenCalledWith({
         element: React.findDOMNode(popover._containerDiv),
         target: React.findDOMNode(document.getElementById('some-element-id')),
         attachment: 'top right',
@@ -119,10 +122,10 @@ describe('Popover', function () {
       });
     });
 
-    it('can override the offsets', function () {
+    it('can override the offsets', () => {
       renderPopover('bottom-left', true, false, '10px 10px');
 
-      expect(Popover.prototype.__reactAutoBindMap._createTether).toHaveBeenCalledWith({
+      expect(Popover.prototype._createTether).toHaveBeenCalledWith({
         element: React.findDOMNode(popover._containerDiv),
         target: React.findDOMNode(document.getElementById('some-element-id')),
         attachment: 'top right',
@@ -131,10 +134,10 @@ describe('Popover', function () {
       });
     });
 
-    it('on the center of the target', function () {
+    it('on the center of the target', () => {
       renderPopover('center', true);
 
-      expect(Popover.prototype.__reactAutoBindMap._createTether).toHaveBeenCalledWith({
+      expect(Popover.prototype._createTether).toHaveBeenCalledWith({
         element: React.findDOMNode(popover._containerDiv),
         target: React.findDOMNode(document.getElementById('some-element-id')),
         attachment: 'middle center',
@@ -144,9 +147,9 @@ describe('Popover', function () {
     });
   });
 
-  describe('notifies parent of close request', function () {
-    it('when pressing escape', function() {
-      var keyUpEvent;
+  describe('notifies parent of close request', () => {
+    it('when pressing escape', () => {
+      let keyUpEvent;
 
       renderPopover('right', true);
 
@@ -155,19 +158,19 @@ describe('Popover', function () {
       keyUpEvent.keyCode = 27;
       document.dispatchEvent(keyUpEvent);
 
-      expect(requestCloseCallback).toHaveBeenCalled();
+      expect(closeCallBackCalled).toBe(true);
     });
 
-    it('when clicking outside of the popover', function() {
+    it('when clicking outside of the popover', () => {
       renderPopover('right', true);
 
       TestUtils.Simulate.click(document.getElementsByClassName('rs-popover-background-overlay')[0]);
 
-      expect(requestCloseCallback).toHaveBeenCalled();
+      expect(closeCallBackCalled).toBe(true);
     });
   });
 
-  it('cleans up when the component is unmounted', function () {
+  it('cleans up when the component is unmounted', () => {
     renderPopover('right', true);
 
     React.unmountComponentAtNode(React.findDOMNode(document.getElementById('container')));

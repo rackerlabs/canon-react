@@ -1,7 +1,7 @@
-var React = require('react');
+import React from 'react';
 
-var SectionHeader = React.createClass({
-  render: function () {
+class SectionHeader extends React.Component {
+  render() {
     return (
       <div className="header-section" id={this.props.id}>
         <div className="header-section-subtitle">components</div>
@@ -9,6 +9,6 @@ var SectionHeader = React.createClass({
       </div>
     );
   }
-});
+}
 
-module.exports = SectionHeader;
+export default SectionHeader;

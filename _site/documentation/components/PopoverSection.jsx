@@ -1,13 +1,13 @@
-var React = require('react');
+import React from 'react';
 
-var Button = require('../Button');
-var Popover = require('../Popover');
-var PopoverOverlay = require('../PopoverOverlay');
-var PopoverBody = require('../PopoverBody');
-var PopoverFooter = require('../PopoverFooter');
+import Button from '../Button';
+import Popover from '../Popover';
+import PopoverOverlay from '../PopoverOverlay';
+import PopoverBody from '../PopoverBody';
+import PopoverFooter from '../PopoverFooter';
 
-var UpdateNamePopover = React.createClass({
-  render: function () {
+class UpdateNamePopover extends React.Component {
+  render() {
     return (
       <Popover placement={this.props.placement}
        isOpen={this.props.isOpen}
@@ -28,38 +28,39 @@ var UpdateNamePopover = React.createClass({
       </Popover>
     );
   }
-});
+}
 
-var PopoverParent = React.createClass({
-  getInitialState: function () {
-    return {
+class PopoverParent extends React.Component {
+  constructor() {
+    super();
+    this.state = {
       shouldShowUpdateNamePopover: false
     };
-  },
+  }
 
-  showUpdateNamePopover: function () {
+  showUpdateNamePopover() {
     this.setState({shouldShowUpdateNamePopover: true});
-  },
+  }
 
-  requestUpdateNameClose: function () {
+  requestUpdateNameClose() {
     this.setState({shouldShowUpdateNamePopover: false});
-  },
+  }
 
-  render: function () {
+  render() {
     return (
       <div>
-        <Button id='update-name-button' type='primary' onClick={this.showUpdateNamePopover}>Update Name</Button>
+        <Button id='update-name-button' type='primary' onClick={this.showUpdateNamePopover.bind(this)}>Update Name</Button>
         <UpdateNamePopover placement='right'
          target='update-name-button'
-         onRequestClose={this.requestUpdateNameClose}
+         onRequestClose={this.requestUpdateNameClose.bind(this)}
          isOpen={this.state.shouldShowUpdateNamePopover} />
       </div>
     );
   }
-});
+}
 
-var PopoverSection = React.createClass({
-  render: function () {
+class PopoverSection extends React.Component {
+  render() {
     return (
       <div className="website-content-section">
         <div className="content-section-body">
@@ -196,6 +197,6 @@ var PopoverSection = React.createClass({
         </div>
       </div>);
   }
-});
+}
 
-module.exports = PopoverSection;
+export default PopoverSection;

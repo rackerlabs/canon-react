@@ -1,12 +1,12 @@
-var React = require('react');
+import React from 'react';
 
-var PopoverBackground = React.createClass({
+class PopoverBackground extends React.Component {
 
-  propTypes: {
-    onRequestClose: React.PropTypes.func
-  },
-  
-  render: function () {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
     var style;
 
     style = {
@@ -20,6 +20,10 @@ var PopoverBackground = React.createClass({
 
     return (<div className='rs-popover-background-overlay' onClick={this.props.onRequestClose} style={style}></div>);
   }
-});
+}
 
-module.exports = PopoverBackground;
+PopoverBackground.propTypes = {
+  onRequestClose: React.PropTypes.func
+};
+
+export default PopoverBackground;

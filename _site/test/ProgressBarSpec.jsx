@@ -1,40 +1,38 @@
-var ProgressBar = require('../transpiled/ProgressBar');
-var React = require('react/addons');
-var TestUtils = React.addons.TestUtils;
+import ProgressBar from '../transpiled/ProgressBar';
+import React from 'react/addons';
+let TestUtils = React.addons.TestUtils;
 
-describe('ProgressBar', function () {
-  var progressBar;
+describe('ProgressBar', () => {
+  let progressBar;
 
-  beforeEach(function () {
+  beforeEach(() => {
     progressBar = TestUtils.renderIntoDocument(
       <ProgressBar/>
     );
   });
 
-  afterEach(function () {
-    if (progressBar.isMounted()) {
-      React.unmountComponentAtNode(React.findDOMNode(progressBar).parentNode);
-    }
+  afterEach(() => {
+    React.unmountComponentAtNode(React.findDOMNode(progressBar).parentNode);
   });
 
-  it('renders the progress container', function () {
+  it('renders the progress container', () => {
     expect(TestUtils.findRenderedDOMComponentWithClass(progressBar, 'rs-progress')).not.toBeNull();
   });
 
-  it('renders the inner progress container', function () {
+  it('renders the inner progress container', () => {
     expect(TestUtils.findRenderedDOMComponentWithClass(progressBar, 'rs-progress-inner')).not.toBeNull();
   });
 
-  it('defaults to 0 progress', function () {
-    var progressSegment;
+  it('defaults to 0 progress', () => {
+    let progressSegment;
 
     progressSegment = TestUtils.findRenderedDOMComponentWithClass(progressBar, 'rs-segment');
 
     expect(progressSegment.props.style).toEqual({ 'width': '0%' });
   });
 
-  it('renders the segment with the given progress', function () {
-    var progressSegment;
+  it('renders the segment with the given progress', () => {
+    let progressSegment;
 
     progressBar = TestUtils.renderIntoDocument(
       <ProgressBar progress={50} />
@@ -44,109 +42,109 @@ describe('ProgressBar', function () {
     expect(progressSegment.props.style).toEqual({ 'width': '50%' });
   });
 
-  describe('status bar', function () {
-    var statusBar;
+  describe('status bar', () => {
+    let statusBar;
 
-    function renderWithStatus(status) {
+    const renderWithStatus = (status) => {
       progressBar = TestUtils.renderIntoDocument(<ProgressBar status={status} />);
       statusBar = TestUtils.findRenderedDOMComponentWithClass(progressBar, 'rs-bar');
-    }
+    };
 
-    it('defaults to ok status', function () {
+    it('defaults to ok status', () => {
       statusBar = TestUtils.findRenderedDOMComponentWithClass(progressBar, 'rs-bar');
 
-      expect(statusBar.getDOMNode()).toHaveClass('rs-status-ok');
+      expect(React.findDOMNode(statusBar)).toHaveClass('rs-status-ok');
     });
 
-    it('ok', function () {
+    it('ok', () => {
       renderWithStatus('ok');
 
-      expect(statusBar.getDOMNode()).toHaveClass('rs-status-ok');
+      expect(React.findDOMNode(statusBar)).toHaveClass('rs-status-ok');
     });
 
-    it('error', function () {
+    it('error', () => {
       renderWithStatus('error');
 
-      expect(statusBar.getDOMNode()).toHaveClass('rs-status-error');
+      expect(React.findDOMNode(statusBar)).toHaveClass('rs-status-error');
     });
 
-    it('warning', function () {
+    it('warning', () => {
       renderWithStatus('warning');
 
-      expect(statusBar.getDOMNode()).toHaveClass('rs-status-warning');
+      expect(React.findDOMNode(statusBar)).toHaveClass('rs-status-warning');
     });
 
-    it('info', function () {
+    it('info', () => {
       renderWithStatus('info');
 
-      expect(statusBar.getDOMNode()).toHaveClass('rs-status-info');
+      expect(React.findDOMNode(statusBar)).toHaveClass('rs-status-info');
     });
   });
 
-  describe('type', function () {
-    var statusBar;
+  describe('type', () => {
+    let statusBar;
 
-    function renderWithType(type) {
+    const renderWithType = (type) => {
       progressBar = TestUtils.renderIntoDocument(<ProgressBar type={type} />);
       statusBar = TestUtils.findRenderedDOMComponentWithClass(progressBar, 'rs-bar');
-    }
+    };
 
-    it('defaults to solid', function () {
+    it('defaults to solid', () => {
       statusBar = TestUtils.findRenderedDOMComponentWithClass(progressBar, 'rs-bar');
 
-      expect(statusBar.getDOMNode()).toHaveClass('rs-bar-solid');
+      expect(React.findDOMNode(statusBar)).toHaveClass('rs-bar-solid');
     });
 
-    it('solid', function () {
+    it('solid', () => {
       renderWithType('solid');
 
-      expect(statusBar.getDOMNode()).toHaveClass('rs-bar-solid');
+      expect(React.findDOMNode(statusBar)).toHaveClass('rs-bar-solid');
     });
 
-    it('striped', function () {
+    it('striped', () => {
       renderWithType('striped');
 
-      expect(statusBar.getDOMNode()).toHaveClass('rs-bar-striped');
+      expect(React.findDOMNode(statusBar)).toHaveClass('rs-bar-striped');
     });
   });
 
-  describe('size', function () {
-    function renderWithSize(size) {
+  describe('size', () => {
+    const renderWithSize = (size) => {
       progressBar = TestUtils.renderIntoDocument(<ProgressBar size={size} />);
-    }
+    };
 
-    it('defaults to no size', function () {
-      expect(progressBar.getDOMNode().className).toBe('rs-progress');
+    it('defaults to no size', () => {
+      expect(React.findDOMNode(progressBar).className).toBe('rs-progress');
     });
 
-    it('xsmall', function () {
+    it('xsmall', () => {
       renderWithSize('xsmall');
 
-      expect(progressBar.getDOMNode()).toHaveClass('rs-progress-xsmall');
+      expect(React.findDOMNode(progressBar)).toHaveClass('rs-progress-xsmall');
     });
 
-    it('small', function () {
+    it('small', () => {
       renderWithSize('small');
 
-      expect(progressBar.getDOMNode()).toHaveClass('rs-progress-small');
+      expect(React.findDOMNode(progressBar)).toHaveClass('rs-progress-small');
     });
 
-    it('medium', function () {
+    it('medium', () => {
       renderWithSize('medium');
 
-      expect(progressBar.getDOMNode()).toHaveClass('rs-progress-medium');
+      expect(React.findDOMNode(progressBar)).toHaveClass('rs-progress-medium');
     });
 
-    it('large', function () {
+    it('large', () => {
       renderWithSize('large');
 
-      expect(progressBar.getDOMNode()).toHaveClass('rs-progress-large');
+      expect(React.findDOMNode(progressBar)).toHaveClass('rs-progress-large');
     });
 
-    it('xlarge', function () {
+    it('xlarge', () => {
       renderWithSize('xlarge');
 
-      expect(progressBar.getDOMNode()).toHaveClass('rs-progress-xlarge');
+      expect(React.findDOMNode(progressBar)).toHaveClass('rs-progress-xlarge');
     });
   });
 });
