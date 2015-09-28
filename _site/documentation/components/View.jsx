@@ -6,6 +6,7 @@ import PopoverSection from './PopoverSection';
 import ProgressBarsSection from './ProgressBarsSection';
 import SectionHeader from './SectionHeader';
 import StatusIndicatorSection from './StatusIndicatorSection';
+import TooltipSection from './TooltipSection';
 
 class View extends React.Component {
   render() {
@@ -30,6 +31,9 @@ class View extends React.Component {
 
                 <SectionHeader id='popovers'>Popovers</SectionHeader>
                 <PopoverSection />
+
+                <SectionHeader id='tooltips'>Tooltips</SectionHeader>
+                <TooltipSection />
 
               </div>
             </div>
