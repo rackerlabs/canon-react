@@ -27195,6 +27195,354 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _TooltipTrigger = require('../TooltipTrigger');
+
+var _TooltipTrigger2 = _interopRequireDefault(_TooltipTrigger);
+
+var TooltipSection = (function (_React$Component) {
+  _inherits(TooltipSection, _React$Component);
+
+  function TooltipSection() {
+    _classCallCheck(this, TooltipSection);
+
+    _get(Object.getPrototypeOf(TooltipSection.prototype), 'constructor', this).apply(this, arguments);
+  }
+
+  _createClass(TooltipSection, [{
+    key: 'render',
+    value: function render() {
+      return _react2['default'].createElement(
+        'div',
+        { className: 'website-content-section' },
+        _react2['default'].createElement(
+          'div',
+          { className: 'content-section-body' },
+          _react2['default'].createElement(
+            'div',
+            { className: 'rs-row' },
+            _react2['default'].createElement(
+              'p',
+              null,
+              _react2['default'].createElement(
+                'a',
+                { href: 'http://rackerlabs.github.io/canon/ui-components/#tooltips', target: '_blank' },
+                'Tooltips'
+              ),
+              ' are used to convey brief snippets of information.'
+            )
+          ),
+          _react2['default'].createElement(
+            'div',
+            { className: 'rs-row' },
+            _react2['default'].createElement(
+              'h3',
+              null,
+              'Components'
+            ),
+            _react2['default'].createElement(
+              'ul',
+              null,
+              _react2['default'].createElement(
+                'li',
+                null,
+                _react2['default'].createElement(
+                  'code',
+                  null,
+                  'TooltipTrigger'
+                )
+              )
+            )
+          ),
+          _react2['default'].createElement(
+            'div',
+            { className: 'rs-row' },
+            _react2['default'].createElement(
+              'h5',
+              null,
+              _react2['default'].createElement(
+                'code',
+                null,
+                'TooltipTrigger'
+              )
+            ),
+            _react2['default'].createElement(
+              'p',
+              null,
+              'The ',
+              _react2['default'].createElement(
+                'code',
+                null,
+                'TooltipTrigger'
+              ),
+              ' component wraps an element that, when hovered on, will display a tooltip. This component adds the hover behavior to its child component. The ',
+              _react2['default'].createElement(
+                'code',
+                null,
+                'TooltipTrigger'
+              ),
+              ' has two properties:'
+            ),
+            _react2['default'].createElement(
+              'ul',
+              null,
+              _react2['default'].createElement(
+                'li',
+                null,
+                _react2['default'].createElement(
+                  'code',
+                  null,
+                  'placement'
+                )
+              ),
+              _react2['default'].createElement(
+                'li',
+                null,
+                _react2['default'].createElement(
+                  'code',
+                  null,
+                  'content'
+                )
+              )
+            ),
+            _react2['default'].createElement(
+              'h6',
+              null,
+              _react2['default'].createElement(
+                'code',
+                null,
+                'placement'
+              )
+            ),
+            _react2['default'].createElement(
+              'p',
+              null,
+              _react2['default'].createElement(
+                'code',
+                null,
+                'placement'
+              ),
+              ' defines the position of the tooltip in relation to its trigger. The following values are allowed:'
+            ),
+            _react2['default'].createElement(
+              'ul',
+              null,
+              _react2['default'].createElement(
+                'li',
+                null,
+                _react2['default'].createElement(
+                  'code',
+                  null,
+                  'right'
+                )
+              ),
+              _react2['default'].createElement(
+                'li',
+                null,
+                _react2['default'].createElement(
+                  'code',
+                  null,
+                  'bottom-right'
+                )
+              ),
+              _react2['default'].createElement(
+                'li',
+                null,
+                _react2['default'].createElement(
+                  'code',
+                  null,
+                  'top-right'
+                )
+              ),
+              _react2['default'].createElement(
+                'li',
+                null,
+                _react2['default'].createElement(
+                  'code',
+                  null,
+                  'left'
+                )
+              ),
+              _react2['default'].createElement(
+                'li',
+                null,
+                _react2['default'].createElement(
+                  'code',
+                  null,
+                  'bottom-left'
+                )
+              ),
+              _react2['default'].createElement(
+                'li',
+                null,
+                _react2['default'].createElement(
+                  'code',
+                  null,
+                  'top-left'
+                )
+              ),
+              _react2['default'].createElement(
+                'li',
+                null,
+                _react2['default'].createElement(
+                  'code',
+                  null,
+                  'top'
+                )
+              ),
+              _react2['default'].createElement(
+                'li',
+                null,
+                _react2['default'].createElement(
+                  'code',
+                  null,
+                  'bottom'
+                )
+              )
+            ),
+            _react2['default'].createElement(
+              'p',
+              null,
+              _react2['default'].createElement(
+                'code',
+                null,
+                'bottom-right'
+              ),
+              ' is the default placement.'
+            ),
+            _react2['default'].createElement(
+              'h6',
+              null,
+              _react2['default'].createElement(
+                'code',
+                null,
+                'content'
+              )
+            ),
+            _react2['default'].createElement(
+              'p',
+              null,
+              _react2['default'].createElement(
+                'code',
+                null,
+                'content'
+              ),
+              ' is the contents of the tooltip. This can be plain text or react components.'
+            )
+          ),
+          _react2['default'].createElement(
+            'div',
+            { className: 'rs-row' },
+            _react2['default'].createElement(
+              'h3',
+              null,
+              'Tooltip Example'
+            ),
+            _react2['default'].createElement(
+              'p',
+              null,
+              'A tooltip rendered :'
+            ),
+            _react2['default'].createElement(
+              _TooltipTrigger2['default'],
+              { content: 'Hello There!' },
+              _react2['default'].createElement('i', { className: 'rs-icon-help' })
+            ),
+            _react2['default'].createElement(
+              'p',
+              null,
+              _react2['default'].createElement(
+                'div',
+                { className: 'highlight' },
+                _react2['default'].createElement(
+                  'pre',
+                  null,
+                  _react2['default'].createElement(
+                    'code',
+                    { className: 'html' },
+                    _react2['default'].createElement(
+                      'span',
+                      { className: 'nt' },
+                      '<TooltipTrigger'
+                    ),
+                    ' ',
+                    _react2['default'].createElement(
+                      'span',
+                      { className: 'na' },
+                      'content='
+                    ),
+                    _react2['default'].createElement(
+                      'span',
+                      { className: 's' },
+                      '"Hello There!"'
+                    ),
+                    _react2['default'].createElement(
+                      'span',
+                      { className: 'nt' },
+                      '>'
+                    ),
+                    _react2['default'].createElement(
+                      'span',
+                      { className: 'nt' },
+                      '<i'
+                    ),
+                    ' ',
+                    _react2['default'].createElement(
+                      'span',
+                      { className: 'na' },
+                      'className='
+                    ),
+                    _react2['default'].createElement(
+                      'span',
+                      { className: 's' },
+                      '"rs-icon-help"'
+                    ),
+                    _react2['default'].createElement(
+                      'span',
+                      { className: 'nt' },
+                      '>'
+                    ),
+                    _react2['default'].createElement(
+                      'span',
+                      { className: 'nt' },
+                      '</TooltipTrigger>'
+                    )
+                  )
+                )
+              )
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return TooltipSection;
+})(_react2['default'].Component);
+
+exports['default'] = TooltipSection;
+module.exports = exports['default'];
+
+},{"../TooltipTrigger":205,"babel-runtime/helpers/class-call-check":6,"babel-runtime/helpers/create-class":7,"babel-runtime/helpers/get":9,"babel-runtime/helpers/inherits":10,"babel-runtime/helpers/interop-require-default":11,"react":193}],213:[function(require,module,exports){
+'use strict';
+
+var _get = require('babel-runtime/helpers/get')['default'];
+
+var _inherits = require('babel-runtime/helpers/inherits')['default'];
+
+var _createClass = require('babel-runtime/helpers/create-class')['default'];
+
+var _classCallCheck = require('babel-runtime/helpers/class-call-check')['default'];
+
+var _interopRequireDefault = require('babel-runtime/helpers/interop-require-default')['default'];
+
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
 var _ButtonsSection = require('./ButtonsSection');
 
 var _ButtonsSection2 = _interopRequireDefault(_ButtonsSection);
@@ -27218,6 +27566,10 @@ var _SectionHeader2 = _interopRequireDefault(_SectionHeader);
 var _StatusIndicatorSection = require('./StatusIndicatorSection');
 
 var _StatusIndicatorSection2 = _interopRequireDefault(_StatusIndicatorSection);
+
+var _TooltipSection = require('./TooltipSection');
+
+var _TooltipSection2 = _interopRequireDefault(_TooltipSection);
 
 var View = (function (_React$Component) {
   _inherits(View, _React$Component);
@@ -27275,7 +27627,13 @@ var View = (function (_React$Component) {
                   { id: 'popovers' },
                   'Popovers'
                 ),
-                _react2['default'].createElement(_PopoverSection2['default'], null)
+                _react2['default'].createElement(_PopoverSection2['default'], null),
+                _react2['default'].createElement(
+                  _SectionHeader2['default'],
+                  { id: 'tooltips' },
+                  'Tooltips'
+                ),
+                _react2['default'].createElement(_TooltipSection2['default'], null)
               )
             )
           )
@@ -27291,7 +27649,7 @@ var View = (function (_React$Component) {
 exports['default'] = View;
 module.exports = exports['default'];
 
-},{"./ButtonGroupSection":206,"./ButtonsSection":207,"./PopoverSection":208,"./ProgressBarsSection":209,"./SectionHeader":210,"./StatusIndicatorSection":211,"babel-runtime/helpers/class-call-check":6,"babel-runtime/helpers/create-class":7,"babel-runtime/helpers/get":9,"babel-runtime/helpers/inherits":10,"babel-runtime/helpers/interop-require-default":11,"react":193}],213:[function(require,module,exports){
+},{"./ButtonGroupSection":206,"./ButtonsSection":207,"./PopoverSection":208,"./ProgressBarsSection":209,"./SectionHeader":210,"./StatusIndicatorSection":211,"./TooltipSection":212,"babel-runtime/helpers/class-call-check":6,"babel-runtime/helpers/create-class":7,"babel-runtime/helpers/get":9,"babel-runtime/helpers/inherits":10,"babel-runtime/helpers/interop-require-default":11,"react":193}],214:[function(require,module,exports){
 'use strict';
 
 var React = require('react');
@@ -27302,7 +27660,7 @@ var ComponentsView = require('./components/View');
   React.render(React.createElement(ComponentsView, null), document.getElementById('components-content'));
 })();
 
-},{"./components/View":212,"react":193}],214:[function(require,module,exports){
+},{"./components/View":213,"react":193}],215:[function(require,module,exports){
 'use strict';
 
 var _interopRequireDefault = require('babel-runtime/helpers/interop-require-default')['default'];
@@ -27365,4 +27723,4 @@ exports['default'] = {
 };
 module.exports = exports['default'];
 
-},{"./Button":195,"./ButtonGroup":196,"./Popover":197,"./PopoverBody":199,"./PopoverFooter":200,"./PopoverOverlay":201,"./ProcessingIndicator":202,"./ProgressBar":203,"./StatusIndicator":204,"./TooltipTrigger":205,"babel-runtime/helpers/interop-require-default":11}]},{},[195,196,197,198,199,200,201,202,203,204,205,206,207,208,209,210,211,212,213,214])
+},{"./Button":195,"./ButtonGroup":196,"./Popover":197,"./PopoverBody":199,"./PopoverFooter":200,"./PopoverOverlay":201,"./ProcessingIndicator":202,"./ProgressBar":203,"./StatusIndicator":204,"./TooltipTrigger":205,"babel-runtime/helpers/interop-require-default":11}]},{},[195,196,197,198,199,200,201,202,203,204,205,206,207,208,209,210,211,212,213,214,215])
