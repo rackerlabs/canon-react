@@ -3,9 +3,10 @@ import Tether from 'tether';
 import PopoverBackground from './PopoverBackground';
 
 class Popover extends React.Component {
-
   constructor(props) {
     super(props);
+
+    this._escapeHandler = this._handleEscapePress.bind(this);
   }
 
   componentWillUnmount() {
@@ -63,7 +64,7 @@ class Popover extends React.Component {
   }
 
   _removeDocumentListeners() {
-    document.removeEventListener('keyup', this._handleEscapePress.bind(this), false);
+    document.removeEventListener('keyup', this._escapeHandler, false);
   }
 
   _show() {
@@ -163,7 +164,7 @@ class Popover extends React.Component {
   }
 
   _listenForEscapePress() {
-    document.addEventListener('keyup', this._handleEscapePress.bind(this), false);
+    document.addEventListener('keyup', this._escapeHandler, false);
   }
 
   _handleEscapePress(e) {
