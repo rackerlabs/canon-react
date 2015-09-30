@@ -23,7 +23,7 @@ class DemoDropdownSection extends React.Component {
               <Button>Utility Dropdown</Button>
             </DropdownTrigger>
             <DropdownTrigger dropdown={<DemoActionMenu/>}>
-              <Button>Action Menu</Button>
+              <Button type='action'>Actions</Button>
             </DropdownTrigger>
             <DropdownTrigger dropdown={<DemoActionMenu/>}>
               <div className="rs-cog rs-dropdown-toggle"></div>
