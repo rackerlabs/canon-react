@@ -1,3 +1,7 @@
+### Version 0.4.0
+1. Dropdowns
+2. `action` type for Buttons to create Action Buttons (with cog and caret icons)
+
 ### Version 0.3.2:
 Refactored the tooltip trigger to not render a `<trigger>` element that wraps the actual trigger component.
 

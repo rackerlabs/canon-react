@@ -37,6 +37,5 @@ An example of how to use canon-react components can be found in `node_modules/ca
 
 # Roadmap
 This is a list of what is planned for the next release
-## v 0.4.0
-1. Action Button
-2. Action Dropdown
+## v 0.5.0
+??? What would you like [see](https://github.com/rackerlabs/canon-react/issues/new)?
