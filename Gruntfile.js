@@ -127,6 +127,8 @@ module.exports = function (grunt) {
     'clean:transpiled'
   ]);
 
+  grunt.registerTask('lint', ['eslint']);
+
   grunt.registerTask('default', ['build']);
 
 };

@@ -11,4 +11,8 @@ class PopoverBody extends React.Component {
   }
 }
 
+PopoverBody.propTypes = {
+  children: React.PropTypes.element.isRequired
+};
+
 export default PopoverBody;

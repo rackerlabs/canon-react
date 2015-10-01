@@ -1,15 +1,6 @@
 import React from 'react';
 
 class StatusIndicator extends React.Component {
-
-  render() {
-    return (
-      <statusindicator {...this.props} className={this._classes()}>
-        {this.props.children}
-      </statusindicator>
-    );
-  }
-
   _classes() {
     let classes, statusIndicatorTypes;
 
@@ -34,9 +25,19 @@ class StatusIndicator extends React.Component {
 
     return classes.join(' ');
   }
+
+  render() {
+    return (
+      <statusindicator {...this.props} className={this._classes()}>
+        {this.props.children}
+      </statusindicator>
+    );
+  }
 }
 
 StatusIndicator.propTypes = {
+  children: React.PropTypes.element.isRequired,
+  className: React.PropTypes.array,
   status: React.PropTypes.oneOf(['ok', 'error', 'processing', 'warning', 'disabled']),
   hidden: React.PropTypes.bool
 };
