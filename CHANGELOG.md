@@ -1,3 +1,6 @@
+### Version 0.5.0
+1. Allow `PopoverFooter` to receive additional class names as a property.
+
 ### Version 0.4.0
 1. Dropdowns
 2. `action` type for Buttons to create Action Buttons (with cog and caret icons)
