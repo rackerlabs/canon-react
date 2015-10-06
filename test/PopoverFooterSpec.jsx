@@ -26,6 +26,18 @@ describe('PopoverFooter', () => {
     expect(React.findDOMNode(buttonGroup)).toHaveClass('rs-btn-group');
   });
 
+  it('renders additional classes', () => {
+    var newFooter, buttonGroup;
+
+    newFooter = TestUtils.renderIntoDocument(
+      <PopoverFooter className="second-class">Hello</PopoverFooter>
+    );
+    buttonGroup = TestUtils.findRenderedDOMComponentWithClass(newFooter, 'rs-popover-footer');
+
+    expect(React.findDOMNode(buttonGroup)).toHaveClass('rs-btn-group');
+    expect(React.findDOMNode(buttonGroup)).toHaveClass('second-class');
+  });
+
   it('renders children', () => {
     expect(React.findDOMNode(popoverFooter).textContent).toBe('Hello');
   });
