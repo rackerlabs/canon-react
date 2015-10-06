@@ -22,7 +22,7 @@ var DemoPopover = React.createClass({
               <div className='rs-control-group'>
                 <label className='rs-control-label'>Field 1</label>
                 <div className='rs-controls'>
-                  <input type='text'/>
+                  <input autoFocus type='text'/>
                 </div>
               </div>
             </form>

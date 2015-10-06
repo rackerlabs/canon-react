@@ -79,6 +79,9 @@ class Popover extends React.Component {
     React.render(<PopoverBackground onRequestClose={this.props.onRequestClose} />, this._backgroundDiv);
     this._containerDiv.className += ' rs-popover';
 
+    if (!this._tether) {
+      this._tether = this._createTether(this._getTetherConfig());
+    }
     popover = React.cloneElement(
       React.Children.only(this.props.children),
       {
@@ -86,9 +89,7 @@ class Popover extends React.Component {
       }
     );
     this._popoverNode = React.render(popover, this._containerDiv);
-    if (!this._tether) {
-      this._tether = this._createTether(this._getTetherConfig());
-    }
+    this._tether.position();
   }
 
   // This is a seam for testing
