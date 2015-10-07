@@ -8,7 +8,7 @@ describe('PopoverBody', () => {
 
   beforeEach(() => {
     popoverBody = TestUtils.renderIntoDocument(
-      <PopoverBody>
+      <PopoverBody className="test-additional-class">
         Hello
       </PopoverBody>
     );
@@ -20,6 +20,10 @@ describe('PopoverBody', () => {
 
   it('renders a popover body', () => {
     expect(React.findDOMNode(popoverBody)).toHaveClass('rs-popover-body');
+  });
+
+  it('adds an additional class', () => {
+    expect(React.findDOMNode(popoverBody)).toHaveClass('test-additional-class');
   });
 
   it('renders children', () => {

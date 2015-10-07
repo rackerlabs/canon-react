@@ -3,8 +3,11 @@ import React from 'react';
 class PopoverBody extends React.Component {
 
   render() {
+    var classes;
+
+    classes = ['rs-popover-body', this.props.className];
     return (
-      <div className='rs-popover-body'>
+      <div className={classes.join(' ')}>
         {this.props.children}
       </div>
     );
