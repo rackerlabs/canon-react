@@ -1,3 +1,7 @@
+### Version 0.6.0
+1. Allow `PopoverBody` to receive additional class names as a property.
+2. Fixed an issue where autoFocus would cause popovers to scroll out of view
+
 ### Version 0.5.0
 1. Allow `PopoverFooter` to receive additional class names as a property.
 
