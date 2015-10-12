@@ -36,8 +36,6 @@ class StatusIndicator extends React.Component {
 }
 
 StatusIndicator.propTypes = {
-  children: React.PropTypes.element.isRequired,
-  className: React.PropTypes.array,
   status: React.PropTypes.oneOf(['ok', 'error', 'processing', 'warning', 'disabled']),
   hidden: React.PropTypes.bool
 };

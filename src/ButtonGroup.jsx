@@ -17,9 +17,4 @@ class ButtonGroup extends React.Component {
   }
 }
 
-ButtonGroup.propTypes = {
-  children: React.PropTypes.element.isRequired,
-  className: React.PropTypes.array
-};
-
 export default ButtonGroup;
