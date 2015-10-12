@@ -16,8 +16,4 @@ class PopoverFooter extends React.Component {
   }
 }
 
-PopoverFooter.propTypes = {
-  children: React.PropTypes.element.isRequired
-};
-
 export default PopoverFooter;
