@@ -8,12 +8,9 @@
   },
   "scripts": {
     "prepublish": "./prepublish.sh",
-    "build": "./node_modules/.bin/grunt build",
+    "build": "scripts/cibuild",
     "clean": "./node_modules/.bin/grunt clean",
-    "demo-build": "./node_modules/.bin/grunt demo-build",
-    "test-watch": "./node_modules/.bin/grunt watch 2>&1 >/dev/null & ./node_modules/karma/bin/karma start karma.dev.js",
-    "test": "./node_modules/.bin/grunt build && ./node_modules/karma/bin/karma start karma.ci.js",
-    "lint": "./node_modules/.bin/grunt lint"
+    "test": "scripts/cibuild"
   },
   "keywords": [
     "react",
@@ -68,6 +65,7 @@
     "grunt-eslint": "^15.0.0",
     "grunt-jsxhint": "~0.5.0",
     "grunt-shell": "~0.6.4",
+    "http-server": "^0.8.5",
     "karma": "^0.12.22",
     "karma-browserify": "~3.0.1",
     "karma-chrome-launcher": "^0.1.4",
