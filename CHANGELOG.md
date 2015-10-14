@@ -1,3 +1,8 @@
+### Version 0.6.1
+1. Hide dropdowns when dropdown items are clicked
+2. Fix bad prop types where `children` and `className` were misused
+3. Add contributing guide and scripts for setup and development
+
 ### Version 0.6.0
 1. Allow `PopoverBody` to receive additional class names as a property.
 2. Fixed an issue where autoFocus would cause popovers to scroll out of view
