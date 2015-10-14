@@ -6,7 +6,7 @@ import DropdownItem from './DropdownItem';
 class DemoActionMenu extends React.Component {
   render() {
     return (
-      <Dropdown type='action'>
+      <Dropdown { ...this.props } type='action'>
         <DropdownItem type='category'>Identify</DropdownItem>
         <DropdownItem type='link'>Rename Server...</DropdownItem>
         <DropdownItem type='link'>Tag Server...</DropdownItem>

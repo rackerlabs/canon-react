@@ -81,7 +81,7 @@ class DropdownTrigger extends React.Component {
     dropdown = React.cloneElement(
       this.props.dropdown,
       {
-        hideCallback: this._hide
+        hideCallback: this._hide.bind(this)
       }
     );
 

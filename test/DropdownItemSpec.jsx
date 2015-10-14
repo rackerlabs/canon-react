@@ -3,13 +3,18 @@ import React from 'react/addons';
 let TestUtils = React.addons.TestUtils;
 
 describe('DropdownItem', () => {
-  var dropdownItem, clickFunction;
+  var dropdownItem, clickFunction, hideFunction;
 
   beforeEach(() => {
     clickFunction = jasmine.createSpy('clickFunction');
+    hideFunction = jasmine.createSpy('hideFunction');
 
     dropdownItem = TestUtils.renderIntoDocument(
-      <DropdownItem id='dropdown-id' className='test-dropdown-class' onClick={clickFunction}>Dropdown Text</DropdownItem>
+      <DropdownItem
+        id='dropdown-id'
+        className='test-dropdown-class'
+        onClick={clickFunction}
+        hideCallback={hideFunction}>Dropdown Text</DropdownItem>
     );
   });
 
@@ -47,6 +52,12 @@ describe('DropdownItem', () => {
     TestUtils.Simulate.click(React.findDOMNode(dropdownItem));
 
     expect(clickFunction).toHaveBeenCalled();
+  });
+
+  it('executes the hide callback when clicked', () => {
+    TestUtils.Simulate.click(React.findDOMNode(dropdownItem));
+
+    expect(hideFunction).toHaveBeenCalled();
   });
 
   describe('dropdown types', () => {
