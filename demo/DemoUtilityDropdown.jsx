@@ -7,7 +7,7 @@ import DropdownItem from './DropdownItem';
 class DemoUtilityDropdown extends React.Component {
   render() {
     return (
-      <Dropdown type='utility'>
+      <Dropdown { ...this.props } type='utility'>
         <DropdownItem type='text'>Account# 1234567</DropdownItem>
         <Divider/>
         <DropdownItem type='link'>Billing</DropdownItem>

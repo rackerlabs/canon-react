@@ -6,7 +6,7 @@ import DropdownItem from './DropdownItem';
 class DemoPrimaryDropdown extends React.Component {
   render() {
     return (
-      <Dropdown type='primary'>
+      <Dropdown { ...this.props } type='primary'>
         <DropdownItem type='category'>Infrastructure</DropdownItem>
         <DropdownItem type='link'>Servers</DropdownItem>
         <DropdownItem type='link'>Load Balancers</DropdownItem>

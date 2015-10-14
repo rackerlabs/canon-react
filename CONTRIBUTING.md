@@ -20,6 +20,6 @@ Run the `setup` script to install all dependencies needed to lint, build, test, 
 ### `scripts/server`
 The `server` script will run a lightweight http server to server up react components in the `demo/` directory. This script will also watch for file changes while you are developing so you only need to refresh your browser to see your most recent changes. The demo web page can be viewed at `http://localhost:8080/demo/`.
 ### `scripts/test`
-The `test` script will start a kara test runner that runs the entire suite of unit tests for this library and will stay alive and watch for file changes while you are developing.
+The `test` script will start a karma test runner that runs the entire suite of unit tests for this library and will stay alive and watch for file changes while you are developing.
 ### `scripts/cibuild`
 The `cibuild` script is run by TravisCI for every pull request. This script runs linting, build tasks on the javascript, and unit tests. You can run this file locally to ensure your branch will pass on the CI environment. If you wish to run linting separately from these jobs, you can run `grunt lint`.

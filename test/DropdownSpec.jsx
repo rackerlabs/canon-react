@@ -1,13 +1,16 @@
 import Dropdown from '../transpiled/Dropdown';
+import DropdownItem from '../transpiled/DropdownItem';
 import React from 'react/addons';
 let TestUtils = React.addons.TestUtils;
 
 describe('Dropdown', () => {
-  var dropdown;
+  var dropdown, hideFunction;
 
   beforeEach(() => {
+    hideFunction = jasmine.createSpy('hideFunction');
+
     dropdown = TestUtils.renderIntoDocument(
-      <Dropdown className='test-dropdown-class' >Dropdown Text</Dropdown>
+      <Dropdown className='test-dropdown-class' hideCallback={hideFunction}><DropdownItem type='link'>Dropdown Item...</DropdownItem></Dropdown>
     );
   });
 
@@ -32,7 +35,16 @@ describe('Dropdown', () => {
 
     menu = TestUtils.findRenderedDOMComponentWithClass(dropdown, 'rs-dropdown-menu');
 
-    expect(React.findDOMNode(menu).textContent).toBe('Dropdown Text');
+    expect(React.findDOMNode(menu).textContent).toBe('Dropdown Item...');
+  });
+
+  it('passes hide callback down to dropdown items', () => {
+    var childItem;
+
+    childItem = TestUtils.findRenderedComponentWithType(dropdown, DropdownItem);
+    TestUtils.Simulate.click(React.findDOMNode(childItem));
+
+    expect(hideFunction).toHaveBeenCalled();
   });
 
   describe('dropdown types', () => {

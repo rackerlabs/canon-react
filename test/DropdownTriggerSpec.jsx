@@ -2,6 +2,7 @@ import DropdownTrigger from '../transpiled/DropdownTrigger';
 
 import Button from '../transpiled/Button';
 import Dropdown from '../transpiled/Dropdown';
+import DropdownItem from '../transpiled/DropdownItem';
 import React from 'react/addons';
 let TestUtils = React.addons.TestUtils;
 
@@ -10,7 +11,7 @@ describe('DropdownTrigger', () => {
 
   const renderDropdown = () => {
     dropdownTrigger = TestUtils.renderIntoDocument(
-      <DropdownTrigger dropdown={<Dropdown><Button onClick={() => {}}>Hello</Button>Content</Dropdown>}>
+      <DropdownTrigger dropdown={<Dropdown><DropdownItem id='test-dropdown-item'>Hello</DropdownItem></Dropdown>}>
         <Button>Hello</Button>
       </DropdownTrigger>
     );
@@ -103,17 +104,14 @@ describe('DropdownTrigger', () => {
         expect(dropdownTrigger._dropdownNode).toBeNull();
       });
 
-      it('does not hide the dropdown when clicking inside of the dropdown', () => {
-        var dropdownButton;
-
-        renderDropdown('right');
+      it('hides the dropdown when a dropdown item is clicked', () => {
+        renderDropdown();
         clickTrigger();
 
-        dropdownButton = TestUtils.findRenderedComponentWithType(dropdownTrigger._dropdownNode, Button);
-        TestUtils.Simulate.click(React.findDOMNode(dropdownButton));
+        TestUtils.Simulate.click(document.getElementById('test-dropdown-item'));
 
-        expect(tether.destroy).not.toHaveBeenCalled();
-        expect(dropdownTrigger._dropdownNode).not.toBeNull();
+        expect(tether.destroy).toHaveBeenCalled();
+        expect(dropdownTrigger._dropdownNode).toBeNull();
       });
     });
   });

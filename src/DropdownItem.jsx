@@ -41,6 +41,7 @@ class DropdownItem extends React.Component {
   _handleClick(e) {
     if (this.props.enabled) {
       this.props.onClick(e);
+      this.props.hideCallback();
       return e;
     }
     e.preventDefault();
@@ -50,12 +51,14 @@ class DropdownItem extends React.Component {
 DropdownItem.propTypes = {
   enabled: React.PropTypes.bool,
   onClick: React.PropTypes.func,
+  hideCallback: React.PropTypes.func,
   type: React.PropTypes.oneOf(['link', 'category', 'text'])
 };
 
 DropdownItem.defaultProps = {
   enabled: true,
   onClick: function () {},
+  hideCallback: function () {},
   type: 'link'
 };
 
