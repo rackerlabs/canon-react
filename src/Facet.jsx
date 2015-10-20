@@ -13,27 +13,30 @@ class Facet extends React.Component {
   }
 
   render() {
-    let hiddenClass, clearLinkClasses, facetToggler, expandedClass,
-        sectionClasses, criteriaToBeRendered;
+    let criteriaToBeRendered, clearLinkClasses, facetToggler,
+        expandedClass, sectionClasses;
 
     criteriaToBeRendered = this._getCriteriaToBeRendered();
     facetToggler = this._getMoreOrLessToggle(criteriaToBeRendered);
 
-    hiddenClass = this._facetHasSelectedCriteria() ? "" : " rs-hidden";
-    clearLinkClasses = "rs-facet-clear-link" + hiddenClass;
-    expandedClass = this.state.criteriaTruncated ? " collapsed" : " expanded";
-    sectionClasses = "rs-facet-section" + expandedClass;
+    clearLinkClasses = ['rs-facet-clear-link'];
+    if(!this._facetHasSelectedCriteria()) {
+      clearLinkClasses.push('rs-hidden');
+    }
+    sectionClasses = ['rs-facet-section'];
+    expandedClass = this.state.criteriaTruncated ? 'collapsed' : 'expanded';
+    sectionClasses.push(expandedClass);
 
     return (
-      <div className={ sectionClasses }>
-        <div className="rs-facet-section-header">
-          <div className={ clearLinkClasses } onClick={ this._handleClear.bind(this) }>
+      <div className={ sectionClasses.join(' ') }>
+        <div className='rs-facet-section-header'>
+          <div className={ clearLinkClasses.join(' ') } onClick={ this._handleClear.bind(this) }>
             clear
           </div>
-          <div className="rs-facet-section-title">{ this.props.label }</div>
+          <div className='rs-facet-section-title'>{ this.props.label }</div>
         </div>
-        <div className="rs-facet-section-body">
-          <ul className="rs-facet-list">
+        <div className='rs-facet-section-body'>
+          <ul className='rs-facet-list'>
             { criteriaToBeRendered }
             { facetToggler }
           </ul>
@@ -42,8 +45,8 @@ class Facet extends React.Component {
     );
   }
 
-  _handleCriteriaSelection(criteriaLabel, filter, opt_class) {
-    this.props.onCriteriaSelection(this.props.label, criteriaLabel, filter, opt_class);
+  _handleCriteriaSelection(criteriaLabel, filter, iconClass) {
+    this.props.onCriteriaSelection(this.props.label, criteriaLabel, filter, iconClass);
   };
 
 
@@ -98,7 +101,7 @@ class Facet extends React.Component {
           onCriteriaDeselection={ this._handleCriteriaDeselection.bind(this) }
           filter={ criteria.filter }
           hidden={ hidden }
-          className={ criteria.opt_class }
+          className={ criteria.iconClass }
           key={ criteria.label } />
       );
     }, this);
@@ -130,7 +133,7 @@ class Facet extends React.Component {
           onCriteriaDeselection={ this._handleCriteriaDeselection.bind(this) }
           filter={ this.props.selectedCriteria[criteriaLabel].filter }
           hidden={ false }
-          className={ this.props.selectedCriteria[criteriaLabel].opt_class }
+          className={ this.props.selectedCriteria[criteriaLabel].iconClass }
           key={ criteriaLabel } />
       );
     }, this);

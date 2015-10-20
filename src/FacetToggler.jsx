@@ -7,13 +7,13 @@ class FacetToggler extends React.Component {
   }
 
   render() {
-    let moreOrLess;
+    let toggleText;
 
-    moreOrLess = this.props.criteriaTruncated ? 'more' : 'less';
+    toggleText = this.props.criteriaTruncated ? 'more' : 'less';
 
     return (
-      <li className="rs-facet-section-toggle" onClick={ this._handleToggleChange.bind(this) }>
-        <i className="rs-facet-toggle-arrow" />{ moreOrLess }
+      <li className='rs-facet-section-toggle' onClick={ this._handleToggleChange.bind(this) }>
+        <i className='rs-facet-toggle-arrow' />{ toggleText }
       </li>
     );
   };

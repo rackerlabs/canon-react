@@ -7,20 +7,26 @@ class Criteria extends React.Component {
   }
 
   render() {
-    let countText, selectedClass, disabledClass, hiddenClass, itemClasses;
+    let countText, itemClasses;
 
-    countText = "(" + this.props.count + ")";
-    selectedClass = this.props.isSelected ? " selected" : "";
-    disabledClass = (this.props.count === 0) ? " disabled" : "";
-    hiddenClass = this.props.hidden ? " rs-hidden" : "";
-    itemClasses = "rs-facet-item" + selectedClass + disabledClass + hiddenClass;
+    countText = '(' + this.props.count + ')';
+    itemClasses = ['rs-facet-item'];
+    if (this.props.isSelected) {
+      itemClasses.push('selected');
+    }
+    if (!this.props.count) {
+      itemClasses.push('disabled');
+    }
+    if (this.props.hidden) {
+      itemClasses.push('rs-hidden');
+    }
 
     return (
       <span>
-        <li className={ itemClasses } onClick={ this._handleSelectionChange.bind(this) } title={ this.props.label }>
+        <li className={ itemClasses.join(' ') } onClick={ this._handleSelectionChange.bind(this) } title={ this.props.label }>
           <span className={ this.props.className } />
-          <div className="rs-facet-label">{ this.props.label }</div>
-          <div className="rs-facet-count">{ countText }</div>
+          <div className='rs-facet-label'>{ this.props.label }</div>
+          <div className='rs-facet-count'>{ countText }</div>
         </li>
       </span>
     );

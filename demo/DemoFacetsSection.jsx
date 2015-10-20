@@ -20,9 +20,9 @@ class DemoFacetsSection extends React.Component {
         {label: 'Finance', count: 1, filter: function () {}}
       ]},
       {label: 'STATUS', criteria: [
-        {label: 'Error', count: 2, filter: function () {}, opt_class: 'rs-status-error'},
-        {label: 'Rebooting', count: 3, filter: function () {}, opt_class: 'rs-status-warning'},
-        {label: 'Active', count: 5, filter: function () {}, opt_class: 'rs-status-ok'}
+        {label: 'Error', count: 2, filter: function () {}, iconClass: 'rs-status-error'},
+        {label: 'Rebooting', count: 3, filter: function () {}, iconClass: 'rs-status-warning'},
+        {label: 'Active', count: 5, filter: function () {}, iconClass: 'rs-status-ok'}
       ]},
       {label: 'IMAGE', criteria: [
         {label: 'Ubuntu', count: 3, filter: function () {}},
