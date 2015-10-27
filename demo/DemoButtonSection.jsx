@@ -73,7 +73,7 @@ var DemoButtonSection = React.createClass({
                 <td>
                   <Button type='action'>Actions</Button>
                 </td>
-                <td>Plus</td>
+                <td>Action</td>
                 <td><pre><code>{"<Button type='action'>Actions</Button>"}</code></pre></td>
               </tr>
             </tbody>
