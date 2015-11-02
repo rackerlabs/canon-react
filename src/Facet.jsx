@@ -13,11 +13,11 @@ class Facet extends React.Component {
   }
 
   render() {
-    let criteriaToBeRendered, clearLinkClasses, facetToggler,
+    let criteriaElements, clearLinkClasses, facetToggler,
         expandedClass, sectionClasses;
 
-    criteriaToBeRendered = this._getCriteriaToBeRendered();
-    facetToggler = this._getMoreOrLessToggle(criteriaToBeRendered);
+    criteriaElements = this._getCriteriaElements();
+    facetToggler = this._getMoreOrLessToggle(criteriaElements);
 
     clearLinkClasses = ['rs-facet-clear-link'];
     if(!this._facetHasSelectedCriteria()) {
@@ -37,7 +37,7 @@ class Facet extends React.Component {
         </div>
         <div className='rs-facet-section-body'>
           <ul className='rs-facet-list'>
-            { criteriaToBeRendered }
+            { criteriaElements }
             { facetToggler }
           </ul>
         </div>
@@ -49,7 +49,6 @@ class Facet extends React.Component {
     this.props.onCriteriaSelection(this.props.label, criteriaLabel, filter, iconClass);
   };
 
-
   _handleCriteriaDeselection(criteriaLabel) {
     this.props.onCriteriaDeselection(this.props.label, criteriaLabel);
   };
@@ -58,83 +57,38 @@ class Facet extends React.Component {
     this.props.onFacetClear(this.props.label);
   };
 
-  _getCriteriaToBeRendered() {
-    let criteriaToBeRendered, excludedSelectedCriteriaLength, excludedSelectedCriteria,
-        criteria;
-
-    criteriaToBeRendered = [];
-    excludedSelectedCriteriaLength = 0;
-
-    if (this._facetHasSelectedCriteria()) {
-      excludedSelectedCriteria = this._getExcludedSelectedCriteriaElements();
-      excludedSelectedCriteriaLength = excludedSelectedCriteria.length;
-      criteriaToBeRendered.push(excludedSelectedCriteria);
-    }
-
-    criteria = this._getCriteriaElements(excludedSelectedCriteriaLength);
-    criteriaToBeRendered.push(criteria);
-
-    return criteriaToBeRendered;
-  };
-
-  _getCriteriaElements(selectedCriteriaLength) {
-    let criteriaElements;
+  _getCriteriaElements() {
+    let criteriaElements, criteriaData;
 
     criteriaElements = [];
+    criteriaData = Object.assign({}, this.props.criteria, this.props.selectedCriteria, this.props.criteria);
 
-    this.props.criteria.forEach(function (criteria, index) {
-      let isSelected, hidden, numVisibleCriteria, indexOverTruncationPoint;
+    Object.keys(criteriaData).forEach(function (criteriaLabel, index) {
+      let isSelected, hidden, count, numVisibleCriteria, indexOverTruncationPoint, criteria, spliceIndex;
 
-      numVisibleCriteria = (this.props.facetTruncationLength - 1) - selectedCriteriaLength;
+      numVisibleCriteria = (this.props.facetTruncationLength - 1);
       indexOverTruncationPoint = index > numVisibleCriteria;
 
       hidden = this.state.criteriaTruncated && indexOverTruncationPoint;
 
-      isSelected = !!this.props.selectedCriteria[criteria.label];
+      criteria = criteriaData[criteriaLabel];
+      count = !!this.props.criteria[criteriaLabel] ? criteria.count : 0;
+      spliceIndex = !!this.props.criteria[criteriaLabel] ? criteriaElements.length : 0;
+      isSelected = !!this.props.selectedCriteria[criteriaLabel];
 
-      criteriaElements.push(
+      criteriaElements.splice(
+        spliceIndex,
+        0,
         <Criteria
-          label={ criteria.label }
-          count={ criteria.count }
+          label={ criteriaLabel }
+          count={ count }
           disabled={ criteria.disabled }
           isSelected={ isSelected }
           onCriteriaSelection={ this._handleCriteriaSelection.bind(this) }
           onCriteriaDeselection={ this._handleCriteriaDeselection.bind(this) }
           filter={ criteria.filter }
           hidden={ hidden }
-          className={ criteria.iconClass }
-          key={ criteria.label } />
-      );
-    }, this);
-
-    return criteriaElements;
-  };
-
-  _getExcludedSelectedCriteriaElements() {
-    let selectedToAdd, criteriaElements;
-
-    criteriaElements = [];
-
-    selectedToAdd = Object.keys(this.props.selectedCriteria).filter(function (selectedCriteria) {
-      let criteriaExists;
-
-      criteriaExists = this.props.criteria.some(function (criteria) {
-        return criteria.label === selectedCriteria;
-      });
-      return !criteriaExists;
-    }, this);
-
-    selectedToAdd.forEach(function (criteriaLabel) {
-      criteriaElements.push(
-        <Criteria
-          label={ criteriaLabel }
-          count={ 0 }
-          isSelected={ true }
-          onCriteriaSelection={ this._handleCriteriaSelection.bind(this) }
-          onCriteriaDeselection={ this._handleCriteriaDeselection.bind(this) }
-          filter={ this.props.selectedCriteria[criteriaLabel].filter }
-          hidden={ false }
-          className={ this.props.selectedCriteria[criteriaLabel].iconClass }
+          iconClass={ criteria.iconClass }
           key={ criteriaLabel } />
       );
     }, this);
@@ -142,14 +96,8 @@ class Facet extends React.Component {
     return criteriaElements;
   };
 
-  _getMoreOrLessToggle(criteriaToBeRendered) {
-    let flattenedCriteria;
-
-    flattenedCriteria = criteriaToBeRendered.reduce(function(a, b) {
-      return a.concat(b);
-    });
-
-    if (flattenedCriteria.length > this.props.facetTruncationLength) {
+  _getMoreOrLessToggle(criteriaElements) {
+    if (criteriaElements.length > this.props.facetTruncationLength) {
       return (
         <FacetToggler
           criteriaTruncated={ this.state.criteriaTruncated }
@@ -170,7 +118,7 @@ class Facet extends React.Component {
 
 Facet.propTypes = {
   label: React.PropTypes.string.isRequired,
-  criteria: React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
+  criteria: React.PropTypes.object.isRequired,
   onCriteriaSelection: React.PropTypes.func.isRequired,
   onCriteriaDeselection: React.PropTypes.func.isRequired,
   onFacetClear: React.PropTypes.func.isRequired,

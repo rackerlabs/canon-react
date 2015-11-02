@@ -44,22 +44,23 @@ class FacetsSection extends React.Component {
 
     facetElements = [];
 
-    this.props.facetData.forEach(function (facet) {
-      let selectedCriteria;
+    Object.keys(this.props.facetData).forEach(function (facetLabel) {
+      let selectedCriteria, criteria;
 
-      selectedCriteria = this.state.selectedCriteria[facet.label] || {};
+      selectedCriteria = this.state.selectedCriteria[facetLabel] || {};
+      criteria = this.props.facetData[facetLabel];
 
-      if (facet.criteria.length || Object.keys(selectedCriteria).length) {
+      if (Object.keys(criteria).length || Object.keys(selectedCriteria).length) {
         facetElements.push(
           <Facet
-            label={ facet.label }
-            criteria={ facet.criteria }
+            label={ facetLabel }
+            criteria={ criteria }
             onCriteriaSelection={ this._handleCriteriaSelection.bind(this) }
             onCriteriaDeselection={ this._handleCriteriaDeselection.bind(this) }
             selectedCriteria={ selectedCriteria }
             onFacetClear={ this._onFacetClear.bind(this) }
             facetTruncationLength={ this.props.facetTruncationLength || 5 }
-            key={ facet.label } />
+            key={ facetLabel } />
         );
       }
     }, this);
@@ -73,7 +74,7 @@ class FacetsSection extends React.Component {
     selectedCriteria = this.state.selectedCriteria;
 
     selectedCriteria[facetLabel] = selectedCriteria[facetLabel] || {};
-    selectedCriteria[facetLabel][criteriaLabel] = {filter: filter, className: className};
+    selectedCriteria[facetLabel][criteriaLabel] = this.props.facetData[facetLabel][criteriaLabel]
 
     this.setState({ selectedCriteria: selectedCriteria });
     if (this.props.onCriteriaSelection) {

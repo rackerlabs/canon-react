@@ -7,37 +7,37 @@ class DemoFacetsSection extends React.Component {
   render() {
     let facetData, style;
 
-    facetData = [
-      {label: 'TAGS', criteria: [
-        {label: 'No Count', filter: function () {}},
-        {label: 'Zero Count', count: 0, filter: function () {}},
-        {label: 'Disabled', disabled: true, filter: function () {}},
-        {label: 'Development', count: 3, filter: function () {}},
-        {label: 'Staging', count: 1, filter: function () {}},
-        {label: 'Production', count: 1, filter: function () {}},
-        {label: 'Billing', count: 3, filter: function () {}},
-        {label: 'Marketing', count: 2, filter: function () {}},
-        {label: 'Product', count: 5, filter: function () {}},
-        {label: 'Engineering', count: 8, filter: function () {}},
-        {label: 'Sales', count: 2, filter: function () {}},
-        {label: 'Finance', count: 1, filter: function () {}}
-      ]},
-      {label: 'STATUS', criteria: [
-        {label: 'Error', count: 2, filter: function () {}, iconClass: 'rs-status-error'},
-        {label: 'Rebooting', count: 3, filter: function () {}, iconClass: 'rs-status-warning'},
-        {label: 'Active', count: 5, filter: function () {}, iconClass: 'rs-status-ok'}
-      ]},
-      {label: 'IMAGE', criteria: [
-        {label: 'Ubuntu', count: 3, filter: function () {}},
-        {label: 'RHEL 6.4', count: 1, filter: function () {}},
-        {label: 'Debian 7 Wheezy', count: 2, filter: function () {}},
-        {label: 'Vyatta Network OS 6.5R2', count: 4, filter: function () {}}
-      ]},
-      {label: 'Flavor', criteria: [
-        {label: '2 GB Standard Instance', count: 10, filter: function () {}},
-        {label: '512 MB Standard Instance', count: 10, filter: function () {}}
-      ]},
-    ];
+    facetData = {
+      'TAGS': {
+        'No Count': {filter: function () {}},
+        'Zero Count': {count: 0, filter: function () {}},
+        'Disabled': {disabled: true, filter: function () {}},
+        'Development': {count: 3, filter: function () {}},
+        'Staging': {count: 1, filter: function () {}},
+        'Production': {count: 1, filter: function () {}},
+        'Billing': {count: 3, filter: function () {}},
+        'Marketing': {count: 2, filter: function () {}},
+        'Product': {count: 5, filter: function () {}},
+        'Engineering': {count: 8, filter: function () {}},
+        'Sales': {count: 2, filter: function () {}},
+        'Finance': {count: 1, filter: function () {}}
+      },
+      'STATUS': {
+        'Error': {count: 2, filter: function () {}, iconClass: 'rs-status-error'},
+        'Rebooting': {count: 3, filter: function () {}, iconClass: 'rs-status-warning'},
+        'Active': {count: 5, filter: function () {}, iconClass: 'rs-status-ok'}
+      },
+      'IMAGE': {
+        'Ubuntu': {count: 3, filter: function () {}},
+        'RHEL 6.4': {count: 1, filter: function () {}},
+        'Debian 7 Wheezy': {count: 2, filter: function () {}},
+        'Vyatta Network OS 6.5R2': {count: 4, filter: function () {}}
+      },
+      'Flavor': {
+        '2 GB Standard Instance': {count: 10, filter: function () {}},
+        '512 MB Standard Instance': {count: 10, filter: function () {}}
+      }
+    };
     style = {maxWidth: '270px'};
     return (
       <div className='rs-detail-section'>
