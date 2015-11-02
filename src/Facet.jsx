@@ -96,6 +96,7 @@ class Facet extends React.Component {
         <Criteria
           label={ criteria.label }
           count={ criteria.count }
+          disabled={ criteria.disabled }
           isSelected={ isSelected }
           onCriteriaSelection={ this._handleCriteriaSelection.bind(this) }
           onCriteriaDeselection={ this._handleCriteriaDeselection.bind(this) }

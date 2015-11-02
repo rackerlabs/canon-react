@@ -9,6 +9,9 @@ class DemoFacetsSection extends React.Component {
 
     facetData = [
       {label: 'TAGS', criteria: [
+        {label: 'No Count', filter: function () {}},
+        {label: 'Zero Count', count: 0, filter: function () {}},
+        {label: 'Disabled', disabled: true, filter: function () {}},
         {label: 'Development', count: 3, filter: function () {}},
         {label: 'Staging', count: 1, filter: function () {}},
         {label: 'Production', count: 1, filter: function () {}},

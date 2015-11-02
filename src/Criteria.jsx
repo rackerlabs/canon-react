@@ -2,19 +2,15 @@ import React from 'react';
 
 class Criteria extends React.Component {
 
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     let countText, itemClasses;
-
-    countText = '(' + this.props.count + ')';
+    debugger;
+    countText = !!this.props.count && '(' + this.props.count + ')';
     itemClasses = ['rs-facet-item'];
     if (this.props.isSelected) {
       itemClasses.push('selected');
     }
-    if (!this.props.count) {
+    if (this.props.disabled) {
       itemClasses.push('disabled');
     }
     if (this.props.hidden) {
@@ -45,7 +41,8 @@ class Criteria extends React.Component {
 /** @inheritDoc */
 Criteria.propTypes = {
   label: React.PropTypes.string.isRequired,
-  count: React.PropTypes.number.isRequired,
+  count: React.PropTypes.number,
+  disabled: React.PropTypes.bool,
   isSelected: React.PropTypes.bool.isRequired,
   onCriteriaSelection: React.PropTypes.func.isRequired,
   onCriteriaDeselection: React.PropTypes.func.isRequired,
