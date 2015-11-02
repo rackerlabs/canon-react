@@ -58,42 +58,49 @@ class Facet extends React.Component {
   };
 
   _getCriteriaElements() {
-    let criteriaElements, criteriaData;
+    let criteriaElements;
 
     criteriaElements = [];
-    criteriaData = Object.assign({}, this.props.criteria, this.props.selectedCriteria, this.props.criteria);
 
-    Object.keys(criteriaData).forEach(function (criteriaLabel, index) {
-      let isSelected, hidden, count, numVisibleCriteria, indexOverTruncationPoint, criteria, spliceIndex;
+    Object.keys(this.props.selectedCriteria).forEach(function (criteriaLabel) {
+      let criteria;
 
-      numVisibleCriteria = (this.props.facetTruncationLength - 1);
-      indexOverTruncationPoint = index > numVisibleCriteria;
+      if (!this.props.criteria[criteriaLabel]) {
+        criteria = this.props.selectedCriteria[criteriaLabel];
+        criteria.count = 0;
+        criteriaElements.push(this._getCriteriaElement(criteriaLabel, criteria, criteriaElements.length));
+      }
+    }, this);
 
-      hidden = this.state.criteriaTruncated && indexOverTruncationPoint;
-
-      criteria = criteriaData[criteriaLabel];
-      count = !!this.props.criteria[criteriaLabel] ? criteria.count : 0;
-      spliceIndex = !!this.props.criteria[criteriaLabel] ? criteriaElements.length : 0;
-      isSelected = !!this.props.selectedCriteria[criteriaLabel];
-
-      criteriaElements.splice(
-        spliceIndex,
-        0,
-        <Criteria
-          label={ criteriaLabel }
-          count={ count }
-          disabled={ criteria.disabled }
-          isSelected={ isSelected }
-          onCriteriaSelection={ this._handleCriteriaSelection.bind(this) }
-          onCriteriaDeselection={ this._handleCriteriaDeselection.bind(this) }
-          filter={ criteria.filter }
-          hidden={ hidden }
-          iconClass={ criteria.iconClass }
-          key={ criteriaLabel } />
-      );
+    Object.keys(this.props.criteria).forEach(function (criteriaLabel) {
+      criteriaElements.push(this._getCriteriaElement(criteriaLabel, this.props.criteria[criteriaLabel], criteriaElements.length));
     }, this);
 
     return criteriaElements;
+  };
+
+  _getCriteriaElement(criteriaLabel, criteria, index) {
+    let isSelected, hidden, numVisibleCriteria, indexOverTruncationPoint;
+
+    numVisibleCriteria = (this.props.facetTruncationLength - 1);
+    indexOverTruncationPoint = index > numVisibleCriteria;
+    hidden = this.state.criteriaTruncated && indexOverTruncationPoint;
+
+    isSelected = !!this.props.selectedCriteria[criteriaLabel];
+
+    return (
+      <Criteria
+        label={ criteriaLabel }
+        count={ criteria.count }
+        disabled={ criteria.disabled }
+        isSelected={ isSelected }
+        onCriteriaSelection={ this._handleCriteriaSelection.bind(this) }
+        onCriteriaDeselection={ this._handleCriteriaDeselection.bind(this) }
+        filter={ criteria.filter }
+        hidden={ hidden }
+        iconClass={ criteria.iconClass }
+        key={ criteriaLabel } />
+    );
   };
 
   _getMoreOrLessToggle(criteriaElements) {

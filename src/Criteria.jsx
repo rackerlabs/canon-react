@@ -49,7 +49,7 @@ Criteria.propTypes = {
   isSelected: React.PropTypes.bool.isRequired,
   onCriteriaSelection: React.PropTypes.func.isRequired,
   onCriteriaDeselection: React.PropTypes.func.isRequired,
-  filter: React.PropTypes.object,
+  filter: React.PropTypes.func,
   disabled: React.PropTypes.bool,
   hidden: React.PropTypes.bool.isRequired
 };

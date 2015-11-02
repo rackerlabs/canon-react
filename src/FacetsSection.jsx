@@ -138,7 +138,7 @@ class FacetsSection extends React.Component {
 
 FacetsSection.propTypes = {
   facetSectionHeader: React.PropTypes.string.isRequired,
-  facetData: React.PropTypes.array.isRequired, //{label: {criteriaLabel: {count: number, className: string, filter: func}}}
+  facetData: React.PropTypes.object.isRequired, //{label: {criteriaLabel: {count: number, className: string, filter: func}}}
   onCriteriaSelection: React.PropTypes.func,
   onCriteriaDeselection: React.PropTypes.func,
   facetTruncationLength: React.PropTypes.number
