@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import Tether from 'tether';
 
 class DropdownTrigger extends React.Component {
@@ -59,7 +60,7 @@ class DropdownTrigger extends React.Component {
       this._tether = null;
     }
     if (this._dropdownNode) {
-      React.unmountComponentAtNode(this._containerDiv);
+      ReactDOM.unmountComponentAtNode(this._containerDiv);
       this._dropdownNode = null;
     }
   }
@@ -85,7 +86,7 @@ class DropdownTrigger extends React.Component {
       }
     );
 
-    this._dropdownNode = React.render(dropdown, this._containerDiv);
+    this._dropdownNode = ReactDOM.render(dropdown, this._containerDiv);
     this._tether = this._createTether(this._getTetherConfig());
   }
 
@@ -102,8 +103,8 @@ class DropdownTrigger extends React.Component {
       targetAttachment: 'bottom left'
     };
 
-    tetherConfig.element = React.findDOMNode(this._containerDiv);
-    tetherConfig.target = React.findDOMNode(this);
+    tetherConfig.element = ReactDOM.findDOMNode(this._containerDiv);
+    tetherConfig.target = ReactDOM.findDOMNode(this);
 
     return tetherConfig;
   }
@@ -118,7 +119,7 @@ class DropdownTrigger extends React.Component {
   }
 
   _handleDocumentClick(e) {
-    if (React.findDOMNode(this._dropdownNode).contains(e.target)) {
+    if (ReactDOM.findDOMNode(this._dropdownNode).contains(e.target)) {
       return;
     }
     this._hide();

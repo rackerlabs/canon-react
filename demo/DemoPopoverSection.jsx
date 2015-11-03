@@ -1,4 +1,5 @@
 var React = require('react');
+var ReactDOM = require('react-dom');
 
 var Button = require('./Button');
 var DemoPopover = require('./DemoPopover');
@@ -40,7 +41,7 @@ var DemoPopoverSection = React.createClass({
   },
 
   _getBottomLeftButton: function () {
-    return React.findDOMNode(this.refs.bottomLeftButton);
+    return ReactDOM.findDOMNode(this.refs.bottomLeftButton);
   },
 
   render: function () {
