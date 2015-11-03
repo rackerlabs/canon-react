@@ -1,6 +1,7 @@
 import PopoverBackground from '../transpiled/PopoverBackground';
 
 import React from 'react/addons';
+import ReactDOM from 'react-dom';
 const TestUtils = React.addons.TestUtils;
 
 describe('PopoverBackground', () => {
@@ -15,14 +16,14 @@ describe('PopoverBackground', () => {
   });
 
   afterEach(() => {
-    React.unmountComponentAtNode(React.findDOMNode(popoverBackground).parentNode);
+    ReactDOM.unmountComponentAtNode(ReactDOM.findDOMNode(popoverBackground).parentNode);
   });
 
   it('renders over the entire page to block events from other elements', () => {
     let backgroundStyle, backgroundElement;
 
     backgroundElement = TestUtils.findRenderedDOMComponentWithClass(popoverBackground, 'rs-popover-background-overlay');
-    backgroundStyle = backgroundElement.getDOMNode().style;
+    backgroundStyle = ReactDOM.findDOMNode(backgroundElement).style;
 
     expect(backgroundStyle.position).toEqual('fixed');
     expect(backgroundStyle.left).toEqual('0px');
@@ -33,7 +34,7 @@ describe('PopoverBackground', () => {
   });
 
   it('calls the request close callback when clicked', () => {
-    TestUtils.Simulate.click(React.findDOMNode(popoverBackground));
+    TestUtils.Simulate.click(ReactDOM.findDOMNode(popoverBackground));
 
     expect(requestClose).toHaveBeenCalled();
   });

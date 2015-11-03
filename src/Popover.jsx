@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import Tether from 'tether';
 import PopoverBackground from './PopoverBackground';
 
@@ -53,14 +54,14 @@ class Popover extends React.Component {
       this._tether = null;
     }
     if (this._popoverNode) {
-      React.unmountComponentAtNode(this._containerDiv);
+      ReactDOM.unmountComponentAtNode(this._containerDiv);
       this._popoverNode = null;
     }
   }
 
   _hidePopoverBackgroundOverlay() {
     this._backgroundDiv.style.display = 'none';
-    React.unmountComponentAtNode(this._backgroundDiv);
+    ReactDOM.unmountComponentAtNode(this._backgroundDiv);
   }
 
   _removeDocumentListeners() {
@@ -76,7 +77,7 @@ class Popover extends React.Component {
     let popover;
 
     this._backgroundDiv.style.display = 'block';
-    React.render(<PopoverBackground onRequestClose={this.props.onRequestClose} />, this._backgroundDiv);
+    ReactDOM.render(<PopoverBackground onRequestClose={this.props.onRequestClose} />, this._backgroundDiv);
     this._containerDiv.className += ' rs-popover';
 
     if (!this._tether) {
@@ -88,7 +89,7 @@ class Popover extends React.Component {
         placement: this.props.placement
       }
     );
-    this._popoverNode = React.render(popover, this._containerDiv);
+    this._popoverNode = ReactDOM.render(popover, this._containerDiv);
     this._tether.position();
   }
 
@@ -147,7 +148,7 @@ class Popover extends React.Component {
     if (this.props.offset) {
       tetherConfig.offset = this.props.offset;
     }
-    tetherConfig.element = React.findDOMNode(this._containerDiv);
+    tetherConfig.element = ReactDOM.findDOMNode(this._containerDiv);
     tetherConfig.target = this._getTarget();
     return tetherConfig;
   }
