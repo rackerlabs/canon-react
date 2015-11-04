@@ -1,6 +1,6 @@
 {
   "name": "canon-react",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "description": "Rackspace Canon components built with React",
   "repository": {
     "type": "git",
@@ -40,7 +40,7 @@
   },
   "dependencies": {
     "babel-runtime": "^5.5.8",
-    "tether": "1.0.2"
+    "tether": "^1.1.0"
   },
   "peerDependencies": {
     "react": ">=0.13.3"
