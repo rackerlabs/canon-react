@@ -1,3 +1,6 @@
+### Version 0.6.2
+1. Upgrade tether version to 1.1.0
+
 ### Version 0.6.1
 1. Hide dropdowns when dropdown items are clicked
 2. Fix bad prop types where `children` and `className` were misused
