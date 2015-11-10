@@ -31,13 +31,8 @@ class Criteria extends React.Component {
     );
   };
 
-
   _handleSelectionChange() {
-    if (this.props.isSelected) {
-      this.props.onCriteriaDeselection(this.props.label);
-    } else {
-      this.props.onCriteriaSelection(this.props.label, this.props.filter, this.props.iconClass);
-    }
+    this.props.onSelectionChanged(!this.props.isSelected, this.props.label)
   };
 }
 
@@ -45,13 +40,12 @@ class Criteria extends React.Component {
 Criteria.propTypes = {
   label: React.PropTypes.string.isRequired,
   count: React.PropTypes.number,
+  filter: React.PropTypes.func,
   iconClass: React.PropTypes.string,
   isSelected: React.PropTypes.bool.isRequired,
-  onCriteriaSelection: React.PropTypes.func.isRequired,
-  onCriteriaDeselection: React.PropTypes.func.isRequired,
-  filter: React.PropTypes.func,
   disabled: React.PropTypes.bool,
-  hidden: React.PropTypes.bool.isRequired
+  hidden: React.PropTypes.bool.isRequired,
+  onSelectionChanged: React.PropTypes.func.isRequired
 };
 
 export default Criteria;

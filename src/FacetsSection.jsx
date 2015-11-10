@@ -55,8 +55,7 @@ class FacetsSection extends React.Component {
           <Facet
             label={ facetLabel }
             criteria={ criteria }
-            onCriteriaSelection={ this._handleCriteriaSelection.bind(this) }
-            onCriteriaDeselection={ this._handleCriteriaDeselection.bind(this) }
+            onSelectionChanged={ this._handleSelectionChanged.bind(this) }
             selectedCriteria={ selectedCriteria }
             onFacetClear={ this._onFacetClear.bind(this) }
             facetTruncationLength={ this.props.facetTruncationLength || 5 }
@@ -68,17 +67,26 @@ class FacetsSection extends React.Component {
     return facetElements;
   }
 
-  _handleCriteriaSelection(facetLabel, criteriaLabel, filter, className) {
-    let selectedCriteria;
+  _handleSelectionChanged(isSelected, facetLabel, criteriaLabel) {
+    if (isSelected) {
+      this._handleCriteriaSelection(facetLabel, criteriaLabel);
+    } else {
+      this._handleCriteriaDeselection(facetLabel, criteriaLabel);
+    }
+  }
+
+  _handleCriteriaSelection(facetLabel, criteriaLabel) {
+    let selectedCriteria, newSelection;
 
     selectedCriteria = this.state.selectedCriteria;
+    newSelection = this.props.facetData[facetLabel][criteriaLabel];
 
     selectedCriteria[facetLabel] = selectedCriteria[facetLabel] || {};
-    selectedCriteria[facetLabel][criteriaLabel] = this.props.facetData[facetLabel][criteriaLabel]
+    selectedCriteria[facetLabel][criteriaLabel] = newSelection;
 
     this.setState({ selectedCriteria: selectedCriteria });
     if (this.props.onCriteriaSelection) {
-      this.props.onCriteriaSelection(criteriaLabel, facetLabel, filter);
+      this.props.onCriteriaSelection(criteriaLabel, facetLabel, newSelection.filter);
     }
   }
 

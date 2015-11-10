@@ -45,12 +45,8 @@ class Facet extends React.Component {
     );
   }
 
-  _handleCriteriaSelection(criteriaLabel, filter, iconClass) {
-    this.props.onCriteriaSelection(this.props.label, criteriaLabel, filter, iconClass);
-  };
-
-  _handleCriteriaDeselection(criteriaLabel) {
-    this.props.onCriteriaDeselection(this.props.label, criteriaLabel);
+  _handleSelectionChanged(isSelected, criteriaLabel) {
+    this.props.onSelectionChanged(isSelected, this.props.label, criteriaLabel);
   };
 
   _handleClear() {
@@ -94,8 +90,7 @@ class Facet extends React.Component {
         count={ criteria.count }
         disabled={ criteria.disabled }
         isSelected={ isSelected }
-        onCriteriaSelection={ this._handleCriteriaSelection.bind(this) }
-        onCriteriaDeselection={ this._handleCriteriaDeselection.bind(this) }
+        onSelectionChanged={ this._handleSelectionChanged.bind(this) }
         filter={ criteria.filter }
         hidden={ hidden }
         iconClass={ criteria.iconClass }
@@ -126,8 +121,7 @@ class Facet extends React.Component {
 Facet.propTypes = {
   label: React.PropTypes.string.isRequired,
   criteria: React.PropTypes.object.isRequired,
-  onCriteriaSelection: React.PropTypes.func.isRequired,
-  onCriteriaDeselection: React.PropTypes.func.isRequired,
+  onSelectionChanged: React.PropTypes.func.isRequired,
   onFacetClear: React.PropTypes.func.isRequired,
   selectedCriteria: React.PropTypes.object.isRequired,
   facetTruncationLength: React.PropTypes.number
