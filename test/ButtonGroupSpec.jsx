@@ -4,7 +4,7 @@ import React from 'react/addons';
 let TestUtils = React.addons.TestUtils;
 
 describe('ButtonGroup', () => {
-  var buttonGroup;
+  let buttonGroup;
 
   beforeEach(() => {
     buttonGroup = TestUtils.renderIntoDocument(

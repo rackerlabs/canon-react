@@ -2,7 +2,6 @@ import React from 'react';
 
 class Button extends React.Component {
   render() {
-
     if (this.props.type === 'action') {
       return (
         <button {...this.props} className={this._classes()} onClick={this._handleClick.bind(this)}>

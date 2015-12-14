@@ -48,18 +48,18 @@ class DropdownItem extends React.Component {
   }
 }
 
-DropdownItem.propTypes = {
-  enabled: React.PropTypes.bool,
-  onClick: React.PropTypes.func,
-  hideCallback: React.PropTypes.func,
-  type: React.PropTypes.oneOf(['link', 'category', 'text'])
-};
-
 DropdownItem.defaultProps = {
   enabled: true,
   onClick: function () {},
   hideCallback: function () {},
   type: 'link'
+};
+
+DropdownItem.propTypes = {
+  enabled: React.PropTypes.bool,
+  onClick: React.PropTypes.func,
+  hideCallback: React.PropTypes.func,
+  type: React.PropTypes.oneOf(['link', 'category', 'text'])
 };
 
 export default DropdownItem;

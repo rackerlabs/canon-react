@@ -1,10 +1,10 @@
-var React = require('react');
+import React from 'react';
 
-var Button = require('./Button');
-var ButtonGroup = require('./ButtonGroup');
+import Button from './Button';
+import ButtonGroup from './ButtonGroup';
 
-var DemoButtonSection = React.createClass({
-  render: function () {
+class DemoButtonSection extends React.Component {
+  render() {
     return (
       <div className='rs-detail-section'>
         <div className='rs-detail-section-header'>
@@ -131,6 +131,6 @@ var DemoButtonSection = React.createClass({
       </div>
     );
   }
-});
+}
 
-module.exports = DemoButtonSection;
+export default DemoButtonSection;

@@ -1,11 +1,13 @@
-var React = require('react');
+import React from 'react';
 
-var Button = require('./Button');
-var DemoPopover = require('./DemoPopover');
+import Button from './Button';
+import DemoPopover from './DemoPopover';
 
-var DemoPopoverSection = React.createClass({
-  getInitialState: function () {
-    return {
+class DemoPopoverSection extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
       rightPopoverOpen: false,
       leftPopoverOpen: false,
       bottomRightPopoverOpen: false,
@@ -13,37 +15,37 @@ var DemoPopoverSection = React.createClass({
       bottomRightFunctionPopoverOpen: false,
       bottomLeftModalPopoverOpen: false
     };
-  },
+  }
 
-  _shouldCloseRightPopover: function () {
+  _shouldCloseRightPopover() {
     this.setState({rightPopoverOpen: false});
-  },
+  }
 
-  _shouldCloseLeftPopover: function () {
+  _shouldCloseLeftPopover() {
     this.setState({leftPopoverOpen: false});
-  },
+  }
 
-  _shouldCloseBottomLeftPopover: function () {
+  _shouldCloseBottomLeftPopover() {
     this.setState({bottomLeftPopoverOpen: false});
-  },
+  }
 
-  _shouldCloseBottomRightPopover: function () {
+  _shouldCloseBottomRightPopover() {
     this.setState({bottomRightPopoverOpen: false});
-  },
+  }
 
-  _shouldCloseBottomRightFunctionPopover: function () {
+  _shouldCloseBottomRightFunctionPopover() {
     this.setState({bottomRightFunctionPopoverOpen: false});
-  },
+  }
 
-  _shouldCloseBottomLeftModalPopover: function () {
+  _shouldCloseBottomLeftModalPopover() {
     this.setState({bottomLeftModalPopoverOpen: false});
-  },
+  }
 
-  _getBottomLeftButton: function () {
+  _getBottomLeftButton() {
     return React.findDOMNode(this.refs.bottomLeftButton);
-  },
+  }
 
-  render: function () {
+  render() {
     return (
       <div className='rs-detail-section'>
         <div className='rs-detail-section-header'>
@@ -88,6 +90,6 @@ var DemoPopoverSection = React.createClass({
       </div>
     );
   }
-});
+}
 
-module.exports = DemoPopoverSection;
+export default DemoPopoverSection;

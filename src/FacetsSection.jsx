@@ -1,7 +1,6 @@
 import React from 'react';
 
 class FacetsSection extends React.Component {
-
   render() {
     let facets, itemClasses;
 
@@ -96,6 +95,14 @@ class FacetsSection extends React.Component {
   }
 }
 
+FacetsSection.defaultProps = {
+  selectedCriteria: {},
+  onCriteriaSelection: () => {},
+  onCriteriaDeselection: () => {},
+  onFacetClear: () => {},
+  onClearAll: () => {}
+};
+
 FacetsSection.propTypes = {
   sectionHeader: React.PropTypes.string.isRequired,
   selectedCriteria: React.PropTypes.object,
@@ -104,14 +111,6 @@ FacetsSection.propTypes = {
   onCriteriaDeselection: React.PropTypes.func,
   onFacetClear: React.PropTypes.func,
   onClearAll: React.PropTypes.func
-};
-
-FacetsSection.defaultProps = {
-  selectedCriteria: {},
-  onCriteriaSelection: () => {},
-  onCriteriaDeselection: () => {},
-  onFacetClear: () => {},
-  onClearAll: () => {}
 };
 
 export default FacetsSection;

@@ -3,7 +3,7 @@ import React from 'react/addons';
 let TestUtils = React.addons.TestUtils;
 
 describe('Divider', () => {
-  var divider;
+  let divider;
 
   beforeEach(() => {
     divider = TestUtils.renderIntoDocument(

@@ -23,7 +23,7 @@ const TypeClasses = {
 class ProgressBar extends React.Component {
 
   _getSizeClass() {
-    var sizeClass;
+    let sizeClass;
 
     sizeClass = 'rs-progress';
 
@@ -34,7 +34,7 @@ class ProgressBar extends React.Component {
   }
 
   _getStatusClass() {
-    var statusClass;
+    let statusClass;
 
     statusClass = ['rs-bar'];
     statusClass.push(StatusClasses[this.props.status]);
@@ -43,7 +43,7 @@ class ProgressBar extends React.Component {
   }
 
   render() {
-    var style, width;
+    let style, width;
 
     width = this.props.progress + '%';
     style = { 'width': width };

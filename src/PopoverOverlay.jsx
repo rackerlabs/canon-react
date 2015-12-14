@@ -44,15 +44,15 @@ class PopoverOverlay extends React.Component {
   }
 }
 
+PopoverOverlay.defaultProps = {
+  placement: 'right'
+};
+
 PopoverOverlay.propTypes = {
   children: React.PropTypes.node.isRequired,
   placement: React.PropTypes.oneOf([
     'right', 'bottom-right', 'left', 'bottom-left', 'center'
   ])
-};
-
-PopoverOverlay.defaultProps = {
-  placement: 'right'
 };
 
 export default PopoverOverlay;

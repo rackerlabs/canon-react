@@ -3,7 +3,6 @@ import React from 'react';
 import FacetToggler from './FacetToggler';
 
 class Facet extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -48,13 +47,13 @@ class Facet extends React.Component {
     if (this.props.onSelectionChanged) {
       this.props.onSelectionChanged(isSelected, this.props.id, criteriaId);
     }
-  };
+  }
 
   _handleClear() {
     if (this.props.onFacetClear) {
       this.props.onFacetClear(this.props.id);
     }
-  };
+  }
 
   _getCriteriaElements() {
     let index;
@@ -73,7 +72,7 @@ class Facet extends React.Component {
         onSelectionChanged: this._handleSelectionChanged.bind(this)
       });
     }, this);
-  };
+  }
 
   _getMoreOrLessToggle() {
     if (this.props.truncationEnabled && React.Children.count(this.props.children) > this.props.truncationLength) {
@@ -84,16 +83,22 @@ class Facet extends React.Component {
       );
     }
     return null;
-  };
+  }
 
   _toggleShowLess(truncationChange) {
     this.setState({criteriaTruncated: truncationChange});
-  };
+  }
 
   _facetHasSelectedCriteria() {
     return Object.keys(this.props.selectedCriteria).length > 0;
-  };
+  }
 }
+
+Facet.defaultProps = {
+  selectedCriteria: {},
+  truncationLength: 5,
+  truncationEnabled: true
+};
 
 Facet.propTypes = {
   label: React.PropTypes.string.isRequired,
@@ -103,12 +108,6 @@ Facet.propTypes = {
   selectedCriteria: React.PropTypes.object,
   truncationLength: React.PropTypes.number,
   truncationEnabled: React.PropTypes.bool
-};
-
-Facet.defaultProps = {
-  selectedCriteria: {},
-  truncationLength: 5,
-  truncationEnabled: true
 };
 
 export default Facet;

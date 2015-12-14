@@ -3,7 +3,7 @@ import React from 'react/addons';
 let TestUtils = React.addons.TestUtils;
 
 describe('FacetToggler', () => {
-  var facetToggler;
+  let facetToggler;
 
   const toggleFunction = jasmine.createSpy('onToggle');
 

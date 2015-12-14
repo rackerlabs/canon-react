@@ -3,7 +3,7 @@ import React from 'react/addons';
 let TestUtils = React.addons.TestUtils;
 
 describe('Criteria', () => {
-  var criteria;
+  let criteria;
 
   const onSelectionChanged = jasmine.createSpy('onSelectionChanged');
 

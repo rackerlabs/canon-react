@@ -1,7 +1,6 @@
 import React from 'react';
 
 class FacetToggler extends React.Component {
-
   render() {
     let toggleText;
 

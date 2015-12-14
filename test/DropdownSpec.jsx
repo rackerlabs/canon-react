@@ -4,7 +4,7 @@ import React from 'react/addons';
 let TestUtils = React.addons.TestUtils;
 
 describe('Dropdown', () => {
-  var dropdown, hideFunction;
+  let dropdown, hideFunction;
 
   beforeEach(() => {
     hideFunction = jasmine.createSpy('hideFunction');
@@ -31,7 +31,7 @@ describe('Dropdown', () => {
   });
 
   it('renders children', () => {
-    var menu;
+    let menu;
 
     menu = TestUtils.findRenderedDOMComponentWithClass(dropdown, 'rs-dropdown-menu');
 
@@ -39,7 +39,7 @@ describe('Dropdown', () => {
   });
 
   it('passes hide callback down to dropdown items', () => {
-    var childItem;
+    let childItem;
 
     childItem = TestUtils.findRenderedComponentWithType(dropdown, DropdownItem);
     TestUtils.Simulate.click(React.findDOMNode(childItem));
@@ -48,7 +48,7 @@ describe('Dropdown', () => {
   });
 
   describe('dropdown types', () => {
-    var dropdownItem;
+    let dropdownItem;
 
     it('primary', () => {
       dropdownItem = TestUtils.renderIntoDocument(

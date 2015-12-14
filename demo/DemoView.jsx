@@ -1,16 +1,16 @@
-var React = require('react');
+import React from 'react';
 
-var DemoButtonSection = require('./DemoButtonSection');
-var DemoButtonGroupSection = require('./DemoButtonGroupSection');
-var DemoPopoverSection = require('./DemoPopoverSection');
-var DemoProgressBarSection = require('./DemoProgressBarSection');
-var DemoStatusIndicatorSection = require('./DemoStatusIndicatorSection');
-var DemoTooltipSection = require('./DemoTooltipSection');
+import DemoButtonSection from './DemoButtonSection';
+import DemoButtonGroupSection from './DemoButtonGroupSection';
+import DemoPopoverSection from './DemoPopoverSection';
+import DemoProgressBarSection from './DemoProgressBarSection';
+import DemoStatusIndicatorSection from './DemoStatusIndicatorSection';
+import DemoTooltipSection from './DemoTooltipSection';
 import DemoDropdownSection from './DemoDropdownSection';
 import DemoFacetsSection from './DemoFacetsSection';
 
-var DemoView = React.createClass({
-  render: function () {
+class DemoView extends React.Component {
+  render() {
     return (
       <div>
         <DemoButtonSection />
@@ -24,6 +24,6 @@ var DemoView = React.createClass({
       </div>
     );
   }
-});
+}
 
-module.exports = DemoView;
+export default DemoView;

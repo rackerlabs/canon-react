@@ -1,7 +1,6 @@
 import React from 'react';
 
 class Criteria extends React.Component {
-
   render() {
     let countText, itemClasses;
 
@@ -29,16 +28,15 @@ class Criteria extends React.Component {
         </li>
       </span>
     );
-  };
+  }
 
   _handleSelectionChange() {
     if (!this.props.disabled && this.props.onSelectionChanged) {
       this.props.onSelectionChanged(!this.props.isSelected, this.props.id);
     }
-  };
+  }
 }
 
-/** @inheritDoc */
 Criteria.propTypes = {
   label: React.PropTypes.string.isRequired,
   id: React.PropTypes.string.isRequired,
