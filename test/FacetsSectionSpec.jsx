@@ -3,7 +3,7 @@ import React from 'react/addons';
 let TestUtils = React.addons.TestUtils;
 
 describe('FacetsSection', () => {
-  var section, child;
+  let section, child;
 
   const onSelectionChanged = jasmine.createSpy('onSelectionChanged');
   const onCriteriaSelection = jasmine.createSpy('onCriteriaSelection');
@@ -57,7 +57,7 @@ describe('FacetsSection', () => {
   });
 
   describe('withSelections', () => {
-    var clearLink, childComponent;
+    let clearLink, childComponent;
 
     beforeEach(() => {
       section = renderFacetsSection({'facetId': {'criteriaId': true}}, child);

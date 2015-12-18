@@ -1,9 +1,9 @@
-var React = require('react');
+import React from 'react';
 
-var ProgressBar = require('./ProgressBar');
+import ProgressBar from './ProgressBar';
 
-var DemoProgressBarSection = React.createClass({
-  render: function () {
+class DemoProgressBarSection extends React.Component {
+  render() {
     return (
       <div className='rs-detail-section'>
         <div className='rs-detail-section-header'>
@@ -41,6 +41,6 @@ var DemoProgressBarSection = React.createClass({
       </div>
     );
   }
-});
+}
 
-module.exports = DemoProgressBarSection;
+export default DemoProgressBarSection;

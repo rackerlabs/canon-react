@@ -7,7 +7,7 @@ import React from 'react/addons';
 let TestUtils = React.addons.TestUtils;
 
 describe('DropdownTrigger', () => {
-  var dropdownTrigger, tether, button;
+  let dropdownTrigger, tether, button;
 
   const renderDropdown = () => {
     dropdownTrigger = TestUtils.renderIntoDocument(
@@ -46,7 +46,7 @@ describe('DropdownTrigger', () => {
 
     describe('trigger click', () => {
       it('renders the dropdown', () => {
-        var dropdownContainer;
+        let dropdownContainer;
 
         renderDropdown();
         clickTrigger();
@@ -80,7 +80,7 @@ describe('DropdownTrigger', () => {
       });
 
       it('hides the dropdown when pressing escape', () => {
-        var keyUpEvent;
+        let keyUpEvent;
 
         renderDropdown('right');
         clickTrigger();

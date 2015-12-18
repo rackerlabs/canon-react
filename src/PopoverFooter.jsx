@@ -5,7 +5,7 @@ import ButtonGroup from './ButtonGroup';
 class PopoverFooter extends React.Component {
 
   render () {
-    var classes;
+    let classes;
 
     classes = ['rs-popover-footer', this.props.className];
     return (

@@ -3,7 +3,7 @@ import React from 'react/addons';
 let TestUtils = React.addons.TestUtils;
 
 describe('DropdownItem', () => {
-  var dropdownItem, clickFunction, hideFunction;
+  let dropdownItem, clickFunction, hideFunction;
 
   beforeEach(() => {
     clickFunction = jasmine.createSpy('clickFunction');

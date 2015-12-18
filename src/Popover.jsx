@@ -3,6 +3,7 @@ import Tether from 'tether';
 import PopoverBackground from './PopoverBackground';
 
 class Popover extends React.Component {
+
   constructor(props) {
     super(props);
 
@@ -175,6 +176,11 @@ class Popover extends React.Component {
   }
 }
 
+Popover.defaultProps = {
+  placement: 'right',
+  isOpen: false
+};
+
 Popover.propTypes = {
   children: React.PropTypes.element.isRequired,
   placement: React.PropTypes.oneOf(['right', 'bottom-right', 'left', 'bottom-left', 'center']),
@@ -185,11 +191,6 @@ Popover.propTypes = {
     React.PropTypes.func
   ]).isRequired,
   offset: React.PropTypes.string
-};
-
-Popover.defaultProps = {
-  placement: 'right',
-  isOpen: false
 };
 
 export default Popover;

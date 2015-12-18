@@ -40,13 +40,13 @@ class Dropdown extends React.Component {
   }
 }
 
+Dropdown.defaultProps = {
+  type: 'action'
+};
+
 Dropdown.propTypes = {
   type: React.PropTypes.oneOf(['primary', 'utility', 'action']),
   hideCallback: React.PropTypes.func.isRequired
-};
-
-Dropdown.defaultProps = {
-  type: 'action'
 };
 
 export default Dropdown;

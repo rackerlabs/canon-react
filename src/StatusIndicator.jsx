@@ -1,6 +1,7 @@
 import React from 'react';
 
 class StatusIndicator extends React.Component {
+
   _classes() {
     let classes, statusIndicatorTypes;
 
