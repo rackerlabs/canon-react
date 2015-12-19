@@ -4,9 +4,6 @@ module.exports = function (grunt) {
     pkg: grunt.file.readJSON('package.json'),
 
     babel: {
-      options: {
-        optional: ['runtime']
-      },
       src: {
         files: [
           {
@@ -45,7 +42,7 @@ module.exports = function (grunt) {
     clean: {
       transpiled: ['transpiled'],
       test: ['test-built'],
-      dist: ['canon-react.js', 'canon-react.min.js', './demo/bundle.js']
+      dist: ['canon-react.js', 'canon-react.min.js', './demo/bundle.js', './dist']
     },
 
     watch: {

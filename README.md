@@ -15,7 +15,7 @@ The latest stable release is available under the releases section of the reposit
 To build a bundled file for release run `scripts/cibuild`
 
 ## Instructions For Including In Your Project
-`npm install canon-react` will install the canon-react module inside of the `node_modules` directory of your current directory. `npm install canon-react -g` (may need sudo) will install the canon-react module globally.
+`npm install canon-react` will install the canon-react module inside of the `node_modules` directory of your current directory. `npm install canon-react -g` will install the canon-react module globally.
 
 ### Using Components
 After installation you can use canon react components.

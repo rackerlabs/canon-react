@@ -16,22 +16,22 @@ import ProgressBar from './ProgressBar';
 import StatusIndicator from './StatusIndicator';
 import TooltipTrigger from './TooltipTrigger';
 
-export default {
-  Button: Button,
-  ButtonGroup: ButtonGroup,
-  Crtieria: Criteria,
-  Divider: Divider,
-  Dropdown: Dropdown,
-  DropdownItem: DropdownItem,
-  DropdownTrigger: DropdownTrigger,
-  Facet: Facet,
-  FacetsSection: FacetsSection,
-  Popover: Popover,
-  PopoverBody: PopoverBody,
-  PopoverFooter: PopoverFooter,
-  ProcessingIndicator: ProcessingIndicator,
-  PopoverOverlay: PopoverOverlay,
-  ProgressBar: ProgressBar,
-  StatusIndicator: StatusIndicator,
-  TooltipTrigger: TooltipTrigger
+export {
+  Button,
+  ButtonGroup,
+  Criteria,
+  Divider,
+  Dropdown,
+  DropdownItem,
+  DropdownTrigger,
+  Facet,
+  FacetsSection,
+  Popover,
+  PopoverBody,
+  PopoverFooter,
+  ProcessingIndicator,
+  PopoverOverlay,
+  ProgressBar,
+  StatusIndicator,
+  TooltipTrigger
 };
