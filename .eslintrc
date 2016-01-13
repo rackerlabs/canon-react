@@ -17,7 +17,6 @@
     "curly": 2,
     "strict": 0,
     "quotes": [2, "single", "avoid-escape"],
-    "strict": 0,
     "no-underscore-dangle": 0,
     "camelcase": 0,
     "no-unused-vars": [2, {"args": "none"}],
