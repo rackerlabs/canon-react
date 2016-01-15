@@ -1,7 +1,8 @@
 import Popover from '../transpiled/Popover';
 import PopoverOverlay from '../transpiled/PopoverOverlay';
-import React from 'react/addons';
-let TestUtils = React.addons.TestUtils;
+import React from 'react';
+import ReactDOM from 'react-dom';
+import TestUtils from 'react-addons-test-utils';
 
 describe('Popover', () => {
   let popover, tether, requestCloseCallback, closeCallBackCalled;
@@ -24,7 +25,7 @@ describe('Popover', () => {
       target = 'some-element-id';
     }
 
-    popover = React.render(
+    popover = ReactDOM.render(
       <Popover placement={placement} isOpen={isOpen} onRequestClose={requestCloseCallback} target={target} offset={offset}>
         <PopoverOverlay>
           This is the popover content
@@ -39,7 +40,7 @@ describe('Popover', () => {
   });
 
   afterEach(() => {
-    React.unmountComponentAtNode(document.getElementById('container'));
+    ReactDOM.unmountComponentAtNode(document.getElementById('container'));
     jasmine.getFixtures().cleanUp();
   });
 
@@ -72,8 +73,8 @@ describe('Popover', () => {
       renderPopover('right', true);
 
       expect(Popover.prototype._createTether).toHaveBeenCalledWith({
-        element: React.findDOMNode(popover._containerDiv),
-        target: React.findDOMNode(document.getElementById('some-element-id')),
+        element: ReactDOM.findDOMNode(popover._containerDiv),
+        target: ReactDOM.findDOMNode(document.getElementById('some-element-id')),
         attachment: 'top left',
         targetAttachment: 'middle right',
         offset: '38px -20px'
@@ -84,8 +85,8 @@ describe('Popover', () => {
       renderPopover('bottom-right', true);
 
       expect(Popover.prototype._createTether).toHaveBeenCalledWith({
-        element: React.findDOMNode(popover._containerDiv),
-        target: React.findDOMNode(document.getElementById('some-element-id')),
+        element: ReactDOM.findDOMNode(popover._containerDiv),
+        target: ReactDOM.findDOMNode(document.getElementById('some-element-id')),
         attachment: 'top left',
         targetAttachment: 'bottom right',
         offset: '-20px 45px'
@@ -96,8 +97,8 @@ describe('Popover', () => {
       renderPopover('left', true);
 
       expect(Popover.prototype._createTether).toHaveBeenCalledWith({
-        element: React.findDOMNode(popover._containerDiv),
-        target: React.findDOMNode(document.getElementById('some-element-id')),
+        element: ReactDOM.findDOMNode(popover._containerDiv),
+        target: ReactDOM.findDOMNode(document.getElementById('some-element-id')),
         attachment: 'top right',
         targetAttachment: 'middle left',
         offset: '38px 20px'
@@ -108,8 +109,8 @@ describe('Popover', () => {
       renderPopover('bottom-left', true);
 
       expect(Popover.prototype._createTether).toHaveBeenCalledWith({
-        element: React.findDOMNode(popover._containerDiv),
-        target: React.findDOMNode(document.getElementById('some-element-id')),
+        element: ReactDOM.findDOMNode(popover._containerDiv),
+        target: ReactDOM.findDOMNode(document.getElementById('some-element-id')),
         attachment: 'top right',
         targetAttachment: 'bottom left',
         offset: '-20px -45px'
@@ -120,8 +121,8 @@ describe('Popover', () => {
       renderPopover('bottom-left', true, true);
 
       expect(Popover.prototype._createTether).toHaveBeenCalledWith({
-        element: React.findDOMNode(popover._containerDiv),
-        target: React.findDOMNode(document.getElementById('some-element-id')),
+        element: ReactDOM.findDOMNode(popover._containerDiv),
+        target: ReactDOM.findDOMNode(document.getElementById('some-element-id')),
         attachment: 'top right',
         targetAttachment: 'bottom left',
         offset: '-20px -45px'
@@ -132,8 +133,8 @@ describe('Popover', () => {
       renderPopover('bottom-left', true, false, '10px 10px');
 
       expect(Popover.prototype._createTether).toHaveBeenCalledWith({
-        element: React.findDOMNode(popover._containerDiv),
-        target: React.findDOMNode(document.getElementById('some-element-id')),
+        element: ReactDOM.findDOMNode(popover._containerDiv),
+        target: ReactDOM.findDOMNode(document.getElementById('some-element-id')),
         attachment: 'top right',
         targetAttachment: 'bottom left',
         offset: '10px 10px'
@@ -144,8 +145,8 @@ describe('Popover', () => {
       renderPopover('center', true);
 
       expect(Popover.prototype._createTether).toHaveBeenCalledWith({
-        element: React.findDOMNode(popover._containerDiv),
-        target: React.findDOMNode(document.getElementById('some-element-id')),
+        element: ReactDOM.findDOMNode(popover._containerDiv),
+        target: ReactDOM.findDOMNode(document.getElementById('some-element-id')),
         attachment: 'middle center',
         targetAttachment: 'middle center',
         targetModifier: 'visible'
@@ -179,7 +180,7 @@ describe('Popover', () => {
   it('cleans up when the component is unmounted', () => {
     renderPopover('right', true);
 
-    React.unmountComponentAtNode(React.findDOMNode(document.getElementById('container')));
+    ReactDOM.unmountComponentAtNode(ReactDOM.findDOMNode(document.getElementById('container')));
 
     expect(tether.destroy).toHaveBeenCalled();
     expect(popover._tether).toBeNull();

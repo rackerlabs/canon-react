@@ -8,6 +8,7 @@ module.exports = function(config) {
     files: [
       'test/vendor/es5-shim.js',
       'node_modules/react/dist/react-with-addons.js',
+      'node_modules/react-dom/dist/react-dom.js',
       'test/jasmine-helpers.js',
       'test_bundle.js'
     ],
