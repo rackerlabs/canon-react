@@ -1,6 +1,7 @@
 import Facet from '../transpiled/Facet';
-import React from 'react/addons';
-let TestUtils = React.addons.TestUtils;
+import React from 'react';
+import ReactDOM from 'react-dom';
+import TestUtils from 'react-addons-test-utils';
 
 describe('Facet', () => {
   var facet;
@@ -30,7 +31,7 @@ describe('Facet', () => {
   });
 
   afterEach(() => {
-    React.unmountComponentAtNode(React.findDOMNode(facet).parentNode);
+    ReactDOM.unmountComponentAtNode(ReactDOM.findDOMNode(facet).parentNode);
   });
 
   it('has collapsed class', () => {

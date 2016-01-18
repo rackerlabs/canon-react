@@ -1,7 +1,8 @@
 import Dropdown from '../transpiled/Dropdown';
 import DropdownItem from '../transpiled/DropdownItem';
-import React from 'react/addons';
-let TestUtils = React.addons.TestUtils;
+import React from 'react';
+import ReactDOM from 'react-dom';
+import TestUtils from 'react-addons-test-utils';
 
 describe('Dropdown', () => {
   let dropdown, hideFunction;
@@ -15,15 +16,15 @@ describe('Dropdown', () => {
   });
 
   afterEach(() => {
-    React.unmountComponentAtNode(React.findDOMNode(dropdown).parentNode);
+    ReactDOM.unmountComponentAtNode(ReactDOM.findDOMNode(dropdown).parentNode);
   });
 
   it('renders a dropdown', () => {
-    expect(React.findDOMNode(dropdown)).toHaveClass('rs-dropdown');
+    expect(ReactDOM.findDOMNode(dropdown)).toHaveClass('rs-dropdown');
   });
 
   it('keeps the passed in classes', () => {
-    expect(React.findDOMNode(dropdown)).toHaveClass('test-dropdown-class');
+    expect(ReactDOM.findDOMNode(dropdown)).toHaveClass('test-dropdown-class');
   });
 
   it('defaults to action type', () => {
@@ -35,14 +36,14 @@ describe('Dropdown', () => {
 
     menu = TestUtils.findRenderedDOMComponentWithClass(dropdown, 'rs-dropdown-menu');
 
-    expect(React.findDOMNode(menu).textContent).toBe('Dropdown Item...');
+    expect(ReactDOM.findDOMNode(menu).textContent).toBe('Dropdown Item...');
   });
 
   it('passes hide callback down to dropdown items', () => {
     let childItem;
 
     childItem = TestUtils.findRenderedComponentWithType(dropdown, DropdownItem);
-    TestUtils.Simulate.click(React.findDOMNode(childItem));
+    TestUtils.Simulate.click(ReactDOM.findDOMNode(childItem));
 
     expect(hideFunction).toHaveBeenCalled();
   });
@@ -55,7 +56,7 @@ describe('Dropdown', () => {
         <Dropdown type='primary'/>
       );
 
-      expect(React.findDOMNode(dropdownItem)).toHaveClass('rs-nav-item rs-dropdown rs-primary-dropdown');
+      expect(ReactDOM.findDOMNode(dropdownItem)).toHaveClass('rs-nav-item rs-dropdown rs-primary-dropdown');
     });
 
     it('utility', () => {
@@ -63,7 +64,7 @@ describe('Dropdown', () => {
         <Dropdown type='utility'/>
       );
 
-      expect(React.findDOMNode(dropdownItem)).toHaveClass('rs-nav-item rs-dropdown rs-utility-dropdown');
+      expect(ReactDOM.findDOMNode(dropdownItem)).toHaveClass('rs-nav-item rs-dropdown rs-utility-dropdown');
     });
 
     it('action', () => {
@@ -71,7 +72,7 @@ describe('Dropdown', () => {
         <Dropdown type='action'/>
       );
 
-      expect(React.findDOMNode(dropdownItem)).toHaveClass('rs-dropdown');
+      expect(ReactDOM.findDOMNode(dropdownItem)).toHaveClass('rs-dropdown');
     });
   });
 });

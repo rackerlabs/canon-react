@@ -1,6 +1,7 @@
 import ProcessingIndicator from '../transpiled/ProcessingIndicator';
-import React from 'react/addons';
-let TestUtils = React.addons.TestUtils;
+import React from 'react';
+import ReactDOM from 'react-dom';
+import TestUtils from 'react-addons-test-utils';
 
 describe('ProcessingIndicator', () => {
   let processingIndicator;
@@ -12,11 +13,11 @@ describe('ProcessingIndicator', () => {
   });
 
   afterEach(() => {
-    React.unmountComponentAtNode(React.findDOMNode(processingIndicator).parentNode);
+    ReactDOM.unmountComponentAtNode(ReactDOM.findDOMNode(processingIndicator).parentNode);
   });
 
   it('has the rs-processing-indicator class', () => {
-    expect(React.findDOMNode(processingIndicator)).toHaveClass('rs-processing-indicator');
+    expect(ReactDOM.findDOMNode(processingIndicator)).toHaveClass('rs-processing-indicator');
   });
 
   it('renders an icon tag', () => {
@@ -24,7 +25,7 @@ describe('ProcessingIndicator', () => {
   });
 
   it('is hidden by default', () => {
-    expect(React.findDOMNode(processingIndicator)).toHaveClass('rs-hidden');
+    expect(ReactDOM.findDOMNode(processingIndicator)).toHaveClass('rs-hidden');
   });
 
   it('is not hidden when hidden is false', () => {
@@ -32,6 +33,6 @@ describe('ProcessingIndicator', () => {
       <ProcessingIndicator hidden={false}/>
     );
 
-    expect(React.findDOMNode(processingIndicator)).not.toHaveClass('rs-hidden');
+    expect(ReactDOM.findDOMNode(processingIndicator)).not.toHaveClass('rs-hidden');
   });
 });

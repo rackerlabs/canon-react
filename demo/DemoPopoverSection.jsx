@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 
 import Button from './Button';
 import DemoPopover from './DemoPopover';
@@ -42,7 +43,7 @@ class DemoPopoverSection extends React.Component {
   }
 
   _getBottomLeftButton() {
-    return React.findDOMNode(this.refs.bottomLeftButton);
+    return ReactDOM.findDOMNode(this.refs.bottomLeftButton);
   }
 
   render() {

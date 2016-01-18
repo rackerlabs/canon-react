@@ -26,11 +26,15 @@
     "no-multiple-empty-lines": 2,
     "one-var": [2, { const: "never" }],
     "brace-style": [ 2, "1tbs", { "allowSingleLine": true }],
+    "react/jsx-key": 1,
+    "react/jsx-uses-react": 1,
     "react/jsx-uses-vars": 1,
+    "react/no-deprecated": 1
   },
   "globals": {
     "document": true,
     "React": true,
+    "ReactDOM": true,
 
     //karma
     "expect": true,

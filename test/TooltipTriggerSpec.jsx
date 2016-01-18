@@ -1,6 +1,7 @@
-import React from 'react/addons';
+import React from 'react';
+import ReactDOM from 'react-dom';
 import TooltipTrigger from '../transpiled/TooltipTrigger';
-let TestUtils = React.addons.TestUtils;
+import TestUtils from 'react-addons-test-utils';
 
 describe('TooltipTrigger', () => {
   let trigger, tether, triggerParent;
@@ -14,7 +15,7 @@ describe('TooltipTrigger', () => {
         <span>Tooltip Target</span>
       </TooltipTrigger>
     );
-    triggerParent = React.findDOMNode(trigger).parentNode;
+    triggerParent = ReactDOM.findDOMNode(trigger).parentNode;
   };
 
   beforeEach(() => {
@@ -22,7 +23,7 @@ describe('TooltipTrigger', () => {
   });
 
   afterEach(() => {
-    React.unmountComponentAtNode(triggerParent);
+    ReactDOM.unmountComponentAtNode(triggerParent);
   });
 
   it('renders the target', () => {
@@ -141,8 +142,8 @@ describe('TooltipTrigger', () => {
       renderTriggerAndHover('left');
 
       expect(TooltipTrigger.prototype._createTether).toHaveBeenCalledWith({
-        element: React.findDOMNode(document.querySelector('.rs-tooltip')),
-        target: React.findDOMNode(target),
+        element: ReactDOM.findDOMNode(document.querySelector('.rs-tooltip')),
+        target: ReactDOM.findDOMNode(target),
         attachment: 'middle right',
         targetAttachment: 'middle left',
         targetModifier: 'visible',
@@ -156,8 +157,8 @@ describe('TooltipTrigger', () => {
       renderTriggerAndHover('bottom-left');
 
       expect(TooltipTrigger.prototype._createTether).toHaveBeenCalledWith({
-        element: React.findDOMNode(document.querySelector('.rs-tooltip')),
-        target: React.findDOMNode(target),
+        element: ReactDOM.findDOMNode(document.querySelector('.rs-tooltip')),
+        target: ReactDOM.findDOMNode(target),
         attachment: 'top right',
         targetAttachment: 'bottom left',
         targetModifier: 'visible',
@@ -171,8 +172,8 @@ describe('TooltipTrigger', () => {
       renderTriggerAndHover('top-left');
 
       expect(TooltipTrigger.prototype._createTether).toHaveBeenCalledWith({
-        element: React.findDOMNode(document.querySelector('.rs-tooltip')),
-        target: React.findDOMNode(target),
+        element: ReactDOM.findDOMNode(document.querySelector('.rs-tooltip')),
+        target: ReactDOM.findDOMNode(target),
         attachment: 'bottom right',
         targetAttachment: 'top left',
         targetModifier: 'visible',
@@ -186,8 +187,8 @@ describe('TooltipTrigger', () => {
       renderTriggerAndHover('top');
 
       expect(TooltipTrigger.prototype._createTether).toHaveBeenCalledWith({
-        element: React.findDOMNode(document.querySelector('.rs-tooltip')),
-        target: React.findDOMNode(target),
+        element: ReactDOM.findDOMNode(document.querySelector('.rs-tooltip')),
+        target: ReactDOM.findDOMNode(target),
         attachment: 'bottom middle',
         targetAttachment: 'top middle',
         targetModifier: 'visible',
@@ -201,8 +202,8 @@ describe('TooltipTrigger', () => {
       renderTriggerAndHover('bottom');
 
       expect(TooltipTrigger.prototype._createTether).toHaveBeenCalledWith({
-        element: React.findDOMNode(document.querySelector('.rs-tooltip')),
-        target: React.findDOMNode(target),
+        element: ReactDOM.findDOMNode(document.querySelector('.rs-tooltip')),
+        target: ReactDOM.findDOMNode(target),
         attachment: 'top middle',
         targetAttachment: 'bottom middle',
         targetModifier: 'visible',
@@ -216,8 +217,8 @@ describe('TooltipTrigger', () => {
       renderTriggerAndHover('right');
 
       expect(TooltipTrigger.prototype._createTether).toHaveBeenCalledWith({
-        element: React.findDOMNode(document.querySelector('.rs-tooltip')),
-        target: React.findDOMNode(target),
+        element: ReactDOM.findDOMNode(document.querySelector('.rs-tooltip')),
+        target: ReactDOM.findDOMNode(target),
         attachment: 'middle left',
         targetAttachment: 'middle right',
         targetModifier: 'visible',
@@ -231,8 +232,8 @@ describe('TooltipTrigger', () => {
       renderTriggerAndHover('top-right');
 
       expect(TooltipTrigger.prototype._createTether).toHaveBeenCalledWith({
-        element: React.findDOMNode(document.querySelector('.rs-tooltip')),
-        target: React.findDOMNode(target),
+        element: ReactDOM.findDOMNode(document.querySelector('.rs-tooltip')),
+        target: ReactDOM.findDOMNode(target),
         attachment: 'bottom left',
         targetAttachment: 'top right',
         targetModifier: 'visible',
@@ -246,8 +247,8 @@ describe('TooltipTrigger', () => {
       renderTriggerAndHover('bottom-right');
 
       expect(TooltipTrigger.prototype._createTether).toHaveBeenCalledWith({
-        element: React.findDOMNode(document.querySelector('.rs-tooltip')),
-        target: React.findDOMNode(target),
+        element: ReactDOM.findDOMNode(document.querySelector('.rs-tooltip')),
+        target: ReactDOM.findDOMNode(target),
         attachment: 'top left',
         targetAttachment: 'bottom right',
         targetModifier: 'visible',
@@ -261,8 +262,8 @@ describe('TooltipTrigger', () => {
       renderTriggerAndHover();
 
       expect(TooltipTrigger.prototype._createTether).toHaveBeenCalledWith({
-        element: React.findDOMNode(document.querySelector('.rs-tooltip')),
-        target: React.findDOMNode(target),
+        element: ReactDOM.findDOMNode(document.querySelector('.rs-tooltip')),
+        target: ReactDOM.findDOMNode(target),
         attachment: 'top left',
         targetAttachment: 'bottom right',
         targetModifier: 'visible',
@@ -281,7 +282,7 @@ describe('TooltipTrigger', () => {
     TestUtils.Simulate.mouseOver(target);
     jasmine.Clock.tick(250);
 
-    React.unmountComponentAtNode(React.findDOMNode(trigger).parentNode);
+    ReactDOM.unmountComponentAtNode(ReactDOM.findDOMNode(trigger).parentNode);
 
     expect(tether.destroy).toHaveBeenCalled();
     expect(trigger._tether).toBeNull();

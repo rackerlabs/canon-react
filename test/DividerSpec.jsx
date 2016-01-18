@@ -1,6 +1,7 @@
 import Divider from '../transpiled/Divider';
-import React from 'react/addons';
-let TestUtils = React.addons.TestUtils;
+import React from 'react';
+import ReactDOM from 'react-dom';
+import TestUtils from 'react-addons-test-utils';
 
 describe('Divider', () => {
   let divider;
@@ -12,7 +13,7 @@ describe('Divider', () => {
   });
 
   afterEach(() => {
-    React.unmountComponentAtNode(React.findDOMNode(divider).parentNode);
+    ReactDOM.unmountComponentAtNode(ReactDOM.findDOMNode(divider).parentNode);
   });
 
   it('renders a divider', () => {
@@ -20,6 +21,6 @@ describe('Divider', () => {
   });
 
   it('has the correct class', () => {
-    expect(React.findDOMNode(divider)).toHaveClass('rs-divider');
+    expect(ReactDOM.findDOMNode(divider)).toHaveClass('rs-divider');
   });
 });
