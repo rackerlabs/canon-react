@@ -27,11 +27,11 @@ describe('FacetsSection', () => {
   };
 
   beforeEach(() => {
-    onSelectionChanged.reset();
-    onCriteriaSelection.reset();
-    onCriteriaDeselection.reset();
-    onFacetClear.reset();
-    onClearAll.reset();
+    onSelectionChanged.calls.reset();
+    onCriteriaSelection.calls.reset();
+    onCriteriaDeselection.calls.reset();
+    onFacetClear.calls.reset();
+    onClearAll.calls.reset();
     child = <div id='facetId' className='facetClass' />;
     section = renderFacetsSection({}, child);
   });

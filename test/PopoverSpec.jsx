@@ -16,7 +16,7 @@ describe('Popover', () => {
       return e;
     };
     tether = jasmine.createSpyObj('tether', ['destroy', 'position']);
-    spyOn(Popover.prototype, '_createTether').andReturn(tether);
+    spyOn(Popover.prototype, '_createTether').and.returnValue(tether);
 
     if (useTargetCallback) {
       target = () => document.getElementById('some-element-id');
@@ -46,7 +46,7 @@ describe('Popover', () => {
   it('does not display the popover', () => {
     renderPopover('right', false);
 
-    expect(popover._popoverNode).toEqual(null);
+    expect(popover._popoverNode).toEqual(undefined);
   });
 
   it('repositions the tether', () => {

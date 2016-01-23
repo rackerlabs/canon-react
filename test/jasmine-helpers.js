@@ -36,15 +36,29 @@ jasmine.Fixtures.prototype.createContainer_ = function(html) {
 };
 
 beforeEach(function () {
-  this.addMatchers({
-    toHaveClass: function (cssClass) {
-      this.message = function () {
-        return [
-          'Expected object ' + jasmine.pp(this.actual) + ' to have class "' + cssClass + '" had "' + this.actual.className + '"',
-          'Expected object ' + jasmine.pp(this.actual) + ' not to have class "' + cssClass + '" had "' + this.actual.className + '"'
-        ];
+  jasmine.addMatchers({
+    toHaveClass: function (util, customEqualityTesters) {
+      return {
+        compare: function (actual, selector) {
+          var passed, message;
+
+          try {
+            passed = actual.className.indexOf(selector) > -1;
+          } catch (e) {
+            passed = false;
+          }
+
+          message =  [
+          'Expected object ' + jasmine.pp(actual) + ' not to have class "' + selector + '" had "' + actual.className + '"',
+          'Expected object ' + jasmine.pp(actual) + ' to have class "' + selector + '" had "' + actual.className + '"'
+          ][passed ? 0 : 1];
+
+          return {
+            pass: passed,
+            message: message
+          };
+        }
       };
-      return this.actual.className.indexOf(cssClass) > -1;
     }
   });
 });

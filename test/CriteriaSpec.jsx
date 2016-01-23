@@ -22,7 +22,7 @@ describe('Criteria', () => {
   };
 
   beforeEach(() => {
-    onSelectionChanged.reset();
+    onSelectionChanged.calls.reset();
     criteria = renderCriteria(false, false, false);
   });
 
