@@ -1,4 +1,5 @@
 import React from 'react';
+import classNames from 'classnames';
 
 import FacetToggler from './FacetToggler';
 
@@ -17,18 +18,21 @@ class Facet extends React.Component {
     criteriaElements = this._getCriteriaElements();
     facetToggler = this._getMoreOrLessToggle(criteriaElements);
 
-    clearLinkClasses = ['rs-facet-clear-link'];
-    if(!this._facetHasSelectedCriteria()) {
-      clearLinkClasses.push('rs-hidden');
-    }
-    sectionClasses = ['rs-facet-section'];
+    clearLinkClasses = classNames(
+      'rs-facet-clear-link',
+      { 'rs-hidden': !this._facetHasSelectedCriteria() }
+    );
+
     expandedClass = this.state.criteriaTruncated ? 'collapsed' : 'expanded';
-    sectionClasses.push(expandedClass);
+    sectionClasses = classNames(
+      'rs-facet-section',
+      expandedClass
+    );
 
     return (
-      <div className={ sectionClasses.join(' ') }>
+      <div className={ sectionClasses }>
         <div className='rs-facet-section-header'>
-          <div className={ clearLinkClasses.join(' ') } onClick={ this._handleClear.bind(this) }>
+          <div className={ clearLinkClasses } onClick={ this._handleClear.bind(this) }>
             clear
           </div>
           <div className='rs-facet-section-title'>{ this.props.label }</div>

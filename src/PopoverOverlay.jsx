@@ -1,32 +1,31 @@
 import React from 'react';
+import classNames from 'classnames';
+
+const ARROW_POSITIONS = {
+  'right': 'rs-popover-arrow-left-top',
+  'bottom-right': 'rs-popover-arrow-top-left',
+  'left': 'rs-popover-arrow-right-top',
+  'bottom-left': 'rs-popover-arrow-top-right'
+};
 
 class PopoverOverlay extends React.Component {
-
-  _arrowPlacement() {
-    let arrowClasses, arrowPositions;
-
-    arrowPositions = {
-      'right': 'rs-popover-arrow-left-top',
-      'bottom-right': 'rs-popover-arrow-top-left',
-      'left': 'rs-popover-arrow-right-top',
-      'bottom-left': 'rs-popover-arrow-top-right'
-    };
-    arrowClasses = ['rs-popover-arrow'];
-
-    arrowClasses.push(arrowPositions[this.props.placement]);
-
-    return arrowClasses.join(' ');
-  }
 
   _shouldShowArrow() {
     return this.props.placement !== 'center';
   }
 
   render() {
+    let arrowPlacement;
+
+    arrowPlacement = classNames(
+      'rs-popover-arrow',
+      ARROW_POSITIONS[this.props.placement]
+    );
+
     if (this._shouldShowArrow()) {
       return (
         <div className={this.props.className}>
-          <div className={this._arrowPlacement()}></div>
+          <div className={arrowPlacement}></div>
           <div className='rs-popover-content'>
             {this.props.children}
           </div>

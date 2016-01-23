@@ -1,4 +1,5 @@
 import React from 'react';
+import classNames from 'classnames';
 
 class Criteria extends React.Component {
   render() {
@@ -8,20 +9,16 @@ class Criteria extends React.Component {
       countText = '(' + this.props.count + ')';
     }
 
-    itemClasses = ['rs-facet-item'];
-    if (this.props.isSelected) {
-      itemClasses.push('selected');
-    }
-    if (this.props.disabled) {
-      itemClasses.push('disabled');
-    }
-    if (this.props.hidden) {
-      itemClasses.push('rs-hidden');
-    }
+    itemClasses = classNames(
+      'rs-facet-item',
+      { 'selected': this.props.isSelected },
+      { 'disabled': this.props.disabled },
+      { 'rs-hidden': this.props.hidden}
+    );
 
     return (
       <span>
-        <li className={ itemClasses.join(' ') } onClick={ this._handleSelectionChange.bind(this) } title={ this.props.label }>
+        <li className={ itemClasses } onClick={ this._handleSelectionChange.bind(this) } title={ this.props.label }>
           <span className={ this.props.iconClass } />
           <div className='rs-facet-label'>{ this.props.label }</div>
           <div className='rs-facet-count'>{ countText }</div>
