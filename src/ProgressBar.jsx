@@ -1,6 +1,7 @@
 import React from 'react';
+import classNames from 'classnames';
 
-const SizeClasses = {
+const SIZE_CLASSES = {
   'xsmall': 'rs-progress-xsmall',
   'small': 'rs-progress-small',
   'medium': 'rs-progress-medium',
@@ -8,14 +9,14 @@ const SizeClasses = {
   'xlarge': 'rs-progress-xlarge'
 };
 
-const StatusClasses = {
+const STATUS_CLASSES = {
   'ok': 'rs-status-ok',
   'error': 'rs-status-error',
   'warning': 'rs-status-warning',
   'info': 'rs-status-info'
 };
 
-const TypeClasses = {
+const TYPE_CLASSES = {
   'solid': 'rs-bar-solid',
   'striped': 'rs-bar-striped'
 };
@@ -23,23 +24,18 @@ const TypeClasses = {
 class ProgressBar extends React.Component {
 
   _getSizeClass() {
-    let sizeClass;
-
-    sizeClass = 'rs-progress';
-
-    if (SizeClasses[this.props.size]) {
-      sizeClass += ' ' + SizeClasses[this.props.size];
-    }
-    return sizeClass;
+     return classNames(
+      'rs-progress',
+      SIZE_CLASSES[this.props.size]
+    );
   }
 
   _getStatusClass() {
-    let statusClass;
-
-    statusClass = ['rs-bar'];
-    statusClass.push(StatusClasses[this.props.status]);
-    statusClass.push(TypeClasses[this.props.type]);
-    return statusClass.join(' ');
+    return classNames(
+      'rs-bar',
+      STATUS_CLASSES[this.props.status],
+      TYPE_CLASSES[this.props.type]
+    );
   }
 
   render() {

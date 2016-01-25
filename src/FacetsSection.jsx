@@ -1,4 +1,5 @@
 import React from 'react';
+import classNames from 'classnames';
 
 class FacetsSection extends React.Component {
   render() {
@@ -10,16 +11,16 @@ class FacetsSection extends React.Component {
 
     facets = this._getFacetElements();
 
-    itemClasses = ['rs-facet-clear-link'];
-    if (!Object.keys(this.props.selectedCriteria).length) {
-      itemClasses.push('rs-hidden');
-    }
+    itemClasses = classNames(
+      'rs-facet-clear-link',
+      { 'rs-hidden': !Object.keys(this.props.selectedCriteria).length }
+    );
 
     return (
       <span className='rs-facets'>
         <div className='rs-inner'>
           <div className='rs-facet-header'>
-            <div className={ itemClasses.join(' ') } onClick={ this._handleClearAll.bind(this) }>
+            <div className={ itemClasses } onClick={ this._handleClearAll.bind(this) }>
               clear all
             </div>
             <div className='rs-facet-title'>{ this.props.sectionHeader }</div>

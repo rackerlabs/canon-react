@@ -1,20 +1,18 @@
 import React from 'react';
+import classNames from 'classnames';
 
 class DropdownItem extends React.Component {
   render() {
     let itemClasses;
 
-    itemClasses = ['rs-dropdown-item'];
-    if (this.props.className) {
-      itemClasses.push(this.props.className);
-    }
-
-    if (!this.props.enabled) {
-      itemClasses.push('disabled');
-    }
+    itemClasses = classNames(
+      'rs-dropdown-item',
+      this.props.className,
+      { 'disabled': !this.props.enabled }
+    );
 
     return (
-      <li {...this.props} className={itemClasses.join(' ')} onClick={this._handleClick.bind(this)}>
+      <li {...this.props} className={itemClasses} onClick={this._handleClick.bind(this)}>
         {this._innerElement()}
       </li>
     );
