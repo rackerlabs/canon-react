@@ -52,7 +52,7 @@ describe('Dropdown', () => {
 
     it('primary', () => {
       dropdownItem = TestUtils.renderIntoDocument(
-        <Dropdown type='primary'/>
+        <Dropdown type='primary' hideCallback={hideFunction} />
       );
 
       expect(React.findDOMNode(dropdownItem)).toHaveClass('rs-nav-item rs-dropdown rs-primary-dropdown');
@@ -60,7 +60,7 @@ describe('Dropdown', () => {
 
     it('utility', () => {
       dropdownItem = TestUtils.renderIntoDocument(
-        <Dropdown type='utility'/>
+        <Dropdown type='utility' hideCallback={hideFunction} />
       );
 
       expect(React.findDOMNode(dropdownItem)).toHaveClass('rs-nav-item rs-dropdown rs-utility-dropdown');
@@ -68,7 +68,7 @@ describe('Dropdown', () => {
 
     it('action', () => {
       dropdownItem = TestUtils.renderIntoDocument(
-        <Dropdown type='action'/>
+        <Dropdown type='action' hideCallback={hideFunction} />
       );
 
       expect(React.findDOMNode(dropdownItem)).toHaveClass('rs-dropdown');

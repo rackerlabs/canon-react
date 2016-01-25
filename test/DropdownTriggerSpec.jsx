@@ -9,15 +9,17 @@ let TestUtils = React.addons.TestUtils;
 describe('DropdownTrigger', () => {
   let dropdownTrigger, tether, button;
 
+  const hideFunction = () => { };
+
   const renderDropdown = () => {
     dropdownTrigger = TestUtils.renderIntoDocument(
-      <DropdownTrigger dropdown={<Dropdown><DropdownItem id='test-dropdown-item'>Hello</DropdownItem></Dropdown>}>
+      <DropdownTrigger dropdown={<Dropdown hideCallback={hideFunction}><DropdownItem id='test-dropdown-item'>Hello</DropdownItem></Dropdown>}>
         <Button>Hello</Button>
       </DropdownTrigger>
     );
 
     tether = jasmine.createSpyObj('tether', ['destroy']);
-    spyOn(dropdownTrigger, '_createTether').andReturn(tether);
+    spyOn(dropdownTrigger, '_createTether').and.returnValue(tether);
   };
 
   const clickTrigger = () => {

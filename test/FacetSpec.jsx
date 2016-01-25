@@ -24,8 +24,8 @@ describe('Facet', () => {
   };
 
   beforeEach(() => {
-    onSelectionChanged.reset();
-    onFacetClear.reset();
+    onSelectionChanged.calls.reset();
+    onFacetClear.calls.reset();
     facet = renderFacet({}, 5, true);
   });
 
