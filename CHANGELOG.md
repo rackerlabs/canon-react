@@ -1,4 +1,4 @@
-### Version 0.6.4
+### Version 0.7.0
 1. Facets!
 2. eslint upgrade
 3. Karma upgrade
