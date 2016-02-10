@@ -1,3 +1,8 @@
+### Version 0.6.4
+1. Facets!
+2. eslint upgrade
+3. Karma upgrade
+
 ### Version 0.6.2
 1. Upgrade tether version to 1.1.0
 
