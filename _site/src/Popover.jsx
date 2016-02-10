@@ -6,6 +6,8 @@ class Popover extends React.Component {
 
   constructor(props) {
     super(props);
+
+    this._escapeHandler = this._handleEscapePress.bind(this);
   }
 
   componentWillUnmount() {
@@ -63,7 +65,7 @@ class Popover extends React.Component {
   }
 
   _removeDocumentListeners() {
-    document.removeEventListener('keyup', this._handleEscapePress.bind(this), false);
+    document.removeEventListener('keyup', this._escapeHandler, false);
   }
 
   _show() {
@@ -78,6 +80,9 @@ class Popover extends React.Component {
     React.render(<PopoverBackground onRequestClose={this.props.onRequestClose} />, this._backgroundDiv);
     this._containerDiv.className += ' rs-popover';
 
+    if (!this._tether) {
+      this._tether = this._createTether(this._getTetherConfig());
+    }
     popover = React.cloneElement(
       React.Children.only(this.props.children),
       {
@@ -85,9 +90,7 @@ class Popover extends React.Component {
       }
     );
     this._popoverNode = React.render(popover, this._containerDiv);
-    if (!this._tether) {
-      this._tether = this._createTether(this._getTetherConfig());
-    }
+    this._tether.position();
   }
 
   // This is a seam for testing
@@ -163,7 +166,7 @@ class Popover extends React.Component {
   }
 
   _listenForEscapePress() {
-    document.addEventListener('keyup', this._handleEscapePress.bind(this), false);
+    document.addEventListener('keyup', this._escapeHandler, false);
   }
 
   _handleEscapePress(e) {
@@ -173,7 +176,13 @@ class Popover extends React.Component {
   }
 }
 
+Popover.defaultProps = {
+  placement: 'right',
+  isOpen: false
+};
+
 Popover.propTypes = {
+  children: React.PropTypes.element.isRequired,
   placement: React.PropTypes.oneOf(['right', 'bottom-right', 'left', 'bottom-left', 'center']),
   isOpen: React.PropTypes.bool,
   onRequestClose: React.PropTypes.func.isRequired,
@@ -182,11 +191,6 @@ Popover.propTypes = {
     React.PropTypes.func
   ]).isRequired,
   offset: React.PropTypes.string
-};
-
-Popover.defaultProps = {
-  placement: 'right',
-  isOpen: false
 };
 
 export default Popover;

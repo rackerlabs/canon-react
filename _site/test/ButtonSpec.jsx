@@ -59,69 +59,70 @@ describe('Button', () => {
   });
 
   describe('button types', () => {
-    it('primary', () => {
+    const renderButton = (type) => {
       button = TestUtils.renderIntoDocument(
-        <Button type='primary'>Button Text</Button>
+        <Button type={type}>Button Text</Button>
       );
+    };
+
+    it('action', () => {
+      renderButton('action');
+
+      expect(React.findDOMNode(button)).toHaveClass('rs-btn');
+      expect(React.findDOMNode(button)).toHaveClass('rs-btn-action');
+      // The spaces before and after are present on an action button because the cog and caret item surround the text
+      expect(React.findDOMNode(button).textContent).toBe(' Button Text ');
+      expect(TestUtils.findRenderedDOMComponentWithClass(button, 'rs-cog')).not.toBeNull();
+      expect(TestUtils.findRenderedDOMComponentWithClass(button, 'rs-caret')).not.toBeNull();
+    });
+
+    it('primary', () => {
+      renderButton('primary');
 
       expect(React.findDOMNode(button)).toHaveClass('rs-btn');
       expect(React.findDOMNode(button)).toHaveClass('rs-btn-primary');
     });
 
     it('secondary', () => {
-      button = TestUtils.renderIntoDocument(
-        <Button type='secondary'>Button Text</Button>
-      );
+      renderButton('secondary');
 
       expect(React.findDOMNode(button)).toHaveClass('rs-btn');
     });
 
     it('link', () => {
-      button = TestUtils.renderIntoDocument(
-        <Button type='link'>Button Text</Button>
-      );
+      renderButton('link');
 
       expect(React.findDOMNode(button)).toHaveClass('rs-btn');
       expect(React.findDOMNode(button)).toHaveClass('rs-btn-link');
     });
 
     it('login', () => {
-      button = TestUtils.renderIntoDocument(
-        <Button type='login'>Button Text</Button>
-      );
+      renderButton('login');
 
       expect(React.findDOMNode(button)).toHaveClass('rs-btn');
       expect(React.findDOMNode(button)).toHaveClass('rs-btn-login');
     });
 
     it('cog', () => {
-      button = TestUtils.renderIntoDocument(
-        <Button type='cog'>Button Text</Button>
-      );
+      renderButton('cog');
 
       expect(React.findDOMNode(button)).toHaveClass('rs-cog');
     });
 
     it('delete', () => {
-      button = TestUtils.renderIntoDocument(
-        <Button type='delete'>Button Text</Button>
-      );
+      renderButton('delete');
 
       expect(React.findDOMNode(button)).toHaveClass('rs-delete');
     });
 
     it('edit', () => {
-      button = TestUtils.renderIntoDocument(
-        <Button type='edit'>Button Text</Button>
-      );
+      renderButton('edit');
 
       expect(React.findDOMNode(button)).toHaveClass('rs-edit');
     });
 
     it('plus', () => {
-      button = TestUtils.renderIntoDocument(
-        <Button type='plus'>Button Text</Button>
-      );
+      renderButton('plus');
 
       expect(React.findDOMNode(button)).toHaveClass('rs-plus');
     });

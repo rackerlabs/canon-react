@@ -16,7 +16,7 @@ class View extends React.Component {
           <div className="rs-container">
             <div className="rs-main">
               <div className="rs-content rs-panel">
-          
+
                 <SectionHeader id='buttons'>Buttons</SectionHeader>
                 <ButtonsSection />
 
@@ -34,11 +34,11 @@ class View extends React.Component {
 
                 <SectionHeader id='tooltips'>Tooltips</SectionHeader>
                 <TooltipSection />
-
               </div>
             </div>
           </div>
         </div>
+        
 
         <div className="rs-push"></div>
       </div>
@@ -47,3 +47,31 @@ class View extends React.Component {
 }
 
 export default View;
+
+// <div className="rs-inner">
+//           <div className="rs-container">
+//             <div className="rs-main">
+//               <div className="rs-content rs-panel">
+          
+//                 <SectionHeader id='buttons'>Buttons</SectionHeader>
+//                 <ButtonsSection />
+
+//                 <SectionHeader id='button-groups'>Button Groups</SectionHeader>
+//                 <ButtonGroupSection />
+
+//                 <SectionHeader id='progress-bars'>Progress Bars</SectionHeader>
+//                 <ProgressBarsSection />
+
+//                 <SectionHeader id='status-indicators'>Status Indicators</SectionHeader>
+//                 <StatusIndicatorSection />
+
+//                 <SectionHeader id='popovers'>Popovers</SectionHeader>
+//                 <PopoverSection />
+
+//                 <SectionHeader id='tooltips'>Tooltips</SectionHeader>
+//                 <TooltipSection />
+
+//               </div>
+//             </div>
+//           </div>
+//         </div>

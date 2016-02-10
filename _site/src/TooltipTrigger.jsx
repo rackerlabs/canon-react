@@ -2,6 +2,7 @@ import React from 'react';
 import Tether from 'tether';
 
 class TooltipTrigger extends React.Component {
+
   constructor(props) {
     super(props);
     this.state = {

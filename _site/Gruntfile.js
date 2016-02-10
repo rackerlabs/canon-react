@@ -4,9 +4,6 @@ module.exports = function (grunt) {
     pkg: grunt.file.readJSON('package.json'),
 
     babel: {
-      options: {
-        optional: ['runtime']
-      },
       src: {
         files: [
           {
@@ -56,7 +53,7 @@ module.exports = function (grunt) {
     clean: {
       transpiled: ['transpiled'],
       test: ['test-built'],
-      dist: ['canon-react.js', 'canon-react.min.js', './demo/bundle.js']
+      dist: ['canon-react.js', 'canon-react.min.js', './demo/bundle.js', './dist']
     },
 
     watch: {
@@ -65,9 +62,10 @@ module.exports = function (grunt) {
           'src/**/*.jsx',
           'src/**/*.js',
           'test/**/*.jsx',
-          'test/**/*.js'
+          'test/**/*.js',
+          'demo/**/*.jsx'
         ],
-        tasks: ['build'],
+        tasks: ['build-dev'],
         options: {
           spawn: false
         }
@@ -126,14 +124,25 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-browserify');
 
+  grunt.registerTask('build-dev', [
+    'clean:test',
+    'clean:transpiled',
+    'babel:src',
+    'babel:test',
+    'babel:demo',
+    'browserify:test',
+    'browserify:demo'
+  ]);
+
   grunt.registerTask('build', [
     'clean:test',
-    'eslint',
+    'clean:transpiled',
+    'lint:eslint',
     'babel:src',
     'babel:test',
     'browserify:test',
     'browserify:release',
-    'uglify:build',
+    'uglify:build'
   ]);
 
   grunt.registerTask('demo-build', [
@@ -142,6 +151,8 @@ module.exports = function (grunt) {
     'browserify:demo',
     'clean:transpiled'
   ]);
+
+  grunt.registerTask('lint', ['eslint']);
 
   grunt.registerTask('documentation-build', [
     'babel:src',

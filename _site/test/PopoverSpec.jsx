@@ -15,8 +15,8 @@ describe('Popover', () => {
       closeCallBackCalled = true;
       return e;
     };
-    tether = jasmine.createSpyObj('tether', ['destroy']);
-    spyOn(Popover.prototype, '_createTether').andReturn(tether);
+    tether = jasmine.createSpyObj('tether', ['destroy', 'position']);
+    spyOn(Popover.prototype, '_createTether').and.returnValue(tether);
 
     if (useTargetCallback) {
       target = () => document.getElementById('some-element-id');
@@ -46,7 +46,13 @@ describe('Popover', () => {
   it('does not display the popover', () => {
     renderPopover('right', false);
 
-    expect(popover._popoverNode).toEqual(null);
+    expect(popover._popoverNode).toEqual(undefined);
+  });
+
+  it('repositions the tether', () => {
+    renderPopover('right', true);
+
+    expect(tether.position).toHaveBeenCalled();
   });
 
   it('renders the popover overlay', () => {

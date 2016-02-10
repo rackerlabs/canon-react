@@ -1,9 +1,9 @@
-var React = require('react');
+import React from 'react';
 
-var ProgressBar = require('../ProgressBar');
+import ProgressBar from '../ProgressBar';
 
-var ProgressBarsSection = React.createClass({
-  render: function () {
+class ProgressBarsSection extends React.Component {
+  render() {
     return (
       <div className="website-content-section">
         <div className="content-section-body">
@@ -252,8 +252,9 @@ var ProgressBarsSection = React.createClass({
           </div>
 
         </div>
-      </div>);
+      </div>
+    );
   }
-});
+}
 
-module.exports = ProgressBarsSection;
+export default ProgressBarsSection;
