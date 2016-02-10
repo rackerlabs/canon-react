@@ -1,11 +1,11 @@
-var React = require('react');
+import React from 'react';
 
-var Button = require('./Button');
-var ButtonGroup = require('./ButtonGroup');
-var ProcessingIndicator = require('./ProcessingIndicator');
+import Button from './Button';
+import ButtonGroup from './ButtonGroup';
+import ProcessingIndicator from './ProcessingIndicator';
 
-var DemoButtonGroupSection = React.createClass({
-  render: function () {
+class DemoButtonGroupSection extends React.Component {
+  render() {
     return (
       <div className='rs-detail-section'>
         <div className='rs-detail-section-header'>
@@ -31,6 +31,6 @@ var DemoButtonGroupSection = React.createClass({
       </div>
     );
   }
-});
+}
 
-module.exports = DemoButtonGroupSection;
+export default DemoButtonGroupSection;

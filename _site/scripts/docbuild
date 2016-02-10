@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# script/docbuild: build documentation site javascripts
+
+./node_modules/.bin/grunt documentation-build

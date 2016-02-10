@@ -1,38 +1,29 @@
 import React from 'react';
+import classNames from 'classnames';
+
+const STATUS_INDICATOR = {
+  'error': 'rs-status rs-status-error',
+  'processing': 'rs-status rs-status-processing',
+  'warning': 'rs-status rs-status-warning',
+  'ok': 'rs-status rs-status-ok',
+  'disabled': 'rs-status rs-status-disabled'
+};
 
 class StatusIndicator extends React.Component {
 
   render() {
+    let classes;
+
+    classes = classNames(
+      this.props.className,
+      STATUS_INDICATOR[this.props.status],
+      { 'rs-hidden': this.props.hidden }
+    );
     return (
-      <statusindicator {...this.props} className={this._classes()}>
+      <statusindicator {...this.props} className={classes}>
         {this.props.children}
       </statusindicator>
     );
-  }
-
-  _classes() {
-    let classes, statusIndicatorTypes;
-
-    statusIndicatorTypes = {
-      'error': 'rs-status rs-status-error',
-      'processing': 'rs-status rs-status-processing',
-      'warning': 'rs-status rs-status-warning',
-      'ok': 'rs-status rs-status-ok',
-      'disabled': 'rs-status rs-status-disabled'
-    };
-
-    classes = [];
-    classes.push(this.props.className);
-
-    if (this.props.status && statusIndicatorTypes[this.props.status]) {
-      classes.push(statusIndicatorTypes[this.props.status]);
-    }
-
-    if (this.props.hidden) {
-      classes.push('rs-hidden');
-    }
-
-    return classes.join(' ');
   }
 }
 

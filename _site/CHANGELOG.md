@@ -1,3 +1,27 @@
+### Version 0.6.4
+1. Facets!
+2. eslint upgrade
+3. Karma upgrade
+
+### Version 0.6.2
+1. Upgrade tether version to 1.1.0
+
+### Version 0.6.1
+1. Hide dropdowns when dropdown items are clicked
+2. Fix bad prop types where `children` and `className` were misused
+3. Add contributing guide and scripts for setup and development
+
+### Version 0.6.0
+1. Allow `PopoverBody` to receive additional class names as a property.
+2. Fixed an issue where autoFocus would cause popovers to scroll out of view
+
+### Version 0.5.0
+1. Allow `PopoverFooter` to receive additional class names as a property.
+
+### Version 0.4.0
+1. Dropdowns
+2. `action` type for Buttons to create Action Buttons (with cog and caret icons)
+
 ### Version 0.3.2:
 Refactored the tooltip trigger to not render a `<trigger>` element that wraps the actual trigger component.
 

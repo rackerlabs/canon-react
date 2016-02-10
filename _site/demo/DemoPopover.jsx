@@ -1,19 +1,15 @@
-var React = require('react');
+import React from 'react';
 
-var Button = require('./Button');
-var Popover = require('./Popover');
-var PopoverOverlay = require('./PopoverOverlay');
-var PopoverBody = require('./PopoverBody');
-var PopoverFooter = require('./PopoverFooter');
-var ProcessingIndicator = require('./ProcessingIndicator');
+import Button from './Button';
+import Popover from './Popover';
+import PopoverOverlay from './PopoverOverlay';
+import PopoverBody from './PopoverBody';
+import PopoverFooter from './PopoverFooter';
+import ProcessingIndicator from './ProcessingIndicator';
 
-var DemoPopover = React.createClass({
-  propType: {
-    isOpen: React.PropTypes.bool,
-    onRequestClose: React.PropTypes.func
-  },
+class DemoPopover extends React.Component {
 
-  render: function () {
+  render() {
     return (
       <Popover placement={this.props.placement} isOpen={this.props.isOpen} onRequestClose={this.props.onRequestClose} target={this.props.target}>
         <PopoverOverlay>
@@ -22,7 +18,7 @@ var DemoPopover = React.createClass({
               <div className='rs-control-group'>
                 <label className='rs-control-label'>Field 1</label>
                 <div className='rs-controls'>
-                  <input type='text'/>
+                  <input autoFocus type='text'/>
                 </div>
               </div>
             </form>
@@ -36,6 +32,11 @@ var DemoPopover = React.createClass({
       </Popover>
     );
   }
-});
+}
 
-module.exports = DemoPopover;
+DemoPopover.propTypes = {
+  isOpen: React.PropTypes.bool,
+  onRequestClose: React.PropTypes.func
+};
+
+export default DemoPopover;

@@ -7,7 +7,7 @@ describe('TooltipTrigger', () => {
 
   const renderTrigger = (placement = 'bottom-right') => {
     tether = jasmine.createSpyObj('tether', ['destroy']);
-    spyOn(TooltipTrigger.prototype, '_createTether').andReturn(tether);
+    spyOn(TooltipTrigger.prototype, '_createTether').and.returnValue(tether);
 
     trigger = TestUtils.renderIntoDocument(
       <TooltipTrigger placement={placement} content={'The tooltip content'}>
@@ -18,10 +18,11 @@ describe('TooltipTrigger', () => {
   };
 
   beforeEach(() => {
-    jasmine.Clock.useMock();
+    jasmine.clock().install();
   });
 
   afterEach(() => {
+    jasmine.clock().uninstall();
     React.unmountComponentAtNode(triggerParent);
   });
 
@@ -48,17 +49,17 @@ describe('TooltipTrigger', () => {
     it('shows the tooltip when hovering over the target', () => {
       TestUtils.Simulate.mouseOver(target);
 
-      jasmine.Clock.tick(250);
+      jasmine.clock().tick(250);
 
       expect(tooltip).toHaveClass('visible');
     });
 
     it('hides the tooltip when leaving the target', () => {
       TestUtils.Simulate.mouseOver(target);
-      jasmine.Clock.tick(250);
+      jasmine.clock().tick(250);
 
       TestUtils.SimulateNative.mouseOut(target);
-      jasmine.Clock.tick(250);
+      jasmine.clock().tick(250);
 
       expect(tooltip).not.toHaveClass('visible');
     });
@@ -66,62 +67,62 @@ describe('TooltipTrigger', () => {
     it('shows the tooltip focusing on the target', () => {
       TestUtils.Simulate.focus(target);
 
-      jasmine.Clock.tick(250);
+      jasmine.clock().tick(250);
 
       expect(tooltip).toHaveClass('visible');
     });
 
     it('hides the tooltip on blur of the target', () => {
       TestUtils.Simulate.focus(target);
-      jasmine.Clock.tick(250);
+      jasmine.clock().tick(250);
 
       TestUtils.SimulateNative.blur(target);
-      jasmine.Clock.tick(250);
+      jasmine.clock().tick(250);
 
       expect(tooltip).not.toHaveClass('visible');
     });
 
     it('shows the tooltip when hovering over the tooltip', () => {
       TestUtils.Simulate.mouseOver(target);
-      jasmine.Clock.tick(250);
+      jasmine.clock().tick(250);
 
       tooltipContent = document.getElementsByClassName('rs-tooltip-inner')[0];
       TestUtils.Simulate.mouseOver(tooltipContent);
       TestUtils.SimulateNative.mouseOut(target);
-      jasmine.Clock.tick(250);
+      jasmine.clock().tick(250);
 
       expect(tooltip).toHaveClass('visible');
     });
 
     it('hides the tooltip when leaving the tooltip', () => {
       TestUtils.Simulate.mouseOver(target);
-      jasmine.Clock.tick(250);
+      jasmine.clock().tick(250);
 
       tooltipContent = document.getElementsByClassName('rs-tooltip-inner')[0];
 
       TestUtils.SimulateNative.mouseOut(target);
       TestUtils.Simulate.mouseOver(tooltipContent);
-      jasmine.Clock.tick(250);
+      jasmine.clock().tick(250);
 
       TestUtils.SimulateNative.mouseOut(tooltipContent);
-      jasmine.Clock.tick(260);
+      jasmine.clock().tick(260);
 
       expect(tooltip).not.toHaveClass('visible');
     });
 
     it('shows the tooltip when re-entering the tooltip before delay', () => {
       TestUtils.Simulate.mouseOver(target);
-      jasmine.Clock.tick(250);
+      jasmine.clock().tick(250);
 
       tooltipContent = document.getElementsByClassName('rs-tooltip-inner')[0];
 
       TestUtils.SimulateNative.mouseOut(target);
       TestUtils.Simulate.mouseOver(tooltipContent);
-      jasmine.Clock.tick(250);
+      jasmine.clock().tick(250);
 
       TestUtils.SimulateNative.mouseOut(tooltipContent);
       TestUtils.Simulate.mouseOver(tooltipContent);
-      jasmine.Clock.tick(260);
+      jasmine.clock().tick(260);
 
       expect(tooltip).toHaveClass('visible');
     });
@@ -134,7 +135,7 @@ describe('TooltipTrigger', () => {
       renderTrigger(placement);
       target = TestUtils.findRenderedDOMComponentWithTag(trigger, 'span');
       TestUtils.Simulate.mouseOver(target);
-      jasmine.Clock.tick(250);
+      jasmine.clock().tick(250);
     };
 
     it('left', () => {
@@ -279,7 +280,7 @@ describe('TooltipTrigger', () => {
     renderTrigger();
     target = TestUtils.findRenderedDOMComponentWithTag(trigger, 'span');
     TestUtils.Simulate.mouseOver(target);
-    jasmine.Clock.tick(250);
+    jasmine.clock().tick(250);
 
     React.unmountComponentAtNode(React.findDOMNode(trigger).parentNode);
 

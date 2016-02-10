@@ -7,7 +7,7 @@ class PopoverBackground extends React.Component {
   }
 
   render() {
-    var style;
+    let style;
 
     style = {
       'position': 'fixed',

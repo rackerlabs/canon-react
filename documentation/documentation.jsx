@@ -1,6 +1,6 @@
-var React = require('react');
+import React from 'react';
 
-var ComponentsView = require('./components/View');
+import ComponentsView from './components/View';
 
 (function () {
   React.render(<ComponentsView/>, document.getElementById('components-content'));
