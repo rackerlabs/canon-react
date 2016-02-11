@@ -16,8 +16,8 @@ describe('StatusIndicator', () => {
     expect(React.findDOMNode(statusIndicator)).toHaveClass('ok');
   });
 
-  it('renders a statusindicator', () => {
-    expect(TestUtils.findRenderedDOMComponentWithTag(statusIndicator, 'statusindicator')).not.toBeNull();
+  it('renders a span', () => {
+    expect(TestUtils.findRenderedDOMComponentWithTag(statusIndicator, 'span')).not.toBeNull();
   });
 
   it('keeps the passed in classes', () => {
