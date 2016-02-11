@@ -1,3 +1,7 @@
+### Version 0.7.1
+1. Minor fix to update the `StatusIndicator` component to render a `<span>` element instead of a `<statusindicator>` element
+2. Also fixed the popovers in the demo popover section
+
 ### Version 0.7.0
 1. Facets!
 2. eslint upgrade
