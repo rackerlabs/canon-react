@@ -1,3 +1,6 @@
+### Version 0.7.2
+1. Fix facets so they do not mutate the passed in selected criteria property
+
 ### Version 0.7.1
 1. Minor fix to update the `StatusIndicator` component to render a `<span>` element instead of a `<statusindicator>` element
 2. Also fixed the popovers in the demo popover section
