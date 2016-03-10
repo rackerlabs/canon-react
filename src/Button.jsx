@@ -15,7 +15,15 @@ const BUTTON_TYPES = {
 
 class Button extends React.Component {
   render() {
-    let classes;
+    let classes, propsWithHTMLType;
+
+    propsWithHTMLType = Object.assign({}, this.props);
+    delete propsWithHTMLType.type;
+    if(['primary', 'login'].indexOf(this.props.type) !== -1) {
+      propsWithHTMLType.type = 'submit';
+    } else {
+      propsWithHTMLType.type = 'button';
+    }
 
     classes = classNames(
       this.props.className,
@@ -26,14 +34,14 @@ class Button extends React.Component {
 
     if (this.props.type === 'action') {
       return (
-        <button {...this.props} className={classes} onClick={this._handleClick.bind(this)}>
+        <button {...propsWithHTMLType} className={classes} onClick={this._handleClick.bind(this)}>
           <span className='rs-cog'></span> {this.props.children} <span className='rs-caret'></span>
         </button>
       );
     }
 
     return (
-      <button {...this.props} className={classes} onClick={this._handleClick.bind(this)}>
+      <button {...propsWithHTMLType} className={classes} onClick={this._handleClick.bind(this)}>
         {this.props.children}
       </button>
     );

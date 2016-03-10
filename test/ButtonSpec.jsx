@@ -81,12 +81,14 @@ describe('Button', () => {
 
       expect(React.findDOMNode(button)).toHaveClass('rs-btn');
       expect(React.findDOMNode(button)).toHaveClass('rs-btn-primary');
+      expect(React.findDOMNode(button).getAttribute('type')).toBe('submit');
     });
 
     it('secondary', () => {
       renderButton('secondary');
 
       expect(React.findDOMNode(button)).toHaveClass('rs-btn');
+      expect(React.findDOMNode(button).getAttribute('type')).toBe('button');
     });
 
     it('link', () => {
@@ -94,6 +96,7 @@ describe('Button', () => {
 
       expect(React.findDOMNode(button)).toHaveClass('rs-btn');
       expect(React.findDOMNode(button)).toHaveClass('rs-btn-link');
+      expect(React.findDOMNode(button).getAttribute('type')).toBe('button');
     });
 
     it('login', () => {
@@ -101,30 +104,35 @@ describe('Button', () => {
 
       expect(React.findDOMNode(button)).toHaveClass('rs-btn');
       expect(React.findDOMNode(button)).toHaveClass('rs-btn-login');
+      expect(React.findDOMNode(button).getAttribute('type')).toBe('submit');
     });
 
     it('cog', () => {
       renderButton('cog');
 
       expect(React.findDOMNode(button)).toHaveClass('rs-cog');
+      expect(React.findDOMNode(button).getAttribute('type')).toBe('button');
     });
 
     it('delete', () => {
       renderButton('delete');
 
       expect(React.findDOMNode(button)).toHaveClass('rs-delete');
+      expect(React.findDOMNode(button).getAttribute('type')).toBe('button');
     });
 
     it('edit', () => {
       renderButton('edit');
 
       expect(React.findDOMNode(button)).toHaveClass('rs-edit');
+      expect(React.findDOMNode(button).getAttribute('type')).toBe('button');
     });
 
     it('plus', () => {
       renderButton('plus');
 
       expect(React.findDOMNode(button)).toHaveClass('rs-plus');
+      expect(React.findDOMNode(button).getAttribute('type')).toBe('button');
     });
   });
 
