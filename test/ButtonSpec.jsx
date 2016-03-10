@@ -58,10 +58,10 @@ describe('Button', () => {
     expect(React.findDOMNode(button)).toHaveClass('rs-hidden');
   });
 
-  describe('button types', () => {
-    const renderButton = (type) => {
+  describe('button canonStyles', () => {
+    const renderButton = (canonStyle) => {
       button = TestUtils.renderIntoDocument(
-        <Button type={type}>Button Text</Button>
+        <Button canonStyle={canonStyle}>Button Text</Button>
       );
     };
 

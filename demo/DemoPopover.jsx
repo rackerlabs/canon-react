@@ -24,8 +24,8 @@ class DemoPopover extends React.Component {
             </form>
           </PopoverBody>
           <PopoverFooter>
-            <Button type='primary' onClick={this.props.onRequestClose}>Save</Button>
-            <Button type='link' onClick={this.props.onRequestClose}>Cancel</Button>
+            <Button canonStyle='primary' onClick={this.props.onRequestClose}>Save</Button>
+            <Button canonStyle='link' onClick={this.props.onRequestClose}>Cancel</Button>
             <ProcessingIndicator hidden={true} />
           </PopoverFooter>
         </PopoverOverlay>

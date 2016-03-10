@@ -13,18 +13,18 @@ class DemoButtonGroupSection extends React.Component {
         </div>
         <div className='rs-detail-section-body'>
           <ButtonGroup>
-            <Button type='primary' enabled={true}>Primary</Button>
-            <Button type='secondary' enabled={true}>Secondary</Button>
-            <Button type='link' enabled={true}>Cancel</Button>
+            <Button canonStyle='primary' enabled={true}>Primary</Button>
+            <Button canonStyle='secondary' enabled={true}>Secondary</Button>
+            <Button canonStyle='link' enabled={true}>Cancel</Button>
             <ProcessingIndicator/>
           </ButtonGroup>
         </div>
         <div className='rs-detail-section-body'>
           <h3>Submitting State</h3>
           <ButtonGroup>
-            <Button type='primary' enabled={false}>Primary</Button>
-            <Button type='secondary' enabled={false}>Secondary</Button>
-            <Button type='link' enabled={false} hidden={true}>Cancel</Button>
+            <Button canonStyle='primary' enabled={false}>Primary</Button>
+            <Button canonStyle='secondary' enabled={false}>Secondary</Button>
+            <Button canonStyle='link' enabled={false} hidden={true}>Cancel</Button>
             <ProcessingIndicator hidden={false}/>
           </ButtonGroup>
         </div>
