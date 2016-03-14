@@ -22,59 +22,59 @@ class DemoButtonSection extends React.Component {
             <tbody>
               <tr>
                 <td>
-                  <Button type='primary'>Primary</Button>
+                  <Button canonStyle='primary'>Primary</Button>
                 </td>
                 <td>Primary</td>
-                <td><pre><code>{"<Button type='primary'>Primary</Button>"}</code></pre></td>
+                <td><pre><code>{"<Button canonStyle='primary'>Primary</Button>"}</code></pre></td>
               </tr>
               <tr>
                 <td>
-                  <Button type='secondary'>Secondary</Button>
+                  <Button canonStyle='secondary'>Secondary</Button>
                 </td>
                 <td>Secondary</td>
-                <td><pre><code>{"<Button type='secondary'>Secondary</Button>"}</code></pre></td>
+                <td><pre><code>{"<Button canonStyle='secondary'>Secondary</Button>"}</code></pre></td>
               </tr>
               <tr>
                 <td>
-                  <Button type='login'>Login</Button>
+                  <Button canonStyle='login'>Login</Button>
                 </td>
                 <td>Login</td>
-                <td><pre><code>{"<Button type='login'>Login</Button>"}</code></pre></td>
+                <td><pre><code>{"<Button canonStyle='login'>Login</Button>"}</code></pre></td>
               </tr>
               <tr>
                 <td>
-                  <Button type='link'>Cancel</Button>
+                  <Button canonStyle='link'>Cancel</Button>
                 </td>
                 <td>Link</td>
-                <td><pre><code>{"<Button type='link'>Cancel</Button>"}</code></pre></td>
+                <td><pre><code>{"<Button canonStyle='link'>Cancel</Button>"}</code></pre></td>
               </tr>
               <tr>
                 <td>
-                  <Button type='delete'>Delete</Button>
+                  <Button canonStyle='delete'>Delete</Button>
                 </td>
                 <td>Delete</td>
-                <td><pre><code>{"<Button type='delete'>Delete</Button>"}</code></pre></td>
+                <td><pre><code>{"<Button canonStyle='delete'>Delete</Button>"}</code></pre></td>
               </tr>
               <tr>
                 <td>
-                  <Button type='edit'>Edit</Button>
+                  <Button canonStyle='edit'>Edit</Button>
                 </td>
                 <td>Edit</td>
-                <td><pre><code>{"<Button type='edit'>Edit</Button>"}</code></pre></td>
+                <td><pre><code>{"<Button canonStyle='edit'>Edit</Button>"}</code></pre></td>
               </tr>
               <tr>
                 <td>
-                  <Button type='plus'>Plus</Button>
+                  <Button canonStyle='plus'>Plus</Button>
                 </td>
                 <td>Plus</td>
-                <td><pre><code>{"<Button type='plus'>Plus</Button>"}</code></pre></td>
+                <td><pre><code>{"<Button canonStyle='plus'>Plus</Button>"}</code></pre></td>
               </tr>
               <tr>
                 <td>
-                  <Button type='action'>Actions</Button>
+                  <Button canonStyle='action'>Actions</Button>
                 </td>
                 <td>Action</td>
-                <td><pre><code>{"<Button type='action'>Actions</Button>"}</code></pre></td>
+                <td><pre><code>{"<Button canonStyle='action'>Actions</Button>"}</code></pre></td>
               </tr>
             </tbody>
           </table>
@@ -92,38 +92,38 @@ class DemoButtonSection extends React.Component {
             <tbody>
               <tr>
                 <td>
-                  <Button type='primary' enabled={false}>Primary</Button>
+                  <Button canonStyle='primary' enabled={false}>Primary</Button>
                 </td>
                 <td>Primary</td>
-                <td><pre><code>{"<Button type='primary' enabled={false}>Primary</Button>"}</code></pre></td>
+                <td><pre><code>{"<Button canonStyle='primary' enabled={false}>Primary</Button>"}</code></pre></td>
               </tr>
               <tr>
                 <td>
-                  <Button type='secondary' enabled={false}>Secondary</Button>
+                  <Button canonStyle='secondary' enabled={false}>Secondary</Button>
                 </td>
                 <td>Secondary</td>
-                <td><pre><code>{"<Button type='secondary' enabled={false}>Secondary</Button>"}</code></pre></td>
+                <td><pre><code>{"<Button canonStyle='secondary' enabled={false}>Secondary</Button>"}</code></pre></td>
               </tr>
               <tr>
                 <td>
-                  <Button type='login' enabled={false}>Login</Button>
+                  <Button canonStyle='login' enabled={false}>Login</Button>
                 </td>
                 <td>Login</td>
-                <td><pre><code>{"<Button type='login' enabled={false}>Login</Button>"}</code></pre></td>
+                <td><pre><code>{"<Button canonStyle='login' enabled={false}>Login</Button>"}</code></pre></td>
               </tr>
               <tr>
                 <td>
-                  <Button type='link' enabled={false}>Cancel</Button>
+                  <Button canonStyle='link' enabled={false}>Cancel</Button>
                 </td>
                 <td>Link</td>
-                <td><pre><code>{"<Button type='link' enabled={false}>Cancel</Button>"}</code></pre></td>
+                <td><pre><code>{"<Button canonStyle='link' enabled={false}>Cancel</Button>"}</code></pre></td>
               </tr>
               <tr>
                 <td>
-                  <Button type='edit' enabled={false}>Edit</Button>
+                  <Button canonStyle='edit' enabled={false}>Edit</Button>
                 </td>
                 <td>Edit</td>
-                <td><pre><code>{"<Button type='edit' enabled={false}>Edit</Button>"}</code></pre></td>
+                <td><pre><code>{"<Button canonStyle='edit' enabled={false}>Edit</Button>"}</code></pre></td>
               </tr>
             </tbody>
           </table>
