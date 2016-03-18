@@ -20,9 +20,9 @@ class StatusIndicator extends React.Component {
       { 'rs-hidden': this.props.hidden }
     );
     return (
-      <statusindicator {...this.props} className={classes}>
+      <span {...this.props} className={classes}>
         {this.props.children}
-      </statusindicator>
+      </span>
     );
   }
 }

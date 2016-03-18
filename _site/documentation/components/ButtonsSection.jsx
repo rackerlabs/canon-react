@@ -1,16 +1,18 @@
-import React from 'react';
+import { Component } from 'react';
+import { Button } from 'canon-react';
+import { Row } from './Common';
 
-import Button from '../Button';
-
-class ButtonsSection extends React.Component {
+class ButtonsSection extends Component {
   render() {
     return (
       <div className="website-content-section">
         <div className="content-section-body">
-          <div className="rs-row">
+          
+          <Row>
             <p>Canon offers a variety of different <a href="http://rackerlabs.github.io/canon/ui-components/#buttons" target="_blank">buttons</a>. They are implemented with the <code>Button</code> component.</p>
-          </div>
-          <div className="rs-row">
+          </Row>
+
+          <Row>
             <h3>Properties</h3>
             <ul>
               <li><code>onClick</code></li>
@@ -18,9 +20,9 @@ class ButtonsSection extends React.Component {
               <li><code>hidden</code></li>
               <li><code>type</code></li>
             </ul>
-          </div>
+          </Row>
 
-          <div className="rs-row">
+          <Row>
             <div className="span-3">
               <h5>onClick</h5>
               <p><code>onClick</code> takes the function that will be executed when the button is clicked.</p>
@@ -50,9 +52,9 @@ class ButtonsSection extends React.Component {
                 </table>
               </div>
             </div>
-          </div>
+          </Row>
 
-          <div className="rs-row">
+          <Row>
             <div className="span-3">
               <h5>enabled</h5>
               <p><code>enabled</code> takes a boolean value (<code>true</code> by default) that toggles whether or not the button is disabled. When <code>enabled</code> is <code>false</code> the <code>onClick</code> function will not be executed.</p>
@@ -92,9 +94,9 @@ class ButtonsSection extends React.Component {
                 </table>
               </div>
             </div>
-          </div>
+          </Row>
 
-          <div className="rs-row">
+          <Row>
             <div className="span-3">
               <h5>hidden</h5>
               <p><code>hidden</code> takes a boolean value (<code>false</code> by default) that toggles whether or not the button is visible.</p>
@@ -134,9 +136,9 @@ class ButtonsSection extends React.Component {
                 </table>
               </div>
             </div>
-          </div>
+          </Row>
 
-          <div className="rs-row">
+          <Row>
             <div className="span-3">
               <h5>type</h5>
               <p><code>type</code> takes a string value (<code>'secondary'</code> by default) that controls the look and feel of the button. The following types are supported:</p>
@@ -248,7 +250,7 @@ class ButtonsSection extends React.Component {
                 </table>
               </div>
             </div>
-          </div>
+          </Row>
 
         </div>
       </div>

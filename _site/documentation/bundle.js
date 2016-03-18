@@ -821,6 +821,2418 @@ process.chdir = function (dir) {
 };
 
 },{}],59:[function(require,module,exports){
+(function (global){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends2 = require('babel-runtime/helpers/extends');
+
+var _extends3 = _interopRequireDefault(_extends2);
+
+var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
+
+var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+
+var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+var _createClass2 = require('babel-runtime/helpers/createClass');
+
+var _createClass3 = _interopRequireDefault(_createClass2);
+
+var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+
+var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+var _inherits2 = require('babel-runtime/helpers/inherits');
+
+var _inherits3 = _interopRequireDefault(_inherits2);
+
+var _react = (typeof window !== "undefined" ? window['React'] : typeof global !== "undefined" ? global['React'] : null);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _classnames = require('classnames');
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var BUTTON_TYPES = {
+  'action': 'rs-btn rs-btn-action',
+  'primary': 'rs-btn rs-btn-primary',
+  'link': 'rs-btn rs-btn-link',
+  'login': 'rs-btn rs-btn-login',
+  'secondary': 'rs-btn',
+  'cog': 'rs-cog',
+  'delete': 'rs-delete',
+  'edit': 'rs-edit',
+  'plus': 'rs-plus'
+};
+
+var Button = function (_React$Component) {
+  (0, _inherits3.default)(Button, _React$Component);
+
+  function Button() {
+    (0, _classCallCheck3.default)(this, Button);
+    return (0, _possibleConstructorReturn3.default)(this, (0, _getPrototypeOf2.default)(Button).apply(this, arguments));
+  }
+
+  (0, _createClass3.default)(Button, [{
+    key: 'render',
+    value: function render() {
+      var classes = undefined;
+
+      classes = (0, _classnames2.default)(this.props.className, { 'disabled': !this.props.enabled }, BUTTON_TYPES[this.props.type], { 'rs-hidden': this.props.hidden });
+
+      if (this.props.type === 'action') {
+        return _react2.default.createElement(
+          'button',
+          (0, _extends3.default)({}, this.props, { className: classes, onClick: this._handleClick.bind(this) }),
+          _react2.default.createElement('span', { className: 'rs-cog' }),
+          ' ',
+          this.props.children,
+          ' ',
+          _react2.default.createElement('span', { className: 'rs-caret' })
+        );
+      }
+
+      return _react2.default.createElement(
+        'button',
+        (0, _extends3.default)({}, this.props, { className: classes, onClick: this._handleClick.bind(this) }),
+        this.props.children
+      );
+    }
+  }, {
+    key: '_handleClick',
+    value: function _handleClick(e) {
+      if (this.props.enabled) {
+        this.props.onClick(e);
+        return e;
+      }
+      e.preventDefault();
+    }
+  }]);
+  return Button;
+}(_react2.default.Component);
+
+Button.propTypes = {
+  enabled: _react2.default.PropTypes.bool,
+  onClick: _react2.default.PropTypes.func,
+  type: _react2.default.PropTypes.oneOf(['action', 'primary', 'link', 'login', 'secondary', 'cog', 'delete', 'edit', 'plus']),
+  hidden: _react2.default.PropTypes.bool
+};
+
+Button.defaultProps = {
+  enabled: true,
+  type: 'secondary',
+  hidden: false
+};
+
+exports.default = Button;
+
+}).call(this,typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{"babel-runtime/core-js/object/get-prototype-of":4,"babel-runtime/helpers/classCallCheck":8,"babel-runtime/helpers/createClass":9,"babel-runtime/helpers/extends":10,"babel-runtime/helpers/inherits":11,"babel-runtime/helpers/possibleConstructorReturn":12,"classnames":79}],60:[function(require,module,exports){
+(function (global){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends2 = require('babel-runtime/helpers/extends');
+
+var _extends3 = _interopRequireDefault(_extends2);
+
+var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
+
+var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+
+var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+var _createClass2 = require('babel-runtime/helpers/createClass');
+
+var _createClass3 = _interopRequireDefault(_createClass2);
+
+var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+
+var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+var _inherits2 = require('babel-runtime/helpers/inherits');
+
+var _inherits3 = _interopRequireDefault(_inherits2);
+
+var _react = (typeof window !== "undefined" ? window['React'] : typeof global !== "undefined" ? global['React'] : null);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _classnames = require('classnames');
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var ButtonGroup = function (_React$Component) {
+  (0, _inherits3.default)(ButtonGroup, _React$Component);
+
+  function ButtonGroup() {
+    (0, _classCallCheck3.default)(this, ButtonGroup);
+    return (0, _possibleConstructorReturn3.default)(this, (0, _getPrototypeOf2.default)(ButtonGroup).apply(this, arguments));
+  }
+
+  (0, _createClass3.default)(ButtonGroup, [{
+    key: 'render',
+    value: function render() {
+      var classes = undefined;
+
+      classes = (0, _classnames2.default)('rs-btn-group', this.props.className);
+
+      return _react2.default.createElement(
+        'div',
+        (0, _extends3.default)({}, this.props, { className: classes }),
+        this.props.children
+      );
+    }
+  }]);
+  return ButtonGroup;
+}(_react2.default.Component);
+
+exports.default = ButtonGroup;
+
+}).call(this,typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{"babel-runtime/core-js/object/get-prototype-of":4,"babel-runtime/helpers/classCallCheck":8,"babel-runtime/helpers/createClass":9,"babel-runtime/helpers/extends":10,"babel-runtime/helpers/inherits":11,"babel-runtime/helpers/possibleConstructorReturn":12,"classnames":79}],61:[function(require,module,exports){
+(function (global){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
+
+var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+
+var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+var _createClass2 = require('babel-runtime/helpers/createClass');
+
+var _createClass3 = _interopRequireDefault(_createClass2);
+
+var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+
+var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+var _inherits2 = require('babel-runtime/helpers/inherits');
+
+var _inherits3 = _interopRequireDefault(_inherits2);
+
+var _react = (typeof window !== "undefined" ? window['React'] : typeof global !== "undefined" ? global['React'] : null);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _classnames = require('classnames');
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Criteria = function (_React$Component) {
+  (0, _inherits3.default)(Criteria, _React$Component);
+
+  function Criteria() {
+    (0, _classCallCheck3.default)(this, Criteria);
+    return (0, _possibleConstructorReturn3.default)(this, (0, _getPrototypeOf2.default)(Criteria).apply(this, arguments));
+  }
+
+  (0, _createClass3.default)(Criteria, [{
+    key: 'render',
+    value: function render() {
+      var countText = undefined,
+          itemClasses = undefined;
+
+      if (this.props.count !== undefined) {
+        countText = '(' + this.props.count + ')';
+      }
+
+      itemClasses = (0, _classnames2.default)('rs-facet-item', { 'selected': this.props.isSelected }, { 'disabled': this.props.disabled }, { 'rs-hidden': this.props.hidden });
+
+      return _react2.default.createElement(
+        'span',
+        null,
+        _react2.default.createElement(
+          'li',
+          { className: itemClasses, onClick: this._handleSelectionChange.bind(this), title: this.props.label },
+          _react2.default.createElement('span', { className: this.props.iconClass }),
+          _react2.default.createElement(
+            'div',
+            { className: 'rs-facet-label' },
+            this.props.label
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'rs-facet-count' },
+            countText
+          )
+        )
+      );
+    }
+  }, {
+    key: '_handleSelectionChange',
+    value: function _handleSelectionChange() {
+      if (!this.props.disabled && this.props.onSelectionChanged) {
+        this.props.onSelectionChanged(!this.props.isSelected, this.props.id);
+      }
+    }
+  }]);
+  return Criteria;
+}(_react2.default.Component);
+
+Criteria.propTypes = {
+  label: _react2.default.PropTypes.string.isRequired,
+  id: _react2.default.PropTypes.string.isRequired,
+  count: _react2.default.PropTypes.number,
+  iconClass: _react2.default.PropTypes.string,
+  isSelected: _react2.default.PropTypes.bool,
+  disabled: _react2.default.PropTypes.bool,
+  hidden: _react2.default.PropTypes.bool,
+  onSelectionChanged: _react2.default.PropTypes.func
+};
+
+exports.default = Criteria;
+
+}).call(this,typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{"babel-runtime/core-js/object/get-prototype-of":4,"babel-runtime/helpers/classCallCheck":8,"babel-runtime/helpers/createClass":9,"babel-runtime/helpers/inherits":11,"babel-runtime/helpers/possibleConstructorReturn":12,"classnames":79}],62:[function(require,module,exports){
+(function (global){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
+
+var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+
+var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+var _createClass2 = require('babel-runtime/helpers/createClass');
+
+var _createClass3 = _interopRequireDefault(_createClass2);
+
+var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+
+var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+var _inherits2 = require('babel-runtime/helpers/inherits');
+
+var _inherits3 = _interopRequireDefault(_inherits2);
+
+var _react = (typeof window !== "undefined" ? window['React'] : typeof global !== "undefined" ? global['React'] : null);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Divider = function (_React$Component) {
+  (0, _inherits3.default)(Divider, _React$Component);
+
+  function Divider() {
+    (0, _classCallCheck3.default)(this, Divider);
+    return (0, _possibleConstructorReturn3.default)(this, (0, _getPrototypeOf2.default)(Divider).apply(this, arguments));
+  }
+
+  (0, _createClass3.default)(Divider, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement('li', { className: 'rs-divider' });
+    }
+  }]);
+  return Divider;
+}(_react2.default.Component);
+
+exports.default = Divider;
+
+}).call(this,typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{"babel-runtime/core-js/object/get-prototype-of":4,"babel-runtime/helpers/classCallCheck":8,"babel-runtime/helpers/createClass":9,"babel-runtime/helpers/inherits":11,"babel-runtime/helpers/possibleConstructorReturn":12}],63:[function(require,module,exports){
+(function (global){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
+
+var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+
+var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+var _createClass2 = require('babel-runtime/helpers/createClass');
+
+var _createClass3 = _interopRequireDefault(_createClass2);
+
+var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+
+var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+var _inherits2 = require('babel-runtime/helpers/inherits');
+
+var _inherits3 = _interopRequireDefault(_inherits2);
+
+var _react = (typeof window !== "undefined" ? window['React'] : typeof global !== "undefined" ? global['React'] : null);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _classnames = require('classnames');
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var DROPDOWN_TYPES = {
+  'primary': 'rs-nav-item rs-dropdown rs-primary-dropdown',
+  'utility': 'rs-nav-item rs-dropdown rs-utility-dropdown',
+  'action': 'rs-dropdown'
+};
+
+var Dropdown = function (_React$Component) {
+  (0, _inherits3.default)(Dropdown, _React$Component);
+
+  function Dropdown() {
+    (0, _classCallCheck3.default)(this, Dropdown);
+    return (0, _possibleConstructorReturn3.default)(this, (0, _getPrototypeOf2.default)(Dropdown).apply(this, arguments));
+  }
+
+  (0, _createClass3.default)(Dropdown, [{
+    key: 'render',
+    value: function render() {
+      var style = undefined,
+          classes = undefined;
+
+      style = { float: 'left' };
+
+      classes = (0, _classnames2.default)(this.props.className, DROPDOWN_TYPES[this.props.type]);
+
+      return _react2.default.createElement(
+        'div',
+        { className: classes, style: style },
+        _react2.default.createElement(
+          'ul',
+          { className: 'rs-dropdown-menu visible' },
+          this._children()
+        )
+      );
+    }
+  }, {
+    key: '_children',
+    value: function _children() {
+      var _this2 = this;
+
+      return _react2.default.Children.map(this.props.children, function (child) {
+        return _react2.default.cloneElement(child, { hideCallback: _this2.props.hideCallback });
+      });
+    }
+  }]);
+  return Dropdown;
+}(_react2.default.Component);
+
+Dropdown.defaultProps = {
+  type: 'action'
+};
+
+Dropdown.propTypes = {
+  type: _react2.default.PropTypes.oneOf(['primary', 'utility', 'action']),
+  hideCallback: _react2.default.PropTypes.func.isRequired
+};
+
+exports.default = Dropdown;
+
+}).call(this,typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{"babel-runtime/core-js/object/get-prototype-of":4,"babel-runtime/helpers/classCallCheck":8,"babel-runtime/helpers/createClass":9,"babel-runtime/helpers/inherits":11,"babel-runtime/helpers/possibleConstructorReturn":12,"classnames":79}],64:[function(require,module,exports){
+(function (global){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends2 = require('babel-runtime/helpers/extends');
+
+var _extends3 = _interopRequireDefault(_extends2);
+
+var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
+
+var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+
+var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+var _createClass2 = require('babel-runtime/helpers/createClass');
+
+var _createClass3 = _interopRequireDefault(_createClass2);
+
+var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+
+var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+var _inherits2 = require('babel-runtime/helpers/inherits');
+
+var _inherits3 = _interopRequireDefault(_inherits2);
+
+var _react = (typeof window !== "undefined" ? window['React'] : typeof global !== "undefined" ? global['React'] : null);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _classnames = require('classnames');
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var DropdownItem = function (_React$Component) {
+  (0, _inherits3.default)(DropdownItem, _React$Component);
+
+  function DropdownItem() {
+    (0, _classCallCheck3.default)(this, DropdownItem);
+    return (0, _possibleConstructorReturn3.default)(this, (0, _getPrototypeOf2.default)(DropdownItem).apply(this, arguments));
+  }
+
+  (0, _createClass3.default)(DropdownItem, [{
+    key: 'render',
+    value: function render() {
+      var itemClasses = undefined;
+
+      itemClasses = (0, _classnames2.default)('rs-dropdown-item', this.props.className, { 'disabled': !this.props.enabled });
+
+      return _react2.default.createElement(
+        'li',
+        (0, _extends3.default)({}, this.props, { className: itemClasses, onClick: this._handleClick.bind(this) }),
+        this._innerElement()
+      );
+    }
+  }, {
+    key: '_innerElement',
+    value: function _innerElement() {
+      var innerElement = undefined;
+
+      switch (this.props.type) {
+        case 'link':
+          innerElement = _react2.default.createElement(
+            'a',
+            { className: 'rs-dropdown-link' },
+            this.props.children
+          );
+          break;
+        case 'category':
+          innerElement = _react2.default.createElement(
+            'span',
+            { className: 'rs-dropdown-category' },
+            this.props.children
+          );
+          break;
+        case 'text':
+          innerElement = _react2.default.createElement(
+            'span',
+            { className: 'rs-dropdown-text' },
+            this.props.children
+          );
+          break;
+      }
+
+      return innerElement;
+    }
+  }, {
+    key: '_handleClick',
+    value: function _handleClick(e) {
+      if (this.props.enabled) {
+        this.props.onClick(e);
+        this.props.hideCallback();
+        return e;
+      }
+      e.preventDefault();
+    }
+  }]);
+  return DropdownItem;
+}(_react2.default.Component);
+
+DropdownItem.defaultProps = {
+  enabled: true,
+  onClick: function onClick() {},
+  hideCallback: function hideCallback() {},
+  type: 'link'
+};
+
+DropdownItem.propTypes = {
+  enabled: _react2.default.PropTypes.bool,
+  onClick: _react2.default.PropTypes.func,
+  hideCallback: _react2.default.PropTypes.func,
+  type: _react2.default.PropTypes.oneOf(['link', 'category', 'text'])
+};
+
+exports.default = DropdownItem;
+
+}).call(this,typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{"babel-runtime/core-js/object/get-prototype-of":4,"babel-runtime/helpers/classCallCheck":8,"babel-runtime/helpers/createClass":9,"babel-runtime/helpers/extends":10,"babel-runtime/helpers/inherits":11,"babel-runtime/helpers/possibleConstructorReturn":12,"classnames":79}],65:[function(require,module,exports){
+(function (global){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
+
+var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+
+var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+var _createClass2 = require('babel-runtime/helpers/createClass');
+
+var _createClass3 = _interopRequireDefault(_createClass2);
+
+var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+
+var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+var _inherits2 = require('babel-runtime/helpers/inherits');
+
+var _inherits3 = _interopRequireDefault(_inherits2);
+
+var _react = (typeof window !== "undefined" ? window['React'] : typeof global !== "undefined" ? global['React'] : null);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _tether = require('tether');
+
+var _tether2 = _interopRequireDefault(_tether);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var DropdownTrigger = function (_React$Component) {
+  (0, _inherits3.default)(DropdownTrigger, _React$Component);
+
+  function DropdownTrigger(props) {
+    (0, _classCallCheck3.default)(this, DropdownTrigger);
+
+    var _this = (0, _possibleConstructorReturn3.default)(this, (0, _getPrototypeOf2.default)(DropdownTrigger).call(this, props));
+
+    _this._documentClickHandler = _this._handleDocumentClick.bind(_this);
+    _this._escapeHandler = _this._handleEscapePress.bind(_this);
+
+    _this.state = {
+      isDropdownDisplayed: false
+    };
+    return _this;
+  }
+
+  (0, _createClass3.default)(DropdownTrigger, [{
+    key: 'render',
+    value: function render() {
+      var props = undefined;
+
+      props = {
+        onClick: this._onTriggerClick.bind(this)
+      };
+
+      return _react2.default.cloneElement(_react2.default.Children.only(this.props.children), props);
+    }
+  }, {
+    key: 'componentWillUnmount',
+    value: function componentWillUnmount() {
+      this._unrenderDropdown();
+      document.body.removeChild(this._containerDiv);
+    }
+  }, {
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      this._containerDiv = document.createElement('div');
+      this._containerDiv.className = 'dropdown-container';
+      document.body.appendChild(this._containerDiv);
+    }
+  }, {
+    key: '_onTriggerClick',
+    value: function _onTriggerClick() {
+      if (this.state.isDropdownDisplayed) {
+        this._hide();
+      } else {
+        this._show();
+      }
+    }
+  }, {
+    key: '_hide',
+    value: function _hide() {
+      this._unrenderDropdown();
+      this.setState({ isDropdownDisplayed: false });
+    }
+  }, {
+    key: '_unrenderDropdown',
+    value: function _unrenderDropdown() {
+      this._removeDocumentListeners();
+      if (this._tether) {
+        this._tether.destroy();
+        this._tether = null;
+      }
+      if (this._dropdownNode) {
+        _react2.default.unmountComponentAtNode(this._containerDiv);
+        this._dropdownNode = null;
+      }
+    }
+  }, {
+    key: '_removeDocumentListeners',
+    value: function _removeDocumentListeners() {
+      document.removeEventListener('click', this._documentClickHandler, false);
+      document.removeEventListener('keyup', this._escapeHandler, false);
+    }
+  }, {
+    key: '_show',
+    value: function _show() {
+      this._renderDropdown();
+      this._listenToRootCloseEvents();
+      this.setState({ isDropdownDisplayed: true });
+    }
+  }, {
+    key: '_renderDropdown',
+    value: function _renderDropdown() {
+      var dropdown = undefined;
+
+      dropdown = _react2.default.cloneElement(this.props.dropdown, {
+        hideCallback: this._hide.bind(this)
+      });
+
+      this._dropdownNode = _react2.default.render(dropdown, this._containerDiv);
+      this._tether = this._createTether(this._getTetherConfig());
+    }
+
+    // This is a seam for testing
+
+  }, {
+    key: '_createTether',
+    value: function _createTether(tetherConfig) {
+      return new _tether2.default(tetherConfig);
+    }
+  }, {
+    key: '_getTetherConfig',
+    value: function _getTetherConfig() {
+      var tetherConfig = undefined;
+
+      tetherConfig = {
+        attachment: 'top left',
+        targetAttachment: 'bottom left'
+      };
+
+      tetherConfig.element = _react2.default.findDOMNode(this._containerDiv);
+      tetherConfig.target = _react2.default.findDOMNode(this);
+
+      return tetherConfig;
+    }
+  }, {
+    key: '_listenToRootCloseEvents',
+    value: function _listenToRootCloseEvents() {
+      this._listenToClicksOutsideOfDropdown();
+      this._listenToEscape();
+    }
+  }, {
+    key: '_listenToClicksOutsideOfDropdown',
+    value: function _listenToClicksOutsideOfDropdown() {
+      document.addEventListener('click', this._documentClickHandler, false);
+    }
+  }, {
+    key: '_handleDocumentClick',
+    value: function _handleDocumentClick(e) {
+      if (_react2.default.findDOMNode(this._dropdownNode).contains(e.target)) {
+        return;
+      }
+      this._hide();
+    }
+  }, {
+    key: '_listenToEscape',
+    value: function _listenToEscape() {
+      document.addEventListener('keyup', this._escapeHandler, false);
+    }
+  }, {
+    key: '_handleEscapePress',
+    value: function _handleEscapePress(e) {
+      if (e.keyCode === 27) {
+        this._hide();
+      }
+    }
+  }]);
+  return DropdownTrigger;
+}(_react2.default.Component);
+
+DropdownTrigger.propTypes = {
+  dropdown: _react2.default.PropTypes.element
+};
+
+exports.default = DropdownTrigger;
+
+}).call(this,typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{"babel-runtime/core-js/object/get-prototype-of":4,"babel-runtime/helpers/classCallCheck":8,"babel-runtime/helpers/createClass":9,"babel-runtime/helpers/inherits":11,"babel-runtime/helpers/possibleConstructorReturn":12,"tether":235}],66:[function(require,module,exports){
+(function (global){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _keys = require('babel-runtime/core-js/object/keys');
+
+var _keys2 = _interopRequireDefault(_keys);
+
+var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
+
+var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+
+var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+var _createClass2 = require('babel-runtime/helpers/createClass');
+
+var _createClass3 = _interopRequireDefault(_createClass2);
+
+var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+
+var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+var _inherits2 = require('babel-runtime/helpers/inherits');
+
+var _inherits3 = _interopRequireDefault(_inherits2);
+
+var _react = (typeof window !== "undefined" ? window['React'] : typeof global !== "undefined" ? global['React'] : null);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _classnames = require('classnames');
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+var _FacetToggler = require('./FacetToggler');
+
+var _FacetToggler2 = _interopRequireDefault(_FacetToggler);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Facet = function (_React$Component) {
+  (0, _inherits3.default)(Facet, _React$Component);
+
+  function Facet(props) {
+    (0, _classCallCheck3.default)(this, Facet);
+
+    var _this = (0, _possibleConstructorReturn3.default)(this, (0, _getPrototypeOf2.default)(Facet).call(this, props));
+
+    _this.state = {
+      criteriaTruncated: _this.props.truncationEnabled
+    };
+    return _this;
+  }
+
+  (0, _createClass3.default)(Facet, [{
+    key: 'render',
+    value: function render() {
+      var criteriaElements = undefined,
+          clearLinkClasses = undefined,
+          facetToggler = undefined,
+          expandedClass = undefined,
+          sectionClasses = undefined;
+
+      criteriaElements = this._getCriteriaElements();
+      facetToggler = this._getMoreOrLessToggle(criteriaElements);
+
+      clearLinkClasses = (0, _classnames2.default)('rs-facet-clear-link', { 'rs-hidden': !this._facetHasSelectedCriteria() });
+
+      expandedClass = this.state.criteriaTruncated ? 'collapsed' : 'expanded';
+      sectionClasses = (0, _classnames2.default)('rs-facet-section', expandedClass);
+
+      return _react2.default.createElement(
+        'div',
+        { className: sectionClasses },
+        _react2.default.createElement(
+          'div',
+          { className: 'rs-facet-section-header' },
+          _react2.default.createElement(
+            'div',
+            { className: clearLinkClasses, onClick: this._handleClear.bind(this) },
+            'clear'
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'rs-facet-section-title' },
+            this.props.label
+          )
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'rs-facet-section-body' },
+          _react2.default.createElement(
+            'ul',
+            { className: 'rs-facet-list' },
+            criteriaElements,
+            facetToggler
+          )
+        )
+      );
+    }
+  }, {
+    key: '_handleSelectionChanged',
+    value: function _handleSelectionChanged(isSelected, criteriaId) {
+      if (this.props.onSelectionChanged) {
+        this.props.onSelectionChanged(isSelected, this.props.id, criteriaId);
+      }
+    }
+  }, {
+    key: '_handleClear',
+    value: function _handleClear() {
+      if (this.props.onFacetClear) {
+        this.props.onFacetClear(this.props.id);
+      }
+    }
+  }, {
+    key: '_getCriteriaElements',
+    value: function _getCriteriaElements() {
+      var _this2 = this;
+
+      var index = undefined;
+
+      index = 0;
+      return _react2.default.Children.map(this.props.children, function (child) {
+        var isSelected = undefined,
+            isTruncated = undefined,
+            isHidden = undefined;
+
+        isSelected = !!_this2.props.selectedCriteria[child.props.id];
+
+        isTruncated = _this2.state.criteriaTruncated && index++ >= _this2.props.truncationLength;
+        isHidden = child.props.isHidden || isTruncated;
+        return _react2.default.cloneElement(child, {
+          isSelected: isSelected,
+          hidden: isHidden,
+          onSelectionChanged: _this2._handleSelectionChanged.bind(_this2)
+        });
+      }, this);
+    }
+  }, {
+    key: '_getMoreOrLessToggle',
+    value: function _getMoreOrLessToggle() {
+      if (this.props.truncationEnabled && _react2.default.Children.count(this.props.children) > this.props.truncationLength) {
+        return _react2.default.createElement(_FacetToggler2.default, {
+          criteriaTruncated: this.state.criteriaTruncated,
+          onToggleChange: this._toggleShowLess.bind(this) });
+      }
+      return null;
+    }
+  }, {
+    key: '_toggleShowLess',
+    value: function _toggleShowLess(truncationChange) {
+      this.setState({ criteriaTruncated: truncationChange });
+    }
+  }, {
+    key: '_facetHasSelectedCriteria',
+    value: function _facetHasSelectedCriteria() {
+      return (0, _keys2.default)(this.props.selectedCriteria).length > 0;
+    }
+  }]);
+  return Facet;
+}(_react2.default.Component);
+
+Facet.defaultProps = {
+  selectedCriteria: {},
+  truncationLength: 5,
+  truncationEnabled: true
+};
+
+Facet.propTypes = {
+  label: _react2.default.PropTypes.string.isRequired,
+  id: _react2.default.PropTypes.string.isRequired,
+  onSelectionChanged: _react2.default.PropTypes.func,
+  onFacetClear: _react2.default.PropTypes.func,
+  selectedCriteria: _react2.default.PropTypes.object,
+  truncationLength: _react2.default.PropTypes.number,
+  truncationEnabled: _react2.default.PropTypes.bool
+};
+
+exports.default = Facet;
+
+}).call(this,typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{"./FacetToggler":67,"babel-runtime/core-js/object/get-prototype-of":4,"babel-runtime/core-js/object/keys":5,"babel-runtime/helpers/classCallCheck":8,"babel-runtime/helpers/createClass":9,"babel-runtime/helpers/inherits":11,"babel-runtime/helpers/possibleConstructorReturn":12,"classnames":79}],67:[function(require,module,exports){
+(function (global){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
+
+var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+
+var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+var _createClass2 = require('babel-runtime/helpers/createClass');
+
+var _createClass3 = _interopRequireDefault(_createClass2);
+
+var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+
+var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+var _inherits2 = require('babel-runtime/helpers/inherits');
+
+var _inherits3 = _interopRequireDefault(_inherits2);
+
+var _react = (typeof window !== "undefined" ? window['React'] : typeof global !== "undefined" ? global['React'] : null);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var FacetToggler = function (_React$Component) {
+  (0, _inherits3.default)(FacetToggler, _React$Component);
+
+  function FacetToggler() {
+    (0, _classCallCheck3.default)(this, FacetToggler);
+    return (0, _possibleConstructorReturn3.default)(this, (0, _getPrototypeOf2.default)(FacetToggler).apply(this, arguments));
+  }
+
+  (0, _createClass3.default)(FacetToggler, [{
+    key: 'render',
+    value: function render() {
+      var toggleText = undefined;
+
+      toggleText = this.props.criteriaTruncated ? 'more' : 'less';
+
+      return _react2.default.createElement(
+        'li',
+        { className: 'rs-facet-section-toggle', onClick: this._handleToggleChange.bind(this) },
+        _react2.default.createElement('i', { className: 'rs-facet-toggle-arrow' }),
+        toggleText
+      );
+    }
+  }, {
+    key: '_handleToggleChange',
+    value: function _handleToggleChange() {
+      this.props.onToggleChange(!this.props.criteriaTruncated);
+    }
+  }]);
+  return FacetToggler;
+}(_react2.default.Component);
+
+FacetToggler.propTypes = {
+  criteriaTruncated: _react2.default.PropTypes.bool.isRequired,
+  onToggleChange: _react2.default.PropTypes.func.isRequired
+};
+
+exports.default = FacetToggler;
+
+}).call(this,typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{"babel-runtime/core-js/object/get-prototype-of":4,"babel-runtime/helpers/classCallCheck":8,"babel-runtime/helpers/createClass":9,"babel-runtime/helpers/inherits":11,"babel-runtime/helpers/possibleConstructorReturn":12}],68:[function(require,module,exports){
+(function (global){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _keys = require('babel-runtime/core-js/object/keys');
+
+var _keys2 = _interopRequireDefault(_keys);
+
+var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
+
+var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+
+var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+var _createClass2 = require('babel-runtime/helpers/createClass');
+
+var _createClass3 = _interopRequireDefault(_createClass2);
+
+var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+
+var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+var _inherits2 = require('babel-runtime/helpers/inherits');
+
+var _inherits3 = _interopRequireDefault(_inherits2);
+
+var _react = (typeof window !== "undefined" ? window['React'] : typeof global !== "undefined" ? global['React'] : null);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _classnames = require('classnames');
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var FacetsSection = function (_React$Component) {
+  (0, _inherits3.default)(FacetsSection, _React$Component);
+
+  function FacetsSection() {
+    (0, _classCallCheck3.default)(this, FacetsSection);
+    return (0, _possibleConstructorReturn3.default)(this, (0, _getPrototypeOf2.default)(FacetsSection).apply(this, arguments));
+  }
+
+  (0, _createClass3.default)(FacetsSection, [{
+    key: 'render',
+    value: function render() {
+      var facets = undefined,
+          itemClasses = undefined;
+
+      if (!this.props.children) {
+        return null;
+      }
+
+      facets = this._getFacetElements();
+
+      itemClasses = (0, _classnames2.default)('rs-facet-clear-link', { 'rs-hidden': !(0, _keys2.default)(this.props.selectedCriteria).length });
+
+      return _react2.default.createElement(
+        'span',
+        { className: 'rs-facets' },
+        _react2.default.createElement(
+          'div',
+          { className: 'rs-inner' },
+          _react2.default.createElement(
+            'div',
+            { className: 'rs-facet-header' },
+            _react2.default.createElement(
+              'div',
+              { className: itemClasses, onClick: this._handleClearAll.bind(this) },
+              'clear all'
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'rs-facet-title' },
+              this.props.sectionHeader
+            )
+          ),
+          facets
+        )
+      );
+    }
+  }, {
+    key: '_getFacetElements',
+    value: function _getFacetElements() {
+      var _this2 = this;
+
+      return _react2.default.Children.map(this.props.children, function (child) {
+        var selectedCriteria = undefined;
+
+        selectedCriteria = _this2.props.selectedCriteria[child.props.id] || {};
+        return _react2.default.cloneElement(child, {
+          onSelectionChanged: _this2._handleSelectionChanged.bind(_this2),
+          selectedCriteria: selectedCriteria,
+          onFacetClear: _this2._handleFacetClear.bind(_this2)
+        });
+      }, this);
+    }
+  }, {
+    key: '_handleSelectionChanged',
+    value: function _handleSelectionChanged(isSelected, facetId, criteriaId) {
+      if (isSelected) {
+        this._handleCriteriaSelection(facetId, criteriaId);
+      } else {
+        this._handleCriteriaDeselection(facetId, criteriaId);
+      }
+    }
+  }, {
+    key: '_handleCriteriaSelection',
+    value: function _handleCriteriaSelection(facetId, criteriaId) {
+      var selectedCriteria = undefined;
+
+      selectedCriteria = this.props.selectedCriteria;
+
+      selectedCriteria[facetId] = selectedCriteria[facetId] || {};
+      selectedCriteria[facetId][criteriaId] = true;
+
+      this.props.onCriteriaSelection(facetId, criteriaId);
+      this.props.onSelectionChanged(selectedCriteria);
+    }
+  }, {
+    key: '_handleCriteriaDeselection',
+    value: function _handleCriteriaDeselection(facetId, criteriaId) {
+      var selectedCriteria = undefined;
+
+      selectedCriteria = this.props.selectedCriteria;
+
+      if (selectedCriteria[facetId]) {
+        delete selectedCriteria[facetId][criteriaId];
+        if (!(0, _keys2.default)(selectedCriteria[facetId]).length) {
+          delete selectedCriteria[facetId];
+        }
+      }
+
+      this.props.onCriteriaDeselection(facetId, criteriaId);
+      this.props.onSelectionChanged(selectedCriteria);
+    }
+  }, {
+    key: '_handleFacetClear',
+    value: function _handleFacetClear(facetId) {
+      var selectedCriteria = undefined;
+
+      selectedCriteria = this.props.selectedCriteria;
+      delete selectedCriteria[facetId];
+
+      this.props.onFacetClear(facetId);
+      this.props.onSelectionChanged(selectedCriteria);
+    }
+  }, {
+    key: '_handleClearAll',
+    value: function _handleClearAll() {
+      this.props.onClearAll();
+      this.props.onSelectionChanged({});
+    }
+  }]);
+  return FacetsSection;
+}(_react2.default.Component);
+
+FacetsSection.defaultProps = {
+  selectedCriteria: {},
+  onCriteriaSelection: function onCriteriaSelection() {},
+  onCriteriaDeselection: function onCriteriaDeselection() {},
+  onFacetClear: function onFacetClear() {},
+  onClearAll: function onClearAll() {}
+};
+
+FacetsSection.propTypes = {
+  sectionHeader: _react2.default.PropTypes.string.isRequired,
+  selectedCriteria: _react2.default.PropTypes.object,
+  onSelectionChanged: _react2.default.PropTypes.func.isRequired,
+  onCriteriaSelection: _react2.default.PropTypes.func,
+  onCriteriaDeselection: _react2.default.PropTypes.func,
+  onFacetClear: _react2.default.PropTypes.func,
+  onClearAll: _react2.default.PropTypes.func
+};
+
+exports.default = FacetsSection;
+
+}).call(this,typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{"babel-runtime/core-js/object/get-prototype-of":4,"babel-runtime/core-js/object/keys":5,"babel-runtime/helpers/classCallCheck":8,"babel-runtime/helpers/createClass":9,"babel-runtime/helpers/inherits":11,"babel-runtime/helpers/possibleConstructorReturn":12,"classnames":79}],69:[function(require,module,exports){
+(function (global){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
+
+var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+
+var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+var _createClass2 = require('babel-runtime/helpers/createClass');
+
+var _createClass3 = _interopRequireDefault(_createClass2);
+
+var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+
+var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+var _inherits2 = require('babel-runtime/helpers/inherits');
+
+var _inherits3 = _interopRequireDefault(_inherits2);
+
+var _react = (typeof window !== "undefined" ? window['React'] : typeof global !== "undefined" ? global['React'] : null);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _tether = require('tether');
+
+var _tether2 = _interopRequireDefault(_tether);
+
+var _PopoverBackground = require('./PopoverBackground');
+
+var _PopoverBackground2 = _interopRequireDefault(_PopoverBackground);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Popover = function (_React$Component) {
+  (0, _inherits3.default)(Popover, _React$Component);
+
+  function Popover(props) {
+    (0, _classCallCheck3.default)(this, Popover);
+
+    var _this = (0, _possibleConstructorReturn3.default)(this, (0, _getPrototypeOf2.default)(Popover).call(this, props));
+
+    _this._escapeHandler = _this._handleEscapePress.bind(_this);
+    return _this;
+  }
+
+  (0, _createClass3.default)(Popover, [{
+    key: 'componentWillUnmount',
+    value: function componentWillUnmount() {
+      this._hide();
+      document.body.removeChild(this._containerDiv);
+      document.body.removeChild(this._backgroundDiv);
+    }
+  }, {
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      this._containerDiv = document.createElement('div');
+      document.body.appendChild(this._containerDiv);
+      this._backgroundDiv = document.createElement('div');
+      this._backgroundDiv.style.display = 'none';
+      document.body.appendChild(this._backgroundDiv);
+      this._togglePopoverOverlay();
+    }
+  }, {
+    key: 'componentDidUpdate',
+    value: function componentDidUpdate() {
+      this._togglePopoverOverlay();
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return null;
+    }
+  }, {
+    key: '_togglePopoverOverlay',
+    value: function _togglePopoverOverlay() {
+      if (this.props.isOpen) {
+        this._show();
+      } else {
+        this._hide();
+      }
+    }
+  }, {
+    key: '_hide',
+    value: function _hide() {
+      this._hidePopoverOverlay();
+      this._hidePopoverBackgroundOverlay();
+    }
+  }, {
+    key: '_hidePopoverOverlay',
+    value: function _hidePopoverOverlay() {
+      this._removeDocumentListeners();
+      this._containerDiv.className = this._containerDiv.className.replace(/(?:^|\s)rs-popover(?!\S)/g, '');
+      if (this._tether) {
+        this._tether.destroy();
+        this._tether = null;
+      }
+      if (this._popoverNode) {
+        _react2.default.unmountComponentAtNode(this._containerDiv);
+        this._popoverNode = null;
+      }
+    }
+  }, {
+    key: '_hidePopoverBackgroundOverlay',
+    value: function _hidePopoverBackgroundOverlay() {
+      this._backgroundDiv.style.display = 'none';
+      _react2.default.unmountComponentAtNode(this._backgroundDiv);
+    }
+  }, {
+    key: '_removeDocumentListeners',
+    value: function _removeDocumentListeners() {
+      document.removeEventListener('keyup', this._escapeHandler, false);
+    }
+  }, {
+    key: '_show',
+    value: function _show() {
+      this._renderPopoverOverlay();
+      this._listenForEscapePress();
+    }
+  }, {
+    key: '_renderPopoverOverlay',
+    value: function _renderPopoverOverlay() {
+      var popover = undefined;
+
+      this._backgroundDiv.style.display = 'block';
+      _react2.default.render(_react2.default.createElement(_PopoverBackground2.default, { onRequestClose: this.props.onRequestClose }), this._backgroundDiv);
+      this._containerDiv.className += ' rs-popover';
+
+      if (!this._tether) {
+        this._tether = this._createTether(this._getTetherConfig());
+      }
+      popover = _react2.default.cloneElement(_react2.default.Children.only(this.props.children), {
+        placement: this.props.placement
+      });
+      this._popoverNode = _react2.default.render(popover, this._containerDiv);
+      this._tether.position();
+    }
+
+    // This is a seam for testing
+
+  }, {
+    key: '_createTether',
+    value: function _createTether(tetherConfig) {
+      return new _tether2.default(tetherConfig);
+    }
+  }, {
+    key: '_getTetherConfig',
+    value: function _getTetherConfig() {
+      var tetherConfig = undefined;
+
+      switch (this.props.placement) {
+        case 'left':
+          tetherConfig = {
+            attachment: 'top right',
+            targetAttachment: 'middle left',
+            offset: '38px 20px'
+          };
+          break;
+        case 'bottom-left':
+          tetherConfig = {
+            attachment: 'top right',
+            targetAttachment: 'bottom left',
+            offset: '-20px -45px'
+          };
+          break;
+        case 'bottom-right':
+          tetherConfig = {
+            attachment: 'top left',
+            targetAttachment: 'bottom right',
+            offset: '-20px 45px'
+          };
+          break;
+        case 'right':
+          tetherConfig = {
+            attachment: 'top left',
+            targetAttachment: 'middle right',
+            offset: '38px -20px'
+          };
+          break;
+        case 'center':
+          tetherConfig = {
+            attachment: 'middle center',
+            targetAttachment: 'middle center',
+            targetModifier: 'visible'
+          };
+          break;
+        default:
+          tetherConfig = {
+            attachment: 'top left',
+            targetAttachment: 'middle right',
+            offset: '38px -20px'
+          };
+      }
+
+      if (this.props.offset) {
+        tetherConfig.offset = this.props.offset;
+      }
+      tetherConfig.element = _react2.default.findDOMNode(this._containerDiv);
+      tetherConfig.target = this._getTarget();
+      return tetherConfig;
+    }
+  }, {
+    key: '_getTarget',
+    value: function _getTarget() {
+      var target = undefined;
+
+      target = this.props.target;
+
+      if (target instanceof Function) {
+        return this.props.target();
+      }
+
+      return document.getElementById(target);
+    }
+  }, {
+    key: '_listenForEscapePress',
+    value: function _listenForEscapePress() {
+      document.addEventListener('keyup', this._escapeHandler, false);
+    }
+  }, {
+    key: '_handleEscapePress',
+    value: function _handleEscapePress(e) {
+      if (e.keyCode === 27) {
+        this.props.onRequestClose();
+      }
+    }
+  }]);
+  return Popover;
+}(_react2.default.Component);
+
+Popover.defaultProps = {
+  placement: 'right',
+  isOpen: false
+};
+
+Popover.propTypes = {
+  children: _react2.default.PropTypes.element.isRequired,
+  placement: _react2.default.PropTypes.oneOf(['right', 'bottom-right', 'left', 'bottom-left', 'center']),
+  isOpen: _react2.default.PropTypes.bool,
+  onRequestClose: _react2.default.PropTypes.func.isRequired,
+  target: _react2.default.PropTypes.oneOfType([_react2.default.PropTypes.string, _react2.default.PropTypes.func]).isRequired,
+  offset: _react2.default.PropTypes.string
+};
+
+exports.default = Popover;
+
+}).call(this,typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{"./PopoverBackground":70,"babel-runtime/core-js/object/get-prototype-of":4,"babel-runtime/helpers/classCallCheck":8,"babel-runtime/helpers/createClass":9,"babel-runtime/helpers/inherits":11,"babel-runtime/helpers/possibleConstructorReturn":12,"tether":235}],70:[function(require,module,exports){
+(function (global){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
+
+var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+
+var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+var _createClass2 = require('babel-runtime/helpers/createClass');
+
+var _createClass3 = _interopRequireDefault(_createClass2);
+
+var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+
+var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+var _inherits2 = require('babel-runtime/helpers/inherits');
+
+var _inherits3 = _interopRequireDefault(_inherits2);
+
+var _react = (typeof window !== "undefined" ? window['React'] : typeof global !== "undefined" ? global['React'] : null);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var PopoverBackground = function (_React$Component) {
+  (0, _inherits3.default)(PopoverBackground, _React$Component);
+
+  function PopoverBackground(props) {
+    (0, _classCallCheck3.default)(this, PopoverBackground);
+    return (0, _possibleConstructorReturn3.default)(this, (0, _getPrototypeOf2.default)(PopoverBackground).call(this, props));
+  }
+
+  (0, _createClass3.default)(PopoverBackground, [{
+    key: 'render',
+    value: function render() {
+      var style = undefined;
+
+      style = {
+        'position': 'fixed',
+        'left': 0,
+        'top': 0,
+        'width': '100%',
+        'height': '100%',
+        'zIndex': 999
+      };
+
+      return _react2.default.createElement('div', { className: 'rs-popover-background-overlay', onClick: this.props.onRequestClose, style: style });
+    }
+  }]);
+  return PopoverBackground;
+}(_react2.default.Component);
+
+PopoverBackground.propTypes = {
+  onRequestClose: _react2.default.PropTypes.func
+};
+
+exports.default = PopoverBackground;
+
+}).call(this,typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{"babel-runtime/core-js/object/get-prototype-of":4,"babel-runtime/helpers/classCallCheck":8,"babel-runtime/helpers/createClass":9,"babel-runtime/helpers/inherits":11,"babel-runtime/helpers/possibleConstructorReturn":12}],71:[function(require,module,exports){
+(function (global){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
+
+var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+
+var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+var _createClass2 = require('babel-runtime/helpers/createClass');
+
+var _createClass3 = _interopRequireDefault(_createClass2);
+
+var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+
+var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+var _inherits2 = require('babel-runtime/helpers/inherits');
+
+var _inherits3 = _interopRequireDefault(_inherits2);
+
+var _react = (typeof window !== "undefined" ? window['React'] : typeof global !== "undefined" ? global['React'] : null);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _classnames = require('classnames');
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var PopoverBody = function (_React$Component) {
+  (0, _inherits3.default)(PopoverBody, _React$Component);
+
+  function PopoverBody() {
+    (0, _classCallCheck3.default)(this, PopoverBody);
+    return (0, _possibleConstructorReturn3.default)(this, (0, _getPrototypeOf2.default)(PopoverBody).apply(this, arguments));
+  }
+
+  (0, _createClass3.default)(PopoverBody, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        { className: (0, _classnames2.default)('rs-popover-body', this.props.className) },
+        this.props.children
+      );
+    }
+  }]);
+  return PopoverBody;
+}(_react2.default.Component);
+
+exports.default = PopoverBody;
+
+}).call(this,typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{"babel-runtime/core-js/object/get-prototype-of":4,"babel-runtime/helpers/classCallCheck":8,"babel-runtime/helpers/createClass":9,"babel-runtime/helpers/inherits":11,"babel-runtime/helpers/possibleConstructorReturn":12,"classnames":79}],72:[function(require,module,exports){
+(function (global){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
+
+var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+
+var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+var _createClass2 = require('babel-runtime/helpers/createClass');
+
+var _createClass3 = _interopRequireDefault(_createClass2);
+
+var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+
+var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+var _inherits2 = require('babel-runtime/helpers/inherits');
+
+var _inherits3 = _interopRequireDefault(_inherits2);
+
+var _react = (typeof window !== "undefined" ? window['React'] : typeof global !== "undefined" ? global['React'] : null);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _classnames = require('classnames');
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+var _ButtonGroup = require('./ButtonGroup');
+
+var _ButtonGroup2 = _interopRequireDefault(_ButtonGroup);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var PopoverFooter = function (_React$Component) {
+  (0, _inherits3.default)(PopoverFooter, _React$Component);
+
+  function PopoverFooter() {
+    (0, _classCallCheck3.default)(this, PopoverFooter);
+    return (0, _possibleConstructorReturn3.default)(this, (0, _getPrototypeOf2.default)(PopoverFooter).apply(this, arguments));
+  }
+
+  (0, _createClass3.default)(PopoverFooter, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        _ButtonGroup2.default,
+        { className: (0, _classnames2.default)('rs-popover-footer', this.props.className) },
+        this.props.children
+      );
+    }
+  }]);
+  return PopoverFooter;
+}(_react2.default.Component);
+
+exports.default = PopoverFooter;
+
+}).call(this,typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{"./ButtonGroup":60,"babel-runtime/core-js/object/get-prototype-of":4,"babel-runtime/helpers/classCallCheck":8,"babel-runtime/helpers/createClass":9,"babel-runtime/helpers/inherits":11,"babel-runtime/helpers/possibleConstructorReturn":12,"classnames":79}],73:[function(require,module,exports){
+(function (global){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
+
+var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+
+var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+var _createClass2 = require('babel-runtime/helpers/createClass');
+
+var _createClass3 = _interopRequireDefault(_createClass2);
+
+var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+
+var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+var _inherits2 = require('babel-runtime/helpers/inherits');
+
+var _inherits3 = _interopRequireDefault(_inherits2);
+
+var _react = (typeof window !== "undefined" ? window['React'] : typeof global !== "undefined" ? global['React'] : null);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _classnames = require('classnames');
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var ARROW_POSITIONS = {
+  'right': 'rs-popover-arrow-left-top',
+  'bottom-right': 'rs-popover-arrow-top-left',
+  'left': 'rs-popover-arrow-right-top',
+  'bottom-left': 'rs-popover-arrow-top-right'
+};
+
+var PopoverOverlay = function (_React$Component) {
+  (0, _inherits3.default)(PopoverOverlay, _React$Component);
+
+  function PopoverOverlay() {
+    (0, _classCallCheck3.default)(this, PopoverOverlay);
+    return (0, _possibleConstructorReturn3.default)(this, (0, _getPrototypeOf2.default)(PopoverOverlay).apply(this, arguments));
+  }
+
+  (0, _createClass3.default)(PopoverOverlay, [{
+    key: '_shouldShowArrow',
+    value: function _shouldShowArrow() {
+      return this.props.placement !== 'center';
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var arrowPlacement = undefined;
+
+      arrowPlacement = (0, _classnames2.default)('rs-popover-arrow', ARROW_POSITIONS[this.props.placement]);
+
+      if (this._shouldShowArrow()) {
+        return _react2.default.createElement(
+          'div',
+          { className: this.props.className },
+          _react2.default.createElement('div', { className: arrowPlacement }),
+          _react2.default.createElement(
+            'div',
+            { className: 'rs-popover-content' },
+            this.props.children
+          )
+        );
+      } else {
+        return _react2.default.createElement(
+          'div',
+          { className: this.props.className },
+          _react2.default.createElement(
+            'div',
+            { className: 'rs-popover-content' },
+            this.props.children
+          )
+        );
+      }
+    }
+  }]);
+  return PopoverOverlay;
+}(_react2.default.Component);
+
+PopoverOverlay.defaultProps = {
+  placement: 'right'
+};
+
+PopoverOverlay.propTypes = {
+  children: _react2.default.PropTypes.node.isRequired,
+  placement: _react2.default.PropTypes.oneOf(['right', 'bottom-right', 'left', 'bottom-left', 'center'])
+};
+
+exports.default = PopoverOverlay;
+
+}).call(this,typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{"babel-runtime/core-js/object/get-prototype-of":4,"babel-runtime/helpers/classCallCheck":8,"babel-runtime/helpers/createClass":9,"babel-runtime/helpers/inherits":11,"babel-runtime/helpers/possibleConstructorReturn":12,"classnames":79}],74:[function(require,module,exports){
+(function (global){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
+
+var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+
+var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+var _createClass2 = require('babel-runtime/helpers/createClass');
+
+var _createClass3 = _interopRequireDefault(_createClass2);
+
+var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+
+var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+var _inherits2 = require('babel-runtime/helpers/inherits');
+
+var _inherits3 = _interopRequireDefault(_inherits2);
+
+var _react = (typeof window !== "undefined" ? window['React'] : typeof global !== "undefined" ? global['React'] : null);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _classnames = require('classnames');
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var ProcessingIndicator = function (_React$Component) {
+  (0, _inherits3.default)(ProcessingIndicator, _React$Component);
+
+  function ProcessingIndicator() {
+    (0, _classCallCheck3.default)(this, ProcessingIndicator);
+    return (0, _possibleConstructorReturn3.default)(this, (0, _getPrototypeOf2.default)(ProcessingIndicator).apply(this, arguments));
+  }
+
+  (0, _createClass3.default)(ProcessingIndicator, [{
+    key: 'render',
+    value: function render() {
+      var classes = undefined;
+
+      classes = (0, _classnames2.default)('rs-processing-indicator', { 'rs-hidden': this.props.hidden });
+
+      return _react2.default.createElement('i', { className: classes });
+    }
+  }]);
+  return ProcessingIndicator;
+}(_react2.default.Component);
+
+ProcessingIndicator.propTypes = {
+  hidden: _react2.default.PropTypes.bool
+};
+
+ProcessingIndicator.defaultProps = {
+  hidden: true
+};
+
+exports.default = ProcessingIndicator;
+
+}).call(this,typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{"babel-runtime/core-js/object/get-prototype-of":4,"babel-runtime/helpers/classCallCheck":8,"babel-runtime/helpers/createClass":9,"babel-runtime/helpers/inherits":11,"babel-runtime/helpers/possibleConstructorReturn":12,"classnames":79}],75:[function(require,module,exports){
+(function (global){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
+
+var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+
+var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+var _createClass2 = require('babel-runtime/helpers/createClass');
+
+var _createClass3 = _interopRequireDefault(_createClass2);
+
+var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+
+var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+var _inherits2 = require('babel-runtime/helpers/inherits');
+
+var _inherits3 = _interopRequireDefault(_inherits2);
+
+var _react = (typeof window !== "undefined" ? window['React'] : typeof global !== "undefined" ? global['React'] : null);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _classnames = require('classnames');
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var SIZE_CLASSES = {
+  'xsmall': 'rs-progress-xsmall',
+  'small': 'rs-progress-small',
+  'medium': 'rs-progress-medium',
+  'large': 'rs-progress-large',
+  'xlarge': 'rs-progress-xlarge'
+};
+
+var STATUS_CLASSES = {
+  'ok': 'rs-status-ok',
+  'error': 'rs-status-error',
+  'warning': 'rs-status-warning',
+  'info': 'rs-status-info'
+};
+
+var TYPE_CLASSES = {
+  'solid': 'rs-bar-solid',
+  'striped': 'rs-bar-striped'
+};
+
+var ProgressBar = function (_React$Component) {
+  (0, _inherits3.default)(ProgressBar, _React$Component);
+
+  function ProgressBar() {
+    (0, _classCallCheck3.default)(this, ProgressBar);
+    return (0, _possibleConstructorReturn3.default)(this, (0, _getPrototypeOf2.default)(ProgressBar).apply(this, arguments));
+  }
+
+  (0, _createClass3.default)(ProgressBar, [{
+    key: '_getSizeClass',
+    value: function _getSizeClass() {
+      return (0, _classnames2.default)('rs-progress', SIZE_CLASSES[this.props.size]);
+    }
+  }, {
+    key: '_getStatusClass',
+    value: function _getStatusClass() {
+      return (0, _classnames2.default)('rs-bar', STATUS_CLASSES[this.props.status], TYPE_CLASSES[this.props.type]);
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var style = undefined,
+          width = undefined;
+
+      width = this.props.progress + '%';
+      style = { 'width': width };
+
+      return _react2.default.createElement(
+        'div',
+        { className: this._getSizeClass() },
+        _react2.default.createElement(
+          'div',
+          { className: 'rs-progress-inner' },
+          _react2.default.createElement(
+            'div',
+            { className: 'rs-segment', style: style },
+            _react2.default.createElement('div', { className: this._getStatusClass() })
+          )
+        )
+      );
+    }
+  }]);
+  return ProgressBar;
+}(_react2.default.Component);
+
+ProgressBar.propTypes = {
+  progress: _react2.default.PropTypes.number,
+  status: _react2.default.PropTypes.string,
+  type: _react2.default.PropTypes.string,
+  size: _react2.default.PropTypes.string
+};
+
+ProgressBar.defaultProps = {
+  progress: 0,
+  status: 'ok',
+  type: 'solid'
+};
+
+exports.default = ProgressBar;
+
+}).call(this,typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{"babel-runtime/core-js/object/get-prototype-of":4,"babel-runtime/helpers/classCallCheck":8,"babel-runtime/helpers/createClass":9,"babel-runtime/helpers/inherits":11,"babel-runtime/helpers/possibleConstructorReturn":12,"classnames":79}],76:[function(require,module,exports){
+(function (global){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends2 = require('babel-runtime/helpers/extends');
+
+var _extends3 = _interopRequireDefault(_extends2);
+
+var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
+
+var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+
+var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+var _createClass2 = require('babel-runtime/helpers/createClass');
+
+var _createClass3 = _interopRequireDefault(_createClass2);
+
+var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+
+var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+var _inherits2 = require('babel-runtime/helpers/inherits');
+
+var _inherits3 = _interopRequireDefault(_inherits2);
+
+var _react = (typeof window !== "undefined" ? window['React'] : typeof global !== "undefined" ? global['React'] : null);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _classnames = require('classnames');
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var STATUS_INDICATOR = {
+  'error': 'rs-status rs-status-error',
+  'processing': 'rs-status rs-status-processing',
+  'warning': 'rs-status rs-status-warning',
+  'ok': 'rs-status rs-status-ok',
+  'disabled': 'rs-status rs-status-disabled'
+};
+
+var StatusIndicator = function (_React$Component) {
+  (0, _inherits3.default)(StatusIndicator, _React$Component);
+
+  function StatusIndicator() {
+    (0, _classCallCheck3.default)(this, StatusIndicator);
+    return (0, _possibleConstructorReturn3.default)(this, (0, _getPrototypeOf2.default)(StatusIndicator).apply(this, arguments));
+  }
+
+  (0, _createClass3.default)(StatusIndicator, [{
+    key: 'render',
+    value: function render() {
+      var classes = undefined;
+
+      classes = (0, _classnames2.default)(this.props.className, STATUS_INDICATOR[this.props.status], { 'rs-hidden': this.props.hidden });
+      return _react2.default.createElement(
+        'span',
+        (0, _extends3.default)({}, this.props, { className: classes }),
+        this.props.children
+      );
+    }
+  }]);
+  return StatusIndicator;
+}(_react2.default.Component);
+
+StatusIndicator.propTypes = {
+  status: _react2.default.PropTypes.oneOf(['ok', 'error', 'processing', 'warning', 'disabled']),
+  hidden: _react2.default.PropTypes.bool
+};
+
+StatusIndicator.defaultProps = {
+  status: 'ok',
+  hidden: false
+};
+
+exports.default = StatusIndicator;
+
+}).call(this,typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{"babel-runtime/core-js/object/get-prototype-of":4,"babel-runtime/helpers/classCallCheck":8,"babel-runtime/helpers/createClass":9,"babel-runtime/helpers/extends":10,"babel-runtime/helpers/inherits":11,"babel-runtime/helpers/possibleConstructorReturn":12,"classnames":79}],77:[function(require,module,exports){
+(function (global){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
+
+var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+
+var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+var _createClass2 = require('babel-runtime/helpers/createClass');
+
+var _createClass3 = _interopRequireDefault(_createClass2);
+
+var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+
+var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+var _inherits2 = require('babel-runtime/helpers/inherits');
+
+var _inherits3 = _interopRequireDefault(_inherits2);
+
+var _react = (typeof window !== "undefined" ? window['React'] : typeof global !== "undefined" ? global['React'] : null);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _tether = require('tether');
+
+var _tether2 = _interopRequireDefault(_tether);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var TooltipTrigger = function (_React$Component) {
+  (0, _inherits3.default)(TooltipTrigger, _React$Component);
+
+  function TooltipTrigger(props) {
+    (0, _classCallCheck3.default)(this, TooltipTrigger);
+
+    var _this = (0, _possibleConstructorReturn3.default)(this, (0, _getPrototypeOf2.default)(TooltipTrigger).call(this, props));
+
+    _this.state = {
+      isTooltipOpen: false,
+      isMouseInTooltip: false
+    };
+    return _this;
+  }
+
+  (0, _createClass3.default)(TooltipTrigger, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      this._containerDiv = document.createElement('div');
+      this._containerDiv.className = 'rs-tooltip';
+      document.body.appendChild(this._containerDiv);
+      this._updateTooltipVisibility();
+    }
+  }, {
+    key: 'componentWillUnmount',
+    value: function componentWillUnmount() {
+      if (this._hideTimer) {
+        clearInterval(this._hideTimer);
+      }
+
+      if (this._showTimer) {
+        clearInterval(this._showTimer);
+      }
+
+      if (this._hideOnLeavingTooltipTimer) {
+        clearInterval(this._hideOnLeavingTooltipTimer);
+      }
+
+      this._hideTooltip();
+      document.body.removeChild(this._containerDiv);
+    }
+  }, {
+    key: 'componentDidUpdate',
+    value: function componentDidUpdate() {
+      this._updateTooltipVisibility();
+    }
+  }, {
+    key: '_updateTooltipVisibility',
+    value: function _updateTooltipVisibility() {
+      if (this._shouldShowTooltip()) {
+        this._showTooltip();
+      } else {
+        this._hideTooltip();
+      }
+    }
+  }, {
+    key: '_hideTooltip',
+    value: function _hideTooltip() {
+      this._containerDiv.className = this._containerDiv.className.replace(/(?:^|\s)visible(?!\S)/g, '');
+      if (this._tether) {
+        this._tether.destroy();
+        this._tether = null;
+      }
+
+      if (this._tooltipNode) {
+        _react2.default.unmountComponentAtNode(this._containerDiv);
+        this._tooltipNode = null;
+      }
+    }
+  }, {
+    key: '_showTooltip',
+    value: function _showTooltip() {
+      this._containerDiv.className += ' visible';
+      this._tooltipNode = _react2.default.render(_react2.default.createElement(
+        'div',
+        { className: 'rs-tooltip-inner',
+          onMouseOver: this._mouseEnteringTooltip.bind(this),
+          onMouseLeave: this._mouseLeavingTooltip.bind(this) },
+        this.props.content
+      ), this._containerDiv);
+      if (!this._tether) {
+        this._tether = this._createTether(this._getTetherConfig());
+      }
+    }
+  }, {
+    key: '_createTether',
+    value: function _createTether(tetherConfig) {
+      return new _tether2.default(tetherConfig);
+    }
+  }, {
+    key: '_getTetherConfig',
+    value: function _getTetherConfig() {
+      var tetherConfig = undefined;
+
+      switch (this.props.placement) {
+        case 'left':
+          tetherConfig = {
+            attachment: 'middle right',
+            targetAttachment: 'middle left'
+          };
+          break;
+        case 'bottom-left':
+          tetherConfig = {
+            attachment: 'top right',
+            targetAttachment: 'bottom left'
+          };
+          break;
+        case 'top-left':
+          tetherConfig = {
+            attachment: 'bottom right',
+            targetAttachment: 'top left'
+          };
+          break;
+        case 'top':
+          tetherConfig = {
+            attachment: 'bottom middle',
+            targetAttachment: 'top middle'
+          };
+          break;
+        case 'bottom':
+          tetherConfig = {
+            attachment: 'top middle',
+            targetAttachment: 'bottom middle'
+          };
+          break;
+        case 'right':
+          tetherConfig = {
+            attachment: 'middle left',
+            targetAttachment: 'middle right'
+          };
+          break;
+        case 'top-right':
+          tetherConfig = {
+            attachment: 'bottom left',
+            targetAttachment: 'top right'
+          };
+          break;
+        case 'bottom-right':
+        default:
+          tetherConfig = {
+            attachment: 'top left',
+            targetAttachment: 'bottom right'
+          };
+          break;
+      }
+
+      tetherConfig.targetModifier = 'visible';
+      tetherConfig.element = _react2.default.findDOMNode(this._containerDiv);
+      tetherConfig.target = this._getTarget();
+      tetherConfig.constraints = [{ to: 'window', pin: true, attachment: 'together' }];
+
+      return tetherConfig;
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var triggerProps = undefined,
+          showTooltipfunc = undefined,
+          hideTooltipFunc = undefined;
+
+      showTooltipfunc = this._showTooltipOnInterval.bind(this);
+      hideTooltipFunc = this._hideTooltipOnInterval.bind(this);
+      triggerProps = {
+        onMouseOver: showTooltipfunc,
+        onMouseLeave: hideTooltipFunc,
+        onFocus: showTooltipfunc,
+        onBlur: hideTooltipFunc,
+        ref: 'trigger'
+      };
+
+      return _react2.default.cloneElement(_react2.default.Children.only(this.props.children), triggerProps);
+    }
+  }, {
+    key: '_showTooltipOnInterval',
+    value: function _showTooltipOnInterval() {
+      var _this2 = this;
+
+      if (this._hideTimer) {
+        clearInterval(this._hideTimer);
+      }
+      this._showTimer = setTimeout(function () {
+        _this2.setState({ isTooltipOpen: true });
+      }, 200);
+    }
+  }, {
+    key: '_hideTooltipOnInterval',
+    value: function _hideTooltipOnInterval() {
+      var _this3 = this;
+
+      if (this._showTimer) {
+        clearInterval(this._showTimer);
+      }
+      this._hideTimer = setTimeout(function () {
+        _this3.setState({ isTooltipOpen: false });
+      }, 200);
+    }
+  }, {
+    key: '_shouldShowTooltip',
+    value: function _shouldShowTooltip() {
+      return this.state.isTooltipOpen || this.state.isMouseInTooltip;
+    }
+  }, {
+    key: '_getTarget',
+    value: function _getTarget() {
+      return _react2.default.findDOMNode(this.refs.trigger);
+    }
+  }, {
+    key: '_mouseLeavingTooltip',
+    value: function _mouseLeavingTooltip() {
+      var _this4 = this;
+
+      this._hideOnLeavingTooltipTimer = setTimeout(function () {
+        _this4.setState({ isMouseInTooltip: false });
+      }, 250);
+    }
+  }, {
+    key: '_mouseEnteringTooltip',
+    value: function _mouseEnteringTooltip() {
+      if (this._hideOnLeavingTooltipTimer) {
+        clearInterval(this._hideOnLeavingTooltipTimer);
+      }
+      this.setState({ isMouseInTooltip: true });
+    }
+  }]);
+  return TooltipTrigger;
+}(_react2.default.Component);
+
+TooltipTrigger.propTypes = {
+  content: _react2.default.PropTypes.node.isRequired,
+  placement: _react2.default.PropTypes.oneOf(['right', 'bottom-right', 'top-right', 'top', 'left', 'bottom-left', 'top-left', 'bottom'])
+};
+
+TooltipTrigger.defaultProps = {
+  placement: 'bottom-right'
+};
+
+exports.default = TooltipTrigger;
+
+}).call(this,typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{"babel-runtime/core-js/object/get-prototype-of":4,"babel-runtime/helpers/classCallCheck":8,"babel-runtime/helpers/createClass":9,"babel-runtime/helpers/inherits":11,"babel-runtime/helpers/possibleConstructorReturn":12,"tether":235}],78:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.TooltipTrigger = exports.StatusIndicator = exports.ProgressBar = exports.PopoverOverlay = exports.ProcessingIndicator = exports.PopoverFooter = exports.PopoverBody = exports.Popover = exports.FacetsSection = exports.Facet = exports.DropdownTrigger = exports.DropdownItem = exports.Dropdown = exports.Divider = exports.Criteria = exports.ButtonGroup = exports.Button = undefined;
+
+var _Button = require('./Button');
+
+var _Button2 = _interopRequireDefault(_Button);
+
+var _ButtonGroup = require('./ButtonGroup');
+
+var _ButtonGroup2 = _interopRequireDefault(_ButtonGroup);
+
+var _Criteria = require('./Criteria');
+
+var _Criteria2 = _interopRequireDefault(_Criteria);
+
+var _Divider = require('./Divider');
+
+var _Divider2 = _interopRequireDefault(_Divider);
+
+var _Dropdown = require('./Dropdown');
+
+var _Dropdown2 = _interopRequireDefault(_Dropdown);
+
+var _DropdownItem = require('./DropdownItem');
+
+var _DropdownItem2 = _interopRequireDefault(_DropdownItem);
+
+var _DropdownTrigger = require('./DropdownTrigger');
+
+var _DropdownTrigger2 = _interopRequireDefault(_DropdownTrigger);
+
+var _Facet = require('./Facet');
+
+var _Facet2 = _interopRequireDefault(_Facet);
+
+var _FacetsSection = require('./FacetsSection');
+
+var _FacetsSection2 = _interopRequireDefault(_FacetsSection);
+
+var _Popover = require('./Popover');
+
+var _Popover2 = _interopRequireDefault(_Popover);
+
+var _PopoverBody = require('./PopoverBody');
+
+var _PopoverBody2 = _interopRequireDefault(_PopoverBody);
+
+var _PopoverFooter = require('./PopoverFooter');
+
+var _PopoverFooter2 = _interopRequireDefault(_PopoverFooter);
+
+var _ProcessingIndicator = require('./ProcessingIndicator');
+
+var _ProcessingIndicator2 = _interopRequireDefault(_ProcessingIndicator);
+
+var _PopoverOverlay = require('./PopoverOverlay');
+
+var _PopoverOverlay2 = _interopRequireDefault(_PopoverOverlay);
+
+var _ProgressBar = require('./ProgressBar');
+
+var _ProgressBar2 = _interopRequireDefault(_ProgressBar);
+
+var _StatusIndicator = require('./StatusIndicator');
+
+var _StatusIndicator2 = _interopRequireDefault(_StatusIndicator);
+
+var _TooltipTrigger = require('./TooltipTrigger');
+
+var _TooltipTrigger2 = _interopRequireDefault(_TooltipTrigger);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.Button = _Button2.default;
+exports.ButtonGroup = _ButtonGroup2.default;
+exports.Criteria = _Criteria2.default;
+exports.Divider = _Divider2.default;
+exports.Dropdown = _Dropdown2.default;
+exports.DropdownItem = _DropdownItem2.default;
+exports.DropdownTrigger = _DropdownTrigger2.default;
+exports.Facet = _Facet2.default;
+exports.FacetsSection = _FacetsSection2.default;
+exports.Popover = _Popover2.default;
+exports.PopoverBody = _PopoverBody2.default;
+exports.PopoverFooter = _PopoverFooter2.default;
+exports.ProcessingIndicator = _ProcessingIndicator2.default;
+exports.PopoverOverlay = _PopoverOverlay2.default;
+exports.ProgressBar = _ProgressBar2.default;
+exports.StatusIndicator = _StatusIndicator2.default;
+exports.TooltipTrigger = _TooltipTrigger2.default;
+
+},{"./Button":59,"./ButtonGroup":60,"./Criteria":61,"./Divider":62,"./Dropdown":63,"./DropdownItem":64,"./DropdownTrigger":65,"./Facet":66,"./FacetsSection":68,"./Popover":69,"./PopoverBody":71,"./PopoverFooter":72,"./PopoverOverlay":73,"./ProcessingIndicator":74,"./ProgressBar":75,"./StatusIndicator":76,"./TooltipTrigger":77}],79:[function(require,module,exports){
 /*!
   Copyright (c) 2016 Jed Watson.
   Licensed under the MIT License (MIT), see
@@ -870,7 +3282,7 @@ process.chdir = function (dir) {
 	}
 }());
 
-},{}],60:[function(require,module,exports){
+},{}],80:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -897,7 +3309,7 @@ var AutoFocusMixin = {
 
 module.exports = AutoFocusMixin;
 
-},{"./focusNode":178}],61:[function(require,module,exports){
+},{"./focusNode":198}],81:[function(require,module,exports){
 /**
  * Copyright 2013-2015 Facebook, Inc.
  * All rights reserved.
@@ -1392,7 +3804,7 @@ var BeforeInputEventPlugin = {
 
 module.exports = BeforeInputEventPlugin;
 
-},{"./EventConstants":73,"./EventPropagators":78,"./ExecutionEnvironment":79,"./FallbackCompositionState":80,"./SyntheticCompositionEvent":152,"./SyntheticInputEvent":156,"./keyOf":200}],62:[function(require,module,exports){
+},{"./EventConstants":93,"./EventPropagators":98,"./ExecutionEnvironment":99,"./FallbackCompositionState":100,"./SyntheticCompositionEvent":172,"./SyntheticInputEvent":176,"./keyOf":220}],82:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -1517,7 +3929,7 @@ var CSSProperty = {
 
 module.exports = CSSProperty;
 
-},{}],63:[function(require,module,exports){
+},{}],83:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -1699,7 +4111,7 @@ var CSSPropertyOperations = {
 module.exports = CSSPropertyOperations;
 
 }).call(this,require("FWaASH"))
-},{"./CSSProperty":62,"./ExecutionEnvironment":79,"./camelizeStyleName":167,"./dangerousStyleValue":172,"./hyphenateStyleName":192,"./memoizeStringOnly":202,"./warning":213,"FWaASH":58}],64:[function(require,module,exports){
+},{"./CSSProperty":82,"./ExecutionEnvironment":99,"./camelizeStyleName":187,"./dangerousStyleValue":192,"./hyphenateStyleName":212,"./memoizeStringOnly":222,"./warning":233,"FWaASH":58}],84:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -1799,7 +4211,7 @@ PooledClass.addPoolingTo(CallbackQueue);
 module.exports = CallbackQueue;
 
 }).call(this,require("FWaASH"))
-},{"./Object.assign":85,"./PooledClass":86,"./invariant":194,"FWaASH":58}],65:[function(require,module,exports){
+},{"./Object.assign":105,"./PooledClass":106,"./invariant":214,"FWaASH":58}],85:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -2181,7 +4593,7 @@ var ChangeEventPlugin = {
 
 module.exports = ChangeEventPlugin;
 
-},{"./EventConstants":73,"./EventPluginHub":75,"./EventPropagators":78,"./ExecutionEnvironment":79,"./ReactUpdates":146,"./SyntheticEvent":154,"./isEventSupported":195,"./isTextInputElement":197,"./keyOf":200}],66:[function(require,module,exports){
+},{"./EventConstants":93,"./EventPluginHub":95,"./EventPropagators":98,"./ExecutionEnvironment":99,"./ReactUpdates":166,"./SyntheticEvent":174,"./isEventSupported":215,"./isTextInputElement":217,"./keyOf":220}],86:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -2206,7 +4618,7 @@ var ClientReactRootIndex = {
 
 module.exports = ClientReactRootIndex;
 
-},{}],67:[function(require,module,exports){
+},{}],87:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -2344,7 +4756,7 @@ var DOMChildrenOperations = {
 module.exports = DOMChildrenOperations;
 
 }).call(this,require("FWaASH"))
-},{"./Danger":70,"./ReactMultiChildUpdateTypes":131,"./invariant":194,"./setTextContent":208,"FWaASH":58}],68:[function(require,module,exports){
+},{"./Danger":90,"./ReactMultiChildUpdateTypes":151,"./invariant":214,"./setTextContent":228,"FWaASH":58}],88:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -2643,7 +5055,7 @@ var DOMProperty = {
 module.exports = DOMProperty;
 
 }).call(this,require("FWaASH"))
-},{"./invariant":194,"FWaASH":58}],69:[function(require,module,exports){
+},{"./invariant":214,"FWaASH":58}],89:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -2835,7 +5247,7 @@ var DOMPropertyOperations = {
 module.exports = DOMPropertyOperations;
 
 }).call(this,require("FWaASH"))
-},{"./DOMProperty":68,"./quoteAttributeValueForBrowser":206,"./warning":213,"FWaASH":58}],70:[function(require,module,exports){
+},{"./DOMProperty":88,"./quoteAttributeValueForBrowser":226,"./warning":233,"FWaASH":58}],90:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -3022,7 +5434,7 @@ var Danger = {
 module.exports = Danger;
 
 }).call(this,require("FWaASH"))
-},{"./ExecutionEnvironment":79,"./createNodesFromMarkup":171,"./emptyFunction":173,"./getMarkupWrap":186,"./invariant":194,"FWaASH":58}],71:[function(require,module,exports){
+},{"./ExecutionEnvironment":99,"./createNodesFromMarkup":191,"./emptyFunction":193,"./getMarkupWrap":206,"./invariant":214,"FWaASH":58}],91:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -3061,7 +5473,7 @@ var DefaultEventPluginOrder = [
 
 module.exports = DefaultEventPluginOrder;
 
-},{"./keyOf":200}],72:[function(require,module,exports){
+},{"./keyOf":220}],92:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -3201,7 +5613,7 @@ var EnterLeaveEventPlugin = {
 
 module.exports = EnterLeaveEventPlugin;
 
-},{"./EventConstants":73,"./EventPropagators":78,"./ReactMount":129,"./SyntheticMouseEvent":158,"./keyOf":200}],73:[function(require,module,exports){
+},{"./EventConstants":93,"./EventPropagators":98,"./ReactMount":149,"./SyntheticMouseEvent":178,"./keyOf":220}],93:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -3273,7 +5685,7 @@ var EventConstants = {
 
 module.exports = EventConstants;
 
-},{"./keyMirror":199}],74:[function(require,module,exports){
+},{"./keyMirror":219}],94:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -3363,7 +5775,7 @@ var EventListener = {
 module.exports = EventListener;
 
 }).call(this,require("FWaASH"))
-},{"./emptyFunction":173,"FWaASH":58}],75:[function(require,module,exports){
+},{"./emptyFunction":193,"FWaASH":58}],95:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -3641,7 +6053,7 @@ var EventPluginHub = {
 module.exports = EventPluginHub;
 
 }).call(this,require("FWaASH"))
-},{"./EventPluginRegistry":76,"./EventPluginUtils":77,"./accumulateInto":164,"./forEachAccumulated":179,"./invariant":194,"FWaASH":58}],76:[function(require,module,exports){
+},{"./EventPluginRegistry":96,"./EventPluginUtils":97,"./accumulateInto":184,"./forEachAccumulated":199,"./invariant":214,"FWaASH":58}],96:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -3921,7 +6333,7 @@ var EventPluginRegistry = {
 module.exports = EventPluginRegistry;
 
 }).call(this,require("FWaASH"))
-},{"./invariant":194,"FWaASH":58}],77:[function(require,module,exports){
+},{"./invariant":214,"FWaASH":58}],97:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -4142,7 +6554,7 @@ var EventPluginUtils = {
 module.exports = EventPluginUtils;
 
 }).call(this,require("FWaASH"))
-},{"./EventConstants":73,"./invariant":194,"FWaASH":58}],78:[function(require,module,exports){
+},{"./EventConstants":93,"./invariant":214,"FWaASH":58}],98:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -4284,7 +6696,7 @@ var EventPropagators = {
 module.exports = EventPropagators;
 
 }).call(this,require("FWaASH"))
-},{"./EventConstants":73,"./EventPluginHub":75,"./accumulateInto":164,"./forEachAccumulated":179,"FWaASH":58}],79:[function(require,module,exports){
+},{"./EventConstants":93,"./EventPluginHub":95,"./accumulateInto":184,"./forEachAccumulated":199,"FWaASH":58}],99:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -4328,7 +6740,7 @@ var ExecutionEnvironment = {
 
 module.exports = ExecutionEnvironment;
 
-},{}],80:[function(require,module,exports){
+},{}],100:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -4419,7 +6831,7 @@ PooledClass.addPoolingTo(FallbackCompositionState);
 
 module.exports = FallbackCompositionState;
 
-},{"./Object.assign":85,"./PooledClass":86,"./getTextContentAccessor":189}],81:[function(require,module,exports){
+},{"./Object.assign":105,"./PooledClass":106,"./getTextContentAccessor":209}],101:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -4630,7 +7042,7 @@ var HTMLDOMPropertyConfig = {
 
 module.exports = HTMLDOMPropertyConfig;
 
-},{"./DOMProperty":68,"./ExecutionEnvironment":79}],82:[function(require,module,exports){
+},{"./DOMProperty":88,"./ExecutionEnvironment":99}],102:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -4786,7 +7198,7 @@ var LinkedValueUtils = {
 module.exports = LinkedValueUtils;
 
 }).call(this,require("FWaASH"))
-},{"./ReactPropTypes":137,"./invariant":194,"FWaASH":58}],83:[function(require,module,exports){
+},{"./ReactPropTypes":157,"./invariant":214,"FWaASH":58}],103:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2014-2015, Facebook, Inc.
@@ -4843,7 +7255,7 @@ var LocalEventTrapMixin = {
 module.exports = LocalEventTrapMixin;
 
 }).call(this,require("FWaASH"))
-},{"./ReactBrowserEventEmitter":89,"./accumulateInto":164,"./forEachAccumulated":179,"./invariant":194,"FWaASH":58}],84:[function(require,module,exports){
+},{"./ReactBrowserEventEmitter":109,"./accumulateInto":184,"./forEachAccumulated":199,"./invariant":214,"FWaASH":58}],104:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -4901,7 +7313,7 @@ var MobileSafariClickEventPlugin = {
 
 module.exports = MobileSafariClickEventPlugin;
 
-},{"./EventConstants":73,"./emptyFunction":173}],85:[function(require,module,exports){
+},{"./EventConstants":93,"./emptyFunction":193}],105:[function(require,module,exports){
 /**
  * Copyright 2014-2015, Facebook, Inc.
  * All rights reserved.
@@ -4950,7 +7362,7 @@ function assign(target, sources) {
 
 module.exports = assign;
 
-},{}],86:[function(require,module,exports){
+},{}],106:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -5066,7 +7478,7 @@ var PooledClass = {
 module.exports = PooledClass;
 
 }).call(this,require("FWaASH"))
-},{"./invariant":194,"FWaASH":58}],87:[function(require,module,exports){
+},{"./invariant":214,"FWaASH":58}],107:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -5218,7 +7630,7 @@ React.version = '0.13.3';
 module.exports = React;
 
 }).call(this,require("FWaASH"))
-},{"./EventPluginUtils":77,"./ExecutionEnvironment":79,"./Object.assign":85,"./ReactChildren":91,"./ReactClass":92,"./ReactComponent":93,"./ReactContext":97,"./ReactCurrentOwner":98,"./ReactDOM":99,"./ReactDOMTextComponent":110,"./ReactDefaultInjection":113,"./ReactElement":116,"./ReactElementValidator":117,"./ReactInstanceHandles":125,"./ReactMount":129,"./ReactPerf":134,"./ReactPropTypes":137,"./ReactReconciler":140,"./ReactServerRendering":143,"./findDOMNode":176,"./onlyChild":203,"FWaASH":58}],88:[function(require,module,exports){
+},{"./EventPluginUtils":97,"./ExecutionEnvironment":99,"./Object.assign":105,"./ReactChildren":111,"./ReactClass":112,"./ReactComponent":113,"./ReactContext":117,"./ReactCurrentOwner":118,"./ReactDOM":119,"./ReactDOMTextComponent":130,"./ReactDefaultInjection":133,"./ReactElement":136,"./ReactElementValidator":137,"./ReactInstanceHandles":145,"./ReactMount":149,"./ReactPerf":154,"./ReactPropTypes":157,"./ReactReconciler":160,"./ReactServerRendering":163,"./findDOMNode":196,"./onlyChild":223,"FWaASH":58}],108:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -5249,7 +7661,7 @@ var ReactBrowserComponentMixin = {
 
 module.exports = ReactBrowserComponentMixin;
 
-},{"./findDOMNode":176}],89:[function(require,module,exports){
+},{"./findDOMNode":196}],109:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -5602,7 +8014,7 @@ var ReactBrowserEventEmitter = assign({}, ReactEventEmitterMixin, {
 
 module.exports = ReactBrowserEventEmitter;
 
-},{"./EventConstants":73,"./EventPluginHub":75,"./EventPluginRegistry":76,"./Object.assign":85,"./ReactEventEmitterMixin":120,"./ViewportMetrics":163,"./isEventSupported":195}],90:[function(require,module,exports){
+},{"./EventConstants":93,"./EventPluginHub":95,"./EventPluginRegistry":96,"./Object.assign":105,"./ReactEventEmitterMixin":140,"./ViewportMetrics":183,"./isEventSupported":215}],110:[function(require,module,exports){
 /**
  * Copyright 2014-2015, Facebook, Inc.
  * All rights reserved.
@@ -5729,7 +8141,7 @@ var ReactChildReconciler = {
 
 module.exports = ReactChildReconciler;
 
-},{"./ReactReconciler":140,"./flattenChildren":177,"./instantiateReactComponent":193,"./shouldUpdateReactComponent":210}],91:[function(require,module,exports){
+},{"./ReactReconciler":160,"./flattenChildren":197,"./instantiateReactComponent":213,"./shouldUpdateReactComponent":230}],111:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -5882,7 +8294,7 @@ var ReactChildren = {
 module.exports = ReactChildren;
 
 }).call(this,require("FWaASH"))
-},{"./PooledClass":86,"./ReactFragment":122,"./traverseAllChildren":212,"./warning":213,"FWaASH":58}],92:[function(require,module,exports){
+},{"./PooledClass":106,"./ReactFragment":142,"./traverseAllChildren":232,"./warning":233,"FWaASH":58}],112:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -6828,7 +9240,7 @@ var ReactClass = {
 module.exports = ReactClass;
 
 }).call(this,require("FWaASH"))
-},{"./Object.assign":85,"./ReactComponent":93,"./ReactCurrentOwner":98,"./ReactElement":116,"./ReactErrorUtils":119,"./ReactInstanceMap":126,"./ReactLifeCycle":127,"./ReactPropTypeLocationNames":135,"./ReactPropTypeLocations":136,"./ReactUpdateQueue":145,"./invariant":194,"./keyMirror":199,"./keyOf":200,"./warning":213,"FWaASH":58}],93:[function(require,module,exports){
+},{"./Object.assign":105,"./ReactComponent":113,"./ReactCurrentOwner":118,"./ReactElement":136,"./ReactErrorUtils":139,"./ReactInstanceMap":146,"./ReactLifeCycle":147,"./ReactPropTypeLocationNames":155,"./ReactPropTypeLocations":156,"./ReactUpdateQueue":165,"./invariant":214,"./keyMirror":219,"./keyOf":220,"./warning":233,"FWaASH":58}],113:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -6982,7 +9394,7 @@ if ("production" !== process.env.NODE_ENV) {
 module.exports = ReactComponent;
 
 }).call(this,require("FWaASH"))
-},{"./ReactUpdateQueue":145,"./invariant":194,"./warning":213,"FWaASH":58}],94:[function(require,module,exports){
+},{"./ReactUpdateQueue":165,"./invariant":214,"./warning":233,"FWaASH":58}],114:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -7029,7 +9441,7 @@ var ReactComponentBrowserEnvironment = {
 
 module.exports = ReactComponentBrowserEnvironment;
 
-},{"./ReactDOMIDOperations":103,"./ReactMount":129}],95:[function(require,module,exports){
+},{"./ReactDOMIDOperations":123,"./ReactMount":149}],115:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2014-2015, Facebook, Inc.
@@ -7090,7 +9502,7 @@ var ReactComponentEnvironment = {
 module.exports = ReactComponentEnvironment;
 
 }).call(this,require("FWaASH"))
-},{"./invariant":194,"FWaASH":58}],96:[function(require,module,exports){
+},{"./invariant":214,"FWaASH":58}],116:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -8003,7 +10415,7 @@ var ReactCompositeComponent = {
 module.exports = ReactCompositeComponent;
 
 }).call(this,require("FWaASH"))
-},{"./Object.assign":85,"./ReactComponentEnvironment":95,"./ReactContext":97,"./ReactCurrentOwner":98,"./ReactElement":116,"./ReactElementValidator":117,"./ReactInstanceMap":126,"./ReactLifeCycle":127,"./ReactNativeComponent":132,"./ReactPerf":134,"./ReactPropTypeLocationNames":135,"./ReactPropTypeLocations":136,"./ReactReconciler":140,"./ReactUpdates":146,"./emptyObject":174,"./invariant":194,"./shouldUpdateReactComponent":210,"./warning":213,"FWaASH":58}],97:[function(require,module,exports){
+},{"./Object.assign":105,"./ReactComponentEnvironment":115,"./ReactContext":117,"./ReactCurrentOwner":118,"./ReactElement":136,"./ReactElementValidator":137,"./ReactInstanceMap":146,"./ReactLifeCycle":147,"./ReactNativeComponent":152,"./ReactPerf":154,"./ReactPropTypeLocationNames":155,"./ReactPropTypeLocations":156,"./ReactReconciler":160,"./ReactUpdates":166,"./emptyObject":194,"./invariant":214,"./shouldUpdateReactComponent":230,"./warning":233,"FWaASH":58}],117:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -8081,7 +10493,7 @@ var ReactContext = {
 module.exports = ReactContext;
 
 }).call(this,require("FWaASH"))
-},{"./Object.assign":85,"./emptyObject":174,"./warning":213,"FWaASH":58}],98:[function(require,module,exports){
+},{"./Object.assign":105,"./emptyObject":194,"./warning":233,"FWaASH":58}],118:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -8115,7 +10527,7 @@ var ReactCurrentOwner = {
 
 module.exports = ReactCurrentOwner;
 
-},{}],99:[function(require,module,exports){
+},{}],119:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -8294,7 +10706,7 @@ var ReactDOM = mapObject({
 module.exports = ReactDOM;
 
 }).call(this,require("FWaASH"))
-},{"./ReactElement":116,"./ReactElementValidator":117,"./mapObject":201,"FWaASH":58}],100:[function(require,module,exports){
+},{"./ReactElement":136,"./ReactElementValidator":137,"./mapObject":221,"FWaASH":58}],120:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -8358,7 +10770,7 @@ var ReactDOMButton = ReactClass.createClass({
 
 module.exports = ReactDOMButton;
 
-},{"./AutoFocusMixin":60,"./ReactBrowserComponentMixin":88,"./ReactClass":92,"./ReactElement":116,"./keyMirror":199}],101:[function(require,module,exports){
+},{"./AutoFocusMixin":80,"./ReactBrowserComponentMixin":108,"./ReactClass":112,"./ReactElement":136,"./keyMirror":219}],121:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -8868,7 +11280,7 @@ ReactDOMComponent.injection = {
 module.exports = ReactDOMComponent;
 
 }).call(this,require("FWaASH"))
-},{"./CSSPropertyOperations":63,"./DOMProperty":68,"./DOMPropertyOperations":69,"./Object.assign":85,"./ReactBrowserEventEmitter":89,"./ReactComponentBrowserEnvironment":94,"./ReactMount":129,"./ReactMultiChild":130,"./ReactPerf":134,"./escapeTextContentForBrowser":175,"./invariant":194,"./isEventSupported":195,"./keyOf":200,"./warning":213,"FWaASH":58}],102:[function(require,module,exports){
+},{"./CSSPropertyOperations":83,"./DOMProperty":88,"./DOMPropertyOperations":89,"./Object.assign":105,"./ReactBrowserEventEmitter":109,"./ReactComponentBrowserEnvironment":114,"./ReactMount":149,"./ReactMultiChild":150,"./ReactPerf":154,"./escapeTextContentForBrowser":195,"./invariant":214,"./isEventSupported":215,"./keyOf":220,"./warning":233,"FWaASH":58}],122:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -8917,7 +11329,7 @@ var ReactDOMForm = ReactClass.createClass({
 
 module.exports = ReactDOMForm;
 
-},{"./EventConstants":73,"./LocalEventTrapMixin":83,"./ReactBrowserComponentMixin":88,"./ReactClass":92,"./ReactElement":116}],103:[function(require,module,exports){
+},{"./EventConstants":93,"./LocalEventTrapMixin":103,"./ReactBrowserComponentMixin":108,"./ReactClass":112,"./ReactElement":136}],123:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -9085,7 +11497,7 @@ ReactPerf.measureMethods(ReactDOMIDOperations, 'ReactDOMIDOperations', {
 module.exports = ReactDOMIDOperations;
 
 }).call(this,require("FWaASH"))
-},{"./CSSPropertyOperations":63,"./DOMChildrenOperations":67,"./DOMPropertyOperations":69,"./ReactMount":129,"./ReactPerf":134,"./invariant":194,"./setInnerHTML":207,"FWaASH":58}],104:[function(require,module,exports){
+},{"./CSSPropertyOperations":83,"./DOMChildrenOperations":87,"./DOMPropertyOperations":89,"./ReactMount":149,"./ReactPerf":154,"./invariant":214,"./setInnerHTML":227,"FWaASH":58}],124:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -9130,7 +11542,7 @@ var ReactDOMIframe = ReactClass.createClass({
 
 module.exports = ReactDOMIframe;
 
-},{"./EventConstants":73,"./LocalEventTrapMixin":83,"./ReactBrowserComponentMixin":88,"./ReactClass":92,"./ReactElement":116}],105:[function(require,module,exports){
+},{"./EventConstants":93,"./LocalEventTrapMixin":103,"./ReactBrowserComponentMixin":108,"./ReactClass":112,"./ReactElement":136}],125:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -9176,7 +11588,7 @@ var ReactDOMImg = ReactClass.createClass({
 
 module.exports = ReactDOMImg;
 
-},{"./EventConstants":73,"./LocalEventTrapMixin":83,"./ReactBrowserComponentMixin":88,"./ReactClass":92,"./ReactElement":116}],106:[function(require,module,exports){
+},{"./EventConstants":93,"./LocalEventTrapMixin":103,"./ReactBrowserComponentMixin":108,"./ReactClass":112,"./ReactElement":136}],126:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -9353,7 +11765,7 @@ var ReactDOMInput = ReactClass.createClass({
 module.exports = ReactDOMInput;
 
 }).call(this,require("FWaASH"))
-},{"./AutoFocusMixin":60,"./DOMPropertyOperations":69,"./LinkedValueUtils":82,"./Object.assign":85,"./ReactBrowserComponentMixin":88,"./ReactClass":92,"./ReactElement":116,"./ReactMount":129,"./ReactUpdates":146,"./invariant":194,"FWaASH":58}],107:[function(require,module,exports){
+},{"./AutoFocusMixin":80,"./DOMPropertyOperations":89,"./LinkedValueUtils":102,"./Object.assign":105,"./ReactBrowserComponentMixin":108,"./ReactClass":112,"./ReactElement":136,"./ReactMount":149,"./ReactUpdates":166,"./invariant":214,"FWaASH":58}],127:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -9405,7 +11817,7 @@ var ReactDOMOption = ReactClass.createClass({
 module.exports = ReactDOMOption;
 
 }).call(this,require("FWaASH"))
-},{"./ReactBrowserComponentMixin":88,"./ReactClass":92,"./ReactElement":116,"./warning":213,"FWaASH":58}],108:[function(require,module,exports){
+},{"./ReactBrowserComponentMixin":108,"./ReactClass":112,"./ReactElement":136,"./warning":233,"FWaASH":58}],128:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -9583,7 +11995,7 @@ var ReactDOMSelect = ReactClass.createClass({
 
 module.exports = ReactDOMSelect;
 
-},{"./AutoFocusMixin":60,"./LinkedValueUtils":82,"./Object.assign":85,"./ReactBrowserComponentMixin":88,"./ReactClass":92,"./ReactElement":116,"./ReactUpdates":146}],109:[function(require,module,exports){
+},{"./AutoFocusMixin":80,"./LinkedValueUtils":102,"./Object.assign":105,"./ReactBrowserComponentMixin":108,"./ReactClass":112,"./ReactElement":136,"./ReactUpdates":166}],129:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -9796,7 +12208,7 @@ var ReactDOMSelection = {
 
 module.exports = ReactDOMSelection;
 
-},{"./ExecutionEnvironment":79,"./getNodeForCharacterOffset":187,"./getTextContentAccessor":189}],110:[function(require,module,exports){
+},{"./ExecutionEnvironment":99,"./getNodeForCharacterOffset":207,"./getTextContentAccessor":209}],130:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -9913,7 +12325,7 @@ assign(ReactDOMTextComponent.prototype, {
 
 module.exports = ReactDOMTextComponent;
 
-},{"./DOMPropertyOperations":69,"./Object.assign":85,"./ReactComponentBrowserEnvironment":94,"./ReactDOMComponent":101,"./escapeTextContentForBrowser":175}],111:[function(require,module,exports){
+},{"./DOMPropertyOperations":89,"./Object.assign":105,"./ReactComponentBrowserEnvironment":114,"./ReactDOMComponent":121,"./escapeTextContentForBrowser":195}],131:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -10053,7 +12465,7 @@ var ReactDOMTextarea = ReactClass.createClass({
 module.exports = ReactDOMTextarea;
 
 }).call(this,require("FWaASH"))
-},{"./AutoFocusMixin":60,"./DOMPropertyOperations":69,"./LinkedValueUtils":82,"./Object.assign":85,"./ReactBrowserComponentMixin":88,"./ReactClass":92,"./ReactElement":116,"./ReactUpdates":146,"./invariant":194,"./warning":213,"FWaASH":58}],112:[function(require,module,exports){
+},{"./AutoFocusMixin":80,"./DOMPropertyOperations":89,"./LinkedValueUtils":102,"./Object.assign":105,"./ReactBrowserComponentMixin":108,"./ReactClass":112,"./ReactElement":136,"./ReactUpdates":166,"./invariant":214,"./warning":233,"FWaASH":58}],132:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -10126,7 +12538,7 @@ var ReactDefaultBatchingStrategy = {
 
 module.exports = ReactDefaultBatchingStrategy;
 
-},{"./Object.assign":85,"./ReactUpdates":146,"./Transaction":162,"./emptyFunction":173}],113:[function(require,module,exports){
+},{"./Object.assign":105,"./ReactUpdates":166,"./Transaction":182,"./emptyFunction":193}],133:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -10285,7 +12697,7 @@ module.exports = {
 };
 
 }).call(this,require("FWaASH"))
-},{"./BeforeInputEventPlugin":61,"./ChangeEventPlugin":65,"./ClientReactRootIndex":66,"./DefaultEventPluginOrder":71,"./EnterLeaveEventPlugin":72,"./ExecutionEnvironment":79,"./HTMLDOMPropertyConfig":81,"./MobileSafariClickEventPlugin":84,"./ReactBrowserComponentMixin":88,"./ReactClass":92,"./ReactComponentBrowserEnvironment":94,"./ReactDOMButton":100,"./ReactDOMComponent":101,"./ReactDOMForm":102,"./ReactDOMIDOperations":103,"./ReactDOMIframe":104,"./ReactDOMImg":105,"./ReactDOMInput":106,"./ReactDOMOption":107,"./ReactDOMSelect":108,"./ReactDOMTextComponent":110,"./ReactDOMTextarea":111,"./ReactDefaultBatchingStrategy":112,"./ReactDefaultPerf":114,"./ReactElement":116,"./ReactEventListener":121,"./ReactInjection":123,"./ReactInstanceHandles":125,"./ReactMount":129,"./ReactReconcileTransaction":139,"./SVGDOMPropertyConfig":147,"./SelectEventPlugin":148,"./ServerReactRootIndex":149,"./SimpleEventPlugin":150,"./createFullPageComponent":170,"FWaASH":58}],114:[function(require,module,exports){
+},{"./BeforeInputEventPlugin":81,"./ChangeEventPlugin":85,"./ClientReactRootIndex":86,"./DefaultEventPluginOrder":91,"./EnterLeaveEventPlugin":92,"./ExecutionEnvironment":99,"./HTMLDOMPropertyConfig":101,"./MobileSafariClickEventPlugin":104,"./ReactBrowserComponentMixin":108,"./ReactClass":112,"./ReactComponentBrowserEnvironment":114,"./ReactDOMButton":120,"./ReactDOMComponent":121,"./ReactDOMForm":122,"./ReactDOMIDOperations":123,"./ReactDOMIframe":124,"./ReactDOMImg":125,"./ReactDOMInput":126,"./ReactDOMOption":127,"./ReactDOMSelect":128,"./ReactDOMTextComponent":130,"./ReactDOMTextarea":131,"./ReactDefaultBatchingStrategy":132,"./ReactDefaultPerf":134,"./ReactElement":136,"./ReactEventListener":141,"./ReactInjection":143,"./ReactInstanceHandles":145,"./ReactMount":149,"./ReactReconcileTransaction":159,"./SVGDOMPropertyConfig":167,"./SelectEventPlugin":168,"./ServerReactRootIndex":169,"./SimpleEventPlugin":170,"./createFullPageComponent":190,"FWaASH":58}],134:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -10551,7 +12963,7 @@ var ReactDefaultPerf = {
 
 module.exports = ReactDefaultPerf;
 
-},{"./DOMProperty":68,"./ReactDefaultPerfAnalysis":115,"./ReactMount":129,"./ReactPerf":134,"./performanceNow":205}],115:[function(require,module,exports){
+},{"./DOMProperty":88,"./ReactDefaultPerfAnalysis":135,"./ReactMount":149,"./ReactPerf":154,"./performanceNow":225}],135:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -10757,7 +13169,7 @@ var ReactDefaultPerfAnalysis = {
 
 module.exports = ReactDefaultPerfAnalysis;
 
-},{"./Object.assign":85}],116:[function(require,module,exports){
+},{"./Object.assign":105}],136:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2014-2015, Facebook, Inc.
@@ -11065,7 +13477,7 @@ ReactElement.isValidElement = function(object) {
 module.exports = ReactElement;
 
 }).call(this,require("FWaASH"))
-},{"./Object.assign":85,"./ReactContext":97,"./ReactCurrentOwner":98,"./warning":213,"FWaASH":58}],117:[function(require,module,exports){
+},{"./Object.assign":105,"./ReactContext":117,"./ReactCurrentOwner":118,"./warning":233,"FWaASH":58}],137:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2014-2015, Facebook, Inc.
@@ -11530,7 +13942,7 @@ var ReactElementValidator = {
 module.exports = ReactElementValidator;
 
 }).call(this,require("FWaASH"))
-},{"./ReactCurrentOwner":98,"./ReactElement":116,"./ReactFragment":122,"./ReactNativeComponent":132,"./ReactPropTypeLocationNames":135,"./ReactPropTypeLocations":136,"./getIteratorFn":185,"./invariant":194,"./warning":213,"FWaASH":58}],118:[function(require,module,exports){
+},{"./ReactCurrentOwner":118,"./ReactElement":136,"./ReactFragment":142,"./ReactNativeComponent":152,"./ReactPropTypeLocationNames":155,"./ReactPropTypeLocations":156,"./getIteratorFn":205,"./invariant":214,"./warning":233,"FWaASH":58}],138:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2014-2015, Facebook, Inc.
@@ -11625,7 +14037,7 @@ var ReactEmptyComponent = {
 module.exports = ReactEmptyComponent;
 
 }).call(this,require("FWaASH"))
-},{"./ReactElement":116,"./ReactInstanceMap":126,"./invariant":194,"FWaASH":58}],119:[function(require,module,exports){
+},{"./ReactElement":136,"./ReactInstanceMap":146,"./invariant":214,"FWaASH":58}],139:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -11657,7 +14069,7 @@ var ReactErrorUtils = {
 
 module.exports = ReactErrorUtils;
 
-},{}],120:[function(require,module,exports){
+},{}],140:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -11707,7 +14119,7 @@ var ReactEventEmitterMixin = {
 
 module.exports = ReactEventEmitterMixin;
 
-},{"./EventPluginHub":75}],121:[function(require,module,exports){
+},{"./EventPluginHub":95}],141:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -11890,7 +14302,7 @@ var ReactEventListener = {
 
 module.exports = ReactEventListener;
 
-},{"./EventListener":74,"./ExecutionEnvironment":79,"./Object.assign":85,"./PooledClass":86,"./ReactInstanceHandles":125,"./ReactMount":129,"./ReactUpdates":146,"./getEventTarget":184,"./getUnboundedScrollPosition":190}],122:[function(require,module,exports){
+},{"./EventListener":94,"./ExecutionEnvironment":99,"./Object.assign":105,"./PooledClass":106,"./ReactInstanceHandles":145,"./ReactMount":149,"./ReactUpdates":166,"./getEventTarget":204,"./getUnboundedScrollPosition":210}],142:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2015, Facebook, Inc.
@@ -12075,7 +14487,7 @@ var ReactFragment = {
 module.exports = ReactFragment;
 
 }).call(this,require("FWaASH"))
-},{"./ReactElement":116,"./warning":213,"FWaASH":58}],123:[function(require,module,exports){
+},{"./ReactElement":136,"./warning":233,"FWaASH":58}],143:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -12117,7 +14529,7 @@ var ReactInjection = {
 
 module.exports = ReactInjection;
 
-},{"./DOMProperty":68,"./EventPluginHub":75,"./ReactBrowserEventEmitter":89,"./ReactClass":92,"./ReactComponentEnvironment":95,"./ReactDOMComponent":101,"./ReactEmptyComponent":118,"./ReactNativeComponent":132,"./ReactPerf":134,"./ReactRootIndex":142,"./ReactUpdates":146}],124:[function(require,module,exports){
+},{"./DOMProperty":88,"./EventPluginHub":95,"./ReactBrowserEventEmitter":109,"./ReactClass":112,"./ReactComponentEnvironment":115,"./ReactDOMComponent":121,"./ReactEmptyComponent":138,"./ReactNativeComponent":152,"./ReactPerf":154,"./ReactRootIndex":162,"./ReactUpdates":166}],144:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -12252,7 +14664,7 @@ var ReactInputSelection = {
 
 module.exports = ReactInputSelection;
 
-},{"./ReactDOMSelection":109,"./containsNode":168,"./focusNode":178,"./getActiveElement":180}],125:[function(require,module,exports){
+},{"./ReactDOMSelection":129,"./containsNode":188,"./focusNode":198,"./getActiveElement":200}],145:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -12588,7 +15000,7 @@ var ReactInstanceHandles = {
 module.exports = ReactInstanceHandles;
 
 }).call(this,require("FWaASH"))
-},{"./ReactRootIndex":142,"./invariant":194,"FWaASH":58}],126:[function(require,module,exports){
+},{"./ReactRootIndex":162,"./invariant":214,"FWaASH":58}],146:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -12637,7 +15049,7 @@ var ReactInstanceMap = {
 
 module.exports = ReactInstanceMap;
 
-},{}],127:[function(require,module,exports){
+},{}],147:[function(require,module,exports){
 /**
  * Copyright 2015, Facebook, Inc.
  * All rights reserved.
@@ -12674,7 +15086,7 @@ var ReactLifeCycle = {
 
 module.exports = ReactLifeCycle;
 
-},{}],128:[function(require,module,exports){
+},{}],148:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -12722,7 +15134,7 @@ var ReactMarkupChecksum = {
 
 module.exports = ReactMarkupChecksum;
 
-},{"./adler32":165}],129:[function(require,module,exports){
+},{"./adler32":185}],149:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -13613,7 +16025,7 @@ ReactPerf.measureMethods(ReactMount, 'ReactMount', {
 module.exports = ReactMount;
 
 }).call(this,require("FWaASH"))
-},{"./DOMProperty":68,"./ReactBrowserEventEmitter":89,"./ReactCurrentOwner":98,"./ReactElement":116,"./ReactElementValidator":117,"./ReactEmptyComponent":118,"./ReactInstanceHandles":125,"./ReactInstanceMap":126,"./ReactMarkupChecksum":128,"./ReactPerf":134,"./ReactReconciler":140,"./ReactUpdateQueue":145,"./ReactUpdates":146,"./containsNode":168,"./emptyObject":174,"./getReactRootElementInContainer":188,"./instantiateReactComponent":193,"./invariant":194,"./setInnerHTML":207,"./shouldUpdateReactComponent":210,"./warning":213,"FWaASH":58}],130:[function(require,module,exports){
+},{"./DOMProperty":88,"./ReactBrowserEventEmitter":109,"./ReactCurrentOwner":118,"./ReactElement":136,"./ReactElementValidator":137,"./ReactEmptyComponent":138,"./ReactInstanceHandles":145,"./ReactInstanceMap":146,"./ReactMarkupChecksum":148,"./ReactPerf":154,"./ReactReconciler":160,"./ReactUpdateQueue":165,"./ReactUpdates":166,"./containsNode":188,"./emptyObject":194,"./getReactRootElementInContainer":208,"./instantiateReactComponent":213,"./invariant":214,"./setInnerHTML":227,"./shouldUpdateReactComponent":230,"./warning":233,"FWaASH":58}],150:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -14043,7 +16455,7 @@ var ReactMultiChild = {
 
 module.exports = ReactMultiChild;
 
-},{"./ReactChildReconciler":90,"./ReactComponentEnvironment":95,"./ReactMultiChildUpdateTypes":131,"./ReactReconciler":140}],131:[function(require,module,exports){
+},{"./ReactChildReconciler":110,"./ReactComponentEnvironment":115,"./ReactMultiChildUpdateTypes":151,"./ReactReconciler":160}],151:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -14076,7 +16488,7 @@ var ReactMultiChildUpdateTypes = keyMirror({
 
 module.exports = ReactMultiChildUpdateTypes;
 
-},{"./keyMirror":199}],132:[function(require,module,exports){
+},{"./keyMirror":219}],152:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2014-2015, Facebook, Inc.
@@ -14183,7 +16595,7 @@ var ReactNativeComponent = {
 module.exports = ReactNativeComponent;
 
 }).call(this,require("FWaASH"))
-},{"./Object.assign":85,"./invariant":194,"FWaASH":58}],133:[function(require,module,exports){
+},{"./Object.assign":105,"./invariant":214,"FWaASH":58}],153:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -14295,7 +16707,7 @@ var ReactOwner = {
 module.exports = ReactOwner;
 
 }).call(this,require("FWaASH"))
-},{"./invariant":194,"FWaASH":58}],134:[function(require,module,exports){
+},{"./invariant":214,"FWaASH":58}],154:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -14399,7 +16811,7 @@ function _noMeasure(objName, fnName, func) {
 module.exports = ReactPerf;
 
 }).call(this,require("FWaASH"))
-},{"FWaASH":58}],135:[function(require,module,exports){
+},{"FWaASH":58}],155:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -14427,7 +16839,7 @@ if ("production" !== process.env.NODE_ENV) {
 module.exports = ReactPropTypeLocationNames;
 
 }).call(this,require("FWaASH"))
-},{"FWaASH":58}],136:[function(require,module,exports){
+},{"FWaASH":58}],156:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -14451,7 +16863,7 @@ var ReactPropTypeLocations = keyMirror({
 
 module.exports = ReactPropTypeLocations;
 
-},{"./keyMirror":199}],137:[function(require,module,exports){
+},{"./keyMirror":219}],157:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -14800,7 +17212,7 @@ function getPreciseType(propValue) {
 
 module.exports = ReactPropTypes;
 
-},{"./ReactElement":116,"./ReactFragment":122,"./ReactPropTypeLocationNames":135,"./emptyFunction":173}],138:[function(require,module,exports){
+},{"./ReactElement":136,"./ReactFragment":142,"./ReactPropTypeLocationNames":155,"./emptyFunction":193}],158:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -14856,7 +17268,7 @@ PooledClass.addPoolingTo(ReactPutListenerQueue);
 
 module.exports = ReactPutListenerQueue;
 
-},{"./Object.assign":85,"./PooledClass":86,"./ReactBrowserEventEmitter":89}],139:[function(require,module,exports){
+},{"./Object.assign":105,"./PooledClass":106,"./ReactBrowserEventEmitter":109}],159:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -15032,7 +17444,7 @@ PooledClass.addPoolingTo(ReactReconcileTransaction);
 
 module.exports = ReactReconcileTransaction;
 
-},{"./CallbackQueue":64,"./Object.assign":85,"./PooledClass":86,"./ReactBrowserEventEmitter":89,"./ReactInputSelection":124,"./ReactPutListenerQueue":138,"./Transaction":162}],140:[function(require,module,exports){
+},{"./CallbackQueue":84,"./Object.assign":105,"./PooledClass":106,"./ReactBrowserEventEmitter":109,"./ReactInputSelection":144,"./ReactPutListenerQueue":158,"./Transaction":182}],160:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -15156,7 +17568,7 @@ var ReactReconciler = {
 module.exports = ReactReconciler;
 
 }).call(this,require("FWaASH"))
-},{"./ReactElementValidator":117,"./ReactRef":141,"FWaASH":58}],141:[function(require,module,exports){
+},{"./ReactElementValidator":137,"./ReactRef":161,"FWaASH":58}],161:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -15227,7 +17639,7 @@ ReactRef.detachRefs = function(instance, element) {
 
 module.exports = ReactRef;
 
-},{"./ReactOwner":133}],142:[function(require,module,exports){
+},{"./ReactOwner":153}],162:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -15258,7 +17670,7 @@ var ReactRootIndex = {
 
 module.exports = ReactRootIndex;
 
-},{}],143:[function(require,module,exports){
+},{}],163:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -15340,7 +17752,7 @@ module.exports = {
 };
 
 }).call(this,require("FWaASH"))
-},{"./ReactElement":116,"./ReactInstanceHandles":125,"./ReactMarkupChecksum":128,"./ReactServerRenderingTransaction":144,"./emptyObject":174,"./instantiateReactComponent":193,"./invariant":194,"FWaASH":58}],144:[function(require,module,exports){
+},{"./ReactElement":136,"./ReactInstanceHandles":145,"./ReactMarkupChecksum":148,"./ReactServerRenderingTransaction":164,"./emptyObject":194,"./instantiateReactComponent":213,"./invariant":214,"FWaASH":58}],164:[function(require,module,exports){
 /**
  * Copyright 2014-2015, Facebook, Inc.
  * All rights reserved.
@@ -15453,7 +17865,7 @@ PooledClass.addPoolingTo(ReactServerRenderingTransaction);
 
 module.exports = ReactServerRenderingTransaction;
 
-},{"./CallbackQueue":64,"./Object.assign":85,"./PooledClass":86,"./ReactPutListenerQueue":138,"./Transaction":162,"./emptyFunction":173}],145:[function(require,module,exports){
+},{"./CallbackQueue":84,"./Object.assign":105,"./PooledClass":106,"./ReactPutListenerQueue":158,"./Transaction":182,"./emptyFunction":193}],165:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2015, Facebook, Inc.
@@ -15752,7 +18164,7 @@ var ReactUpdateQueue = {
 module.exports = ReactUpdateQueue;
 
 }).call(this,require("FWaASH"))
-},{"./Object.assign":85,"./ReactCurrentOwner":98,"./ReactElement":116,"./ReactInstanceMap":126,"./ReactLifeCycle":127,"./ReactUpdates":146,"./invariant":194,"./warning":213,"FWaASH":58}],146:[function(require,module,exports){
+},{"./Object.assign":105,"./ReactCurrentOwner":118,"./ReactElement":136,"./ReactInstanceMap":146,"./ReactLifeCycle":147,"./ReactUpdates":166,"./invariant":214,"./warning":233,"FWaASH":58}],166:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -16034,7 +18446,7 @@ var ReactUpdates = {
 module.exports = ReactUpdates;
 
 }).call(this,require("FWaASH"))
-},{"./CallbackQueue":64,"./Object.assign":85,"./PooledClass":86,"./ReactCurrentOwner":98,"./ReactPerf":134,"./ReactReconciler":140,"./Transaction":162,"./invariant":194,"./warning":213,"FWaASH":58}],147:[function(require,module,exports){
+},{"./CallbackQueue":84,"./Object.assign":105,"./PooledClass":106,"./ReactCurrentOwner":118,"./ReactPerf":154,"./ReactReconciler":160,"./Transaction":182,"./invariant":214,"./warning":233,"FWaASH":58}],167:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -16128,7 +18540,7 @@ var SVGDOMPropertyConfig = {
 
 module.exports = SVGDOMPropertyConfig;
 
-},{"./DOMProperty":68}],148:[function(require,module,exports){
+},{"./DOMProperty":88}],168:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -16323,7 +18735,7 @@ var SelectEventPlugin = {
 
 module.exports = SelectEventPlugin;
 
-},{"./EventConstants":73,"./EventPropagators":78,"./ReactInputSelection":124,"./SyntheticEvent":154,"./getActiveElement":180,"./isTextInputElement":197,"./keyOf":200,"./shallowEqual":209}],149:[function(require,module,exports){
+},{"./EventConstants":93,"./EventPropagators":98,"./ReactInputSelection":144,"./SyntheticEvent":174,"./getActiveElement":200,"./isTextInputElement":217,"./keyOf":220,"./shallowEqual":229}],169:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -16354,7 +18766,7 @@ var ServerReactRootIndex = {
 
 module.exports = ServerReactRootIndex;
 
-},{}],150:[function(require,module,exports){
+},{}],170:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -16782,7 +19194,7 @@ var SimpleEventPlugin = {
 module.exports = SimpleEventPlugin;
 
 }).call(this,require("FWaASH"))
-},{"./EventConstants":73,"./EventPluginUtils":77,"./EventPropagators":78,"./SyntheticClipboardEvent":151,"./SyntheticDragEvent":153,"./SyntheticEvent":154,"./SyntheticFocusEvent":155,"./SyntheticKeyboardEvent":157,"./SyntheticMouseEvent":158,"./SyntheticTouchEvent":159,"./SyntheticUIEvent":160,"./SyntheticWheelEvent":161,"./getEventCharCode":181,"./invariant":194,"./keyOf":200,"./warning":213,"FWaASH":58}],151:[function(require,module,exports){
+},{"./EventConstants":93,"./EventPluginUtils":97,"./EventPropagators":98,"./SyntheticClipboardEvent":171,"./SyntheticDragEvent":173,"./SyntheticEvent":174,"./SyntheticFocusEvent":175,"./SyntheticKeyboardEvent":177,"./SyntheticMouseEvent":178,"./SyntheticTouchEvent":179,"./SyntheticUIEvent":180,"./SyntheticWheelEvent":181,"./getEventCharCode":201,"./invariant":214,"./keyOf":220,"./warning":233,"FWaASH":58}],171:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -16827,7 +19239,7 @@ SyntheticEvent.augmentClass(SyntheticClipboardEvent, ClipboardEventInterface);
 
 module.exports = SyntheticClipboardEvent;
 
-},{"./SyntheticEvent":154}],152:[function(require,module,exports){
+},{"./SyntheticEvent":174}],172:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -16872,7 +19284,7 @@ SyntheticEvent.augmentClass(
 
 module.exports = SyntheticCompositionEvent;
 
-},{"./SyntheticEvent":154}],153:[function(require,module,exports){
+},{"./SyntheticEvent":174}],173:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -16911,7 +19323,7 @@ SyntheticMouseEvent.augmentClass(SyntheticDragEvent, DragEventInterface);
 
 module.exports = SyntheticDragEvent;
 
-},{"./SyntheticMouseEvent":158}],154:[function(require,module,exports){
+},{"./SyntheticMouseEvent":178}],174:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -17077,7 +19489,7 @@ PooledClass.addPoolingTo(SyntheticEvent, PooledClass.threeArgumentPooler);
 
 module.exports = SyntheticEvent;
 
-},{"./Object.assign":85,"./PooledClass":86,"./emptyFunction":173,"./getEventTarget":184}],155:[function(require,module,exports){
+},{"./Object.assign":105,"./PooledClass":106,"./emptyFunction":193,"./getEventTarget":204}],175:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -17116,7 +19528,7 @@ SyntheticUIEvent.augmentClass(SyntheticFocusEvent, FocusEventInterface);
 
 module.exports = SyntheticFocusEvent;
 
-},{"./SyntheticUIEvent":160}],156:[function(require,module,exports){
+},{"./SyntheticUIEvent":180}],176:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -17162,7 +19574,7 @@ SyntheticEvent.augmentClass(
 
 module.exports = SyntheticInputEvent;
 
-},{"./SyntheticEvent":154}],157:[function(require,module,exports){
+},{"./SyntheticEvent":174}],177:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -17249,7 +19661,7 @@ SyntheticUIEvent.augmentClass(SyntheticKeyboardEvent, KeyboardEventInterface);
 
 module.exports = SyntheticKeyboardEvent;
 
-},{"./SyntheticUIEvent":160,"./getEventCharCode":181,"./getEventKey":182,"./getEventModifierState":183}],158:[function(require,module,exports){
+},{"./SyntheticUIEvent":180,"./getEventCharCode":201,"./getEventKey":202,"./getEventModifierState":203}],178:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -17330,7 +19742,7 @@ SyntheticUIEvent.augmentClass(SyntheticMouseEvent, MouseEventInterface);
 
 module.exports = SyntheticMouseEvent;
 
-},{"./SyntheticUIEvent":160,"./ViewportMetrics":163,"./getEventModifierState":183}],159:[function(require,module,exports){
+},{"./SyntheticUIEvent":180,"./ViewportMetrics":183,"./getEventModifierState":203}],179:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -17378,7 +19790,7 @@ SyntheticUIEvent.augmentClass(SyntheticTouchEvent, TouchEventInterface);
 
 module.exports = SyntheticTouchEvent;
 
-},{"./SyntheticUIEvent":160,"./getEventModifierState":183}],160:[function(require,module,exports){
+},{"./SyntheticUIEvent":180,"./getEventModifierState":203}],180:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -17440,7 +19852,7 @@ SyntheticEvent.augmentClass(SyntheticUIEvent, UIEventInterface);
 
 module.exports = SyntheticUIEvent;
 
-},{"./SyntheticEvent":154,"./getEventTarget":184}],161:[function(require,module,exports){
+},{"./SyntheticEvent":174,"./getEventTarget":204}],181:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -17501,7 +19913,7 @@ SyntheticMouseEvent.augmentClass(SyntheticWheelEvent, WheelEventInterface);
 
 module.exports = SyntheticWheelEvent;
 
-},{"./SyntheticMouseEvent":158}],162:[function(require,module,exports){
+},{"./SyntheticMouseEvent":178}],182:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -17742,7 +20154,7 @@ var Transaction = {
 module.exports = Transaction;
 
 }).call(this,require("FWaASH"))
-},{"./invariant":194,"FWaASH":58}],163:[function(require,module,exports){
+},{"./invariant":214,"FWaASH":58}],183:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -17771,7 +20183,7 @@ var ViewportMetrics = {
 
 module.exports = ViewportMetrics;
 
-},{}],164:[function(require,module,exports){
+},{}],184:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2014-2015, Facebook, Inc.
@@ -17837,7 +20249,7 @@ function accumulateInto(current, next) {
 module.exports = accumulateInto;
 
 }).call(this,require("FWaASH"))
-},{"./invariant":194,"FWaASH":58}],165:[function(require,module,exports){
+},{"./invariant":214,"FWaASH":58}],185:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -17871,7 +20283,7 @@ function adler32(data) {
 
 module.exports = adler32;
 
-},{}],166:[function(require,module,exports){
+},{}],186:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -17903,7 +20315,7 @@ function camelize(string) {
 
 module.exports = camelize;
 
-},{}],167:[function(require,module,exports){
+},{}],187:[function(require,module,exports){
 /**
  * Copyright 2014-2015, Facebook, Inc.
  * All rights reserved.
@@ -17945,7 +20357,7 @@ function camelizeStyleName(string) {
 
 module.exports = camelizeStyleName;
 
-},{"./camelize":166}],168:[function(require,module,exports){
+},{"./camelize":186}],188:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -17989,7 +20401,7 @@ function containsNode(outerNode, innerNode) {
 
 module.exports = containsNode;
 
-},{"./isTextNode":198}],169:[function(require,module,exports){
+},{"./isTextNode":218}],189:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -18075,7 +20487,7 @@ function createArrayFromMixed(obj) {
 
 module.exports = createArrayFromMixed;
 
-},{"./toArray":211}],170:[function(require,module,exports){
+},{"./toArray":231}],190:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -18137,7 +20549,7 @@ function createFullPageComponent(tag) {
 module.exports = createFullPageComponent;
 
 }).call(this,require("FWaASH"))
-},{"./ReactClass":92,"./ReactElement":116,"./invariant":194,"FWaASH":58}],171:[function(require,module,exports){
+},{"./ReactClass":112,"./ReactElement":136,"./invariant":214,"FWaASH":58}],191:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -18227,7 +20639,7 @@ function createNodesFromMarkup(markup, handleScript) {
 module.exports = createNodesFromMarkup;
 
 }).call(this,require("FWaASH"))
-},{"./ExecutionEnvironment":79,"./createArrayFromMixed":169,"./getMarkupWrap":186,"./invariant":194,"FWaASH":58}],172:[function(require,module,exports){
+},{"./ExecutionEnvironment":99,"./createArrayFromMixed":189,"./getMarkupWrap":206,"./invariant":214,"FWaASH":58}],192:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -18285,7 +20697,7 @@ function dangerousStyleValue(name, value) {
 
 module.exports = dangerousStyleValue;
 
-},{"./CSSProperty":62}],173:[function(require,module,exports){
+},{"./CSSProperty":82}],193:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -18319,7 +20731,7 @@ emptyFunction.thatReturnsArgument = function(arg) { return arg; };
 
 module.exports = emptyFunction;
 
-},{}],174:[function(require,module,exports){
+},{}],194:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -18343,7 +20755,7 @@ if ("production" !== process.env.NODE_ENV) {
 module.exports = emptyObject;
 
 }).call(this,require("FWaASH"))
-},{"FWaASH":58}],175:[function(require,module,exports){
+},{"FWaASH":58}],195:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -18383,7 +20795,7 @@ function escapeTextContentForBrowser(text) {
 
 module.exports = escapeTextContentForBrowser;
 
-},{}],176:[function(require,module,exports){
+},{}],196:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -18456,7 +20868,7 @@ function findDOMNode(componentOrElement) {
 module.exports = findDOMNode;
 
 }).call(this,require("FWaASH"))
-},{"./ReactCurrentOwner":98,"./ReactInstanceMap":126,"./ReactMount":129,"./invariant":194,"./isNode":196,"./warning":213,"FWaASH":58}],177:[function(require,module,exports){
+},{"./ReactCurrentOwner":118,"./ReactInstanceMap":146,"./ReactMount":149,"./invariant":214,"./isNode":216,"./warning":233,"FWaASH":58}],197:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -18514,7 +20926,7 @@ function flattenChildren(children) {
 module.exports = flattenChildren;
 
 }).call(this,require("FWaASH"))
-},{"./traverseAllChildren":212,"./warning":213,"FWaASH":58}],178:[function(require,module,exports){
+},{"./traverseAllChildren":232,"./warning":233,"FWaASH":58}],198:[function(require,module,exports){
 /**
  * Copyright 2014-2015, Facebook, Inc.
  * All rights reserved.
@@ -18543,7 +20955,7 @@ function focusNode(node) {
 
 module.exports = focusNode;
 
-},{}],179:[function(require,module,exports){
+},{}],199:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -18574,7 +20986,7 @@ var forEachAccumulated = function(arr, cb, scope) {
 
 module.exports = forEachAccumulated;
 
-},{}],180:[function(require,module,exports){
+},{}],200:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -18603,7 +21015,7 @@ function getActiveElement() /*?DOMElement*/ {
 
 module.exports = getActiveElement;
 
-},{}],181:[function(require,module,exports){
+},{}],201:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -18655,7 +21067,7 @@ function getEventCharCode(nativeEvent) {
 
 module.exports = getEventCharCode;
 
-},{}],182:[function(require,module,exports){
+},{}],202:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -18760,7 +21172,7 @@ function getEventKey(nativeEvent) {
 
 module.exports = getEventKey;
 
-},{"./getEventCharCode":181}],183:[function(require,module,exports){
+},{"./getEventCharCode":201}],203:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -18807,7 +21219,7 @@ function getEventModifierState(nativeEvent) {
 
 module.exports = getEventModifierState;
 
-},{}],184:[function(require,module,exports){
+},{}],204:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -18838,7 +21250,7 @@ function getEventTarget(nativeEvent) {
 
 module.exports = getEventTarget;
 
-},{}],185:[function(require,module,exports){
+},{}],205:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -18882,7 +21294,7 @@ function getIteratorFn(maybeIterable) {
 
 module.exports = getIteratorFn;
 
-},{}],186:[function(require,module,exports){
+},{}],206:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -19001,7 +21413,7 @@ function getMarkupWrap(nodeName) {
 module.exports = getMarkupWrap;
 
 }).call(this,require("FWaASH"))
-},{"./ExecutionEnvironment":79,"./invariant":194,"FWaASH":58}],187:[function(require,module,exports){
+},{"./ExecutionEnvironment":99,"./invariant":214,"FWaASH":58}],207:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -19076,7 +21488,7 @@ function getNodeForCharacterOffset(root, offset) {
 
 module.exports = getNodeForCharacterOffset;
 
-},{}],188:[function(require,module,exports){
+},{}],208:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -19111,7 +21523,7 @@ function getReactRootElementInContainer(container) {
 
 module.exports = getReactRootElementInContainer;
 
-},{}],189:[function(require,module,exports){
+},{}],209:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -19148,7 +21560,7 @@ function getTextContentAccessor() {
 
 module.exports = getTextContentAccessor;
 
-},{"./ExecutionEnvironment":79}],190:[function(require,module,exports){
+},{"./ExecutionEnvironment":99}],210:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -19188,7 +21600,7 @@ function getUnboundedScrollPosition(scrollable) {
 
 module.exports = getUnboundedScrollPosition;
 
-},{}],191:[function(require,module,exports){
+},{}],211:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -19221,7 +21633,7 @@ function hyphenate(string) {
 
 module.exports = hyphenate;
 
-},{}],192:[function(require,module,exports){
+},{}],212:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -19262,7 +21674,7 @@ function hyphenateStyleName(string) {
 
 module.exports = hyphenateStyleName;
 
-},{"./hyphenate":191}],193:[function(require,module,exports){
+},{"./hyphenate":211}],213:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -19400,7 +21812,7 @@ function instantiateReactComponent(node, parentCompositeType) {
 module.exports = instantiateReactComponent;
 
 }).call(this,require("FWaASH"))
-},{"./Object.assign":85,"./ReactCompositeComponent":96,"./ReactEmptyComponent":118,"./ReactNativeComponent":132,"./invariant":194,"./warning":213,"FWaASH":58}],194:[function(require,module,exports){
+},{"./Object.assign":105,"./ReactCompositeComponent":116,"./ReactEmptyComponent":138,"./ReactNativeComponent":152,"./invariant":214,"./warning":233,"FWaASH":58}],214:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -19457,7 +21869,7 @@ var invariant = function(condition, format, a, b, c, d, e, f) {
 module.exports = invariant;
 
 }).call(this,require("FWaASH"))
-},{"FWaASH":58}],195:[function(require,module,exports){
+},{"FWaASH":58}],215:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -19522,7 +21934,7 @@ function isEventSupported(eventNameSuffix, capture) {
 
 module.exports = isEventSupported;
 
-},{"./ExecutionEnvironment":79}],196:[function(require,module,exports){
+},{"./ExecutionEnvironment":99}],216:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -19549,7 +21961,7 @@ function isNode(object) {
 
 module.exports = isNode;
 
-},{}],197:[function(require,module,exports){
+},{}],217:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -19592,7 +22004,7 @@ function isTextInputElement(elem) {
 
 module.exports = isTextInputElement;
 
-},{}],198:[function(require,module,exports){
+},{}],218:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -19617,7 +22029,7 @@ function isTextNode(object) {
 
 module.exports = isTextNode;
 
-},{"./isNode":196}],199:[function(require,module,exports){
+},{"./isNode":216}],219:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -19672,7 +22084,7 @@ var keyMirror = function(obj) {
 module.exports = keyMirror;
 
 }).call(this,require("FWaASH"))
-},{"./invariant":194,"FWaASH":58}],200:[function(require,module,exports){
+},{"./invariant":214,"FWaASH":58}],220:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -19708,7 +22120,7 @@ var keyOf = function(oneKeyObj) {
 
 module.exports = keyOf;
 
-},{}],201:[function(require,module,exports){
+},{}],221:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -19761,7 +22173,7 @@ function mapObject(object, callback, context) {
 
 module.exports = mapObject;
 
-},{}],202:[function(require,module,exports){
+},{}],222:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -19794,7 +22206,7 @@ function memoizeStringOnly(callback) {
 
 module.exports = memoizeStringOnly;
 
-},{}],203:[function(require,module,exports){
+},{}],223:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -19834,7 +22246,7 @@ function onlyChild(children) {
 module.exports = onlyChild;
 
 }).call(this,require("FWaASH"))
-},{"./ReactElement":116,"./invariant":194,"FWaASH":58}],204:[function(require,module,exports){
+},{"./ReactElement":136,"./invariant":214,"FWaASH":58}],224:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -19862,7 +22274,7 @@ if (ExecutionEnvironment.canUseDOM) {
 
 module.exports = performance || {};
 
-},{"./ExecutionEnvironment":79}],205:[function(require,module,exports){
+},{"./ExecutionEnvironment":99}],225:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -19890,7 +22302,7 @@ var performanceNow = performance.now.bind(performance);
 
 module.exports = performanceNow;
 
-},{"./performance":204}],206:[function(require,module,exports){
+},{"./performance":224}],226:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -19918,7 +22330,7 @@ function quoteAttributeValueForBrowser(value) {
 
 module.exports = quoteAttributeValueForBrowser;
 
-},{"./escapeTextContentForBrowser":175}],207:[function(require,module,exports){
+},{"./escapeTextContentForBrowser":195}],227:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -20007,7 +22419,7 @@ if (ExecutionEnvironment.canUseDOM) {
 
 module.exports = setInnerHTML;
 
-},{"./ExecutionEnvironment":79}],208:[function(require,module,exports){
+},{"./ExecutionEnvironment":99}],228:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -20049,7 +22461,7 @@ if (ExecutionEnvironment.canUseDOM) {
 
 module.exports = setTextContent;
 
-},{"./ExecutionEnvironment":79,"./escapeTextContentForBrowser":175,"./setInnerHTML":207}],209:[function(require,module,exports){
+},{"./ExecutionEnvironment":99,"./escapeTextContentForBrowser":195,"./setInnerHTML":227}],229:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -20093,7 +22505,7 @@ function shallowEqual(objA, objB) {
 
 module.exports = shallowEqual;
 
-},{}],210:[function(require,module,exports){
+},{}],230:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -20197,7 +22609,7 @@ function shouldUpdateReactComponent(prevElement, nextElement) {
 module.exports = shouldUpdateReactComponent;
 
 }).call(this,require("FWaASH"))
-},{"./warning":213,"FWaASH":58}],211:[function(require,module,exports){
+},{"./warning":233,"FWaASH":58}],231:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2014-2015, Facebook, Inc.
@@ -20269,7 +22681,7 @@ function toArray(obj) {
 module.exports = toArray;
 
 }).call(this,require("FWaASH"))
-},{"./invariant":194,"FWaASH":58}],212:[function(require,module,exports){
+},{"./invariant":214,"FWaASH":58}],232:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -20522,7 +22934,7 @@ function traverseAllChildren(children, callback, traverseContext) {
 module.exports = traverseAllChildren;
 
 }).call(this,require("FWaASH"))
-},{"./ReactElement":116,"./ReactFragment":122,"./ReactInstanceHandles":125,"./getIteratorFn":185,"./invariant":194,"./warning":213,"FWaASH":58}],213:[function(require,module,exports){
+},{"./ReactElement":136,"./ReactFragment":142,"./ReactInstanceHandles":145,"./getIteratorFn":205,"./invariant":214,"./warning":233,"FWaASH":58}],233:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2014-2015, Facebook, Inc.
@@ -20585,10 +22997,10 @@ if ("production" !== process.env.NODE_ENV) {
 module.exports = warning;
 
 }).call(this,require("FWaASH"))
-},{"./emptyFunction":173,"FWaASH":58}],214:[function(require,module,exports){
+},{"./emptyFunction":193,"FWaASH":58}],234:[function(require,module,exports){
 module.exports = require('./lib/React');
 
-},{"./lib/React":87}],215:[function(require,module,exports){
+},{"./lib/React":107}],235:[function(require,module,exports){
 /*! tether 1.1.0 */
 
 (function(root, factory) {
@@ -22305,7 +24717,7 @@ return Tether;
 
 }));
 
-},{}],216:[function(require,module,exports){
+},{}],236:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -22419,77 +24831,9 @@ Button.defaultProps = {
 
 exports.default = Button;
 
-},{"babel-runtime/core-js/object/get-prototype-of":4,"babel-runtime/helpers/classCallCheck":8,"babel-runtime/helpers/createClass":9,"babel-runtime/helpers/extends":10,"babel-runtime/helpers/inherits":11,"babel-runtime/helpers/possibleConstructorReturn":12,"classnames":59,"react":214}],217:[function(require,module,exports){
-(function (global){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _extends2 = require('babel-runtime/helpers/extends');
-
-var _extends3 = _interopRequireDefault(_extends2);
-
-var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
-
-var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
-
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
-
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
-
-var _createClass2 = require('babel-runtime/helpers/createClass');
-
-var _createClass3 = _interopRequireDefault(_createClass2);
-
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
-
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
-
-var _inherits2 = require('babel-runtime/helpers/inherits');
-
-var _inherits3 = _interopRequireDefault(_inherits2);
-
-var _react = (typeof window !== "undefined" ? window['React'] : typeof global !== "undefined" ? global['React'] : null);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _classnames = require('classnames');
-
-var _classnames2 = _interopRequireDefault(_classnames);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var ButtonGroup = function (_React$Component) {
-  (0, _inherits3.default)(ButtonGroup, _React$Component);
-
-  function ButtonGroup() {
-    (0, _classCallCheck3.default)(this, ButtonGroup);
-    return (0, _possibleConstructorReturn3.default)(this, (0, _getPrototypeOf2.default)(ButtonGroup).apply(this, arguments));
-  }
-
-  (0, _createClass3.default)(ButtonGroup, [{
-    key: 'render',
-    value: function render() {
-      var classes = undefined;
-
-      classes = (0, _classnames2.default)('rs-btn-group', this.props.className);
-
-      return _react2.default.createElement(
-        'div',
-        (0, _extends3.default)({}, this.props, { className: classes }),
-        this.props.children
-      );
-    }
-  }]);
-  return ButtonGroup;
-}(_react2.default.Component);
-
-exports.default = ButtonGroup;
-
-}).call(this,typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"babel-runtime/core-js/object/get-prototype-of":4,"babel-runtime/helpers/classCallCheck":8,"babel-runtime/helpers/createClass":9,"babel-runtime/helpers/extends":10,"babel-runtime/helpers/inherits":11,"babel-runtime/helpers/possibleConstructorReturn":12,"classnames":59}],218:[function(require,module,exports){
+},{"babel-runtime/core-js/object/get-prototype-of":4,"babel-runtime/helpers/classCallCheck":8,"babel-runtime/helpers/createClass":9,"babel-runtime/helpers/extends":10,"babel-runtime/helpers/inherits":11,"babel-runtime/helpers/possibleConstructorReturn":12,"classnames":79,"react":234}],237:[function(require,module,exports){
+module.exports=require(60)
+},{"babel-runtime/core-js/object/get-prototype-of":4,"babel-runtime/helpers/classCallCheck":8,"babel-runtime/helpers/createClass":9,"babel-runtime/helpers/extends":10,"babel-runtime/helpers/inherits":11,"babel-runtime/helpers/possibleConstructorReturn":12,"classnames":79}],238:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -22590,7 +24934,7 @@ Criteria.propTypes = {
 
 exports.default = Criteria;
 
-},{"babel-runtime/core-js/object/get-prototype-of":4,"babel-runtime/helpers/classCallCheck":8,"babel-runtime/helpers/createClass":9,"babel-runtime/helpers/inherits":11,"babel-runtime/helpers/possibleConstructorReturn":12,"classnames":59,"react":214}],219:[function(require,module,exports){
+},{"babel-runtime/core-js/object/get-prototype-of":4,"babel-runtime/helpers/classCallCheck":8,"babel-runtime/helpers/createClass":9,"babel-runtime/helpers/inherits":11,"babel-runtime/helpers/possibleConstructorReturn":12,"classnames":79,"react":234}],239:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -22642,7 +24986,7 @@ var Divider = function (_React$Component) {
 
 exports.default = Divider;
 
-},{"babel-runtime/core-js/object/get-prototype-of":4,"babel-runtime/helpers/classCallCheck":8,"babel-runtime/helpers/createClass":9,"babel-runtime/helpers/inherits":11,"babel-runtime/helpers/possibleConstructorReturn":12,"react":214}],220:[function(require,module,exports){
+},{"babel-runtime/core-js/object/get-prototype-of":4,"babel-runtime/helpers/classCallCheck":8,"babel-runtime/helpers/createClass":9,"babel-runtime/helpers/inherits":11,"babel-runtime/helpers/possibleConstructorReturn":12,"react":234}],240:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -22737,7 +25081,7 @@ Dropdown.propTypes = {
 
 exports.default = Dropdown;
 
-},{"babel-runtime/core-js/object/get-prototype-of":4,"babel-runtime/helpers/classCallCheck":8,"babel-runtime/helpers/createClass":9,"babel-runtime/helpers/inherits":11,"babel-runtime/helpers/possibleConstructorReturn":12,"classnames":59,"react":214}],221:[function(require,module,exports){
+},{"babel-runtime/core-js/object/get-prototype-of":4,"babel-runtime/helpers/classCallCheck":8,"babel-runtime/helpers/createClass":9,"babel-runtime/helpers/inherits":11,"babel-runtime/helpers/possibleConstructorReturn":12,"classnames":79,"react":234}],241:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -22860,7 +25204,7 @@ DropdownItem.propTypes = {
 
 exports.default = DropdownItem;
 
-},{"babel-runtime/core-js/object/get-prototype-of":4,"babel-runtime/helpers/classCallCheck":8,"babel-runtime/helpers/createClass":9,"babel-runtime/helpers/extends":10,"babel-runtime/helpers/inherits":11,"babel-runtime/helpers/possibleConstructorReturn":12,"classnames":59,"react":214}],222:[function(require,module,exports){
+},{"babel-runtime/core-js/object/get-prototype-of":4,"babel-runtime/helpers/classCallCheck":8,"babel-runtime/helpers/createClass":9,"babel-runtime/helpers/extends":10,"babel-runtime/helpers/inherits":11,"babel-runtime/helpers/possibleConstructorReturn":12,"classnames":79,"react":234}],242:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -23055,7 +25399,7 @@ DropdownTrigger.propTypes = {
 
 exports.default = DropdownTrigger;
 
-},{"babel-runtime/core-js/object/get-prototype-of":4,"babel-runtime/helpers/classCallCheck":8,"babel-runtime/helpers/createClass":9,"babel-runtime/helpers/inherits":11,"babel-runtime/helpers/possibleConstructorReturn":12,"react":214,"tether":215}],223:[function(require,module,exports){
+},{"babel-runtime/core-js/object/get-prototype-of":4,"babel-runtime/helpers/classCallCheck":8,"babel-runtime/helpers/createClass":9,"babel-runtime/helpers/inherits":11,"babel-runtime/helpers/possibleConstructorReturn":12,"react":234,"tether":235}],243:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -23240,7 +25584,7 @@ Facet.propTypes = {
 
 exports.default = Facet;
 
-},{"./FacetToggler":224,"babel-runtime/core-js/object/get-prototype-of":4,"babel-runtime/core-js/object/keys":5,"babel-runtime/helpers/classCallCheck":8,"babel-runtime/helpers/createClass":9,"babel-runtime/helpers/inherits":11,"babel-runtime/helpers/possibleConstructorReturn":12,"classnames":59,"react":214}],224:[function(require,module,exports){
+},{"./FacetToggler":244,"babel-runtime/core-js/object/get-prototype-of":4,"babel-runtime/core-js/object/keys":5,"babel-runtime/helpers/classCallCheck":8,"babel-runtime/helpers/createClass":9,"babel-runtime/helpers/inherits":11,"babel-runtime/helpers/possibleConstructorReturn":12,"classnames":79,"react":234}],244:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -23311,7 +25655,7 @@ FacetToggler.propTypes = {
 
 exports.default = FacetToggler;
 
-},{"babel-runtime/core-js/object/get-prototype-of":4,"babel-runtime/helpers/classCallCheck":8,"babel-runtime/helpers/createClass":9,"babel-runtime/helpers/inherits":11,"babel-runtime/helpers/possibleConstructorReturn":12,"react":214}],225:[function(require,module,exports){
+},{"babel-runtime/core-js/object/get-prototype-of":4,"babel-runtime/helpers/classCallCheck":8,"babel-runtime/helpers/createClass":9,"babel-runtime/helpers/inherits":11,"babel-runtime/helpers/possibleConstructorReturn":12,"react":234}],245:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -23494,7 +25838,7 @@ FacetsSection.propTypes = {
 
 exports.default = FacetsSection;
 
-},{"babel-runtime/core-js/object/get-prototype-of":4,"babel-runtime/core-js/object/keys":5,"babel-runtime/helpers/classCallCheck":8,"babel-runtime/helpers/createClass":9,"babel-runtime/helpers/inherits":11,"babel-runtime/helpers/possibleConstructorReturn":12,"classnames":59,"react":214}],226:[function(require,module,exports){
+},{"babel-runtime/core-js/object/get-prototype-of":4,"babel-runtime/core-js/object/keys":5,"babel-runtime/helpers/classCallCheck":8,"babel-runtime/helpers/createClass":9,"babel-runtime/helpers/inherits":11,"babel-runtime/helpers/possibleConstructorReturn":12,"classnames":79,"react":234}],246:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -23747,7 +26091,7 @@ Popover.propTypes = {
 
 exports.default = Popover;
 
-},{"./PopoverBackground":227,"babel-runtime/core-js/object/get-prototype-of":4,"babel-runtime/helpers/classCallCheck":8,"babel-runtime/helpers/createClass":9,"babel-runtime/helpers/inherits":11,"babel-runtime/helpers/possibleConstructorReturn":12,"react":214,"tether":215}],227:[function(require,module,exports){
+},{"./PopoverBackground":247,"babel-runtime/core-js/object/get-prototype-of":4,"babel-runtime/helpers/classCallCheck":8,"babel-runtime/helpers/createClass":9,"babel-runtime/helpers/inherits":11,"babel-runtime/helpers/possibleConstructorReturn":12,"react":234,"tether":235}],247:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -23814,7 +26158,7 @@ PopoverBackground.propTypes = {
 
 exports.default = PopoverBackground;
 
-},{"babel-runtime/core-js/object/get-prototype-of":4,"babel-runtime/helpers/classCallCheck":8,"babel-runtime/helpers/createClass":9,"babel-runtime/helpers/inherits":11,"babel-runtime/helpers/possibleConstructorReturn":12,"react":214}],228:[function(require,module,exports){
+},{"babel-runtime/core-js/object/get-prototype-of":4,"babel-runtime/helpers/classCallCheck":8,"babel-runtime/helpers/createClass":9,"babel-runtime/helpers/inherits":11,"babel-runtime/helpers/possibleConstructorReturn":12,"react":234}],248:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -23874,7 +26218,7 @@ var PopoverBody = function (_React$Component) {
 
 exports.default = PopoverBody;
 
-},{"babel-runtime/core-js/object/get-prototype-of":4,"babel-runtime/helpers/classCallCheck":8,"babel-runtime/helpers/createClass":9,"babel-runtime/helpers/inherits":11,"babel-runtime/helpers/possibleConstructorReturn":12,"classnames":59,"react":214}],229:[function(require,module,exports){
+},{"babel-runtime/core-js/object/get-prototype-of":4,"babel-runtime/helpers/classCallCheck":8,"babel-runtime/helpers/createClass":9,"babel-runtime/helpers/inherits":11,"babel-runtime/helpers/possibleConstructorReturn":12,"classnames":79,"react":234}],249:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -23938,7 +26282,7 @@ var PopoverFooter = function (_React$Component) {
 
 exports.default = PopoverFooter;
 
-},{"./ButtonGroup":217,"babel-runtime/core-js/object/get-prototype-of":4,"babel-runtime/helpers/classCallCheck":8,"babel-runtime/helpers/createClass":9,"babel-runtime/helpers/inherits":11,"babel-runtime/helpers/possibleConstructorReturn":12,"classnames":59,"react":214}],230:[function(require,module,exports){
+},{"./ButtonGroup":237,"babel-runtime/core-js/object/get-prototype-of":4,"babel-runtime/helpers/classCallCheck":8,"babel-runtime/helpers/createClass":9,"babel-runtime/helpers/inherits":11,"babel-runtime/helpers/possibleConstructorReturn":12,"classnames":79,"react":234}],250:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -24040,7 +26384,7 @@ PopoverOverlay.propTypes = {
 
 exports.default = PopoverOverlay;
 
-},{"babel-runtime/core-js/object/get-prototype-of":4,"babel-runtime/helpers/classCallCheck":8,"babel-runtime/helpers/createClass":9,"babel-runtime/helpers/inherits":11,"babel-runtime/helpers/possibleConstructorReturn":12,"classnames":59,"react":214}],231:[function(require,module,exports){
+},{"babel-runtime/core-js/object/get-prototype-of":4,"babel-runtime/helpers/classCallCheck":8,"babel-runtime/helpers/createClass":9,"babel-runtime/helpers/inherits":11,"babel-runtime/helpers/possibleConstructorReturn":12,"classnames":79,"react":234}],251:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -24108,7 +26452,7 @@ ProcessingIndicator.defaultProps = {
 
 exports.default = ProcessingIndicator;
 
-},{"babel-runtime/core-js/object/get-prototype-of":4,"babel-runtime/helpers/classCallCheck":8,"babel-runtime/helpers/createClass":9,"babel-runtime/helpers/inherits":11,"babel-runtime/helpers/possibleConstructorReturn":12,"classnames":59,"react":214}],232:[function(require,module,exports){
+},{"babel-runtime/core-js/object/get-prototype-of":4,"babel-runtime/helpers/classCallCheck":8,"babel-runtime/helpers/createClass":9,"babel-runtime/helpers/inherits":11,"babel-runtime/helpers/possibleConstructorReturn":12,"classnames":79,"react":234}],252:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -24225,7 +26569,7 @@ ProgressBar.defaultProps = {
 
 exports.default = ProgressBar;
 
-},{"babel-runtime/core-js/object/get-prototype-of":4,"babel-runtime/helpers/classCallCheck":8,"babel-runtime/helpers/createClass":9,"babel-runtime/helpers/inherits":11,"babel-runtime/helpers/possibleConstructorReturn":12,"classnames":59,"react":214}],233:[function(require,module,exports){
+},{"babel-runtime/core-js/object/get-prototype-of":4,"babel-runtime/helpers/classCallCheck":8,"babel-runtime/helpers/createClass":9,"babel-runtime/helpers/inherits":11,"babel-runtime/helpers/possibleConstructorReturn":12,"classnames":79,"react":234}],253:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -24289,7 +26633,7 @@ var StatusIndicator = function (_React$Component) {
 
       classes = (0, _classnames2.default)(this.props.className, STATUS_INDICATOR[this.props.status], { 'rs-hidden': this.props.hidden });
       return _react2.default.createElement(
-        'statusindicator',
+        'span',
         (0, _extends3.default)({}, this.props, { className: classes }),
         this.props.children
       );
@@ -24310,7 +26654,7 @@ StatusIndicator.defaultProps = {
 
 exports.default = StatusIndicator;
 
-},{"babel-runtime/core-js/object/get-prototype-of":4,"babel-runtime/helpers/classCallCheck":8,"babel-runtime/helpers/createClass":9,"babel-runtime/helpers/extends":10,"babel-runtime/helpers/inherits":11,"babel-runtime/helpers/possibleConstructorReturn":12,"classnames":59,"react":214}],234:[function(require,module,exports){
+},{"babel-runtime/core-js/object/get-prototype-of":4,"babel-runtime/helpers/classCallCheck":8,"babel-runtime/helpers/createClass":9,"babel-runtime/helpers/extends":10,"babel-runtime/helpers/inherits":11,"babel-runtime/helpers/possibleConstructorReturn":12,"classnames":79,"react":234}],254:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -24585,7 +26929,7 @@ TooltipTrigger.defaultProps = {
 
 exports.default = TooltipTrigger;
 
-},{"babel-runtime/core-js/object/get-prototype-of":4,"babel-runtime/helpers/classCallCheck":8,"babel-runtime/helpers/createClass":9,"babel-runtime/helpers/inherits":11,"babel-runtime/helpers/possibleConstructorReturn":12,"react":214,"tether":215}],235:[function(require,module,exports){
+},{"babel-runtime/core-js/object/get-prototype-of":4,"babel-runtime/helpers/classCallCheck":8,"babel-runtime/helpers/createClass":9,"babel-runtime/helpers/inherits":11,"babel-runtime/helpers/possibleConstructorReturn":12,"react":234,"tether":235}],255:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -24614,24 +26958,14 @@ var _inherits3 = _interopRequireDefault(_inherits2);
 
 var _react = require('react');
 
-var _react2 = _interopRequireDefault(_react);
+var _canonReact = require('canon-react');
 
-var _Button = require('../Button');
-
-var _Button2 = _interopRequireDefault(_Button);
-
-var _ButtonGroup = require('../ButtonGroup');
-
-var _ButtonGroup2 = _interopRequireDefault(_ButtonGroup);
-
-var _ProcessingIndicator = require('../ProcessingIndicator');
-
-var _ProcessingIndicator2 = _interopRequireDefault(_ProcessingIndicator);
+var _Common = require('./Common');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var ButtonGroupSection = function (_React$Component) {
-  (0, _inherits3.default)(ButtonGroupSection, _React$Component);
+var ButtonGroupSection = function (_Component) {
+  (0, _inherits3.default)(ButtonGroupSection, _Component);
 
   function ButtonGroupSection() {
     (0, _classCallCheck3.default)(this, ButtonGroupSection);
@@ -24641,19 +26975,19 @@ var ButtonGroupSection = function (_React$Component) {
   (0, _createClass3.default)(ButtonGroupSection, [{
     key: 'render',
     value: function render() {
-      return _react2.default.createElement(
+      return React.createElement(
         'div',
         { className: 'website-content-section' },
-        _react2.default.createElement(
+        React.createElement(
           'div',
           { className: 'content-section-body' },
-          _react2.default.createElement(
-            'div',
-            { className: 'rs-row' },
-            _react2.default.createElement(
+          React.createElement(
+            _Common.Row,
+            null,
+            React.createElement(
               'p',
               null,
-              _react2.default.createElement(
+              React.createElement(
                 'a',
                 { href: 'http://rackerlabs.github.io/canon/ui-components/#button-groups', target: '_blank' },
                 'Button Groups'
@@ -24661,22 +26995,22 @@ var ButtonGroupSection = function (_React$Component) {
               ' are used to lay out a set of related buttons. Button groups have two different states: normal and submitting'
             )
           ),
-          _react2.default.createElement(
-            'div',
-            { className: 'rs-row' },
-            _react2.default.createElement(
+          React.createElement(
+            _Common.Row,
+            null,
+            React.createElement(
               'div',
               { className: 'span-3' },
-              _react2.default.createElement(
+              React.createElement(
                 'h3',
                 null,
                 'Normal'
               ),
-              _react2.default.createElement(
+              React.createElement(
                 'p',
                 null,
                 'In a normal state the buttons are active and ready for interaction from the user. The ',
-                _react2.default.createElement(
+                React.createElement(
                   'code',
                   null,
                   'ProcessingIndicator'
@@ -24684,156 +27018,156 @@ var ButtonGroupSection = function (_React$Component) {
                 ' is either hidden (by default) or not rendered.'
               )
             ),
-            _react2.default.createElement(
+            React.createElement(
               'div',
               { className: 'span-8 offset-1' },
-              _react2.default.createElement(
+              React.createElement(
                 'h4',
                 null,
                 'Example'
               ),
-              _react2.default.createElement(
-                _ButtonGroup2.default,
+              React.createElement(
+                _canonReact.ButtonGroup,
                 null,
-                _react2.default.createElement(
-                  _Button2.default,
+                React.createElement(
+                  _canonReact.Button,
                   { type: 'primary' },
                   'Primary'
                 ),
-                _react2.default.createElement(
-                  _Button2.default,
+                React.createElement(
+                  _canonReact.Button,
                   null,
                   'Secondary'
                 ),
-                _react2.default.createElement(
-                  _Button2.default,
+                React.createElement(
+                  _canonReact.Button,
                   { type: 'link' },
                   'Cancel'
                 ),
-                _react2.default.createElement(_ProcessingIndicator2.default, null)
+                React.createElement(_canonReact.ProcessingIndicator, null)
               ),
-              _react2.default.createElement(
+              React.createElement(
                 'h4',
                 null,
                 'Source'
               ),
-              _react2.default.createElement(
+              React.createElement(
                 'div',
                 { className: 'highlight button-group' },
-                _react2.default.createElement(
+                React.createElement(
                   'pre',
                   null,
-                  _react2.default.createElement(
+                  React.createElement(
                     'code',
                     { className: 'html' },
-                    _react2.default.createElement(
+                    React.createElement(
                       'span',
                       { className: 'nt' },
                       '<ButtonGroup>'
                     ),
-                    _react2.default.createElement(
+                    React.createElement(
                       'span',
                       { className: 'nt' },
                       '<Button'
                     ),
                     ' ',
-                    _react2.default.createElement(
+                    React.createElement(
                       'span',
                       { className: 'na' },
                       'type='
                     ),
-                    _react2.default.createElement(
+                    React.createElement(
                       'span',
                       { className: 's' },
                       '"primary"'
                     ),
-                    _react2.default.createElement(
+                    React.createElement(
                       'span',
                       { className: 'nt' },
                       '>'
                     ),
                     'Primary',
-                    _react2.default.createElement(
+                    React.createElement(
                       'span',
                       { className: 'nt' },
                       '</Button>'
                     ),
-                    _react2.default.createElement(
+                    React.createElement(
                       'span',
                       { className: 'nt' },
                       '<Button'
                     ),
                     ' ',
-                    _react2.default.createElement(
+                    React.createElement(
                       'span',
                       { className: 'na' },
                       'type='
                     ),
-                    _react2.default.createElement(
+                    React.createElement(
                       'span',
                       { className: 's' },
                       '"secondary"'
                     ),
-                    _react2.default.createElement(
+                    React.createElement(
                       'span',
                       { className: 'nt' },
                       '>'
                     ),
                     'Secondary',
-                    _react2.default.createElement(
+                    React.createElement(
                       'span',
                       { className: 'nt' },
                       '</Button>'
                     ),
-                    _react2.default.createElement(
+                    React.createElement(
                       'span',
                       { className: 'nt' },
                       '<Button'
                     ),
                     ' ',
-                    _react2.default.createElement(
+                    React.createElement(
                       'span',
                       { className: 'na' },
                       'type='
                     ),
-                    _react2.default.createElement(
+                    React.createElement(
                       'span',
                       { className: 's' },
                       '"link"'
                     ),
-                    _react2.default.createElement(
+                    React.createElement(
                       'span',
                       { className: 'nt' },
                       '>'
                     ),
                     'Cancel',
-                    _react2.default.createElement(
+                    React.createElement(
                       'span',
                       { className: 'nt' },
                       '</Button>'
                     ),
-                    _react2.default.createElement(
+                    React.createElement(
                       'span',
                       { className: 'nt' },
                       '<ProcessingIndicator'
                     ),
                     ' ',
-                    _react2.default.createElement(
+                    React.createElement(
                       'span',
                       { className: 'na' },
                       'hidden='
                     ),
-                    _react2.default.createElement(
+                    React.createElement(
                       'span',
                       { className: 's' },
                       "{true}"
                     ),
-                    _react2.default.createElement(
+                    React.createElement(
                       'span',
                       { className: 'nt' },
                       '/>'
                     ),
-                    _react2.default.createElement(
+                    React.createElement(
                       'span',
                       { className: 'nt' },
                       '</ButtonGroup>'
@@ -24843,28 +27177,28 @@ var ButtonGroupSection = function (_React$Component) {
               )
             )
           ),
-          _react2.default.createElement(
-            'div',
-            { className: 'rs-row' },
-            _react2.default.createElement(
+          React.createElement(
+            _Common.Row,
+            null,
+            React.createElement(
               'div',
               { className: 'span-3' },
-              _react2.default.createElement(
+              React.createElement(
                 'h3',
                 null,
                 'Submitting'
               ),
-              _react2.default.createElement(
+              React.createElement(
                 'p',
                 null,
                 'In a submitting state an action is being processed and the buttons are disabled. The ',
-                _react2.default.createElement(
+                React.createElement(
                   'code',
                   null,
                   'ProcessingIndicator'
                 ),
                 ' is rendered with a property of ',
-                _react2.default.createElement(
+                React.createElement(
                   'code',
                   null,
                   'hidden: false'
@@ -24872,197 +27206,197 @@ var ButtonGroupSection = function (_React$Component) {
                 '. Cancel links are also hidden with this pattern.'
               )
             ),
-            _react2.default.createElement(
+            React.createElement(
               'div',
               { className: 'span-8 offset-1' },
-              _react2.default.createElement(
+              React.createElement(
                 'h4',
                 null,
                 'Example'
               ),
-              _react2.default.createElement(
-                _ButtonGroup2.default,
+              React.createElement(
+                _canonReact.ButtonGroup,
                 null,
-                _react2.default.createElement(
-                  _Button2.default,
+                React.createElement(
+                  _canonReact.Button,
                   { type: 'primary', enabled: false },
                   'Primary'
                 ),
-                _react2.default.createElement(
-                  _Button2.default,
+                React.createElement(
+                  _canonReact.Button,
                   { enabled: false },
                   'Secondary'
                 ),
-                _react2.default.createElement(
-                  _Button2.default,
+                React.createElement(
+                  _canonReact.Button,
                   { type: 'link', enabled: false, hidden: true },
                   'Cancel'
                 ),
-                _react2.default.createElement(_ProcessingIndicator2.default, { hidden: false })
+                React.createElement(_canonReact.ProcessingIndicator, { hidden: false })
               ),
-              _react2.default.createElement(
+              React.createElement(
                 'h4',
                 null,
                 'Source'
               ),
-              _react2.default.createElement(
+              React.createElement(
                 'div',
                 { className: 'highlight' },
-                _react2.default.createElement(
+                React.createElement(
                   'pre',
                   null,
-                  _react2.default.createElement(
+                  React.createElement(
                     'code',
                     { className: 'html' },
-                    _react2.default.createElement(
+                    React.createElement(
                       'span',
                       { className: 'nt' },
                       '<ButtonGroup>'
                     ),
-                    _react2.default.createElement(
+                    React.createElement(
                       'span',
                       { className: 'nt' },
                       '<Button'
                     ),
                     ' ',
-                    _react2.default.createElement(
+                    React.createElement(
                       'span',
                       { className: 'na' },
                       'type='
                     ),
-                    _react2.default.createElement(
+                    React.createElement(
                       'span',
                       { className: 's' },
                       '"primary"'
                     ),
                     ' ',
-                    _react2.default.createElement(
+                    React.createElement(
                       'span',
                       { className: 'na' },
                       'enabled='
                     ),
-                    _react2.default.createElement(
+                    React.createElement(
                       'span',
                       { className: 's' },
                       '"',
                       false,
                       '"'
                     ),
-                    _react2.default.createElement(
+                    React.createElement(
                       'span',
                       { className: 'nt' },
                       '>'
                     ),
                     'Primary',
-                    _react2.default.createElement(
+                    React.createElement(
                       'span',
                       { className: 'nt' },
                       '</Button>'
                     ),
-                    _react2.default.createElement(
+                    React.createElement(
                       'span',
                       { className: 'nt' },
                       '<Button'
                     ),
                     ' ',
-                    _react2.default.createElement(
+                    React.createElement(
                       'span',
                       { className: 'na' },
                       'type='
                     ),
-                    _react2.default.createElement(
+                    React.createElement(
                       'span',
                       { className: 's' },
                       '"secondary"'
                     ),
                     ' ',
-                    _react2.default.createElement(
+                    React.createElement(
                       'span',
                       { className: 'na' },
                       'enabled='
                     ),
-                    _react2.default.createElement(
+                    React.createElement(
                       'span',
                       { className: 's' },
                       '"',
                       false,
                       '"'
                     ),
-                    _react2.default.createElement(
+                    React.createElement(
                       'span',
                       { className: 'nt' },
                       '>'
                     ),
                     'Secondary',
-                    _react2.default.createElement(
+                    React.createElement(
                       'span',
                       { className: 'nt' },
                       '</Button>'
                     ),
-                    _react2.default.createElement(
+                    React.createElement(
                       'span',
                       { className: 'nt' },
                       '<Button'
                     ),
                     ' ',
-                    _react2.default.createElement(
+                    React.createElement(
                       'span',
                       { className: 'na' },
                       'type='
                     ),
-                    _react2.default.createElement(
+                    React.createElement(
                       'span',
                       { className: 's' },
                       '"link"'
                     ),
                     ' ',
-                    _react2.default.createElement(
+                    React.createElement(
                       'span',
                       { className: 'na' },
                       'hidden='
                     ),
-                    _react2.default.createElement(
+                    React.createElement(
                       'span',
                       { className: 's' },
                       '"',
                       true,
                       '"'
                     ),
-                    _react2.default.createElement(
+                    React.createElement(
                       'span',
                       { className: 'nt' },
                       '>'
                     ),
                     'Cancel',
-                    _react2.default.createElement(
+                    React.createElement(
                       'span',
                       { className: 'nt' },
                       '</Button>'
                     ),
-                    _react2.default.createElement(
+                    React.createElement(
                       'span',
                       { className: 'nt' },
                       '<ProcessingIndicator'
                     ),
                     ' ',
-                    _react2.default.createElement(
+                    React.createElement(
                       'span',
                       { className: 'na' },
                       'hidden='
                     ),
-                    _react2.default.createElement(
+                    React.createElement(
                       'span',
                       { className: 's' },
                       '"',
                       false,
                       '"'
                     ),
-                    _react2.default.createElement(
+                    React.createElement(
                       'span',
                       { className: 'nt' },
                       '/>'
                     ),
-                    _react2.default.createElement(
+                    React.createElement(
                       'span',
                       { className: 'nt' },
                       '</ButtonGroup>'
@@ -25077,11 +27411,11 @@ var ButtonGroupSection = function (_React$Component) {
     }
   }]);
   return ButtonGroupSection;
-}(_react2.default.Component);
+}(_react.Component);
 
 exports.default = ButtonGroupSection;
 
-},{"../Button":216,"../ButtonGroup":217,"../ProcessingIndicator":231,"babel-runtime/core-js/object/get-prototype-of":4,"babel-runtime/helpers/classCallCheck":8,"babel-runtime/helpers/createClass":9,"babel-runtime/helpers/inherits":11,"babel-runtime/helpers/possibleConstructorReturn":12,"react":214}],236:[function(require,module,exports){
+},{"./Common":257,"babel-runtime/core-js/object/get-prototype-of":4,"babel-runtime/helpers/classCallCheck":8,"babel-runtime/helpers/createClass":9,"babel-runtime/helpers/inherits":11,"babel-runtime/helpers/possibleConstructorReturn":12,"canon-react":78,"react":234}],256:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -25110,16 +27444,14 @@ var _inherits3 = _interopRequireDefault(_inherits2);
 
 var _react = require('react');
 
-var _react2 = _interopRequireDefault(_react);
+var _canonReact = require('canon-react');
 
-var _Button = require('../Button');
-
-var _Button2 = _interopRequireDefault(_Button);
+var _Common = require('./Common');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var ButtonsSection = function (_React$Component) {
-  (0, _inherits3.default)(ButtonsSection, _React$Component);
+var ButtonsSection = function (_Component) {
+  (0, _inherits3.default)(ButtonsSection, _Component);
 
   function ButtonsSection() {
     (0, _classCallCheck3.default)(this, ButtonsSection);
@@ -25129,26 +27461,26 @@ var ButtonsSection = function (_React$Component) {
   (0, _createClass3.default)(ButtonsSection, [{
     key: 'render',
     value: function render() {
-      return _react2.default.createElement(
+      return React.createElement(
         'div',
         { className: 'website-content-section' },
-        _react2.default.createElement(
+        React.createElement(
           'div',
           { className: 'content-section-body' },
-          _react2.default.createElement(
-            'div',
-            { className: 'rs-row' },
-            _react2.default.createElement(
+          React.createElement(
+            _Common.Row,
+            null,
+            React.createElement(
               'p',
               null,
               'Canon offers a variety of different ',
-              _react2.default.createElement(
+              React.createElement(
                 'a',
                 { href: 'http://rackerlabs.github.io/canon/ui-components/#buttons', target: '_blank' },
                 'buttons'
               ),
               '. They are implemented with the ',
-              _react2.default.createElement(
+              React.createElement(
                 'code',
                 null,
                 'Button'
@@ -25156,48 +27488,48 @@ var ButtonsSection = function (_React$Component) {
               ' component.'
             )
           ),
-          _react2.default.createElement(
-            'div',
-            { className: 'rs-row' },
-            _react2.default.createElement(
+          React.createElement(
+            _Common.Row,
+            null,
+            React.createElement(
               'h3',
               null,
               'Properties'
             ),
-            _react2.default.createElement(
+            React.createElement(
               'ul',
               null,
-              _react2.default.createElement(
+              React.createElement(
                 'li',
                 null,
-                _react2.default.createElement(
+                React.createElement(
                   'code',
                   null,
                   'onClick'
                 )
               ),
-              _react2.default.createElement(
+              React.createElement(
                 'li',
                 null,
-                _react2.default.createElement(
+                React.createElement(
                   'code',
                   null,
                   'enabled'
                 )
               ),
-              _react2.default.createElement(
+              React.createElement(
                 'li',
                 null,
-                _react2.default.createElement(
+                React.createElement(
                   'code',
                   null,
                   'hidden'
                 )
               ),
-              _react2.default.createElement(
+              React.createElement(
                 'li',
                 null,
-                _react2.default.createElement(
+                React.createElement(
                   'code',
                   null,
                   'type'
@@ -25205,21 +27537,21 @@ var ButtonsSection = function (_React$Component) {
               )
             )
           ),
-          _react2.default.createElement(
-            'div',
-            { className: 'rs-row' },
-            _react2.default.createElement(
+          React.createElement(
+            _Common.Row,
+            null,
+            React.createElement(
               'div',
               { className: 'span-3' },
-              _react2.default.createElement(
+              React.createElement(
                 'h5',
                 null,
                 'onClick'
               ),
-              _react2.default.createElement(
+              React.createElement(
                 'p',
                 null,
-                _react2.default.createElement(
+                React.createElement(
                   'code',
                   null,
                   'onClick'
@@ -25227,90 +27559,90 @@ var ButtonsSection = function (_React$Component) {
                 ' takes the function that will be executed when the button is clicked.'
               )
             ),
-            _react2.default.createElement(
+            React.createElement(
               'div',
               { className: 'span-8 offset-1' },
-              _react2.default.createElement(
+              React.createElement(
                 'h4',
                 null,
                 'Example'
               ),
-              _react2.default.createElement(
+              React.createElement(
                 'div',
                 null,
-                _react2.default.createElement(
+                React.createElement(
                   'table',
                   null,
-                  _react2.default.createElement(
+                  React.createElement(
                     'thead',
                     null,
-                    _react2.default.createElement(
+                    React.createElement(
                       'tr',
                       null,
-                      _react2.default.createElement(
+                      React.createElement(
                         'th',
                         null,
                         'Component'
                       ),
-                      _react2.default.createElement(
+                      React.createElement(
                         'th',
                         null,
                         'Source'
                       )
                     )
                   ),
-                  _react2.default.createElement(
+                  React.createElement(
                     'tbody',
                     null,
-                    _react2.default.createElement(
+                    React.createElement(
                       'tr',
                       null,
-                      _react2.default.createElement(
+                      React.createElement(
                         'td',
                         null,
-                        _react2.default.createElement(
-                          _Button2.default,
+                        React.createElement(
+                          _canonReact.Button,
                           { onClick: function onClick() {
                               alert('Button');
                             } },
                           'Button'
                         )
                       ),
-                      _react2.default.createElement(
+                      React.createElement(
                         'td',
                         null,
-                        _react2.default.createElement(
+                        React.createElement(
                           'div',
                           { className: 'highlight' },
-                          _react2.default.createElement(
+                          React.createElement(
                             'pre',
                             null,
-                            _react2.default.createElement(
+                            React.createElement(
                               'code',
                               { className: 'html' },
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'nt' },
                                 '<Button'
                               ),
                               ' ',
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'na' },
                                 'onClick='
                               ),
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 's' },
                                 "function () {alert('Button')}"
                               ),
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'nt' },
                                 '>'
                               ),
                               'Button',
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'nt' },
                                 '</Button>'
@@ -25325,45 +27657,45 @@ var ButtonsSection = function (_React$Component) {
               )
             )
           ),
-          _react2.default.createElement(
-            'div',
-            { className: 'rs-row' },
-            _react2.default.createElement(
+          React.createElement(
+            _Common.Row,
+            null,
+            React.createElement(
               'div',
               { className: 'span-3' },
-              _react2.default.createElement(
+              React.createElement(
                 'h5',
                 null,
                 'enabled'
               ),
-              _react2.default.createElement(
+              React.createElement(
                 'p',
                 null,
-                _react2.default.createElement(
+                React.createElement(
                   'code',
                   null,
                   'enabled'
                 ),
                 ' takes a boolean value (',
-                _react2.default.createElement(
+                React.createElement(
                   'code',
                   null,
                   'true'
                 ),
                 ' by default) that toggles whether or not the button is disabled. When ',
-                _react2.default.createElement(
+                React.createElement(
                   'code',
                   null,
                   'enabled'
                 ),
                 ' is ',
-                _react2.default.createElement(
+                React.createElement(
                   'code',
                   null,
                   'false'
                 ),
                 ' the ',
-                _react2.default.createElement(
+                React.createElement(
                   'code',
                   null,
                   'onClick'
@@ -25371,90 +27703,90 @@ var ButtonsSection = function (_React$Component) {
                 ' function will not be executed.'
               )
             ),
-            _react2.default.createElement(
+            React.createElement(
               'div',
               { className: 'span-8 offset-1' },
-              _react2.default.createElement(
+              React.createElement(
                 'h4',
                 null,
                 'Example'
               ),
-              _react2.default.createElement(
+              React.createElement(
                 'div',
                 null,
-                _react2.default.createElement(
+                React.createElement(
                   'table',
                   null,
-                  _react2.default.createElement(
+                  React.createElement(
                     'thead',
                     null,
-                    _react2.default.createElement(
+                    React.createElement(
                       'tr',
                       null,
-                      _react2.default.createElement(
+                      React.createElement(
                         'th',
                         null,
                         'Component'
                       ),
-                      _react2.default.createElement(
+                      React.createElement(
                         'th',
                         null,
                         'Source'
                       )
                     )
                   ),
-                  _react2.default.createElement(
+                  React.createElement(
                     'tbody',
                     null,
-                    _react2.default.createElement(
+                    React.createElement(
                       'tr',
                       null,
-                      _react2.default.createElement(
+                      React.createElement(
                         'td',
                         null,
-                        _react2.default.createElement(
-                          _Button2.default,
+                        React.createElement(
+                          _canonReact.Button,
                           { onClick: function onClick() {
                               alert('Enabled');
                             }, enabled: true },
                           'Enabled'
                         )
                       ),
-                      _react2.default.createElement(
+                      React.createElement(
                         'td',
                         null,
-                        _react2.default.createElement(
+                        React.createElement(
                           'div',
                           { className: 'highlight' },
-                          _react2.default.createElement(
+                          React.createElement(
                             'pre',
                             null,
-                            _react2.default.createElement(
+                            React.createElement(
                               'code',
                               { className: 'html' },
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'nt' },
                                 '<Button'
                               ),
                               ' ',
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'na' },
                                 'onClick='
                               ),
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 's' },
                                 "function () {alert('Enabled')}"
                               ),
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'nt' },
                                 '>'
                               ),
                               'Enabled',
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'nt' },
                                 '</Button>'
@@ -25464,66 +27796,66 @@ var ButtonsSection = function (_React$Component) {
                         )
                       )
                     ),
-                    _react2.default.createElement(
+                    React.createElement(
                       'tr',
                       null,
-                      _react2.default.createElement(
+                      React.createElement(
                         'td',
                         null,
-                        _react2.default.createElement(
-                          _Button2.default,
+                        React.createElement(
+                          _canonReact.Button,
                           { onClick: function onClick() {
                               alert('Disabled');
                             }, enabled: false },
                           'Disabled'
                         )
                       ),
-                      _react2.default.createElement(
+                      React.createElement(
                         'td',
                         null,
-                        _react2.default.createElement(
+                        React.createElement(
                           'div',
                           { className: 'highlight' },
-                          _react2.default.createElement(
+                          React.createElement(
                             'pre',
                             null,
-                            _react2.default.createElement(
+                            React.createElement(
                               'code',
                               { className: 'html' },
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'nt' },
                                 '<Button'
                               ),
                               ' ',
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'na' },
                                 'onClick='
                               ),
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 's' },
                                 "function () {alert('Disabled')}"
                               ),
                               ' ',
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'na' },
                                 'enabled='
                               ),
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 's' },
                                 "{false}"
                               ),
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'nt' },
                                 '>'
                               ),
                               'Disabled',
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'nt' },
                                 '</Button>'
@@ -25538,27 +27870,27 @@ var ButtonsSection = function (_React$Component) {
               )
             )
           ),
-          _react2.default.createElement(
-            'div',
-            { className: 'rs-row' },
-            _react2.default.createElement(
+          React.createElement(
+            _Common.Row,
+            null,
+            React.createElement(
               'div',
               { className: 'span-3' },
-              _react2.default.createElement(
+              React.createElement(
                 'h5',
                 null,
                 'hidden'
               ),
-              _react2.default.createElement(
+              React.createElement(
                 'p',
                 null,
-                _react2.default.createElement(
+                React.createElement(
                   'code',
                   null,
                   'hidden'
                 ),
                 ' takes a boolean value (',
-                _react2.default.createElement(
+                React.createElement(
                   'code',
                   null,
                   'false'
@@ -25566,90 +27898,90 @@ var ButtonsSection = function (_React$Component) {
                 ' by default) that toggles whether or not the button is visible.'
               )
             ),
-            _react2.default.createElement(
+            React.createElement(
               'div',
               { className: 'span-8 offset-1' },
-              _react2.default.createElement(
+              React.createElement(
                 'h4',
                 null,
                 'Example'
               ),
-              _react2.default.createElement(
+              React.createElement(
                 'div',
                 null,
-                _react2.default.createElement(
+                React.createElement(
                   'table',
                   null,
-                  _react2.default.createElement(
+                  React.createElement(
                     'thead',
                     null,
-                    _react2.default.createElement(
+                    React.createElement(
                       'tr',
                       null,
-                      _react2.default.createElement(
+                      React.createElement(
                         'th',
                         null,
                         'Component'
                       ),
-                      _react2.default.createElement(
+                      React.createElement(
                         'th',
                         null,
                         'Source'
                       )
                     )
                   ),
-                  _react2.default.createElement(
+                  React.createElement(
                     'tbody',
                     null,
-                    _react2.default.createElement(
+                    React.createElement(
                       'tr',
                       null,
-                      _react2.default.createElement(
+                      React.createElement(
                         'td',
                         null,
-                        _react2.default.createElement(
-                          _Button2.default,
+                        React.createElement(
+                          _canonReact.Button,
                           { onClick: function onClick() {
                               alert('Visible');
                             } },
                           'Visible'
                         )
                       ),
-                      _react2.default.createElement(
+                      React.createElement(
                         'td',
                         null,
-                        _react2.default.createElement(
+                        React.createElement(
                           'div',
                           { className: 'highlight' },
-                          _react2.default.createElement(
+                          React.createElement(
                             'pre',
                             null,
-                            _react2.default.createElement(
+                            React.createElement(
                               'code',
                               { className: 'html' },
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'nt' },
                                 '<Button'
                               ),
                               ' ',
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'na' },
                                 'onClick='
                               ),
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 's' },
                                 "function () {alert('Visible')}"
                               ),
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'nt' },
                                 '>'
                               ),
                               'Visible',
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'nt' },
                                 '</Button>'
@@ -25659,68 +27991,68 @@ var ButtonsSection = function (_React$Component) {
                         )
                       )
                     ),
-                    _react2.default.createElement(
+                    React.createElement(
                       'tr',
                       null,
-                      _react2.default.createElement(
+                      React.createElement(
                         'td',
                         null,
-                        _react2.default.createElement(
-                          _Button2.default,
+                        React.createElement(
+                          _canonReact.Button,
                           { hidden: true, onClick: function onClick() {
                               alert('Hidden');
                             } },
                           'Hidden'
                         )
                       ),
-                      _react2.default.createElement(
+                      React.createElement(
                         'td',
                         null,
-                        _react2.default.createElement(
+                        React.createElement(
                           'div',
                           { className: 'highlight' },
-                          _react2.default.createElement(
+                          React.createElement(
                             'pre',
                             null,
-                            _react2.default.createElement(
+                            React.createElement(
                               'code',
                               { className: 'html' },
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'nt' },
                                 '<Button'
                               ),
                               ' ',
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'na' },
                                 'onClick='
                               ),
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 's' },
                                 "function () {alert('Hidden')}"
                               ),
                               ' ',
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'na' },
                                 'hidden='
                               ),
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 's' },
                                 '"',
                                 true,
                                 '"'
                               ),
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'nt' },
                                 '>'
                               ),
                               'Hidden',
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'nt' },
                                 '</Button>'
@@ -25735,106 +28067,106 @@ var ButtonsSection = function (_React$Component) {
               )
             )
           ),
-          _react2.default.createElement(
-            'div',
-            { className: 'rs-row' },
-            _react2.default.createElement(
+          React.createElement(
+            _Common.Row,
+            null,
+            React.createElement(
               'div',
               { className: 'span-3' },
-              _react2.default.createElement(
+              React.createElement(
                 'h5',
                 null,
                 'type'
               ),
-              _react2.default.createElement(
+              React.createElement(
                 'p',
                 null,
-                _react2.default.createElement(
+                React.createElement(
                   'code',
                   null,
                   'type'
                 ),
                 ' takes a string value (',
-                _react2.default.createElement(
+                React.createElement(
                   'code',
                   null,
                   '\'secondary\''
                 ),
                 ' by default) that controls the look and feel of the button. The following types are supported:'
               ),
-              _react2.default.createElement(
+              React.createElement(
                 'p',
                 null,
-                _react2.default.createElement(
+                React.createElement(
                   'ul',
                   null,
-                  _react2.default.createElement(
+                  React.createElement(
                     'li',
                     null,
-                    _react2.default.createElement(
+                    React.createElement(
                       'code',
                       null,
                       '\'primary\''
                     )
                   ),
-                  _react2.default.createElement(
+                  React.createElement(
                     'li',
                     null,
-                    _react2.default.createElement(
+                    React.createElement(
                       'code',
                       null,
                       '\'secondary\''
                     )
                   ),
-                  _react2.default.createElement(
+                  React.createElement(
                     'li',
                     null,
-                    _react2.default.createElement(
+                    React.createElement(
                       'code',
                       null,
                       '\'link\''
                     )
                   ),
-                  _react2.default.createElement(
+                  React.createElement(
                     'li',
                     null,
-                    _react2.default.createElement(
+                    React.createElement(
                       'code',
                       null,
                       '\'login\''
                     )
                   ),
-                  _react2.default.createElement(
+                  React.createElement(
                     'li',
                     null,
-                    _react2.default.createElement(
+                    React.createElement(
                       'code',
                       null,
                       '\'cog\''
                     )
                   ),
-                  _react2.default.createElement(
+                  React.createElement(
                     'li',
                     null,
-                    _react2.default.createElement(
+                    React.createElement(
                       'code',
                       null,
                       '\'delete\''
                     )
                   ),
-                  _react2.default.createElement(
+                  React.createElement(
                     'li',
                     null,
-                    _react2.default.createElement(
+                    React.createElement(
                       'code',
                       null,
                       '\'edit\''
                     )
                   ),
-                  _react2.default.createElement(
+                  React.createElement(
                     'li',
                     null,
-                    _react2.default.createElement(
+                    React.createElement(
                       'code',
                       null,
                       '\'plus\''
@@ -25843,101 +28175,101 @@ var ButtonsSection = function (_React$Component) {
                 )
               )
             ),
-            _react2.default.createElement(
+            React.createElement(
               'div',
               { className: 'span-8 offset-1' },
-              _react2.default.createElement(
+              React.createElement(
                 'h4',
                 null,
                 'Example'
               ),
-              _react2.default.createElement(
+              React.createElement(
                 'div',
                 null,
-                _react2.default.createElement(
+                React.createElement(
                   'table',
                   null,
-                  _react2.default.createElement(
+                  React.createElement(
                     'thead',
                     null,
-                    _react2.default.createElement(
+                    React.createElement(
                       'tr',
                       null,
-                      _react2.default.createElement(
+                      React.createElement(
                         'th',
                         null,
                         'Component'
                       ),
-                      _react2.default.createElement(
+                      React.createElement(
                         'th',
                         null,
                         'Source'
                       )
                     )
                   ),
-                  _react2.default.createElement(
+                  React.createElement(
                     'tbody',
                     null,
-                    _react2.default.createElement(
+                    React.createElement(
                       'tr',
                       null,
-                      _react2.default.createElement(
+                      React.createElement(
                         'td',
                         null,
-                        _react2.default.createElement(
-                          _Button2.default,
+                        React.createElement(
+                          _canonReact.Button,
                           { type: 'primary', onClick: function onClick() {
                               alert('Primary');
                             } },
                           'Primary'
                         )
                       ),
-                      _react2.default.createElement(
+                      React.createElement(
                         'td',
                         null,
-                        _react2.default.createElement(
+                        React.createElement(
                           'div',
                           { className: 'highlight' },
-                          _react2.default.createElement(
+                          React.createElement(
                             'pre',
                             null,
-                            _react2.default.createElement(
+                            React.createElement(
                               'code',
                               { className: 'html' },
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'nt' },
                                 '<Button'
                               ),
                               ' ',
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'na' },
                                 'onClick='
                               ),
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 's' },
                                 "function () {alert('Primary')}"
                               ),
                               ' ',
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'na' },
                                 'type='
                               ),
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 's' },
                                 '"primary"'
                               ),
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'nt' },
                                 '>'
                               ),
                               'Primary',
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'nt' },
                                 '</Button>'
@@ -25947,66 +28279,66 @@ var ButtonsSection = function (_React$Component) {
                         )
                       )
                     ),
-                    _react2.default.createElement(
+                    React.createElement(
                       'tr',
                       null,
-                      _react2.default.createElement(
+                      React.createElement(
                         'td',
                         null,
-                        _react2.default.createElement(
-                          _Button2.default,
+                        React.createElement(
+                          _canonReact.Button,
                           { type: 'secondary', onClick: function onClick() {
                               alert('Secondary');
                             } },
                           'Secondary'
                         )
                       ),
-                      _react2.default.createElement(
+                      React.createElement(
                         'td',
                         null,
-                        _react2.default.createElement(
+                        React.createElement(
                           'div',
                           { className: 'highlight' },
-                          _react2.default.createElement(
+                          React.createElement(
                             'pre',
                             null,
-                            _react2.default.createElement(
+                            React.createElement(
                               'code',
                               { className: 'html' },
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'nt' },
                                 '<Button'
                               ),
                               ' ',
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'na' },
                                 'onClick='
                               ),
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 's' },
                                 "function () {alert('Secondary')}"
                               ),
                               ' ',
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'na' },
                                 'type='
                               ),
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 's' },
                                 '"secondary"'
                               ),
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'nt' },
                                 '>'
                               ),
                               'Secondary',
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'nt' },
                                 '</Button>'
@@ -26016,66 +28348,66 @@ var ButtonsSection = function (_React$Component) {
                         )
                       )
                     ),
-                    _react2.default.createElement(
+                    React.createElement(
                       'tr',
                       null,
-                      _react2.default.createElement(
+                      React.createElement(
                         'td',
                         null,
-                        _react2.default.createElement(
-                          _Button2.default,
+                        React.createElement(
+                          _canonReact.Button,
                           { type: 'link', onClick: function onClick() {
                               alert('Link');
                             } },
                           'Link'
                         )
                       ),
-                      _react2.default.createElement(
+                      React.createElement(
                         'td',
                         null,
-                        _react2.default.createElement(
+                        React.createElement(
                           'div',
                           { className: 'highlight' },
-                          _react2.default.createElement(
+                          React.createElement(
                             'pre',
                             null,
-                            _react2.default.createElement(
+                            React.createElement(
                               'code',
                               { className: 'html' },
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'nt' },
                                 '<Button'
                               ),
                               ' ',
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'na' },
                                 'onClick='
                               ),
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 's' },
                                 "function () {alert('Link')}"
                               ),
                               ' ',
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'na' },
                                 'type='
                               ),
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 's' },
                                 '"link"'
                               ),
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'nt' },
                                 '>'
                               ),
                               'Link',
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'nt' },
                                 '</Button>'
@@ -26085,66 +28417,66 @@ var ButtonsSection = function (_React$Component) {
                         )
                       )
                     ),
-                    _react2.default.createElement(
+                    React.createElement(
                       'tr',
                       null,
-                      _react2.default.createElement(
+                      React.createElement(
                         'td',
                         null,
-                        _react2.default.createElement(
-                          _Button2.default,
+                        React.createElement(
+                          _canonReact.Button,
                           { type: 'login', onClick: function onClick() {
                               alert('Login');
                             } },
                           'Login'
                         )
                       ),
-                      _react2.default.createElement(
+                      React.createElement(
                         'td',
                         null,
-                        _react2.default.createElement(
+                        React.createElement(
                           'div',
                           { className: 'highlight' },
-                          _react2.default.createElement(
+                          React.createElement(
                             'pre',
                             null,
-                            _react2.default.createElement(
+                            React.createElement(
                               'code',
                               { className: 'html' },
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'nt' },
                                 '<Button'
                               ),
                               ' ',
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'na' },
                                 'onClick='
                               ),
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 's' },
                                 "function () {alert('Login')}"
                               ),
                               ' ',
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'na' },
                                 'type='
                               ),
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 's' },
                                 '"login"'
                               ),
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'nt' },
                                 '>'
                               ),
                               'Login',
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'nt' },
                                 '</Button>'
@@ -26154,66 +28486,66 @@ var ButtonsSection = function (_React$Component) {
                         )
                       )
                     ),
-                    _react2.default.createElement(
+                    React.createElement(
                       'tr',
                       null,
-                      _react2.default.createElement(
+                      React.createElement(
                         'td',
                         null,
-                        _react2.default.createElement(
-                          _Button2.default,
+                        React.createElement(
+                          _canonReact.Button,
                           { type: 'cog', onClick: function onClick() {
                               alert('Cog');
                             } },
                           'Cog'
                         )
                       ),
-                      _react2.default.createElement(
+                      React.createElement(
                         'td',
                         null,
-                        _react2.default.createElement(
+                        React.createElement(
                           'div',
                           { className: 'highlight' },
-                          _react2.default.createElement(
+                          React.createElement(
                             'pre',
                             null,
-                            _react2.default.createElement(
+                            React.createElement(
                               'code',
                               { className: 'html' },
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'nt' },
                                 '<Button'
                               ),
                               ' ',
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'na' },
                                 'onClick='
                               ),
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 's' },
                                 "function () {alert('Cog')}"
                               ),
                               ' ',
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'na' },
                                 'type='
                               ),
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 's' },
                                 '"cog"'
                               ),
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'nt' },
                                 '>'
                               ),
                               'Cog',
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'nt' },
                                 '</Button>'
@@ -26223,66 +28555,66 @@ var ButtonsSection = function (_React$Component) {
                         )
                       )
                     ),
-                    _react2.default.createElement(
+                    React.createElement(
                       'tr',
                       null,
-                      _react2.default.createElement(
+                      React.createElement(
                         'td',
                         null,
-                        _react2.default.createElement(
-                          _Button2.default,
+                        React.createElement(
+                          _canonReact.Button,
                           { type: 'delete', onClick: function onClick() {
                               alert('Delete');
                             } },
                           'Delete'
                         )
                       ),
-                      _react2.default.createElement(
+                      React.createElement(
                         'td',
                         null,
-                        _react2.default.createElement(
+                        React.createElement(
                           'div',
                           { className: 'highlight' },
-                          _react2.default.createElement(
+                          React.createElement(
                             'pre',
                             null,
-                            _react2.default.createElement(
+                            React.createElement(
                               'code',
                               { className: 'html' },
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'nt' },
                                 '<Button'
                               ),
                               ' ',
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'na' },
                                 'onClick='
                               ),
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 's' },
                                 "function () {alert('Delete')}"
                               ),
                               ' ',
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'na' },
                                 'type='
                               ),
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 's' },
                                 '"delete"'
                               ),
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'nt' },
                                 '>'
                               ),
                               'Delete',
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'nt' },
                                 '</Button>'
@@ -26292,66 +28624,66 @@ var ButtonsSection = function (_React$Component) {
                         )
                       )
                     ),
-                    _react2.default.createElement(
+                    React.createElement(
                       'tr',
                       null,
-                      _react2.default.createElement(
+                      React.createElement(
                         'td',
                         null,
-                        _react2.default.createElement(
-                          _Button2.default,
+                        React.createElement(
+                          _canonReact.Button,
                           { type: 'edit', onClick: function onClick() {
                               alert('Edit');
                             } },
                           'Edit'
                         )
                       ),
-                      _react2.default.createElement(
+                      React.createElement(
                         'td',
                         null,
-                        _react2.default.createElement(
+                        React.createElement(
                           'div',
                           { className: 'highlight' },
-                          _react2.default.createElement(
+                          React.createElement(
                             'pre',
                             null,
-                            _react2.default.createElement(
+                            React.createElement(
                               'code',
                               { className: 'html' },
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'nt' },
                                 '<Button'
                               ),
                               ' ',
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'na' },
                                 'onClick='
                               ),
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 's' },
                                 "function () {alert('Edit')}"
                               ),
                               ' ',
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'na' },
                                 'type='
                               ),
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 's' },
                                 '"edit"'
                               ),
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'nt' },
                                 '>'
                               ),
                               'Edit',
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'nt' },
                                 '</Button>'
@@ -26361,66 +28693,66 @@ var ButtonsSection = function (_React$Component) {
                         )
                       )
                     ),
-                    _react2.default.createElement(
+                    React.createElement(
                       'tr',
                       null,
-                      _react2.default.createElement(
+                      React.createElement(
                         'td',
                         null,
-                        _react2.default.createElement(
-                          _Button2.default,
+                        React.createElement(
+                          _canonReact.Button,
                           { type: 'plus', onClick: function onClick() {
                               alert('Plus');
                             } },
                           'Plus'
                         )
                       ),
-                      _react2.default.createElement(
+                      React.createElement(
                         'td',
                         null,
-                        _react2.default.createElement(
+                        React.createElement(
                           'div',
                           { className: 'highlight' },
-                          _react2.default.createElement(
+                          React.createElement(
                             'pre',
                             null,
-                            _react2.default.createElement(
+                            React.createElement(
                               'code',
                               { className: 'html' },
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'nt' },
                                 '<Button'
                               ),
                               ' ',
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'na' },
                                 'onClick='
                               ),
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 's' },
                                 "function () {alert('Plus')}"
                               ),
                               ' ',
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'na' },
                                 'type='
                               ),
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 's' },
                                 '"plus"'
                               ),
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'nt' },
                                 '>'
                               ),
                               'Plus',
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'nt' },
                                 '</Button>'
@@ -26440,11 +28772,169 @@ var ButtonsSection = function (_React$Component) {
     }
   }]);
   return ButtonsSection;
-}(_react2.default.Component);
+}(_react.Component);
 
 exports.default = ButtonsSection;
 
-},{"../Button":216,"babel-runtime/core-js/object/get-prototype-of":4,"babel-runtime/helpers/classCallCheck":8,"babel-runtime/helpers/createClass":9,"babel-runtime/helpers/inherits":11,"babel-runtime/helpers/possibleConstructorReturn":12,"react":214}],237:[function(require,module,exports){
+},{"./Common":257,"babel-runtime/core-js/object/get-prototype-of":4,"babel-runtime/helpers/classCallCheck":8,"babel-runtime/helpers/createClass":9,"babel-runtime/helpers/inherits":11,"babel-runtime/helpers/possibleConstructorReturn":12,"canon-react":78,"react":234}],257:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.SectionHeader = exports.Row = exports.PropertyHeader = exports.CodeListItem = exports.CodeHeader = undefined;
+
+var _getPrototypeOf = require("babel-runtime/core-js/object/get-prototype-of");
+
+var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+
+var _classCallCheck2 = require("babel-runtime/helpers/classCallCheck");
+
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+var _createClass2 = require("babel-runtime/helpers/createClass");
+
+var _createClass3 = _interopRequireDefault(_createClass2);
+
+var _possibleConstructorReturn2 = require("babel-runtime/helpers/possibleConstructorReturn");
+
+var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+var _inherits2 = require("babel-runtime/helpers/inherits");
+
+var _inherits3 = _interopRequireDefault(_inherits2);
+
+var _react = require("react");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var CodeHeader = exports.CodeHeader = function (_Component) {
+  (0, _inherits3.default)(CodeHeader, _Component);
+
+  function CodeHeader() {
+    (0, _classCallCheck3.default)(this, CodeHeader);
+    return (0, _possibleConstructorReturn3.default)(this, (0, _getPrototypeOf2.default)(CodeHeader).apply(this, arguments));
+  }
+
+  (0, _createClass3.default)(CodeHeader, [{
+    key: "render",
+    value: function render() {
+      return React.createElement(
+        "h5",
+        null,
+        React.createElement(
+          "code",
+          null,
+          this.props.children
+        )
+      );
+    }
+  }]);
+  return CodeHeader;
+}(_react.Component);
+
+var CodeListItem = exports.CodeListItem = function (_Component2) {
+  (0, _inherits3.default)(CodeListItem, _Component2);
+
+  function CodeListItem() {
+    (0, _classCallCheck3.default)(this, CodeListItem);
+    return (0, _possibleConstructorReturn3.default)(this, (0, _getPrototypeOf2.default)(CodeListItem).apply(this, arguments));
+  }
+
+  (0, _createClass3.default)(CodeListItem, [{
+    key: "render",
+    value: function render() {
+      return React.createElement(
+        "li",
+        null,
+        React.createElement(
+          "code",
+          null,
+          this.props.children
+        )
+      );
+    }
+  }]);
+  return CodeListItem;
+}(_react.Component);
+
+var PropertyHeader = exports.PropertyHeader = function (_Component3) {
+  (0, _inherits3.default)(PropertyHeader, _Component3);
+
+  function PropertyHeader() {
+    (0, _classCallCheck3.default)(this, PropertyHeader);
+    return (0, _possibleConstructorReturn3.default)(this, (0, _getPrototypeOf2.default)(PropertyHeader).apply(this, arguments));
+  }
+
+  (0, _createClass3.default)(PropertyHeader, [{
+    key: "render",
+    value: function render() {
+      return React.createElement(
+        "h6",
+        null,
+        React.createElement(
+          "code",
+          null,
+          this.props.children
+        )
+      );
+    }
+  }]);
+  return PropertyHeader;
+}(_react.Component);
+
+var Row = exports.Row = function (_Component4) {
+  (0, _inherits3.default)(Row, _Component4);
+
+  function Row() {
+    (0, _classCallCheck3.default)(this, Row);
+    return (0, _possibleConstructorReturn3.default)(this, (0, _getPrototypeOf2.default)(Row).apply(this, arguments));
+  }
+
+  (0, _createClass3.default)(Row, [{
+    key: "render",
+    value: function render() {
+      return React.createElement(
+        "div",
+        { className: "rs-row" },
+        this.props.children
+      );
+    }
+  }]);
+  return Row;
+}(_react.Component);
+
+var SectionHeader = exports.SectionHeader = function (_Component5) {
+  (0, _inherits3.default)(SectionHeader, _Component5);
+
+  function SectionHeader() {
+    (0, _classCallCheck3.default)(this, SectionHeader);
+    return (0, _possibleConstructorReturn3.default)(this, (0, _getPrototypeOf2.default)(SectionHeader).apply(this, arguments));
+  }
+
+  (0, _createClass3.default)(SectionHeader, [{
+    key: "render",
+    value: function render() {
+      return React.createElement(
+        "div",
+        { className: "header-section", id: this.props.id },
+        React.createElement(
+          "div",
+          { className: "header-section-subtitle" },
+          "components"
+        ),
+        React.createElement(
+          "div",
+          { className: "header-section-title" },
+          this.props.children
+        )
+      );
+    }
+  }]);
+  return SectionHeader;
+}(_react.Component);
+
+},{"babel-runtime/core-js/object/get-prototype-of":4,"babel-runtime/helpers/classCallCheck":8,"babel-runtime/helpers/createClass":9,"babel-runtime/helpers/inherits":11,"babel-runtime/helpers/possibleConstructorReturn":12,"react":234}],258:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -26473,7 +28963,7 @@ var _inherits3 = _interopRequireDefault(_inherits2);
 
 var _react = require('react');
 
-var _react2 = _interopRequireDefault(_react);
+var _Common = require('./Common');
 
 var _Button = require('../Button');
 
@@ -26497,8 +28987,8 @@ var _PopoverFooter2 = _interopRequireDefault(_PopoverFooter);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var UpdateNamePopover = function (_React$Component) {
-  (0, _inherits3.default)(UpdateNamePopover, _React$Component);
+var UpdateNamePopover = function (_Component) {
+  (0, _inherits3.default)(UpdateNamePopover, _Component);
 
   function UpdateNamePopover() {
     (0, _classCallCheck3.default)(this, UpdateNamePopover);
@@ -26508,38 +28998,38 @@ var UpdateNamePopover = function (_React$Component) {
   (0, _createClass3.default)(UpdateNamePopover, [{
     key: 'render',
     value: function render() {
-      return _react2.default.createElement(
+      return React.createElement(
         _Popover2.default,
         { placement: this.props.placement,
           isOpen: this.props.isOpen,
           target: this.props.target,
           onRequestClose: this.props.onRequestClose },
-        _react2.default.createElement(
+        React.createElement(
           _PopoverOverlay2.default,
           null,
-          _react2.default.createElement(
+          React.createElement(
             _PopoverBody2.default,
             null,
-            _react2.default.createElement(
+            React.createElement(
               'form',
               null,
-              _react2.default.createElement(
+              React.createElement(
                 'label',
                 null,
                 'Name'
               ),
-              _react2.default.createElement('input', { type: 'text' })
+              React.createElement('input', { type: 'text' })
             )
           ),
-          _react2.default.createElement(
+          React.createElement(
             _PopoverFooter2.default,
             null,
-            _react2.default.createElement(
+            React.createElement(
               _Button2.default,
               { type: 'primary', onClick: this.props.onRequestClose },
               'Save'
             ),
-            _react2.default.createElement(
+            React.createElement(
               _Button2.default,
               { type: 'link', onClick: this.props.onRequestClose },
               'Cancel'
@@ -26550,10 +29040,10 @@ var UpdateNamePopover = function (_React$Component) {
     }
   }]);
   return UpdateNamePopover;
-}(_react2.default.Component);
+}(_react.Component);
 
-var PopoverParent = function (_React$Component2) {
-  (0, _inherits3.default)(PopoverParent, _React$Component2);
+var PopoverParent = function (_React$Component) {
+  (0, _inherits3.default)(PopoverParent, _React$Component);
 
   function PopoverParent() {
     (0, _classCallCheck3.default)(this, PopoverParent);
@@ -26579,15 +29069,15 @@ var PopoverParent = function (_React$Component2) {
   }, {
     key: 'render',
     value: function render() {
-      return _react2.default.createElement(
+      return React.createElement(
         'div',
         null,
-        _react2.default.createElement(
+        React.createElement(
           _Button2.default,
           { id: 'update-name-button', type: 'primary', onClick: this.showUpdateNamePopover.bind(this) },
           'Update Name'
         ),
-        _react2.default.createElement(UpdateNamePopover, { placement: 'right',
+        React.createElement(UpdateNamePopover, { placement: 'right',
           target: 'update-name-button',
           onRequestClose: this.requestUpdateNameClose.bind(this),
           isOpen: this.state.shouldShowUpdateNamePopover })
@@ -26595,10 +29085,10 @@ var PopoverParent = function (_React$Component2) {
     }
   }]);
   return PopoverParent;
-}(_react2.default.Component);
+}(React.Component);
 
-var PopoverSection = function (_React$Component3) {
-  (0, _inherits3.default)(PopoverSection, _React$Component3);
+var PopoverSection = function (_React$Component2) {
+  (0, _inherits3.default)(PopoverSection, _React$Component2);
 
   function PopoverSection() {
     (0, _classCallCheck3.default)(this, PopoverSection);
@@ -26608,19 +29098,19 @@ var PopoverSection = function (_React$Component3) {
   (0, _createClass3.default)(PopoverSection, [{
     key: 'render',
     value: function render() {
-      return _react2.default.createElement(
+      return React.createElement(
         'div',
         { className: 'website-content-section' },
-        _react2.default.createElement(
+        React.createElement(
           'div',
           { className: 'content-section-body' },
-          _react2.default.createElement(
-            'div',
-            { className: 'rs-row' },
-            _react2.default.createElement(
+          React.createElement(
+            _Common.Row,
+            null,
+            React.createElement(
               'p',
               null,
-              _react2.default.createElement(
+              React.createElement(
                 'a',
                 { href: 'http://rackerlabs.github.io/canon/ui-components/#popover', target: '_blank' },
                 'Popovers'
@@ -26628,48 +29118,48 @@ var PopoverSection = function (_React$Component3) {
               ' are used to display more information or to perform some action on an entity.'
             )
           ),
-          _react2.default.createElement(
-            'div',
-            { className: 'rs-row' },
-            _react2.default.createElement(
+          React.createElement(
+            _Common.Row,
+            null,
+            React.createElement(
               'h3',
               null,
               'Components'
             ),
-            _react2.default.createElement(
+            React.createElement(
               'ul',
               null,
-              _react2.default.createElement(
+              React.createElement(
                 'li',
                 null,
-                _react2.default.createElement(
+                React.createElement(
                   'code',
                   null,
                   'Popover'
                 )
               ),
-              _react2.default.createElement(
+              React.createElement(
                 'li',
                 null,
-                _react2.default.createElement(
+                React.createElement(
                   'code',
                   null,
                   'PopoverOverlay'
                 )
               ),
-              _react2.default.createElement(
+              React.createElement(
                 'li',
                 null,
-                _react2.default.createElement(
+                React.createElement(
                   'code',
                   null,
                   'PopoverBody'
                 )
               ),
-              _react2.default.createElement(
+              React.createElement(
                 'li',
                 null,
-                _react2.default.createElement(
+                React.createElement(
                   'code',
                   null,
                   'PopoverFooter'
@@ -26677,342 +29167,342 @@ var PopoverSection = function (_React$Component3) {
               )
             )
           ),
-          _react2.default.createElement(
-            'div',
-            { className: 'rs-row' },
-            _react2.default.createElement(
+          React.createElement(
+            _Common.Row,
+            null,
+            React.createElement(
               'h5',
               null,
-              _react2.default.createElement(
+              React.createElement(
                 'code',
                 null,
                 'Popover'
               )
             ),
-            _react2.default.createElement(
+            React.createElement(
               'p',
               null,
               'The ',
-              _react2.default.createElement(
+              React.createElement(
                 'code',
                 null,
                 'Popover'
               ),
               ' component controls the behavior of the popover itself (positioning, open/closed, request for close, etc.). The ',
-              _react2.default.createElement(
+              React.createElement(
                 'code',
                 null,
                 'Popover'
               ),
               ' has four properties:'
             ),
-            _react2.default.createElement(
+            React.createElement(
               'ul',
               null,
-              _react2.default.createElement(
+              React.createElement(
                 'li',
                 null,
-                _react2.default.createElement(
+                React.createElement(
                   'code',
                   null,
                   'placement'
                 )
               ),
-              _react2.default.createElement(
+              React.createElement(
                 'li',
                 null,
-                _react2.default.createElement(
+                React.createElement(
                   'code',
                   null,
                   'isOpen'
                 )
               ),
-              _react2.default.createElement(
+              React.createElement(
                 'li',
                 null,
-                _react2.default.createElement(
+                React.createElement(
                   'code',
                   null,
                   'onRequestClose'
                 )
               ),
-              _react2.default.createElement(
+              React.createElement(
                 'li',
                 null,
-                _react2.default.createElement(
+                React.createElement(
                   'code',
                   null,
                   'target'
                 )
               ),
-              _react2.default.createElement(
+              React.createElement(
                 'li',
                 null,
-                _react2.default.createElement(
+                React.createElement(
                   'code',
                   null,
                   'offset'
                 )
               )
             ),
-            _react2.default.createElement(
+            React.createElement(
               'h6',
               null,
-              _react2.default.createElement(
+              React.createElement(
                 'code',
                 null,
                 'placement'
               )
             ),
-            _react2.default.createElement(
+            React.createElement(
               'p',
               null,
-              _react2.default.createElement(
+              React.createElement(
                 'code',
                 null,
                 'placement'
               ),
               ' defines the position of the popover in relation to its target. The following values are allowed:'
             ),
-            _react2.default.createElement(
+            React.createElement(
               'ul',
               null,
-              _react2.default.createElement(
+              React.createElement(
                 'li',
                 null,
-                _react2.default.createElement(
+                React.createElement(
                   'code',
                   null,
                   'right'
                 )
               ),
-              _react2.default.createElement(
+              React.createElement(
                 'li',
                 null,
-                _react2.default.createElement(
+                React.createElement(
                   'code',
                   null,
                   'bottom-right'
                 )
               ),
-              _react2.default.createElement(
+              React.createElement(
                 'li',
                 null,
-                _react2.default.createElement(
+                React.createElement(
                   'code',
                   null,
                   'left'
                 )
               ),
-              _react2.default.createElement(
+              React.createElement(
                 'li',
                 null,
-                _react2.default.createElement(
+                React.createElement(
                   'code',
                   null,
                   'bottom-left'
                 )
               ),
-              _react2.default.createElement(
+              React.createElement(
                 'li',
                 null,
-                _react2.default.createElement(
+                React.createElement(
                   'code',
                   null,
                   'center'
                 )
               )
             ),
-            _react2.default.createElement(
+            React.createElement(
               'p',
               null,
-              _react2.default.createElement(
+              React.createElement(
                 'code',
                 null,
                 'center'
               ),
               ' behaves slightly differently than the other placement properties. The popover is placed over the center of the target element and no arrow is rendered. This positioning is useful for modal like behavior where the target is the document body.'
             ),
-            _react2.default.createElement(
+            React.createElement(
               'h6',
               null,
-              _react2.default.createElement(
+              React.createElement(
                 'code',
                 null,
                 'isOpen'
               )
             ),
-            _react2.default.createElement(
+            React.createElement(
               'p',
               null,
-              _react2.default.createElement(
+              React.createElement(
                 'code',
                 null,
                 'isOpen'
               ),
               ' accepts boolean values and defines whether or not the popover is open or clsoed. It is up to the parent component to decide whether or not a popover should be displayed. This is necessary to allow for such things as allowing the processing of a command to finish before closing a popover.'
             ),
-            _react2.default.createElement(
+            React.createElement(
               'h6',
               null,
-              _react2.default.createElement(
+              React.createElement(
                 'code',
                 null,
                 'onRequestClose'
               )
             ),
-            _react2.default.createElement(
+            React.createElement(
               'p',
               null,
-              _react2.default.createElement(
+              React.createElement(
                 'code',
                 null,
                 'onRequestClose'
               ),
               ' is a callback that is used to notify a parent component that some action has occured requesting the closing of a popover. This could be the clicking of a cancel link on the popover, pressing the escape key, or clicking off of the popover. The popover itself will monitor events for the escape key and clicking outside of the popover and will invoke the request close callback at such time.'
             ),
-            _react2.default.createElement(
+            React.createElement(
               'h6',
               null,
-              _react2.default.createElement(
+              React.createElement(
                 'code',
                 null,
                 'target'
               )
             ),
-            _react2.default.createElement(
+            React.createElement(
               'p',
               null,
-              _react2.default.createElement(
+              React.createElement(
                 'code',
                 null,
                 'target'
               ),
               ' accepts either a string ID or a function that returns the element at which the popover will be pointing.'
             ),
-            _react2.default.createElement(
+            React.createElement(
               'h6',
               null,
-              _react2.default.createElement(
+              React.createElement(
                 'code',
                 null,
                 'offset'
               )
             ),
-            _react2.default.createElement(
+            React.createElement(
               'p',
               null,
               'canon-react uses ',
-              _react2.default.createElement(
+              React.createElement(
                 'a',
                 { href: 'http://tether.io/', target: '_blank' },
                 'tether.io'
               ),
               ' for positioning of the popover. The popover component has an `offset` property that when specified will override the default offsets that canon-react is using to configure the tether. This property accepts a string in the same format that tether accepts.'
             ),
-            _react2.default.createElement(
+            React.createElement(
               'h5',
               null,
-              _react2.default.createElement(
+              React.createElement(
                 'code',
                 null,
                 'PopoverOverlay'
               )
             ),
-            _react2.default.createElement(
+            React.createElement(
               'p',
               null,
               'The ',
-              _react2.default.createElement(
+              React.createElement(
                 'code',
                 null,
                 'PopoverOverlay'
               ),
               ' component renders the outer markup of a popover, as well as the arrow of the popover. It accepts a ',
-              _react2.default.createElement(
+              React.createElement(
                 'code',
                 null,
                 'placement'
               ),
               ' prop (passed to it from the ',
-              _react2.default.createElement(
+              React.createElement(
                 'code',
                 null,
                 'Popover'
               ),
               ') which is used to determine the position of the arrow relative to the target at which the popover will be pointing. The values accepted are the same as those of the ',
-              _react2.default.createElement(
+              React.createElement(
                 'code',
                 null,
                 'Popover'
               ),
               '.'
             ),
-            _react2.default.createElement(
+            React.createElement(
               'h5',
               null,
-              _react2.default.createElement(
+              React.createElement(
                 'code',
                 null,
                 'PopoverBody'
               ),
               ' and ',
-              _react2.default.createElement(
+              React.createElement(
                 'code',
                 null,
                 'PopoverFooter'
               )
             ),
-            _react2.default.createElement(
+            React.createElement(
               'p',
               null,
               'These components should be used together when displaying a popover that will do some sort of form processing. If a popover is only being used to display information, these components aren\'t needed. The body and footer components simply wrap their children in the appropriate markup for a popover form. They don\'t do any special processing of the children to be rendered. any change of state of buttons rendered in the footer is the responsibilitiy of the consumer to update. This allows for greater flexibility of the what the body and footer can be composed of.'
             )
           ),
-          _react2.default.createElement(
-            'div',
-            { className: 'rs-row' },
-            _react2.default.createElement(
+          React.createElement(
+            _Common.Row,
+            null,
+            React.createElement(
               'h3',
               null,
               'Popover Example'
             ),
-            _react2.default.createElement(
+            React.createElement(
               'p',
               null,
               'A popover rendered to the right of the button:'
             ),
-            _react2.default.createElement(PopoverParent, null),
-            _react2.default.createElement(
+            React.createElement(PopoverParent, null),
+            React.createElement(
               'h6',
               null,
               'Rendering the popover and trigger'
             ),
-            _react2.default.createElement(
+            React.createElement(
               'p',
               null,
-              _react2.default.createElement(
+              React.createElement(
                 'pre',
                 null,
-                _react2.default.createElement(
+                React.createElement(
                   'code',
                   { className: 'html' },
                   "var PopoverParent = React.createClass({\n" + "  showUpdateNamePopover: function () {\n" + "    this.setState({shouldShowUpdateNamePopover: true});\n" + "  },\n\n" + "  hideUpdateNamePopover: function () {\n" + "    this.setState({shouldShowUpdateNamePopover: false});\n" + "  },\n\n" + "  requestUpdateNameClose: function () {\n" + "    // if a request is not processing\n" + "    this.hideUpdateNamePopover();\n" + "  },\n\n" + "  render: function () {\n" + "    return (\n" + "      <div>\n" + "        <Button id='update-name-button' onClick={this.showUpdateNamePopover}>Update Name</Button>\n" + "        <UpdateNamePopover placement='right'\n" + "         isOpen={this.state.shouldShowUpdateNamePopover}\n" + "         onRequestClose={this.requestUpdateNameClose}\n" + "         target='update-name-button' />\n" + "      </div>\n" + "    );\n" + "  }\n" + "});"
                 )
               )
             ),
-            _react2.default.createElement(
+            React.createElement(
               'h6',
               null,
               'Update Name Popover'
             ),
-            _react2.default.createElement(
+            React.createElement(
               'p',
               null,
-              _react2.default.createElement(
+              React.createElement(
                 'pre',
                 null,
-                _react2.default.createElement(
+                React.createElement(
                   'code',
                   { className: 'html' },
                   "var UpdateNamePopover = React.createClass({\n" + "  _processSave: function () {\n" + "    // perform the action needed to process the input of this form.\n" + "    // this will trigger a state update to indicate the action is processing.\n" + "    // this can be done through callbacks or with stores.\n" + "  },\n\n" + "  render: function () {\n" + "    return (\n" + "      <Popover placement={this.props.placement}\n" + "       isOpen={this.props.isOpen}\n" + "       onRequestClose={this.props.onRequestClose}\n" + "       target={this.props.target}>\n" + "        <PopoverOverlay>\n" + "         <PopoverBody>\n" + "           <form>\n" + "             <label>Name</label>\n" + "             <input type='text' />\n" + "           </form>\n" + "         </PopoverBody>\n" + "         <PopoverFooter>\n" + "           <Button type='primary' onClick={this._processSave}>Save</Button>\n" + "           <Button type='link' onClick={this.props.onRequestClose}>Cancel</Button>\n" + "           <ProcessingIndicator />\n" + "         </PopoverFooter>\n" + "        </PopoverOverlay>\n" + "      </Popover>\n" + "    );\n" + "  }\n" + "});"
@@ -27025,11 +29515,11 @@ var PopoverSection = function (_React$Component3) {
     }
   }]);
   return PopoverSection;
-}(_react2.default.Component);
+}(React.Component);
 
 exports.default = PopoverSection;
 
-},{"../Button":216,"../Popover":226,"../PopoverBody":228,"../PopoverFooter":229,"../PopoverOverlay":230,"babel-runtime/core-js/object/get-prototype-of":4,"babel-runtime/helpers/classCallCheck":8,"babel-runtime/helpers/createClass":9,"babel-runtime/helpers/inherits":11,"babel-runtime/helpers/possibleConstructorReturn":12,"react":214}],238:[function(require,module,exports){
+},{"../Button":236,"../Popover":246,"../PopoverBody":248,"../PopoverFooter":249,"../PopoverOverlay":250,"./Common":257,"babel-runtime/core-js/object/get-prototype-of":4,"babel-runtime/helpers/classCallCheck":8,"babel-runtime/helpers/createClass":9,"babel-runtime/helpers/inherits":11,"babel-runtime/helpers/possibleConstructorReturn":12,"react":234}],259:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -27058,16 +29548,14 @@ var _inherits3 = _interopRequireDefault(_inherits2);
 
 var _react = require('react');
 
-var _react2 = _interopRequireDefault(_react);
+var _canonReact = require('canon-react');
 
-var _ProgressBar = require('../ProgressBar');
-
-var _ProgressBar2 = _interopRequireDefault(_ProgressBar);
+var _Common = require('./Common');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var ProgressBarsSection = function (_React$Component) {
-  (0, _inherits3.default)(ProgressBarsSection, _React$Component);
+var ProgressBarsSection = function (_Component) {
+  (0, _inherits3.default)(ProgressBarsSection, _Component);
 
   function ProgressBarsSection() {
     (0, _classCallCheck3.default)(this, ProgressBarsSection);
@@ -27077,19 +29565,19 @@ var ProgressBarsSection = function (_React$Component) {
   (0, _createClass3.default)(ProgressBarsSection, [{
     key: 'render',
     value: function render() {
-      return _react2.default.createElement(
+      return React.createElement(
         'div',
         { className: 'website-content-section' },
-        _react2.default.createElement(
+        React.createElement(
           'div',
           { className: 'content-section-body' },
-          _react2.default.createElement(
-            'div',
-            { className: 'rs-row' },
-            _react2.default.createElement(
+          React.createElement(
+            _Common.Row,
+            null,
+            React.createElement(
               'p',
               null,
-              _react2.default.createElement(
+              React.createElement(
                 'a',
                 { href: 'http://rackerlabs.github.io/canon/ui-components/#progress-bars', target: '_blank' },
                 'Progress Bars'
@@ -27097,48 +29585,48 @@ var ProgressBarsSection = function (_React$Component) {
               ' can be used to indicate both progress and state.'
             )
           ),
-          _react2.default.createElement(
-            'div',
-            { className: 'rs-row' },
-            _react2.default.createElement(
+          React.createElement(
+            _Common.Row,
+            null,
+            React.createElement(
               'h3',
               null,
               'Properties'
             ),
-            _react2.default.createElement(
+            React.createElement(
               'ul',
               null,
-              _react2.default.createElement(
+              React.createElement(
                 'li',
                 null,
-                _react2.default.createElement(
+                React.createElement(
                   'code',
                   null,
                   'progress'
                 )
               ),
-              _react2.default.createElement(
+              React.createElement(
                 'li',
                 null,
-                _react2.default.createElement(
+                React.createElement(
                   'code',
                   null,
                   'status'
                 )
               ),
-              _react2.default.createElement(
+              React.createElement(
                 'li',
                 null,
-                _react2.default.createElement(
+                React.createElement(
                   'code',
                   null,
                   'type'
                 )
               ),
-              _react2.default.createElement(
+              React.createElement(
                 'li',
                 null,
-                _react2.default.createElement(
+                React.createElement(
                   'code',
                   null,
                   'size'
@@ -27146,21 +29634,21 @@ var ProgressBarsSection = function (_React$Component) {
               )
             )
           ),
-          _react2.default.createElement(
-            'div',
-            { className: 'rs-row' },
-            _react2.default.createElement(
+          React.createElement(
+            _Common.Row,
+            null,
+            React.createElement(
               'div',
               { className: 'span-3' },
-              _react2.default.createElement(
+              React.createElement(
                 'h5',
                 null,
                 'progress'
               ),
-              _react2.default.createElement(
+              React.createElement(
                 'p',
                 null,
-                _react2.default.createElement(
+                React.createElement(
                   'code',
                   null,
                   'progress'
@@ -27168,79 +29656,79 @@ var ProgressBarsSection = function (_React$Component) {
                 ' takes a number between 0 and 100 that specifies the percentage of the data being represented.'
               )
             ),
-            _react2.default.createElement(
+            React.createElement(
               'div',
               { className: 'span-8 offset-1' },
-              _react2.default.createElement(
+              React.createElement(
                 'h4',
                 null,
                 'Example'
               ),
-              _react2.default.createElement(
+              React.createElement(
                 'div',
                 null,
-                _react2.default.createElement(
+                React.createElement(
                   'table',
                   null,
-                  _react2.default.createElement(
+                  React.createElement(
                     'thead',
                     null,
-                    _react2.default.createElement(
+                    React.createElement(
                       'tr',
                       null,
-                      _react2.default.createElement(
+                      React.createElement(
                         'th',
                         null,
                         'Component'
                       ),
-                      _react2.default.createElement(
+                      React.createElement(
                         'th',
                         null,
                         'Source'
                       )
                     )
                   ),
-                  _react2.default.createElement(
+                  React.createElement(
                     'tbody',
                     null,
-                    _react2.default.createElement(
+                    React.createElement(
                       'tr',
                       null,
-                      _react2.default.createElement(
+                      React.createElement(
                         'td',
                         null,
-                        _react2.default.createElement(_ProgressBar2.default, { progress: 60, status: 'info' })
+                        React.createElement(_canonReact.ProgressBar, { progress: 60, status: 'info' })
                       ),
-                      _react2.default.createElement(
+                      React.createElement(
                         'td',
                         null,
-                        _react2.default.createElement(
+                        React.createElement(
                           'div',
                           { className: 'highlight' },
-                          _react2.default.createElement(
+                          React.createElement(
                             'pre',
                             null,
-                            _react2.default.createElement(
+                            React.createElement(
                               'code',
                               { className: 'html' },
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'nt' },
                                 '<ProgressBar'
                               ),
                               ' ',
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'na' },
                                 'progress='
                               ),
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 's' },
                                 '"60"'
                               ),
                               ' ',
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'nt' },
                                 '/>'
@@ -27255,70 +29743,70 @@ var ProgressBarsSection = function (_React$Component) {
               )
             )
           ),
-          _react2.default.createElement(
-            'div',
-            { className: 'rs-row' },
-            _react2.default.createElement(
+          React.createElement(
+            _Common.Row,
+            null,
+            React.createElement(
               'div',
               { className: 'span-3' },
-              _react2.default.createElement(
+              React.createElement(
                 'h5',
                 null,
                 'status'
               ),
-              _react2.default.createElement(
+              React.createElement(
                 'p',
                 null,
-                _react2.default.createElement(
+                React.createElement(
                   'code',
                   null,
                   'status'
                 ),
                 ' takes a string (',
-                _react2.default.createElement(
+                React.createElement(
                   'code',
                   null,
                   'info'
                 ),
                 ' is the default) that specifies the state of the action that is in progress. Allowed Types are:'
               ),
-              _react2.default.createElement(
+              React.createElement(
                 'p',
                 null,
-                _react2.default.createElement(
+                React.createElement(
                   'ul',
                   null,
-                  _react2.default.createElement(
+                  React.createElement(
                     'li',
                     null,
-                    _react2.default.createElement(
+                    React.createElement(
                       'code',
                       null,
                       'ok'
                     )
                   ),
-                  _react2.default.createElement(
+                  React.createElement(
                     'li',
                     null,
-                    _react2.default.createElement(
+                    React.createElement(
                       'code',
                       null,
                       'error'
                     )
                   ),
-                  _react2.default.createElement(
+                  React.createElement(
                     'li',
                     null,
-                    _react2.default.createElement(
+                    React.createElement(
                       'code',
                       null,
                       'warning'
                     )
                   ),
-                  _react2.default.createElement(
+                  React.createElement(
                     'li',
                     null,
-                    _react2.default.createElement(
+                    React.createElement(
                       'code',
                       null,
                       'info'
@@ -27327,90 +29815,90 @@ var ProgressBarsSection = function (_React$Component) {
                 )
               )
             ),
-            _react2.default.createElement(
+            React.createElement(
               'div',
               { className: 'span-8 offset-1' },
-              _react2.default.createElement(
+              React.createElement(
                 'h4',
                 null,
                 'Example'
               ),
-              _react2.default.createElement(
+              React.createElement(
                 'div',
                 null,
-                _react2.default.createElement(
+                React.createElement(
                   'table',
                   null,
-                  _react2.default.createElement(
+                  React.createElement(
                     'thead',
                     null,
-                    _react2.default.createElement(
+                    React.createElement(
                       'tr',
                       null,
-                      _react2.default.createElement(
+                      React.createElement(
                         'th',
                         null,
                         'Component'
                       ),
-                      _react2.default.createElement(
+                      React.createElement(
                         'th',
                         null,
                         'Source'
                       )
                     )
                   ),
-                  _react2.default.createElement(
+                  React.createElement(
                     'tbody',
                     null,
-                    _react2.default.createElement(
+                    React.createElement(
                       'tr',
                       null,
-                      _react2.default.createElement(
+                      React.createElement(
                         'td',
                         null,
-                        _react2.default.createElement(_ProgressBar2.default, { progress: 60, status: 'ok' })
+                        React.createElement(_canonReact.ProgressBar, { progress: 60, status: 'ok' })
                       ),
-                      _react2.default.createElement(
+                      React.createElement(
                         'td',
                         null,
-                        _react2.default.createElement(
+                        React.createElement(
                           'div',
                           { className: 'highlight' },
-                          _react2.default.createElement(
+                          React.createElement(
                             'pre',
                             null,
-                            _react2.default.createElement(
+                            React.createElement(
                               'code',
                               { className: 'html' },
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'nt' },
                                 '<ProgressBar'
                               ),
                               ' ',
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'na' },
                                 'progress='
                               ),
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 's' },
                                 '"60"'
                               ),
                               ' ',
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'na' },
                                 'status='
                               ),
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 's' },
                                 '"ok"'
                               ),
                               ' ',
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'nt' },
                                 '/>'
@@ -27420,55 +29908,55 @@ var ProgressBarsSection = function (_React$Component) {
                         )
                       )
                     ),
-                    _react2.default.createElement(
+                    React.createElement(
                       'tr',
                       null,
-                      _react2.default.createElement(
+                      React.createElement(
                         'td',
                         null,
-                        _react2.default.createElement(_ProgressBar2.default, { progress: 60, status: 'error' })
+                        React.createElement(_canonReact.ProgressBar, { progress: 60, status: 'error' })
                       ),
-                      _react2.default.createElement(
+                      React.createElement(
                         'td',
                         null,
-                        _react2.default.createElement(
+                        React.createElement(
                           'div',
                           { className: 'highlight' },
-                          _react2.default.createElement(
+                          React.createElement(
                             'pre',
                             null,
-                            _react2.default.createElement(
+                            React.createElement(
                               'code',
                               { className: 'html' },
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'nt' },
                                 '<ProgressBar'
                               ),
                               ' ',
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'na' },
                                 'progress='
                               ),
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 's' },
                                 '"60"'
                               ),
                               ' ',
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'na' },
                                 'status='
                               ),
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 's' },
                                 '"error"'
                               ),
                               ' ',
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'nt' },
                                 '/>'
@@ -27478,55 +29966,55 @@ var ProgressBarsSection = function (_React$Component) {
                         )
                       )
                     ),
-                    _react2.default.createElement(
+                    React.createElement(
                       'tr',
                       null,
-                      _react2.default.createElement(
+                      React.createElement(
                         'td',
                         null,
-                        _react2.default.createElement(_ProgressBar2.default, { progress: 60, status: 'warning' })
+                        React.createElement(_canonReact.ProgressBar, { progress: 60, status: 'warning' })
                       ),
-                      _react2.default.createElement(
+                      React.createElement(
                         'td',
                         null,
-                        _react2.default.createElement(
+                        React.createElement(
                           'div',
                           { className: 'highlight' },
-                          _react2.default.createElement(
+                          React.createElement(
                             'pre',
                             null,
-                            _react2.default.createElement(
+                            React.createElement(
                               'code',
                               { className: 'html' },
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'nt' },
                                 '<ProgressBar'
                               ),
                               ' ',
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'na' },
                                 'progress='
                               ),
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 's' },
                                 '"60"'
                               ),
                               ' ',
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'na' },
                                 'status='
                               ),
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 's' },
                                 '"warning"'
                               ),
                               ' ',
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'nt' },
                                 '/>'
@@ -27536,55 +30024,55 @@ var ProgressBarsSection = function (_React$Component) {
                         )
                       )
                     ),
-                    _react2.default.createElement(
+                    React.createElement(
                       'tr',
                       null,
-                      _react2.default.createElement(
+                      React.createElement(
                         'td',
                         null,
-                        _react2.default.createElement(_ProgressBar2.default, { progress: 60, status: 'info' })
+                        React.createElement(_canonReact.ProgressBar, { progress: 60, status: 'info' })
                       ),
-                      _react2.default.createElement(
+                      React.createElement(
                         'td',
                         null,
-                        _react2.default.createElement(
+                        React.createElement(
                           'div',
                           { className: 'highlight' },
-                          _react2.default.createElement(
+                          React.createElement(
                             'pre',
                             null,
-                            _react2.default.createElement(
+                            React.createElement(
                               'code',
                               { className: 'html' },
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'nt' },
                                 '<ProgressBar'
                               ),
                               ' ',
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'na' },
                                 'progress='
                               ),
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 's' },
                                 '"60"'
                               ),
                               ' ',
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'na' },
                                 'status='
                               ),
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 's' },
                                 '"info"'
                               ),
                               ' ',
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'nt' },
                                 '/>'
@@ -27599,52 +30087,52 @@ var ProgressBarsSection = function (_React$Component) {
               )
             )
           ),
-          _react2.default.createElement(
-            'div',
-            { className: 'rs-row' },
-            _react2.default.createElement(
+          React.createElement(
+            _Common.Row,
+            null,
+            React.createElement(
               'div',
               { className: 'span-3' },
-              _react2.default.createElement(
+              React.createElement(
                 'h5',
                 null,
                 'type'
               ),
-              _react2.default.createElement(
+              React.createElement(
                 'p',
                 null,
-                _react2.default.createElement(
+                React.createElement(
                   'code',
                   null,
                   'type'
                 ),
                 ' takes a string (',
-                _react2.default.createElement(
+                React.createElement(
                   'code',
                   null,
                   'solid'
                 ),
                 ' is the default). This is used to indicate additional information about work being done. The allowed types are:'
               ),
-              _react2.default.createElement(
+              React.createElement(
                 'p',
                 null,
-                _react2.default.createElement(
+                React.createElement(
                   'ul',
                   null,
-                  _react2.default.createElement(
+                  React.createElement(
                     'li',
                     null,
-                    _react2.default.createElement(
+                    React.createElement(
                       'code',
                       null,
                       'solid'
                     )
                   ),
-                  _react2.default.createElement(
+                  React.createElement(
                     'li',
                     null,
-                    _react2.default.createElement(
+                    React.createElement(
                       'code',
                       null,
                       'striped'
@@ -27653,90 +30141,90 @@ var ProgressBarsSection = function (_React$Component) {
                 )
               )
             ),
-            _react2.default.createElement(
+            React.createElement(
               'div',
               { className: 'span-8 offset-1' },
-              _react2.default.createElement(
+              React.createElement(
                 'h4',
                 null,
                 'Example'
               ),
-              _react2.default.createElement(
+              React.createElement(
                 'div',
                 null,
-                _react2.default.createElement(
+                React.createElement(
                   'table',
                   null,
-                  _react2.default.createElement(
+                  React.createElement(
                     'thead',
                     null,
-                    _react2.default.createElement(
+                    React.createElement(
                       'tr',
                       null,
-                      _react2.default.createElement(
+                      React.createElement(
                         'th',
                         null,
                         'Component'
                       ),
-                      _react2.default.createElement(
+                      React.createElement(
                         'th',
                         null,
                         'Source'
                       )
                     )
                   ),
-                  _react2.default.createElement(
+                  React.createElement(
                     'tbody',
                     null,
-                    _react2.default.createElement(
+                    React.createElement(
                       'tr',
                       null,
-                      _react2.default.createElement(
+                      React.createElement(
                         'td',
                         null,
-                        _react2.default.createElement(_ProgressBar2.default, { progress: 60, type: 'solid', status: 'info' })
+                        React.createElement(_canonReact.ProgressBar, { progress: 60, type: 'solid', status: 'info' })
                       ),
-                      _react2.default.createElement(
+                      React.createElement(
                         'td',
                         null,
-                        _react2.default.createElement(
+                        React.createElement(
                           'div',
                           { className: 'highlight' },
-                          _react2.default.createElement(
+                          React.createElement(
                             'pre',
                             null,
-                            _react2.default.createElement(
+                            React.createElement(
                               'code',
                               { className: 'html' },
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'nt' },
                                 '<ProgressBar'
                               ),
                               ' ',
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'na' },
                                 'progress='
                               ),
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 's' },
                                 '"60"'
                               ),
                               ' ',
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'na' },
                                 'type='
                               ),
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 's' },
                                 '"solid"'
                               ),
                               ' ',
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'nt' },
                                 '/>'
@@ -27746,55 +30234,55 @@ var ProgressBarsSection = function (_React$Component) {
                         )
                       )
                     ),
-                    _react2.default.createElement(
+                    React.createElement(
                       'tr',
                       null,
-                      _react2.default.createElement(
+                      React.createElement(
                         'td',
                         null,
-                        _react2.default.createElement(_ProgressBar2.default, { progress: 60, type: 'striped', status: 'info' })
+                        React.createElement(_canonReact.ProgressBar, { progress: 60, type: 'striped', status: 'info' })
                       ),
-                      _react2.default.createElement(
+                      React.createElement(
                         'td',
                         null,
-                        _react2.default.createElement(
+                        React.createElement(
                           'div',
                           { className: 'highlight' },
-                          _react2.default.createElement(
+                          React.createElement(
                             'pre',
                             null,
-                            _react2.default.createElement(
+                            React.createElement(
                               'code',
                               { className: 'html' },
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'nt' },
                                 '<ProgressBar'
                               ),
                               ' ',
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'na' },
                                 'progress='
                               ),
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 's' },
                                 '"60"'
                               ),
                               ' ',
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'na' },
                                 'type='
                               ),
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 's' },
                                 '"striped"'
                               ),
                               ' ',
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'nt' },
                                 '/>'
@@ -27809,74 +30297,74 @@ var ProgressBarsSection = function (_React$Component) {
               )
             )
           ),
-          _react2.default.createElement(
-            'div',
-            { className: 'rs-row' },
-            _react2.default.createElement(
+          React.createElement(
+            _Common.Row,
+            null,
+            React.createElement(
               'div',
               { className: 'span-3' },
-              _react2.default.createElement(
+              React.createElement(
                 'h5',
                 null,
                 'size'
               ),
-              _react2.default.createElement(
+              React.createElement(
                 'p',
                 null,
                 'Progress bars can be given a fixed width with the ',
-                _react2.default.createElement(
+                React.createElement(
                   'code',
                   null,
                   'size'
                 ),
                 ' property. The allowed sizes are:'
               ),
-              _react2.default.createElement(
+              React.createElement(
                 'p',
                 null,
-                _react2.default.createElement(
+                React.createElement(
                   'ul',
                   null,
-                  _react2.default.createElement(
+                  React.createElement(
                     'li',
                     null,
-                    _react2.default.createElement(
+                    React.createElement(
                       'code',
                       null,
                       'xsmall'
                     )
                   ),
-                  _react2.default.createElement(
+                  React.createElement(
                     'li',
                     null,
-                    _react2.default.createElement(
+                    React.createElement(
                       'code',
                       null,
                       'small'
                     )
                   ),
-                  _react2.default.createElement(
+                  React.createElement(
                     'li',
                     null,
-                    _react2.default.createElement(
+                    React.createElement(
                       'code',
                       null,
                       'medium'
                     )
                   ),
-                  _react2.default.createElement(
+                  React.createElement(
                     'li',
                     null,
-                    _react2.default.createElement(
+                    React.createElement(
                       'code',
                       null,
                       'large'
                     )
                   ),
-                  _react2.default.createElement(
+                  React.createElement(
                     'li',
                     null,
-                    _react2.default.createElement(
+                    React.createElement(
                       'code',
                       null,
                       'xlarge'
@@ -27885,90 +30373,90 @@ var ProgressBarsSection = function (_React$Component) {
                 )
               )
             ),
-            _react2.default.createElement(
+            React.createElement(
               'div',
               { className: 'span-8 offset-1' },
-              _react2.default.createElement(
+              React.createElement(
                 'h4',
                 null,
                 'Example'
               ),
-              _react2.default.createElement(
+              React.createElement(
                 'div',
                 null,
-                _react2.default.createElement(
+                React.createElement(
                   'table',
                   null,
-                  _react2.default.createElement(
+                  React.createElement(
                     'thead',
                     null,
-                    _react2.default.createElement(
+                    React.createElement(
                       'tr',
                       null,
-                      _react2.default.createElement(
+                      React.createElement(
                         'th',
                         null,
                         'Component'
                       ),
-                      _react2.default.createElement(
+                      React.createElement(
                         'th',
                         null,
                         'Source'
                       )
                     )
                   ),
-                  _react2.default.createElement(
+                  React.createElement(
                     'tbody',
                     null,
-                    _react2.default.createElement(
+                    React.createElement(
                       'tr',
                       null,
-                      _react2.default.createElement(
+                      React.createElement(
                         'td',
                         null,
-                        _react2.default.createElement(_ProgressBar2.default, { progress: 60, size: 'xsmall', status: 'info' })
+                        React.createElement(_canonReact.ProgressBar, { progress: 60, size: 'xsmall', status: 'info' })
                       ),
-                      _react2.default.createElement(
+                      React.createElement(
                         'td',
                         null,
-                        _react2.default.createElement(
+                        React.createElement(
                           'div',
                           { className: 'highlight' },
-                          _react2.default.createElement(
+                          React.createElement(
                             'pre',
                             null,
-                            _react2.default.createElement(
+                            React.createElement(
                               'code',
                               { className: 'html' },
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'nt' },
                                 '<ProgressBar'
                               ),
                               ' ',
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'na' },
                                 'progress='
                               ),
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 's' },
                                 '"60"'
                               ),
                               ' ',
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'na' },
                                 'size='
                               ),
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 's' },
                                 '"xsmall"'
                               ),
                               ' ',
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'nt' },
                                 '/>'
@@ -27978,55 +30466,55 @@ var ProgressBarsSection = function (_React$Component) {
                         )
                       )
                     ),
-                    _react2.default.createElement(
+                    React.createElement(
                       'tr',
                       null,
-                      _react2.default.createElement(
+                      React.createElement(
                         'td',
                         null,
-                        _react2.default.createElement(_ProgressBar2.default, { progress: 60, size: 'small', status: 'info' })
+                        React.createElement(_canonReact.ProgressBar, { progress: 60, size: 'small', status: 'info' })
                       ),
-                      _react2.default.createElement(
+                      React.createElement(
                         'td',
                         null,
-                        _react2.default.createElement(
+                        React.createElement(
                           'div',
                           { className: 'highlight' },
-                          _react2.default.createElement(
+                          React.createElement(
                             'pre',
                             null,
-                            _react2.default.createElement(
+                            React.createElement(
                               'code',
                               { className: 'html' },
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'nt' },
                                 '<ProgressBar'
                               ),
                               ' ',
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'na' },
                                 'progress='
                               ),
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 's' },
                                 '"60"'
                               ),
                               ' ',
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'na' },
                                 'size='
                               ),
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 's' },
                                 '"small"'
                               ),
                               ' ',
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'nt' },
                                 '/>'
@@ -28036,55 +30524,55 @@ var ProgressBarsSection = function (_React$Component) {
                         )
                       )
                     ),
-                    _react2.default.createElement(
+                    React.createElement(
                       'tr',
                       null,
-                      _react2.default.createElement(
+                      React.createElement(
                         'td',
                         null,
-                        _react2.default.createElement(_ProgressBar2.default, { progress: 60, size: 'medium', status: 'info' })
+                        React.createElement(_canonReact.ProgressBar, { progress: 60, size: 'medium', status: 'info' })
                       ),
-                      _react2.default.createElement(
+                      React.createElement(
                         'td',
                         null,
-                        _react2.default.createElement(
+                        React.createElement(
                           'div',
                           { className: 'highlight' },
-                          _react2.default.createElement(
+                          React.createElement(
                             'pre',
                             null,
-                            _react2.default.createElement(
+                            React.createElement(
                               'code',
                               { className: 'html' },
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'nt' },
                                 '<ProgressBar'
                               ),
                               ' ',
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'na' },
                                 'progress='
                               ),
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 's' },
                                 '"60"'
                               ),
                               ' ',
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'na' },
                                 'size='
                               ),
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 's' },
                                 '"medium"'
                               ),
                               ' ',
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'nt' },
                                 '/>'
@@ -28094,55 +30582,55 @@ var ProgressBarsSection = function (_React$Component) {
                         )
                       )
                     ),
-                    _react2.default.createElement(
+                    React.createElement(
                       'tr',
                       null,
-                      _react2.default.createElement(
+                      React.createElement(
                         'td',
                         null,
-                        _react2.default.createElement(_ProgressBar2.default, { progress: 60, size: 'large', status: 'info' })
+                        React.createElement(_canonReact.ProgressBar, { progress: 60, size: 'large', status: 'info' })
                       ),
-                      _react2.default.createElement(
+                      React.createElement(
                         'td',
                         null,
-                        _react2.default.createElement(
+                        React.createElement(
                           'div',
                           { className: 'highlight' },
-                          _react2.default.createElement(
+                          React.createElement(
                             'pre',
                             null,
-                            _react2.default.createElement(
+                            React.createElement(
                               'code',
                               { className: 'html' },
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'nt' },
                                 '<ProgressBar'
                               ),
                               ' ',
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'na' },
                                 'progress='
                               ),
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 's' },
                                 '"60"'
                               ),
                               ' ',
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'na' },
                                 'size='
                               ),
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 's' },
                                 '"large"'
                               ),
                               ' ',
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'nt' },
                                 '/>'
@@ -28152,55 +30640,55 @@ var ProgressBarsSection = function (_React$Component) {
                         )
                       )
                     ),
-                    _react2.default.createElement(
+                    React.createElement(
                       'tr',
                       null,
-                      _react2.default.createElement(
+                      React.createElement(
                         'td',
                         null,
-                        _react2.default.createElement(_ProgressBar2.default, { progress: 60, size: 'xlarge', status: 'info' })
+                        React.createElement(_canonReact.ProgressBar, { progress: 60, size: 'xlarge', status: 'info' })
                       ),
-                      _react2.default.createElement(
+                      React.createElement(
                         'td',
                         null,
-                        _react2.default.createElement(
+                        React.createElement(
                           'div',
                           { className: 'highlight' },
-                          _react2.default.createElement(
+                          React.createElement(
                             'pre',
                             null,
-                            _react2.default.createElement(
+                            React.createElement(
                               'code',
                               { className: 'html' },
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'nt' },
                                 '<ProgressBar'
                               ),
                               ' ',
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'na' },
                                 'progress='
                               ),
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 's' },
                                 '"60"'
                               ),
                               ' ',
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'na' },
                                 'size='
                               ),
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 's' },
                                 '"xlarge"'
                               ),
                               ' ',
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'nt' },
                                 '/>'
@@ -28220,76 +30708,11 @@ var ProgressBarsSection = function (_React$Component) {
     }
   }]);
   return ProgressBarsSection;
-}(_react2.default.Component);
+}(_react.Component);
 
 exports.default = ProgressBarsSection;
 
-},{"../ProgressBar":232,"babel-runtime/core-js/object/get-prototype-of":4,"babel-runtime/helpers/classCallCheck":8,"babel-runtime/helpers/createClass":9,"babel-runtime/helpers/inherits":11,"babel-runtime/helpers/possibleConstructorReturn":12,"react":214}],239:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _getPrototypeOf = require("babel-runtime/core-js/object/get-prototype-of");
-
-var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
-
-var _classCallCheck2 = require("babel-runtime/helpers/classCallCheck");
-
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
-
-var _createClass2 = require("babel-runtime/helpers/createClass");
-
-var _createClass3 = _interopRequireDefault(_createClass2);
-
-var _possibleConstructorReturn2 = require("babel-runtime/helpers/possibleConstructorReturn");
-
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
-
-var _inherits2 = require("babel-runtime/helpers/inherits");
-
-var _inherits3 = _interopRequireDefault(_inherits2);
-
-var _react = require("react");
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var SectionHeader = function (_React$Component) {
-  (0, _inherits3.default)(SectionHeader, _React$Component);
-
-  function SectionHeader() {
-    (0, _classCallCheck3.default)(this, SectionHeader);
-    return (0, _possibleConstructorReturn3.default)(this, (0, _getPrototypeOf2.default)(SectionHeader).apply(this, arguments));
-  }
-
-  (0, _createClass3.default)(SectionHeader, [{
-    key: "render",
-    value: function render() {
-      return _react2.default.createElement(
-        "div",
-        { className: "header-section", id: this.props.id },
-        _react2.default.createElement(
-          "div",
-          { className: "header-section-subtitle" },
-          "components"
-        ),
-        _react2.default.createElement(
-          "div",
-          { className: "header-section-title" },
-          this.props.children
-        )
-      );
-    }
-  }]);
-  return SectionHeader;
-}(_react2.default.Component);
-
-exports.default = SectionHeader;
-
-},{"babel-runtime/core-js/object/get-prototype-of":4,"babel-runtime/helpers/classCallCheck":8,"babel-runtime/helpers/createClass":9,"babel-runtime/helpers/inherits":11,"babel-runtime/helpers/possibleConstructorReturn":12,"react":214}],240:[function(require,module,exports){
+},{"./Common":257,"babel-runtime/core-js/object/get-prototype-of":4,"babel-runtime/helpers/classCallCheck":8,"babel-runtime/helpers/createClass":9,"babel-runtime/helpers/inherits":11,"babel-runtime/helpers/possibleConstructorReturn":12,"canon-react":78,"react":234}],260:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -28318,16 +30741,14 @@ var _inherits3 = _interopRequireDefault(_inherits2);
 
 var _react = require('react');
 
-var _react2 = _interopRequireDefault(_react);
+var _canonReact = require('canon-react');
 
-var _StatusIndicator = require('../StatusIndicator');
-
-var _StatusIndicator2 = _interopRequireDefault(_StatusIndicator);
+var _Common = require('./Common');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var StatusIndicatorSection = function (_React$Component) {
-  (0, _inherits3.default)(StatusIndicatorSection, _React$Component);
+var StatusIndicatorSection = function (_Component) {
+  (0, _inherits3.default)(StatusIndicatorSection, _Component);
 
   function StatusIndicatorSection() {
     (0, _classCallCheck3.default)(this, StatusIndicatorSection);
@@ -28337,19 +30758,19 @@ var StatusIndicatorSection = function (_React$Component) {
   (0, _createClass3.default)(StatusIndicatorSection, [{
     key: 'render',
     value: function render() {
-      return _react2.default.createElement(
+      return React.createElement(
         'div',
         { className: 'website-content-section' },
-        _react2.default.createElement(
+        React.createElement(
           'div',
           { className: 'content-section-body' },
-          _react2.default.createElement(
-            'div',
-            { className: 'rs-row' },
-            _react2.default.createElement(
+          React.createElement(
+            _Common.Row,
+            null,
+            React.createElement(
               'p',
               null,
-              _react2.default.createElement(
+              React.createElement(
                 'a',
                 { href: 'http://rackerlabs.github.io/canon/ui-components/#status-indicators', target: '_blank' },
                 'Status Indicators'
@@ -28357,30 +30778,30 @@ var StatusIndicatorSection = function (_React$Component) {
               ' are used to indicate the state of an entity that may impact a customer\'s experience.'
             )
           ),
-          _react2.default.createElement(
-            'div',
-            { className: 'rs-row' },
-            _react2.default.createElement(
+          React.createElement(
+            _Common.Row,
+            null,
+            React.createElement(
               'h3',
               null,
               'Properties'
             ),
-            _react2.default.createElement(
+            React.createElement(
               'ul',
               null,
-              _react2.default.createElement(
+              React.createElement(
                 'li',
                 null,
-                _react2.default.createElement(
+                React.createElement(
                   'code',
                   null,
                   'status'
                 )
               ),
-              _react2.default.createElement(
+              React.createElement(
                 'li',
                 null,
-                _react2.default.createElement(
+                React.createElement(
                   'code',
                   null,
                   'hidden'
@@ -28388,79 +30809,79 @@ var StatusIndicatorSection = function (_React$Component) {
               )
             )
           ),
-          _react2.default.createElement(
-            'div',
-            { className: 'rs-row' },
-            _react2.default.createElement(
+          React.createElement(
+            _Common.Row,
+            null,
+            React.createElement(
               'div',
               { className: 'span-3' },
-              _react2.default.createElement(
+              React.createElement(
                 'h5',
                 null,
                 'status'
               ),
-              _react2.default.createElement(
+              React.createElement(
                 'p',
                 null,
-                _react2.default.createElement(
+                React.createElement(
                   'code',
                   null,
                   'status'
                 ),
                 ' takes a string (',
-                _react2.default.createElement(
+                React.createElement(
                   'code',
                   null,
                   'ok'
                 ),
                 ' is the default) that specifies the state of an entity. Allowed Types are:'
               ),
-              _react2.default.createElement(
+              React.createElement(
                 'p',
                 null,
-                _react2.default.createElement(
+                React.createElement(
                   'ul',
                   null,
-                  _react2.default.createElement(
+                  React.createElement(
                     'li',
                     null,
-                    _react2.default.createElement(
+                    React.createElement(
                       'code',
                       null,
                       'ok'
                     )
                   ),
-                  _react2.default.createElement(
+                  React.createElement(
                     'li',
                     null,
-                    _react2.default.createElement(
+                    React.createElement(
                       'code',
                       null,
                       'error'
                     )
                   ),
-                  _react2.default.createElement(
+                  React.createElement(
                     'li',
                     null,
-                    _react2.default.createElement(
+                    React.createElement(
                       'code',
                       null,
                       'processing'
                     )
                   ),
-                  _react2.default.createElement(
+                  React.createElement(
                     'li',
                     null,
-                    _react2.default.createElement(
+                    React.createElement(
                       'code',
                       null,
                       'warning'
                     )
                   ),
-                  _react2.default.createElement(
+                  React.createElement(
                     'li',
                     null,
-                    _react2.default.createElement(
+                    React.createElement(
                       'code',
                       null,
                       'disabled'
@@ -28469,86 +30890,86 @@ var StatusIndicatorSection = function (_React$Component) {
                 )
               )
             ),
-            _react2.default.createElement(
+            React.createElement(
               'div',
               { className: 'span-8 offset-1' },
-              _react2.default.createElement(
+              React.createElement(
                 'h4',
                 null,
                 'Example'
               ),
-              _react2.default.createElement(
+              React.createElement(
                 'div',
                 null,
-                _react2.default.createElement(
+                React.createElement(
                   'table',
                   null,
-                  _react2.default.createElement(
+                  React.createElement(
                     'thead',
                     null,
-                    _react2.default.createElement(
+                    React.createElement(
                       'tr',
                       null,
-                      _react2.default.createElement(
+                      React.createElement(
                         'th',
                         null,
                         'Component'
                       ),
-                      _react2.default.createElement(
+                      React.createElement(
                         'th',
                         null,
                         'Source'
                       )
                     )
                   ),
-                  _react2.default.createElement(
+                  React.createElement(
                     'tbody',
                     null,
-                    _react2.default.createElement(
+                    React.createElement(
                       'tr',
                       null,
-                      _react2.default.createElement(
+                      React.createElement(
                         'td',
                         null,
-                        _react2.default.createElement(
-                          _StatusIndicator2.default,
+                        React.createElement(
+                          _canonReact.StatusIndicator,
                           { status: 'ok' },
                           'OK'
                         )
                       ),
-                      _react2.default.createElement(
+                      React.createElement(
                         'td',
                         null,
-                        _react2.default.createElement(
+                        React.createElement(
                           'div',
                           { className: 'highlight' },
-                          _react2.default.createElement(
+                          React.createElement(
                             'pre',
                             null,
-                            _react2.default.createElement(
+                            React.createElement(
                               'code',
                               { className: 'html' },
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'nt' },
                                 '<StatusIndicator'
                               ),
                               ' ',
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'na' },
                                 'status='
                               ),
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 's' },
                                 '"ok"'
                               ),
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'nt' },
                                 '>OK',
-                                _react2.default.createElement(
+                                React.createElement(
                                   'span',
                                   { className: 'nt' },
                                   '</StatusIndicator>'
@@ -28559,51 +30980,51 @@ var StatusIndicatorSection = function (_React$Component) {
                         )
                       )
                     ),
-                    _react2.default.createElement(
+                    React.createElement(
                       'tr',
                       null,
-                      _react2.default.createElement(
+                      React.createElement(
                         'td',
                         null,
-                        _react2.default.createElement(
-                          _StatusIndicator2.default,
+                        React.createElement(
+                          _canonReact.StatusIndicator,
                           { status: 'error' },
                           'Error'
                         )
                       ),
-                      _react2.default.createElement(
+                      React.createElement(
                         'td',
                         null,
-                        _react2.default.createElement(
+                        React.createElement(
                           'div',
                           { className: 'highlight' },
-                          _react2.default.createElement(
+                          React.createElement(
                             'pre',
                             null,
-                            _react2.default.createElement(
+                            React.createElement(
                               'code',
                               { className: 'html' },
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'nt' },
                                 '<StatusIndicator'
                               ),
                               ' ',
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'na' },
                                 'status='
                               ),
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 's' },
                                 '"error"'
                               ),
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'nt' },
                                 '>Error',
-                                _react2.default.createElement(
+                                React.createElement(
                                   'span',
                                   { className: 'nt' },
                                   '</StatusIndicator>'
@@ -28614,51 +31035,51 @@ var StatusIndicatorSection = function (_React$Component) {
                         )
                       )
                     ),
-                    _react2.default.createElement(
+                    React.createElement(
                       'tr',
                       null,
-                      _react2.default.createElement(
+                      React.createElement(
                         'td',
                         null,
-                        _react2.default.createElement(
-                          _StatusIndicator2.default,
+                        React.createElement(
+                          _canonReact.StatusIndicator,
                           { status: 'processing' },
                           'Processing'
                         )
                       ),
-                      _react2.default.createElement(
+                      React.createElement(
                         'td',
                         null,
-                        _react2.default.createElement(
+                        React.createElement(
                           'div',
                           { className: 'highlight' },
-                          _react2.default.createElement(
+                          React.createElement(
                             'pre',
                             null,
-                            _react2.default.createElement(
+                            React.createElement(
                               'code',
                               { className: 'html' },
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'nt' },
                                 '<StatusIndicator'
                               ),
                               ' ',
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'na' },
                                 'status='
                               ),
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 's' },
                                 '"processing"'
                               ),
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'nt' },
                                 '>Processing',
-                                _react2.default.createElement(
+                                React.createElement(
                                   'span',
                                   { className: 'nt' },
                                   '</StatusIndicator>'
@@ -28669,51 +31090,51 @@ var StatusIndicatorSection = function (_React$Component) {
                         )
                       )
                     ),
-                    _react2.default.createElement(
+                    React.createElement(
                       'tr',
                       null,
-                      _react2.default.createElement(
+                      React.createElement(
                         'td',
                         null,
-                        _react2.default.createElement(
-                          _StatusIndicator2.default,
+                        React.createElement(
+                          _canonReact.StatusIndicator,
                           { status: 'warning' },
                           'Warning'
                         )
                       ),
-                      _react2.default.createElement(
+                      React.createElement(
                         'td',
                         null,
-                        _react2.default.createElement(
+                        React.createElement(
                           'div',
                           { className: 'highlight' },
-                          _react2.default.createElement(
+                          React.createElement(
                             'pre',
                             null,
-                            _react2.default.createElement(
+                            React.createElement(
                               'code',
                               { className: 'html' },
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'nt' },
                                 '<StatusIndicator'
                               ),
                               ' ',
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'na' },
                                 'status='
                               ),
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 's' },
                                 '"warning"'
                               ),
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'nt' },
                                 '>Warning',
-                                _react2.default.createElement(
+                                React.createElement(
                                   'span',
                                   { className: 'nt' },
                                   '</StatusIndicator>'
@@ -28724,51 +31145,51 @@ var StatusIndicatorSection = function (_React$Component) {
                         )
                       )
                     ),
-                    _react2.default.createElement(
+                    React.createElement(
                       'tr',
                       null,
-                      _react2.default.createElement(
+                      React.createElement(
                         'td',
                         null,
-                        _react2.default.createElement(
-                          _StatusIndicator2.default,
+                        React.createElement(
+                          _canonReact.StatusIndicator,
                           { status: 'disabled' },
                           'Disabled'
                         )
                       ),
-                      _react2.default.createElement(
+                      React.createElement(
                         'td',
                         null,
-                        _react2.default.createElement(
+                        React.createElement(
                           'div',
                           { className: 'highlight' },
-                          _react2.default.createElement(
+                          React.createElement(
                             'pre',
                             null,
-                            _react2.default.createElement(
+                            React.createElement(
                               'code',
                               { className: 'html' },
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'nt' },
                                 '<StatusIndicator'
                               ),
                               ' ',
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'na' },
                                 'status='
                               ),
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 's' },
                                 '"disabled"'
                               ),
-                              _react2.default.createElement(
+                              React.createElement(
                                 'span',
                                 { className: 'nt' },
                                 '>Disabled',
-                                _react2.default.createElement(
+                                React.createElement(
                                   'span',
                                   { className: 'nt' },
                                   '</StatusIndicator>'
@@ -28789,11 +31210,11 @@ var StatusIndicatorSection = function (_React$Component) {
     }
   }]);
   return StatusIndicatorSection;
-}(_react2.default.Component);
+}(_react.Component);
 
 exports.default = StatusIndicatorSection;
 
-},{"../StatusIndicator":233,"babel-runtime/core-js/object/get-prototype-of":4,"babel-runtime/helpers/classCallCheck":8,"babel-runtime/helpers/createClass":9,"babel-runtime/helpers/inherits":11,"babel-runtime/helpers/possibleConstructorReturn":12,"react":214}],241:[function(require,module,exports){
+},{"./Common":257,"babel-runtime/core-js/object/get-prototype-of":4,"babel-runtime/helpers/classCallCheck":8,"babel-runtime/helpers/createClass":9,"babel-runtime/helpers/inherits":11,"babel-runtime/helpers/possibleConstructorReturn":12,"canon-react":78,"react":234}],261:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -28822,7 +31243,7 @@ var _inherits3 = _interopRequireDefault(_inherits2);
 
 var _react = require('react');
 
-var _react2 = _interopRequireDefault(_react);
+var _Common = require('./Common');
 
 var _TooltipTrigger = require('../TooltipTrigger');
 
@@ -28830,8 +31251,8 @@ var _TooltipTrigger2 = _interopRequireDefault(_TooltipTrigger);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var TooltipSection = function (_React$Component) {
-  (0, _inherits3.default)(TooltipSection, _React$Component);
+var TooltipSection = function (_Component) {
+  (0, _inherits3.default)(TooltipSection, _Component);
 
   function TooltipSection() {
     (0, _classCallCheck3.default)(this, TooltipSection);
@@ -28841,19 +31262,19 @@ var TooltipSection = function (_React$Component) {
   (0, _createClass3.default)(TooltipSection, [{
     key: 'render',
     value: function render() {
-      return _react2.default.createElement(
+      return React.createElement(
         'div',
         { className: 'website-content-section' },
-        _react2.default.createElement(
+        React.createElement(
           'div',
           { className: 'content-section-body' },
-          _react2.default.createElement(
-            'div',
-            { className: 'rs-row' },
-            _react2.default.createElement(
+          React.createElement(
+            _Common.Row,
+            null,
+            React.createElement(
               'p',
               null,
-              _react2.default.createElement(
+              React.createElement(
                 'a',
                 { href: 'http://rackerlabs.github.io/canon/ui-components/#tooltips', target: '_blank' },
                 'Tooltips'
@@ -28861,197 +31282,141 @@ var TooltipSection = function (_React$Component) {
               ' are used to convey brief snippets of information.'
             )
           ),
-          _react2.default.createElement(
-            'div',
-            { className: 'rs-row' },
-            _react2.default.createElement(
+          React.createElement(
+            _Common.Row,
+            null,
+            React.createElement(
               'h3',
               null,
               'Components'
             ),
-            _react2.default.createElement(
+            React.createElement(
               'ul',
               null,
-              _react2.default.createElement(
-                'li',
-                null,
-                _react2.default.createElement(
-                  'code',
-                  null,
-                  'TooltipTrigger'
-                )
-              )
-            )
-          ),
-          _react2.default.createElement(
-            'div',
-            { className: 'rs-row' },
-            _react2.default.createElement(
-              'h5',
-              null,
-              _react2.default.createElement(
-                'code',
+              React.createElement(
+                _Common.CodeListItem,
                 null,
                 'TooltipTrigger'
               )
+            )
+          ),
+          React.createElement(
+            _Common.Row,
+            null,
+            React.createElement(
+              _Common.CodeHeader,
+              null,
+              'TooltipTrigger'
             ),
-            _react2.default.createElement(
+            React.createElement(
               'p',
               null,
               'The ',
-              _react2.default.createElement(
+              React.createElement(
                 'code',
                 null,
                 'TooltipTrigger'
               ),
               ' component wraps an element that, when hovered on, will display a tooltip. This component adds the hover behavior to its child component. The ',
-              _react2.default.createElement(
+              React.createElement(
                 'code',
                 null,
                 'TooltipTrigger'
               ),
               ' has two properties:'
             ),
-            _react2.default.createElement(
+            React.createElement(
               'ul',
               null,
-              _react2.default.createElement(
-                'li',
-                null,
-                _react2.default.createElement(
-                  'code',
-                  null,
-                  'placement'
-                )
-              ),
-              _react2.default.createElement(
-                'li',
-                null,
-                _react2.default.createElement(
-                  'code',
-                  null,
-                  'content'
-                )
-              )
-            ),
-            _react2.default.createElement(
-              'h6',
-              null,
-              _react2.default.createElement(
-                'code',
+              React.createElement(
+                _Common.CodeListItem,
                 null,
                 'placement'
+              ),
+              React.createElement(
+                _Common.CodeListItem,
+                null,
+                'content'
               )
             ),
-            _react2.default.createElement(
+            React.createElement(
+              _Common.PropertyHeader,
+              null,
+              'placement'
+            ),
+            React.createElement(
               'p',
               null,
-              _react2.default.createElement(
+              React.createElement(
                 'code',
                 null,
                 'placement'
               ),
               ' defines the position of the tooltip in relation to its trigger. The following values are allowed:'
             ),
-            _react2.default.createElement(
+            React.createElement(
               'ul',
               null,
-              _react2.default.createElement(
-                'li',
+              React.createElement(
+                _Common.CodeListItem,
                 null,
-                _react2.default.createElement(
-                  'code',
-                  null,
-                  'right'
-                )
+                'right'
               ),
-              _react2.default.createElement(
-                'li',
+              React.createElement(
+                _Common.CodeListItem,
                 null,
-                _react2.default.createElement(
-                  'code',
-                  null,
-                  'bottom-right'
-                )
+                'bottom-right'
               ),
-              _react2.default.createElement(
-                'li',
+              React.createElement(
+                _Common.CodeListItem,
                 null,
-                _react2.default.createElement(
-                  'code',
-                  null,
-                  'top-right'
-                )
+                'top-right'
               ),
-              _react2.default.createElement(
-                'li',
+              React.createElement(
+                _Common.CodeListItem,
                 null,
-                _react2.default.createElement(
-                  'code',
-                  null,
-                  'left'
-                )
+                'left'
               ),
-              _react2.default.createElement(
-                'li',
+              React.createElement(
+                _Common.CodeListItem,
                 null,
-                _react2.default.createElement(
-                  'code',
-                  null,
-                  'bottom-left'
-                )
+                'bottom-left'
               ),
-              _react2.default.createElement(
-                'li',
+              React.createElement(
+                _Common.CodeListItem,
                 null,
-                _react2.default.createElement(
-                  'code',
-                  null,
-                  'top-left'
-                )
+                'top-left'
               ),
-              _react2.default.createElement(
-                'li',
+              React.createElement(
+                _Common.CodeListItem,
                 null,
-                _react2.default.createElement(
-                  'code',
-                  null,
-                  'top'
-                )
+                'top'
               ),
-              _react2.default.createElement(
-                'li',
+              React.createElement(
+                _Common.CodeListItem,
                 null,
-                _react2.default.createElement(
-                  'code',
-                  null,
-                  'bottom'
-                )
+                'bottom'
               )
             ),
-            _react2.default.createElement(
+            React.createElement(
               'p',
               null,
-              _react2.default.createElement(
+              React.createElement(
                 'code',
                 null,
                 'bottom-right'
               ),
               ' is the default placement.'
             ),
-            _react2.default.createElement(
-              'h6',
+            React.createElement(
+              _Common.PropertyHeader,
               null,
-              _react2.default.createElement(
-                'code',
-                null,
-                'content'
-              )
+              'content'
             ),
-            _react2.default.createElement(
+            React.createElement(
               'p',
               null,
-              _react2.default.createElement(
+              React.createElement(
                 'code',
                 null,
                 'content'
@@ -29059,79 +31424,79 @@ var TooltipSection = function (_React$Component) {
               ' is the contents of the tooltip. This can be plain text or react components.'
             )
           ),
-          _react2.default.createElement(
-            'div',
-            { className: 'rs-row' },
-            _react2.default.createElement(
+          React.createElement(
+            _Common.Row,
+            null,
+            React.createElement(
               'h3',
               null,
               'Tooltip Example'
             ),
-            _react2.default.createElement(
+            React.createElement(
               'p',
               null,
               'A tooltip rendered :'
             ),
-            _react2.default.createElement(
+            React.createElement(
               _TooltipTrigger2.default,
               { content: 'Hello There!' },
-              _react2.default.createElement('i', { className: 'rs-icon-help' })
+              React.createElement('i', { className: 'rs-icon-help' })
             ),
-            _react2.default.createElement(
+            React.createElement(
               'p',
               null,
-              _react2.default.createElement(
+              React.createElement(
                 'div',
                 { className: 'highlight' },
-                _react2.default.createElement(
+                React.createElement(
                   'pre',
                   null,
-                  _react2.default.createElement(
+                  React.createElement(
                     'code',
                     { className: 'html' },
-                    _react2.default.createElement(
+                    React.createElement(
                       'span',
                       { className: 'nt' },
                       '<TooltipTrigger'
                     ),
                     ' ',
-                    _react2.default.createElement(
+                    React.createElement(
                       'span',
                       { className: 'na' },
                       'content='
                     ),
-                    _react2.default.createElement(
+                    React.createElement(
                       'span',
                       { className: 's' },
                       '"Hello There!"'
                     ),
-                    _react2.default.createElement(
+                    React.createElement(
                       'span',
                       { className: 'nt' },
                       '>'
                     ),
-                    _react2.default.createElement(
+                    React.createElement(
                       'span',
                       { className: 'nt' },
                       '<i'
                     ),
                     ' ',
-                    _react2.default.createElement(
+                    React.createElement(
                       'span',
                       { className: 'na' },
                       'className='
                     ),
-                    _react2.default.createElement(
+                    React.createElement(
                       'span',
                       { className: 's' },
                       '"rs-icon-help"'
                     ),
-                    _react2.default.createElement(
+                    React.createElement(
                       'span',
                       { className: 'nt' },
                       '>'
                     ),
-                    _react2.default.createElement(
+                    React.createElement(
                       'span',
                       { className: 'nt' },
                       '</TooltipTrigger>'
@@ -29146,11 +31511,11 @@ var TooltipSection = function (_React$Component) {
     }
   }]);
   return TooltipSection;
-}(_react2.default.Component);
+}(_react.Component);
 
 exports.default = TooltipSection;
 
-},{"../TooltipTrigger":234,"babel-runtime/core-js/object/get-prototype-of":4,"babel-runtime/helpers/classCallCheck":8,"babel-runtime/helpers/createClass":9,"babel-runtime/helpers/inherits":11,"babel-runtime/helpers/possibleConstructorReturn":12,"react":214}],242:[function(require,module,exports){
+},{"../TooltipTrigger":254,"./Common":257,"babel-runtime/core-js/object/get-prototype-of":4,"babel-runtime/helpers/classCallCheck":8,"babel-runtime/helpers/createClass":9,"babel-runtime/helpers/inherits":11,"babel-runtime/helpers/possibleConstructorReturn":12,"react":234}],262:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -29197,9 +31562,7 @@ var _ProgressBarsSection = require('./ProgressBarsSection');
 
 var _ProgressBarsSection2 = _interopRequireDefault(_ProgressBarsSection);
 
-var _SectionHeader = require('./SectionHeader');
-
-var _SectionHeader2 = _interopRequireDefault(_SectionHeader);
+var _Common = require('./Common');
 
 var _StatusIndicatorSection = require('./StatusIndicatorSection');
 
@@ -29238,37 +31601,37 @@ var View = function (_React$Component) {
                 'div',
                 { className: 'rs-content rs-panel' },
                 _react2.default.createElement(
-                  _SectionHeader2.default,
+                  _Common.SectionHeader,
                   { id: 'buttons' },
                   'Buttons'
                 ),
                 _react2.default.createElement(_ButtonsSection2.default, null),
                 _react2.default.createElement(
-                  _SectionHeader2.default,
+                  _Common.SectionHeader,
                   { id: 'button-groups' },
                   'Button Groups'
                 ),
                 _react2.default.createElement(_ButtonGroupSection2.default, null),
                 _react2.default.createElement(
-                  _SectionHeader2.default,
+                  _Common.SectionHeader,
                   { id: 'progress-bars' },
                   'Progress Bars'
                 ),
                 _react2.default.createElement(_ProgressBarsSection2.default, null),
                 _react2.default.createElement(
-                  _SectionHeader2.default,
+                  _Common.SectionHeader,
                   { id: 'status-indicators' },
                   'Status Indicators'
                 ),
                 _react2.default.createElement(_StatusIndicatorSection2.default, null),
                 _react2.default.createElement(
-                  _SectionHeader2.default,
+                  _Common.SectionHeader,
                   { id: 'popovers' },
                   'Popovers'
                 ),
                 _react2.default.createElement(_PopoverSection2.default, null),
                 _react2.default.createElement(
-                  _SectionHeader2.default,
+                  _Common.SectionHeader,
                   { id: 'tooltips' },
                   'Tooltips'
                 ),
@@ -29286,35 +31649,7 @@ var View = function (_React$Component) {
 
 exports.default = View;
 
-// <div className="rs-inner">
-//           <div className="rs-container">
-//             <div className="rs-main">
-//               <div className="rs-content rs-panel">
-
-//                 <SectionHeader id='buttons'>Buttons</SectionHeader>
-//                 <ButtonsSection />
-
-//                 <SectionHeader id='button-groups'>Button Groups</SectionHeader>
-//                 <ButtonGroupSection />
-
-//                 <SectionHeader id='progress-bars'>Progress Bars</SectionHeader>
-//                 <ProgressBarsSection />
-
-//                 <SectionHeader id='status-indicators'>Status Indicators</SectionHeader>
-//                 <StatusIndicatorSection />
-
-//                 <SectionHeader id='popovers'>Popovers</SectionHeader>
-//                 <PopoverSection />
-
-//                 <SectionHeader id='tooltips'>Tooltips</SectionHeader>
-//                 <TooltipSection />
-
-//               </div>
-//             </div>
-//           </div>
-//         </div>
-
-},{"./ButtonGroupSection":235,"./ButtonsSection":236,"./PopoverSection":237,"./ProgressBarsSection":238,"./SectionHeader":239,"./StatusIndicatorSection":240,"./TooltipSection":241,"babel-runtime/core-js/object/get-prototype-of":4,"babel-runtime/helpers/classCallCheck":8,"babel-runtime/helpers/createClass":9,"babel-runtime/helpers/inherits":11,"babel-runtime/helpers/possibleConstructorReturn":12,"react":214}],243:[function(require,module,exports){
+},{"./ButtonGroupSection":255,"./ButtonsSection":256,"./Common":257,"./PopoverSection":258,"./ProgressBarsSection":259,"./StatusIndicatorSection":260,"./TooltipSection":261,"babel-runtime/core-js/object/get-prototype-of":4,"babel-runtime/helpers/classCallCheck":8,"babel-runtime/helpers/createClass":9,"babel-runtime/helpers/inherits":11,"babel-runtime/helpers/possibleConstructorReturn":12,"react":234}],263:[function(require,module,exports){
 'use strict';
 
 var _react = require('react');
@@ -29331,100 +31666,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
   _react2.default.render(_react2.default.createElement(_View2.default, null), document.getElementById('components-content'));
 })();
 
-},{"./components/View":242,"react":214}],244:[function(require,module,exports){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.TooltipTrigger = exports.StatusIndicator = exports.ProgressBar = exports.PopoverOverlay = exports.ProcessingIndicator = exports.PopoverFooter = exports.PopoverBody = exports.Popover = exports.FacetsSection = exports.Facet = exports.DropdownTrigger = exports.DropdownItem = exports.Dropdown = exports.Divider = exports.Criteria = exports.ButtonGroup = exports.Button = undefined;
-
-var _Button = require('./Button');
-
-var _Button2 = _interopRequireDefault(_Button);
-
-var _ButtonGroup = require('./ButtonGroup');
-
-var _ButtonGroup2 = _interopRequireDefault(_ButtonGroup);
-
-var _Criteria = require('./Criteria');
-
-var _Criteria2 = _interopRequireDefault(_Criteria);
-
-var _Divider = require('./Divider');
-
-var _Divider2 = _interopRequireDefault(_Divider);
-
-var _Dropdown = require('./Dropdown');
-
-var _Dropdown2 = _interopRequireDefault(_Dropdown);
-
-var _DropdownItem = require('./DropdownItem');
-
-var _DropdownItem2 = _interopRequireDefault(_DropdownItem);
-
-var _DropdownTrigger = require('./DropdownTrigger');
-
-var _DropdownTrigger2 = _interopRequireDefault(_DropdownTrigger);
-
-var _Facet = require('./Facet');
-
-var _Facet2 = _interopRequireDefault(_Facet);
-
-var _FacetsSection = require('./FacetsSection');
-
-var _FacetsSection2 = _interopRequireDefault(_FacetsSection);
-
-var _Popover = require('./Popover');
-
-var _Popover2 = _interopRequireDefault(_Popover);
-
-var _PopoverBody = require('./PopoverBody');
-
-var _PopoverBody2 = _interopRequireDefault(_PopoverBody);
-
-var _PopoverFooter = require('./PopoverFooter');
-
-var _PopoverFooter2 = _interopRequireDefault(_PopoverFooter);
-
-var _ProcessingIndicator = require('./ProcessingIndicator');
-
-var _ProcessingIndicator2 = _interopRequireDefault(_ProcessingIndicator);
-
-var _PopoverOverlay = require('./PopoverOverlay');
-
-var _PopoverOverlay2 = _interopRequireDefault(_PopoverOverlay);
-
-var _ProgressBar = require('./ProgressBar');
-
-var _ProgressBar2 = _interopRequireDefault(_ProgressBar);
-
-var _StatusIndicator = require('./StatusIndicator');
-
-var _StatusIndicator2 = _interopRequireDefault(_StatusIndicator);
-
-var _TooltipTrigger = require('./TooltipTrigger');
-
-var _TooltipTrigger2 = _interopRequireDefault(_TooltipTrigger);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.Button = _Button2.default;
-exports.ButtonGroup = _ButtonGroup2.default;
-exports.Criteria = _Criteria2.default;
-exports.Divider = _Divider2.default;
-exports.Dropdown = _Dropdown2.default;
-exports.DropdownItem = _DropdownItem2.default;
-exports.DropdownTrigger = _DropdownTrigger2.default;
-exports.Facet = _Facet2.default;
-exports.FacetsSection = _FacetsSection2.default;
-exports.Popover = _Popover2.default;
-exports.PopoverBody = _PopoverBody2.default;
-exports.PopoverFooter = _PopoverFooter2.default;
-exports.ProcessingIndicator = _ProcessingIndicator2.default;
-exports.PopoverOverlay = _PopoverOverlay2.default;
-exports.ProgressBar = _ProgressBar2.default;
-exports.StatusIndicator = _StatusIndicator2.default;
-exports.TooltipTrigger = _TooltipTrigger2.default;
-
-},{"./Button":216,"./ButtonGroup":217,"./Criteria":218,"./Divider":219,"./Dropdown":220,"./DropdownItem":221,"./DropdownTrigger":222,"./Facet":223,"./FacetsSection":225,"./Popover":226,"./PopoverBody":228,"./PopoverFooter":229,"./PopoverOverlay":230,"./ProcessingIndicator":231,"./ProgressBar":232,"./StatusIndicator":233,"./TooltipTrigger":234}]},{},[216,217,218,219,220,221,222,223,224,225,226,227,228,229,230,231,232,233,234,235,236,237,238,239,240,241,242,243,244])
+},{"./components/View":262,"react":234}],264:[function(require,module,exports){
+arguments[4][78][0].apply(exports,arguments)
+},{"./Button":236,"./ButtonGroup":237,"./Criteria":238,"./Divider":239,"./Dropdown":240,"./DropdownItem":241,"./DropdownTrigger":242,"./Facet":243,"./FacetsSection":245,"./Popover":246,"./PopoverBody":248,"./PopoverFooter":249,"./PopoverOverlay":250,"./ProcessingIndicator":251,"./ProgressBar":252,"./StatusIndicator":253,"./TooltipTrigger":254}]},{},[236,237,238,239,240,241,242,243,244,245,246,247,248,249,250,251,252,253,254,255,256,257,258,259,260,261,262,263,264])

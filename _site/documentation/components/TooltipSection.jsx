@@ -1,48 +1,50 @@
-import React from 'react';
+import { Component } from 'react';
+import { CodeHeader, CodeListItem, PropertyHeader, Row } from './Common';
 
 import TooltipTrigger from '../TooltipTrigger';
 
-class TooltipSection extends React.Component {
+class TooltipSection extends Component {
   render() {
     return (
       <div className="website-content-section">
         <div className="content-section-body">
-          <div className="rs-row">
+          <Row>
             <p><a href="http://rackerlabs.github.io/canon/ui-components/#tooltips" target="_blank">Tooltips</a> are used to convey brief snippets of information.</p>
-          </div>
-          <div className="rs-row">
+          </Row>
+
+          <Row>
             <h3>Components</h3>
             <ul>
-              <li><code>TooltipTrigger</code></li>
+              <CodeListItem>TooltipTrigger</CodeListItem>
             </ul>
-          </div>
+          </Row>
 
-          <div className='rs-row'>
-            <h5><code>TooltipTrigger</code></h5>
+          <Row>
+            <CodeHeader>TooltipTrigger</CodeHeader>
             <p>The <code>TooltipTrigger</code> component wraps an element that, when hovered on, will display a tooltip. This component adds the hover behavior to its child component. The <code>TooltipTrigger</code> has two properties:</p>
             <ul>
-              <li><code>placement</code></li>
-              <li><code>content</code></li>
+              <CodeListItem>placement</CodeListItem>
+              <CodeListItem>content</CodeListItem>
             </ul>
-            <h6><code>placement</code></h6>
+            <PropertyHeader>placement</PropertyHeader>
             <p><code>placement</code> defines the position of the tooltip in relation to its trigger. The following values are allowed:</p>
             <ul>
-              <li><code>right</code></li>
-              <li><code>bottom-right</code></li>
-              <li><code>top-right</code></li>
-              <li><code>left</code></li>
-              <li><code>bottom-left</code></li>
-              <li><code>top-left</code></li>
-              <li><code>top</code></li>
-              <li><code>bottom</code></li>
+              <CodeListItem>right</CodeListItem>
+              <CodeListItem>bottom-right</CodeListItem>
+              <CodeListItem>top-right</CodeListItem>
+              <CodeListItem>left</CodeListItem>
+              <CodeListItem>bottom-left</CodeListItem>
+              <CodeListItem>top-left</CodeListItem>
+              <CodeListItem>top</CodeListItem>
+              <CodeListItem>bottom</CodeListItem>
             </ul>
             <p><code>bottom-right</code> is the default placement.</p>
 
-            <h6><code>content</code></h6>
+            <PropertyHeader>content</PropertyHeader>
             <p><code>content</code> is the contents of the tooltip. This can be plain text or react components.</p>
-          </div>
+          </Row>
 
-          <div className='rs-row'>
+          <Row>
             <h3>Tooltip Example</h3>
             <p>A tooltip rendered :</p>
             <TooltipTrigger content="Hello There!">
@@ -57,7 +59,7 @@ class TooltipSection extends React.Component {
                 </code></pre>
               </div>
             </p>
-          </div>
+          </Row>
 
         </div>
       </div>

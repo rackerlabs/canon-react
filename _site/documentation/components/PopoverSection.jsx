@@ -1,4 +1,5 @@
-import React from 'react';
+import { Component } from 'react';
+import { Row } from './Common';
 
 import Button from '../Button';
 import Popover from '../Popover';
@@ -6,7 +7,7 @@ import PopoverOverlay from '../PopoverOverlay';
 import PopoverBody from '../PopoverBody';
 import PopoverFooter from '../PopoverFooter';
 
-class UpdateNamePopover extends React.Component {
+class UpdateNamePopover extends Component {
   render() {
     return (
       <Popover placement={this.props.placement}
@@ -64,10 +65,12 @@ class PopoverSection extends React.Component {
     return (
       <div className="website-content-section">
         <div className="content-section-body">
-          <div className="rs-row">
+          
+          <Row>
             <p><a href="http://rackerlabs.github.io/canon/ui-components/#popover" target="_blank">Popovers</a> are used to display more information or to perform some action on an entity.</p>
-          </div>
-          <div className="rs-row">
+          </Row>
+
+          <Row>
             <h3>Components</h3>
             <ul>
               <li><code>Popover</code></li>
@@ -75,9 +78,9 @@ class PopoverSection extends React.Component {
               <li><code>PopoverBody</code></li>
               <li><code>PopoverFooter</code></li>
             </ul>
-          </div>
+          </Row>
 
-          <div className='rs-row'>
+          <Row>
             <h5><code>Popover</code></h5>
             <p>The <code>Popover</code> component controls the behavior of the popover itself (positioning, open/closed, request for close, etc.). The <code>Popover</code> has four properties:</p>
             <ul>
@@ -115,9 +118,9 @@ class PopoverSection extends React.Component {
 
             <h5><code>PopoverBody</code> and <code>PopoverFooter</code></h5>
             <p>These components should be used together when displaying a popover that will do some sort of form processing. If a popover is only being used to display information, these components aren't needed. The body and footer components simply wrap their children in the appropriate markup for a popover form. They don't do any special processing of the children to be rendered. any change of state of buttons rendered in the footer is the responsibilitiy of the consumer to update. This allows for greater flexibility of the what the body and footer can be composed of.</p>
-          </div>
+          </Row>
 
-          <div className='rs-row'>
+          <Row>
             <h3>Popover Example</h3>
             <p>A popover rendered to the right of the button:</p>
             <PopoverParent />
@@ -192,7 +195,7 @@ class PopoverSection extends React.Component {
                 </code>
               </pre>
             </p>
-          </div>
+          </Row>
 
         </div>
       </div>);

@@ -4,7 +4,7 @@ import ButtonsSection from './ButtonsSection';
 import ButtonGroupSection from './ButtonGroupSection';
 import PopoverSection from './PopoverSection';
 import ProgressBarsSection from './ProgressBarsSection';
-import SectionHeader from './SectionHeader';
+import { SectionHeader } from './Common';
 import StatusIndicatorSection from './StatusIndicatorSection';
 import TooltipSection from './TooltipSection';
 
@@ -17,22 +17,22 @@ class View extends React.Component {
             <div className="rs-main">
               <div className="rs-content rs-panel">
 
-                <SectionHeader id='buttons'>Buttons</SectionHeader>
+                <SectionHeader id="buttons">Buttons</SectionHeader>
                 <ButtonsSection />
 
-                <SectionHeader id='button-groups'>Button Groups</SectionHeader>
+                <SectionHeader id="button-groups">Button Groups</SectionHeader>
                 <ButtonGroupSection />
 
-                <SectionHeader id='progress-bars'>Progress Bars</SectionHeader>
+                <SectionHeader id="progress-bars">Progress Bars</SectionHeader>
                 <ProgressBarsSection />
 
-                <SectionHeader id='status-indicators'>Status Indicators</SectionHeader>
+                <SectionHeader id="status-indicators">Status Indicators</SectionHeader>
                 <StatusIndicatorSection />
 
-                <SectionHeader id='popovers'>Popovers</SectionHeader>
+                <SectionHeader id="popovers">Popovers</SectionHeader>
                 <PopoverSection />
 
-                <SectionHeader id='tooltips'>Tooltips</SectionHeader>
+                <SectionHeader id="tooltips">Tooltips</SectionHeader>
                 <TooltipSection />
               </div>
             </div>
@@ -47,31 +47,3 @@ class View extends React.Component {
 }
 
 export default View;
-
-// <div className="rs-inner">
-//           <div className="rs-container">
-//             <div className="rs-main">
-//               <div className="rs-content rs-panel">
-          
-//                 <SectionHeader id='buttons'>Buttons</SectionHeader>
-//                 <ButtonsSection />
-
-//                 <SectionHeader id='button-groups'>Button Groups</SectionHeader>
-//                 <ButtonGroupSection />
-
-//                 <SectionHeader id='progress-bars'>Progress Bars</SectionHeader>
-//                 <ProgressBarsSection />
-
-//                 <SectionHeader id='status-indicators'>Status Indicators</SectionHeader>
-//                 <StatusIndicatorSection />
-
-//                 <SectionHeader id='popovers'>Popovers</SectionHeader>
-//                 <PopoverSection />
-
-//                 <SectionHeader id='tooltips'>Tooltips</SectionHeader>
-//                 <TooltipSection />
-
-//               </div>
-//             </div>
-//           </div>
-//         </div>

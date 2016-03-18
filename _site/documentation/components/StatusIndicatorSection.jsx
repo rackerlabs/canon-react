@@ -1,23 +1,25 @@
-import React from 'react';
-import StatusIndicator from '../StatusIndicator';
+import { Component } from 'react';
+import { StatusIndicator } from 'canon-react';
+import { Row } from './Common';
 
-class StatusIndicatorSection extends React.Component {
+class StatusIndicatorSection extends Component {
   render() {
     return (
       <div className="website-content-section">
         <div className="content-section-body">
-          <div className="rs-row">
+          <Row>
             <p><a href="http://rackerlabs.github.io/canon/ui-components/#status-indicators" target="_blank">Status Indicators</a> are used to indicate the state of an entity that may impact a customer's experience.</p>
-          </div>
-          <div className="rs-row">
+          </Row>
+
+          <Row>
             <h3>Properties</h3>
             <ul>
               <li><code>status</code></li>
               <li><code>hidden</code></li>
             </ul>
-          </div>
+          </Row>
 
-          <div className="rs-row">
+          <Row>
             <div className="span-3">
               <h5>status</h5>
               <p><code>status</code> takes a string (<code>ok</code> is the default) that specifies the state of an entity. Allowed Types are:</p>
@@ -96,7 +98,7 @@ class StatusIndicatorSection extends React.Component {
                 </table>
               </div>
             </div>
-          </div>
+          </Row>
 
         </div>
       </div>);
