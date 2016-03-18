@@ -1,19 +1,18 @@
-import React from 'react';
+import { Component } from 'react';
+import { Button, ButtonGroup, ProcessingIndicator }  from 'canon-react';
+import { Row } from './Common';
 
-import Button from '../Button';
-import ButtonGroup from '../ButtonGroup';
-import ProcessingIndicator from '../ProcessingIndicator';
-
-class ButtonGroupSection extends React.Component {
+class ButtonGroupSection extends Component {
   render() {
     return (
       <div className="website-content-section">
         <div className="content-section-body">
-          <div className="rs-row">
+      
+          <Row>
             <p><a href="http://rackerlabs.github.io/canon/ui-components/#button-groups" target="_blank">Button Groups</a> are used to lay out a set of related buttons. Button groups have two different states: normal and submitting</p>
-          </div>
+          </Row>
 
-          <div className="rs-row">
+          <Row>
             <div className="span-3">
               <h3>Normal</h3>
               <p>In a normal state the buttons are active and ready for interaction from the user. The <code>ProcessingIndicator</code> is either hidden (by default) or not rendered.</p>
@@ -38,9 +37,9 @@ class ButtonGroupSection extends React.Component {
                 </code></pre>
               </div>
             </div>
-          </div>
+          </Row>
 
-          <div className="rs-row">
+          <Row>
             <div className="span-3">
               <h3>Submitting</h3>
               <p>In a submitting state an action is being processed and the buttons are disabled. The <code>ProcessingIndicator</code> is rendered with a property of <code>hidden: false</code>. Cancel links are also hidden with this pattern.</p>
@@ -65,7 +64,8 @@ class ButtonGroupSection extends React.Component {
                 </code></pre>
               </div>
             </div>
-          </div>
+          </Row>
+
         </div>
       </div>
     );

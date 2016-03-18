@@ -1,16 +1,18 @@
-import React from 'react';
+import { Component } from 'react';
+import { ProgressBar } from 'canon-react';
+import { Row } from './Common';
 
-import ProgressBar from '../ProgressBar';
-
-class ProgressBarsSection extends React.Component {
+class ProgressBarsSection extends Component {
   render() {
     return (
       <div className="website-content-section">
         <div className="content-section-body">
-          <div className="rs-row">
+          
+          <Row>
             <p><a href="http://rackerlabs.github.io/canon/ui-components/#progress-bars" target="_blank">Progress Bars</a> can be used to indicate both progress and state.</p>
-          </div>
-          <div className="rs-row">
+          </Row>
+
+          <Row>
             <h3>Properties</h3>
             <ul>
               <li><code>progress</code></li>
@@ -18,9 +20,9 @@ class ProgressBarsSection extends React.Component {
               <li><code>type</code></li>
               <li><code>size</code></li>
             </ul>
-          </div>
+          </Row>
 
-          <div className="rs-row">
+          <Row>
             <div className="span-3">
               <h5>progress</h5>
               <p><code>progress</code> takes a number between 0 and 100 that specifies the percentage of the data being represented.</p>
@@ -50,9 +52,9 @@ class ProgressBarsSection extends React.Component {
                 </table>
               </div>
             </div>
-          </div>
+          </Row>
 
-          <div className="rs-row">
+          <Row>
             <div className="span-3">
               <h5>status</h5>
               <p><code>status</code> takes a string (<code>info</code> is the default) that specifies the state of the action that is in progress. Allowed Types are:</p>
@@ -120,9 +122,9 @@ class ProgressBarsSection extends React.Component {
                 </table>
               </div>
             </div>
-          </div>
+          </Row>
 
-          <div className="rs-row">
+          <Row>
             <div className="span-3">
               <h5>type</h5>
               <p><code>type</code> takes a string (<code>solid</code> is the default). This is used to indicate additional information about work being done. The allowed types are:</p>
@@ -168,9 +170,9 @@ class ProgressBarsSection extends React.Component {
                 </table>
               </div>
             </div>
-          </div>
+          </Row>
 
-          <div className="rs-row">
+          <Row>
             <div className="span-3">
               <h5>size</h5>
               <p>Progress bars can be given a fixed width with the <code>size</code> property. The allowed sizes are:</p>
@@ -249,7 +251,7 @@ class ProgressBarsSection extends React.Component {
                 </table>
               </div>
             </div>
-          </div>
+          </Row>
 
         </div>
       </div>
