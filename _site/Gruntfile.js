@@ -69,6 +69,17 @@ module.exports = function (grunt) {
         options: {
           spawn: false
         }
+      },
+      documentation: {
+        files: [
+          'src/**/*.jsx',
+          'src/**/*.js',
+          'documentation/**/*.jsx'
+        ],
+        tasks: ['documentation-build'],
+        options: {
+          spawn: false
+        }
       }
     },
 
