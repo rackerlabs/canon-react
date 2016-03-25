@@ -7,6 +7,7 @@ import ProgressBarsSection from './ProgressBarsSection';
 import { SectionHeader } from './Common';
 import StatusIndicatorSection from './StatusIndicatorSection';
 import TooltipSection from './TooltipSection';
+import FacetSection from './FacetSection';
 
 class View extends React.Component {
   render() {
@@ -34,11 +35,14 @@ class View extends React.Component {
 
                 <SectionHeader id="tooltips">Tooltips</SectionHeader>
                 <TooltipSection />
+
+                <SectionHeader id="facets">Facets</SectionHeader>
+                <FacetSection />
               </div>
             </div>
           </div>
         </div>
-        
+
 
         <div className="rs-push"></div>
       </div>
