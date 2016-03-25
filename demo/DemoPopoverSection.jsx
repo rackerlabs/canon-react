@@ -77,6 +77,7 @@ class DemoPopoverSection extends React.Component {
                     placement='center'
                     target={ () => document.body }
                     isOpen={ this.state.bottomLeftModalPopoverOpen }
+                    isModal={ true }
                     onRequestClose={ () => { this.setState({bottomLeftModalPopoverOpen: false}) } }/>
                 </td>
               </tr>

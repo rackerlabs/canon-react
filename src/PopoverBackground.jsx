@@ -18,11 +18,16 @@ class PopoverBackground extends React.Component {
       'zIndex': 999
     };
 
+    if (this.props.isModal) {
+      style['backgroundColor'] = 'rgba(0, 0, 0, 0.5)';
+    }
+
     return (<div className='rs-popover-background-overlay' onClick={this.props.onRequestClose} style={style}></div>);
   }
 }
 
 PopoverBackground.propTypes = {
+  isModal: React.PropTypes.bool,
   onRequestClose: React.PropTypes.func
 };
 
