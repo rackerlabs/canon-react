@@ -1,3 +1,7 @@
+### Version 0.8.0
+1. BREAKING CHANGE: Fix conflict with HTML button `type` property in `Button` component. New `Button` property is called `canonStyle`.
+2. Add `isModal` property to `Popover` that adds a 50% opaque background to body overlay element.
+
 ### Version 0.7.2
 1. Fix facets so they do not mutate the passed in selected criteria property
 
