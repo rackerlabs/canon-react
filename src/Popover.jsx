@@ -77,7 +77,7 @@ class Popover extends React.Component {
     let popover;
 
     this._backgroundDiv.style.display = 'block';
-    React.render(<PopoverBackground onRequestClose={this.props.onRequestClose} />, this._backgroundDiv);
+    React.render(<PopoverBackground isModal={ this.props.isModal } onRequestClose={this.props.onRequestClose} />, this._backgroundDiv);
     this._containerDiv.className += ' rs-popover';
 
     if (!this._tether) {
@@ -183,14 +183,15 @@ Popover.defaultProps = {
 
 Popover.propTypes = {
   children: React.PropTypes.element.isRequired,
-  placement: React.PropTypes.oneOf(['right', 'bottom-right', 'left', 'bottom-left', 'center']),
+  isModal: React.PropTypes.bool,
   isOpen: React.PropTypes.bool,
+  offset: React.PropTypes.string,
   onRequestClose: React.PropTypes.func.isRequired,
+  placement: React.PropTypes.oneOf(['right', 'bottom-right', 'left', 'bottom-left', 'center']),
   target: React.PropTypes.oneOfType([
     React.PropTypes.string,
     React.PropTypes.func
-  ]).isRequired,
-  offset: React.PropTypes.string
+  ]).isRequired
 };
 
 export default Popover;

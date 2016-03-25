@@ -6,7 +6,7 @@ let TestUtils = React.addons.TestUtils;
 describe('Popover', () => {
   let popover, tether, requestCloseCallback, closeCallBackCalled;
 
-  const renderPopover = (placement, isOpen, useTargetCallback, offset) => {
+  const renderPopover = (placement, isOpen, useTargetCallback, offset, isModal) => {
     let target;
 
     setFixtures('<div id="content"><div id="some-element-id">The Target</div><div id="container"></div></div>');
@@ -25,7 +25,13 @@ describe('Popover', () => {
     }
 
     popover = React.render(
-      <Popover placement={placement} isOpen={isOpen} onRequestClose={requestCloseCallback} target={target} offset={offset}>
+      <Popover
+        placement={placement}
+        isOpen={isOpen}
+        onRequestClose={requestCloseCallback}
+        target={target}
+        offset={offset}
+        isModal={isModal}>
         <PopoverOverlay>
           This is the popover content
         </PopoverOverlay>
@@ -185,5 +191,23 @@ describe('Popover', () => {
     expect(popover._tether).toBeNull();
     expect(popover._popoverNode).toBeNull();
     expect(document.body.getElementsByClassName('rs-popover').length).toEqual(0);
+  });
+
+  it('renders PopoverBackground with a background color if isModal is true', () => {
+    let backgroundStyle;
+
+    renderPopover('center', true, false, '', true);
+    backgroundStyle = document.getElementsByClassName('rs-popover-background-overlay')[0].style;
+
+    expect(backgroundStyle['background-color']).not.toEqual('');
+  });
+
+  it('renders PopoverBackground with no background color if isModal is false', () => {
+    let backgroundStyle;
+
+    renderPopover('center', true, false, '', false);
+    backgroundStyle = document.getElementsByClassName('rs-popover-background-overlay')[0].style;
+
+    expect(backgroundStyle['background-color']).toEqual('');
   });
 });
