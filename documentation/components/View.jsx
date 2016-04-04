@@ -1,13 +1,14 @@
 import React from 'react';
 
-import ButtonsSection from './ButtonsSection';
+import { SectionHeader } from './Common';
 import ButtonGroupSection from './ButtonGroupSection';
+import ButtonsSection from './ButtonsSection';
+import DropdownSection from './DropdownSection';
+import FacetSection from './FacetSection';
 import PopoverSection from './PopoverSection';
 import ProgressBarsSection from './ProgressBarsSection';
-import { SectionHeader } from './Common';
 import StatusIndicatorSection from './StatusIndicatorSection';
 import TooltipSection from './TooltipSection';
-import FacetSection from './FacetSection';
 
 class View extends React.Component {
   render() {
@@ -38,6 +39,9 @@ class View extends React.Component {
 
                 <SectionHeader id="facets">Facets</SectionHeader>
                 <FacetSection />
+
+                <SectionHeader id="dropdown">Dropdowns</SectionHeader>
+                <DropdownSection />
               </div>
             </div>
           </div>
