@@ -8,7 +8,7 @@ class StatusIndicatorSection extends Component {
       <div className="website-content-section">
         <div className="content-section-body">
           <Row>
-            <p><a href="http://rackerlabs.github.io/canon/ui-components/#status-indicators" target="_blank">Status Indicators</a> are used to indicate the state of an entity that may impact a customer's experience.</p>
+            <p><a href="http://rackerlabs.github.io/canon/ui-components/#status-indicators" target="_blank">Status Indicators</a>{" are used to indicate the state of an entity that may impact a customer's experience."}</p>
           </Row>
 
           <Row>
