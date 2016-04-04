@@ -1,5 +1,6 @@
 import Criteria from '../transpiled/Criteria';
 import React from 'react/addons';
+import ReactDOM from 'react-dom';
 let TestUtils = React.addons.TestUtils;
 
 describe('Criteria', () => {
@@ -27,7 +28,7 @@ describe('Criteria', () => {
   });
 
   afterEach(() => {
-    React.unmountComponentAtNode(React.findDOMNode(criteria).parentNode);
+    ReactDOM.unmountComponentAtNode(ReactDOM.findDOMNode(criteria).parentNode);
   });
 
   it('has the right class', () => {
