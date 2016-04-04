@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import Tether from 'tether';
 
 class TooltipTrigger extends React.Component {
@@ -55,14 +56,14 @@ class TooltipTrigger extends React.Component {
     }
 
     if (this._tooltipNode) {
-      React.unmountComponentAtNode(this._containerDiv);
+      ReactDOM.unmountComponentAtNode(this._containerDiv);
       this._tooltipNode = null;
     }
   }
 
   _showTooltip() {
     this._containerDiv.className += ' visible';
-    this._tooltipNode = React.render(
+    this._tooltipNode = ReactDOM.render(
       <div className='rs-tooltip-inner'
         onMouseOver={this._mouseEnteringTooltip.bind(this)}
         onMouseLeave={this._mouseLeavingTooltip.bind(this)}>
@@ -135,7 +136,7 @@ class TooltipTrigger extends React.Component {
     }
 
     tetherConfig.targetModifier = 'visible';
-    tetherConfig.element = React.findDOMNode(this._containerDiv);
+    tetherConfig.element = ReactDOM.findDOMNode(this._containerDiv);
     tetherConfig.target = this._getTarget();
     tetherConfig.constraints = [
       { to: 'window', pin: true, attachment: 'together' }
@@ -179,7 +180,7 @@ class TooltipTrigger extends React.Component {
   }
 
   _getTarget() {
-    return React.findDOMNode(this.refs.trigger);
+    return ReactDOM.findDOMNode(this.refs.trigger);
   }
 
   _mouseLeavingTooltip() {

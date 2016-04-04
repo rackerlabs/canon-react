@@ -75,12 +75,18 @@ module.exports = function (grunt) {
           'canon-react.js': ['transpiled/index.js']
         },
         options: {
-          standalone: 'canonReact'
+          transform: [ 'browserify-shim' ],
+          browserifyOptions: {
+            standalone: 'canonReact'
+          }
         }
       },
       demo: {
         files: {
-          'demo/bundle.js': ['transpiled/**/*.js']
+          'demo/bundle.js': ['transpiled/**/*.js'],
+        },
+        options: {
+          transform: [ 'browserify-shim' ]
         }
       }
     },
