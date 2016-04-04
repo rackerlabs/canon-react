@@ -1,6 +1,7 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import DemoView  from './DemoView';
 
 (function () {
-  React.render(<DemoView/>, document.getElementById('content'));
+  ReactDOM.render(<DemoView/>, document.getElementById('content'));
 })();

@@ -4,6 +4,7 @@ import Button from '../transpiled/Button';
 import Dropdown from '../transpiled/Dropdown';
 import DropdownItem from '../transpiled/DropdownItem';
 import React from 'react/addons';
+import ReactDOM from 'react-dom';
 let TestUtils = React.addons.TestUtils;
 
 describe('DropdownTrigger', () => {
@@ -24,12 +25,12 @@ describe('DropdownTrigger', () => {
 
   const clickTrigger = () => {
     button = TestUtils.findRenderedComponentWithType(dropdownTrigger, Button);
-    TestUtils.Simulate.click(React.findDOMNode(button));
+    TestUtils.Simulate.click(ReactDOM.findDOMNode(button));
   };
 
   describe('when rendering the DropdownTrigger', () => {
     afterEach(() => {
-      React.unmountComponentAtNode(React.findDOMNode(dropdownTrigger).parentNode);
+      ReactDOM.unmountComponentAtNode(ReactDOM.findDOMNode(dropdownTrigger).parentNode);
     });
 
     it('renders the passed in trigger', () => {
@@ -37,7 +38,7 @@ describe('DropdownTrigger', () => {
 
       button = TestUtils.findRenderedComponentWithType(dropdownTrigger, Button);
 
-      expect(React.findDOMNode(button).textContent).toBe('Hello');
+      expect(ReactDOM.findDOMNode(button).textContent).toBe('Hello');
     });
 
     it('does not display the dropdown initially', () => {
@@ -64,8 +65,8 @@ describe('DropdownTrigger', () => {
         clickTrigger();
 
         expect(dropdownTrigger._createTether).toHaveBeenCalledWith({
-          element: React.findDOMNode(dropdownTrigger._containerDiv),
-          target: React.findDOMNode(dropdownTrigger),
+          element: ReactDOM.findDOMNode(dropdownTrigger._containerDiv),
+          target: ReactDOM.findDOMNode(dropdownTrigger),
           attachment: 'top left',
           targetAttachment: 'bottom left'
         });
@@ -75,7 +76,7 @@ describe('DropdownTrigger', () => {
         renderDropdown();
         clickTrigger();
 
-        TestUtils.Simulate.click(React.findDOMNode(button));
+        TestUtils.Simulate.click(ReactDOM.findDOMNode(button));
 
         expect(tether.destroy).toHaveBeenCalled();
         expect(dropdownTrigger._dropdownNode).toBeNull();
@@ -100,7 +101,7 @@ describe('DropdownTrigger', () => {
         renderDropdown('right');
         clickTrigger();
 
-        TestUtils.Simulate.click(React.findDOMNode(dropdownTrigger));
+        TestUtils.Simulate.click(ReactDOM.findDOMNode(dropdownTrigger));
 
         expect(tether.destroy).toHaveBeenCalled();
         expect(dropdownTrigger._dropdownNode).toBeNull();
@@ -122,7 +123,7 @@ describe('DropdownTrigger', () => {
     renderDropdown('right');
     clickTrigger();
 
-    React.unmountComponentAtNode(React.findDOMNode(dropdownTrigger).parentNode);
+    ReactDOM.unmountComponentAtNode(ReactDOM.findDOMNode(dropdownTrigger).parentNode);
 
     expect(tether.destroy).toHaveBeenCalled();
     expect(dropdownTrigger._tether).toBeNull();

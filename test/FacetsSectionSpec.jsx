@@ -1,5 +1,6 @@
 import FacetsSection from '../transpiled/FacetsSection';
 import React from 'react/addons';
+import ReactDOM from 'react-dom';
 let TestUtils = React.addons.TestUtils;
 
 describe('FacetsSection', () => {
@@ -38,7 +39,7 @@ describe('FacetsSection', () => {
   });
 
   afterEach(() => {
-    React.unmountComponentAtNode(React.findDOMNode(section).parentNode);
+    ReactDOM.unmountComponentAtNode(ReactDOM.findDOMNode(section).parentNode);
   });
 
   it('hides the clear all link', () => {
