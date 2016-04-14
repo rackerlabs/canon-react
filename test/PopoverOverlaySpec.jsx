@@ -1,7 +1,8 @@
 import PopoverOverlay from '../transpiled/PopoverOverlay';
 
-import React from 'react/addons';
-let TestUtils = React.addons.TestUtils;
+import React from 'react';
+import ReactDOM from 'react-dom';
+import TestUtils from 'react-addons-test-utils';
 
 describe('PopoverOverlay', () => {
   let popover;
@@ -15,19 +16,19 @@ describe('PopoverOverlay', () => {
   };
 
   afterEach(() => {
-    React.unmountComponentAtNode(React.findDOMNode(popover).parentNode);
+    ReactDOM.unmountComponentAtNode(ReactDOM.findDOMNode(popover).parentNode);
   });
 
   it('renders a popover with the provided class', () => {
     renderPopover('right');
 
-    expect(React.findDOMNode(popover)).toHaveClass('test-class');
+    expect(ReactDOM.findDOMNode(popover)).toHaveClass('test-class');
   });
 
   it('adds the specified classes to the popover', () => {
     renderPopover('right');
 
-    expect(React.findDOMNode(popover)).toHaveClass('test-class');
+    expect(ReactDOM.findDOMNode(popover)).toHaveClass('test-class');
   });
 
   it('renders children', () => {
@@ -36,7 +37,7 @@ describe('PopoverOverlay', () => {
     renderPopover('right');
     popoverContent = TestUtils.findRenderedDOMComponentWithClass(popover, 'rs-popover-content');
 
-    expect(React.findDOMNode(popoverContent).textContent).toBe('Hello');
+    expect(ReactDOM.findDOMNode(popoverContent).textContent).toBe('Hello');
   });
 
   describe('arrow placement', () => {
