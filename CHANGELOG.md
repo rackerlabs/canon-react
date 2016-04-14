@@ -1,3 +1,6 @@
+### Version 0.9.0
+1. BREAKING CHANGE: Upgrading to support react ~0.14.0. No functions that are marked as deprecated in React ~0.14.0 are used in this release.
+
 ### Version 0.8.0
 1. BREAKING CHANGE: Fix conflict with HTML button `type` property in `Button` component. New `Button` property is called `canonStyle`.
 2. Add `isModal` property to `Popover` that adds a 50% opaque background to body overlay element.
