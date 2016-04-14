@@ -43,7 +43,7 @@ describe('PopoverOverlay', () => {
   describe('arrow placement', () => {
 
     function arrow() {
-      return TestUtils.findRenderedDOMComponentWithClass(popover, 'rs-popover-arrow').getDOMNode();
+      return TestUtils.findRenderedDOMComponentWithClass(popover, 'rs-popover-arrow');
     }
 
     it('right', () => {

@@ -9,6 +9,12 @@ describe('Facet', () => {
   const onSelectionChanged = jasmine.createSpy('onSelectionChanged');
   const onFacetClear = jasmine.createSpy('onFacetClear');
 
+  class ChildFacet extends React.Component {
+    render () {
+      return <div {...this.props} />;
+    }
+  }
+
   const renderFacet = (selectedCriteria, truncationLength, truncationEnabled) => {
     return TestUtils.renderIntoDocument(
       <Facet
@@ -19,7 +25,7 @@ describe('Facet', () => {
        selectedCriteria={selectedCriteria}
        truncationLength={truncationLength}
        truncationEnabled={truncationEnabled}>
-        <div className='facet-child' id='criteriaId' />
+        <ChildFacet id='criteriaId' />
       </Facet>
     );
   };
@@ -38,14 +44,14 @@ describe('Facet', () => {
     let section;
 
     section = TestUtils.findRenderedDOMComponentWithClass(facet, 'rs-facet-section');
-    expect(section.getDOMNode()).toHaveClass('collapsed');
+    expect(section).toHaveClass('collapsed');
   });
 
   it('hides the clear link', () => {
     let clearLink;
 
     clearLink = TestUtils.findRenderedDOMComponentWithClass(facet, 'rs-facet-clear-link');
-    expect(clearLink.getDOMNode()).toHaveClass('rs-hidden');
+    expect(clearLink).toHaveClass('rs-hidden');
   });
 
   it('does not render a facet toggler', () => {
@@ -58,14 +64,14 @@ describe('Facet', () => {
   it('passes selected state to child', () => {
     let child;
 
-    child = TestUtils.findRenderedDOMComponentWithClass(facet, 'facet-child');
+    child = TestUtils.findRenderedComponentWithType(facet, ChildFacet);
     expect(child.props.isSelected).toBe(false);
   });
 
   it('passes onSelectionChanged callback to child', () => {
     let child;
 
-    child = TestUtils.findRenderedDOMComponentWithClass(facet, 'facet-child');
+    child = TestUtils.findRenderedComponentWithType(facet, ChildFacet);
     child.props.onSelectionChanged(false, 'criteriaId');
     expect(onSelectionChanged).toHaveBeenCalledWith(false, 'facetId', 'criteriaId');
   });
@@ -80,7 +86,7 @@ describe('Facet', () => {
     });
 
     it('shows the clear link', () => {
-      expect(clearLink.getDOMNode()).not.toHaveClass('rs-hidden');
+      expect(clearLink).not.toHaveClass('rs-hidden');
     });
 
     it('calls onFacetClear when clear is clicked', () => {
@@ -91,7 +97,7 @@ describe('Facet', () => {
     it('passes selcted state to child', () => {
       let child;
 
-      child = TestUtils.findRenderedDOMComponentWithClass(facet, 'facet-child');
+      child = TestUtils.findRenderedComponentWithType(facet, ChildFacet);
       expect(child.props.isSelected).toBe(true);
     });
   });
@@ -114,7 +120,7 @@ describe('Facet', () => {
       TestUtils.Simulate.click(toggleComponent);
 
       section = TestUtils.findRenderedDOMComponentWithClass(facet, 'rs-facet-section');
-      expect(section.getDOMNode()).toHaveClass('expanded');
+      expect(section).toHaveClass('expanded');
     });
   });
 

@@ -30,7 +30,7 @@ describe('FacetToggler', () => {
     let arrowIcon;
 
     arrowIcon = TestUtils.findRenderedDOMComponentWithTag(facetToggler, 'i');
-    expect(arrowIcon.getDOMNode()).toHaveClass('rs-facet-toggle-arrow');
+    expect(arrowIcon).toHaveClass('rs-facet-toggle-arrow');
   });
 
   it('triggers the toggleFunction when clicked', function () {

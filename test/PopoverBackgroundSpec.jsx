@@ -23,7 +23,7 @@ describe('PopoverBackground', () => {
     let backgroundStyle, backgroundElement;
 
     backgroundElement = TestUtils.findRenderedDOMComponentWithClass(popoverBackground, 'rs-popover-background-overlay');
-    backgroundStyle = backgroundElement.getDOMNode().style;
+    backgroundStyle = backgroundElement.style;
 
     expect(backgroundStyle.position).toEqual('fixed');
     expect(backgroundStyle.left).toEqual('0px');
@@ -48,7 +48,7 @@ describe('PopoverBackground', () => {
     );
 
     backgroundElement = TestUtils.findRenderedDOMComponentWithClass(popoverBackground, 'rs-popover-background-overlay');
-    backgroundStyle = backgroundElement.getDOMNode().style;
+    backgroundStyle = backgroundElement.style;
 
     // can't test for equality due to float errors. Ends up being something like 'rgba(0, 0, 0, 0.496094)'
     expect(backgroundStyle['background-color']).not.toEqual('');
