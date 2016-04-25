@@ -1,3 +1,6 @@
+### Version 0.9.1
+1. Fix Facets for IE
+
 ### Version 0.9.0
 1. BREAKING CHANGE: Upgrading to support react ~0.14.0. No functions that are marked as deprecated in React ~0.14.0 are used in this release.
 
