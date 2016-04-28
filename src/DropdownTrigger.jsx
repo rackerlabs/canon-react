@@ -74,6 +74,7 @@ class DropdownTrigger extends React.Component {
     this._renderDropdown();
     this._listenToRootCloseEvents();
     this.setState({ isDropdownDisplayed: true });
+    this._tether.position();
   }
 
   _renderDropdown() {
@@ -82,7 +83,8 @@ class DropdownTrigger extends React.Component {
     dropdown = React.cloneElement(
       this.props.dropdown,
       {
-        hideCallback: this._hide.bind(this)
+        hideCallback: this._hide.bind(this),
+        tether: this.props.alignment
       }
     );
 
@@ -99,8 +101,8 @@ class DropdownTrigger extends React.Component {
     let tetherConfig;
 
     tetherConfig = {
-      attachment: 'top left',
-      targetAttachment: 'bottom left'
+      attachment: `top ${this.props.alignment}`,
+      targetAttachment: `bottom ${this.props.alignment}`
     };
 
     tetherConfig.element = ReactDOM.findDOMNode(this._containerDiv);
@@ -137,7 +139,12 @@ class DropdownTrigger extends React.Component {
 }
 
 DropdownTrigger.propTypes = {
-  dropdown: React.PropTypes.element
+  dropdown: React.PropTypes.element,
+  alignment: React.PropTypes.oneOf['left', 'right']
+};
+
+DropdownTrigger.defaultProps = {
+  alignment: 'left'
 };
 
 export default DropdownTrigger;
