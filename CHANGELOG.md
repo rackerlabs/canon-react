@@ -1,3 +1,6 @@
+### Version 0.10.1
+1. Fix the propType of the `alignment` property on the dropdown and dropdown trigger components.
+
 ### Version 0.10.0
 1. Introduces prop `alignment` with value of `'right'` or `'left'` (default `'left'`) to `DropdownTrigger`. The `alignment` property specifies against which side of the trigger element the menu will be aligned. For example, with a value of `'right'`, the right side of the menu would be aligned with the right side of the trigger element.
 
