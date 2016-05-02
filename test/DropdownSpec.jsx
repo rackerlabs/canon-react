@@ -31,12 +31,25 @@ describe('Dropdown', () => {
     expect(dropdown.props.type).toBe('action');
   });
 
-  it('renders children', () => {
+  describe('dropdown menu', () => {
     let menu;
 
-    menu = TestUtils.findRenderedDOMComponentWithClass(dropdown, 'rs-dropdown-menu');
+    beforeEach(() => {
+      menu = TestUtils.findRenderedDOMComponentWithClass(dropdown, 'rs-dropdown-menu');
+    });
 
-    expect(ReactDOM.findDOMNode(menu).textContent).toBe('Dropdown Item...');
+    it('overrides positioning to static positioning if alignment is passed in as prop', () => {
+      dropdown = TestUtils.renderIntoDocument(
+        <Dropdown className='test-dropdown-class' alignment='right' hideCallback={hideFunction}><DropdownItem type='link'>Dropdown Item...</DropdownItem></Dropdown>
+      );
+      menu = TestUtils.findRenderedDOMComponentWithClass(dropdown, 'rs-dropdown-menu');
+
+      expect(ReactDOM.findDOMNode(menu).style.position).toBe('static');
+    });
+
+    it('renders children', () => {
+      expect(ReactDOM.findDOMNode(menu).textContent).toBe('Dropdown Item...');
+    });
   });
 
   it('passes hide callback down to dropdown items', () => {

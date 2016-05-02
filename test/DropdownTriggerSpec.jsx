@@ -12,14 +12,14 @@ describe('DropdownTrigger', () => {
 
   const hideFunction = () => { };
 
-  const renderDropdown = () => {
+  const renderDropdown = (menuAlignment) => {
     dropdownTrigger = TestUtils.renderIntoDocument(
-      <DropdownTrigger dropdown={<Dropdown hideCallback={hideFunction}><DropdownItem id='test-dropdown-item'>Hello</DropdownItem></Dropdown>}>
+      <DropdownTrigger alignment={menuAlignment} dropdown={<Dropdown hideCallback={hideFunction}><DropdownItem id='test-dropdown-item'>Hello</DropdownItem></Dropdown>}>
         <Button>Hello</Button>
       </DropdownTrigger>
     );
 
-    tether = jasmine.createSpyObj('tether', ['destroy']);
+    tether = jasmine.createSpyObj('tether', ['destroy', 'position']);
     spyOn(dropdownTrigger, '_createTether').and.returnValue(tether);
   };
 
@@ -60,7 +60,7 @@ describe('DropdownTrigger', () => {
         expect(dropdownTrigger._dropdownNode).not.toBeNull();
       });
 
-      it('renders the dropdown to the bottom of the trigger', () => {
+      it('renders the dropdown to the bottom of the trigger, tethering on the left by default', () => {
         renderDropdown();
         clickTrigger();
 
@@ -70,6 +70,32 @@ describe('DropdownTrigger', () => {
           attachment: 'top left',
           targetAttachment: 'bottom left'
         });
+      });
+
+      it("tethers the dropdown on the right when value 'right' is passed in as alignment prop", () => {
+        renderDropdown('right');
+        clickTrigger();
+
+        expect(dropdownTrigger._createTether).toHaveBeenCalledWith({
+          element: ReactDOM.findDOMNode(dropdownTrigger._containerDiv),
+          target: ReactDOM.findDOMNode(dropdownTrigger),
+          attachment: 'top right',
+          targetAttachment: 'bottom right'
+        });
+      });
+
+      it('calls position on the tether', () => {
+        renderDropdown();
+        clickTrigger();
+
+        expect(tether.position).toHaveBeenCalled();
+      });
+
+      it('passes the alignment prop to the dropdown', () => {
+        renderDropdown();
+        clickTrigger();
+
+        expect(dropdownTrigger.props.dropdown.props.alignment).toBe('left');
       });
 
       it('hides the dropdown when the trigger is clicked again', () => {
@@ -85,7 +111,7 @@ describe('DropdownTrigger', () => {
       it('hides the dropdown when pressing escape', () => {
         let keyUpEvent;
 
-        renderDropdown('right');
+        renderDropdown();
         clickTrigger();
 
         keyUpEvent = document.createEvent('CustomEvent');
@@ -98,7 +124,7 @@ describe('DropdownTrigger', () => {
       });
 
       it('hides the dropdown when clicking outside of the dropdown', () => {
-        renderDropdown('right');
+        renderDropdown();
         clickTrigger();
 
         TestUtils.Simulate.click(ReactDOM.findDOMNode(dropdownTrigger));
