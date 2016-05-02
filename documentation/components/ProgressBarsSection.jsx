@@ -58,14 +58,12 @@ class ProgressBarsSection extends Component {
             <div className="span-3">
               <h5>status</h5>
               <p><code>status</code> takes a string (<code>info</code> is the default) that specifies the state of the action that is in progress. Allowed Types are:</p>
-              <p>
-                <ul>
-                  <li><code>ok</code></li>
-                  <li><code>error</code></li>
-                  <li><code>warning</code></li>
-                  <li><code>info</code></li>
-                </ul>
-              </p>
+              <ul>
+                <li><code>ok</code></li>
+                <li><code>error</code></li>
+                <li><code>warning</code></li>
+                <li><code>info</code></li>
+              </ul>
             </div>
             <div className="span-8 offset-1">
               <h4>Example</h4>
@@ -128,12 +126,10 @@ class ProgressBarsSection extends Component {
             <div className="span-3">
               <h5>type</h5>
               <p><code>type</code> takes a string (<code>solid</code> is the default). This is used to indicate additional information about work being done. The allowed types are:</p>
-              <p>
-                <ul>
-                  <li><code>solid</code></li>
-                  <li><code>striped</code></li>
-                </ul>
-              </p>
+              <ul>
+                <li><code>solid</code></li>
+                <li><code>striped</code></li>
+              </ul>
             </div>
             <div className="span-8 offset-1">
               <h4>Example</h4>
@@ -176,15 +172,13 @@ class ProgressBarsSection extends Component {
             <div className="span-3">
               <h5>size</h5>
               <p>Progress bars can be given a fixed width with the <code>size</code> property. The allowed sizes are:</p>
-              <p>
-                <ul>
-                  <li><code>xsmall</code></li>
-                  <li><code>small</code></li>
-                  <li><code>medium</code></li>
-                  <li><code>large</code></li>
-                  <li><code>xlarge</code></li>
-                </ul>
-              </p>
+              <ul>
+                <li><code>xsmall</code></li>
+                <li><code>small</code></li>
+                <li><code>medium</code></li>
+                <li><code>large</code></li>
+                <li><code>xlarge</code></li>
+              </ul>
             </div>
             <div className="span-8 offset-1">
               <h4>Example</h4>

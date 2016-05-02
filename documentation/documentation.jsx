@@ -1,7 +1,8 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 
 import ComponentsView from './components/View';
 
 (function () {
-  React.render(<ComponentsView/>, document.getElementById('components-content'));
+  ReactDOM.render(<ComponentsView/>, document.getElementById('components-content'));
 })();

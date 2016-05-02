@@ -113,7 +113,7 @@ module.exports = function (grunt) {
       },
       documentation: {
         files: {
-          'documentation/bundle.js': ['transpiled/**/*.js']
+          'documentation/bundle.js': ['transpiled/documentation.js']
         }
       }
     },

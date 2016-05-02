@@ -1,11 +1,12 @@
 import { Component } from 'react';
 import { CodeHeader, CodeListItem, PropertyHeader, Row } from './Common';
 
-import Button from '../Button';
-import Divider from '../Divider';
-import Dropdown from '../Dropdown';
-import DropdownTrigger from '../DropdownTrigger';
-import DropdownItem from '../DropdownItem';
+import {
+  Button,
+  Divider,
+  Dropdown,
+  DropdownTrigger,
+  DropdownItem } from 'canon-react';
 
 class DropDownSection extends Component {
   render() {
@@ -30,20 +31,18 @@ class DropDownSection extends Component {
             <CodeHeader>DropdownTrigger</CodeHeader>
             <p>
               The <code>DropdownTrigger</code> component is a wrapper component.  It wraps whatever component you want to trigger opening the dropdown menu.
-              It takes a <code>Dropdown</code> as a prop, and renders this dropdown below the trigger component.
+              It takes a <code>Dropdown</code> as a prop, and renders this dropdown below the trigger component. The <code>DropdownTrigger</code> also has a <code>alignment</code> property that specifies 
+              against which side of the trigger the menu will be aligned. Accepted values are <code>'left'</code> (default) and <code>'right'</code>. this prop is passed through to the <code>Dropdown</code> component.
             </p>
           </Row>
 
           <Row>
             <CodeHeader>Dropdown</CodeHeader>
-            <p>The <code>Dropdown</code> renders the dropdown menu.</p>
-          </Row>
-
-          <Row>
-            <h3>Properties</h3>
+            <p>The <code>Dropdown</code> renders the dropdown menu. The <code>Dropdown</code> has the following properties:</p>
             <ul>
               <li><code>type</code></li>
               <li><code>hideCallback</code></li>
+              <li><code>alignment</code></li>
             </ul>
           </Row>
 
@@ -54,13 +53,11 @@ class DropDownSection extends Component {
                 <code>type</code> takes a string (<code>action</code> is the default) that controls the look and feel of the dropdown.
                 The following types are supported:
               </p>
-              <p>
-                <ul>
-                  <li><code>primary</code></li>
-                  <li><code>utility</code></li>
-                  <li><code>action</code></li>
-                </ul>
-              </p>
+              <ul>
+                <li><code>primary</code></li>
+                <li><code>utility</code></li>
+                <li><code>action</code></li>
+              </ul>
             </div>
             <div className="span-8 offset-1">
               <h4>Example</h4>
@@ -76,7 +73,7 @@ class DropDownSection extends Component {
                     <tr>
                       <td>
                         <DropdownTrigger dropdown={
-                          <Dropdown type='primary'>
+                          <Dropdown type='primary' hideCallback={ () => {} }>
                             <DropdownItem type='category'>Identify</DropdownItem>
                             <DropdownItem type='link'>Rename Server...</DropdownItem>
                             <DropdownItem type='link'>Load Balancers</DropdownItem>
@@ -107,8 +104,8 @@ class DropDownSection extends Component {
                     </tr>
                     <tr>
                       <td>
-                        <DropdownTrigger dropdown={
-                          <Dropdown type='utility'>
+                        <DropdownTrigger alignment='right' dropdown={
+                          <Dropdown type='utility' hideCallback={ () => {} }>
                             <DropdownItem type='text'>Account# 1234567</DropdownItem>
                             <Divider/>
                             <DropdownItem type='link'>Billing</DropdownItem>
@@ -122,7 +119,7 @@ class DropDownSection extends Component {
                         <div className="highlight">
                           <pre><code className="html">
                           {
-                            "<DropdownTrigger dropdown={\n" +
+                            "<DropdownTrigger alignment='right' dropdown={\n" +
                             "  <Dropdown type='utility'>\n" +
                             "    <DropdownItem type='text'>Account# 1234567</DropdownItem>\n" +
                             "    <Divider/>\n" +
@@ -140,7 +137,7 @@ class DropDownSection extends Component {
                     <tr>
                       <td>
                         <DropdownTrigger dropdown={
-                          <Dropdown type='action'>
+                          <Dropdown type='action' hideCallback={ () => {} }>
                             <DropdownItem type='category'>Identify</DropdownItem>
                             <DropdownItem type='link'>Rename Server...</DropdownItem>
                             <DropdownItem type='link'>Tag Server...</DropdownItem>
@@ -182,11 +179,7 @@ class DropDownSection extends Component {
 
           <Row>
             <CodeHeader>DropdownItem</CodeHeader>
-            <p>The <code>DropdownItem</code> is an element rendered within a <code>Dropdown</code></p>
-          </Row>
-
-          <Row>
-            <h3>Properties</h3>
+            <p>The <code>DropdownItem</code> is an element rendered within a <code>Dropdown</code> The <code>DropdownItem</code> has the following properties:</p>
             <ul>
               <li><code>enabled</code></li>
               <li><code>onClick</code></li>
@@ -217,13 +210,11 @@ class DropDownSection extends Component {
                 <code>type</code> takes a string (<code>link</code> is the default) that controls the look and feel of the <code>DropdownItem</code>
                 The following types are supported:
               </p>
-              <p>
-                <ul>
-                  <li><code>link</code></li>
-                  <li><code>category</code></li>
-                  <li><code>text</code></li>
-                </ul>
-              </p>
+              <ul>
+                <li><code>link</code></li>
+                <li><code>category</code></li>
+                <li><code>text</code></li>
+              </ul>
             </div>
             <div className="span-8 offset-1">
               <h4>Example</h4>
@@ -238,7 +229,7 @@ class DropDownSection extends Component {
                   <tr>
                     <td>
                       <DropdownTrigger dropdown={
-                        <Dropdown type='utility'>
+                        <Dropdown type='utility' hideCallback={ () => {} }>
                           <DropdownItem type='text'>Account #12345678</DropdownItem>
                           <Divider/>
                           <DropdownItem type='category'>Identify</DropdownItem>

@@ -1,6 +1,7 @@
 import FacetToggler from '../transpiled/FacetToggler';
-import React from 'react/addons';
-let TestUtils = React.addons.TestUtils;
+import React from 'react';
+import ReactDOM from 'react-dom';
+import TestUtils from 'react-addons-test-utils';
 
 describe('FacetToggler', () => {
   let facetToggler;
@@ -14,15 +15,15 @@ describe('FacetToggler', () => {
   });
 
   afterEach(() => {
-    React.unmountComponentAtNode(React.findDOMNode(facetToggler).parentNode);
+    ReactDOM.unmountComponentAtNode(ReactDOM.findDOMNode(facetToggler).parentNode);
   });
 
   it('renders the toggler text correctly', () => {
-    expect(React.findDOMNode(facetToggler).textContent).toBe('more');
+    expect(ReactDOM.findDOMNode(facetToggler).textContent).toBe('more');
   });
 
   it('has the right class', () => {
-    expect(React.findDOMNode(facetToggler)).toHaveClass('rs-facet-section-toggle');
+    expect(ReactDOM.findDOMNode(facetToggler)).toHaveClass('rs-facet-section-toggle');
   });
 
   it('renders a toggle arrow icon', () => {
@@ -33,7 +34,7 @@ describe('FacetToggler', () => {
   });
 
   it('triggers the toggleFunction when clicked', function () {
-    TestUtils.Simulate.click(React.findDOMNode(facetToggler));
+    TestUtils.Simulate.click(ReactDOM.findDOMNode(facetToggler));
 
     expect(toggleFunction).toHaveBeenCalledWith(false);
   });
@@ -46,11 +47,11 @@ describe('FacetToggler', () => {
     });
 
     it('renders the toggler text correctly', () => {
-      expect(React.findDOMNode(facetToggler).textContent).toBe('less');
+      expect(ReactDOM.findDOMNode(facetToggler).textContent).toBe('less');
     });
 
     it('triggers the toggleFunction when clicked', function () {
-      TestUtils.Simulate.click(React.findDOMNode(facetToggler));
+      TestUtils.Simulate.click(ReactDOM.findDOMNode(facetToggler));
 
       expect(toggleFunction).toHaveBeenCalledWith(true);
     });

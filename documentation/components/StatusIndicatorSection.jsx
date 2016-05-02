@@ -23,15 +23,13 @@ class StatusIndicatorSection extends Component {
             <div className="span-3">
               <h5>status</h5>
               <p><code>status</code> takes a string (<code>ok</code> is the default) that specifies the state of an entity. Allowed Types are:</p>
-              <p>
-                <ul>
-                  <li><code>ok</code></li>
-                  <li><code>error</code></li>
-                  <li><code>processing</code></li>
-                  <li><code>warning</code></li>
-                  <li><code>disabled</code></li>
-                </ul>
-              </p>
+              <ul>
+                <li><code>ok</code></li>
+                <li><code>error</code></li>
+                <li><code>processing</code></li>
+                <li><code>warning</code></li>
+                <li><code>disabled</code></li>
+              </ul>
             </div>
             <div className="span-8 offset-1">
               <h4>Example</h4>

@@ -11,7 +11,7 @@ class DemoPopover extends React.Component {
 
   render() {
     return (
-      <Popover placement={this.props.placement} isOpen={this.props.isOpen} onRequestClose={this.props.onRequestClose} target={this.props.target}>
+      <Popover placement={this.props.placement} isOpen={this.props.isOpen} onRequestClose={this.props.onRequestClose} target={this.props.target} isModal={ this.props.isModal }>
         <PopoverOverlay>
           <PopoverBody>
             <form className='rs-form-horizontal rs-form-medium'>
@@ -24,8 +24,8 @@ class DemoPopover extends React.Component {
             </form>
           </PopoverBody>
           <PopoverFooter>
-            <Button type='primary' onClick={this.props.onRequestClose}>Save</Button>
-            <Button type='link' onClick={this.props.onRequestClose}>Cancel</Button>
+            <Button canonStyle='primary' onClick={this.props.onRequestClose}>Save</Button>
+            <Button canonStyle='link' onClick={this.props.onRequestClose}>Cancel</Button>
             <ProcessingIndicator hidden={true} />
           </PopoverFooter>
         </PopoverOverlay>

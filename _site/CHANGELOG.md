@@ -1,3 +1,22 @@
+### Version 0.10.1
+1. Fix the propType of the `alignment` property on the dropdown and dropdown trigger components.
+
+### Version 0.10.0
+1. Introduces prop `alignment` with value of `'right'` or `'left'` (default `'left'`) to `DropdownTrigger`. The `alignment` property specifies against which side of the trigger element the menu will be aligned. For example, with a value of `'right'`, the right side of the menu would be aligned with the right side of the trigger element.
+
+### Version 0.9.1
+1. Fix Facets for IE
+
+### Version 0.9.0
+1. BREAKING CHANGE: Upgrading to support react ~0.14.0. No functions that are marked as deprecated in React ~0.14.0 are used in this release.
+
+### Version 0.8.0
+1. BREAKING CHANGE: Fix conflict with HTML button `type` property in `Button` component. New `Button` property is called `canonStyle`.
+2. Add `isModal` property to `Popover` that adds a 50% opaque background to body overlay element.
+
+### Version 0.7.2
+1. Fix facets so they do not mutate the passed in selected criteria property
+
 ### Version 0.7.1
 1. Minor fix to update the `StatusIndicator` component to render a `<span>` element instead of a `<statusindicator>` element
 2. Also fixed the popovers in the demo popover section

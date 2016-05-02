@@ -1,9 +1,10 @@
 import FacetsSection from '../transpiled/FacetsSection';
-import React from 'react/addons';
-let TestUtils = React.addons.TestUtils;
+import React from 'react';
+import ReactDOM from 'react-dom';
+import TestUtils from 'react-addons-test-utils';
 
 describe('FacetsSection', () => {
-  let section, child;
+  let section, child, selectedCriteria;
 
   const onSelectionChanged = jasmine.createSpy('onSelectionChanged');
   const onCriteriaSelection = jasmine.createSpy('onCriteriaSelection');
@@ -33,11 +34,12 @@ describe('FacetsSection', () => {
     onFacetClear.calls.reset();
     onClearAll.calls.reset();
     child = <div id='facetId' className='facetClass' />;
-    section = renderFacetsSection({}, child);
+    selectedCriteria = {};
+    section = renderFacetsSection(selectedCriteria, child);
   });
 
   afterEach(() => {
-    React.unmountComponentAtNode(React.findDOMNode(section).parentNode);
+    ReactDOM.unmountComponentAtNode(ReactDOM.findDOMNode(section).parentNode);
   });
 
   it('hides the clear all link', () => {
@@ -47,20 +49,30 @@ describe('FacetsSection', () => {
     expect(clearLink.getDOMNode()).toHaveClass('rs-hidden');
   });
 
-  it('calls selection callbacks when child selection is made', () => {
-    let childComponent;
+  describe('onSelect', () => {
+    beforeEach(() => {
+      let childComponent;
 
-    childComponent = TestUtils.findRenderedDOMComponentWithClass(section, 'facetClass');
-    childComponent.props.onSelectionChanged(true, 'facetId', 'criteriaId');
-    expect(onSelectionChanged).toHaveBeenCalledWith({'facetId': {'criteriaId': true}});
-    expect(onCriteriaSelection).toHaveBeenCalledWith('facetId', 'criteriaId');
+      childComponent = TestUtils.findRenderedDOMComponentWithClass(section, 'facetClass');
+      childComponent.props.onSelectionChanged(true, 'facetId', 'criteriaId');
+    });
+
+    it('calls selection callbacks when child selection is made', () => {
+      expect(onSelectionChanged).toHaveBeenCalledWith({'facetId': {'criteriaId': true}});
+      expect(onCriteriaSelection).toHaveBeenCalledWith('facetId', 'criteriaId');
+    });
+
+    it('does not mutate the selectedCriteria prop', () => {
+      expect(selectedCriteria).toEqual({});
+    });
   });
 
   describe('withSelections', () => {
     let clearLink, childComponent;
 
     beforeEach(() => {
-      section = renderFacetsSection({'facetId': {'criteriaId': true}}, child);
+      selectedCriteria = {'facetId': {'criteriaId': true}};
+      section = renderFacetsSection(selectedCriteria, child);
       clearLink = TestUtils.findRenderedDOMComponentWithClass(section, 'rs-facet-clear-link');
       childComponent = TestUtils.findRenderedDOMComponentWithClass(section, 'facetClass');
     });
@@ -69,22 +81,49 @@ describe('FacetsSection', () => {
       expect(clearLink.getDOMNode()).not.toHaveClass('rs-hidden');
     });
 
-    it('calls selection callbacks when clear all is clicked', () => {
-      TestUtils.Simulate.click(clearLink);
-      expect(onClearAll).toHaveBeenCalled();
-      expect(onSelectionChanged).toHaveBeenCalledWith({});
+    describe('on clear all', () => {
+      beforeEach(() => {
+        TestUtils.Simulate.click(clearLink);
+      });
+
+      it('calls selection callbacks', () => {
+        expect(onClearAll).toHaveBeenCalled();
+        expect(onSelectionChanged).toHaveBeenCalledWith({});
+      });
+
+      it('does not mutate the selectedCriteria', () => {
+        expect(selectedCriteria).toEqual({'facetId': {'criteriaId': true}});
+      });
     });
 
-    it('calls selection callbacks when child deselection is made', () => {
-      childComponent.props.onSelectionChanged(false, 'facetId', 'criteriaId');
-      expect(onCriteriaDeselection).toHaveBeenCalledWith('facetId', 'criteriaId');
-      expect(onSelectionChanged).toHaveBeenCalledWith({});
+    describe('on child deselect', () => {
+      beforeEach(() => {
+        childComponent.props.onSelectionChanged(false, 'facetId', 'criteriaId');
+      });
+
+      it('calls selection callbacks', () => {
+        expect(onCriteriaDeselection).toHaveBeenCalledWith('facetId', 'criteriaId');
+        expect(onSelectionChanged).toHaveBeenCalledWith({});
+      });
+
+      it('does not mutate the selectedCriteria', () => {
+        expect(selectedCriteria).toEqual({'facetId': {'criteriaId': true}});
+      });
     });
 
-    it('calls selection callbacks on facet clear', () => {
-      childComponent.props.onFacetClear('facetId');
-      expect(onFacetClear).toHaveBeenCalledWith('facetId');
-      expect(onSelectionChanged).toHaveBeenCalledWith({});
+    describe('on facet clear', () => {
+      beforeEach(() => {
+        childComponent.props.onFacetClear('facetId');
+      });
+
+      it('calls selection callbacks', () => {
+        expect(onFacetClear).toHaveBeenCalledWith('facetId');
+        expect(onSelectionChanged).toHaveBeenCalledWith({});
+      });
+
+      it('does not modify the selectedCriteria prop', () => {
+        expect(selectedCriteria).toEqual({'facetId': {'criteriaId': true}});
+      });
     });
   });
 

@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import { CodeHeader, CodeListItem, PropertyHeader, Row } from './Common';
 
-import TooltipTrigger from '../TooltipTrigger';
+import { TooltipTrigger } from 'canon-react';
 
 class TooltipSection extends Component {
   render() {
@@ -47,18 +47,18 @@ class TooltipSection extends Component {
           <Row>
             <h3>Tooltip Example</h3>
             <p>A tooltip rendered :</p>
-            <TooltipTrigger content="Hello There!">
-              <i className="rs-icon-help"></i>
-            </TooltipTrigger>
-            <p>
-              <div className="highlight">
-                <pre><code className="html">
-                  <span className="nt">&lt;TooltipTrigger</span> <span className="na">content=</span><span className="s">"Hello There!"</span><span className="nt">&gt;</span>
-                    <span className="nt">&lt;i</span> <span className="na">className=</span><span className="s">"rs-icon-help"</span><span className="nt">&gt;</span>
-                  <span className="nt">&lt;/TooltipTrigger&gt;</span>
-                </code></pre>
-              </div>
-            </p>
+            <div>
+              <TooltipTrigger content={(<span>"Hello There!"</span>)}>
+                <i className="rs-icon-help"></i>
+              </TooltipTrigger>
+            </div>
+            <div className="highlight">
+              <pre><code className="html">
+                <span className="nt">&lt;TooltipTrigger</span> <span className="na">content=</span><span className="s">"Hello There!"</span><span className="nt">&gt;</span>
+                  <span className="nt">&lt;i</span> <span className="na">className=</span><span className="s">"rs-icon-help"</span><span className="nt">&gt;</span>
+                <span className="nt">&lt;/TooltipTrigger&gt;</span>
+              </code></pre>
+            </div>
           </Row>
 
         </div>

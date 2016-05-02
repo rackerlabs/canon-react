@@ -1,6 +1,7 @@
 import DropdownItem from '../transpiled/DropdownItem';
-import React from 'react/addons';
-let TestUtils = React.addons.TestUtils;
+import ReactDOM from 'react-dom';
+import React from 'react';
+import TestUtils from 'react-addons-test-utils';
 
 describe('DropdownItem', () => {
   let dropdownItem, clickFunction, hideFunction;
@@ -19,7 +20,7 @@ describe('DropdownItem', () => {
   });
 
   afterEach(() => {
-    React.unmountComponentAtNode(React.findDOMNode(dropdownItem).parentNode);
+    ReactDOM.unmountComponentAtNode(ReactDOM.findDOMNode(dropdownItem).parentNode);
   });
 
   it('renders a dropdownItem', () => {
@@ -27,13 +28,13 @@ describe('DropdownItem', () => {
   });
 
   it('keeps the passed in classes', () => {
-    expect(React.findDOMNode(dropdownItem)).toHaveClass('test-dropdown-class');
-    expect(React.findDOMNode(dropdownItem)).toHaveClass('rs-dropdown-item');
+    expect(ReactDOM.findDOMNode(dropdownItem)).toHaveClass('test-dropdown-class');
+    expect(ReactDOM.findDOMNode(dropdownItem)).toHaveClass('rs-dropdown-item');
   });
 
   it('is enabled by default', () => {
     expect(dropdownItem.props.enabled).toBe(true);
-    expect(React.findDOMNode(dropdownItem)).not.toHaveClass('disabled');
+    expect(ReactDOM.findDOMNode(dropdownItem)).not.toHaveClass('disabled');
   });
 
   it('is a link by default', () => {
@@ -41,21 +42,21 @@ describe('DropdownItem', () => {
   });
 
   it('keeps all passed in properties', () => {
-    expect(React.findDOMNode(dropdownItem).id).toBe('dropdown-id');
+    expect(ReactDOM.findDOMNode(dropdownItem).id).toBe('dropdown-id');
   });
 
   it('renders the text of the dropdown', () => {
-    expect(React.findDOMNode(dropdownItem).textContent).toBe('Dropdown Text');
+    expect(ReactDOM.findDOMNode(dropdownItem).textContent).toBe('Dropdown Text');
   });
 
   it('executes the click function when clicked', () => {
-    TestUtils.Simulate.click(React.findDOMNode(dropdownItem));
+    TestUtils.Simulate.click(ReactDOM.findDOMNode(dropdownItem));
 
     expect(clickFunction).toHaveBeenCalled();
   });
 
   it('executes the hide callback when clicked', () => {
-    TestUtils.Simulate.click(React.findDOMNode(dropdownItem));
+    TestUtils.Simulate.click(ReactDOM.findDOMNode(dropdownItem));
 
     expect(hideFunction).toHaveBeenCalled();
   });
@@ -100,11 +101,11 @@ describe('DropdownItem', () => {
     });
 
     it('adds a disabled class to the dropdownItem', () => {
-      expect(React.findDOMNode(dropdownItem)).toHaveClass('disabled');
+      expect(ReactDOM.findDOMNode(dropdownItem)).toHaveClass('disabled');
     });
 
     it('does not execute the click function when clicked', () => {
-      TestUtils.Simulate.click(React.findDOMNode(dropdownItem));
+      TestUtils.Simulate.click(ReactDOM.findDOMNode(dropdownItem));
 
       expect(clickFunction).not.toHaveBeenCalled();
     });

@@ -1,11 +1,12 @@
 import { Component } from 'react';
 import { Row } from './Common';
 
-import Button from '../Button';
-import Popover from '../Popover';
-import PopoverOverlay from '../PopoverOverlay';
-import PopoverBody from '../PopoverBody';
-import PopoverFooter from '../PopoverFooter';
+import {
+  Button,
+  Popover,
+  PopoverOverlay,
+  PopoverBody,
+  PopoverFooter } from 'canon-react';
 
 class UpdateNamePopover extends Component {
   render() {
@@ -18,12 +19,12 @@ class UpdateNamePopover extends Component {
           <PopoverBody>
             <form>
               <label>Name</label>
-              <input type='text' />
+              <input type='text'></input>
             </form>
           </PopoverBody>
           <PopoverFooter>
-            <Button type='primary' onClick={this.props.onRequestClose}>Save</Button>
-            <Button type='link' onClick={this.props.onRequestClose}>Cancel</Button>
+            <Button canonStyle='primary' onClick={this.props.onRequestClose}>Save</Button>
+            <Button canonStyle='link' onClick={this.props.onRequestClose}>Cancel</Button>
           </PopoverFooter>
         </PopoverOverlay>
       </Popover>
@@ -50,9 +51,9 @@ class PopoverParent extends React.Component {
   render() {
     return (
       <div>
-        <Button id='update-name-button' type='primary' onClick={this.showUpdateNamePopover.bind(this)}>Update Name</Button>
+        <Button id='update-name-button' canonStyle='primary' onClick={this.showUpdateNamePopover.bind(this)}>Update Name</Button>
         <UpdateNamePopover placement='right'
-         target='update-name-button'
+         target={ () => document.getElementById('update-name-button') }
          onRequestClose={this.requestUpdateNameClose.bind(this)}
          isOpen={this.state.shouldShowUpdateNamePopover} />
       </div>
@@ -125,76 +126,72 @@ class PopoverSection extends React.Component {
             <p>A popover rendered to the right of the button:</p>
             <PopoverParent />
             <h6>Rendering the popover and trigger</h6>
-            <p>
-              <pre>
-                <code className="html">
-                {"var PopoverParent = React.createClass({\n" +
-                "  showUpdateNamePopover: function () {\n" +
-                "    this.setState({shouldShowUpdateNamePopover: true});\n" +
-                "  },\n\n" +
+            <pre>
+              <code className="html">
+              {"var PopoverParent = React.createClass({\n" +
+              "  showUpdateNamePopover: function () {\n" +
+              "    this.setState({shouldShowUpdateNamePopover: true});\n" +
+              "  },\n\n" +
 
-                "  hideUpdateNamePopover: function () {\n" +
-                "    this.setState({shouldShowUpdateNamePopover: false});\n" +
-                "  },\n\n" +
+              "  hideUpdateNamePopover: function () {\n" +
+              "    this.setState({shouldShowUpdateNamePopover: false});\n" +
+              "  },\n\n" +
 
-                "  requestUpdateNameClose: function () {\n" +
-                "    // if a request is not processing\n" +
-                "    this.hideUpdateNamePopover();\n" +
+              "  requestUpdateNameClose: function () {\n" +
+              "    // if a request is not processing\n" +
+              "    this.hideUpdateNamePopover();\n" +
+              "  },\n\n" +
+
+              "  render: function () {\n" +
+              "    return (\n" +
+              "      <div>\n" +
+              "        <Button id='update-name-button' onClick={this.showUpdateNamePopover}>Update Name</Button>\n" +
+              "        <UpdateNamePopover placement='right'\n" +
+              "         isOpen={this.state.shouldShowUpdateNamePopover}\n" +
+              "         onRequestClose={this.requestUpdateNameClose}\n" +
+              "         target='update-name-button' />\n" +
+              "      </div>\n" +
+              "    );\n" +
+              "  }\n" +
+              "});"}
+              </code>
+            </pre>
+
+            <h6>Update Name Popover</h6>
+            <pre>
+              <code className="html">
+              {"var UpdateNamePopover = React.createClass({\n" +
+                "  _processSave: function () {\n" +
+                "    // perform the action needed to process the input of this form.\n" +
+                "    // this will trigger a state update to indicate the action is processing.\n" +
+                "    // this can be done through callbacks or with stores.\n" +
                 "  },\n\n" +
 
                 "  render: function () {\n" +
                 "    return (\n" +
-                "      <div>\n" +
-                "        <Button id='update-name-button' onClick={this.showUpdateNamePopover}>Update Name</Button>\n" +
-                "        <UpdateNamePopover placement='right'\n" +
-                "         isOpen={this.state.shouldShowUpdateNamePopover}\n" +
-                "         onRequestClose={this.requestUpdateNameClose}\n" +
-                "         target='update-name-button' />\n" +
-                "      </div>\n" +
+                "      <Popover placement={this.props.placement}\n" +
+                "       isOpen={this.props.isOpen}\n" +
+                "       onRequestClose={this.props.onRequestClose}\n" +
+                "       target={this.props.target}>\n" +
+                "        <PopoverOverlay>\n" +
+                "         <PopoverBody>\n" +
+                "           <form>\n" +
+                "             <label>Name</label>\n" +
+                "             <input type='text' />\n" +
+                "           </form>\n" +
+                "         </PopoverBody>\n" +
+                "         <PopoverFooter>\n" +
+                "           <Button canonStyle='primary' onClick={this._processSave}>Save</Button>\n" +
+                "           <Button canonStyle='link' onClick={this.props.onRequestClose}>Cancel</Button>\n" +
+                "           <ProcessingIndicator />\n" +
+                "         </PopoverFooter>\n" +
+                "        </PopoverOverlay>\n" +
+                "      </Popover>\n" +
                 "    );\n" +
                 "  }\n" +
                 "});"}
-                </code>
-              </pre>
-            </p>
-
-            <h6>Update Name Popover</h6>
-            <p>
-              <pre>
-                <code className="html">
-                {"var UpdateNamePopover = React.createClass({\n" +
-                  "  _processSave: function () {\n" +
-                  "    // perform the action needed to process the input of this form.\n" +
-                  "    // this will trigger a state update to indicate the action is processing.\n" +
-                  "    // this can be done through callbacks or with stores.\n" +
-                  "  },\n\n" +
-
-                  "  render: function () {\n" +
-                  "    return (\n" +
-                  "      <Popover placement={this.props.placement}\n" +
-                  "       isOpen={this.props.isOpen}\n" +
-                  "       onRequestClose={this.props.onRequestClose}\n" +
-                  "       target={this.props.target}>\n" +
-                  "        <PopoverOverlay>\n" +
-                  "         <PopoverBody>\n" +
-                  "           <form>\n" +
-                  "             <label>Name</label>\n" +
-                  "             <input type='text' />\n" +
-                  "           </form>\n" +
-                  "         </PopoverBody>\n" +
-                  "         <PopoverFooter>\n" +
-                  "           <Button type='primary' onClick={this._processSave}>Save</Button>\n" +
-                  "           <Button type='link' onClick={this.props.onRequestClose}>Cancel</Button>\n" +
-                  "           <ProcessingIndicator />\n" +
-                  "         </PopoverFooter>\n" +
-                  "        </PopoverOverlay>\n" +
-                  "      </Popover>\n" +
-                  "    );\n" +
-                  "  }\n" +
-                  "});"}
-                </code>
-              </pre>
-            </p>
+              </code>
+            </pre>
           </Row>
 
         </div>

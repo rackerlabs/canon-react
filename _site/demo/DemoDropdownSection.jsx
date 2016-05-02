@@ -13,6 +13,7 @@ class DemoDropdownSection extends React.Component {
       <div className='rs-detail-section'>
         <div className='rs-detail-section-header'>
           <h2>Dropdowns</h2>
+          <div>The buttons on the left demonstrate the default alignment value of 'left', whereas the 'Action' button on the right demonstrates and alignment value of 'right'.</div>
         </div>
         <div className='rs-detail-section-body'>
           <ButtonGroup>
@@ -22,8 +23,10 @@ class DemoDropdownSection extends React.Component {
             <DropdownTrigger dropdown={<DemoUtilityDropdown/>}>
               <Button>Utility Dropdown</Button>
             </DropdownTrigger>
-            <DropdownTrigger dropdown={<DemoActionMenu/>}>
-              <Button type='action'>Actions</Button>
+            <DropdownTrigger dropdown={<DemoActionMenu/>} alignment='right'>
+              <div style={ {float: 'right'} }>
+                <Button canonStyle='action'>Actions</Button>
+              </div>
             </DropdownTrigger>
             <DropdownTrigger dropdown={<DemoActionMenu/>}>
               <div className="rs-cog rs-dropdown-toggle"></div>

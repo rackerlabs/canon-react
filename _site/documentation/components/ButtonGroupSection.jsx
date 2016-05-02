@@ -20,18 +20,18 @@ class ButtonGroupSection extends Component {
             <div className="span-8 offset-1">
               <h4>Example</h4>
               <ButtonGroup>
-                <Button type='primary'>Primary</Button>
+                <Button canonStyle='primary'>Primary</Button>
                 <Button>Secondary</Button>
-                <Button type='link'>Cancel</Button>
+                <Button canonStyle='link'>Cancel</Button>
                 <ProcessingIndicator />
               </ButtonGroup>
               <h4>Source</h4>
               <div className="highlight button-group">
                 <pre><code className="html">
                   <span className="nt">&lt;ButtonGroup&gt;</span>
-                  <span className="nt">&lt;Button</span> <span className="na">type=</span><span className="s">"primary"</span><span className="nt">&gt;</span>Primary<span className="nt">&lt;/Button&gt;</span>
-                  <span className="nt">&lt;Button</span> <span className="na">type=</span><span className="s">"secondary"</span><span className="nt">&gt;</span>Secondary<span className="nt">&lt;/Button&gt;</span>
-                  <span className="nt">&lt;Button</span> <span className="na">type=</span><span className="s">"link"</span><span className="nt">&gt;</span>Cancel<span className="nt">&lt;/Button&gt;</span>
+                  <span className="nt">&lt;Button</span> <span className="na">canonStyle=</span><span className="s">"primary"</span><span className="nt">&gt;</span>Primary<span className="nt">&lt;/Button&gt;</span>
+                  <span className="nt">&lt;Button</span> <span className="na">canonStyle=</span><span className="s">"secondary"</span><span className="nt">&gt;</span>Secondary<span className="nt">&lt;/Button&gt;</span>
+                  <span className="nt">&lt;Button</span> <span className="na">canonStyle=</span><span className="s">"link"</span><span className="nt">&gt;</span>Cancel<span className="nt">&lt;/Button&gt;</span>
                   <span className="nt">&lt;ProcessingIndicator</span> <span className="na">hidden=</span><span className="s">{"{true}"}</span><span className="nt">/&gt;</span>
                   <span className="nt">&lt;/ButtonGroup&gt;</span>
                 </code></pre>
@@ -47,18 +47,18 @@ class ButtonGroupSection extends Component {
             <div className="span-8 offset-1">
               <h4>Example</h4>
               <ButtonGroup>
-                <Button type='primary' enabled={false}>Primary</Button>
+                <Button canonStyle='primary' enabled={false}>Primary</Button>
                 <Button enabled={false}>Secondary</Button>
-                <Button type='link' enabled={false} hidden={true}>Cancel</Button>
+                <Button canonStyle='link' enabled={false} hidden={true}>Cancel</Button>
                 <ProcessingIndicator hidden={false} />
               </ButtonGroup>
               <h4>Source</h4>
               <div className="highlight">
                 <pre><code className="html">
                   <span className="nt">&lt;ButtonGroup&gt;</span>
-                  <span className="nt">&lt;Button</span> <span className="na">type=</span><span className="s">"primary"</span> <span className="na">enabled=</span><span className="s">"{false}"</span><span className="nt">&gt;</span>Primary<span className="nt">&lt;/Button&gt;</span>
-                  <span className="nt">&lt;Button</span> <span className="na">type=</span><span className="s">"secondary"</span> <span className="na">enabled=</span><span className="s">"{false}"</span><span className="nt">&gt;</span>Secondary<span className="nt">&lt;/Button&gt;</span>
-                  <span className="nt">&lt;Button</span> <span className="na">type=</span><span className="s">"link"</span> <span className="na">hidden=</span><span className="s">"{true}"</span><span className="nt">&gt;</span>Cancel<span className="nt">&lt;/Button&gt;</span>
+                  <span className="nt">&lt;Button</span> <span className="na">canonStyle=</span><span className="s">"primary"</span> <span className="na">enabled=</span><span className="s">"{false}"</span><span className="nt">&gt;</span>Primary<span className="nt">&lt;/Button&gt;</span>
+                  <span className="nt">&lt;Button</span> <span className="na">canonStyle=</span><span className="s">"secondary"</span> <span className="na">enabled=</span><span className="s">"{false}"</span><span className="nt">&gt;</span>Secondary<span className="nt">&lt;/Button&gt;</span>
+                  <span className="nt">&lt;Button</span> <span className="na">canonStyle=</span><span className="s">"link"</span> <span className="na">hidden=</span><span className="s">"{true}"</span><span className="nt">&gt;</span>Cancel<span className="nt">&lt;/Button&gt;</span>
                   <span className="nt">&lt;ProcessingIndicator</span> <span className="na">hidden=</span><span className="s">"{false}"</span><span className="nt">/&gt;</span>
                   <span className="nt">&lt;/ButtonGroup&gt;</span>
                 </code></pre>

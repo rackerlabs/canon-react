@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 
 import Button from './Button';
 import DemoPopover from './DemoPopover';
@@ -57,7 +58,7 @@ class DemoPopoverSection extends React.Component {
                   <Button id='bottom-left-button-id' ref='bottomLeftButton' onClick={() => { this.setState({bottomLeftPopoverOpen: true}) }}>Bottom Left</Button>
                   <DemoPopover
                     placement='bottom-left'
-                    target={ () => React.findDOMNode(this.refs.bottomLeftButton) }
+                    target={ () => ReactDOM.findDOMNode(this.refs.bottomLeftButton) }
                     isOpen={ this.state.bottomLeftPopoverOpen }
                     onRequestClose={ () => { this.setState({bottomLeftPopoverOpen: false}) } }/>
                 </td>
@@ -77,6 +78,7 @@ class DemoPopoverSection extends React.Component {
                     placement='center'
                     target={ () => document.body }
                     isOpen={ this.state.bottomLeftModalPopoverOpen }
+                    isModal={ true }
                     onRequestClose={ () => { this.setState({bottomLeftModalPopoverOpen: false}) } }/>
                 </td>
               </tr>

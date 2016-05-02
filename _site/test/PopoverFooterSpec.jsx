@@ -1,7 +1,8 @@
 import PopoverFooter from '../transpiled/PopoverFooter';
 
-import React from 'react/addons';
-let TestUtils = React.addons.TestUtils;
+import React from 'react';
+import ReactDOM from 'react-dom';
+import TestUtils from 'react-addons-test-utils';
 
 describe('PopoverFooter', () => {
   let popoverFooter;
@@ -15,7 +16,7 @@ describe('PopoverFooter', () => {
   });
 
   afterEach(() => {
-    React.unmountComponentAtNode(React.findDOMNode(popoverFooter).parentNode);
+    ReactDOM.unmountComponentAtNode(ReactDOM.findDOMNode(popoverFooter).parentNode);
   });
 
   it('renders a footer button group', () => {
@@ -23,7 +24,7 @@ describe('PopoverFooter', () => {
 
     buttonGroup = TestUtils.findRenderedDOMComponentWithClass(popoverFooter, 'rs-popover-footer');
 
-    expect(React.findDOMNode(buttonGroup)).toHaveClass('rs-btn-group');
+    expect(ReactDOM.findDOMNode(buttonGroup)).toHaveClass('rs-btn-group');
   });
 
   it('renders additional classes', () => {
@@ -34,11 +35,11 @@ describe('PopoverFooter', () => {
     );
     buttonGroup = TestUtils.findRenderedDOMComponentWithClass(newFooter, 'rs-popover-footer');
 
-    expect(React.findDOMNode(buttonGroup)).toHaveClass('rs-btn-group');
-    expect(React.findDOMNode(buttonGroup)).toHaveClass('second-class');
+    expect(ReactDOM.findDOMNode(buttonGroup)).toHaveClass('rs-btn-group');
+    expect(ReactDOM.findDOMNode(buttonGroup)).toHaveClass('second-class');
   });
 
   it('renders children', () => {
-    expect(React.findDOMNode(popoverFooter).textContent).toBe('Hello');
+    expect(ReactDOM.findDOMNode(popoverFooter).textContent).toBe('Hello');
   });
 });
