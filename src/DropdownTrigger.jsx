@@ -140,7 +140,7 @@ class DropdownTrigger extends React.Component {
 
 DropdownTrigger.propTypes = {
   dropdown: React.PropTypes.element,
-  alignment: React.PropTypes.oneOf['left', 'right']
+  alignment: React.PropTypes.oneOf(['left', 'right'])
 };
 
 DropdownTrigger.defaultProps = {
