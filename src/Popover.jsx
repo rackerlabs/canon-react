@@ -149,8 +149,8 @@ class Popover extends React.Component {
         };
     }
 
-    if (this.props.offset) {
-      tetherConfig.offset = this.props.offset;
+    if (this.props.tetherConfig) {
+      tetherConfig = Object.assign(tetherConfig, this.props.tetherConfig);
     }
     tetherConfig.element = ReactDOM.findDOMNode(this._containerDiv);
     tetherConfig.target = this._getTarget();
@@ -189,13 +189,13 @@ Popover.propTypes = {
   children: React.PropTypes.element.isRequired,
   isModal: React.PropTypes.bool,
   isOpen: React.PropTypes.bool,
-  offset: React.PropTypes.string,
   onRequestClose: React.PropTypes.func.isRequired,
   placement: React.PropTypes.oneOf(['right', 'bottom-right', 'left', 'bottom-left', 'center']),
   target: React.PropTypes.oneOfType([
     React.PropTypes.string,
     React.PropTypes.func
-  ]).isRequired
+  ]).isRequired,
+  tetherConfig: React.PropTypes.object
 };
 
 export default Popover;
