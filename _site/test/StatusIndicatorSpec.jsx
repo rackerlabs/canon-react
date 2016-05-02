@@ -1,6 +1,7 @@
 import StatusIndicator from '../transpiled/StatusIndicator';
-import React from 'react/addons';
-let TestUtils = React.addons.TestUtils;
+import React from 'react';
+import ReactDOM from 'react-dom';
+import TestUtils from 'react-addons-test-utils';
 
 describe('StatusIndicator', () => {
   let statusIndicator;
@@ -13,7 +14,7 @@ describe('StatusIndicator', () => {
 
   it('creates the default statusindicator', () => {
     expect(statusIndicator.props.hidden).toBe(false);
-    expect(React.findDOMNode(statusIndicator)).toHaveClass('ok');
+    expect(ReactDOM.findDOMNode(statusIndicator)).toHaveClass('ok');
   });
 
   it('renders a span', () => {
@@ -21,19 +22,19 @@ describe('StatusIndicator', () => {
   });
 
   it('keeps the passed in classes', () => {
-    expect(React.findDOMNode(statusIndicator)).toHaveClass('test-statusindicator-class');
+    expect(ReactDOM.findDOMNode(statusIndicator)).toHaveClass('test-statusindicator-class');
   });
 
   it('keeps all passed in properties', () => {
-    expect(React.findDOMNode(statusIndicator).id).toBe('statusindicator-id');
+    expect(ReactDOM.findDOMNode(statusIndicator).id).toBe('statusindicator-id');
   });
 
   it('renders the text of the statusindicator', () => {
-    expect(React.findDOMNode(statusIndicator).textContent).toBe('Status Indicator Text');
+    expect(ReactDOM.findDOMNode(statusIndicator).textContent).toBe('Status Indicator Text');
   });
 
   it('is not hidden when hidden is false', () => {
-    expect(React.findDOMNode(statusIndicator)).not.toHaveClass('rs-hidden');
+    expect(ReactDOM.findDOMNode(statusIndicator)).not.toHaveClass('rs-hidden');
   });
 
   it('is hidden when hidden is true', () => {
@@ -41,7 +42,7 @@ describe('StatusIndicator', () => {
       <StatusIndicator hidden={true}>StatusIndicator Text</StatusIndicator>
     );
 
-    expect(React.findDOMNode(statusIndicator)).toHaveClass('rs-hidden');
+    expect(ReactDOM.findDOMNode(statusIndicator)).toHaveClass('rs-hidden');
   });
 
   describe('statusindicator types', () => {
@@ -50,8 +51,8 @@ describe('StatusIndicator', () => {
         <StatusIndicator status='ok'>StatusIndicator Text</StatusIndicator>
       );
 
-      expect(React.findDOMNode(statusIndicator)).toHaveClass('rs-status');
-      expect(React.findDOMNode(statusIndicator)).toHaveClass('rs-status-ok');
+      expect(ReactDOM.findDOMNode(statusIndicator)).toHaveClass('rs-status');
+      expect(ReactDOM.findDOMNode(statusIndicator)).toHaveClass('rs-status-ok');
     });
 
     it('processing', () => {
@@ -59,8 +60,8 @@ describe('StatusIndicator', () => {
         <StatusIndicator status='processing'>StatusIndicator Text</StatusIndicator>
       );
 
-      expect(React.findDOMNode(statusIndicator)).toHaveClass('rs-status');
-      expect(React.findDOMNode(statusIndicator)).toHaveClass('rs-status-processing');
+      expect(ReactDOM.findDOMNode(statusIndicator)).toHaveClass('rs-status');
+      expect(ReactDOM.findDOMNode(statusIndicator)).toHaveClass('rs-status-processing');
     });
 
     it('warning', () => {
@@ -68,8 +69,8 @@ describe('StatusIndicator', () => {
         <StatusIndicator status='warning'>StatusIndicator Text</StatusIndicator>
       );
 
-      expect(React.findDOMNode(statusIndicator)).toHaveClass('rs-status');
-      expect(React.findDOMNode(statusIndicator)).toHaveClass('rs-status-warning');
+      expect(ReactDOM.findDOMNode(statusIndicator)).toHaveClass('rs-status');
+      expect(ReactDOM.findDOMNode(statusIndicator)).toHaveClass('rs-status-warning');
     });
 
     it('error', () => {
@@ -77,8 +78,8 @@ describe('StatusIndicator', () => {
         <StatusIndicator status='error'>StatusIndicator Text</StatusIndicator>
       );
 
-      expect(React.findDOMNode(statusIndicator)).toHaveClass('rs-status');
-      expect(React.findDOMNode(statusIndicator)).toHaveClass('rs-status-error');
+      expect(ReactDOM.findDOMNode(statusIndicator)).toHaveClass('rs-status');
+      expect(ReactDOM.findDOMNode(statusIndicator)).toHaveClass('rs-status-error');
     });
 
     it('disabled', () => {
@@ -86,8 +87,8 @@ describe('StatusIndicator', () => {
         <StatusIndicator status='disabled'>StatusIndicator Text</StatusIndicator>
       );
 
-      expect(React.findDOMNode(statusIndicator)).toHaveClass('rs-status');
-      expect(React.findDOMNode(statusIndicator)).toHaveClass('rs-status-disabled');
+      expect(ReactDOM.findDOMNode(statusIndicator)).toHaveClass('rs-status');
+      expect(ReactDOM.findDOMNode(statusIndicator)).toHaveClass('rs-status-disabled');
     });
   });
 });

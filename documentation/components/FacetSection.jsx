@@ -1,9 +1,7 @@
 import React from 'react';
 import { CodeHeader, CodeListItem, PropertyHeader, Row } from './Common';
 
-import Criteria from '../Criteria';
-import Facet from '../Facet';
-import FacetsSection from '../FacetsSection';
+import { Criteria, Facet, FacetsSection } from 'canon-react';
 
 class FacetSection extends React.Component {
   render() {
@@ -143,86 +141,84 @@ class FacetSection extends React.Component {
               <FacetContainer />
             </div>
             <div className="span-8">
-              <p>
-                <pre><code className="html">
-                  {
-                    "class FacetContainer extends React.Component {\n" +
-                    "  constructor(props) {\n" +
-                    "    super(props);\n" +
-                    "    this.state = {\n" +
-                    "      selectedCriteria: {}\n" +
-                    "    };\n" +
-                    "  }\n" +
-                    "\n" +
-                    "  render() {\n" +
-                    "    return (\n" +
-                    "      <FacetsSection\n" +
-                    "        sectionHeader={'Filter Products'}\n" +
-                    "        selectedCriteria={this.state.selectedCriteria}\n" +
-                    "        onSelectionChanged={this._handleSelectionChanged.bind(this)}\n" +
-                    "        onCriteriaSelection={this._handleCriteriaSelection.bind(this)}\n" +
-                    "        onCriteriaDeselection={this._handleCriteriaDeselection.bind(this)}\n" +
-                    "        onFacetClear={this._handleFacetClear.bind(this)}\n" +
-                    "        onClearAll={this._handleClearAll.bind(this)}>\n" +
-                    "        <Facet label='Tags' id={'Tags'} truncationEnabled={false}>\n" +
-                    "          <Criteria label={'No Count'} id={'No-Count'} />\n" +
-                    "          <Criteria label={'Zero Count'} id={'Zero Count'} count={0} />\n" +
-                    "          <Criteria label={'Disabled'} id={'Disabled'} count={0} disabled={true} />\n" +
-                    "          <Criteria label={'Development'} id={'Development'} count={3} />\n" +
-                    "          <Criteria label={'Staging'} id={'Staging'} count={1} />\n" +
-                    "          <Criteria label={'Production'} id={'Production'} count={1} />\n" +
-                    "        </Facet>\n" +
-                    "        <Facet label='Status' id={'Status'}>\n" +
-                    "          <Criteria label={'Error'} id={'Error'} count={2} iconClass={'rs-status-error'} />\n" +
-                    "          <Criteria label={'Rebooting'} id={'Rebooting'} count={3} iconClass={'rs-status-warning'} />\n" +
-                    "          <Criteria label={'Active'} id={'Active'} count={5} iconClass={'rs-status-ok'} />\n" +
-                    "        </Facet>\n" +
-                    "        <Facet label='Image' id={'Image'} truncationLength={3}>\n" +
-                    "          <Criteria label={'Ubuntu'} id={'Ubuntu'} count={3} />\n" +
-                    "          <Criteria label={'RHEL 6.4'} id={'rhel6.4'} count={1} />\n" +
-                    "          <Criteria label={'Debian 7 Wheezy'} id={'Debian7Wheezy'} count={2} />\n" +
-                    "          <Criteria label={'Vyatta Network OS 6.5R2'} id={'VyattaNetworkOS-6.5R2'} count={4} />\n" +
-                    "        </Facet>\n" +
-                    "        <Facet label='Flavor' id={'Flavor'}>\n" +
-                    "          <Criteria label={'2 GB Standard'} id={'2 GB Standard'} count={10} />\n" +
-                    "          <Criteria label={'512 MB Standard'} id={'512 MB Standard'} count={10} />\n" +
-                    "        </Facet>\n" +
-                    "      </FacetsSection>\n" +
-                    "    );\n" +
-                    "  }\n" +
-                    "\n" +
-                    "  _handleSelectionChanged(selectedCriteria) {\n" +
-                    "    this.setState({ selectedCriteria: selectedCriteria });\n" +
-                    "  }\n" +
-                    "\n" +
-                    "  _handleCriteriaSelection(facetId, criteriaId) {\n" +
-                    "    //apply filter for selected critiera\n" +
-                    "    console.log('Criteria Selection ' + facetId + ',' + criteriaId);\n" +
-                    "  }\n" +
-                    "\n" +
-                    "  _handleCriteriaDeselection(facetId, criteriaId) {\n" +
-                    "    //remove filter for critiera\n" +
-                    "    console.log('Criteria Deselection ' + facetId + ',' + criteriaId);\n" +
-                    "  }\n" +
-                    "\n" +
-                    "  _handleFacetClear(facetId) {\n" +
-                    "    //remove filter for all critiera in facet\n" +
-                    "    Object.keys(this.state.selectedCriteria[facetId]).forEach(function (criteriaId) {\n" +
-                    "      this._handleCriteriaDeselection(facetId, criteriaId);\n" +
-                    "    }, this);\n" +
-                    "    console.log('Facet Clear ' + facetId);\n" +
-                    "  }\n" +
-                    "\n" +
-                    "  _handleClearAll() {\n" +
-                    "    Object.keys(this.state.selectedCriteria).forEach(function (facetId) {\n" +
-                    "      this._handleFacetClear(facetId);\n" +
-                    "    }, this)\n" +
-                    "    console.log('Clear All');\n" +
-                    "  }\n" +
-                    "}\n"
-                  }
-                </code></pre>
-              </p>
+              <pre><code className="html">
+                {
+                  "class FacetContainer extends React.Component {\n" +
+                  "  constructor(props) {\n" +
+                  "    super(props);\n" +
+                  "    this.state = {\n" +
+                  "      selectedCriteria: {}\n" +
+                  "    };\n" +
+                  "  }\n" +
+                  "\n" +
+                  "  render() {\n" +
+                  "    return (\n" +
+                  "      <FacetsSection\n" +
+                  "        sectionHeader={'Filter Products'}\n" +
+                  "        selectedCriteria={this.state.selectedCriteria}\n" +
+                  "        onSelectionChanged={this._handleSelectionChanged.bind(this)}\n" +
+                  "        onCriteriaSelection={this._handleCriteriaSelection.bind(this)}\n" +
+                  "        onCriteriaDeselection={this._handleCriteriaDeselection.bind(this)}\n" +
+                  "        onFacetClear={this._handleFacetClear.bind(this)}\n" +
+                  "        onClearAll={this._handleClearAll.bind(this)}>\n" +
+                  "        <Facet label='Tags' id={'Tags'} truncationEnabled={false}>\n" +
+                  "          <Criteria label={'No Count'} id={'No-Count'} />\n" +
+                  "          <Criteria label={'Zero Count'} id={'Zero Count'} count={0} />\n" +
+                  "          <Criteria label={'Disabled'} id={'Disabled'} count={0} disabled={true} />\n" +
+                  "          <Criteria label={'Development'} id={'Development'} count={3} />\n" +
+                  "          <Criteria label={'Staging'} id={'Staging'} count={1} />\n" +
+                  "          <Criteria label={'Production'} id={'Production'} count={1} />\n" +
+                  "        </Facet>\n" +
+                  "        <Facet label='Status' id={'Status'}>\n" +
+                  "          <Criteria label={'Error'} id={'Error'} count={2} iconClass={'rs-status-error'} />\n" +
+                  "          <Criteria label={'Rebooting'} id={'Rebooting'} count={3} iconClass={'rs-status-warning'} />\n" +
+                  "          <Criteria label={'Active'} id={'Active'} count={5} iconClass={'rs-status-ok'} />\n" +
+                  "        </Facet>\n" +
+                  "        <Facet label='Image' id={'Image'} truncationLength={3}>\n" +
+                  "          <Criteria label={'Ubuntu'} id={'Ubuntu'} count={3} />\n" +
+                  "          <Criteria label={'RHEL 6.4'} id={'rhel6.4'} count={1} />\n" +
+                  "          <Criteria label={'Debian 7 Wheezy'} id={'Debian7Wheezy'} count={2} />\n" +
+                  "          <Criteria label={'Vyatta Network OS 6.5R2'} id={'VyattaNetworkOS-6.5R2'} count={4} />\n" +
+                  "        </Facet>\n" +
+                  "        <Facet label='Flavor' id={'Flavor'}>\n" +
+                  "          <Criteria label={'2 GB Standard'} id={'2 GB Standard'} count={10} />\n" +
+                  "          <Criteria label={'512 MB Standard'} id={'512 MB Standard'} count={10} />\n" +
+                  "        </Facet>\n" +
+                  "      </FacetsSection>\n" +
+                  "    );\n" +
+                  "  }\n" +
+                  "\n" +
+                  "  _handleSelectionChanged(selectedCriteria) {\n" +
+                  "    this.setState({ selectedCriteria: selectedCriteria });\n" +
+                  "  }\n" +
+                  "\n" +
+                  "  _handleCriteriaSelection(facetId, criteriaId) {\n" +
+                  "    //apply filter for selected critiera\n" +
+                  "    console.log('Criteria Selection ' + facetId + ',' + criteriaId);\n" +
+                  "  }\n" +
+                  "\n" +
+                  "  _handleCriteriaDeselection(facetId, criteriaId) {\n" +
+                  "    //remove filter for critiera\n" +
+                  "    console.log('Criteria Deselection ' + facetId + ',' + criteriaId);\n" +
+                  "  }\n" +
+                  "\n" +
+                  "  _handleFacetClear(facetId) {\n" +
+                  "    //remove filter for all critiera in facet\n" +
+                  "    Object.keys(this.state.selectedCriteria[facetId]).forEach(function (criteriaId) {\n" +
+                  "      this._handleCriteriaDeselection(facetId, criteriaId);\n" +
+                  "    }, this);\n" +
+                  "    console.log('Facet Clear ' + facetId);\n" +
+                  "  }\n" +
+                  "\n" +
+                  "  _handleClearAll() {\n" +
+                  "    Object.keys(this.state.selectedCriteria).forEach(function (facetId) {\n" +
+                  "      this._handleFacetClear(facetId);\n" +
+                  "    }, this)\n" +
+                  "    console.log('Clear All');\n" +
+                  "  }\n" +
+                  "}\n"
+                }
+              </code></pre>
             </div>
           </Row>
         </div>

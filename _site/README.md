@@ -1,8 +1,6 @@
 [![Build Status](https://travis-ci.org/rackerlabs/canon-react.svg)](https://travis-ci.org/rackerlabs/canon-react)
 [![npm version](https://badge.fury.io/js/canon-react.svg)](http://badge.fury.io/js/canon-react)
 
-CAUTION: This library is not ready for public use yet.
-
 # canon-react
 React components for Rackspace's Canon framework
 

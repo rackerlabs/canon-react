@@ -9,9 +9,13 @@ const DROPDOWN_TYPES = {
 
 class Dropdown extends React.Component {
   render() {
-    let style, classes;
+    let dropdownStyle, menuStyle, classes;
 
-    style = { float: 'left' };
+    dropdownStyle = { float: 'left' };
+
+    if (this.props.alignment) {
+      menuStyle = { position: 'static' };
+    }
 
     classes = classNames(
       this.props.className,
@@ -19,8 +23,8 @@ class Dropdown extends React.Component {
     );
 
     return (
-      <div className={classes} style={style}>
-        <ul className='rs-dropdown-menu visible'>
+      <div className={classes} style={dropdownStyle}>
+        <ul className='rs-dropdown-menu visible' style={menuStyle}>
           { this._children() }
         </ul>
       </div>
@@ -35,11 +39,13 @@ class Dropdown extends React.Component {
 }
 
 Dropdown.defaultProps = {
-  type: 'action'
+  type: 'action',
+  alignment: 'left'
 };
 
 Dropdown.propTypes = {
   type: React.PropTypes.oneOf(['primary', 'utility', 'action']),
+  alignment: React.PropTypes.oneOf(['left', 'right']),
   hideCallback: React.PropTypes.func.isRequired
 };
 

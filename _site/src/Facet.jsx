@@ -6,8 +6,9 @@ import FacetToggler from './FacetToggler';
 class Facet extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = {
-      criteriaTruncated: this.props.truncationEnabled
+      criteriaTruncated: props.truncationEnabled
     };
   }
 

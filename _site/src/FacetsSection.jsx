@@ -55,7 +55,7 @@ class FacetsSection extends React.Component {
   _handleCriteriaSelection(facetId, criteriaId) {
     let selectedCriteria;
 
-    selectedCriteria = this.props.selectedCriteria;
+    selectedCriteria = this._cloneSelectedCriteria();
 
     selectedCriteria[facetId] = selectedCriteria[facetId] || {};
     selectedCriteria[facetId][criteriaId] = true;
@@ -67,7 +67,7 @@ class FacetsSection extends React.Component {
   _handleCriteriaDeselection(facetId, criteriaId) {
     let selectedCriteria;
 
-    selectedCriteria = this.props.selectedCriteria;
+    selectedCriteria = this._cloneSelectedCriteria();
 
     if (selectedCriteria[facetId]) {
       delete selectedCriteria[facetId][criteriaId];
@@ -83,7 +83,7 @@ class FacetsSection extends React.Component {
   _handleFacetClear(facetId) {
     let selectedCriteria;
 
-    selectedCriteria = this.props.selectedCriteria;
+    selectedCriteria = this._cloneSelectedCriteria();
     delete selectedCriteria[facetId];
 
     this.props.onFacetClear(facetId);
@@ -93,6 +93,10 @@ class FacetsSection extends React.Component {
   _handleClearAll() {
     this.props.onClearAll();
     this.props.onSelectionChanged({});
+  }
+
+  _cloneSelectedCriteria() {
+    return JSON.parse(JSON.stringify(this.props.selectedCriteria));
   }
 }
 

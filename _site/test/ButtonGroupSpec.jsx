@@ -1,7 +1,8 @@
 import ButtonGroup from '../transpiled/ButtonGroup';
 import Button from '../transpiled/Button';
-import React from 'react/addons';
-let TestUtils = React.addons.TestUtils;
+import ReactDOM from 'react-dom';
+import React from 'react';
+import TestUtils from 'react-addons-test-utils';
 
 describe('ButtonGroup', () => {
   let buttonGroup;
@@ -15,15 +16,15 @@ describe('ButtonGroup', () => {
   });
 
   afterEach(() => {
-    React.unmountComponentAtNode(React.findDOMNode(buttonGroup).parentNode);
+    ReactDOM.unmountComponentAtNode(ReactDOM.findDOMNode(buttonGroup).parentNode);
   });
 
   it('has the right classes', () => {
-    expect(React.findDOMNode(buttonGroup)).toHaveClass('rs-btn-group extra-class');
+    expect(ReactDOM.findDOMNode(buttonGroup)).toHaveClass('rs-btn-group extra-class');
   });
 
   it('renders passed in props', () => {
-    expect(React.findDOMNode(buttonGroup).id).toBe('button-group');
+    expect(ReactDOM.findDOMNode(buttonGroup).id).toBe('button-group');
   });
 
   it('renders passed in children', () => {

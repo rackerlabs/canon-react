@@ -18,7 +18,7 @@ class ButtonsSection extends Component {
               <li><code>onClick</code></li>
               <li><code>enabled</code></li>
               <li><code>hidden</code></li>
-              <li><code>type</code></li>
+              <li><code>canonStyle</code></li>
             </ul>
           </Row>
 
@@ -140,20 +140,18 @@ class ButtonsSection extends Component {
 
           <Row>
             <div className="span-3">
-              <h5>type</h5>
-              <p><code>type</code> takes a string value (<code>'secondary'</code> by default) that controls the look and feel of the button. The following types are supported:</p>
-              <p>
-                <ul>
-                  <li><code>'primary'</code></li>
-                  <li><code>'secondary'</code></li>
-                  <li><code>'link'</code></li>
-                  <li><code>'login'</code></li>
-                  <li><code>'cog'</code></li>
-                  <li><code>'delete'</code></li>
-                  <li><code>'edit'</code></li>
-                  <li><code>'plus'</code></li>
-                </ul>
-              </p>
+              <h5>canonStyle</h5>
+              <p><code>canonStyle</code> takes a string value (<code>'secondary'</code> by default) that controls the look and feel of the button. The following values are supported:</p>
+              <ul>
+                <li><code>'primary'</code></li>
+                <li><code>'secondary'</code></li>
+                <li><code>'link'</code></li>
+                <li><code>'login'</code></li>
+                <li><code>'cog'</code></li>
+                <li><code>'delete'</code></li>
+                <li><code>'edit'</code></li>
+                <li><code>'plus'</code></li>
+              </ul>
             </div>
             <div className="span-8 offset-1">
               <h4>Example</h4>
@@ -168,81 +166,81 @@ class ButtonsSection extends Component {
                   <tbody>
                     <tr>
                       <td>
-                        <Button type='primary' onClick={function () {alert('Primary');}}>Primary</Button>
+                        <Button canonStyle='primary' onClick={function () {alert('Primary');}}>Primary</Button>
                       </td>
                       <td>
                         <div className="highlight">
-                          <pre><code className="html"><span className="nt">&lt;Button</span> <span className="na">onClick=</span><span className="s">{"function () {alert('Primary')}"}</span> <span className="na">type=</span><span className="s">"primary"</span><span className="nt">&gt;</span>Primary<span className="nt">&lt;/Button&gt;</span></code></pre>
+                          <pre><code className="html"><span className="nt">&lt;Button</span> <span className="na">onClick=</span><span className="s">{"function () {alert('Primary')}"}</span> <span className="na">canonStyle=</span><span className="s">"primary"</span><span className="nt">&gt;</span>Primary<span className="nt">&lt;/Button&gt;</span></code></pre>
                         </div>
                       </td>
                     </tr>
                     <tr>
                       <td>
-                        <Button type='secondary' onClick={function () {alert('Secondary');}}>Secondary</Button>
+                        <Button canonStyle='secondary' onClick={function () {alert('Secondary');}}>Secondary</Button>
                       </td>
                       <td>
                         <div className="highlight">
-                          <pre><code className="html"><span className="nt">&lt;Button</span> <span className="na">onClick=</span><span className="s">{"function () {alert('Secondary')}"}</span> <span className="na">type=</span><span className="s">"secondary"</span><span className="nt">&gt;</span>Secondary<span className="nt">&lt;/Button&gt;</span></code></pre>
+                          <pre><code className="html"><span className="nt">&lt;Button</span> <span className="na">onClick=</span><span className="s">{"function () {alert('Secondary')}"}</span> <span className="na">canonStyle=</span><span className="s">"secondary"</span><span className="nt">&gt;</span>Secondary<span className="nt">&lt;/Button&gt;</span></code></pre>
                         </div>
                       </td>
                     </tr>
                     <tr>
                       <td>
-                        <Button type="link" onClick={function () {alert('Link');}}>Link</Button>
+                        <Button canonStyle="link" onClick={function () {alert('Link');}}>Link</Button>
                       </td>
                       <td>
                         <div className="highlight">
-                          <pre><code className="html"><span className="nt">&lt;Button</span> <span className="na">onClick=</span><span className="s">{"function () {alert('Link')}"}</span> <span className="na">type=</span><span className="s">"link"</span><span className="nt">&gt;</span>Link<span className="nt">&lt;/Button&gt;</span></code></pre>
+                          <pre><code className="html"><span className="nt">&lt;Button</span> <span className="na">onClick=</span><span className="s">{"function () {alert('Link')}"}</span> <span className="na">canonStyle=</span><span className="s">"link"</span><span className="nt">&gt;</span>Link<span className="nt">&lt;/Button&gt;</span></code></pre>
                         </div>
                       </td>
                     </tr>
                     <tr>
                       <td>
-                        <Button type="login" onClick={function () {alert('Login');}}>Login</Button>
+                        <Button canonStyle="login" onClick={function () {alert('Login');}}>Login</Button>
                       </td>
                       <td>
                         <div className="highlight">
-                          <pre><code className="html"><span className="nt">&lt;Button</span> <span className="na">onClick=</span><span className="s">{"function () {alert('Login')}"}</span> <span className="na">type=</span><span className="s">"login"</span><span className="nt">&gt;</span>Login<span className="nt">&lt;/Button&gt;</span></code></pre>
+                          <pre><code className="html"><span className="nt">&lt;Button</span> <span className="na">onClick=</span><span className="s">{"function () {alert('Login')}"}</span> <span className="na">canonStyle=</span><span className="s">"login"</span><span className="nt">&gt;</span>Login<span className="nt">&lt;/Button&gt;</span></code></pre>
                         </div>
                       </td>
                     </tr>
                     <tr>
                       <td>
-                        <Button type="cog" onClick={function () {alert('Cog');}}>Cog</Button>
+                        <Button canonStyle="cog" onClick={function () {alert('Cog');}}>Cog</Button>
                       </td>
                       <td>
                         <div className="highlight">
-                          <pre><code className="html"><span className="nt">&lt;Button</span> <span className="na">onClick=</span><span className="s">{"function () {alert('Cog')}"}</span> <span className="na">type=</span><span className="s">"cog"</span><span className="nt">&gt;</span>Cog<span className="nt">&lt;/Button&gt;</span></code></pre>
+                          <pre><code className="html"><span className="nt">&lt;Button</span> <span className="na">onClick=</span><span className="s">{"function () {alert('Cog')}"}</span> <span className="na">canonStyle=</span><span className="s">"cog"</span><span className="nt">&gt;</span>Cog<span className="nt">&lt;/Button&gt;</span></code></pre>
                         </div>
                       </td>
                     </tr>
                     <tr>
                       <td>
-                        <Button type='delete' onClick={function () {alert('Delete');}}>Delete</Button>
+                        <Button canonStyle='delete' onClick={function () {alert('Delete');}}>Delete</Button>
                       </td>
                       <td>
                         <div className="highlight">
-                          <pre><code className="html"><span className="nt">&lt;Button</span> <span className="na">onClick=</span><span className="s">{"function () {alert('Delete')}"}</span> <span className="na">type=</span><span className="s">"delete"</span><span className="nt">&gt;</span>Delete<span className="nt">&lt;/Button&gt;</span></code></pre>
+                          <pre><code className="html"><span className="nt">&lt;Button</span> <span className="na">onClick=</span><span className="s">{"function () {alert('Delete')}"}</span> <span className="na">canonStyle=</span><span className="s">"delete"</span><span className="nt">&gt;</span>Delete<span className="nt">&lt;/Button&gt;</span></code></pre>
                         </div>
                       </td>
                     </tr>
                     <tr>
                       <td>
-                        <Button type='edit' onClick={function () {alert('Edit');}}>Edit</Button>
+                        <Button canonStyle='edit' onClick={function () {alert('Edit');}}>Edit</Button>
                       </td>
                       <td>
                         <div className="highlight">
-                          <pre><code className="html"><span className="nt">&lt;Button</span> <span className="na">onClick=</span><span className="s">{"function () {alert('Edit')}"}</span> <span className="na">type=</span><span className="s">"edit"</span><span className="nt">&gt;</span>Edit<span className="nt">&lt;/Button&gt;</span></code></pre>
+                          <pre><code className="html"><span className="nt">&lt;Button</span> <span className="na">onClick=</span><span className="s">{"function () {alert('Edit')}"}</span> <span className="na">canonStyle=</span><span className="s">"edit"</span><span className="nt">&gt;</span>Edit<span className="nt">&lt;/Button&gt;</span></code></pre>
                         </div>
                       </td>
                     </tr>
                     <tr>
                       <td>
-                        <Button type='plus' onClick={function () {alert('Plus');}}>Plus</Button>
+                        <Button canonStyle='plus' onClick={function () {alert('Plus');}}>Plus</Button>
                       </td>
                       <td>
                         <div className="highlight">
-                          <pre><code className="html"><span className="nt">&lt;Button</span> <span className="na">onClick=</span><span className="s">{"function () {alert('Plus')}"}</span> <span className="na">type=</span><span className="s">"plus"</span><span className="nt">&gt;</span>Plus<span className="nt">&lt;/Button&gt;</span></code></pre>
+                          <pre><code className="html"><span className="nt">&lt;Button</span> <span className="na">onClick=</span><span className="s">{"function () {alert('Plus')}"}</span> <span className="na">canonStyle=</span><span className="s">"plus"</span><span className="nt">&gt;</span>Plus<span className="nt">&lt;/Button&gt;</span></code></pre>
                         </div>
                       </td>
                     </tr>

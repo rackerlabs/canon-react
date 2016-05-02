@@ -20,11 +20,11 @@ class Button extends React.Component {
     classes = classNames(
       this.props.className,
       { 'disabled': !this.props.enabled },
-      BUTTON_TYPES[this.props.type],
+      BUTTON_TYPES[this.props.canonStyle],
       { 'rs-hidden': this.props.hidden }
     );
 
-    if (this.props.type === 'action') {
+    if (this.props.canonStyle === 'action') {
       return (
         <button {...this.props} className={classes} onClick={this._handleClick.bind(this)}>
           <span className='rs-cog'></span> {this.props.children} <span className='rs-caret'></span>
@@ -51,7 +51,7 @@ class Button extends React.Component {
 Button.propTypes = {
   enabled: React.PropTypes.bool,
   onClick: React.PropTypes.func,
-  type: React.PropTypes.oneOf([
+  canonStyle: React.PropTypes.oneOf([
     'action',
     'primary',
     'link',
@@ -62,12 +62,13 @@ Button.propTypes = {
     'edit',
     'plus'
   ]),
-  hidden: React.PropTypes.bool
+  hidden: React.PropTypes.bool,
+  type: React.PropTypes.string
 };
 
 Button.defaultProps = {
   enabled: true,
-  type: 'secondary',
+  canonStyle: 'secondary',
   hidden: false
 };
 
