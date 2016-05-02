@@ -45,7 +45,7 @@ Dropdown.defaultProps = {
 
 Dropdown.propTypes = {
   type: React.PropTypes.oneOf(['primary', 'utility', 'action']),
-  alignment: React.PropTypes.oneOf['left', 'right'],
+  alignment: React.PropTypes.oneOf(['left', 'right']),
   hideCallback: React.PropTypes.func.isRequired
 };
 
