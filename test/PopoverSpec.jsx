@@ -10,14 +10,10 @@ describe('Popover', () => {
   const renderPopover = (placement, isOpen, useTargetCallback, offset, isModal) => {
     let target;
 
-    setFixtures('<div id="content"><div id="some-element-id">The Target</div><div id="container"></div></div>');
-
     requestCloseCallback = (e) => {
       closeCallBackCalled = true;
       return e;
     };
-    tether = jasmine.createSpyObj('tether', ['destroy', 'position']);
-    spyOn(Popover.prototype, '_createTether').and.returnValue(tether);
 
     if (useTargetCallback) {
       target = () => document.getElementById('some-element-id');
@@ -42,6 +38,9 @@ describe('Popover', () => {
   };
 
   beforeEach(() => {
+    setFixtures('<div id="content"><div id="some-element-id">The Target</div><div id="container"></div></div>');
+    tether = jasmine.createSpyObj('tether', ['destroy', 'position']);
+    spyOn(Popover.prototype, '_createTether').and.returnValue(tether);
     closeCallBackCalled = false;
   });
 
@@ -60,6 +59,14 @@ describe('Popover', () => {
     renderPopover('right', true);
 
     expect(tether.position).toHaveBeenCalled();
+  });
+
+  it('adds the rs-popover class once', () => {
+    renderPopover('right', true);
+    renderPopover('left', true);
+
+    let container = ReactDOM.findDOMNode(popover._containerDiv);
+    expect(container.className.trim()).toBe('rs-popover');
   });
 
   it('renders the popover overlay', () => {

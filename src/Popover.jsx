@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Tether from 'tether';
 import PopoverBackground from './PopoverBackground';
+import classNames from 'classnames';
 
 class Popover extends React.Component {
 
@@ -79,7 +80,9 @@ class Popover extends React.Component {
 
     this._backgroundDiv.style.display = 'block';
     ReactDOM.render(<PopoverBackground isModal={ this.props.isModal } onRequestClose={this.props.onRequestClose} />, this._backgroundDiv);
-    this._containerDiv.className += ' rs-popover';
+
+    let containerClasses = this._containerDiv.className.split(' ');
+    this._containerDiv.className = classNames(containerClasses, {'rs-popover': containerClasses.indexOf('rs-popover') < 0});
 
     if (!this._tether) {
       this._tether = this._createTether(this._getTetherConfig());
