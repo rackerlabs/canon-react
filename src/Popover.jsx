@@ -93,7 +93,10 @@ class Popover extends React.Component {
         placement: this.props.placement
       }
     );
-    this._popoverNode = ReactDOM.render(popover, this._containerDiv);
+
+    // render the subtree into a container so the popover will receive the context from the parent
+    this._popoverNode = ReactDOM.unstable_renderSubtreeIntoContainer(this, popover, this._containerDiv);
+
     this._tether.position();
   }
 
