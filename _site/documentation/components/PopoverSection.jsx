@@ -89,7 +89,7 @@ class PopoverSection extends React.Component {
               <li><code>isOpen</code></li>
               <li><code>onRequestClose</code></li>
               <li><code>target</code></li>
-              <li><code>offset</code></li>
+              <li><code>tether</code></li>
             </ul>
             <h6><code>placement</code></h6>
             <p><code>placement</code> defines the position of the popover in relation to its target. The following values are allowed:</p>
@@ -111,8 +111,8 @@ class PopoverSection extends React.Component {
             <h6><code>target</code></h6>
             <p><code>target</code> accepts either a string ID or a function that returns the element at which the popover will be pointing.</p>
 
-            <h6><code>offset</code></h6>
-            <p>canon-react uses <a href='http://tether.io/' target='_blank'>tether.io</a> for positioning of the popover. The popover component has an `offset` property that when specified will override the default offsets that canon-react is using to configure the tether. This property accepts a string in the same format that tether accepts.</p>
+            <h6><code>tether</code></h6>
+            <p>canon-react uses <a href='http://tether.io/' target='_blank'>tether.io</a> for positioning of the popover. The popover component has a `tether` property that when specified will override the tether configuration that canon-react is using to configure the tether. This property accepts an object in the same format that tether accepts.</p>
 
             <h5><code>PopoverOverlay</code></h5>
             <p>The <code>PopoverOverlay</code> component renders the outer markup of a popover, as well as the arrow of the popover. It accepts a <code>placement</code> prop (passed to it from the <code>Popover</code>) which is used to determine the position of the arrow relative to the target at which the popover will be pointing. The values accepted are the same as those of the <code>Popover</code>.</p>

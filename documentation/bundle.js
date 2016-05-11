@@ -1984,6 +1984,10 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _assign = require('babel-runtime/core-js/object/assign');
+
+var _assign2 = _interopRequireDefault(_assign);
+
 var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
 
 var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
@@ -2019,6 +2023,10 @@ var _tether2 = _interopRequireDefault(_tether);
 var _PopoverBackground = require('./PopoverBackground');
 
 var _PopoverBackground2 = _interopRequireDefault(_PopoverBackground);
+
+var _classnames = require('classnames');
+
+var _classnames2 = _interopRequireDefault(_classnames);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -2114,7 +2122,9 @@ var Popover = function (_React$Component) {
 
       this._backgroundDiv.style.display = 'block';
       _reactDom2.default.render(_react2.default.createElement(_PopoverBackground2.default, { isModal: this.props.isModal, onRequestClose: this.props.onRequestClose }), this._backgroundDiv);
-      this._containerDiv.className += ' rs-popover';
+
+      var containerClasses = this._containerDiv.className.split(' ');
+      this._containerDiv.className = (0, _classnames2.default)(containerClasses, { 'rs-popover': containerClasses.indexOf('rs-popover') < 0 });
 
       if (!this._tether) {
         this._tether = this._createTether(this._getTetherConfig());
@@ -2122,7 +2132,10 @@ var Popover = function (_React$Component) {
       popover = _react2.default.cloneElement(_react2.default.Children.only(this.props.children), {
         placement: this.props.placement
       });
-      this._popoverNode = _reactDom2.default.render(popover, this._containerDiv);
+
+      // render the subtree into a container so the popover will receive the context from the parent
+      this._popoverNode = _reactDom2.default.unstable_renderSubtreeIntoContainer(this, popover, this._containerDiv);
+
       this._tether.position();
     }
 
@@ -2182,8 +2195,8 @@ var Popover = function (_React$Component) {
           };
       }
 
-      if (this.props.offset) {
-        tetherConfig.offset = this.props.offset;
+      if (this.props.tetherConfig) {
+        tetherConfig = (0, _assign2.default)(tetherConfig, this.props.tetherConfig);
       }
       tetherConfig.element = _reactDom2.default.findDOMNode(this._containerDiv);
       tetherConfig.target = this._getTarget();
@@ -2227,15 +2240,15 @@ Popover.propTypes = {
   children: _react2.default.PropTypes.element.isRequired,
   isModal: _react2.default.PropTypes.bool,
   isOpen: _react2.default.PropTypes.bool,
-  offset: _react2.default.PropTypes.string,
   onRequestClose: _react2.default.PropTypes.func.isRequired,
   placement: _react2.default.PropTypes.oneOf(['right', 'bottom-right', 'left', 'bottom-left', 'center']),
-  target: _react2.default.PropTypes.oneOfType([_react2.default.PropTypes.string, _react2.default.PropTypes.func]).isRequired
+  target: _react2.default.PropTypes.oneOfType([_react2.default.PropTypes.string, _react2.default.PropTypes.func]).isRequired,
+  tetherConfig: _react2.default.PropTypes.object
 };
 
 exports.default = Popover;
 
-},{"./PopoverBackground":71,"babel-runtime/core-js/object/get-prototype-of":5,"babel-runtime/helpers/classCallCheck":9,"babel-runtime/helpers/createClass":10,"babel-runtime/helpers/inherits":12,"babel-runtime/helpers/possibleConstructorReturn":13,"react":238,"react-dom":82,"tether":239}],71:[function(require,module,exports){
+},{"./PopoverBackground":71,"babel-runtime/core-js/object/assign":2,"babel-runtime/core-js/object/get-prototype-of":5,"babel-runtime/helpers/classCallCheck":9,"babel-runtime/helpers/createClass":10,"babel-runtime/helpers/inherits":12,"babel-runtime/helpers/possibleConstructorReturn":13,"classnames":80,"react":238,"react-dom":82,"tether":239}],71:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -27968,7 +27981,7 @@ var PopoverSection = function (_React$Component2) {
                 React.createElement(
                   'code',
                   null,
-                  'offset'
+                  'tether'
                 )
               )
             ),
@@ -28113,7 +28126,7 @@ var PopoverSection = function (_React$Component2) {
               React.createElement(
                 'code',
                 null,
-                'offset'
+                'tether'
               )
             ),
             React.createElement(
@@ -28125,7 +28138,7 @@ var PopoverSection = function (_React$Component2) {
                 { href: 'http://tether.io/', target: '_blank' },
                 'tether.io'
               ),
-              ' for positioning of the popover. The popover component has an `offset` property that when specified will override the default offsets that canon-react is using to configure the tether. This property accepts a string in the same format that tether accepts.'
+              ' for positioning of the popover. The popover component has a `tether` property that when specified will override the tether configuration that canon-react is using to configure the tether. This property accepts an object in the same format that tether accepts.'
             ),
             React.createElement(
               'h5',

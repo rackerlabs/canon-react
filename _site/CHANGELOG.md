@@ -1,3 +1,12 @@
+### Version 0.11.1
+1. Render `Popover` subtree component into a container so it will receive the context from its parent.
+
+### Version 0.11.0
+1. New `tether` prop for the `Popover` component.
+  a. This prop allows a user to override all tether config options.
+  b. BREAKING CHANGE: `offset` prop has been removed from `Popover`, and can now be set in the `tether` config prop
+2. Fix to not add the `rs-popover` class if it already exists when rendering a popover.
+
 ### Version 0.10.1
 1. Fix the propType of the `alignment` property on the dropdown and dropdown trigger components.
 
