@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Tether from 'tether';
 import PopoverBackground from './PopoverBackground';
+import classNames from 'classnames';
 
 class Popover extends React.Component {
 
@@ -79,7 +80,9 @@ class Popover extends React.Component {
 
     this._backgroundDiv.style.display = 'block';
     ReactDOM.render(<PopoverBackground isModal={ this.props.isModal } onRequestClose={this.props.onRequestClose} />, this._backgroundDiv);
-    this._containerDiv.className += ' rs-popover';
+
+    let containerClasses = this._containerDiv.className.split(' ');
+    this._containerDiv.className = classNames(containerClasses, {'rs-popover': containerClasses.indexOf('rs-popover') < 0});
 
     if (!this._tether) {
       this._tether = this._createTether(this._getTetherConfig());
@@ -90,7 +93,10 @@ class Popover extends React.Component {
         placement: this.props.placement
       }
     );
-    this._popoverNode = ReactDOM.render(popover, this._containerDiv);
+
+    // render the subtree into a container so the popover will receive the context from the parent
+    this._popoverNode = ReactDOM.unstable_renderSubtreeIntoContainer(this, popover, this._containerDiv);
+
     this._tether.position();
   }
 
@@ -146,8 +152,8 @@ class Popover extends React.Component {
         };
     }
 
-    if (this.props.offset) {
-      tetherConfig.offset = this.props.offset;
+    if (this.props.tetherConfig) {
+      tetherConfig = Object.assign(tetherConfig, this.props.tetherConfig);
     }
     tetherConfig.element = ReactDOM.findDOMNode(this._containerDiv);
     tetherConfig.target = this._getTarget();
@@ -186,13 +192,13 @@ Popover.propTypes = {
   children: React.PropTypes.element.isRequired,
   isModal: React.PropTypes.bool,
   isOpen: React.PropTypes.bool,
-  offset: React.PropTypes.string,
   onRequestClose: React.PropTypes.func.isRequired,
   placement: React.PropTypes.oneOf(['right', 'bottom-right', 'left', 'bottom-left', 'center']),
   target: React.PropTypes.oneOfType([
     React.PropTypes.string,
     React.PropTypes.func
-  ]).isRequired
+  ]).isRequired,
+  tetherConfig: React.PropTypes.object
 };
 
 export default Popover;

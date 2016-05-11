@@ -7,17 +7,13 @@ import TestUtils from 'react-addons-test-utils';
 describe('Popover', () => {
   let popover, tether, requestCloseCallback, closeCallBackCalled;
 
-  const renderPopover = (placement, isOpen, useTargetCallback, offset, isModal) => {
+  const renderPopover = (placement, isOpen, useTargetCallback, tetherConfig, isModal) => {
     let target;
-
-    setFixtures('<div id="content"><div id="some-element-id">The Target</div><div id="container"></div></div>');
 
     requestCloseCallback = (e) => {
       closeCallBackCalled = true;
       return e;
     };
-    tether = jasmine.createSpyObj('tether', ['destroy', 'position']);
-    spyOn(Popover.prototype, '_createTether').and.returnValue(tether);
 
     if (useTargetCallback) {
       target = () => document.getElementById('some-element-id');
@@ -31,7 +27,7 @@ describe('Popover', () => {
         isOpen={isOpen}
         onRequestClose={requestCloseCallback}
         target={target}
-        offset={offset}
+        tetherConfig={tetherConfig}
         isModal={isModal}>
         <PopoverOverlay>
           This is the popover content
@@ -42,6 +38,9 @@ describe('Popover', () => {
   };
 
   beforeEach(() => {
+    setFixtures('<div id="content"><div id="some-element-id">The Target</div><div id="container"></div></div>');
+    tether = jasmine.createSpyObj('tether', ['destroy', 'position']);
+    spyOn(Popover.prototype, '_createTether').and.returnValue(tether);
     closeCallBackCalled = false;
   });
 
@@ -60,6 +59,14 @@ describe('Popover', () => {
     renderPopover('right', true);
 
     expect(tether.position).toHaveBeenCalled();
+  });
+
+  it('adds the rs-popover class once', () => {
+    renderPopover('right', true);
+    renderPopover('left', true);
+
+    let container = ReactDOM.findDOMNode(popover._containerDiv);
+    expect(container.className.trim()).toBe('rs-popover');
   });
 
   it('renders the popover overlay', () => {
@@ -135,14 +142,19 @@ describe('Popover', () => {
       });
     });
 
-    it('can override the offsets', () => {
-      renderPopover('bottom-left', true, false, '10px 10px');
+    it('can override tether properties', () => {
+      renderPopover(
+        'bottom-left',
+        true,
+        false,
+        { offset: '10px 10px', attachment: 'left', targetAttachment: 'right'}
+      );
 
       expect(Popover.prototype._createTether).toHaveBeenCalledWith({
         element: ReactDOM.findDOMNode(popover._containerDiv),
         target: ReactDOM.findDOMNode(document.getElementById('some-element-id')),
-        attachment: 'top right',
-        targetAttachment: 'bottom left',
+        attachment: 'left',
+        targetAttachment: 'right',
         offset: '10px 10px'
       });
     });
