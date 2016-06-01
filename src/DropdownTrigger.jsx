@@ -88,7 +88,7 @@ class DropdownTrigger extends React.Component {
       }
     );
 
-    this._dropdownNode = ReactDOM.render(dropdown, this._containerDiv);
+    this._dropdownNode = ReactDOM.unstable_renderSubtreeIntoContainer(this, dropdown, this._containerDiv);
     this._tether = this._createTether(this._getTetherConfig());
   }
 
