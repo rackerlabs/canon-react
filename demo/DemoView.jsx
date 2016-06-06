@@ -8,6 +8,7 @@ import DemoStatusIndicatorSection from './DemoStatusIndicatorSection';
 import DemoTooltipSection from './DemoTooltipSection';
 import DemoDropdownSection from './DemoDropdownSection';
 import DemoFacetsSection from './DemoFacetsSection';
+import DemoDetailSection from './DemoDetailSection';
 
 class DemoView extends React.Component {
   render() {
@@ -15,6 +16,7 @@ class DemoView extends React.Component {
       <div>
         <DemoButtonSection />
         <DemoButtonGroupSection />
+        <DemoDetailSection />
         <DemoProgressBarSection />
         <DemoStatusIndicatorSection />
         <DemoPopoverSection />
