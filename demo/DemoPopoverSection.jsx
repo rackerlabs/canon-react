@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import Button from './Button';
+import DemoFormPopover from './DemoFormPopover';
 import DemoPopover from './DemoPopover';
 
 class DemoPopoverSection extends React.Component {
@@ -14,7 +15,9 @@ class DemoPopoverSection extends React.Component {
       bottomRightPopoverOpen: false,
       bottomLeftPopoverOpen: false,
       bottomRightFunctionPopoverOpen: false,
-      bottomLeftModalPopoverOpen: false
+      bottomLeftModalPopoverOpen: false,
+      formPopoverOpen: false,
+      formPopoverSubmitting: false
     };
   }
 
@@ -80,6 +83,18 @@ class DemoPopoverSection extends React.Component {
                     isOpen={ this.state.bottomLeftModalPopoverOpen }
                     isModal={ true }
                     onRequestClose={ () => { this.setState({bottomLeftModalPopoverOpen: false}) } }/>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <Button id="form-popover-button-id" onClick={() => { this.setState({formPopoverOpen: true, formPopoverSubmitting: false}) } }>Submittable</Button>
+                  <DemoFormPopover
+                    placement="right"
+                    processing={this.state.formPopoverSubmitting}
+                    target={ () => document.getElementById('form-popover-button-id') }
+                    isOpen={ this.state.formPopoverOpen }
+                    onSubmit={ () => { this.setState({formPopoverSubmitting: true}) } }
+                    onRequestClose={ () => { this.setState({formPopoverOpen: false}) } } />
                 </td>
               </tr>
             </tbody>
