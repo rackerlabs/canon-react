@@ -1,3 +1,6 @@
+### Version 0.12.0
+1. Added `DetailList`, `DetailItem`, `DetailItemValue`, and `DetailItemKey` components.
+
 ### Version 0.11.1
 1. Render `Popover` subtree component into a container so it will receive the context from its parent.
 
