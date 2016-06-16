@@ -12,6 +12,7 @@ import DemoFacetsSection from './DemoFacetsSection';
 import DemoDetailSection from './DemoDetailSection';
 import DemoDetailSectionCollapsible from './DemoDetailSectionCollapsible';
 import DemoDetailSectionDefaultCollapsed from './DemoDetailSectionDefaultCollapsed';
+import DemoDetailSectionCollapsibleLoading from './DemoDetailSectionCollapsibleLoading';
 
 class DemoView extends React.Component {
   render() {
@@ -22,6 +23,7 @@ class DemoView extends React.Component {
         <DemoDetailSection />
         <DemoDetailSectionCollapsible />
         <DemoDetailSectionDefaultCollapsed />
+        <DemoDetailSectionCollapsibleLoading />
         <DemoForm />
         <DemoProgressBarSection />
         <DemoStatusIndicatorSection />
