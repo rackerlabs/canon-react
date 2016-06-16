@@ -20,7 +20,7 @@ describe('DetailList', () => {
     expect(ReactDOM.findDOMNode(detailList)).toHaveClass('rs-detail-list test-detail-list-class');
   });
 
-  it('has only default classs when custom class not provided', () => {
+  it('has only default class when custom class not provided', () => {
     detailList = TestUtils.renderIntoDocument(
       <DetailList id='detail-list-id'>
         Test Detail List
