@@ -11,7 +11,7 @@ import DetailsSection from './DetailsSection';
 class DemoDetailSectionCollapsible extends React.Component {
   render() {
     return (
-      <DetailsSection isCollapsible={ true } title="Collapsible Details Section (default - expanded)">
+      <DetailsSection collapsible={ true } title="Collapsible Details Section (default - expanded)">
         <table>
           <thead>
             <tr>

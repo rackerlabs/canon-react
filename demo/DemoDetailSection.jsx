@@ -7,11 +7,12 @@ import DetailItem from './DetailItem';
 import DetailItemKey from './DetailItemKey';
 import DetailItemValue from './DetailItemValue';
 import DetailsSection from './DetailsSection';
+import DetailsSectionSubtitle from './DetailsSectionSubtitle';
 
 class DemoDetailSection extends React.Component {
   render() {
     return (
-      <DetailsSection title="Details Section ">
+      <DetailsSection title="Details Section" subtitle={ <DetailsSectionSubtitle>(non-collapsed)</DetailsSectionSubtitle> }>
         <table>
           <thead>
             <tr>
