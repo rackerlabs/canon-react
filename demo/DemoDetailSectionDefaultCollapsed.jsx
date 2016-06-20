@@ -8,10 +8,10 @@ import DetailItemKey from './DetailItemKey';
 import DetailItemValue from './DetailItemValue';
 import DetailsSection from './DetailsSection';
 
-class DemoDetailSection extends React.Component {
+class DemoDetailSectionDefaultCollapsed extends React.Component {
   render() {
     return (
-      <DetailsSection title="Details Section ">
+      <DetailsSection isCollapsible={ true } defaultCollapsed={ true } title="Collapsible Details Section (default - collapsed)">
         <table>
           <thead>
             <tr>
@@ -40,4 +40,4 @@ class DemoDetailSection extends React.Component {
   }
 }
 
-export default DemoDetailSection;
+export default DemoDetailSectionDefaultCollapsed;
