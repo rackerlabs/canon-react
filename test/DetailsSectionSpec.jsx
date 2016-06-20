@@ -36,11 +36,28 @@ describe('DetailsSection', () => {
       </DetailsSection>
     );
 
-    caretRendered = TestUtils.scryRenderedDOMComponentsWithClass(detailsSection, 'rs-caret').length !== 0;
+    caretRendered = TestUtils.scryRenderedDOMComponentsWithClass(detailsSection, 'rs-caret').length === 1;
     expect(ReactDOM.findDOMNode(detailsSection)).toHaveClass('rs-detail-section');
     expect(ReactDOM.findDOMNode(detailsSection)).not.toHaveClass('expanded');
     expect(ReactDOM.findDOMNode(detailsSection)).not.toHaveClass('collapsed');
     expect(caretRendered).toBe(false);
+  });
+
+  it('non-collapsible section does not change on click', () => {
+    let caretRendered;
+    detailsSection = TestUtils.renderIntoDocument(
+      <DetailsSection title="title">
+        Test Detail List
+      </DetailsSection>
+    );
+
+    TestUtils.Simulate.click(ReactDOM.findDOMNode(detailsSection));
+    caretRendered = TestUtils.scryRenderedDOMComponentsWithClass(detailsSection, 'rs-caret').length === 1;
+    expect(ReactDOM.findDOMNode(detailsSection)).toHaveClass('rs-detail-section');
+    expect(ReactDOM.findDOMNode(detailsSection)).not.toHaveClass('rs-collapsible-section collapsed');
+    expect(ReactDOM.findDOMNode(detailsSection)).not.toHaveClass('rs-collapsible-section expanded');
+    expect(caretRendered).toBe(false);
+
   });
 
   it('renders collapsible section with caret when passed isCollapsible true as prop', () => {
@@ -77,5 +94,32 @@ describe('DetailsSection', () => {
     TestUtils.Simulate.click(ReactDOM.findDOMNode(detailsSection));
     TestUtils.Simulate.click(ReactDOM.findDOMNode(detailsSection));
     expect(ReactDOM.findDOMNode(detailsSection)).toHaveClass('rs-detail-section rs-collapsible-section expanded');
+  });
+
+  it('section collapses and expands properly on click', () => {
+    detailsSection = TestUtils.renderIntoDocument(
+      <DetailsSection title="title" isCollapsible={ true }>
+        Test Detail List
+      </DetailsSection>
+    );
+
+    expect(ReactDOM.findDOMNode(detailsSection)).toHaveClass('rs-detail-section rs-collapsible-section expanded');
+    TestUtils.Simulate.click(ReactDOM.findDOMNode(detailsSection));
+    expect(ReactDOM.findDOMNode(detailsSection)).toHaveClass('rs-detail-section rs-collapsible-section collapsed');
+    TestUtils.Simulate.click(ReactDOM.findDOMNode(detailsSection));
+    expect(ReactDOM.findDOMNode(detailsSection)).toHaveClass('rs-detail-section rs-collapsible-section expanded');
+  });
+  it('section expands and collapses properly on click', () => {
+    detailsSection = TestUtils.renderIntoDocument(
+      <DetailsSection title="title" isCollapsible={ true }>
+        Test Detail List
+      </DetailsSection>
+    );
+    TestUtils.Simulate.click(ReactDOM.findDOMNode(detailsSection));
+    expect(ReactDOM.findDOMNode(detailsSection)).toHaveClass('rs-detail-section rs-collapsible-section collapsed');
+    TestUtils.Simulate.click(ReactDOM.findDOMNode(detailsSection));
+    expect(ReactDOM.findDOMNode(detailsSection)).toHaveClass('rs-detail-section rs-collapsible-section expanded');
+    TestUtils.Simulate.click(ReactDOM.findDOMNode(detailsSection));
+    expect(ReactDOM.findDOMNode(detailsSection)).toHaveClass('rs-detail-section rs-collapsible-section collapsed');
   });
 });
