@@ -28,29 +28,32 @@ describe('DetailsSection', () => {
     expect(sectionChild.getDOMNode().textContent).toBe('test value');
   });
 
-  it('has only default class when custom class not provided', () => {
+  it('has only default class when custom class not provided and does not render caret', () => {
+    let caretRendered;
     detailsSection = TestUtils.renderIntoDocument(
       <DetailsSection title="title">
         Test Detail List
       </DetailsSection>
     );
 
-    expect(ReactDOM.findDOMNode(detailsSection)).toHaveClass('rs-detail-section rs-collapsible-section');
+    caretRendered = TestUtils.scryRenderedDOMComponentsWithClass(detailsSection, 'rs-caret').length !== 0;
+    expect(ReactDOM.findDOMNode(detailsSection)).toHaveClass('rs-detail-section');
     expect(ReactDOM.findDOMNode(detailsSection)).not.toHaveClass('expanded');
     expect(ReactDOM.findDOMNode(detailsSection)).not.toHaveClass('collapsed');
+    expect(caretRendered).toBe(false);
   });
 
   it('renders collapsible section with caret when passed isCollapsible true as prop', () => {
-    let caret;
+    let caretRendered;
     detailsSection = TestUtils.renderIntoDocument(
       <DetailsSection title="title" isCollapsible={ true }>
         Test Detail List
       </DetailsSection>
     );
-    caret = TestUtils.findRenderedDOMComponentWithClass(detailsSection, 'rs-caret');
-    console.log(caret);
+
+    caretRendered = TestUtils.scryRenderedDOMComponentsWithClass(detailsSection, 'rs-caret').length === 1;
     expect(ReactDOM.findDOMNode(detailsSection)).toHaveClass('rs-detail-section rs-collapsible-section expanded');
-    expect(caret).not.toBeNull();
+    expect(caretRendered).toBe(true);
   });
 
   it('expanded section collapses on click', () => {

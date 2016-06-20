@@ -6,28 +6,36 @@ export default class DetailsSection extends React.Component {
     super(props);
 
     if (props.isCollapsible === true) {
-      this.state = { changedClass: 'expanded' };
-    } else {
-      this.state = { changedClass: undefined };
+      this.state = { isCollapsed: false };
     }
   }
 
-  collapseSection() {
-    if (this.state.changedClass === 'expanded') {
-      this.setState({ changedClass: 'collapsed' });
-    } else if (this.state.changedClass === 'collapsed') {
-      this.setState({ changedClass: 'expanded' });
+  toggleCollapse() {
+    if (this.props.isCollapsible) {
+      this.setState({isCollapsed: !this.state.isCollapsed});
     }
   }
 
   render() {
+    var collapsedClassName, showCaret;
+
+    showCaret = false;
+    if (this.props.isCollapsible) {
+      showCaret = true;
+      if (this.state.isCollapsed) {
+        collapsedClassName = 'rs-collapsible-section collapsed';
+      } else {
+        collapsedClassName = 'rs-collapsible-section expanded';
+      }
+    }
+
     return (
-      <div isCollapsible={ this.props.isCollapsible } onClick={ this.collapseSection.bind(this) } className={ classnames('rs-detail-section rs-collapsible-section', this.state.changedClass) }>
-        <div className="rs-detail-section-header">
-          { this.props.isCollapsible ? <div className="rs-caret"></div> : null}
-          <div className="rs-detail-section-title">{ this.props.title }</div>
+      <div onClick={ this.toggleCollapse.bind(this) } className={ classnames('rs-detail-section', collapsedClassName) }>
+        <div className='rs-detail-section-header'>
+          { showCaret ? <div className='rs-caret'></div> : null}
+          <div className='rs-detail-section-title'>{ this.props.title }</div>
         </div>
-        <div className="rs-detail-section-body">
+        <div className='rs-detail-section-body'>
           {this.props.children}
         </div>
       </div>
