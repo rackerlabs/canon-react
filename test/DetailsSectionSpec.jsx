@@ -73,6 +73,19 @@ describe('DetailsSection', () => {
     expect(caretRendered).toBe(true);
   });
 
+  it('renders collapsible section initially collapsed by defaultCollapsed prop', () => {
+    let caretRendered;
+    detailsSection = TestUtils.renderIntoDocument(
+      <DetailsSection title="title" isCollapsible={ true } defaultCollapsed={ true }>
+        Test Detail List
+      </DetailsSection>
+    );
+
+    caretRendered = TestUtils.scryRenderedDOMComponentsWithClass(detailsSection, 'rs-caret').length === 1;
+    expect(ReactDOM.findDOMNode(detailsSection)).toHaveClass('rs-detail-section rs-collapsible-section collapsed');
+    expect(caretRendered).toBe(true);
+  });
+
   it('expanded section collapses on click', () => {
     detailsSection = TestUtils.renderIntoDocument(
       <DetailsSection title="title" isCollapsible={ true }>

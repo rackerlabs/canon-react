@@ -6,7 +6,7 @@ export default class DetailsSection extends React.Component {
     super(props);
 
     if (props.isCollapsible === true) {
-      this.state = { isCollapsed: false };
+      this.state = { isCollapsed: props.defaultCollapsed };
     }
   }
 
@@ -47,9 +47,11 @@ DetailsSection.propTypes = {
   title: React.PropTypes.node.isRequired,
   children: React.PropTypes.node,
   className: React.PropTypes.string,
-  isCollapsible: React.PropTypes.bool
+  isCollapsible: React.PropTypes.bool,
+  defaultCollapsed: React.PropTypes.bool
 };
 
 DetailsSection.defaultProps = {
-  isCollapsible: false
+  isCollapsible: false,
+  defaultCollapsed: false
 };
