@@ -15,23 +15,31 @@ export default class Form extends React.Component {
 
     sizeClass = SIZE_CLASSES[this.props.size];
     classes = classNames(
-      'rs-form-horizontal',
-      sizeClass,
-      this.props.create ? 'rs-form-create' : undefined,
-      this.props.className
+      {
+        'rs-form-create': this.props.create,
+        'rs-form-horizontal': this.props.horizontal
+      },
+      this.props.className,
+      sizeClass
     );
 
     return (
-      <form {...this.props} className={classes}>
-        {this.props.children}
+      <form { ...this.props } className={ classes }>
+        { this.props.children }
       </form>
     );
   }
 }
 
 Form.propTypes = {
-  create: React.PropTypes.boolean,
+  create: React.PropTypes.bool,
   className: React.PropTypes.string,
+  horizontal: React.PropTypes.bool,
   size: React.PropTypes.oneOf(Object.keys(SIZE_CLASSES)),
   children: React.PropTypes.node.isRequired
+};
+
+Form.defaultProps = {
+  create: false,
+  horizontal: true
 };

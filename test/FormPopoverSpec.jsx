@@ -21,7 +21,7 @@ describe('FormPopover', () => {
     jasmine.getFixtures().cleanUp();
   });
 
-  const renderPopover  = (popoverProps) => {
+  const renderPopover = (popoverProps) => {
     ReactDOM.render(
       <FormPopover
         onRequestClose={onCancel}
@@ -108,7 +108,22 @@ describe('FormPopover', () => {
   });
 
   it('passes errors to the validation block', () => {
-    renderPopover({ error: 'this is a test error message'});
+    renderPopover({ error: 'this is a test error message' });
     expect(document.querySelector('.rs-validation-block').textContent).toBe(' this is a test error message');
+  });
+
+  it('passes the formSize prop to the form', () => {
+    renderPopover({ formSize: 'medium' });
+    expect(document.querySelector('form')).toHaveClass('rs-form-medium');
+  });
+
+  it('passes the horizontal prop to the form', () => {
+    renderPopover({ horizontal: false });
+    expect(document.querySelector('form')).not.toHaveClass('rs-form-horizontal');
+  });
+
+  it('passes the horizontal prop defaulting to true to the form', () => {
+    renderPopover();
+    expect(document.querySelector('form')).toHaveClass('rs-form-horizontal');
   });
 });

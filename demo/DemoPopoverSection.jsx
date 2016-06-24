@@ -17,7 +17,9 @@ class DemoPopoverSection extends React.Component {
       bottomRightFunctionPopoverOpen: false,
       bottomLeftModalPopoverOpen: false,
       formPopoverOpen: false,
-      formPopoverSubmitting: false
+      formPopoverSubmitting: false,
+      topAlignedFormPopoverOpen: false,
+      topAlignedFormPopoverSubmitting: false
     };
   }
 
@@ -95,6 +97,25 @@ class DemoPopoverSection extends React.Component {
                     isOpen={ this.state.formPopoverOpen }
                     onSubmit={ () => { this.setState({formPopoverSubmitting: true}) } }
                     onRequestClose={ () => { this.setState({formPopoverOpen: false}) } } />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <span>
+                    To top align the content on a submittable popover declare the 'horizontal' prop as false:
+                  </span>
+                  <br>
+                  <Button id="top-aligned-form-popover-button-id" onClick={() => { this.setState({ topAlignedFormPopoverOpen: true, topAlignedFormPopoverSubmitting: false }) } }>
+                    Top Aligned Content
+                  </Button>
+                  <DemoFormPopover
+                    placement="right"
+                    horizontal={ false }
+                    processing={ this.state.topAlignedFormPopoverSubmitting }
+                    target={ () => document.getElementById('top-aligned-form-popover-button-id') }
+                    isOpen={ this.state.topAlignedFormPopoverOpen }
+                    onSubmit={ () => { this.setState({ topAlignedFormPopoverSubmitting: true }) } }
+                    onRequestClose={ () => { this.setState({topAlignedFormPopoverOpen: false }) } } />
                 </td>
               </tr>
             </tbody>
