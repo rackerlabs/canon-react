@@ -14,6 +14,11 @@ import DropdownItem from './DropdownItem';
 import DropdownTrigger from './DropdownTrigger';
 import Facet from './Facet';
 import FacetsSection from './FacetsSection';
+import Form from './Form';
+import FormField from './FormField';
+import FormFieldHelp from './FormFieldHelp';
+import FormFieldValidationBlock from './FormFieldValidationBlock';
+import FormPopover from './FormPopover';
 import Popover from './Popover';
 import PopoverBody from './PopoverBody';
 import PopoverFooter from './PopoverFooter';
@@ -40,6 +45,11 @@ export {
   DropdownTrigger,
   Facet,
   FacetsSection,
+  Form,
+  FormField,
+  FormFieldHelp,
+  FormFieldValidationBlock,
+  FormPopover,
   Popover,
   PopoverBody,
   PopoverFooter,
