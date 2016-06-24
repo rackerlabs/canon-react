@@ -3,7 +3,7 @@ import React from 'react';
 import FormField from './FormField';
 import FormPopover from './FormPopover';
 
-class DemoPopover extends React.Component {
+class DemoFormPopover extends React.Component {
   render() {
     return (
       <FormPopover {...this.props} >
@@ -15,4 +15,4 @@ class DemoPopover extends React.Component {
   }
 }
 
-export default DemoPopover;
+export default DemoFormPopover;

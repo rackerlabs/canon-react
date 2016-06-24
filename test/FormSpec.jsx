@@ -30,6 +30,16 @@ describe('Form', () => {
     expect(ReactDOM.findDOMNode(form)).not.toHaveClass('rs-form-create');
   });
 
+  it('adds the horizontal class', () => {
+    form = TestUtils.renderIntoDocument(<Form horizontal>test</Form>);
+    expect(ReactDOM.findDOMNode(form)).toHaveClass('rs-form-horizontal');
+  });
+
+  it('does not add the horizontal class if horizontal is false', () => {
+    form = TestUtils.renderIntoDocument(<Form horizontal={ false }>test</Form>);
+    expect(ReactDOM.findDOMNode(form)).not.toHaveClass('rs-form-horizontal');
+  });
+
   it('adds passed-in class names to the default ones', () => {
     form = TestUtils.renderIntoDocument(<Form className="some-nonsense">test</Form>);
     expect(ReactDOM.findDOMNode(form)).toHaveClass('some-nonsense');
