@@ -7,6 +7,8 @@ import DetailItemKey from './DetailItemKey';
 import DetailItemValue from './DetailItemValue';
 import DetailList from './DetailList';
 import DetailsSection from './DetailsSection';
+import DetailsSectionSubtitle from './DetailsSectionSubtitle';
+import DetailsSectionTitle from './DetailsSectionTitle';
 import Dropdown from './Dropdown';
 import DropdownItem from './DropdownItem';
 import DropdownTrigger from './DropdownTrigger';
@@ -30,6 +32,8 @@ export {
   DetailItemValue,
   DetailList,
   DetailsSection,
+  DetailsSectionSubtitle,
+  DetailsSectionTitle,
   Divider,
   Dropdown,
   DropdownItem,
