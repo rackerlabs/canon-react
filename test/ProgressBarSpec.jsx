@@ -29,7 +29,7 @@ describe('ProgressBar', () => {
 
     progressSegment = TestUtils.findRenderedDOMComponentWithClass(progressBar, 'rs-segment');
 
-    expect(progressSegment.props.style).toEqual({ 'width': '0%' });
+    expect(progressSegment.style.width).toEqual('0%');
   });
 
   it('renders the segment with the given progress', () => {
@@ -40,7 +40,7 @@ describe('ProgressBar', () => {
     );
     progressSegment = TestUtils.findRenderedDOMComponentWithClass(progressBar, 'rs-segment');
 
-    expect(progressSegment.props.style).toEqual({ 'width': '50%' });
+    expect(progressSegment.style.width).toEqual('50%');
   });
 
   describe('status bar', () => {

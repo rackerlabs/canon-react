@@ -68,7 +68,7 @@ describe('DropdownItem', () => {
           <DropdownItem type='link'/>
         );
 
-        expect(TestUtils.findRenderedDOMComponentWithTag(dropdownItem, 'a').getDOMNode()).toHaveClass('rs-dropdown-link');
+        expect(TestUtils.findRenderedDOMComponentWithTag(dropdownItem, 'a')).toHaveClass('rs-dropdown-link');
       });
     });
 
@@ -78,7 +78,7 @@ describe('DropdownItem', () => {
           <DropdownItem type='category'/>
         );
 
-        expect(TestUtils.findRenderedDOMComponentWithTag(dropdownItem, 'span').getDOMNode()).toHaveClass('rs-dropdown-category');
+        expect(TestUtils.findRenderedDOMComponentWithTag(dropdownItem, 'span')).toHaveClass('rs-dropdown-category');
       });
     });
 
@@ -88,7 +88,7 @@ describe('DropdownItem', () => {
           <DropdownItem type='text'/>
         );
 
-        expect(TestUtils.findRenderedDOMComponentWithTag(dropdownItem, 'span').getDOMNode()).toHaveClass('rs-dropdown-text');
+        expect(TestUtils.findRenderedDOMComponentWithTag(dropdownItem, 'span')).toHaveClass('rs-dropdown-text');
       });
     });
   });

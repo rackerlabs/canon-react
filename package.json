@@ -42,8 +42,8 @@
     "tether": "^1.1.0"
   },
   "peerDependencies": {
-    "react": "~0.14.8",
-    "react-dom": "~0.14.8"
+    "react": "~15.0.1",
+    "react-dom": "~15.0.1"
   },
   "devDependencies": {
     "babel": "6.3.26",
@@ -77,8 +77,8 @@
     "karma-react-jsx-preprocessor": "^0.1.1",
     "karma-spec-reporter": "0.0.23",
     "phantomjs": "^1.9.19",
-    "react": "~0.14.8",
-    "react-dom": "^0.14.8",
-    "react-addons-test-utils": "0.14.8"
+    "react": "~15.0.1",
+    "react-dom": "^15.0.1",
+    "react-addons-test-utils": "~15.0.1"
   }
 }

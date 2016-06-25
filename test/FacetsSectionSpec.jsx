@@ -27,13 +27,19 @@ describe('FacetsSection', () => {
     );
   };
 
+  class ChildFacet extends React.Component {
+    render () {
+      return <div {...this.props} />;
+    }
+  }
+
   beforeEach(() => {
     onSelectionChanged.calls.reset();
     onCriteriaSelection.calls.reset();
     onCriteriaDeselection.calls.reset();
     onFacetClear.calls.reset();
     onClearAll.calls.reset();
-    child = <div id='facetId' className='facetClass' />;
+    child = <ChildFacet id='facetId' />;
     selectedCriteria = {};
     section = renderFacetsSection(selectedCriteria, child);
   });
@@ -46,14 +52,14 @@ describe('FacetsSection', () => {
     let clearLink;
 
     clearLink = TestUtils.findRenderedDOMComponentWithClass(section, 'rs-facet-clear-link');
-    expect(clearLink.getDOMNode()).toHaveClass('rs-hidden');
+    expect(clearLink).toHaveClass('rs-hidden');
   });
 
   describe('onSelect', () => {
     beforeEach(() => {
       let childComponent;
 
-      childComponent = TestUtils.findRenderedDOMComponentWithClass(section, 'facetClass');
+      childComponent = TestUtils.findRenderedComponentWithType(section, ChildFacet);
       childComponent.props.onSelectionChanged(true, 'facetId', 'criteriaId');
     });
 
@@ -74,11 +80,11 @@ describe('FacetsSection', () => {
       selectedCriteria = {'facetId': {'criteriaId': true}};
       section = renderFacetsSection(selectedCriteria, child);
       clearLink = TestUtils.findRenderedDOMComponentWithClass(section, 'rs-facet-clear-link');
-      childComponent = TestUtils.findRenderedDOMComponentWithClass(section, 'facetClass');
+      childComponent = TestUtils.findRenderedComponentWithType(section, ChildFacet);
     });
 
     it('renders the clear all link', () => {
-      expect(clearLink.getDOMNode()).not.toHaveClass('rs-hidden');
+      expect(clearLink).not.toHaveClass('rs-hidden');
     });
 
     describe('on clear all', () => {

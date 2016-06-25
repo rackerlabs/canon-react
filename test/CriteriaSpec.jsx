@@ -35,14 +35,14 @@ describe('Criteria', () => {
     let listItem;
 
     listItem = TestUtils.findRenderedDOMComponentWithTag(criteria, 'li');
-    expect(listItem.getDOMNode()).toHaveClass('rs-facet-item');
+    expect(listItem).toHaveClass('rs-facet-item');
   });
 
   it('has the right title', () => {
     let listItem;
 
     listItem = TestUtils.findRenderedDOMComponentWithTag(criteria, 'li');
-    expect(listItem.getDOMNode().title).toBe('Next Gen');
+    expect(listItem.title).toBe('Next Gen');
   });
 
   it('shows an element with the icon class', () => {
@@ -53,14 +53,14 @@ describe('Criteria', () => {
     let label;
 
     label = TestUtils.findRenderedDOMComponentWithClass(criteria, 'rs-facet-label');
-    expect(label.getDOMNode().textContent).toBe('Next Gen');
+    expect(label.textContent).toBe('Next Gen');
   });
 
   it('has the right count', () => {
     let listItem;
 
     listItem = TestUtils.findRenderedDOMComponentWithClass(criteria, 'rs-facet-count');
-    expect(listItem.getDOMNode().textContent).toBe('(5)');
+    expect(listItem.textContent).toBe('(5)');
   });
 
   it('handles changing selection', () => {
@@ -82,7 +82,7 @@ describe('Criteria', () => {
       let listItem;
 
       listItem = TestUtils.findRenderedDOMComponentWithTag(criteria, 'li');
-      expect(listItem.getDOMNode()).toHaveClass('selected');
+      expect(listItem).toHaveClass('selected');
     });
   });
 
@@ -95,7 +95,7 @@ describe('Criteria', () => {
       let listItem;
 
       listItem = TestUtils.findRenderedDOMComponentWithTag(criteria, 'li');
-      expect(listItem.getDOMNode()).toHaveClass('disabled');
+      expect(listItem).toHaveClass('disabled');
     });
 
     it('does not change selection', () => {
@@ -113,7 +113,7 @@ describe('Criteria', () => {
       let listItem;
 
       listItem = TestUtils.findRenderedDOMComponentWithTag(criteria, 'li');
-      expect(listItem.getDOMNode()).toHaveClass('rs-hidden');
+      expect(listItem).toHaveClass('rs-hidden');
     });
   });
 });
