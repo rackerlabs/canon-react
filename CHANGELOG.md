@@ -1,3 +1,7 @@
+### Version 0.13.1
+1. allow the horizontal layout of a form to be configurable
+2. export form components
+
 ### Version 0.13.0
 1. Added `Form`, `FormField`, and related components to encapsulate Canon forms and form validation messages.
 2. Added new props to the `DetailsSection` to make the section collapsible and more customizable.
