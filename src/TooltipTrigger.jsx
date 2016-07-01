@@ -63,14 +63,16 @@ class TooltipTrigger extends React.Component {
 
   _showTooltip() {
     this._containerDiv.className += ' visible';
-    this._tooltipNode = ReactDOM.render(
+
+    // render the subtree into a container so the popover will receive the context from the parent
+    this._tooltipNode = ReactDOM.unstable_renderSubtreeIntoContainer(this, (
       <div className='rs-tooltip-inner'
         onMouseOver={this._mouseEnteringTooltip.bind(this)}
         onMouseLeave={this._mouseLeavingTooltip.bind(this)}>
         {this.props.content}
-      </div>,
-      this._containerDiv
-    );
+      </div>
+    ), this._containerDiv);
+
     if (!this._tether) {
       this._tether = this._createTether(this._getTetherConfig());
     }

@@ -104,7 +104,7 @@ class DemoPopoverSection extends React.Component {
                   <span>
                     To top align the content on a submittable popover declare the 'horizontal' prop as false:
                   </span>
-                  <br>
+                  <br />
                   <Button id="top-aligned-form-popover-button-id" onClick={() => { this.setState({ topAlignedFormPopoverOpen: true, topAlignedFormPopoverSubmitting: false }) } }>
                     Top Aligned Content
                   </Button>
