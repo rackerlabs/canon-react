@@ -1,3 +1,6 @@
+### Version 0.13.2
+1. Render `Tooltip` subtree component into a container so it will receive the context from its parent.
+
 ### Version 0.13.1
 1. allow the horizontal layout of a form to be configurable
 2. export form components
