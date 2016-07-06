@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
 
 describe('DetailsSection', () => {
-  let detailsSection, currentState, toggleState;
+  let detailsSection, currentState, toggleState, header;
 
   afterEach(() => {
     ReactDOM.unmountComponentAtNode(ReactDOM.findDOMNode(detailsSection).parentNode);
@@ -14,7 +14,6 @@ describe('DetailsSection', () => {
   toggleState = ((isCollapsed) => {
     currentState = isCollapsed;
   });
-
   it('displays the title but no subtitle without prop', () => {
     let title, hasSubtitle;
 
@@ -56,14 +55,12 @@ describe('DetailsSection', () => {
     expect(sectionChild.getDOMNode().textContent).toBe('test value');
   });
 
-  it('displays passed in headers', () => {
-    let headers;
-
+  it('displays passed in header', () => {
     detailsSection = TestUtils.renderIntoDocument(
-      <DetailsSection title="title" headers={ <div className="headers">headers</div> }><span className="test-child">test value</span></DetailsSection>
+      <DetailsSection title="title" headers={ <div className="header">headers</div> }><span className="test-child">test value</span></DetailsSection>
     );
-    headers = TestUtils.findRenderedDOMComponentWithClass(detailsSection, 'headers');
-    expect(headers.getDOMNode().textContent).toBe('headers');
+    header = TestUtils.findRenderedDOMComponentWithClass(detailsSection, 'header');
+    expect(header.getDOMNode().textContent).toBe('headers');
   });
 
   it('has only default class when custom class not provided and does not render caret', () => {
@@ -89,7 +86,8 @@ describe('DetailsSection', () => {
       </DetailsSection>
     );
 
-    TestUtils.Simulate.click(ReactDOM.findDOMNode(detailsSection));
+    header = TestUtils.findRenderedDOMComponentWithClass(detailsSection, 'rs-detail-section-header');
+    TestUtils.Simulate.click(ReactDOM.findDOMNode(header));
     caretRendered = TestUtils.scryRenderedDOMComponentsWithClass(detailsSection, 'rs-caret').length === 1;
     expect(ReactDOM.findDOMNode(detailsSection)).toHaveClass('rs-detail-section');
     expect(ReactDOM.findDOMNode(detailsSection)).not.toHaveClass('rs-collapsible-section collapsed');
@@ -161,7 +159,8 @@ describe('DetailsSection', () => {
       </DetailsSection>
     );
 
-    TestUtils.Simulate.click(ReactDOM.findDOMNode(detailsSection));
+    header = TestUtils.findRenderedDOMComponentWithClass(detailsSection, 'rs-detail-section-header');
+    TestUtils.Simulate.click(ReactDOM.findDOMNode(header));
     expect(ReactDOM.findDOMNode(detailsSection)).toHaveClass('rs-detail-section rs-collapsible-section collapsed');
   });
 
@@ -172,8 +171,9 @@ describe('DetailsSection', () => {
       </DetailsSection>
     );
 
-    TestUtils.Simulate.click(ReactDOM.findDOMNode(detailsSection));
-    TestUtils.Simulate.click(ReactDOM.findDOMNode(detailsSection));
+    header = TestUtils.findRenderedDOMComponentWithClass(detailsSection, 'rs-detail-section-header');
+    TestUtils.Simulate.click(ReactDOM.findDOMNode(header));
+    TestUtils.Simulate.click(ReactDOM.findDOMNode(header));
     expect(ReactDOM.findDOMNode(detailsSection)).toHaveClass('rs-detail-section rs-collapsible-section expanded');
   });
 
@@ -184,10 +184,11 @@ describe('DetailsSection', () => {
       </DetailsSection>
     );
 
+    header = TestUtils.findRenderedDOMComponentWithClass(detailsSection, 'rs-detail-section-header');
     expect(ReactDOM.findDOMNode(detailsSection)).toHaveClass('rs-detail-section rs-collapsible-section expanded');
-    TestUtils.Simulate.click(ReactDOM.findDOMNode(detailsSection));
+    TestUtils.Simulate.click(ReactDOM.findDOMNode(header));
     expect(ReactDOM.findDOMNode(detailsSection)).toHaveClass('rs-detail-section rs-collapsible-section collapsed');
-    TestUtils.Simulate.click(ReactDOM.findDOMNode(detailsSection));
+    TestUtils.Simulate.click(ReactDOM.findDOMNode(header));
     expect(ReactDOM.findDOMNode(detailsSection)).toHaveClass('rs-detail-section rs-collapsible-section expanded');
   });
 
@@ -198,38 +199,42 @@ describe('DetailsSection', () => {
       </DetailsSection>
     );
 
+    header = TestUtils.findRenderedDOMComponentWithClass(detailsSection, 'rs-detail-section-header');
     expect(ReactDOM.findDOMNode(detailsSection)).toHaveClass('rs-detail-section rs-collapsible-section expanded');
-    TestUtils.Simulate.click(ReactDOM.findDOMNode(detailsSection));
+    TestUtils.Simulate.click(ReactDOM.findDOMNode(header));
     expect(ReactDOM.findDOMNode(detailsSection)).toHaveClass('rs-detail-section rs-collapsible-section collapsed');
-    TestUtils.Simulate.click(ReactDOM.findDOMNode(detailsSection));
+    TestUtils.Simulate.click(ReactDOM.findDOMNode(header));
     expect(ReactDOM.findDOMNode(detailsSection)).toHaveClass('rs-detail-section rs-collapsible-section expanded');
   });
 
   it('section initally expanded updates currentState with onToggleCollapsed', () => {
     detailsSection = TestUtils.renderIntoDocument(
-      <DetailsSection title="title" collapsible={ true } initialCollapsed={ currentState = false } onToggleCollapsed={ toggleState }>
-        Test Detail List
+      <DetailsSection title="title" collapsible={ true } initialCollapsed={ currentState = false } onToggleCollapsed={ toggleState }
+       >
+          Test Detail List
       </DetailsSection>
     );
 
+    header = TestUtils.findRenderedDOMComponentWithClass(detailsSection, 'rs-detail-section-header');
     expect(currentState).toBe(false);
-    TestUtils.Simulate.click(ReactDOM.findDOMNode(detailsSection));
+    TestUtils.Simulate.click(ReactDOM.findDOMNode(header));
     expect(currentState).toBe(true);
-    TestUtils.Simulate.click(ReactDOM.findDOMNode(detailsSection));
+    TestUtils.Simulate.click(ReactDOM.findDOMNode(header));
     expect(currentState).toBe(false);
   });
 
   it('section initally collapsed updates currentState with onToggleCollapsed', () => {
     detailsSection = TestUtils.renderIntoDocument(
       <DetailsSection title="title" collapsible={ true } initialCollapsed={ currentState = true } onToggleCollapsed={ toggleState }>
-        Test Detail List
+          Test Detail List
       </DetailsSection>
     );
 
+    header = TestUtils.findRenderedDOMComponentWithClass(detailsSection, 'rs-detail-section-header');
     expect(currentState).toBe(true);
-    TestUtils.Simulate.click(ReactDOM.findDOMNode(detailsSection));
+    TestUtils.Simulate.click(ReactDOM.findDOMNode(header));
     expect(currentState).toBe(false);
-    TestUtils.Simulate.click(ReactDOM.findDOMNode(detailsSection));
+    TestUtils.Simulate.click(ReactDOM.findDOMNode(header));
     expect(currentState).toBe(true);
   });
 
@@ -239,11 +244,25 @@ describe('DetailsSection', () => {
         Test Detail List
       </DetailsSection>
     );
-    TestUtils.Simulate.click(ReactDOM.findDOMNode(detailsSection));
+
+    header = TestUtils.findRenderedDOMComponentWithClass(detailsSection, 'rs-detail-section-header');
+    TestUtils.Simulate.click(ReactDOM.findDOMNode(header));
     expect(ReactDOM.findDOMNode(detailsSection)).toHaveClass('rs-detail-section rs-collapsible-section collapsed');
-    TestUtils.Simulate.click(ReactDOM.findDOMNode(detailsSection));
+    TestUtils.Simulate.click(ReactDOM.findDOMNode(header));
+    expect(ReactDOM.findDOMNode(detailsSection)).toHaveClass('rs-detail-section rs-collapsible-section expanded');
+    TestUtils.Simulate.click(ReactDOM.findDOMNode(header));
+    expect(ReactDOM.findDOMNode(detailsSection)).toHaveClass('rs-detail-section rs-collapsible-section collapsed');
+  });
+
+  it('section doesnt collapse when clicking on body', () => {
+    detailsSection = TestUtils.renderIntoDocument(
+      <DetailsSection title="title" collapsible={ true }>
+        Test Detail List
+      </DetailsSection>
+    );
+
     expect(ReactDOM.findDOMNode(detailsSection)).toHaveClass('rs-detail-section rs-collapsible-section expanded');
     TestUtils.Simulate.click(ReactDOM.findDOMNode(detailsSection));
-    expect(ReactDOM.findDOMNode(detailsSection)).toHaveClass('rs-detail-section rs-collapsible-section collapsed');
+    expect(ReactDOM.findDOMNode(detailsSection)).toHaveClass('rs-detail-section rs-collapsible-section expanded');
   });
 });

@@ -27,9 +27,9 @@ class DetailsSection extends React.Component {
     };
 
     return (
-      <div { ...this.props } onClick={ this.toggleCollapsed.bind(this) }
+      <div { ...this.props }
         className={ classnames('rs-detail-section', this.props.className, classNames) }>
-        <div className='rs-detail-section-header'>
+        <div className='rs-detail-section-header' onClick={ this.toggleCollapsed.bind(this) }>
           { this.props.headers }
           { collapsible ? <div className='rs-caret'></div> : null }
           { this.props.title ? <DetailsSectionTitle>{ this.props.title }</DetailsSectionTitle> : null}
