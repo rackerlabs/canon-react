@@ -19,7 +19,9 @@ class DemoPopoverSection extends React.Component {
       formPopoverOpen: false,
       formPopoverSubmitting: false,
       topAlignedFormPopoverOpen: false,
-      topAlignedFormPopoverSubmitting: false
+      topAlignedFormPopoverSubmitting: false,
+      formPopoverErrorOpen: false,
+      formPopoverErrorSubmitting: false
     };
   }
 
@@ -89,14 +91,14 @@ class DemoPopoverSection extends React.Component {
               </tr>
               <tr>
                 <td>
-                  <Button id="form-popover-button-id" onClick={() => { this.setState({formPopoverOpen: true, formPopoverSubmitting: false}) } }>Submittable</Button>
+                  <Button id="form-popover-button-id" onClick={() => { this.setState({ formPopoverOpen: true, formPopoverSubmitting: false }) } }>Submittable</Button>
                   <DemoFormPopover
                     placement="right"
-                    processing={this.state.formPopoverSubmitting}
+                    processing={ this.state.formPopoverSubmitting }
                     target={ () => document.getElementById('form-popover-button-id') }
                     isOpen={ this.state.formPopoverOpen }
-                    onSubmit={ () => { this.setState({formPopoverSubmitting: true}) } }
-                    onRequestClose={ () => { this.setState({formPopoverOpen: false}) } } />
+                    onSubmit={ () => { this.setState({ formPopoverSubmitting: true }) } }
+                    onRequestClose={ () => { this.setState({ formPopoverOpen: false }) } } />
                 </td>
               </tr>
               <tr>
@@ -116,6 +118,19 @@ class DemoPopoverSection extends React.Component {
                     isOpen={ this.state.topAlignedFormPopoverOpen }
                     onSubmit={ () => { this.setState({ topAlignedFormPopoverSubmitting: true }) } }
                     onRequestClose={ () => { this.setState({topAlignedFormPopoverOpen: false }) } } />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <Button id="form-popover-error-button-id" onClick={() => { this.setState({ formPopoverErrorOpen: true, formPopoverErrorSubmitting: false }) } }>Submittable with Error</Button>
+                  <DemoFormPopover
+                    placement="right"
+                    error="There has been an error processing your request."
+                    processing={ this.state.formPopoverErrorSubmitting }
+                    target={ () => document.getElementById('form-popover-error-button-id') }
+                    isOpen={ this.state.formPopoverErrorOpen }
+                    onSubmit={ () => { this.setState({ formPopoverErrorSubmitting: true }) } }
+                    onRequestClose={ () => { this.setState({ formPopoverErrorOpen: false }) } } />
                 </td>
               </tr>
             </tbody>

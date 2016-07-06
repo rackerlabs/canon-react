@@ -1,11 +1,12 @@
 import React from 'react';
+
 import Button from './Button';
+import ErrorIndicator from './ErrorIndicator';
 import Form from './Form';
-import FormFieldValidationBlock from './FormFieldValidationBlock';
 import Popover from './Popover';
-import PopoverOverlay from './PopoverOverlay';
 import PopoverBody from './PopoverBody';
 import PopoverFooter from './PopoverFooter';
+import PopoverOverlay from './PopoverOverlay';
 import ProcessingIndicator from './ProcessingIndicator';
 
 class FormPopover extends React.Component {
@@ -32,10 +33,10 @@ class FormPopover extends React.Component {
               { this.props.children }
             </PopoverBody>
             <PopoverFooter>
+              <ErrorIndicator value={ this.props.error }/>
               { submitComponent }
               { cancelComponent }
               <ProcessingIndicator hidden={ !this.props.processing }/>
-              <FormFieldValidationBlock value={ this.props.error } />
             </PopoverFooter>
           </Form>
         </PopoverOverlay>
