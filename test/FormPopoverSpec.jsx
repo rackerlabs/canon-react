@@ -4,6 +4,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
 
+import Button from '../transpiled/Button';
+import Form from '../transpiled/Form';
+import ErrorIndicator from '../transpiled/ErrorIndicator';
+import PopoverBody from '../transpiled/PopoverBody';
+import PopoverFooter from '../transpiled/PopoverFooter';
+import PopoverOverlay from '../transpiled/PopoverOverlay';
+import ProcessingIndicator from '../transpiled/ProcessingIndicator';
+
 describe('FormPopover', () => {
   let onCancel, onSubmit, tether;
 
@@ -21,109 +29,177 @@ describe('FormPopover', () => {
     jasmine.getFixtures().cleanUp();
   });
 
-  const renderPopover = (popoverProps) => {
-    ReactDOM.render(
-      <FormPopover
-        onRequestClose={onCancel}
-        onSubmit={onSubmit}
-        target="popover-target"
-        isOpen={true}
-        {...popoverProps}>
-        test
-      </FormPopover>,
-      document.getElementById('container')
-    );
-  };
+  const formPopover = (popoverProps) => (
+    <FormPopover
+      onRequestClose={ onCancel }
+      onSubmit={ onSubmit }
+      target="popover-target"
+      isOpen={ true }
+      { ...popoverProps }>
+      testing child rendering
+    </FormPopover>
+  );
 
-  it('fires the submit callback on click', () => {
-    renderPopover({});
-    TestUtils.Simulate.click(document.querySelector('.rs-btn-primary'));
+  describe('behavior', () => {
+    let eventSpy;
 
-    expect(onSubmit).toHaveBeenCalled();
-  });
+    const renderPopover = (popoverProps) => {
+      ReactDOM.render(
+        formPopover(popoverProps),
+        document.getElementById('container')
+      );
+    };
 
-  it('prevents default behavior on submit', () => {
-    let eventCancelSpy;
-
-    eventCancelSpy = jasmine.createSpy('eventCancelSpy');
-    renderPopover({});
-    TestUtils.Simulate.click(
-      document.querySelector('.rs-btn-primary'),
-      { preventDefault: eventCancelSpy }
-    );
-
-    expect(eventCancelSpy).toHaveBeenCalled();
-  });
-
-  it('fires the request close callback on cancel', () => {
-    renderPopover({});
-    TestUtils.Simulate.click(document.querySelector('.rs-btn-link'));
-
-    expect(onCancel).toHaveBeenCalled();
-  });
-
-  it('prevents default behavior on cancel', () => {
-    let eventCancelSpy;
-
-    eventCancelSpy = jasmine.createSpy('eventCancelSpy');
-    renderPopover({});
-    TestUtils.Simulate.click(
-      document.querySelector('.rs-btn-link'),
-      { preventDefault: eventCancelSpy }
-    );
-
-    expect(eventCancelSpy).toHaveBeenCalled();
-  });
-
-  describe('while processing', () => {
     beforeEach(() => {
-      renderPopover({ processing: true });
+      eventSpy = jasmine.createSpy('eventSpy');
+      renderPopover({});
     });
 
-    it('disables submit', () => {
-      expect(document.querySelector('.rs-btn-primary')).toHaveClass('disabled');
+    it('prevents default behavior on submit', () => {
+      TestUtils.Simulate.click(
+        document.querySelector('.rs-btn-primary'),
+        { preventDefault: eventSpy }
+      );
+
+      expect(eventSpy).toHaveBeenCalled();
     });
 
-    it('hides cancel', () => {
-      expect(document.querySelector('.rs-btn-link')).not.toBe(null);
+    it('fires the submit callback on click', () => {
+      TestUtils.Simulate.click(document.querySelector('.rs-btn-primary'));
+
+      expect(onSubmit).toHaveBeenCalled();
     });
 
-    it('shows the processing indicator', () => {
-      expect(document.querySelector('.rs-processing-indicator')).not.toHaveClass('rs-hidden');
+    it('prevents default behavior on cancel', () => {
+      TestUtils.Simulate.click(
+        document.querySelector('.rs-btn-link'),
+        { preventDefault: eventSpy }
+      );
+
+      expect(eventSpy).toHaveBeenCalled();
+    });
+
+    it('fires the request close callback on cancel', () => {
+      TestUtils.Simulate.click(document.querySelector('.rs-btn-link'));
+
+      expect(onCancel).toHaveBeenCalled();
     });
   });
 
-  it('enables submit', () => {
-    renderPopover({});
-    expect(document.querySelector('.rs-btn-primary')).not.toHaveClass('disabled');
-  });
+  describe('rendering', () => {
+    let popover, popoverOverlay, form, popoverBody, popoverFooter, errorIndicator,
+      submit, cancel, processingIndicator;
 
-  it('shows cancel', () => {
-    renderPopover({});
-    expect(document.querySelector('.rs-btn-link')).not.toHaveClass('rs-hidden');
-  });
+    const shallowRenderPopover = (popoverProps) => {
+      const renderer = TestUtils.createRenderer();
+      renderer.render(formPopover(popoverProps));
 
-  it('hides the processing indicator', () => {
-    expect(document.querySelector('.rs-processing-indicator')).toBe(null);
-  });
+      popover = renderer.getRenderOutput();
+      popoverOverlay = popover.props.children;
+      form = popoverOverlay.props.children;
+      [ popoverBody, popoverFooter ] = form.props.children;
+      [ errorIndicator, submit, cancel, processingIndicator ] = popoverFooter.props.children;
+    };
 
-  it('passes errors to the validation block', () => {
-    renderPopover({ error: 'this is a test error message' });
-    expect(document.querySelector('.rs-validation-block').textContent).toBe(' this is a test error message');
-  });
+    beforeEach(() => {
+      shallowRenderPopover({});
+    });
 
-  it('passes the formSize prop to the form', () => {
-    renderPopover({ formSize: 'medium' });
-    expect(document.querySelector('form')).toHaveClass('rs-form-medium');
-  });
+    it('renders the Popover', () => {
+      expect(popover.type).toBe(Popover);
+    });
 
-  it('passes the horizontal prop to the form', () => {
-    renderPopover({ horizontal: false });
-    expect(document.querySelector('form')).not.toHaveClass('rs-form-horizontal');
-  });
+    it('renders the PopoverOverlay', () => {
+      expect(popoverOverlay.type).toBe(PopoverOverlay);
+    });
 
-  it('passes the horizontal prop defaulting to true to the form', () => {
-    renderPopover();
-    expect(document.querySelector('form')).toHaveClass('rs-form-horizontal');
+    it('renders the Form', () => {
+      expect(form.type).toBe(Form);
+    });
+
+    it('passes the size prop to the form', () => {
+      shallowRenderPopover({ formSize: 'medium' });
+      expect(form.props.size).toBe('medium');
+    });
+
+    it('defaults the horizontal prop to true', () => {
+      expect(form.props.horizontal).toBe(true);
+    });
+
+    it('passes the horizontal prop to the form', () => {
+      shallowRenderPopover({ horizontal: false });
+      expect(form.props.horizontal).toBe(false);
+    });
+
+    it('renders the PopoverBody', () => {
+      expect(popoverBody.type).toBe(PopoverBody);
+    });
+
+    it('renders the children within the PopoverBody', () => {
+      expect(popoverBody.props.children).toEqual('testing child rendering');
+    });
+
+    it('renders the PopoverFooter', () => {
+      expect(popoverFooter.type).toBe(PopoverFooter);
+    });
+
+    it('renders the ErrorIndicator', () => {
+      expect(errorIndicator.type).toBe(ErrorIndicator);
+    });
+
+    it('passes errors to the error indicator', () => {
+      shallowRenderPopover({ error: 'this is a test error message' });
+      expect(errorIndicator.props.value).toBe('this is a test error message');
+    });
+
+    it('renders the submit component', () => {
+      expect(submit.type).toBe(Button);
+    });
+
+    it('has the correct canonStyle on the submit component', () => {
+      expect(submit.props.canonStyle).toBe('primary');
+    });
+
+    it('enables the submit component', () => {
+      expect(submit.props.enabled).toBe(true);
+    });
+
+    it('renders the cancel component', () => {
+      expect(cancel.type).toBe(Button);
+    });
+
+    it('has the correct canonStyle on the cancel component', () => {
+      expect(cancel.props.canonStyle).toBe('link');
+    });
+
+    it('shows the cancel component', () => {
+      expect(cancel.props.hidden).toBe(false);
+    });
+
+    it('renders the ProcessingIndicator', () => {
+      expect(processingIndicator.type).toBe(ProcessingIndicator);
+    });
+
+    it('hides the ProcessingIndicator', () => {
+      expect(processingIndicator.props.hidden).toBe(true);
+    });
+
+    describe('while processing', () => {
+      beforeEach(() => {
+        shallowRenderPopover({ processing: true });
+      });
+
+      it('disables submit', () => {
+        expect(submit.props.enabled).toBe(false);
+      });
+
+      it('hides cancel', () => {
+        expect(cancel.props.hidden).toBe(true);
+      });
+
+      it('shows the processing indicator', () => {
+        expect(processingIndicator.props.hidden).toBe(false);
+      });
+    });
   });
 });
