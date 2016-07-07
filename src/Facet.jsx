@@ -7,14 +7,17 @@ class Facet extends React.Component {
   constructor(props) {
     super(props);
 
+    this._handleClear = this._handleClear.bind(this);
+    this._handleSelectionChanged = this._handleSelectionChanged.bind(this);
+    this._toggleShowLess = this._toggleShowLess.bind(this);
+
     this.state = {
       criteriaTruncated: props.truncationEnabled
     };
   }
 
   render() {
-    let criteriaElements, clearLinkClasses, facetToggler,
-        expandedClass, sectionClasses;
+    let criteriaElements, clearLinkClasses, facetToggler, sectionClasses;
 
     criteriaElements = this._getCriteriaElements();
     facetToggler = this._getMoreOrLessToggle(criteriaElements);
@@ -27,13 +30,16 @@ class Facet extends React.Component {
     expandedClass = this.state.criteriaTruncated ? 'collapsed' : 'expanded';
     sectionClasses = classNames(
       'rs-facet-section',
-      expandedClass
+      {
+        'collapsed': this.state.criteriaTruncated,
+        'expanded': !this.state.criteriaTruncated
+      }
     );
 
     return (
       <div className={ sectionClasses }>
         <div className='rs-facet-section-header'>
-          <div className={ clearLinkClasses } onClick={ this._handleClear.bind(this) }>
+          <div className={ clearLinkClasses } onClick={ this._handleClear }>
             clear
           </div>
           <div className='rs-facet-section-title'>{ this.props.label }</div>
@@ -74,7 +80,7 @@ class Facet extends React.Component {
       return React.cloneElement(child, {
         isSelected: isSelected,
         hidden: isHidden,
-        onSelectionChanged: this._handleSelectionChanged.bind(this)
+        onSelectionChanged: this._handleSelectionChanged
       });
     }, this);
   }
@@ -84,7 +90,7 @@ class Facet extends React.Component {
       return (
         <FacetToggler
           criteriaTruncated={ this.state.criteriaTruncated }
-          onToggleChange={ this._toggleShowLess.bind(this) } />
+          onToggleChange={ this._toggleShowLess } />
       );
     }
     return null;

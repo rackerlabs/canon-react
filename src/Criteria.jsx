@@ -3,17 +3,17 @@ import classNames from 'classnames';
 
 class Criteria extends React.Component {
   render() {
-    let countText, itemClasses;
-
     if (this.props.count !== undefined) {
-      countText = '(' + this.props.count + ')';
+      const countText = `(${ this.props.count })`;
     }
 
-    itemClasses = classNames(
+    const itemClasses = classNames(
       'rs-facet-item',
-      { 'selected': this.props.isSelected },
-      { 'disabled': this.props.disabled },
-      { 'rs-hidden': this.props.hidden}
+      {
+        'selected': this.props.isSelected,
+        'disabled': this.props.disabled,
+        'rs-hidden': this.props.hidden
+      }
     );
 
     return (

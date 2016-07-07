@@ -2,17 +2,14 @@ import React from 'react';
 import classNames from 'classnames';
 
 class ProcessingIndicator extends React.Component {
-
   render() {
-    let classes;
-
-    classes = classNames(
+    const classes = classNames(
       'rs-processing-indicator',
       { 'rs-hidden': this.props.hidden }
     );
 
     return (
-      <i className={classes}></i>
+      <i className={ classes }></i>
     );
   }
 }

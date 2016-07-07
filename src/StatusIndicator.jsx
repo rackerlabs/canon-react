@@ -2,33 +2,33 @@ import React from 'react';
 import classNames from 'classnames';
 
 const STATUS_INDICATOR = {
-  'error': 'rs-status rs-status-error',
-  'processing': 'rs-status rs-status-processing',
-  'warning': 'rs-status rs-status-warning',
-  'ok': 'rs-status rs-status-ok',
-  'disabled': 'rs-status rs-status-disabled'
+  'error': 'rs-status-error',
+  'processing': 'rs-status-processing',
+  'warning': 'rs-status-warning',
+  'ok': 'rs-status-ok',
+  'disabled': 'rs-status-disabled'
 };
 
 class StatusIndicator extends React.Component {
 
   render() {
-    let classes;
-
-    classes = classNames(
+    const classes = classNames(
+      'rs-status',
       this.props.className,
       STATUS_INDICATOR[this.props.status],
       { 'rs-hidden': this.props.hidden }
     );
+
     return (
-      <span {...this.props} className={classes}>
-        {this.props.children}
+      <span { ...this.props } className={ classes }>
+        { this.props.children }
       </span>
     );
   }
 }
 
 StatusIndicator.propTypes = {
-  status: React.PropTypes.oneOf(['ok', 'error', 'processing', 'warning', 'disabled']),
+  status: React.PropTypes.oneOf(Object.keys(STATUS_INDICATOR)),
   hidden: React.PropTypes.bool
 };
 

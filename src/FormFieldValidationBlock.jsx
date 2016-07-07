@@ -1,10 +1,10 @@
 import React from 'react';
 
-export default class FormFieldValidationBlock extends React.Component {
+class FormFieldValidationBlock extends React.Component {
   render() {
     return this.props.value ? (
       <span className="rs-validation-block">
-        <i className="rs-validation-indicator"></i> {this.props.value}
+        <i className="rs-validation-indicator"></i> { this.props.value }
       </span>
     ) : null;
   }
@@ -13,3 +13,5 @@ export default class FormFieldValidationBlock extends React.Component {
 FormFieldValidationBlock.propTypes = {
   value: React.PropTypes.node
 };
+
+export default FormFieldValidationBlock;

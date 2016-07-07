@@ -10,16 +10,23 @@ import PopoverOverlay from './PopoverOverlay';
 import ProcessingIndicator from './ProcessingIndicator';
 
 class FormPopover extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this._submit = this._submit.bind(this);
+    this._cancel = this._cancel.bind(this);
+  }
+
   render() {
     let submitComponent, cancelComponent, popoverProps;
 
     submitComponent = React.cloneElement(
       this.props.submitButton,
-      { onClick: this._submit.bind(this), enabled: !this.props.processing }
+      { onClick: this._submit, enabled: !this.props.processing }
     );
     cancelComponent = React.cloneElement(
       this.props.cancelButton,
-      { onClick: this._cancel.bind(this), hidden: this.props.processing }
+      { onClick: this._cancel, hidden: this.props.processing }
     );
 
     popoverProps = Object.assign({}, this.props);

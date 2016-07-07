@@ -1,15 +1,8 @@
 import React from 'react';
 
 class PopoverBackground extends React.Component {
-
-  constructor(props) {
-    super(props);
-  }
-
   render() {
-    let style;
-
-    style = {
+    const style = {
       'position': 'fixed',
       'left': 0,
       'top': 0,
@@ -22,7 +15,7 @@ class PopoverBackground extends React.Component {
       style['backgroundColor'] = 'rgba(0, 0, 0, 0.5)';
     }
 
-    return (<div className='rs-popover-background-overlay' onClick={this.props.onRequestClose} style={style}></div>);
+    return return <div className='rs-popover-background-overlay' onClick={ this.props.onRequestClose } style={ style } />;
   }
 }
 

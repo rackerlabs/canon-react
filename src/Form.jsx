@@ -9,7 +9,7 @@ const SIZE_CLASSES = {
   'xlarge': 'rs-form-xlarge'
 };
 
-export default class Form extends React.Component {
+class Form extends React.Component {
   render() {
     let classes, sizeClass;
 
@@ -43,3 +43,5 @@ Form.defaultProps = {
   create: false,
   horizontal: true
 };
+
+export default Form;
