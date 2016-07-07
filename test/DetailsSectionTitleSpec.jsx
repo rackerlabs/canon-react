@@ -1,41 +1,40 @@
 import DetailsSectionTitle from '../transpiled/DetailsSectionTitle';
 import React from 'react';
-import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
 
 describe('DetailsSectionTitle', () => {
-  let detailsSectionTitle;
+  let renderer;
 
-  afterEach(() => {
-    ReactDOM.unmountComponentAtNode(ReactDOM.findDOMNode(detailsSectionTitle).parentNode);
-  });
-
-  it('renders only provided class name correctly', () => {
-    detailsSectionTitle = TestUtils.renderIntoDocument(
-      <DetailsSectionTitle>
-        Test Detail Item
+  const renderWithProps = (props) => {
+    renderer.render(
+      <DetailsSectionTitle { ...props }>
+        Test Detail Section Title
       </DetailsSectionTitle>
     );
+  };
 
-    expect(ReactDOM.findDOMNode(detailsSectionTitle)).toHaveClass('rs-detail-section-title');
-    expect(ReactDOM.findDOMNode(detailsSectionTitle)).not.toHaveClass('test');
+  beforeEach(() => {
+    renderer = TestUtils.createRenderer();
+  });
+
+  it('renders only default class name if none is provided', () => {
+    renderWithProps({});
+    const detailsSectionTitle = renderer.getRenderOutput();
+
+    expect(detailsSectionTitle.props.className).toEqual('rs-detail-section-title');
   });
 
   it('renders correct children passed in', () => {
-    let title;
-    detailsSectionTitle = TestUtils.renderIntoDocument(
-      <DetailsSectionTitle><div className="test-child">title</div></DetailsSectionTitle>
-    );
+    renderWithProps({});
+    const detailsSectionTitle = renderer.getRenderOutput();
 
-    title = TestUtils.findRenderedDOMComponentWithClass(detailsSectionTitle, 'test-child');
-    expect(title.textContent).toBe('title');
+    expect(detailsSectionTitle.props.children).toEqual('Test Detail Section Title');
   });
 
   it('renders passed in className', () => {
-    detailsSectionTitle = TestUtils.renderIntoDocument(
-      <DetailsSectionTitle className="test">Target Child</DetailsSectionTitle>
-    );
+    renderWithProps({ className: 'test' });
+    const detailsSectionTitle = renderer.getRenderOutput();
 
-    expect(ReactDOM.findDOMNode(detailsSectionTitle)).toHaveClass('rs-detail-section-title test');
+    expect(detailsSectionTitle.props.className).toEqual('rs-detail-section-title test');
   });
 });

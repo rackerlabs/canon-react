@@ -14,6 +14,7 @@ describe('DetailsSection', () => {
   toggleState = ((isCollapsed) => {
     currentState = isCollapsed;
   });
+
   it('displays the title but no subtitle without prop', () => {
     let title, hasSubtitle;
 
