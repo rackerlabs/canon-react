@@ -1,26 +1,21 @@
 import Divider from '../transpiled/Divider';
 import React from 'react';
-import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
 
 describe('Divider', () => {
-  let divider;
+  let divider, renderer;
 
   beforeEach(() => {
-    divider = TestUtils.renderIntoDocument(
-      <Divider/>
-    );
-  });
-
-  afterEach(() => {
-    ReactDOM.unmountComponentAtNode(ReactDOM.findDOMNode(divider).parentNode);
+    renderer = TestUtils.createRenderer();
+    renderer.render(<Divider/>);
+    divider = renderer.getRenderOutput();
   });
 
   it('renders a divider', () => {
-    expect(TestUtils.findRenderedDOMComponentWithTag(divider, 'li')).not.toBeNull();
+    expect(divider.type).toBe('li');
   });
 
   it('has the correct class', () => {
-    expect(ReactDOM.findDOMNode(divider)).toHaveClass('rs-divider');
+    expect(divider.props.className).toBe('rs-divider');
   });
 });

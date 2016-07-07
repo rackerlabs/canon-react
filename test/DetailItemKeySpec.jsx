@@ -1,52 +1,47 @@
 import DetailItemKey from '../transpiled/DetailItemKey';
 import React from 'react';
-import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
 
 describe('DetailItemKey', () => {
-  let detailItemKey;
+  let renderer;
 
-  afterEach(() => {
-    ReactDOM.unmountComponentAtNode(ReactDOM.findDOMNode(detailItemKey).parentNode);
-  });
-
-  it('renders provided class name correctly', () => {
-    detailItemKey = TestUtils.renderIntoDocument(
-      <DetailItemKey id='detail-item-key-id' className='test-detail-item-key-class'>
-        Test Detail Item
-      </DetailItemKey>
-    );
-
-    expect(ReactDOM.findDOMNode(detailItemKey)).toHaveClass('rs-detail-key test-detail-item-key-class');
-  });
-
-  it('has only default classs when custom class not provided', () => {
-    detailItemKey = TestUtils.renderIntoDocument(
-      <DetailItemKey id='rs-detail-key'>
+  const renderWithProps = (props) => {
+    renderer.render(
+      <DetailItemKey { ...props }>
         Test Detail Item Key
       </DetailItemKey>
     );
+  };
 
-    expect(ReactDOM.findDOMNode(detailItemKey)).toHaveClass('rs-detail-key');
+  beforeEach(() => {
+    renderer = TestUtils.createRenderer();
+  });
+
+  it('renders provided class name correctly', () => {
+    renderWithProps({ id: 'detail-item-key-id', className: 'test-detail-item-key-class' });
+    const detailItemKey = renderer.getRenderOutput();
+
+    expect(detailItemKey.props.className).toEqual('rs-detail-key test-detail-item-key-class');
+  });
+
+  it('has only default classs when custom class not provided', () => {
+    renderWithProps({ id: 'detail-item-key-id' });
+    const detailItemKey = renderer.getRenderOutput();
+
+    expect(detailItemKey.props.className).toEqual('rs-detail-key');
   });
 
   it('has correct id when passed in as prop', () => {
-    detailItemKey = TestUtils.renderIntoDocument(
-      <DetailItemKey id='detail-item-key-id' className='test-detail-item-key-class'>
-        Test Detail Item
-      </DetailItemKey>
-    );
+    renderWithProps({ id: 'detail-item-key-id', className: 'test-detail-item-key-class' });
+    const detailItemKey = renderer.getRenderOutput();
 
-    expect(ReactDOM.findDOMNode(detailItemKey).id).toBe('detail-item-key-id');
+    expect(detailItemKey.props.id).toEqual('detail-item-key-id');
   });
 
   it('renders passed in children', () => {
-    detailItemKey = TestUtils.renderIntoDocument(
-      <DetailItemKey id='detail-item-id' className='test-detail-item-key-class'>
-        <div id='target-child'>Target Child</div>
-      </DetailItemKey>
-    );
+    renderWithProps({ id: 'detail-item-key-id', className: 'test-detail-item-key-class' });
+    const detailItemKey = renderer.getRenderOutput();
 
-    expect(TestUtils.findRenderedDOMComponentWithClass(detailItemKey, 'test-detail-item-key-class')).not.toBeNull();
+    expect(detailItemKey.props.children).toEqual('Test Detail Item Key');
   });
 });

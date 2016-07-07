@@ -1,15 +1,11 @@
 import React from 'react';
 import classnames from 'classnames';
 
-class DetailsSectionTitle extends React.Component {
-  render() {
-    return (
-      <div className={ classnames('rs-detail-section-title', this.props.className) }>
-        { this.props.children }
-      </div>
-    );
-  }
-}
+const DetailsSectionTitle = (props) => (
+  <div className={ classnames('rs-detail-section-title', props.className) }>
+    { props.children }
+  </div>
+);
 
 DetailsSectionTitle.propTypes = {
   children: React.PropTypes.node,
