@@ -1,33 +1,32 @@
 import ButtonGroup from '../transpiled/ButtonGroup';
 import Button from '../transpiled/Button';
-import ReactDOM from 'react-dom';
 import React from 'react';
 import TestUtils from 'react-addons-test-utils';
 
 describe('ButtonGroup', () => {
-  let buttonGroup;
+  let buttonGroup, button, renderer;
 
   beforeEach(() => {
-    buttonGroup = TestUtils.renderIntoDocument(
+    renderer = TestUtils.createRenderer();
+    button = <Button className='child-button'>Test</Button>;
+    renderer.render(
       <ButtonGroup id='button-group' className="extra-class">
-        <Button className='child-button'>Test</Button>
+        { button }
       </ButtonGroup>
     );
-  });
 
-  afterEach(() => {
-    ReactDOM.unmountComponentAtNode(ReactDOM.findDOMNode(buttonGroup).parentNode);
+    buttonGroup = renderer.getRenderOutput();
   });
 
   it('has the right classes', () => {
-    expect(ReactDOM.findDOMNode(buttonGroup)).toHaveClass('rs-btn-group extra-class');
+    expect(buttonGroup.props.className).toEqual('rs-btn-group extra-class');
   });
 
   it('renders passed in props', () => {
-    expect(ReactDOM.findDOMNode(buttonGroup).id).toBe('button-group');
+    expect(buttonGroup.props.id).toEqual('button-group');
   });
 
   it('renders passed in children', () => {
-    expect(TestUtils.findRenderedDOMComponentWithClass(buttonGroup, 'child-button')).not.toBeNull();
+    expect(buttonGroup.props.children).toEqual(button);
   });
 });

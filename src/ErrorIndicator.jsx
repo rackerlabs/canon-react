@@ -1,15 +1,15 @@
 import React from 'react';
 
-export default class ErrorIndicator extends React.Component {
-  render() {
-    return this.props.value ? (
-      <div className="rs-status-error">
-        {this.props.value}
-      </div>
-    ) : null;
-  }
-}
+const ErrorIndicator = (props) => {
+  return props.value ? (
+    <div className="rs-status-error">
+      { props.value }
+    </div>
+  ) : <noscript />;
+};
 
 ErrorIndicator.propTypes = {
   value: React.PropTypes.node
 };
+
+export default ErrorIndicator;
