@@ -4,6 +4,34 @@ import Tether from 'tether';
 import PopoverBackground from './PopoverBackground';
 import classNames from 'classnames';
 
+const PLACEMENT = {
+  'left': {
+    attachment: 'top right',
+    targetAttachment: 'middle left',
+    offset: '38px 20px'
+  },
+  'bottom-left': {
+    attachment: 'top right',
+    targetAttachment: 'bottom left',
+    offset: '-20px -45px'
+  },
+  'bottom-right': {
+    attachment: 'top left',
+    targetAttachment: 'bottom right',
+    offset: '-20px 45px'
+  },
+  'right': {
+    attachment: 'top left',
+    targetAttachment: 'middle right',
+    offset: '38px -20px'
+  },
+  'center': {
+    attachment: 'middle center',
+    targetAttachment: 'middle center',
+    targetModifier: 'visible'
+  }
+};
+
 class Popover extends React.Component {
 
   constructor(props) {
@@ -106,51 +134,7 @@ class Popover extends React.Component {
   }
 
   _getTetherConfig() {
-    let tetherConfig;
-
-    switch (this.props.placement) {
-      case 'left':
-        tetherConfig = {
-          attachment: 'top right',
-          targetAttachment: 'middle left',
-          offset: '38px 20px'
-        };
-        break;
-      case 'bottom-left':
-        tetherConfig = {
-          attachment: 'top right',
-          targetAttachment: 'bottom left',
-          offset: '-20px -45px'
-        };
-        break;
-      case 'bottom-right':
-        tetherConfig = {
-          attachment: 'top left',
-          targetAttachment: 'bottom right',
-          offset: '-20px 45px'
-        };
-        break;
-      case 'right':
-        tetherConfig = {
-          attachment: 'top left',
-          targetAttachment: 'middle right',
-          offset: '38px -20px'
-        };
-        break;
-      case 'center':
-        tetherConfig = {
-          attachment: 'middle center',
-          targetAttachment: 'middle center',
-          targetModifier: 'visible'
-        };
-        break;
-      default:
-        tetherConfig = {
-          attachment: 'top left',
-          targetAttachment: 'middle right',
-          offset: '38px -20px'
-        };
-    }
+    let tetherConfig = PLACEMENT[this.props.placement] || PLACEMENT['right'];
 
     if (this.props.tetherConfig) {
       tetherConfig = Object.assign(tetherConfig, this.props.tetherConfig);
@@ -193,7 +177,7 @@ Popover.propTypes = {
   isModal: React.PropTypes.bool,
   isOpen: React.PropTypes.bool,
   onRequestClose: React.PropTypes.func.isRequired,
-  placement: React.PropTypes.oneOf(['right', 'bottom-right', 'left', 'bottom-left', 'center']),
+  placement: React.PropTypes.oneOf(Object.keys(PLACEMENT)),
   target: React.PropTypes.oneOfType([
     React.PropTypes.string,
     React.PropTypes.func

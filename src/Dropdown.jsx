@@ -23,8 +23,8 @@ class Dropdown extends React.Component {
     );
 
     return (
-      <div className={classes} style={dropdownStyle}>
-        <ul className='rs-dropdown-menu visible' style={menuStyle}>
+      <div className={ classes } style={ dropdownStyle }>
+        <ul className='rs-dropdown-menu visible' style={ menuStyle }>
           { this._children() }
         </ul>
       </div>
@@ -44,7 +44,7 @@ Dropdown.defaultProps = {
 };
 
 Dropdown.propTypes = {
-  type: React.PropTypes.oneOf(['primary', 'utility', 'action']),
+  type: React.PropTypes.oneOf(Object.keys(DROPDOWN_TYPES)),
   alignment: React.PropTypes.oneOf(['left', 'right']),
   hideCallback: React.PropTypes.func.isRequired
 };

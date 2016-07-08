@@ -7,29 +7,34 @@ class DetailsSection extends React.Component {
     super(props);
 
     this.state = { isCollapsed: props.initialCollapsed };
+    this.toggleCollapsed = this.toggleCollapsed.bind(this);
   }
 
   toggleCollapsed() {
     if (this.props.collapsible) {
-      let newState = !this.state.isCollapsed;
+      const newState = !this.state.isCollapsed;
       this.setState({ isCollapsed: newState });
       this.props.onToggleCollapsed(newState);
     }
   }
 
   render() {
-    let classNames, { collapsible, isLoading } = this.props, { isCollapsed } = this.state;
+    let { collapsible, isLoading } = this.props, { isCollapsed } = this.state;
 
-    classNames = {
-      'rs-collapsible-section collapsed': collapsible && isCollapsed,
-      'rs-collapsible-section expanded': collapsible && !isCollapsed,
-      'loading': isLoading
-    };
+    const classes = classnames(
+      'rs-detail-section',
+      this.props.className,
+      {
+        'rs-collapsible-section': collapsible,
+        'collapsed': collapsible && isCollapsed,
+        'expanded': collapsible && !isCollapsed,
+        'loading': isLoading
+      }
+    );
 
     return (
-      <div { ...this.props }
-        className={ classnames('rs-detail-section', this.props.className, classNames) }>
-        <div className='rs-detail-section-header' onClick={ this.toggleCollapsed.bind(this) }>
+      <div { ...this.props } className={ classes }>
+        <div className='rs-detail-section-header' onClick={ this.toggleCollapsed }>
           { this.props.headers }
           { collapsible ? <div className='rs-caret'></div> : null }
           { this.props.title ? <DetailsSectionTitle>{ this.props.title }</DetailsSectionTitle> : null}

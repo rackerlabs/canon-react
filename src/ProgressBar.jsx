@@ -22,33 +22,27 @@ const TYPE_CLASSES = {
 };
 
 class ProgressBar extends React.Component {
-
-  _getSizeClass() {
-     return classNames(
+  render() {
+    const sizeClass = classNames(
       'rs-progress',
       SIZE_CLASSES[this.props.size]
     );
-  }
 
-  _getStatusClass() {
-    return classNames(
+    const statusClass = classNames(
       'rs-bar',
       STATUS_CLASSES[this.props.status],
       TYPE_CLASSES[this.props.type]
     );
-  }
 
-  render() {
     let style, width;
 
-    width = this.props.progress + '%';
-    style = { 'width': width };
+    const style = { 'width': `${this.props.progress}%` };
 
     return (
-      <div className={this._getSizeClass()}>
+      <div className={ sizeClass }>
         <div className='rs-progress-inner'>
-          <div className='rs-segment' style={style}>
-            <div className={this._getStatusClass()}></div>
+          <div className='rs-segment' style={ style }>
+            <div className={ statusClass }></div>
           </div>
         </div>
       </div>
@@ -58,9 +52,9 @@ class ProgressBar extends React.Component {
 
 ProgressBar.propTypes = {
   progress: React.PropTypes.number,
-  status: React.PropTypes.string,
-  type: React.PropTypes.string,
-  size: React.PropTypes.string
+  status: React.PropTypes.oneOf(Object.keys(STATUS_CLASSES)),
+  type: React.PropTypes.oneOf(Object.keys(TYPE_CLASSES)),
+  size: React.PropTypes.oneOf(Object.keys(SIZE_CLASSES))
 };
 
 ProgressBar.defaultProps = {

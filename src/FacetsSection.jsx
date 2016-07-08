@@ -2,16 +2,22 @@ import React from 'react';
 import classNames from 'classnames';
 
 class FacetsSection extends React.Component {
-  render() {
-    let facets, itemClasses;
+  constructor(props) {
+    super(props);
 
+    this._handleClearAll = this._handleClearAll.bind(this);
+    this._handleSelectionChanged = this._handleSelectionChanged.bind(this);
+    this._handleFacetClear = this._handleFacetClear.bind(this);
+  }
+
+  render() {
     if (!this.props.children) {
       return null;
     }
 
-    facets = this._getFacetElements();
+    const facets = this._getFacetElements();
 
-    itemClasses = classNames(
+    const itemClasses = classNames(
       'rs-facet-clear-link',
       { 'rs-hidden': !Object.keys(this.props.selectedCriteria).length }
     );
@@ -20,7 +26,7 @@ class FacetsSection extends React.Component {
       <span className='rs-facets'>
         <div className='rs-inner'>
           <div className='rs-facet-header'>
-            <div className={ itemClasses } onClick={ this._handleClearAll.bind(this) }>
+            <div className={ itemClasses } onClick={ this._handleClearAll }>
               clear all
             </div>
             <div className='rs-facet-title'>{ this.props.sectionHeader }</div>
@@ -37,9 +43,9 @@ class FacetsSection extends React.Component {
 
       selectedCriteria = this.props.selectedCriteria[child.props.id] || {};
       return React.cloneElement(child, {
-        onSelectionChanged: this._handleSelectionChanged.bind(this),
+        onSelectionChanged: this._handleSelectionChanged,
         selectedCriteria: selectedCriteria,
-        onFacetClear: this._handleFacetClear.bind(this)
+        onFacetClear: this._handleFacetClear
       });
     }, this);
   }

@@ -8,6 +8,8 @@ class DropdownTrigger extends React.Component {
 
     this._documentClickHandler = this._handleDocumentClick.bind(this);
     this._escapeHandler = this._handleEscapePress.bind(this);
+    this._onTriggerClick = this._onTriggerClick.bind(this);
+    this._hide = this._hide.bind(this);
 
     this.state = {
       isDropdownDisplayed: false
@@ -18,7 +20,7 @@ class DropdownTrigger extends React.Component {
     let props;
 
     props = {
-      onClick: this._onTriggerClick.bind(this)
+      onClick: this._onTriggerClick
     };
 
     return (
@@ -83,7 +85,7 @@ class DropdownTrigger extends React.Component {
     dropdown = React.cloneElement(
       this.props.dropdown,
       {
-        hideCallback: this._hide.bind(this),
+        hideCallback: this._hide,
         tether: this.props.alignment
       }
     );
