@@ -1,48 +1,75 @@
 import Form from '../transpiled/Form';
 import React from 'react';
-import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
 
 describe('Form', () => {
-  let form;
+  let renderer;
 
-  afterEach(() => {
-    ReactDOM.unmountComponentAtNode(ReactDOM.findDOMNode(form).parentNode);
+  const renderWithProps = (props) => {
+    renderer.render(
+      <Form { ...props }>
+        Test Content
+      </Form>
+    );
+  };
+
+  beforeEach(() => {
+    renderer = TestUtils.createRenderer();
   });
 
-  it('adds the size class', () => {
-    form = TestUtils.renderIntoDocument(<Form size="xsmall">test</Form>);
-    expect(ReactDOM.findDOMNode(form)).toHaveClass('rs-form-xsmall');
+  it('adds the horizontal class as the only default class', () => {
+    renderWithProps({});
+    const form = renderer.getRenderOutput();
+
+    expect(form.props.className).toEqual('rs-form-horizontal');
   });
 
-  it('does not add invalid size classes', () => {
-    form = TestUtils.renderIntoDocument(<Form size="ginormous">test</Form>);
-    expect(ReactDOM.findDOMNode(form)).not.toHaveClass('rs-form-ginormous');
-  });
+  it('adds the horizontal class if horizontal is true', () => {
+    renderWithProps({ horizontal: true });
+    const form = renderer.getRenderOutput();
 
-  it('adds the create class', () => {
-    form = TestUtils.renderIntoDocument(<Form create>test</Form>);
-    expect(ReactDOM.findDOMNode(form)).toHaveClass('rs-form-create');
-  });
-
-  it('does not add the create class if not present', () => {
-    form = TestUtils.renderIntoDocument(<Form>test</Form>);
-    expect(ReactDOM.findDOMNode(form)).not.toHaveClass('rs-form-create');
-  });
-
-  it('adds the horizontal class', () => {
-    form = TestUtils.renderIntoDocument(<Form horizontal>test</Form>);
-    expect(ReactDOM.findDOMNode(form)).toHaveClass('rs-form-horizontal');
+    expect(form.props.className).toEqual('rs-form-horizontal');
   });
 
   it('does not add the horizontal class if horizontal is false', () => {
-    form = TestUtils.renderIntoDocument(<Form horizontal={ false }>test</Form>);
-    expect(ReactDOM.findDOMNode(form)).not.toHaveClass('rs-form-horizontal');
+    renderWithProps({ horizontal: false });
+    const form = renderer.getRenderOutput();
+
+    expect(form.props.className).toEqual('');
   });
 
-  it('adds passed-in class names to the default ones', () => {
-    form = TestUtils.renderIntoDocument(<Form className="some-nonsense">test</Form>);
-    expect(ReactDOM.findDOMNode(form)).toHaveClass('some-nonsense');
-    expect(ReactDOM.findDOMNode(form)).toHaveClass('rs-form-horizontal');
+  it('adds a valid size class', () => {
+    renderWithProps({ size: 'xsmall', horizontal: false });
+    const form = renderer.getRenderOutput();
+
+    expect(form.props.className).toEqual('rs-form-xsmall');
+  });
+
+  it('does not add an invalid size classes', () => {
+    renderWithProps({ size: 'ginormous', horizontal: false });
+    const form = renderer.getRenderOutput();
+
+    expect(form.props.className).toEqual('');
+  });
+
+  it('adds the create class if create is true', () => {
+    renderWithProps({ create: true, horizontal: false });
+    const form = renderer.getRenderOutput();
+
+    expect(form.props.className).toEqual('rs-form-create');
+  });
+
+  it('does not add the create class if create is false', () => {
+    renderWithProps({ create: false, horizontal: false });
+    const form = renderer.getRenderOutput();
+
+    expect(form.props.className).toEqual('');
+  });
+
+  it('adds passed-in class names', () => {
+    renderWithProps({ className: 'some-nonsense', horizontal: false });
+    const form = renderer.getRenderOutput();
+
+    expect(form.props.className).toEqual('some-nonsense');
   });
 });

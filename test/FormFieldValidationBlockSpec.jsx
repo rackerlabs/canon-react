@@ -1,24 +1,34 @@
 import FormFieldValidationBlock from '../transpiled/FormFieldValidationBlock';
 import React from 'react';
-import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
 
 describe('FormFieldValidationBlock', () => {
+  let renderer;
+
+  beforeEach(() => {
+    renderer = TestUtils.createRenderer();
+  });
+
+  it('displays the validation indicator icon', () => {
+    renderer.render(<FormFieldValidationBlock value="test message" />);
+    const formFieldValidationBlock = renderer.getRenderOutput();
+
+    expect(formFieldValidationBlock.props.children[0].type).toBe('i');
+    expect(formFieldValidationBlock.props.children[0].props.className).toEqual('rs-validation-indicator');
+  });
+
   it('displays the validation message', () => {
-    let message, formFieldValidationBlock;
+    renderer.render(<FormFieldValidationBlock value="test message" />);
+    const formFieldValidationBlock = renderer.getRenderOutput();
 
-    formFieldValidationBlock = TestUtils.renderIntoDocument(<FormFieldValidationBlock value="test message" />);
-    message = TestUtils.findRenderedDOMComponentWithClass(formFieldValidationBlock, 'rs-validation-block');
-    expect(message.getDOMNode().textContent).toBe(' test message');
-
-    ReactDOM.unmountComponentAtNode(ReactDOM.findDOMNode(formFieldValidationBlock).parentNode);
+    expect(formFieldValidationBlock.props.children[1]).toEqual(' ');
+    expect(formFieldValidationBlock.props.children[2]).toEqual('test message');
   });
 
   it('returns null if no field is passed to it', () => {
-    let results, formFieldValidationBlock;
+    renderer.render(<FormFieldValidationBlock />);
+    const formFieldValidationBlock = renderer.getRenderOutput();
 
-    formFieldValidationBlock = TestUtils.renderIntoDocument(<FormFieldValidationBlock />);
-    results = TestUtils.scryRenderedDOMComponentsWithClass(formFieldValidationBlock, 'rs-validation-block');
-    expect(results).toEqual([]);
+    expect(formFieldValidationBlock.type).toBe('noscript');
   });
 });
