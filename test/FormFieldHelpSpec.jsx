@@ -1,24 +1,25 @@
 import FormFieldHelp from '../transpiled/FormFieldHelp';
 import React from 'react';
-import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
 
 describe('FormFieldHelp', () => {
-  it('displays the help message', () => {
-    let message, formFieldHelp;
+  let renderer;
 
-    formFieldHelp = TestUtils.renderIntoDocument(<FormFieldHelp help="test message" />);
-    message = TestUtils.findRenderedDOMComponentWithClass(formFieldHelp, 'rs-help-block');
-    expect(message.getDOMNode().textContent).toBe('test message');
-
-    ReactDOM.unmountComponentAtNode(ReactDOM.findDOMNode(formFieldHelp).parentNode);
+  beforeEach(() => {
+    renderer = TestUtils.createRenderer();
   });
 
-  it('returns null if no field is passed to it', () => {
-    let results, formFieldHelp;
+  it('displays the help message', () => {
+    renderer.render(<FormFieldHelp help="test message" />);
+    const formFieldHelp = renderer.getRenderOutput();
 
-    formFieldHelp = TestUtils.renderIntoDocument(<FormFieldHelp />);
-    results = TestUtils.scryRenderedDOMComponentsWithClass(formFieldHelp, 'rs-help-block');
-    expect(results).toEqual([]);
+    expect(formFieldHelp.props.children).toEqual('test message');
+  });
+
+  it('renders noscript if no field is passed to it', () => {
+    renderer.render(<FormFieldHelp />);
+    const formFieldHelp = renderer.getRenderOutput();
+
+    expect(formFieldHelp.type).toBe('noscript');
   });
 });

@@ -1,72 +1,86 @@
 import FormField from '../transpiled/FormField';
 import React from 'react';
-import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
 
 describe('FormField', () => {
-  let formField;
+  let renderer, formField;
 
-  afterEach(() => {
-    ReactDOM.unmountComponentAtNode(ReactDOM.findDOMNode(formField).parentNode);
+  const renderWithProps = (props) => {
+    renderer.render(
+      <FormField { ...props }>
+        Test Content
+      </FormField>
+    );
+  };
+
+  beforeEach(() => {
+    renderer = TestUtils.createRenderer();
   });
 
   describe('when there is an error', () => {
     beforeEach(() => {
-      formField = TestUtils.renderIntoDocument(
-        <FormField error="Test error message">test</FormField>
-      );
+      renderWithProps({ error: 'Test error message' });
+      formField = renderer.getRenderOutput();
     });
 
     it('adds the error class', () => {
-      let controlGroup;
-
-      controlGroup = TestUtils.findRenderedDOMComponentWithClass(formField, 'rs-control-group');
-      expect(controlGroup.getDOMNode()).toHaveClass('error');
+      expect(formField.props.className).toEqual('rs-control-group error');
     });
 
-    it('adds the message to the validation block', () => {
-      let message;
+    it('passes the message to the validation block', () => {
+      const controls = formField.props.children[1];
+      const validationBlock = controls.props.children[2];
 
-      message = TestUtils.findRenderedDOMComponentWithClass(formField, 'rs-validation-block');
-      expect(message.getDOMNode().textContent).toBe(' Test error message');
+      expect(validationBlock.props.value).toBe('Test error message');
     });
   });
 
   describe('when there is a fixed error', () => {
     beforeEach(() => {
-      formField = TestUtils.renderIntoDocument(
-        <FormField success="Test success message">test</FormField>
-      );
+      renderWithProps({ success: 'Test success message' });
+      formField = renderer.getRenderOutput();
     });
 
     it('adds the success class', () => {
-      let controlGroup;
-
-      controlGroup = TestUtils.findRenderedDOMComponentWithClass(formField, 'rs-control-group');
-      expect(controlGroup.getDOMNode()).toHaveClass('success');
+      expect(formField.props.className).toEqual('rs-control-group success');
     });
 
-    it('adds the message to the validation block', () => {
-      let message;
+    it('passes the message to the validation block', () => {
+      const controls = formField.props.children[1];
+      const validationBlock = controls.props.children[2];
 
-      message = TestUtils.findRenderedDOMComponentWithClass(formField, 'rs-validation-block');
-      expect(message.getDOMNode().textContent).toBe(' Test success message');
+      expect(validationBlock.props.value).toBe('Test success message');
     });
   });
 
-  it('adds the help message', () => {
-    let message;
+  it('renders the children', () => {
+    renderWithProps({ success: 'Test success message' });
+    formField = renderer.getRenderOutput();
 
-    formField = TestUtils.renderIntoDocument(<FormField help="test help message">test</FormField>);
-    message = TestUtils.findRenderedDOMComponentWithClass(formField, 'rs-help-block');
-    expect(message.getDOMNode().textContent).toBe('test help message');
+    const controls = formField.props.children[1];
+    const children = controls.props.children[0];
+
+    expect(children).toEqual('Test Content');
+  });
+
+  it('passes the help message to the FormFieldHelp', () => {
+    renderWithProps({ success: 'Test success message', help: 'Test help message' });
+    formField = renderer.getRenderOutput();
+
+    const controls = formField.props.children[1];
+    const formFieldHelp = controls.props.children[1];
+
+    expect(formFieldHelp.props.help).toEqual('Test help message');
   });
 
   it('displays the label', () => {
-    let label;
+    renderWithProps({ success: 'Test success message', label: 'Test label' });
+    formField = renderer.getRenderOutput();
 
-    formField = TestUtils.renderIntoDocument(<FormField label="test label">test</FormField>);
-    label = TestUtils.findRenderedDOMComponentWithClass(formField, 'rs-control-label');
-    expect(label.getDOMNode().textContent).toBe('test label');
+    const label = formField.props.children[0];
+
+    expect(label.type).toBe('label');
+    expect(label.props.className).toBe('rs-control-label');
+    expect(label.props.children).toBe('Test label');
   });
 });

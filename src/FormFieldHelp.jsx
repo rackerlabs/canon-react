@@ -1,13 +1,13 @@
 import React from 'react';
 
-export default class FormFieldHelp extends React.Component {
-  render() {
-    return this.props.help ? (
-      <span className="rs-help-block">{this.props.help}</span>
-    ) : null;
-  }
-}
+const FormFieldHelp = (props) => {
+  return props.help ? (
+    <span className="rs-help-block">{ props.help }</span>
+  ) : <noscript />;
+};
 
 FormFieldHelp.propTypes = {
   help: React.PropTypes.node
 };
+
+export default FormFieldHelp;
