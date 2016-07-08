@@ -9,27 +9,22 @@ const SIZE_CLASSES = {
   'xlarge': 'rs-form-xlarge'
 };
 
-export default class Form extends React.Component {
-  render() {
-    let classes, sizeClass;
+const Form = (props) => {
+  const classes = classNames(
+    {
+      'rs-form-create': props.create,
+      'rs-form-horizontal': props.horizontal
+    },
+    props.className,
+    SIZE_CLASSES[props.size]
+  );
 
-    sizeClass = SIZE_CLASSES[this.props.size];
-    classes = classNames(
-      {
-        'rs-form-create': this.props.create,
-        'rs-form-horizontal': this.props.horizontal
-      },
-      this.props.className,
-      sizeClass
-    );
-
-    return (
-      <form { ...this.props } className={ classes }>
-        { this.props.children }
-      </form>
-    );
-  }
-}
+  return (
+    <form { ...props } className={ classes }>
+      { props.children }
+    </form>
+  );
+};
 
 Form.propTypes = {
   create: React.PropTypes.bool,
@@ -43,3 +38,5 @@ Form.defaultProps = {
   create: false,
   horizontal: true
 };
+
+export default Form;

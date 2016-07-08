@@ -1,33 +1,27 @@
 import PopoverBody from '../transpiled/PopoverBody';
 
 import React from 'react';
-import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
 
 describe('PopoverBody', () => {
-  let popoverBody;
+  let popoverBody, renderer;
 
   beforeEach(() => {
-    popoverBody = TestUtils.renderIntoDocument(
+    renderer = TestUtils.createRenderer();
+    renderer.render(
       <PopoverBody className="test-additional-class">
         Hello
       </PopoverBody>
     );
+    popoverBody = renderer.getRenderOutput();
   });
 
-  afterEach(() => {
-    ReactDOM.unmountComponentAtNode(ReactDOM.findDOMNode(popoverBody).parentNode);
-  });
-
-  it('renders a popover body', () => {
-    expect(ReactDOM.findDOMNode(popoverBody)).toHaveClass('rs-popover-body');
-  });
-
-  it('adds an additional class', () => {
-    expect(ReactDOM.findDOMNode(popoverBody)).toHaveClass('test-additional-class');
+  it('renders a popover body with additional class', () => {
+    expect(popoverBody.type).toBe('div');
+    expect(popoverBody.props.className).toEqual('rs-popover-body test-additional-class');
   });
 
   it('renders children', () => {
-    expect(ReactDOM.findDOMNode(popoverBody).textContent).toBe('Hello');
+    expect(popoverBody.props.children).toEqual('Hello');
   });
 });

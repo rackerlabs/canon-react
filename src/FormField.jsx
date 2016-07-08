@@ -3,20 +3,26 @@ import FormFieldHelp from './FormFieldHelp';
 import FormFieldValidationBlock from './FormFieldValidationBlock';
 import classnames from 'classnames';
 
-export default class FormField extends React.Component {
-  render() {
-    return (
-      <div className={classnames('rs-control-group', { 'error': this.props.error, 'success': this.props.success })}>
-        <label className="rs-control-label">{this.props.label}</label>
-        <div className="rs-controls">
-          {this.props.children}
-          <FormFieldHelp help={this.props.help} />
-          <FormFieldValidationBlock value={this.props.error || this.props.success} />
-        </div>
+const FormField = (props) => {
+  const classes = classnames(
+    'rs-control-group',
+    {
+      'error': props.error,
+      'success': props.success
+    }
+  );
+
+  return (
+    <div className={ classes }>
+      <label className="rs-control-label">{ props.label }</label>
+      <div className="rs-controls">
+        { props.children }
+        <FormFieldHelp help={ props.help } />
+        <FormFieldValidationBlock value={ props.error || props.success } />
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 FormField.propTypes = {
   error: React.PropTypes.string,
@@ -25,3 +31,5 @@ FormField.propTypes = {
   label: React.PropTypes.node.isRequired,
   children: React.PropTypes.node.isRequired
 };
+
+export default FormField;
