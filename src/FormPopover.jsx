@@ -73,7 +73,10 @@ FormPopover.propTypes = {
   children: React.PropTypes.node.isRequired,
   // popover
   isOpen: React.PropTypes.bool.isRequired,
-  target: React.PropTypes.string.isRequired,
+  target: React.PropTypes.oneOfType([
+    React.PropTypes.string,
+    React.PropTypes.func
+  ]).isRequired,
   placement: React.PropTypes.string.isRequired,
   onRequestClose: React.PropTypes.func.isRequired
 };
