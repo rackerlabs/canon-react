@@ -4,8 +4,35 @@ import Tether from 'tether';
 import PopoverBackground from './PopoverBackground';
 import classNames from 'classnames';
 
-class Popover extends React.Component {
+const PLACEMENT = {
+  'left': {
+    attachment: 'top right',
+    targetAttachment: 'middle left',
+    offset: '38px 20px'
+  },
+  'bottom-left': {
+    attachment: 'top right',
+    targetAttachment: 'bottom left',
+    offset: '-20px -45px'
+  },
+  'bottom-right': {
+    attachment: 'top left',
+    targetAttachment: 'bottom right',
+    offset: '-20px 45px'
+  },
+  'right': {
+    attachment: 'top left',
+    targetAttachment: 'middle right',
+    offset: '38px -20px'
+  },
+  'center': {
+    attachment: 'middle center',
+    targetAttachment: 'middle center',
+    targetModifier: 'visible'
+  }
+};
 
+class Popover extends React.Component {
   constructor(props) {
     super(props);
 
@@ -36,11 +63,7 @@ class Popover extends React.Component {
   }
 
   _togglePopoverOverlay() {
-    if (this.props.isOpen) {
-      this._show();
-    } else {
-      this._hide();
-    }
+    this.props.isOpen ? this._show() : this._hide();
   }
 
   _hide() {
@@ -79,10 +102,18 @@ class Popover extends React.Component {
     let popover;
 
     this._backgroundDiv.style.display = 'block';
-    ReactDOM.render(<PopoverBackground isModal={ this.props.isModal } onRequestClose={this.props.onRequestClose} />, this._backgroundDiv);
+    ReactDOM.render(
+      <PopoverBackground isModal={ this.props.isModal } onRequestClose={ this.props.onRequestClose } />,
+      this._backgroundDiv
+    );
 
     let containerClasses = this._containerDiv.className.split(' ');
-    this._containerDiv.className = classNames(containerClasses, {'rs-popover': containerClasses.indexOf('rs-popover') < 0});
+    this._containerDiv.className = classNames(
+      containerClasses,
+      {
+        'rs-popover': containerClasses.indexOf('rs-popover') < 0
+      }
+    );
 
     if (!this._tether) {
       this._tether = this._createTether(this._getTetherConfig());
@@ -106,51 +137,7 @@ class Popover extends React.Component {
   }
 
   _getTetherConfig() {
-    let tetherConfig;
-
-    switch (this.props.placement) {
-      case 'left':
-        tetherConfig = {
-          attachment: 'top right',
-          targetAttachment: 'middle left',
-          offset: '38px 20px'
-        };
-        break;
-      case 'bottom-left':
-        tetherConfig = {
-          attachment: 'top right',
-          targetAttachment: 'bottom left',
-          offset: '-20px -45px'
-        };
-        break;
-      case 'bottom-right':
-        tetherConfig = {
-          attachment: 'top left',
-          targetAttachment: 'bottom right',
-          offset: '-20px 45px'
-        };
-        break;
-      case 'right':
-        tetherConfig = {
-          attachment: 'top left',
-          targetAttachment: 'middle right',
-          offset: '38px -20px'
-        };
-        break;
-      case 'center':
-        tetherConfig = {
-          attachment: 'middle center',
-          targetAttachment: 'middle center',
-          targetModifier: 'visible'
-        };
-        break;
-      default:
-        tetherConfig = {
-          attachment: 'top left',
-          targetAttachment: 'middle right',
-          offset: '38px -20px'
-        };
-    }
+    let tetherConfig = PLACEMENT[this.props.placement] || PLACEMENT['right'];
 
     if (this.props.tetherConfig) {
       tetherConfig = Object.assign(tetherConfig, this.props.tetherConfig);
@@ -193,7 +180,7 @@ Popover.propTypes = {
   isModal: React.PropTypes.bool,
   isOpen: React.PropTypes.bool,
   onRequestClose: React.PropTypes.func.isRequired,
-  placement: React.PropTypes.oneOf(['right', 'bottom-right', 'left', 'bottom-left', 'center']),
+  placement: React.PropTypes.oneOf(Object.keys(PLACEMENT)),
   target: React.PropTypes.oneOfType([
     React.PropTypes.string,
     React.PropTypes.func

@@ -10,25 +10,22 @@ const STATUS_INDICATOR = {
 };
 
 class StatusIndicator extends React.Component {
-
   render() {
-    let classes;
-
-    classes = classNames(
+    const classes = classNames(
       this.props.className,
       STATUS_INDICATOR[this.props.status],
       { 'rs-hidden': this.props.hidden }
     );
     return (
-      <span {...this.props} className={classes}>
-        {this.props.children}
+      <span { ...this.props } className={ classes }>
+        { this.props.children }
       </span>
     );
   }
 }
 
 StatusIndicator.propTypes = {
-  status: React.PropTypes.oneOf(['ok', 'error', 'processing', 'warning', 'disabled']),
+  status: React.PropTypes.oneOf(Object.keys(STATUS_INDICATOR)),
   hidden: React.PropTypes.bool
 };
 

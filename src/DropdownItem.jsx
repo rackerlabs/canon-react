@@ -1,39 +1,36 @@
 import React from 'react';
 import classNames from 'classnames';
 
-class DropdownItem extends React.Component {
-  render() {
-    let itemClasses;
+const ITEM_TYPE = {
+  'link': <a className='rs-dropdown-link' />,
+  'category': <span className='rs-dropdown-category' />,
+  'text': <span className='rs-dropdown-text' />
+};
 
-    itemClasses = classNames(
+class DropdownItem extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this._handleClick = this._handleClick.bind(this);
+  }
+
+  render() {
+    const itemClasses = classNames(
       'rs-dropdown-item',
       this.props.className,
       { 'disabled': !this.props.enabled }
     );
 
+    const innerElement = React.cloneElement(
+      ITEM_TYPE[this.props.type],
+      { children: this.props.children }
+    );
+
     return (
-      <li {...this.props} className={itemClasses} onClick={this._handleClick.bind(this)}>
-        {this._innerElement()}
+      <li { ...this.props } className={ itemClasses } onClick={ this._handleClick }>
+        { innerElement }
       </li>
     );
-  }
-
-  _innerElement() {
-    let innerElement;
-
-    switch(this.props.type) {
-      case 'link':
-        innerElement = <a className='rs-dropdown-link'>{this.props.children}</a>;
-        break;
-      case 'category':
-        innerElement = <span className='rs-dropdown-category'>{this.props.children}</span>;
-        break;
-      case 'text':
-        innerElement = <span className='rs-dropdown-text'>{this.props.children}</span>;
-        break;
-    }
-
-    return innerElement;
   }
 
   _handleClick(e) {
@@ -48,8 +45,8 @@ class DropdownItem extends React.Component {
 
 DropdownItem.defaultProps = {
   enabled: true,
-  onClick: function () {},
-  hideCallback: function () {},
+  onClick: () => {},
+  hideCallback: () => {},
   type: 'link'
 };
 
@@ -57,7 +54,7 @@ DropdownItem.propTypes = {
   enabled: React.PropTypes.bool,
   onClick: React.PropTypes.func,
   hideCallback: React.PropTypes.func,
-  type: React.PropTypes.oneOf(['link', 'category', 'text'])
+  type: React.PropTypes.oneOf(Object.keys(ITEM_TYPE))
 };
 
 export default DropdownItem;
