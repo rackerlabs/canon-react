@@ -98,7 +98,8 @@ class DemoPopoverSection extends React.Component {
                     target={ () => document.getElementById('form-popover-button-id') }
                     isOpen={ this.state.formPopoverOpen }
                     onSubmit={ () => { this.setState({ formPopoverSubmitting: true }) } }
-                    onRequestClose={ () => { this.setState({ formPopoverOpen: false }) } } />
+                    onRequestClose={ () => { this.setState({ formPopoverOpen: false }) } }
+                    additionalControls={ [ <Button onClick={ (e) => { e.preventDefault(); } } canonStyle="secondary">Opt. Addl Controls</Button> ] } />
                 </td>
               </tr>
               <tr>
