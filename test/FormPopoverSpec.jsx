@@ -87,8 +87,8 @@ describe('FormPopover', () => {
   });
 
   describe('rendering', () => {
-    let popover, popoverOverlay, form, popoverBody, popoverFooter, errorIndicator,
-      submit, cancel, processingIndicator;
+    let additionalControls, anotherButton, cancel, errorIndicator, form, popover,
+      popoverBody, popoverFooter, popoverOverlay, processingIndicator, submit;
 
     const shallowRenderPopover = (popoverProps) => {
       const renderer = TestUtils.createRenderer();
@@ -98,11 +98,12 @@ describe('FormPopover', () => {
       popoverOverlay = popover.props.children;
       form = popoverOverlay.props.children;
       [ popoverBody, popoverFooter ] = form.props.children;
-      [ errorIndicator, submit, cancel, processingIndicator ] = popoverFooter.props.children;
+      [ errorIndicator, submit, additionalControls, cancel, processingIndicator ] = popoverFooter.props.children;
     };
 
     beforeEach(() => {
-      shallowRenderPopover({});
+      anotherButton = <Button>Another Button</Button>;
+      shallowRenderPopover({ additionalControls: anotherButton });
     });
 
     it('renders the Popover', () => {
@@ -162,6 +163,10 @@ describe('FormPopover', () => {
 
     it('enables the submit component', () => {
       expect(submit.props.enabled).toBe(true);
+    });
+
+    it('renders the additionalControls if passed in', () => {
+      expect(additionalControls).toBe(anotherButton);
     });
 
     it('renders the cancel component', () => {
