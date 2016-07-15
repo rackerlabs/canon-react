@@ -1,13 +1,17 @@
 import React from 'react';
 
 class FacetToggler extends React.Component {
-  render() {
-    let toggleText;
+  constructor(props) {
+    super(props);
 
-    toggleText = this.props.criteriaTruncated ? 'more' : 'less';
+    this._handleToggleChange = this._handleToggleChange.bind(this);
+  }
+
+  render() {
+    const toggleText = this.props.criteriaTruncated ? 'more' : 'less';
 
     return (
-      <li className='rs-facet-section-toggle' onClick={ this._handleToggleChange.bind(this) }>
+      <li className='rs-facet-section-toggle' onClick={ this._handleToggleChange }>
         <i className='rs-facet-toggle-arrow' />{ toggleText }
       </li>
     );

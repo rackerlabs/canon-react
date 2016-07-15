@@ -18,17 +18,22 @@ class DetailsSection extends React.Component {
   }
 
   render() {
-    let classNames, { collapsible, isLoading } = this.props, { isCollapsed } = this.state;
+    let { collapsible, isLoading } = this.props, { isCollapsed } = this.state;
 
-    classNames = {
-      'rs-collapsible-section collapsed': collapsible && isCollapsed,
-      'rs-collapsible-section expanded': collapsible && !isCollapsed,
-      'loading': isLoading
-    };
+    const classes = classnames(
+      'rs-detail-section',
+      this.props.className,
+      {
+        'rs-collapsible-section': collapsible,
+        'collapsed': collapsible && isCollapsed,
+        'expanded': collapsible && !isCollapsed,
+        'loading': isLoading
+      }
+    );
 
     return (
       <div { ...this.props }
-        className={ classnames('rs-detail-section', this.props.className, classNames) }>
+        className={ classes }>
         <div className='rs-detail-section-header' onClick={ this.toggleCollapsed.bind(this) }>
           { this.props.headers }
           { collapsible ? <div className='rs-caret'></div> : null }
