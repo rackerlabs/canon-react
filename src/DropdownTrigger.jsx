@@ -8,6 +8,8 @@ class DropdownTrigger extends React.Component {
 
     this._documentClickHandler = this._handleDocumentClick.bind(this);
     this._escapeHandler = this._handleEscapePress.bind(this);
+    this._onTriggerClick = this._onTriggerClick.bind(this);
+    this._hide = this._hide.bind(this);
 
     this.state = {
       isDropdownDisplayed: false
@@ -15,16 +17,12 @@ class DropdownTrigger extends React.Component {
   }
 
   render() {
-    let props;
-
-    props = {
-      onClick: this._onTriggerClick.bind(this)
-    };
-
     return (
       React.cloneElement(
         React.Children.only(this.props.children),
-        props
+        {
+          onClick: this._onTriggerClick
+        }
       )
     );
   }
@@ -41,11 +39,7 @@ class DropdownTrigger extends React.Component {
   }
 
   _onTriggerClick() {
-    if (this.state.isDropdownDisplayed) {
-      this._hide();
-    } else {
-      this._show();
-    }
+    this.state.isDropdownDisplayed ? this._hide() : this._show();
   }
 
   _hide() {
@@ -83,7 +77,7 @@ class DropdownTrigger extends React.Component {
     dropdown = React.cloneElement(
       this.props.dropdown,
       {
-        hideCallback: this._hide.bind(this),
+        hideCallback: this._hide,
         tether: this.props.alignment
       }
     );
@@ -101,8 +95,8 @@ class DropdownTrigger extends React.Component {
     let tetherConfig;
 
     tetherConfig = {
-      attachment: `top ${this.props.alignment}`,
-      targetAttachment: `bottom ${this.props.alignment}`
+      attachment: `top ${ this.props.alignment }`,
+      targetAttachment: `bottom ${ this.props.alignment }`
     };
 
     tetherConfig.element = ReactDOM.findDOMNode(this._containerDiv);

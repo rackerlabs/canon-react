@@ -2,7 +2,6 @@ import React from 'react';
 import classNames from 'classnames';
 
 class ProcessingIndicator extends React.Component {
-
   render() {
     let classes;
 
@@ -12,7 +11,7 @@ class ProcessingIndicator extends React.Component {
     );
 
     return (
-      <i className={classes}></i>
+      <i className={ classes }></i>
     );
   }
 }
