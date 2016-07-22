@@ -1,24 +1,39 @@
 import ErrorIndicator from '../transpiled/ErrorIndicator';
 import React from 'react';
-import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
 
 describe('ErrorIndicator', () => {
-  it('displays the validation message', () => {
-    let message, errorIndicator;
+  let renderer, indicator;
 
-    errorIndicator = TestUtils.renderIntoDocument(<ErrorIndicator value="test message" />);
-    message = TestUtils.findRenderedDOMComponentWithClass(errorIndicator, 'rs-status-error');
-    expect(message.getDOMNode().textContent).toBe('test message');
+  const renderWithProps = (props) => {
+    renderer.render(
+      <ErrorIndicator { ...props } />
+    );
+  };
 
-    ReactDOM.unmountComponentAtNode(ReactDOM.findDOMNode(errorIndicator).parentNode);
+  beforeEach(() => {
+    renderer = TestUtils.createRenderer();
   });
 
-  it('returns null if no field is passed to it', () => {
-    let results, errorIndicator;
+  describe('when value is passed in', () => {
+    beforeEach(() => {
+      renderWithProps({ value: 'test message' });
+      indicator = renderer.getRenderOutput();
+    });
 
-    errorIndicator = TestUtils.renderIntoDocument(<ErrorIndicator />);
-    results = TestUtils.scryRenderedDOMComponentsWithClass(errorIndicator, 'rs-status-error');
-    expect(results).toEqual([]);
+    it('has the correct error class', () => {
+      expect(indicator.props.className).toEqual('rs-status-error');
+    });
+
+    it('displays the validation message', () => {
+      expect(indicator.props.children).toBe('test message');
+    });
+  });
+
+  it('returns noscript tag if no field is passed to it', () => {
+    renderWithProps({});
+    indicator = renderer.getRenderOutput();
+
+    expect(indicator.type).toBe('noscript');
   });
 });

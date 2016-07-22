@@ -26,7 +26,7 @@ class FormPopover extends React.Component {
     delete popoverProps.children;
 
     return (
-      <Popover { ...this.props }>
+      <Popover { ...popoverProps }>
         <PopoverOverlay>
           <Form onsubmit={ this.props.onSubmit } size={ this.props.formSize } horizontal={ this.props.horizontal }>
             <PopoverBody>
@@ -35,6 +35,7 @@ class FormPopover extends React.Component {
             <PopoverFooter>
               <ErrorIndicator value={ this.props.error }/>
               { submitComponent }
+              { this.props.additionalControls }
               { cancelComponent }
               <ProcessingIndicator hidden={ !this.props.processing }/>
             </PopoverFooter>
@@ -69,11 +70,15 @@ FormPopover.propTypes = {
   // popover layout
   cancelButton: React.PropTypes.element.isRequired,
   submitButton: React.PropTypes.element.isRequired,
+  additionalControls: React.PropTypes.node,
   // popover content
   children: React.PropTypes.node.isRequired,
   // popover
   isOpen: React.PropTypes.bool.isRequired,
-  target: React.PropTypes.string.isRequired,
+  target: React.PropTypes.oneOfType([
+    React.PropTypes.string,
+    React.PropTypes.func
+  ]).isRequired,
   placement: React.PropTypes.string.isRequired,
   onRequestClose: React.PropTypes.func.isRequired
 };
@@ -83,6 +88,7 @@ FormPopover.defaultProps = {
   horizontal: true,
   cancelButton: <Button canonStyle="link">Cancel</Button>,
   submitButton: <Button canonStyle="primary">Submit</Button>,
+  additionalControls: [],
   processing: false,
   isOpen: true,
   placement: 'right'
