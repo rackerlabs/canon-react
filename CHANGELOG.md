@@ -1,3 +1,25 @@
+
+# Version History
+
+### Version 0.13.3
+1. Fix rendering of error messages in form popover footer.
+2. Fix collapsible sections so collapsing is only toggled on section header click.
+3. Pass context to dropdown component.
+
+### Version 0.13.2
+1. Render `Tooltip` subtree component into a container so it will receive the context from its parent.
+
+### Version 0.13.1
+1. allow the horizontal layout of a form to be configurable
+2. export form components
+
+### Version 0.13.0
+1. Added `Form`, `FormField`, and related components to encapsulate Canon forms and form validation messages.
+2. Added new props to the `DetailsSection` to make the section collapsible and more customizable.
+
+### Version 0.12.0
+1. Added `DetailList`, `DetailItem`, `DetailItemValue`, and `DetailItemKey` components.
+
 ### Version 0.11.1
 1. Render `Popover` subtree component into a container so it will receive the context from its parent.
 
