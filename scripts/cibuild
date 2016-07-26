@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# script/cibuild: Run all build and test tasks for continuous integration
+
+./node_modules/.bin/grunt build && ./node_modules/karma/bin/karma start karma.ci.js
