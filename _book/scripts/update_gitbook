@@ -1,0 +1,14 @@
+#!/bin/sh
+
+# script/update_gitbook: build documentation site javascript then update gitbook
+
+if ! gitbook >/dev/null
+then
+        npm install gitbook-cli -g
+        gitbook install
+        npm install react-router -g
+        npm install
+fi
+
+./node_modules/.bin/grunt documentation-build
+gitbook serve

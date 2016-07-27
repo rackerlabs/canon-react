@@ -1,0 +1,16 @@
+#!/bin/sh
+
+gitbook build
+ORIGIN=$(git remote get-url origin)
+cd _book
+git init
+git remote -v
+git commit --allow-empty -m 'update(documentation)'
+git checkout -b gh-pages
+touch .nojekyll && git add .
+git commit --amend --no-edit
+git push $ORIGIN gh-pages --force
+cd ..
+git add .
+git commit --allow-empty -m 'update(documentation)'
+git push $ORIGIN edit-gh-pages
