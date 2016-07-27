@@ -41,7 +41,7 @@
     "babel-runtime": "6.3.19",
     "classnames": "^2.2.3",
     "tether": "^1.1.0",
-    "canon-react": "0.11.1"
+    "canon-react": "0.13.3"
   },
   "peerDependencies": {
     "react": "~0.14.8",
@@ -58,6 +58,7 @@
     "enzyme": "2.3.0",
     "eslint": "^1.10.3",
     "eslint-plugin-react": "^3.15.0",
+    "gitbook-cli": "^2.3.0",
     "grunt": "~0.4.2",
     "grunt-babel": "6.0.0",
     "grunt-browserify": "^5.0.0",
@@ -82,6 +83,7 @@
     "phantomjs": "^1.9.19",
     "react": "~0.14.8",
     "react-dom": "^0.14.8",
-    "react-addons-test-utils": "0.14.8"
+    "react-addons-test-utils": "0.14.8",
+    "react-router": "^2.6.1"
   }
 }

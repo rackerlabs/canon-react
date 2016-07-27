@@ -1,7 +1,0 @@
-#!/bin/sh
-
-# script/server: Run a development server and watch for file changes while building demo components
-
-scripts/update
-
-./node_modules/.bin/grunt demo-build && ./node_modules/.bin/grunt watch & node node_modules/.bin/http-server
