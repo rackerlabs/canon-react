@@ -21,6 +21,12 @@ class DemoForm extends React.Component {
                <option>Option Two</option>
              </select>
           </FormField>
+          <FormField label="Inline Error" error="This input is not valid" inlineValidation>
+            <input type="text" />
+          </FormField>
+          <FormField label="Inline Success" success inlineValidation>
+            <input type="text" />
+          </FormField>
         </Form>
       </DetailsSection>
     );

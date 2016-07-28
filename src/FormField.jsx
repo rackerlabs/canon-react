@@ -18,7 +18,7 @@ const FormField = (props) => {
       <div className="rs-controls">
         { props.children }
         <FormFieldHelp help={ props.help } />
-        <FormFieldValidationBlock value={ props.error || props.success } />
+        <FormFieldValidationBlock value={ props.error || props.success } inline={ props.inlineValidation } />
       </div>
     </div>
   );
@@ -26,7 +26,8 @@ const FormField = (props) => {
 
 FormField.propTypes = {
   error: React.PropTypes.string,
-  success: React.PropTypes.string,
+  success: React.PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.bool]),
+  inlineValidation: React.PropTypes.bool,
   help: React.PropTypes.node,
   label: React.PropTypes.node.isRequired,
   children: React.PropTypes.node.isRequired

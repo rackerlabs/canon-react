@@ -35,7 +35,21 @@ describe('FormField', () => {
     });
   });
 
-  describe('when there is a fixed error', () => {
+  describe('when there is inline validation', () => {
+    beforeEach(() => {
+      renderWithProps({ inlineValidation: true });
+      formField = renderer.getRenderOutput();
+    });
+
+    it('passes the inline validation bool to the validation block', () => {
+      const controls = formField.props.children[1];
+      const validationBlock = controls.props.children[2];
+
+      expect(validationBlock.props.inline).toBe(true);
+    });
+  });
+
+  describe('when there is a success message', () => {
     beforeEach(() => {
       renderWithProps({ success: 'Test success message' });
       formField = renderer.getRenderOutput();
@@ -50,6 +64,17 @@ describe('FormField', () => {
       const validationBlock = controls.props.children[2];
 
       expect(validationBlock.props.value).toBe('Test success message');
+    });
+  });
+
+  describe('when success is true', () => {
+    beforeEach(() => {
+      renderWithProps({ success: true });
+      formField = renderer.getRenderOutput();
+    });
+
+    it('adds the success class', () => {
+      expect(formField.props.className).toEqual('rs-control-group success');
     });
   });
 
