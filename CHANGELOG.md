@@ -1,3 +1,6 @@
+### Version 0.14.0
+1. Adding list table components
+
 ### Version 0.13.4
 1. Fix form popover target PropType
 2. Add optional additional controls to form popover
