@@ -1,15 +1,13 @@
 import React from 'react';
 
+import DetailsSection from './DetailsSection';
 import ProgressBar from './ProgressBar';
 
 class DemoProgressBarSection extends React.Component {
   render() {
     return (
-      <div className='rs-detail-section'>
-        <div className='rs-detail-section-header'>
-          <h2>Progress Bars</h2>
-        </div>
-        <div className='rs-detail-section-body'>
+      <div>
+        <DetailsSection title="Progress Bars">
           <ProgressBar progress={25} type='solid' status='ok'/>
           <br/>
           <ProgressBar progress={75} type='striped' status='ok'/>
@@ -25,9 +23,8 @@ class DemoProgressBarSection extends React.Component {
           <ProgressBar progress={25} type='solid' status='info'/>
           <br/>
           <ProgressBar progress={75} type='striped' status='info'/>
-        </div>
-        <div className='rs-detail-section-body'>
-          <h3>Fixed Width</h3>
+        </DetailsSection>
+        <DetailsSection title="Fixed Width Progress Bars">
           <ProgressBar progress={25} size='xsmall'/>
           <br/>
           <ProgressBar progress={25} size='small'/>
@@ -37,7 +34,7 @@ class DemoProgressBarSection extends React.Component {
           <ProgressBar progress={25} size='large'/>
           <br/>
           <ProgressBar progress={25} size='xlarge'/>
-        </div>
+        </DetailsSection>
       </div>
     );
   }
