@@ -30,13 +30,17 @@ class Button extends React.Component {
       { 'rs-hidden': this.props.hidden }
     );
 
-    const isActionButton = this.props.canonStyle === 'action';
+    if (this.props.canonStyle === 'action') {
+      return (
+        <button {...this.props} className={classes} onClick={this._handleClick.bind(this)}>
+          <span className='rs-cog'></span> {this.props.children} <span className='rs-caret'></span>
+        </button>
+      );
+    }
 
     return (
-      <button { ...this.props } className={ classes } onClick={ this._handleClick }>
-        { isActionButton ? [ <span className='rs-cog'/>, ' ' ] : null }
-        { this.props.children }
-        { isActionButton ? [ ' ', <span className='rs-caret'/> ] : null }
+      <button {...this.props} className={classes} onClick={this._handleClick.bind(this)}>
+         {this.props.children}
       </button>
     );
   }
