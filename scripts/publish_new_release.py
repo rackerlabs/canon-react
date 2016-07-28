@@ -67,6 +67,8 @@ create_release_command = "curl -X POST -u {0} {1} {2} {3}".format(
 
 proc = subprocess.Popen([create_release_command], stdout=subprocess.PIPE, shell=True)
 (curl_output, err) = proc.communicate()
+print(curl_output)
+print(err)
 release_info = json.loads(curl_output)
 
 #attach file to the release
