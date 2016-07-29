@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Criteria from './Criteria';
+import DetailsSection from './DetailsSection';
 import Facet from './Facet';
 import FacetsSection from './FacetsSection';
 
@@ -18,11 +19,8 @@ class DemoFacetsSection extends React.Component {
 
     style = {maxWidth: '270px'};
     return (
-      <div className='rs-detail-section'>
-        <div className='rs-detail-section-header'>
-          <h2>Facets</h2>
-        </div>
-        <div className='rs-detail-section-body' style={style}>
+      <DetailsSection title="Facets">
+        <div style={ style }>
           <FacetsSection
             sectionHeader={"Filter Products"}
             selectedCriteria={this.state.selectedCriteria}
@@ -58,7 +56,7 @@ class DemoFacetsSection extends React.Component {
             </Facet>
           </FacetsSection>
         </div>
-      </div>
+      </DetailsSection>
     );
   }
 

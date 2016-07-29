@@ -2,15 +2,13 @@ import React from 'react';
 
 import Button from './Button';
 import ButtonGroup from './ButtonGroup';
+import DetailsSection from './DetailsSection';
 
 class DemoButtonSection extends React.Component {
   render() {
     return (
-      <div className='rs-detail-section'>
-        <div className='rs-detail-section-header'>
-          <h2>Buttons</h2>
-        </div>
-        <div className='rs-detail-section-body'>
+      <div>
+        <DetailsSection title="Buttons">
           <table>
             <thead>
               <tr>
@@ -78,9 +76,8 @@ class DemoButtonSection extends React.Component {
               </tr>
             </tbody>
           </table>
-        </div>
-        <div className='rs-detail-section-body'>
-          <h3>Disabled Buttons</h3>
+        </DetailsSection>
+        <DetailsSection title="Disabled Buttons">
           <table>
             <thead>
               <tr>
@@ -127,7 +124,7 @@ class DemoButtonSection extends React.Component {
               </tr>
             </tbody>
           </table>
-        </div>
+        </DetailsSection>
       </div>
     );
   }

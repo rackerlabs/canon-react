@@ -1,6 +1,7 @@
 import React from 'react';
 
 import CheckboxColumnHeader from './CheckboxColumnHeader';
+import DetailsSection from './DetailsSection';
 import EmbeddedListTable from './EmbeddedListTable';
 import EmptyOverlay from './EmptyOverlay';
 import ErrorOverlay from './ErrorOverlay';
@@ -60,52 +61,47 @@ class DemoListTableSection extends React.Component {
     const tableStyle = {width: '500px'};
 
     return (
-      <div className='rs-detail-section'>
-        <div className='rs-detail-section-header'>
-          <h2>List Table</h2>
-        </div>
-        <div className='rs-detail-section-body'>
-          <h3>List Table</h3>
-          <ListTable style={ tableStyle }>
-            <DemoListTableHeader onSort={ this._handleSort } sortColumn={ this.state.sortColumn } direction={ this.state.direction } />
-            <ListTableBody collection={ sortedCollection }>
-              <DemoListTableRow />
-            </ListTableBody>
-          </ListTable>
-          <hr />
-          <h3>Empty Overlay</h3>
-          <ListTable style={ tableStyle } overlayStatus={ OverlayStatus.EMPTY }>
-            <DemoListTableHeader onSort={ this._handleSort } sortColumn={ this.state.sortColumn } direction={ this.state.direction } />
-            <ListTableBody collection={ [] }>
-              <DemoListTableRow />
-            </ListTableBody>
-          </ListTable>
-          <hr />
-          <h3>Error Overlay</h3>
-          <ListTable style={ tableStyle } overlayStatus={ OverlayStatus.ERROR }>
-            <DemoListTableHeader onSort={ this._handleSort } sortColumn={ this.state.sortColumn } direction={ this.state.direction } />
-            <ListTableBody collection={ [] }>
-              <DemoListTableRow />
-            </ListTableBody>
-          </ListTable>
-          <hr />
-          <h3>Loading Overlay</h3>
-          <ListTable style={ tableStyle } overlayStatus={ OverlayStatus.LOADING }>
-            <DemoListTableHeader onSort={ this._handleSort } sortColumn={ this.state.sortColumn } direction={ this.state.direction } />
-            <ListTableBody collection={ [] }>
-              <DemoListTableRow />
-            </ListTableBody>
-          </ListTable>
-          <hr />
-          <h3>Embedded List Table</h3>
-          <EmbeddedListTable size="medium" style={ tableStyle }>
-            <DemoListTableHeader onSort={ this._handleSort } sortColumn={ this.state.sortColumn } direction={ this.state.direction } />
-            <ListTableBody collection={ sortedCollection }>
-              <DemoListTableRow />
-            </ListTableBody>
-          </EmbeddedListTable>
-        </div>
-      </div>
+      <DetailsSection title="List Table">
+        <h3>List Table</h3>
+        <ListTable style={ tableStyle }>
+          <DemoListTableHeader onSort={ this._handleSort } sortColumn={ this.state.sortColumn } direction={ this.state.direction } />
+          <ListTableBody collection={ sortedCollection }>
+            <DemoListTableRow />
+          </ListTableBody>
+        </ListTable>
+        <hr />
+        <h3>Empty Overlay</h3>
+        <ListTable style={ tableStyle } overlayStatus={ OverlayStatus.EMPTY }>
+          <DemoListTableHeader onSort={ this._handleSort } sortColumn={ this.state.sortColumn } direction={ this.state.direction } />
+          <ListTableBody collection={ [] }>
+            <DemoListTableRow />
+          </ListTableBody>
+        </ListTable>
+        <hr />
+        <h3>Error Overlay</h3>
+        <ListTable style={ tableStyle } overlayStatus={ OverlayStatus.ERROR }>
+          <DemoListTableHeader onSort={ this._handleSort } sortColumn={ this.state.sortColumn } direction={ this.state.direction } />
+          <ListTableBody collection={ [] }>
+            <DemoListTableRow />
+          </ListTableBody>
+        </ListTable>
+        <hr />
+        <h3>Loading Overlay</h3>
+        <ListTable style={ tableStyle } overlayStatus={ OverlayStatus.LOADING }>
+          <DemoListTableHeader onSort={ this._handleSort } sortColumn={ this.state.sortColumn } direction={ this.state.direction } />
+          <ListTableBody collection={ [] }>
+            <DemoListTableRow />
+          </ListTableBody>
+        </ListTable>
+        <hr />
+        <h3>Embedded List Table</h3>
+        <EmbeddedListTable size="medium" style={ tableStyle }>
+          <DemoListTableHeader onSort={ this._handleSort } sortColumn={ this.state.sortColumn } direction={ this.state.direction } />
+          <ListTableBody collection={ sortedCollection }>
+            <DemoListTableRow />
+          </ListTableBody>
+        </EmbeddedListTable>
+      </DetailsSection>
     );
   }
 
