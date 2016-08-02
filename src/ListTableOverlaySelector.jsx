@@ -25,7 +25,7 @@ ListTableOverlaySelector.propTypes = {
   emptyOverlay: PropTypes.node,
   errorOverlay: PropTypes.node,
   loadingOverlay: PropTypes.node,
-  overlayStatus: PropTypes.oneOf(Object.keys(OverlayStatus))
+  overlayStatus: PropTypes.oneOf(Object.values(OverlayStatus))
 };
 
 export default ListTableOverlaySelector;

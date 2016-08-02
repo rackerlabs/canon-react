@@ -27,7 +27,7 @@ const DemoListTableHeader = ({ onSort, sortColumn, direction }) => (
 DemoListTableHeader.propTypes = {
   onSort: React.PropTypes.func,
   sortColumn: React.PropTypes.string,
-  direction: React.PropTypes.oneOf(Object.keys(SortDirection))
+  direction: React.PropTypes.oneOf(Object.values(SortDirection))
 };
 
 const DemoListTableRow = ({ instance }) => (
