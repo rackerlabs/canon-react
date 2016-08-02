@@ -40,7 +40,7 @@ ListTableHeader.defaultProps = {
 ListTableHeader.propTypes = {
   onSort: PropTypes.func,
   sortColumn: PropTypes.string,
-  direction: PropTypes.oneOf(Object.keys(SortDirection))
+  direction: PropTypes.oneOf(Object.values(SortDirection))
 };
 
 export default ListTableHeader;

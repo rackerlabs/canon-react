@@ -58,7 +58,7 @@ TextColumnHeader.propTypes = {
   label: PropTypes.string.isRequired,
   sortable: PropTypes.bool.isRequired,
   onSort: PropTypes.func.isRequired,
-  direction: PropTypes.oneOf(Object.keys(SortDirection))
+  direction: PropTypes.oneOf(Object.values(SortDirection))
 };
 
 export default TextColumnHeader;
