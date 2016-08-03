@@ -1,0 +1,14 @@
+#!/bin/sh
+scripts/update
+gitbook install
+scripts/docbuild
+gitbook build
+ORIGIN=https://github.com/rackerlabs/canon-react.git
+cd _book
+git init
+git remote -v
+git commit --allow-empty -m 'update(documentation)'
+git checkout -b gh-pages
+touch .nojekyll && git add . && git add ../documentation/bundle.js
+git commit --amend --no-edit
+git push $ORIGIN gh-pages --force

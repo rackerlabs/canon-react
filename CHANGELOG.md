@@ -1,3 +1,11 @@
+### Version 0.14.0
+1. Adding list table components
+
+### Version 0.13.4
+1. Fix form popover target PropType
+2. Add optional additional controls to form popover
+3. Allow inline validation on form fields
+
 ### Version 0.13.3
 1. Fix rendering of error messages in form popover footer.
 2. Fix collapsible sections so collapsing is only toggled on section header click.
