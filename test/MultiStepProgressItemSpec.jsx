@@ -46,7 +46,7 @@ describe('MultiStepProgressItem', () => {
     it('defaults to empty status', () => {
       statusBar = TestUtils.findRenderedDOMComponentWithClass(multiStepProgressItem, 'rs-bar');
 
-      expect(ReactDOM.findDOMNode(statusBar)).toHaveClass('rs-status');
+      expect(ReactDOM.findDOMNode(statusBar)).toHaveClass('rs-bar');
     });
 
     it('ok', () => {
