@@ -50,7 +50,7 @@ ProgressBar.propTypes = {
   progress: React.PropTypes.number,
   status: React.PropTypes.oneOf(Object.keys(STATUS_CLASSES)),
   type: React.PropTypes.oneOf(Object.keys(TYPE_CLASSES)),
-  size: React.PropTypes.oneOf(Object.keys(SIZE_CLASSES)),
+  size: React.PropTypes.oneOf(Object.keys(SIZE_CLASSES))
 };
 
 ProgressBar.defaultProps = {
