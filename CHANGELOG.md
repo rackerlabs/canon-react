@@ -1,3 +1,6 @@
+### Version 0.14.1
+1. Fix proptypes on table components.
+
 ### Version 0.14.0
 1. Adding list table components
 
