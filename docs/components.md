@@ -12,6 +12,8 @@
 
 * [Forms](components/forms.html)
 
+* [List Table](components/list-table.html)
+
 * [Popovers](components/popovers.html)
 
 * [Progress Bars](components/progress-bars.html)

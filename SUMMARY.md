@@ -14,6 +14,7 @@
     * [Popovers](docs/components/popovers.md)
     * [Progress Bars](docs/components/progress-bars.md)
     * [Status Indicators](docs/components/status-indicators.md)
+    * [List Table](docs/components/list-table.md)
     * [Tooltips](docs/components/tooltips.md)
 * [Version History](CHANGELOG.md)
 * [How To Edit Documentation](docs/edit_documentation.md)

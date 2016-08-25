@@ -12,10 +12,11 @@ import StatusIndicatorSection from './StatusIndicatorSection';
 import TooltipSection from './TooltipSection';
 import DetailSection from './DetailSection';
 import FormsSection from './FormsSection';
+import ListTableSection from './ListTableSection';
 
 export const ButtonView = React.createClass({
   render() {
-    return(
+    return (
       <ComponentView id="buttons" name="Buttons" >
         <ButtonsSection />
       </ComponentView>
@@ -25,7 +26,7 @@ export const ButtonView = React.createClass({
 
 export const ButtonGroupView = React.createClass({
   render() {
-    return(
+    return (
       <ComponentView id="button-groups" name="Button Groups" >
         <ButtonGroupSection />
       </ComponentView>
@@ -35,7 +36,7 @@ export const ButtonGroupView = React.createClass({
 
 export const DropdownView = React.createClass({
   render() {
-    return(
+    return (
       <ComponentView id="dropdown" name="Dropdowns" >
         <DropdownSection />
       </ComponentView>
@@ -45,7 +46,7 @@ export const DropdownView = React.createClass({
 
 export const FacetsView = React.createClass({
   render() {
-    return(
+    return (
       <ComponentView id="facets" name="Facets" >
         <FacetSection />
       </ComponentView>
@@ -53,9 +54,19 @@ export const FacetsView = React.createClass({
   }
 });
 
+export const ListTableView = React.createClass({
+  render() {
+    return (
+      <ComponentView id="table" name="Table">
+        <ListTableSection />
+      </ComponentView>
+    );
+  }
+});
+
 export const PopoverView = React.createClass({
   render() {
-    return(
+    return (
       <ComponentView id="popovers" name="Popovers" >
         <PopoverSection />
       </ComponentView>
@@ -65,7 +76,7 @@ export const PopoverView = React.createClass({
 
 export const ProgressBarsView = React.createClass({
   render() {
-    return(
+    return (
       <ComponentView id="progress-bars" name="Progress Bars" >
         <ProgressBarsSection />
       </ComponentView>
@@ -75,7 +86,7 @@ export const ProgressBarsView = React.createClass({
 
 export const StatusIndicatorView = React.createClass({
   render() {
-    return(
+    return (
       <ComponentView id="status-indicators" name="Status Indicators" >
         <StatusIndicatorSection />
       </ComponentView>
@@ -85,7 +96,7 @@ export const StatusIndicatorView = React.createClass({
 
 export const TooltipView = React.createClass({
   render() {
-    return(
+    return (
       <ComponentView id="tooltips" name="Tooltips" >
         <TooltipSection />
       </ComponentView>
@@ -95,20 +106,20 @@ export const TooltipView = React.createClass({
 
 export const DetailView = React.createClass({
   render() {
-    return(
+    return (
       <ComponentView id="detail" name="Details" >
         <DetailSection />
       </ComponentView>
     );
   }
-})
+});
 
 export const FormsView = React.createClass({
   render() {
-    return(
+    return (
       <ComponentView id="forms" name="Forms" >
         <FormsSection />
       </ComponentView>
     );
   }
-})
+});
