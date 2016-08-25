@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# script/update: Resolve all dependencies required to develop and test canon-react components
+
+npm install
