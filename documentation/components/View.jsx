@@ -11,6 +11,7 @@ import StatusIndicatorSection from './StatusIndicatorSection';
 import TooltipSection from './TooltipSection';
 import DetailSection from './DetailSection';
 import FormsSection from './FormsSection';
+import ListTableSection from './ListTableSection';
 
 class View extends React.Component {
   render() {
@@ -50,6 +51,9 @@ class View extends React.Component {
 
                 <SectionHeader id="tooltips">Tooltips</SectionHeader>
                 <TooltipSection />
+
+                <SectionHeader id="table">Table</SectionHeader>
+                <ListTableSection />
 
               </div>
             </div>
