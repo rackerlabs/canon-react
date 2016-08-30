@@ -1,4 +1,4 @@
-import { PropTypes } from 'react';
+import React from 'react';
 
 const ListTableRow = (props) => (
   <tr { ...props }>{ cloneChildren(props) }</tr>
@@ -13,7 +13,7 @@ const cloneChildren = (props) => {
 };
 
 ListTableRow.propTypes = {
-  instance: PropTypes.object
+  instance: React.PropTypes.object
 };
 
 export default ListTableRow;

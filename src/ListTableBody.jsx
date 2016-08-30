@@ -1,6 +1,6 @@
-import { Component, PropTypes } from 'react';
+import React from 'react';
 
-class ListTableBody extends Component {
+class ListTableBody extends React.Component {
   constructor() {
     super();
 
@@ -32,9 +32,9 @@ ListTableBody.defaultProps = {
 };
 
 ListTableBody.propTypes = {
-  children: PropTypes.element.isRequired,
-  collection: PropTypes.arrayOf(PropTypes.object).isRequired,
-  keyGenerator: PropTypes.func
+  children: React.PropTypes.element.isRequired,
+  collection: React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
+  keyGenerator: React.PropTypes.func
 };
 
 export default ListTableBody;
