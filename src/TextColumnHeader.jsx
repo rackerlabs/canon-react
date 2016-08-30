@@ -1,8 +1,8 @@
-import { Component, PropTypes } from 'react';
+import React from 'react';
 import SortDirection from './SortDirection';
 import classNames from 'classnames';
 
-class TextColumnHeader extends Component {
+class TextColumnHeader extends React.Component {
   render() {
     let classes;
     const { label, sortable, direction, className } = this.props;
@@ -55,10 +55,10 @@ TextColumnHeader.defaultProps = {
 };
 
 TextColumnHeader.propTypes = {
-  label: PropTypes.string.isRequired,
-  sortable: PropTypes.bool.isRequired,
-  onSort: PropTypes.func.isRequired,
-  direction: PropTypes.oneOf(Object.values(SortDirection))
+  label: React.PropTypes.string.isRequired,
+  sortable: React.PropTypes.bool.isRequired,
+  onSort: React.PropTypes.func.isRequired,
+  direction: React.PropTypes.oneOf(Object.values(SortDirection))
 };
 
 export default TextColumnHeader;

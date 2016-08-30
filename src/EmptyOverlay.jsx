@@ -1,14 +1,14 @@
 import ListTableOverlay from './ListTableOverlay';
-import { PropTypes } from 'react';
+import React from 'react';
 
 const EmptyOverlay = ({ title, subtitle, message }) => (
   <ListTableOverlay { ...{ title, subtitle, message } } />
 );
 
 EmptyOverlay.propTypes = {
-  title: PropTypes.node.isRequired,
-  subtitle: PropTypes.node,
-  message: PropTypes.node
+  title: React.PropTypes.node.isRequired,
+  subtitle: React.PropTypes.node,
+  message: React.PropTypes.node
 };
 
 export default EmptyOverlay;

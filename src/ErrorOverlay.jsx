@@ -1,5 +1,5 @@
 import ListTableOverlay from './ListTableOverlay';
-import { PropTypes } from 'react';
+import React from 'react';
 
 const ErrorOverlay = ({ message }) => (
   <ListTableOverlay
@@ -9,7 +9,7 @@ const ErrorOverlay = ({ message }) => (
 );
 
 ErrorOverlay.propTypes = {
-  message: PropTypes.node.isRequired
+  message: React.PropTypes.node.isRequired
 };
 
 export default ErrorOverlay;
