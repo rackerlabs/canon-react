@@ -1,4 +1,4 @@
-import { PropTypes } from 'react';
+import React from 'react';
 import OverlayStatus from './OverlayStatus';
 
 const ListTableOverlaySelector = ({ emptyOverlay, errorOverlay, loadingOverlay, overlayStatus }) => {
@@ -22,10 +22,10 @@ ListTableOverlaySelector.defaultProps = {
 };
 
 ListTableOverlaySelector.propTypes = {
-  emptyOverlay: PropTypes.node,
-  errorOverlay: PropTypes.node,
-  loadingOverlay: PropTypes.node,
-  overlayStatus: PropTypes.oneOf(Object.values(OverlayStatus))
+  emptyOverlay: React.PropTypes.node,
+  errorOverlay: React.PropTypes.node,
+  loadingOverlay: React.PropTypes.node,
+  overlayStatus: React.PropTypes.oneOf(Object.values(OverlayStatus))
 };
 
 export default ListTableOverlaySelector;

@@ -1,4 +1,4 @@
-import { Component, PropTypes } from 'react';
+import React from 'react';
 import classNames from 'classnames';
 import ListTableOverlaySelector from './ListTableOverlaySelector';
 import OverlayStatus from './OverlayStatus';
@@ -9,7 +9,7 @@ const SIZE_CLASSES = {
   'large': 'rs-embedded-large'
 };
 
-class EmbeddedListTable extends Component {
+class EmbeddedListTable extends React.Component {
   render() {
     let classes;
 
@@ -47,13 +47,13 @@ EmbeddedListTable.defaultProps = {
 };
 
 EmbeddedListTable.propTypes = {
-  children: PropTypes.node,
-  className: PropTypes.string,
-  emptyOverlay: PropTypes.node,
-  errorOverlay: PropTypes.node,
-  loadingOverlay: PropTypes.node,
-  overlayStatus: PropTypes.oneOf(Object.values(OverlayStatus)),
-  size: PropTypes.oneOf(Object.keys(SIZE_CLASSES))
+  children: React.PropTypes.node,
+  className: React.PropTypes.string,
+  emptyOverlay: React.PropTypes.node,
+  errorOverlay: React.PropTypes.node,
+  loadingOverlay: React.PropTypes.node,
+  overlayStatus: React.PropTypes.oneOf(Object.values(OverlayStatus)),
+  size: React.PropTypes.oneOf(Object.keys(SIZE_CLASSES))
 };
 
 export default EmbeddedListTable;

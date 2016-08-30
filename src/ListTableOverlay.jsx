@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { PropTypes } from 'react';
+import React from 'react';
 
 const ListTableOverlay = ({ title, subtitle, message, className }) => (
   <div className={ classNames('rs-table-overlay', className) }>
@@ -12,9 +12,9 @@ const ListTableOverlay = ({ title, subtitle, message, className }) => (
 );
 
 ListTableOverlay.propTypes = {
-  title: PropTypes.node,
-  subtitle: PropTypes.node,
-  message: PropTypes.node
+  title: React.PropTypes.node,
+  subtitle: React.PropTypes.node,
+  message: React.PropTypes.node
 };
 
 export default ListTableOverlay;
