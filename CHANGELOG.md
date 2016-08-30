@@ -1,3 +1,6 @@
+### Version 0.14.2
+1. Fixed missing React import from table components.
+
 ### Version 0.14.1
 1. Fix proptypes on table components.
 
