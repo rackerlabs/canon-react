@@ -10,7 +10,8 @@ RELEASES_ENDPOINT = "https://api.github.com/repos/rackerlabs/canon-react/release
 # prepare for uploading the new release
 os.system("git checkout master")
 os.system("git pull")
-os.system("sudo scripts/cibuild")
+os.system("sh scripts/cibuild")
+os.system("tar -czvf canon-react.tar.gz canon-react.min.js")
 
 # get the version number
 node_file = open(os.path.dirname(__file__) + '/../package.json', "r")
