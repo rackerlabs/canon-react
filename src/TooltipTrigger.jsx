@@ -109,6 +109,10 @@ class TooltipTrigger extends React.Component {
       </div>
     ), this._containerDiv);
 
+    if (this.props.onShow) {
+      this.props.onShow();
+    }
+
     if (!this._tether) {
       this._tether = this._createTether(this._getTetherConfig());
     }
@@ -178,6 +182,7 @@ class TooltipTrigger extends React.Component {
 }
 
 TooltipTrigger.propTypes = {
+  onShow: React.PropTypes.func,
   content: React.PropTypes.node.isRequired,
   placement: React.PropTypes.oneOf(Object.keys(PLACEMENT))
 };
