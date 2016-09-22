@@ -1,3 +1,6 @@
+### Version 0.14.3
+1. Added optional onShow prop to TooltipTrigger to enable tooltip tracking.
+
 ### Version 0.14.2
 1. Fixed missing React import on table components.
 
