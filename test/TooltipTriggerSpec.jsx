@@ -4,14 +4,15 @@ import TooltipTrigger from '../transpiled/TooltipTrigger';
 import TestUtils from 'react-addons-test-utils';
 
 describe('TooltipTrigger', () => {
-  let trigger, tether, triggerParent;
+  let trigger, tether, triggerParent, onShowSpy;
 
-  const renderTrigger = (placement = 'bottom-right') => {
+  onShowSpy = jasmine.createSpy('onShow');
+  const renderTrigger = (placement = 'bottom-right', onShow = onShowSpy) => {
     tether = jasmine.createSpyObj('tether', ['destroy']);
     spyOn(TooltipTrigger.prototype, '_createTether').and.returnValue(tether);
 
     trigger = TestUtils.renderIntoDocument(
-      <TooltipTrigger placement={placement} content={'The tooltip content'}>
+      <TooltipTrigger placement={placement} content={'The tooltip content'} onShow={onShow}>
         <span>Tooltip Target</span>
       </TooltipTrigger>
     );
@@ -35,6 +36,19 @@ describe('TooltipTrigger', () => {
     target = TestUtils.findRenderedDOMComponentWithTag(trigger, 'span');
 
     expect(target).not.toBeNull();
+  });
+
+  it('can render without problem if no onShow prop is provided', () => {
+    let tooltip, target;
+
+    renderTrigger('bottom-right', null);
+
+    target = TestUtils.findRenderedDOMComponentWithTag(trigger, 'span');
+    TestUtils.Simulate.mouseOver(target);
+    jasmine.clock().tick(250);
+    tooltip = document.getElementsByClassName('rs-tooltip')[0];
+
+    expect(tooltip).toHaveClass('visible');
   });
 
   describe('trigger behavior', () => {
@@ -71,6 +85,13 @@ describe('TooltipTrigger', () => {
       jasmine.clock().tick(250);
 
       expect(tooltip).toHaveClass('visible');
+    });
+
+    it('fires the onShow prop when the tooltip is shown', () => {
+      TestUtils.Simulate.mouseOver(target);
+      jasmine.clock().tick(250);
+
+      expect(onShowSpy).toHaveBeenCalledWith();
     });
 
     it('hides the tooltip on blur of the target', () => {
