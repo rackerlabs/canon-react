@@ -1,7 +1,11 @@
-import { shallow } from 'enzyme';
 import EmbeddedListTable from '../transpiled/EmbeddedListTable';
+import EmptyOverlay from '../transpiled/EmptyOverlay';
+import ErrorOverlay from '../transpiled/ErrorOverlay';
 import ListTableOverlaySelector from '../transpiled/ListTableOverlaySelector';
+import LoadingOverlay from '../transpiled/LoadingOverlay';
 import OverlayStatus from '../transpiled/OverlayStatus';
+
+import { shallow } from 'enzyme';
 
 describe('EmbeddedListTable', () => {
   let listTable, overlayStatus, emptyOverlay, errorOverlay, loadingOverlay;
@@ -45,5 +49,37 @@ describe('EmbeddedListTable', () => {
     expect(selector.props().emptyOverlay).toBe(emptyOverlay);
     expect(selector.props().errorOverlay).toBe(errorOverlay);
     expect(selector.props().loadingOverlay).toBe(loadingOverlay);
+  });
+
+  describe('when overlays are not provided', () => {
+    let selector;
+
+    beforeEach(() => {
+      listTable = shallow(
+        <EmbeddedListTable { ...{ overlayStatus } }>
+          <span className="test-child-1" />
+          <span className="test-child-2" />
+        </EmbeddedListTable>
+      );
+      selector = listTable.find(ListTableOverlaySelector);
+    });
+
+    it('renders the correct default empty overlay', () => {
+      expect(selector.props().emptyOverlay).toEqual(
+        <EmptyOverlay title="Empty List" subtitle="This list is empty" message="There is no data to display" />
+      );
+    });
+
+    it('renders the correct default error overlay', () => {
+      expect(selector.props().errorOverlay).toEqual(
+        <ErrorOverlay message="There was an error loading data" />
+      );
+    });
+
+    it('renders the correct default loading overlay', () => {
+      expect(selector.props().loadingOverlay).toEqual(
+        <LoadingOverlay />
+      );
+    });
   });
 });
