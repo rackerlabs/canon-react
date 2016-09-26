@@ -1,7 +1,10 @@
-import React from 'react';
 import classNames from 'classnames';
+import EmptyOverlay from './EmptyOverlay';
+import ErrorOverlay from './ErrorOverlay';
 import ListTableOverlaySelector from './ListTableOverlaySelector';
+import LoadingOverlay from './LoadingOverlay';
 import OverlayStatus from './OverlayStatus';
+import React from 'react';
 
 const SIZE_CLASSES = {
   'small': 'rs-embedded-small',
@@ -43,7 +46,10 @@ class EmbeddedListTable extends React.Component {
 
 EmbeddedListTable.defaultProps = {
   overlayStatus: OverlayStatus.NONE,
-  size: 'small'
+  size: 'small',
+  emptyOverlay: <EmptyOverlay title="Empty List" subtitle="This list is empty" message="There is no data to display" />,
+  errorOverlay: <ErrorOverlay message="There was an error loading data" />,
+  loadingOverlay: <LoadingOverlay />
 };
 
 EmbeddedListTable.propTypes = {
