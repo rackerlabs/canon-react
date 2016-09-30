@@ -2,8 +2,9 @@ import React from 'react';
 import classNames from 'classnames';
 
 const ITEM_TYPE = {
-  'link': <a className='rs-dropdown-link' />,
   'category': <span className='rs-dropdown-category' />,
+  'divider': <div className='rs-divider' />,
+  'link': <a className='rs-dropdown-link' />,
   'text': <span className='rs-dropdown-text' />
 };
 
@@ -23,7 +24,7 @@ class DropdownItem extends React.Component {
 
     const innerElement = React.cloneElement(
       ITEM_TYPE[this.props.type],
-      { children: this.props.children }
+      { children: this.props.children, ...this.props.innerProps }
     );
 
     return (
@@ -45,15 +46,17 @@ class DropdownItem extends React.Component {
 
 DropdownItem.defaultProps = {
   enabled: true,
-  onClick: () => {},
   hideCallback: () => {},
+  innerProps: {},
+  onClick: () => {},
   type: 'link'
 };
 
 DropdownItem.propTypes = {
   enabled: React.PropTypes.bool,
-  onClick: React.PropTypes.func,
   hideCallback: React.PropTypes.func,
+  innerProps: React.PropTypes.object,
+  onClick: React.PropTypes.func,
   type: React.PropTypes.oneOf(Object.keys(ITEM_TYPE))
 };
 
