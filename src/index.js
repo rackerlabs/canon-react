@@ -42,6 +42,11 @@ import StatusColumnHeader from './StatusColumnHeader';
 import StatusIndicator from './StatusIndicator';
 import TextColumnHeader from './TextColumnHeader';
 import TooltipTrigger from './TooltipTrigger';
+import UtilityNav from './UtilityNav';
+import Nav from './Nav';
+import NavItem from './NavItem';
+import DropdownNavItem from './DropdownNavItem';
+import PullDirection from './PullDirection';
 
 export {
   Button,
@@ -87,5 +92,10 @@ export {
   StatusColumnHeader,
   StatusIndicator,
   TextColumnHeader,
-  TooltipTrigger
+  TooltipTrigger,
+  UtilityNav,
+  Nav,
+  NavItem,
+  DropdownNavItem,
+  PullDirection
 };
