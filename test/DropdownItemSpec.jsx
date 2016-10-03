@@ -15,7 +15,10 @@ describe('DropdownItem', () => {
         id='dropdown-id'
         className='test-dropdown-class'
         onClick={clickFunction}
-        hideCallback={hideFunction}>Dropdown Text</DropdownItem>
+        hideCallback={hideFunction}
+        innerProps={{href: 'https://rackerlabs.github.io/canon-react/'}}>
+          Dropdown Text
+      </DropdownItem>
     );
   });
 
@@ -43,6 +46,11 @@ describe('DropdownItem', () => {
 
   it('keeps all passed in properties', () => {
     expect(ReactDOM.findDOMNode(dropdownItem).id).toBe('dropdown-id');
+  });
+
+  it('passes innerProps to innerElement', () => {
+    const innerElement = TestUtils.findRenderedDOMComponentWithTag(dropdownItem, 'a').getDOMNode();
+    expect(innerElement.href).toBe('https://rackerlabs.github.io/canon-react/');
   });
 
   it('renders the text of the dropdown', () => {
@@ -89,6 +97,16 @@ describe('DropdownItem', () => {
         );
 
         expect(TestUtils.findRenderedDOMComponentWithTag(dropdownItem, 'span').getDOMNode()).toHaveClass('rs-dropdown-text');
+      });
+    });
+
+    describe('divider', () => {
+      it('renders an rs-divider', () => {
+        dropdownItem = TestUtils.renderIntoDocument(
+          <DropdownItem type='divider'/>
+        );
+
+        expect(TestUtils.findRenderedDOMComponentWithTag(dropdownItem, 'div').getDOMNode()).toHaveClass('rs-divider');
       });
     });
   });
