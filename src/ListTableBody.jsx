@@ -20,9 +20,11 @@ class ListTableBody extends React.Component {
   }
 
   _cloneRow(instance, index, array) {
+    const key = this.props.keyGenerator(instance, index, array);
     return React.cloneElement(this.props.children, {
       instance: instance,
-      key: this.props.keyGenerator(instance, index, array)
+      key: key,
+      rowKey: key
     });
   }
 }

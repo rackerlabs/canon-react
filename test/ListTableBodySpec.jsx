@@ -36,6 +36,11 @@ describe('ListTableBody', () => {
     expect(listTableBody.find(DummyRow).at(1).key()).toBe('2');
   });
 
+  it('passes the id of the objects in the collection to the children in a prop they can access', () => {
+    expect(listTableBody.find(DummyRow).at(0).prop('rowKey')).toBe(1);
+    expect(listTableBody.find(DummyRow).at(1).prop('rowKey')).toBe(2);
+  });
+
   it('generates the key via the passed keyGenerator', () => {
     listTableBody = shallow(
       <ListTableBody collection={ collection } keyGenerator={ (instance) => (instance.name) }>

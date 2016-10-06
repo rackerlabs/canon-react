@@ -13,7 +13,8 @@ const cloneChildren = (props) => {
 };
 
 ListTableRow.propTypes = {
-  instance: React.PropTypes.object
+  instance: React.PropTypes.object,
+  rowKey: React.PropTypes.string
 };
 
 export default ListTableRow;
