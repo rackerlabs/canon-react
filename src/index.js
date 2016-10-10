@@ -37,6 +37,8 @@ import PopoverFooter from './PopoverFooter';
 import PopoverOverlay from './PopoverOverlay';
 import ProcessingIndicator from './ProcessingIndicator';
 import ProgressBar from './ProgressBar';
+import ProgressBarContainer from './ProgressBarContainer';
+import ProgressSegment from './ProgressSegment';
 import SortDirection from './SortDirection';
 import StatusColumnHeader from './StatusColumnHeader';
 import StatusIndicator from './StatusIndicator';
@@ -83,6 +85,8 @@ export {
   PopoverOverlay,
   ProcessingIndicator,
   ProgressBar,
+  ProgressBarContainer,
+  ProgressSegment,
   SortDirection,
   StatusColumnHeader,
   StatusIndicator,

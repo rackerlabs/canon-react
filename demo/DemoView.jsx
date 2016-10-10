@@ -14,6 +14,7 @@ import DemoDetailSectionCollapsible from './DemoDetailSectionCollapsible';
 import DemoDetailSectionDefaultCollapsed from './DemoDetailSectionDefaultCollapsed';
 import DemoDetailSectionCollapsibleLoading from './DemoDetailSectionCollapsibleLoading';
 import DemoListTableSection from './DemoListTableSection';
+import DemoMultiStepProgressSection from './DemoMultiStepProgressSection';
 
 class DemoView extends React.Component {
   render() {
@@ -27,6 +28,7 @@ class DemoView extends React.Component {
         <DemoDetailSectionCollapsibleLoading />
         <DemoForm />
         <DemoProgressBarSection />
+        <DemoMultiStepProgressSection />
         <DemoStatusIndicatorSection />
         <DemoPopoverSection />
         <DemoTooltipSection />
