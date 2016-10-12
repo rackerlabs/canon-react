@@ -5,6 +5,8 @@ import Button from './Button';
 import DemoFormPopover from './DemoFormPopover';
 import DemoPopover from './DemoPopover';
 import DetailsSection from './DetailsSection';
+import StatusIndicator from './StatusIndicator';
+import TooltipTrigger from './TooltipTrigger';
 
 class DemoPopoverSection extends React.Component {
   constructor(props) {
@@ -97,6 +99,32 @@ class DemoPopoverSection extends React.Component {
                   onSubmit={ () => { this.setState({ formPopoverSubmitting: true }) } }
                   onRequestClose={ () => { this.setState({ formPopoverOpen: false }) } }
                   additionalControls={ [ <Button onClick={ (e) => { e.preventDefault(); } } canonStyle="secondary">Opt. Addl Controls</Button> ] } />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <Button
+                  id="form-popover-with-additional-footer-content-button"
+                  onClick={ () => this.setState({
+                    formPopoverWithAdditionalFooterContentOpen: true,
+                    formPopoverWithAdditionalFooterContentSubmitting: false
+                  }) }>
+                  Submittable with additional footer content
+                </Button>
+                <DemoFormPopover
+                  placement="right"
+                  processing={ this.state.formPopoverWithAdditionalFooterContentSubmitting }
+                  target={ () => document.getElementById('form-popover-with-additional-footer-content-button') }
+                  isOpen={ !!this.state.formPopoverWithAdditionalFooterContentOpen }
+                  onSubmit={ () => this.setState({ formPopoverWithAdditionalFooterContentSubmitting: true }) }
+                  onRequestClose={ () => this.setState({ formPopoverWithAdditionalFooterContentOpen: false }) }
+                  additionalFooterContent={
+                    <TooltipTrigger
+                      placement="bottom"
+                      content="In this example, the additional footer content is a TooltipTrigger, but it could be any React node/component or even plain text.">
+                      <StatusIndicator>Tooltip</StatusIndicator>
+                    </TooltipTrigger>
+                  } />
               </td>
             </tr>
             <tr>
