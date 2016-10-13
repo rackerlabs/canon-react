@@ -1,3 +1,8 @@
+### Version 0.14.4
+1. Added default overlay components to embedded list tables
+2. Added multistep progress bars
+3. Modified FormPopover to accept an additional prop for footer content
+
 ### Version 0.14.3
 1. Added optional onShow prop to TooltipTrigger to enable tooltip tracking.
 
