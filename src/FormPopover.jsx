@@ -37,6 +37,7 @@ class FormPopover extends React.Component {
               { submitComponent }
               { this.props.additionalControls }
               { cancelComponent }
+              { this._renderAdditionalFooterContent() }
               <ProcessingIndicator hidden={ !this.props.processing }/>
             </PopoverFooter>
           </Form>
@@ -58,6 +59,16 @@ class FormPopover extends React.Component {
     }
     this.props.onSubmit(event);
   }
+
+  _renderAdditionalFooterContent() {
+    if (this.props.additionalFooterContent) {
+      return (
+        <div className="rs-pull-right">
+          { this.props.additionalFooterContent }
+        </div>
+      );
+    }
+  }
 }
 
 FormPopover.propTypes = {
@@ -71,6 +82,7 @@ FormPopover.propTypes = {
   cancelButton: React.PropTypes.element.isRequired,
   submitButton: React.PropTypes.element.isRequired,
   additionalControls: React.PropTypes.node,
+  additionalFooterContent: React.PropTypes.node,
   // popover content
   children: React.PropTypes.node.isRequired,
   // popover
@@ -84,14 +96,14 @@ FormPopover.propTypes = {
 };
 
 FormPopover.defaultProps = {
+  additionalControls: [],
+  cancelButton: <Button canonStyle="link">Cancel</Button>,
   error: null,
   horizontal: true,
-  cancelButton: <Button canonStyle="link">Cancel</Button>,
-  submitButton: <Button canonStyle="primary">Submit</Button>,
-  additionalControls: [],
-  processing: false,
   isOpen: true,
-  placement: 'right'
+  placement: 'right',
+  processing: false,
+  submitButton: <Button canonStyle="primary">Submit</Button>
 };
 
 export default FormPopover;

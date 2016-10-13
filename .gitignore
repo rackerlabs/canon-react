@@ -11,3 +11,4 @@ test-results.xml
 npm-debug.log
 demo/bundle.js
 _book/*
+documentation/bundle.js
