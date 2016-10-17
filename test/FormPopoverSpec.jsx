@@ -87,8 +87,8 @@ describe('FormPopover', () => {
   });
 
   describe('rendering', () => {
-    let additionalControls, anotherButton, cancel, errorIndicator, form, popover,
-      popoverBody, popoverFooter, popoverOverlay, processingIndicator, submit;
+    let additionalControls, additionalFooterContent, anotherButton, cancel, errorIndicator,
+      form, popover, popoverBody, popoverFooter, popoverOverlay, processingIndicator, submit;
 
     const shallowRenderPopover = (popoverProps) => {
       const renderer = TestUtils.createRenderer();
@@ -98,7 +98,14 @@ describe('FormPopover', () => {
       popoverOverlay = popover.props.children;
       form = popoverOverlay.props.children;
       [ popoverBody, popoverFooter ] = form.props.children;
-      [ errorIndicator, submit, additionalControls, cancel, processingIndicator ] = popoverFooter.props.children;
+      [
+        errorIndicator,
+        submit,
+        additionalControls,
+        cancel,
+        additionalFooterContent,
+        processingIndicator
+      ] = popoverFooter.props.children;
     };
 
     beforeEach(() => {
@@ -179,6 +186,28 @@ describe('FormPopover', () => {
 
     it('shows the cancel component', () => {
       expect(cancel.props.hidden).toBe(false);
+    });
+
+    describe('prop additionalFooterContent', () => {
+      const additionalContent = <div><span>content</span></div>;
+
+      beforeEach(() => {
+        shallowRenderPopover({ additionalFooterContent: additionalContent });
+      });
+
+      it('renders the content if prop is truthy', () => {
+        const actualContent = additionalFooterContent.props.children;
+        expect(actualContent).toBe(additionalContent);
+      });
+
+      it('does not render the wrapping element when prop is falsy', () => {
+        shallowRenderPopover();
+        expect(additionalFooterContent).toBe(undefined);
+      });
+
+      it('pulls the content to the right', () => {
+        expect(additionalFooterContent.props.className).toBe('rs-pull-right');
+      });
     });
 
     it('renders the ProcessingIndicator', () => {
