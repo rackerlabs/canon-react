@@ -89,10 +89,11 @@ describe('FormField', () => {
   });
 
   it('renders passed in dom properties', () => {
-    renderWithProps({ id: 'form-field-id' });
+    renderWithProps({ id: 'form-field-id', className: 'form-field-class' });
     formField = renderer.getRenderOutput();
 
     expect(formField.props.id).toEqual('form-field-id');
+    expect(formField.props.className).toEqual('form-field-class rs-control-group');
   });
 
   it('passes the help message to the FormFieldHelp', () => {

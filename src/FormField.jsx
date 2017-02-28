@@ -4,8 +4,9 @@ import FormFieldValidationBlock from './FormFieldValidationBlock';
 import classnames from 'classnames';
 
 const FormField = (props) => {
-  const { error, success, label, children, help, inlineValidation, ...rest } = props;
+  const { error, success, label, children, help, inlineValidation, className, ...rest } = props;
   const classes = classnames(
+    className,
     'rs-control-group',
     {
       'error': error,
