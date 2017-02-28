@@ -1,3 +1,6 @@
+### Version 0.14.6
+1. Render passed in class names on the control group that is rendered by the FormField component.
+
 ### Version 0.14.5
 1. Render passed in dom attributes on rendered control group in FormField component.
 
