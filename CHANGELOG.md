@@ -1,3 +1,6 @@
+### Version 0.14.5
+1. Render passed in dom attributes on rendered control group in FormField component.
+
 ### Version 0.14.4
 1. Added default overlay components to embedded list tables
 2. Added multistep progress bars
