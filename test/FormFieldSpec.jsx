@@ -88,6 +88,13 @@ describe('FormField', () => {
     expect(children).toEqual('Test Content');
   });
 
+  it('renders passed in dom properties', () => {
+    renderWithProps({ id: 'form-field-id' });
+    formField = renderer.getRenderOutput();
+
+    expect(formField.props.id).toEqual('form-field-id');
+  });
+
   it('passes the help message to the FormFieldHelp', () => {
     renderWithProps({ success: 'Test success message', help: 'Test help message' });
     formField = renderer.getRenderOutput();
