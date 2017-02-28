@@ -4,21 +4,22 @@ import FormFieldValidationBlock from './FormFieldValidationBlock';
 import classnames from 'classnames';
 
 const FormField = (props) => {
+  const { error, success, label, children, help, inlineValidation, ...rest } = props;
   const classes = classnames(
     'rs-control-group',
     {
-      'error': props.error,
-      'success': props.success
+      'error': error,
+      'success': success
     }
   );
 
   return (
-    <div className={ classes }>
-      <label className="rs-control-label">{ props.label }</label>
+    <div {...rest} className={ classes }>
+      <label className="rs-control-label">{ label }</label>
       <div className="rs-controls">
-        { props.children }
-        <FormFieldHelp help={ props.help } />
-        <FormFieldValidationBlock value={ props.error || props.success } inline={ props.inlineValidation } />
+        { children }
+        <FormFieldHelp help={ help } />
+        <FormFieldValidationBlock value={ error || success } inline={ inlineValidation } />
       </div>
     </div>
   );
