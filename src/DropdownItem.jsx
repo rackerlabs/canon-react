@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 const ITEM_TYPE = {
@@ -16,6 +17,11 @@ class DropdownItem extends React.Component {
   }
 
   render() {
+    const liProps = Object.assign({}, this.props);
+    delete liProps.hideCallback;
+    delete liProps.innerProps;
+    delete liProps.enabled;
+
     const itemClasses = classNames(
       'rs-dropdown-item',
       this.props.className,
@@ -28,7 +34,7 @@ class DropdownItem extends React.Component {
     );
 
     return (
-      <li { ...this.props } className={ itemClasses } onClick={ this._handleClick }>
+      <li { ...liProps } className={ itemClasses } onClick={ this._handleClick }>
         { innerElement }
       </li>
     );
@@ -53,11 +59,11 @@ DropdownItem.defaultProps = {
 };
 
 DropdownItem.propTypes = {
-  enabled: React.PropTypes.bool,
-  hideCallback: React.PropTypes.func,
-  innerProps: React.PropTypes.object,
-  onClick: React.PropTypes.func,
-  type: React.PropTypes.oneOf(Object.keys(ITEM_TYPE))
+  enabled: PropTypes.bool,
+  hideCallback: PropTypes.func,
+  innerProps: PropTypes.object,
+  onClick: PropTypes.func,
+  type: PropTypes.oneOf(Object.keys(ITEM_TYPE))
 };
 
 export default DropdownItem;

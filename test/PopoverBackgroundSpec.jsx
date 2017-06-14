@@ -1,20 +1,18 @@
 import PopoverBackground from '../transpiled/PopoverBackground';
 
 import React from 'react';
-import TestUtils from 'react-addons-test-utils';
+import { shallow } from 'enzyme';
 
 describe('PopoverBackground', () => {
-  let renderer, requestClose;
+  let requestClose;
 
   beforeEach(() => {
-    renderer = TestUtils.createRenderer();
     requestClose = jasmine.createSpy('requestClose');
   });
 
   it('renders over the entire page to block events from other elements', () => {
-    renderer.render(<PopoverBackground onRequestClose={ requestClose } />);
-    const popoverBackground = renderer.getRenderOutput();
-    const backgroundStyle = popoverBackground.props.style;
+    const popoverBackground = shallow(<PopoverBackground onRequestClose={ requestClose } />);
+    const backgroundStyle = popoverBackground.prop('style');
 
     expect(backgroundStyle.position).toEqual('fixed');
     expect(backgroundStyle.left).toEqual(0);
@@ -26,16 +24,14 @@ describe('PopoverBackground', () => {
   });
 
   it('passes the request close callback', () => {
-    renderer.render(<PopoverBackground onRequestClose={ requestClose } />);
-    const popoverBackground = renderer.getRenderOutput();
+    const popoverBackground = shallow(<PopoverBackground onRequestClose={ requestClose } />);
 
-    expect(popoverBackground.props.onClick).toBe(requestClose);
+    expect(popoverBackground.prop('onClick')).toBe(requestClose);
   });
 
   it('has a background color when isModal is true', () => {
-    renderer.render(<PopoverBackground onRequestClose={ requestClose } isModal />);
-    const popoverBackground = renderer.getRenderOutput();
-    const backgroundStyle = popoverBackground.props.style;
+    const popoverBackground = shallow(<PopoverBackground onRequestClose={ requestClose } isModal />);
+    const backgroundStyle = popoverBackground.prop('style');
 
     expect(backgroundStyle.backgroundColor).toEqual('rgba(0, 0, 0, 0.5)');
   });

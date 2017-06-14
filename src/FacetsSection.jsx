@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 class FacetsSection extends React.Component {
@@ -118,13 +119,13 @@ FacetsSection.defaultProps = {
 };
 
 FacetsSection.propTypes = {
-  sectionHeader: React.PropTypes.string.isRequired,
-  selectedCriteria: React.PropTypes.object,
-  onSelectionChanged: React.PropTypes.func.isRequired,
-  onCriteriaSelection: React.PropTypes.func,
-  onCriteriaDeselection: React.PropTypes.func,
-  onFacetClear: React.PropTypes.func,
-  onClearAll: React.PropTypes.func
+  sectionHeader: PropTypes.string.isRequired,
+  selectedCriteria: PropTypes.object,
+  onSelectionChanged: PropTypes.func.isRequired,
+  onCriteriaSelection: PropTypes.func,
+  onCriteriaDeselection: PropTypes.func,
+  onFacetClear: PropTypes.func,
+  onClearAll: PropTypes.func
 };
 
 export default FacetsSection;

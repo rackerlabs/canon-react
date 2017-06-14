@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 const ARROW_POSITIONS = {
@@ -33,8 +34,8 @@ PopoverOverlay.defaultProps = {
 };
 
 PopoverOverlay.propTypes = {
-  children: React.PropTypes.node.isRequired,
-  placement: React.PropTypes.oneOf(Object.keys(ARROW_POSITIONS))
+  children: PropTypes.node.isRequired,
+  placement: PropTypes.oneOf(Object.keys(ARROW_POSITIONS))
 };
 
 export default PopoverOverlay;

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 const FormFieldValidationBlock = (props) => {
@@ -19,8 +20,8 @@ const FormFieldValidationBlock = (props) => {
 };
 
 FormFieldValidationBlock.propTypes = {
-  value: React.PropTypes.node,
-  inline: React.PropTypes.bool
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
+  inline: PropTypes.bool
 };
 
 export default FormFieldValidationBlock;

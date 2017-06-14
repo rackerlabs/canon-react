@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import Tether from 'tether';
 import PopoverBackground from './PopoverBackground';
@@ -176,16 +177,16 @@ Popover.defaultProps = {
 };
 
 Popover.propTypes = {
-  children: React.PropTypes.element.isRequired,
-  isModal: React.PropTypes.bool,
-  isOpen: React.PropTypes.bool,
-  onRequestClose: React.PropTypes.func.isRequired,
-  placement: React.PropTypes.oneOf(Object.keys(PLACEMENT)),
-  target: React.PropTypes.oneOfType([
-    React.PropTypes.string,
-    React.PropTypes.func
+  children: PropTypes.element.isRequired,
+  isModal: PropTypes.bool,
+  isOpen: PropTypes.bool,
+  onRequestClose: PropTypes.func.isRequired,
+  placement: PropTypes.oneOf(Object.keys(PLACEMENT)),
+  target: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.func
   ]).isRequired,
-  tetherConfig: React.PropTypes.object
+  tetherConfig: PropTypes.object
 };
 
 export default Popover;

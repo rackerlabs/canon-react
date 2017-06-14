@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 const DROPDOWN_TYPES = {
@@ -44,9 +45,9 @@ Dropdown.defaultProps = {
 };
 
 Dropdown.propTypes = {
-  type: React.PropTypes.oneOf(Object.keys(DROPDOWN_TYPES)),
-  alignment: React.PropTypes.oneOf(['left', 'right']),
-  hideCallback: React.PropTypes.func.isRequired
+  type: PropTypes.oneOf(Object.keys(DROPDOWN_TYPES)),
+  alignment: PropTypes.oneOf(['left', 'right']),
+  hideCallback: PropTypes.func.isRequired
 };
 
 export default Dropdown;

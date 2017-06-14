@@ -1,27 +1,25 @@
 import PopoverBody from '../transpiled/PopoverBody';
 
 import React from 'react';
-import TestUtils from 'react-addons-test-utils';
+import { shallow } from 'enzyme';
 
 describe('PopoverBody', () => {
-  let popoverBody, renderer;
+  let popoverBody;
 
   beforeEach(() => {
-    renderer = TestUtils.createRenderer();
-    renderer.render(
+    popoverBody = shallow(
       <PopoverBody className="test-additional-class">
         Hello
       </PopoverBody>
     );
-    popoverBody = renderer.getRenderOutput();
   });
 
   it('renders a popover body with additional class', () => {
-    expect(popoverBody.type).toBe('div');
-    expect(popoverBody.props.className).toEqual('rs-popover-body test-additional-class');
+    expect(popoverBody.type()).toBe('div');
+    expect(popoverBody.hasClass('rs-popover-body test-additional-class')).toBe(true);
   });
 
   it('renders children', () => {
-    expect(popoverBody.props.children).toEqual('Hello');
+    expect(popoverBody.children().equals('Hello')).toBe(true);
   });
 });

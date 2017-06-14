@@ -1,47 +1,36 @@
 import DetailList from '../transpiled/DetailList';
 import React from 'react';
-import TestUtils from 'react-addons-test-utils';
+import { shallow } from 'enzyme';
 
 describe('DetailList', () => {
-  let renderer;
-
   const renderWithProps = (props) => {
-    renderer.render(
+    return shallow(
       <DetailList { ...props }>
         Test Detail List
       </DetailList>
     );
   };
-
-  beforeEach(() => {
-    renderer = TestUtils.createRenderer();
-  });
-
   it('renders provided class name correctly', () => {
-    renderWithProps({ id: 'detail-list-id', className: 'test-detail-list-class' });
-    const detailItem = renderer.getRenderOutput();
+    const detailItem = renderWithProps({ id: 'detail-list-id', className: 'test-detail-list-class' });
 
-    expect(detailItem.props.className).toEqual('rs-detail-list test-detail-list-class');
+    expect(detailItem.hasClass('rs-detail-list test-detail-list-class')).toBe(true);
   });
 
   it('has only default classs when custom class not provided', () => {
-    renderWithProps({ id: 'detail-list-id' });
-    const detailItem = renderer.getRenderOutput();
+    const detailItem = renderWithProps({ id: 'detail-list-id' });
 
-    expect(detailItem.props.className).toEqual('rs-detail-list');
+    expect(detailItem.hasClass('rs-detail-list')).toBe(true);
   });
 
   it('has correct id when passed in as prop', () => {
-    renderWithProps({ id: 'detail-list-id', className: 'test-detail-list-class' });
-    const detailItem = renderer.getRenderOutput();
+    const detailItem = renderWithProps({ id: 'detail-list-id', className: 'test-detail-list-class' });
 
-    expect(detailItem.props.id).toEqual('detail-list-id');
+    expect(detailItem.prop('id')).toEqual('detail-list-id');
   });
 
   it('renders passed in children', () => {
-    renderWithProps({ id: 'detail-list-id', className: 'test-detail-list-class' });
-    const detailItem = renderer.getRenderOutput();
+    const detailItem = renderWithProps({ id: 'detail-list-id', className: 'test-detail-list-class' });
 
-    expect(detailItem.props.children).toEqual('Test Detail List');
+    expect(detailItem.prop('children')).toEqual('Test Detail List');
   });
 });

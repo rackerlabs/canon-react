@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import FormFieldHelp from './FormFieldHelp';
 import FormFieldValidationBlock from './FormFieldValidationBlock';
 import classnames from 'classnames';
@@ -27,12 +28,12 @@ const FormField = (props) => {
 };
 
 FormField.propTypes = {
-  error: React.PropTypes.string,
-  success: React.PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.bool]),
-  inlineValidation: React.PropTypes.bool,
-  help: React.PropTypes.node,
-  label: React.PropTypes.node.isRequired,
-  children: React.PropTypes.node.isRequired
+  error: PropTypes.string,
+  success: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
+  inlineValidation: PropTypes.bool,
+  help: PropTypes.node,
+  label: PropTypes.node.isRequired,
+  children: PropTypes.node.isRequired
 };
 
 export default FormField;

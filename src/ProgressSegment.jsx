@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 export const STATUS_CLASSES = {
@@ -44,9 +45,9 @@ class ProgressSegment extends React.Component {
 }
 
 ProgressSegment.propTypes = {
-  width: React.PropTypes.number.isRequired,
-  status: React.PropTypes.oneOf(Object.keys(STATUS_CLASSES)),
-  type: React.PropTypes.oneOf(Object.keys(TYPE_CLASSES))
+  width: PropTypes.number.isRequired,
+  status: PropTypes.oneOf(Object.keys(STATUS_CLASSES)),
+  type: PropTypes.oneOf(Object.keys(TYPE_CLASSES))
 };
 
 ProgressSegment.defaultProps = {

@@ -1,6 +1,6 @@
 {
   "name": "canon-react",
-  "version": "0.14.6",
+  "version": "15.5.4",
   "description": "Rackspace Canon components built with React",
   "repository": {
     "type": "git",
@@ -40,11 +40,12 @@
     "babel-plugin-transform-runtime": "6.4.3",
     "babel-runtime": "6.3.19",
     "classnames": "^2.2.3",
+    "prop-types": "^15.5.10",
     "tether": "^1.1.0"
   },
   "peerDependencies": {
-    "react": "~0.14.8",
-    "react-dom": "~0.14.8"
+    "react": "~15.5.4",
+    "react-dom": "~15.5.4"
   },
   "devDependencies": {
     "babel": "6.3.26",
@@ -56,8 +57,7 @@
     "babelify": "7.2.0",
     "browserify": "<4.0.0",
     "browserify-shim": "3.8.12",
-    "canon-react": "0.14.0",
-    "enzyme": "2.3.0",
+    "enzyme": "2.8.2",
     "eslint": "^1.10.3",
     "eslint-plugin-react": "^3.15.0",
     "gitbook-cli": "^2.3.0",
@@ -83,9 +83,9 @@
     "karma-react-jsx-preprocessor": "^0.1.1",
     "karma-spec-reporter": "0.0.23",
     "phantomjs": "^1.9.19",
-    "react": "~0.14.8",
-    "react-addons-test-utils": "0.14.8",
-    "react-dom": "^0.14.8",
-    "react-router": "^2.6.1"
+    "react": "~15.5.4",
+    "react-dom": "^15.5.4",
+    "react-router": "^2.6.1",
+    "react-test-renderer": "^15.5.4"
   }
 }

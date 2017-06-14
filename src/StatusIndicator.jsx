@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 const STATUS_INDICATOR = {
@@ -11,22 +12,23 @@ const STATUS_INDICATOR = {
 
 class StatusIndicator extends React.Component {
   render() {
+    const { status, ...rest } = this.props;
     const classes = classNames(
-      this.props.className,
-      STATUS_INDICATOR[this.props.status],
-      { 'rs-hidden': this.props.hidden }
+      rest.className,
+      STATUS_INDICATOR[status],
+      { 'rs-hidden': rest.hidden }
     );
     return (
-      <span { ...this.props } className={ classes }>
-        { this.props.children }
+      <span { ...rest } className={ classes }>
+        { rest.children }
       </span>
     );
   }
 }
 
 StatusIndicator.propTypes = {
-  status: React.PropTypes.oneOf(Object.keys(STATUS_INDICATOR)),
-  hidden: React.PropTypes.bool
+  status: PropTypes.oneOf(Object.keys(STATUS_INDICATOR)),
+  hidden: PropTypes.bool
 };
 
 StatusIndicator.defaultProps = {

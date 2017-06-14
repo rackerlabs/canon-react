@@ -1,13 +1,13 @@
 import ProcessingIndicator from '../transpiled/ProcessingIndicator';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import TestUtils from 'react-addons-test-utils';
+import ReactTestUtils from 'react-dom/test-utils';
 
 describe('ProcessingIndicator', () => {
   let processingIndicator;
 
   beforeEach(() => {
-    processingIndicator = TestUtils.renderIntoDocument(
+    processingIndicator = ReactTestUtils.renderIntoDocument(
       <ProcessingIndicator/>
     );
   });
@@ -21,7 +21,7 @@ describe('ProcessingIndicator', () => {
   });
 
   it('renders an icon tag', () => {
-    expect(TestUtils.findRenderedDOMComponentWithTag(processingIndicator, 'i')).not.toBeNull();
+    expect(ReactTestUtils.findRenderedDOMComponentWithTag(processingIndicator, 'i')).not.toBeNull();
   });
 
   it('is hidden by default', () => {
@@ -29,7 +29,7 @@ describe('ProcessingIndicator', () => {
   });
 
   it('is not hidden when hidden is false', () => {
-    processingIndicator = TestUtils.renderIntoDocument(
+    processingIndicator = ReactTestUtils.renderIntoDocument(
       <ProcessingIndicator hidden={false}/>
     );
 

@@ -1,12 +1,12 @@
 import Form from '../transpiled/Form';
 import React from 'react';
-import TestUtils from 'react-addons-test-utils';
+import { shallow } from 'enzyme';
 
 describe('Form', () => {
-  let renderer;
+  let form;
 
   const renderWithProps = (props) => {
-    renderer.render(
+    return shallow(
       <Form { ...props }>
         Test Content
       </Form>
@@ -14,62 +14,46 @@ describe('Form', () => {
   };
 
   beforeEach(() => {
-    renderer = TestUtils.createRenderer();
+    form = renderWithProps();
   });
 
   it('adds the horizontal class as the only default class', () => {
-    renderWithProps({});
-    const form = renderer.getRenderOutput();
-
-    expect(form.props.className).toEqual('rs-form-horizontal');
+    expect(form.hasClass('rs-form-horizontal')).toBe(true);
   });
 
   it('adds the horizontal class if horizontal is true', () => {
-    renderWithProps({ horizontal: true });
-    const form = renderer.getRenderOutput();
+    form = renderWithProps({ horizontal: true });
 
-    expect(form.props.className).toEqual('rs-form-horizontal');
+    expect(form.hasClass('rs-form-horizontal')).toBe(true);
   });
 
   it('does not add the horizontal class if horizontal is false', () => {
-    renderWithProps({ horizontal: false });
-    const form = renderer.getRenderOutput();
+    form = renderWithProps({ horizontal: false });
 
-    expect(form.props.className).toEqual('');
+    expect(form.hasClass('')).toBe(true);
   });
 
   it('adds a valid size class', () => {
-    renderWithProps({ size: 'xsmall', horizontal: false });
-    const form = renderer.getRenderOutput();
+    form = renderWithProps({ size: 'xsmall', horizontal: false });
 
-    expect(form.props.className).toEqual('rs-form-xsmall');
-  });
-
-  it('does not add an invalid size classes', () => {
-    renderWithProps({ size: 'ginormous', horizontal: false });
-    const form = renderer.getRenderOutput();
-
-    expect(form.props.className).toEqual('');
+    expect(form.hasClass('rs-form-xsmall')).toBe(true);
   });
 
   it('adds the create class if create is true', () => {
-    renderWithProps({ create: true, horizontal: false });
-    const form = renderer.getRenderOutput();
+    form = renderWithProps({ create: true, horizontal: false });
 
-    expect(form.props.className).toEqual('rs-form-create');
+    expect(form.hasClass('rs-form-create')).toBe(true);
   });
 
   it('does not add the create class if create is false', () => {
-    renderWithProps({ create: false, horizontal: false });
-    const form = renderer.getRenderOutput();
+    form = renderWithProps({ create: false, horizontal: false });
 
-    expect(form.props.className).toEqual('');
+    expect(form.hasClass('')).toBe(true);
   });
 
   it('adds passed-in class names', () => {
-    renderWithProps({ className: 'some-nonsense', horizontal: false });
-    const form = renderer.getRenderOutput();
+    form = renderWithProps({ className: 'some-nonsense', horizontal: false });
 
-    expect(form.props.className).toEqual('some-nonsense');
+    expect(form.hasClass('some-nonsense')).toBe(true);
   });
 });

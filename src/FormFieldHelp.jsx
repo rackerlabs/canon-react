@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const FormFieldHelp = (props) => {
   return props.help ? (
@@ -7,7 +8,7 @@ const FormFieldHelp = (props) => {
 };
 
 FormFieldHelp.propTypes = {
-  help: React.PropTypes.node
+  help: PropTypes.node
 };
 
 export default FormFieldHelp;

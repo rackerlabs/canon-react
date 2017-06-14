@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 const DetailsSectionSubtitle = (props) => (
@@ -8,8 +9,8 @@ const DetailsSectionSubtitle = (props) => (
 );
 
 DetailsSectionSubtitle.propTypes = {
-  children: React.PropTypes.node,
-  className: React.PropTypes.string
+  children: PropTypes.node,
+  className: PropTypes.string
 };
 
 export default DetailsSectionSubtitle;

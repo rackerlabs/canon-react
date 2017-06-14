@@ -89,7 +89,7 @@ module.exports = function (grunt) {
           'test_bundle.js': ['test-built/**/*.js']
         },
         options: {
-          external: ['react/lib/ReactContext', 'react/lib/ExecutionEnvironment'],
+          external: ['react/lib/ReactContext', 'react/lib/ExecutionEnvironment', 'react/addons', 'react-addons-test-utils'],
           verbose: true
         }
       },

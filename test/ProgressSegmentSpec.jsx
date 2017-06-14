@@ -1,14 +1,14 @@
 import ProgressSegment from '../transpiled/ProgressSegment';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import TestUtils from 'react-addons-test-utils';
+import ReactTestUtils from 'react-dom/test-utils';
 
 describe('ProgressSegment', () => {
   let progressSegment;
 
   beforeEach(() => {
-    progressSegment = TestUtils.renderIntoDocument(
-      <ProgressSegment/>
+    progressSegment = ReactTestUtils.renderIntoDocument(
+      <ProgressSegment width={0}/>
     );
   });
 
@@ -19,30 +19,30 @@ describe('ProgressSegment', () => {
   it('renders the segment with the given width', () => {
     let progressSegment;
 
-    progressSegment = TestUtils.renderIntoDocument(
+    progressSegment = ReactTestUtils.renderIntoDocument(
       <ProgressSegment width={50} />
     );
-    progressSegment = TestUtils.findRenderedDOMComponentWithClass(progressSegment, 'rs-segment');
+    progressSegment = ReactTestUtils.findRenderedDOMComponentWithClass(progressSegment, 'rs-segment');
 
-    expect(progressSegment.props.style).toEqual({ 'width': '50%' });
+    expect(progressSegment.style.width).toEqual('50%');
   });
 
   it('does not render a caption if there are no children', () => {
-    progressSegment = TestUtils.renderIntoDocument(
+    progressSegment = ReactTestUtils.renderIntoDocument(
       <ProgressSegment width={100} />
     );
-    const caption = TestUtils.scryRenderedDOMComponentsWithClass(progressSegment, 'rs-caption');
+    const caption = ReactTestUtils.scryRenderedDOMComponentsWithClass(progressSegment, 'rs-caption');
 
     expect(caption.length).toBe(0);
   });
 
   it('renders a caption of there are children', () => {
-    progressSegment = TestUtils.renderIntoDocument(
+    progressSegment = ReactTestUtils.renderIntoDocument(
       <ProgressSegment width={100}>
         caption
       </ProgressSegment>
     );
-    const caption = TestUtils.findRenderedDOMComponentWithClass(progressSegment, 'rs-caption');
+    const caption = ReactTestUtils.findRenderedDOMComponentWithClass(progressSegment, 'rs-caption');
 
     expect(ReactDOM.findDOMNode(caption).textContent).toBe('caption');
   });
@@ -51,12 +51,12 @@ describe('ProgressSegment', () => {
     let statusBar;
 
     const renderWithStatus = (status) => {
-      progressSegment = TestUtils.renderIntoDocument(<ProgressSegment status={status} />);
-      statusBar = TestUtils.findRenderedDOMComponentWithClass(progressSegment, 'rs-bar');
+      progressSegment = ReactTestUtils.renderIntoDocument(<ProgressSegment width={0} status={status} />);
+      statusBar = ReactTestUtils.findRenderedDOMComponentWithClass(progressSegment, 'rs-bar');
     };
 
     it('defaults to empty status', () => {
-      statusBar = TestUtils.findRenderedDOMComponentWithClass(progressSegment, 'rs-bar');
+      statusBar = ReactTestUtils.findRenderedDOMComponentWithClass(progressSegment, 'rs-bar');
 
       expect(ReactDOM.findDOMNode(statusBar)).toHaveClass('rs-bar');
     });
@@ -90,12 +90,12 @@ describe('ProgressSegment', () => {
     let statusBar;
 
     const renderWithType = (type) => {
-      progressSegment = TestUtils.renderIntoDocument(<ProgressSegment type={type} />);
-      statusBar = TestUtils.findRenderedDOMComponentWithClass(progressSegment, 'rs-bar');
+      progressSegment = ReactTestUtils.renderIntoDocument(<ProgressSegment width={0} type={type} />);
+      statusBar = ReactTestUtils.findRenderedDOMComponentWithClass(progressSegment, 'rs-bar');
     };
 
     it('defaults to empty', () => {
-      statusBar = TestUtils.findRenderedDOMComponentWithClass(progressSegment, 'rs-bar');
+      statusBar = ReactTestUtils.findRenderedDOMComponentWithClass(progressSegment, 'rs-bar');
 
       expect(ReactDOM.findDOMNode(statusBar)).toHaveClass('rs-bar');
     });

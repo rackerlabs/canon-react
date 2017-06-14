@@ -1,13 +1,13 @@
 import ProgressBar from '../transpiled/ProgressBar';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import TestUtils from 'react-addons-test-utils';
+import ReactTestUtils from 'react-dom/test-utils';
 
 describe('ProgressBar', () => {
   let progressBar;
 
   beforeEach(() => {
-    progressBar = TestUtils.renderIntoDocument(
+    progressBar = ReactTestUtils.renderIntoDocument(
       <ProgressBar/>
     );
   });
@@ -17,42 +17,42 @@ describe('ProgressBar', () => {
   });
 
   it('renders the progress container', () => {
-    expect(TestUtils.findRenderedDOMComponentWithClass(progressBar, 'rs-progress')).not.toBeNull();
+    expect(ReactTestUtils.findRenderedDOMComponentWithClass(progressBar, 'rs-progress')).not.toBeNull();
   });
 
   it('renders the inner progress container', () => {
-    expect(TestUtils.findRenderedDOMComponentWithClass(progressBar, 'rs-progress-inner')).not.toBeNull();
+    expect(ReactTestUtils.findRenderedDOMComponentWithClass(progressBar, 'rs-progress-inner')).not.toBeNull();
   });
 
   it('defaults to 0 progress', () => {
     let progressSegment;
 
-    progressSegment = TestUtils.findRenderedDOMComponentWithClass(progressBar, 'rs-segment');
+    progressSegment = ReactTestUtils.findRenderedDOMComponentWithClass(progressBar, 'rs-segment');
 
-    expect(progressSegment.props.style).toEqual({ 'width': '0%' });
+    expect(progressSegment.style.width).toEqual('0%');
   });
 
   it('renders the segment with the given progress', () => {
     let progressSegment;
 
-    progressBar = TestUtils.renderIntoDocument(
+    progressBar = ReactTestUtils.renderIntoDocument(
       <ProgressBar progress={50} />
     );
-    progressSegment = TestUtils.findRenderedDOMComponentWithClass(progressBar, 'rs-segment');
+    progressSegment = ReactTestUtils.findRenderedDOMComponentWithClass(progressBar, 'rs-segment');
 
-    expect(progressSegment.props.style).toEqual({ 'width': '50%' });
+    expect(progressSegment.style.width).toEqual('50%');
   });
 
   describe('status bar', () => {
     let statusBar;
 
     const renderWithStatus = (status) => {
-      progressBar = TestUtils.renderIntoDocument(<ProgressBar status={status} />);
-      statusBar = TestUtils.findRenderedDOMComponentWithClass(progressBar, 'rs-bar');
+      progressBar = ReactTestUtils.renderIntoDocument(<ProgressBar status={status} />);
+      statusBar = ReactTestUtils.findRenderedDOMComponentWithClass(progressBar, 'rs-bar');
     };
 
     it('defaults to ok status', () => {
-      statusBar = TestUtils.findRenderedDOMComponentWithClass(progressBar, 'rs-bar');
+      statusBar = ReactTestUtils.findRenderedDOMComponentWithClass(progressBar, 'rs-bar');
 
       expect(ReactDOM.findDOMNode(statusBar)).toHaveClass('rs-status-ok');
     });
@@ -86,12 +86,12 @@ describe('ProgressBar', () => {
     let statusBar;
 
     const renderWithType = (type) => {
-      progressBar = TestUtils.renderIntoDocument(<ProgressBar type={type} />);
-      statusBar = TestUtils.findRenderedDOMComponentWithClass(progressBar, 'rs-bar');
+      progressBar = ReactTestUtils.renderIntoDocument(<ProgressBar type={type} />);
+      statusBar = ReactTestUtils.findRenderedDOMComponentWithClass(progressBar, 'rs-bar');
     };
 
     it('defaults to solid', () => {
-      statusBar = TestUtils.findRenderedDOMComponentWithClass(progressBar, 'rs-bar');
+      statusBar = ReactTestUtils.findRenderedDOMComponentWithClass(progressBar, 'rs-bar');
 
       expect(ReactDOM.findDOMNode(statusBar)).toHaveClass('rs-bar-solid');
     });
@@ -111,7 +111,7 @@ describe('ProgressBar', () => {
 
   describe('size', () => {
     const renderWithSize = (size) => {
-      progressBar = TestUtils.renderIntoDocument(<ProgressBar size={size} />);
+      progressBar = ReactTestUtils.renderIntoDocument(<ProgressBar size={size} />);
     };
 
     it('defaults to no size', () => {

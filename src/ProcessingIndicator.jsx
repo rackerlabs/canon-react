@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 class ProcessingIndicator extends React.Component {
@@ -17,7 +18,7 @@ class ProcessingIndicator extends React.Component {
 }
 
 ProcessingIndicator.propTypes = {
-  hidden: React.PropTypes.bool
+  hidden: PropTypes.bool
 };
 
 ProcessingIndicator.defaultProps = {
