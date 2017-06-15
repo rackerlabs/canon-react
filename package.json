@@ -84,8 +84,8 @@
     "karma-spec-reporter": "0.0.23",
     "phantomjs": "^1.9.19",
     "react": "~15.5.4",
-    "react-dom": "^15.5.4",
+    "react-dom": "~15.5.4",
     "react-router": "^2.6.1",
-    "react-test-renderer": "^15.5.4"
+    "react-test-renderer": "~15.5.4"
   }
 }
