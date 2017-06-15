@@ -11,19 +11,19 @@ const SIZE_CLASSES = {
 };
 
 const Form = (props) => {
-  const { create, horizontal, ...rest } = props;
+  const { create, className, horizontal, size, children, ...rest } = props;
   const classes = classNames(
     {
       'rs-form-create': create,
       'rs-form-horizontal': horizontal
     },
-    props.className,
-    SIZE_CLASSES[props.size]
+    className,
+    SIZE_CLASSES[size]
   );
 
   return (
     <form { ...rest } className={ classes }>
-      { rest.children }
+      { children }
     </form>
   );
 };

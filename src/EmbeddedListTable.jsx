@@ -24,7 +24,8 @@ class EmbeddedListTable extends React.Component {
       errorOverlay,
       loadingOverlay,
       overlayStatus,
-      size
+      size,
+      ...rest
     } = this.props;
     const sizeClass = SIZE_CLASSES[size];
 
@@ -35,7 +36,7 @@ class EmbeddedListTable extends React.Component {
     );
 
     return (
-      <div { ...this.props } className={ classes }>
+      <div { ...rest } className={ classes }>
         <table className="rs-list-table rs-embedded-list-table">
           { children }
         </table>

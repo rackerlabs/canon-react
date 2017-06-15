@@ -12,15 +12,15 @@ const STATUS_INDICATOR = {
 
 class StatusIndicator extends React.Component {
   render() {
-    const { status, ...rest } = this.props;
+    const { className, status, hidden, children, ...rest } = this.props;
     const classes = classNames(
-      rest.className,
+      className,
       STATUS_INDICATOR[status],
-      { 'rs-hidden': rest.hidden }
+      { 'rs-hidden': hidden }
     );
     return (
       <span { ...rest } className={ classes }>
-        { rest.children }
+        { children }
       </span>
     );
   }

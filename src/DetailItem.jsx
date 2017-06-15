@@ -2,11 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
-const DetailItem = (props) => (
-  <li { ...props } className={ classnames('rs-detail-item', props.className) }>
-    { props.children }
-  </li>
-);
+const DetailItem = (props) => {
+  const { className, children, ...rest } = props;
+  return (
+    <li { ...rest } className={ classnames('rs-detail-item', className) }>
+      { children }
+    </li>
+  );
+};
 
 DetailItem.propTypes = {
   children: PropTypes.node.isRequired,

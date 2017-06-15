@@ -22,8 +22,12 @@ class FormPopover extends React.Component {
       { onClick: this._cancel.bind(this), hidden: this.props.processing }
     );
 
-    popoverProps = Object.assign({}, this.props);
-    delete popoverProps.children;
+    popoverProps = {
+      isOpen: this.props.isOpen,
+      target: this.props.target,
+      placement: this.props.placement,
+      onRequestClose: this.props.onRequestClose
+    };
 
     return (
       <Popover { ...popoverProps }>

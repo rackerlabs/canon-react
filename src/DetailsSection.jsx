@@ -19,14 +19,22 @@ class DetailsSection extends React.Component {
   }
 
   render() {
-    let divProps = Object.assign({}, this.props), { isCollapsed } = this.state;
-    delete divProps.initialCollapsed;
-    delete divProps.onToggleCollapsed;
-    let { collapsible, isLoading, subtitle, ...rest } = divProps;
+    const { isCollapsed } = this.state;
+    const {
+      title,
+      headers,
+      isLoading,
+      collapsible,
+      className,
+      subtitle,
+      children,
+      ...rest } = this.props;
+    delete rest.initialCollapsed;
+    delete rest.onToggleCollapsed;
 
     const classes = classnames(
       'rs-detail-section',
-      this.props.className,
+      className,
       {
         'rs-collapsible-section': collapsible,
         'collapsed': collapsible && isCollapsed,
@@ -39,13 +47,13 @@ class DetailsSection extends React.Component {
       <div { ...rest }
         className={ classes }>
         <div className='rs-detail-section-header' onClick={ this.toggleCollapsed.bind(this) }>
-          { this.props.headers }
+          { headers }
           { collapsible ? <div className='rs-caret'></div> : null }
-          { this.props.title ? <DetailsSectionTitle>{ this.props.title }</DetailsSectionTitle> : null}
+          { title ? <DetailsSectionTitle>{ title }</DetailsSectionTitle> : null}
           { subtitle }
         </div>
         <div className='rs-detail-section-body'>
-          {this.props.children}
+          { children }
         </div>
       </div>
     );

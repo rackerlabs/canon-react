@@ -2,13 +2,14 @@ import React from 'react';
 import classNames from 'classnames';
 
 const StatusColumnHeader = (props) => {
+  const { className, ...rest } = props;
   const classes = classNames(
     'rs-table-status',
-    props.className
+    className
   );
 
   return (
-    <th { ...props } className={ classes } />
+    <th { ...rest } className={ classes } />
   );
 };
 

@@ -17,24 +17,23 @@ class DropdownItem extends React.Component {
   }
 
   render() {
-    const liProps = Object.assign({}, this.props);
-    delete liProps.hideCallback;
-    delete liProps.innerProps;
-    delete liProps.enabled;
+    const { enabled, innerProps, type, className, ...rest } = this.props;
+    delete rest.onClick;
+    delete rest.hideCallback;
 
     const itemClasses = classNames(
       'rs-dropdown-item',
-      this.props.className,
-      { 'disabled': !this.props.enabled }
+      className,
+      { 'disabled': !enabled }
     );
 
     const innerElement = React.cloneElement(
-      ITEM_TYPE[this.props.type],
-      { children: this.props.children, ...this.props.innerProps }
+      ITEM_TYPE[type],
+      { children: this.props.children, ...innerProps }
     );
 
     return (
-      <li { ...liProps } className={ itemClasses } onClick={ this._handleClick }>
+      <li { ...rest } className={ itemClasses } onClick={ this._handleClick }>
         { innerElement }
       </li>
     );

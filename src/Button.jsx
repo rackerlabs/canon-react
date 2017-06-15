@@ -23,26 +23,27 @@ class Button extends React.Component {
 
   render() {
     let classes;
-    const { canonStyle, enabled, ...rest } = this.props;
+    const { canonStyle, enabled, className, hidden, children, ...rest } = this.props;
+    delete rest.onClick;
 
     classes = classNames(
-      this.props.className,
+      className,
       { 'disabled': !enabled },
       BUTTON_TYPES[canonStyle],
-      { 'rs-hidden': this.props.hidden }
+      { 'rs-hidden': hidden }
     );
 
     if (canonStyle === 'action') {
       return (
-        <button {...rest} className={classes} onClick={this._handleClick.bind(this)}>
-          <span className='rs-cog'></span> {this.props.children} <span className='rs-caret'></span>
+        <button { ...rest } className={ classes } onClick={ this._handleClick.bind(this) }>
+          <span className='rs-cog'></span> { children } <span className='rs-caret'></span>
         </button>
       );
     }
 
     return (
-      <button {...rest} className={classes} onClick={this._handleClick.bind(this)}>
-         {this.props.children}
+      <button { ...rest } className={ classes } onClick={ this._handleClick.bind(this) }>
+         { children }
       </button>
     );
   }

@@ -13,11 +13,12 @@ class ListTable extends React.Component {
       emptyOverlay,
       errorOverlay,
       loadingOverlay,
-      overlayStatus
+      overlayStatus,
+      ...rest
     } = this.props;
 
     return (
-      <div { ...this.props } >
+      <div { ...rest } >
         <table className="rs-list-table">
           { children }
         </table>
