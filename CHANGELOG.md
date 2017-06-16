@@ -1,3 +1,6 @@
+### Version 1.0.0
+1. Upgrade to react 15.5.4
+
 ### Version 0.14.6
 1. Render passed in class names on the control group that is rendered by the FormField component.
 
