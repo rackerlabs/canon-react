@@ -18,7 +18,6 @@ class DropdownItem extends React.Component {
 
   render() {
     const { enabled, innerProps, type, className, ...rest } = this.props;
-    delete rest.onClick;
     delete rest.hideCallback;
 
     const itemClasses = classNames(

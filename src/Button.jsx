@@ -24,7 +24,6 @@ class Button extends React.Component {
   render() {
     let classes;
     const { canonStyle, enabled, className, hidden, children, ...rest } = this.props;
-    delete rest.onClick;
 
     classes = classNames(
       className,
