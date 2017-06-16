@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 const ITEM_TYPE = {
@@ -16,19 +17,22 @@ class DropdownItem extends React.Component {
   }
 
   render() {
+    const { enabled, innerProps, type, className, ...rest } = this.props;
+    delete rest.hideCallback;
+
     const itemClasses = classNames(
       'rs-dropdown-item',
-      this.props.className,
-      { 'disabled': !this.props.enabled }
+      className,
+      { 'disabled': !enabled }
     );
 
     const innerElement = React.cloneElement(
-      ITEM_TYPE[this.props.type],
-      { children: this.props.children, ...this.props.innerProps }
+      ITEM_TYPE[type],
+      { children: this.props.children, ...innerProps }
     );
 
     return (
-      <li { ...this.props } className={ itemClasses } onClick={ this._handleClick }>
+      <li { ...rest } className={ itemClasses } onClick={ this._handleClick }>
         { innerElement }
       </li>
     );
@@ -53,11 +57,11 @@ DropdownItem.defaultProps = {
 };
 
 DropdownItem.propTypes = {
-  enabled: React.PropTypes.bool,
-  hideCallback: React.PropTypes.func,
-  innerProps: React.PropTypes.object,
-  onClick: React.PropTypes.func,
-  type: React.PropTypes.oneOf(Object.keys(ITEM_TYPE))
+  enabled: PropTypes.bool,
+  hideCallback: PropTypes.func,
+  innerProps: PropTypes.object,
+  onClick: PropTypes.func,
+  type: PropTypes.oneOf(Object.keys(ITEM_TYPE))
 };
 
 export default DropdownItem;

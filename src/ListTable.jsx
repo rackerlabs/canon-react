@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import ListTableOverlaySelector from './ListTableOverlaySelector';
 import EmptyOverlay from './EmptyOverlay';
 import ErrorOverlay from './ErrorOverlay';
@@ -12,11 +13,12 @@ class ListTable extends React.Component {
       emptyOverlay,
       errorOverlay,
       loadingOverlay,
-      overlayStatus
+      overlayStatus,
+      ...rest
     } = this.props;
 
     return (
-      <div { ...this.props } >
+      <div { ...rest } >
         <table className="rs-list-table">
           { children }
         </table>
@@ -34,12 +36,12 @@ ListTable.defaultProps = {
 };
 
 ListTable.propTypes = {
-  children: React.PropTypes.node,
-  className: React.PropTypes.string,
-  emptyOverlay: React.PropTypes.node,
-  errorOverlay: React.PropTypes.node,
-  loadingOverlay: React.PropTypes.node,
-  overlayStatus: React.PropTypes.oneOf(Object.values(OverlayStatus))
+  children: PropTypes.node,
+  className: PropTypes.string,
+  emptyOverlay: PropTypes.node,
+  errorOverlay: PropTypes.node,
+  loadingOverlay: PropTypes.node,
+  overlayStatus: PropTypes.oneOf(Object.values(OverlayStatus))
 };
 
 export default ListTable;

@@ -1,15 +1,19 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
-const DetailItemValue = (props) => (
-  <div { ...props } className={ classnames('rs-detail-value', props.className) }>
-    { props.children }
-  </div>
-);
+const DetailItemValue = (props) => {
+  const { className, children, ...rest } = props;
+  return (
+    <div { ...rest } className={ classnames('rs-detail-value', className) }>
+      { children }
+    </div>
+  );
+};
 
 DetailItemValue.propTypes = {
-  children: React.PropTypes.node.isRequired,
-  className: React.PropTypes.string
+  children: PropTypes.node.isRequired,
+  className: PropTypes.string
 };
 
 export default DetailItemValue;

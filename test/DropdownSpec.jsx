@@ -2,7 +2,7 @@ import Dropdown from '../transpiled/Dropdown';
 import DropdownItem from '../transpiled/DropdownItem';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import TestUtils from 'react-addons-test-utils';
+import ReactTestUtils from 'react-dom/test-utils';
 
 describe('Dropdown', () => {
   let dropdown, hideFunction;
@@ -10,7 +10,7 @@ describe('Dropdown', () => {
   beforeEach(() => {
     hideFunction = jasmine.createSpy('hideFunction');
 
-    dropdown = TestUtils.renderIntoDocument(
+    dropdown = ReactTestUtils.renderIntoDocument(
       <Dropdown className='test-dropdown-class' hideCallback={hideFunction}><DropdownItem type='link'>Dropdown Item...</DropdownItem></Dropdown>
     );
   });
@@ -35,14 +35,14 @@ describe('Dropdown', () => {
     let menu;
 
     beforeEach(() => {
-      menu = TestUtils.findRenderedDOMComponentWithClass(dropdown, 'rs-dropdown-menu');
+      menu = ReactTestUtils.findRenderedDOMComponentWithClass(dropdown, 'rs-dropdown-menu');
     });
 
     it('overrides positioning to static positioning if alignment is passed in as prop', () => {
-      dropdown = TestUtils.renderIntoDocument(
+      dropdown = ReactTestUtils.renderIntoDocument(
         <Dropdown className='test-dropdown-class' alignment='right' hideCallback={hideFunction}><DropdownItem type='link'>Dropdown Item...</DropdownItem></Dropdown>
       );
-      menu = TestUtils.findRenderedDOMComponentWithClass(dropdown, 'rs-dropdown-menu');
+      menu = ReactTestUtils.findRenderedDOMComponentWithClass(dropdown, 'rs-dropdown-menu');
 
       expect(ReactDOM.findDOMNode(menu).style.position).toBe('static');
     });
@@ -55,8 +55,8 @@ describe('Dropdown', () => {
   it('passes hide callback down to dropdown items', () => {
     let childItem;
 
-    childItem = TestUtils.findRenderedComponentWithType(dropdown, DropdownItem);
-    TestUtils.Simulate.click(ReactDOM.findDOMNode(childItem));
+    childItem = ReactTestUtils.findRenderedComponentWithType(dropdown, DropdownItem);
+    ReactTestUtils.Simulate.click(ReactDOM.findDOMNode(childItem));
 
     expect(hideFunction).toHaveBeenCalled();
   });
@@ -65,7 +65,7 @@ describe('Dropdown', () => {
     let dropdownItem;
 
     it('primary', () => {
-      dropdownItem = TestUtils.renderIntoDocument(
+      dropdownItem = ReactTestUtils.renderIntoDocument(
         <Dropdown type='primary' hideCallback={hideFunction} />
       );
 
@@ -73,7 +73,7 @@ describe('Dropdown', () => {
     });
 
     it('utility', () => {
-      dropdownItem = TestUtils.renderIntoDocument(
+      dropdownItem = ReactTestUtils.renderIntoDocument(
         <Dropdown type='utility' hideCallback={hideFunction} />
       );
 
@@ -81,7 +81,7 @@ describe('Dropdown', () => {
     });
 
     it('action', () => {
-      dropdownItem = TestUtils.renderIntoDocument(
+      dropdownItem = ReactTestUtils.renderIntoDocument(
         <Dropdown type='action' hideCallback={hideFunction} />
       );
 

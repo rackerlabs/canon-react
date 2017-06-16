@@ -2,13 +2,13 @@ import PopoverOverlay from '../transpiled/PopoverOverlay';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import TestUtils from 'react-addons-test-utils';
+import ReactTestUtils from 'react-dom/test-utils';
 
 describe('PopoverOverlay', () => {
   let popover;
 
   const renderPopover = (placement) => {
-    popover = TestUtils.renderIntoDocument(
+    popover = ReactTestUtils.renderIntoDocument(
       <PopoverOverlay className='test-class' placement={placement}>
         Hello
       </PopoverOverlay>
@@ -35,7 +35,7 @@ describe('PopoverOverlay', () => {
     let popoverContent;
 
     renderPopover('right');
-    popoverContent = TestUtils.findRenderedDOMComponentWithClass(popover, 'rs-popover-content');
+    popoverContent = ReactTestUtils.findRenderedDOMComponentWithClass(popover, 'rs-popover-content');
 
     expect(ReactDOM.findDOMNode(popoverContent).textContent).toBe('Hello');
   });
@@ -43,7 +43,7 @@ describe('PopoverOverlay', () => {
   describe('arrow placement', () => {
 
     function arrow() {
-      return TestUtils.findRenderedDOMComponentWithClass(popover, 'rs-popover-arrow').getDOMNode();
+      return ReactTestUtils.findRenderedDOMComponentWithClass(popover, 'rs-popover-arrow');
     }
 
     it('right', () => {
@@ -73,7 +73,7 @@ describe('PopoverOverlay', () => {
     it('is not rendered with center placement', () => {
       renderPopover('center');
 
-      expect(TestUtils.scryRenderedDOMComponentsWithClass(popover, 'rs-popover-arrow').length).toBe(0);
+      expect(ReactTestUtils.scryRenderedDOMComponentsWithClass(popover, 'rs-popover-arrow').length).toBe(0);
     });
   });
 });

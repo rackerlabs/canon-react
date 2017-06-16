@@ -2,27 +2,25 @@ import PopoverFooter from '../transpiled/PopoverFooter';
 
 import ButtonGroup from '../transpiled/ButtonGroup';
 import React from 'react';
-import TestUtils from 'react-addons-test-utils';
+import { shallow } from 'enzyme';
 
 describe('PopoverFooter', () => {
-  let popoverFooter, renderer;
+  let popoverFooter;
 
   beforeEach(() => {
-    renderer = TestUtils.createRenderer();
-    renderer.render(
+    popoverFooter = shallow(
       <PopoverFooter className="test-additional-class">
         Hello
       </PopoverFooter>
     );
-    popoverFooter = renderer.getRenderOutput();
   });
 
   it('renders a popover body with additional class', () => {
-    expect(popoverFooter.type).toBe(ButtonGroup);
-    expect(popoverFooter.props.className).toEqual('rs-popover-footer test-additional-class');
+    expect(popoverFooter.type()).toBe(ButtonGroup);
+    expect(popoverFooter.hasClass('rs-popover-footer test-additional-class')).toBe(true);
   });
 
   it('renders children', () => {
-    expect(popoverFooter.props.children).toEqual('Hello');
+    expect(popoverFooter.children().equals('Hello')).toBe(true);
   });
 });

@@ -1,7 +1,7 @@
 import Criteria from '../transpiled/Criteria';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import TestUtils from 'react-addons-test-utils';
+import ReactTestUtils from 'react-dom/test-utils';
 
 describe('Criteria', () => {
   let criteria;
@@ -9,7 +9,7 @@ describe('Criteria', () => {
   const onSelectionChanged = jasmine.createSpy('onSelectionChanged');
 
   const renderCriteria = (isSelected, disabled, hidden) => {
-    return TestUtils.renderIntoDocument(
+    return ReactTestUtils.renderIntoDocument(
       <Criteria
        label={'Next Gen'}
        count={5}
@@ -34,37 +34,37 @@ describe('Criteria', () => {
   it('has the right class', () => {
     let listItem;
 
-    listItem = TestUtils.findRenderedDOMComponentWithTag(criteria, 'li');
-    expect(listItem.getDOMNode()).toHaveClass('rs-facet-item');
+    listItem = ReactTestUtils.findRenderedDOMComponentWithTag(criteria, 'li');
+    expect(listItem).toHaveClass('rs-facet-item');
   });
 
   it('has the right title', () => {
     let listItem;
 
-    listItem = TestUtils.findRenderedDOMComponentWithTag(criteria, 'li');
-    expect(listItem.getDOMNode().title).toBe('Next Gen');
+    listItem = ReactTestUtils.findRenderedDOMComponentWithTag(criteria, 'li');
+    expect(listItem.title).toBe('Next Gen');
   });
 
   it('shows an element with the icon class', () => {
-    expect(TestUtils.findRenderedDOMComponentWithClass(criteria, 'rs-active')).not.toBeNull();
+    expect(ReactTestUtils.findRenderedDOMComponentWithClass(criteria, 'rs-active')).not.toBeNull();
   });
 
   it('has the right label', () => {
     let label;
 
-    label = TestUtils.findRenderedDOMComponentWithClass(criteria, 'rs-facet-label');
-    expect(label.getDOMNode().textContent).toBe('Next Gen');
+    label = ReactTestUtils.findRenderedDOMComponentWithClass(criteria, 'rs-facet-label');
+    expect(label.textContent).toBe('Next Gen');
   });
 
   it('has the right count', () => {
     let listItem;
 
-    listItem = TestUtils.findRenderedDOMComponentWithClass(criteria, 'rs-facet-count');
-    expect(listItem.getDOMNode().textContent).toBe('(5)');
+    listItem = ReactTestUtils.findRenderedDOMComponentWithClass(criteria, 'rs-facet-count');
+    expect(listItem.textContent).toBe('(5)');
   });
 
   it('handles changing selection', () => {
-    TestUtils.Simulate.click(TestUtils.findRenderedDOMComponentWithTag(criteria, 'li'));
+    ReactTestUtils.Simulate.click(ReactTestUtils.findRenderedDOMComponentWithTag(criteria, 'li'));
     expect(onSelectionChanged).toHaveBeenCalledWith(true, 'ng');
   });
 
@@ -74,15 +74,15 @@ describe('Criteria', () => {
     });
 
     it('handles changing selection', () => {
-      TestUtils.Simulate.click(TestUtils.findRenderedDOMComponentWithTag(criteria, 'li'));
+      ReactTestUtils.Simulate.click(ReactTestUtils.findRenderedDOMComponentWithTag(criteria, 'li'));
       expect(onSelectionChanged).toHaveBeenCalledWith(false, 'ng');
     });
 
     it('has the correct class', () => {
       let listItem;
 
-      listItem = TestUtils.findRenderedDOMComponentWithTag(criteria, 'li');
-      expect(listItem.getDOMNode()).toHaveClass('selected');
+      listItem = ReactTestUtils.findRenderedDOMComponentWithTag(criteria, 'li');
+      expect(listItem).toHaveClass('selected');
     });
   });
 
@@ -94,12 +94,12 @@ describe('Criteria', () => {
     it('has the correct class', () => {
       let listItem;
 
-      listItem = TestUtils.findRenderedDOMComponentWithTag(criteria, 'li');
-      expect(listItem.getDOMNode()).toHaveClass('disabled');
+      listItem = ReactTestUtils.findRenderedDOMComponentWithTag(criteria, 'li');
+      expect(listItem).toHaveClass('disabled');
     });
 
     it('does not change selection', () => {
-      TestUtils.Simulate.click(TestUtils.findRenderedDOMComponentWithTag(criteria, 'li'));
+      ReactTestUtils.Simulate.click(ReactTestUtils.findRenderedDOMComponentWithTag(criteria, 'li'));
       expect(onSelectionChanged).not.toHaveBeenCalled();
     });
   });
@@ -112,8 +112,8 @@ describe('Criteria', () => {
     it('has the correct class', () => {
       let listItem;
 
-      listItem = TestUtils.findRenderedDOMComponentWithTag(criteria, 'li');
-      expect(listItem.getDOMNode()).toHaveClass('rs-hidden');
+      listItem = ReactTestUtils.findRenderedDOMComponentWithTag(criteria, 'li');
+      expect(listItem).toHaveClass('rs-hidden');
     });
   });
 });

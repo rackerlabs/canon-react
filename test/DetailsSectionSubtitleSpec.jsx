@@ -1,40 +1,31 @@
 import DetailsSectionSubtitle from '../transpiled/DetailsSectionSubtitle';
 import React from 'react';
-import TestUtils from 'react-addons-test-utils';
+import { shallow } from 'enzyme';
 
 describe('DetailsSectionSubtitle', () => {
-  let renderer;
-
   const renderWithProps = (props) => {
-    renderer.render(
+    return shallow(
       <DetailsSectionSubtitle { ...props }>
         Test Detail Section Subtitle
       </DetailsSectionSubtitle>
     );
   };
 
-  beforeEach(() => {
-    renderer = TestUtils.createRenderer();
-  });
-
   it('renders only default class name if none is provided', () => {
-    renderWithProps({});
-    const detailsSectionSubtitle = renderer.getRenderOutput();
+    const detailsSectionSubtitle = renderWithProps({});
 
-    expect(detailsSectionSubtitle.props.className).toEqual('rs-detail-section-subtitle');
+    expect(detailsSectionSubtitle.hasClass('rs-detail-section-subtitle')).toBe(true);
   });
 
   it('renders correct children passed in', () => {
-    renderWithProps({});
-    const detailsSectionSubtitle = renderer.getRenderOutput();
+    const detailsSectionSubtitle = renderWithProps({});
 
-    expect(detailsSectionSubtitle.props.children).toEqual('Test Detail Section Subtitle');
+    expect(detailsSectionSubtitle.prop('children')).toEqual('Test Detail Section Subtitle');
   });
 
   it('renders passed in className', () => {
-    renderWithProps({ className: 'test' });
-    const detailsSectionSubtitle = renderer.getRenderOutput();
+    const detailsSectionSubtitle = renderWithProps({ className: 'test' });
 
-    expect(detailsSectionSubtitle.props.className).toEqual('rs-detail-section-subtitle test');
+    expect(detailsSectionSubtitle.hasClass('rs-detail-section-subtitle test')).toBe(true);
   });
 });

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 class Criteria extends React.Component {
@@ -41,14 +42,14 @@ class Criteria extends React.Component {
 }
 
 Criteria.propTypes = {
-  label: React.PropTypes.string.isRequired,
-  id: React.PropTypes.string.isRequired,
-  count: React.PropTypes.number,
-  iconClass: React.PropTypes.string,
-  isSelected: React.PropTypes.bool,
-  disabled: React.PropTypes.bool,
-  hidden: React.PropTypes.bool,
-  onSelectionChanged: React.PropTypes.func
+  label: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+  count: PropTypes.number,
+  iconClass: PropTypes.string,
+  isSelected: PropTypes.bool,
+  disabled: PropTypes.bool,
+  hidden: PropTypes.bool,
+  onSelectionChanged: PropTypes.func
 };
 
 export default Criteria;

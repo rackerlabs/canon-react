@@ -1,7 +1,7 @@
 import FacetToggler from '../transpiled/FacetToggler';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import TestUtils from 'react-addons-test-utils';
+import ReactTestUtils from 'react-dom/test-utils';
 
 describe('FacetToggler', () => {
   let facetToggler;
@@ -9,7 +9,7 @@ describe('FacetToggler', () => {
   const toggleFunction = jasmine.createSpy('onToggle');
 
   beforeEach(() => {
-    facetToggler = TestUtils.renderIntoDocument(
+    facetToggler = ReactTestUtils.renderIntoDocument(
       <FacetToggler criteriaTruncated={true} onToggleChange={toggleFunction} />
     );
   });
@@ -29,19 +29,19 @@ describe('FacetToggler', () => {
   it('renders a toggle arrow icon', () => {
     let arrowIcon;
 
-    arrowIcon = TestUtils.findRenderedDOMComponentWithTag(facetToggler, 'i');
-    expect(arrowIcon.getDOMNode()).toHaveClass('rs-facet-toggle-arrow');
+    arrowIcon = ReactTestUtils.findRenderedDOMComponentWithTag(facetToggler, 'i');
+    expect(arrowIcon).toHaveClass('rs-facet-toggle-arrow');
   });
 
   it('triggers the toggleFunction when clicked', function () {
-    TestUtils.Simulate.click(ReactDOM.findDOMNode(facetToggler));
+    ReactTestUtils.Simulate.click(ReactDOM.findDOMNode(facetToggler));
 
     expect(toggleFunction).toHaveBeenCalledWith(false);
   });
 
   describe('criteria is not truncated', () => {
     beforeEach(() => {
-      facetToggler = TestUtils.renderIntoDocument(
+      facetToggler = ReactTestUtils.renderIntoDocument(
         <FacetToggler criteriaTruncated={false} onToggleChange={toggleFunction} />
       );
     });
@@ -51,7 +51,7 @@ describe('FacetToggler', () => {
     });
 
     it('triggers the toggleFunction when clicked', function () {
-      TestUtils.Simulate.click(ReactDOM.findDOMNode(facetToggler));
+      ReactTestUtils.Simulate.click(ReactDOM.findDOMNode(facetToggler));
 
       expect(toggleFunction).toHaveBeenCalledWith(true);
     });

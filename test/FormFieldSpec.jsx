@@ -1,119 +1,110 @@
 import FormField from '../transpiled/FormField';
 import React from 'react';
-import TestUtils from 'react-addons-test-utils';
+import { shallow } from 'enzyme';
 
 describe('FormField', () => {
-  let renderer, formField;
+  let formField;
 
   const renderWithProps = (props) => {
-    renderer.render(
+    if (('label' in props) === false) {
+      props['label'] = 'label';
+    }
+    return shallow(
       <FormField { ...props }>
         Test Content
       </FormField>
     );
   };
 
-  beforeEach(() => {
-    renderer = TestUtils.createRenderer();
-  });
-
   describe('when there is an error', () => {
     beforeEach(() => {
-      renderWithProps({ error: 'Test error message' });
-      formField = renderer.getRenderOutput();
+      formField = renderWithProps({ error: 'Test error message' });
     });
 
     it('adds the error class', () => {
-      expect(formField.props.className).toEqual('rs-control-group error');
+      expect(formField.hasClass('rs-control-group error')).toBe(true);
     });
 
     it('passes the message to the validation block', () => {
-      const controls = formField.props.children[1];
-      const validationBlock = controls.props.children[2];
+      const controls = formField.childAt(1);
+      const validationBlock = controls.childAt(2);
 
-      expect(validationBlock.props.value).toBe('Test error message');
+      expect(validationBlock.prop('value')).toBe('Test error message');
     });
   });
 
   describe('when there is inline validation', () => {
     beforeEach(() => {
-      renderWithProps({ inlineValidation: true });
-      formField = renderer.getRenderOutput();
+      formField = renderWithProps({ inlineValidation: true });
     });
 
     it('passes the inline validation bool to the validation block', () => {
-      const controls = formField.props.children[1];
-      const validationBlock = controls.props.children[2];
+      const controls = formField.childAt(1);
+      const validationBlock = controls.childAt(2);
 
-      expect(validationBlock.props.inline).toBe(true);
+      expect(validationBlock.prop('inline')).toBe(true);
     });
   });
 
   describe('when there is a success message', () => {
     beforeEach(() => {
-      renderWithProps({ success: 'Test success message' });
-      formField = renderer.getRenderOutput();
+      formField = renderWithProps({ success: 'Test success message' });
     });
 
     it('adds the success class', () => {
-      expect(formField.props.className).toEqual('rs-control-group success');
+      expect(formField.hasClass('rs-control-group success')).toBe(true);
     });
 
     it('passes the message to the validation block', () => {
-      const controls = formField.props.children[1];
-      const validationBlock = controls.props.children[2];
+      const controls = formField.childAt(1);
+      const validationBlock = controls.childAt(2);
 
-      expect(validationBlock.props.value).toBe('Test success message');
+      expect(validationBlock.prop('value')).toBe('Test success message');
     });
   });
 
   describe('when success is true', () => {
     beforeEach(() => {
-      renderWithProps({ success: true });
-      formField = renderer.getRenderOutput();
+      formField = renderWithProps({ success: true });
     });
 
     it('adds the success class', () => {
-      expect(formField.props.className).toEqual('rs-control-group success');
+      expect(formField.hasClass('rs-control-group success')).toBe(true);
     });
   });
 
   it('renders the children', () => {
-    renderWithProps({ success: 'Test success message' });
-    formField = renderer.getRenderOutput();
+    formField = renderWithProps({ success: 'Test success message' });
 
-    const controls = formField.props.children[1];
-    const children = controls.props.children[0];
+    const controls = formField.childAt(1);
+    const children = controls.childAt(0);
 
-    expect(children).toEqual('Test Content');
+    expect(children.equals('Test Content')).toBe(true);
   });
 
   it('renders passed in dom properties', () => {
-    renderWithProps({ id: 'form-field-id', className: 'form-field-class' });
-    formField = renderer.getRenderOutput();
+    formField = renderWithProps({ id: 'form-field-id', className: 'form-field-class' });
 
-    expect(formField.props.id).toEqual('form-field-id');
-    expect(formField.props.className).toEqual('form-field-class rs-control-group');
+    expect(formField.prop('id')).toEqual('form-field-id');
+    expect(formField.hasClass('form-field-class rs-control-group')).toBe(true);
   });
 
   it('passes the help message to the FormFieldHelp', () => {
-    renderWithProps({ success: 'Test success message', help: 'Test help message' });
-    formField = renderer.getRenderOutput();
+    formField = renderWithProps({ success: 'Test success message', help: 'Test help message' });
 
-    const controls = formField.props.children[1];
-    const formFieldHelp = controls.props.children[1];
+    const controls = formField.childAt(1);
+    const formFieldHelp = controls.childAt(1);
 
-    expect(formFieldHelp.props.help).toEqual('Test help message');
+    expect(formFieldHelp.prop('help')).toEqual('Test help message');
   });
 
   it('displays the label', () => {
-    renderWithProps({ success: 'Test success message', label: 'Test label' });
-    formField = renderer.getRenderOutput();
+    formField = renderWithProps({ success: 'Test success message', label: 'Test label' });
 
-    const label = formField.props.children[0];
+    const label = formField.childAt(0);
 
-    expect(label.type).toBe('label');
-    expect(label.props.className).toBe('rs-control-label');
-    expect(label.props.children).toBe('Test label');
+    expect(label.type()).toBe('label');
+    expect(label.hasClass('rs-control-label')).toBe(true);
+    expect(label.prop('children')).toBe('Test label');
   });
 });

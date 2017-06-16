@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import TooltipTrigger from '../transpiled/TooltipTrigger';
-import TestUtils from 'react-addons-test-utils';
+import ReactTestUtils from 'react-dom/test-utils';
 
 describe('TooltipTrigger', () => {
   let trigger, tether, triggerParent, onShowSpy;
@@ -11,7 +11,7 @@ describe('TooltipTrigger', () => {
     tether = jasmine.createSpyObj('tether', ['destroy']);
     spyOn(TooltipTrigger.prototype, '_createTether').and.returnValue(tether);
 
-    trigger = TestUtils.renderIntoDocument(
+    trigger = ReactTestUtils.renderIntoDocument(
       <TooltipTrigger placement={placement} content={'The tooltip content'} onShow={onShow}>
         <span>Tooltip Target</span>
       </TooltipTrigger>
@@ -33,7 +33,7 @@ describe('TooltipTrigger', () => {
 
     renderTrigger();
 
-    target = TestUtils.findRenderedDOMComponentWithTag(trigger, 'span');
+    target = ReactTestUtils.findRenderedDOMComponentWithTag(trigger, 'span');
 
     expect(target).not.toBeNull();
   });
@@ -43,8 +43,8 @@ describe('TooltipTrigger', () => {
 
     renderTrigger('bottom-right', null);
 
-    target = TestUtils.findRenderedDOMComponentWithTag(trigger, 'span');
-    TestUtils.Simulate.mouseOver(target);
+    target = ReactTestUtils.findRenderedDOMComponentWithTag(trigger, 'span');
+    ReactTestUtils.Simulate.mouseOver(target);
     jasmine.clock().tick(250);
     tooltip = document.getElementsByClassName('rs-tooltip')[0];
 
@@ -57,12 +57,12 @@ describe('TooltipTrigger', () => {
     beforeEach(() => {
       renderTrigger();
 
-      target = TestUtils.findRenderedDOMComponentWithTag(trigger, 'span');
+      target = ReactTestUtils.findRenderedDOMComponentWithTag(trigger, 'span');
       tooltip = document.getElementsByClassName('rs-tooltip')[0];
     });
 
     it('shows the tooltip when hovering over the target', () => {
-      TestUtils.Simulate.mouseOver(target);
+      ReactTestUtils.Simulate.mouseOver(target);
 
       jasmine.clock().tick(250);
 
@@ -70,17 +70,17 @@ describe('TooltipTrigger', () => {
     });
 
     it('hides the tooltip when leaving the target', () => {
-      TestUtils.Simulate.mouseOver(target);
+      ReactTestUtils.Simulate.mouseOver(target);
       jasmine.clock().tick(250);
 
-      TestUtils.SimulateNative.mouseOut(target);
+      ReactTestUtils.SimulateNative.mouseOut(target);
       jasmine.clock().tick(250);
 
       expect(tooltip).not.toHaveClass('visible');
     });
 
     it('shows the tooltip focusing on the target', () => {
-      TestUtils.Simulate.focus(target);
+      ReactTestUtils.Simulate.focus(target);
 
       jasmine.clock().tick(250);
 
@@ -88,62 +88,62 @@ describe('TooltipTrigger', () => {
     });
 
     it('fires the onShow prop when the tooltip is shown', () => {
-      TestUtils.Simulate.mouseOver(target);
+      ReactTestUtils.Simulate.mouseOver(target);
       jasmine.clock().tick(250);
 
       expect(onShowSpy).toHaveBeenCalledWith();
     });
 
     it('hides the tooltip on blur of the target', () => {
-      TestUtils.Simulate.focus(target);
+      ReactTestUtils.Simulate.focus(target);
       jasmine.clock().tick(250);
 
-      TestUtils.SimulateNative.blur(target);
+      ReactTestUtils.SimulateNative.blur(target);
       jasmine.clock().tick(250);
 
       expect(tooltip).not.toHaveClass('visible');
     });
 
     it('shows the tooltip when hovering over the tooltip', () => {
-      TestUtils.Simulate.mouseOver(target);
+      ReactTestUtils.Simulate.mouseOver(target);
       jasmine.clock().tick(250);
 
       tooltipContent = document.getElementsByClassName('rs-tooltip-inner')[0];
-      TestUtils.Simulate.mouseOver(tooltipContent);
-      TestUtils.SimulateNative.mouseOut(target);
+      ReactTestUtils.Simulate.mouseOver(tooltipContent);
+      ReactTestUtils.SimulateNative.mouseOut(target);
       jasmine.clock().tick(250);
 
       expect(tooltip).toHaveClass('visible');
     });
 
     it('hides the tooltip when leaving the tooltip', () => {
-      TestUtils.Simulate.mouseOver(target);
+      ReactTestUtils.Simulate.mouseOver(target);
       jasmine.clock().tick(250);
 
       tooltipContent = document.getElementsByClassName('rs-tooltip-inner')[0];
 
-      TestUtils.SimulateNative.mouseOut(target);
-      TestUtils.Simulate.mouseOver(tooltipContent);
+      ReactTestUtils.SimulateNative.mouseOut(target);
+      ReactTestUtils.Simulate.mouseOver(tooltipContent);
       jasmine.clock().tick(250);
 
-      TestUtils.SimulateNative.mouseOut(tooltipContent);
+      ReactTestUtils.SimulateNative.mouseOut(tooltipContent);
       jasmine.clock().tick(260);
 
       expect(tooltip).not.toHaveClass('visible');
     });
 
     it('shows the tooltip when re-entering the tooltip before delay', () => {
-      TestUtils.Simulate.mouseOver(target);
+      ReactTestUtils.Simulate.mouseOver(target);
       jasmine.clock().tick(250);
 
       tooltipContent = document.getElementsByClassName('rs-tooltip-inner')[0];
 
-      TestUtils.SimulateNative.mouseOut(target);
-      TestUtils.Simulate.mouseOver(tooltipContent);
+      ReactTestUtils.SimulateNative.mouseOut(target);
+      ReactTestUtils.Simulate.mouseOver(tooltipContent);
       jasmine.clock().tick(250);
 
-      TestUtils.SimulateNative.mouseOut(tooltipContent);
-      TestUtils.Simulate.mouseOver(tooltipContent);
+      ReactTestUtils.SimulateNative.mouseOut(tooltipContent);
+      ReactTestUtils.Simulate.mouseOver(tooltipContent);
       jasmine.clock().tick(260);
 
       expect(tooltip).toHaveClass('visible');
@@ -155,8 +155,8 @@ describe('TooltipTrigger', () => {
 
     const renderTriggerAndHover = (placement) => {
       renderTrigger(placement);
-      target = TestUtils.findRenderedDOMComponentWithTag(trigger, 'span');
-      TestUtils.Simulate.mouseOver(target);
+      target = ReactTestUtils.findRenderedDOMComponentWithTag(trigger, 'span');
+      ReactTestUtils.Simulate.mouseOver(target);
       jasmine.clock().tick(250);
     };
 
@@ -300,8 +300,8 @@ describe('TooltipTrigger', () => {
     var target;
 
     renderTrigger();
-    target = TestUtils.findRenderedDOMComponentWithTag(trigger, 'span');
-    TestUtils.Simulate.mouseOver(target);
+    target = ReactTestUtils.findRenderedDOMComponentWithTag(trigger, 'span');
+    ReactTestUtils.Simulate.mouseOver(target);
     jasmine.clock().tick(250);
 
     ReactDOM.unmountComponentAtNode(ReactDOM.findDOMNode(trigger).parentNode);

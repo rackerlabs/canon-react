@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import SortDirection from './SortDirection';
 import classNames from 'classnames';
 
@@ -55,10 +56,10 @@ TextColumnHeader.defaultProps = {
 };
 
 TextColumnHeader.propTypes = {
-  label: React.PropTypes.string.isRequired,
-  sortable: React.PropTypes.bool.isRequired,
-  onSort: React.PropTypes.func.isRequired,
-  direction: React.PropTypes.oneOf(Object.values(SortDirection))
+  label: PropTypes.string.isRequired,
+  sortable: PropTypes.bool.isRequired,
+  onSort: PropTypes.func.isRequired,
+  direction: PropTypes.oneOf(Object.values(SortDirection))
 };
 
 export default TextColumnHeader;

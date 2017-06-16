@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const ErrorIndicator = (props) => {
   return props.value ? (
@@ -9,7 +10,7 @@ const ErrorIndicator = (props) => {
 };
 
 ErrorIndicator.propTypes = {
-  value: React.PropTypes.node
+  value: PropTypes.node
 };
 
 export default ErrorIndicator;

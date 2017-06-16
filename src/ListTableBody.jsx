@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class ListTableBody extends React.Component {
   constructor() {
@@ -34,9 +35,9 @@ ListTableBody.defaultProps = {
 };
 
 ListTableBody.propTypes = {
-  children: React.PropTypes.element.isRequired,
-  collection: React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
-  keyGenerator: React.PropTypes.func
+  children: PropTypes.element.isRequired,
+  collection: PropTypes.arrayOf(PropTypes.object).isRequired,
+  keyGenerator: PropTypes.func
 };
 
 export default ListTableBody;

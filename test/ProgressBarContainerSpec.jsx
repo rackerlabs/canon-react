@@ -1,13 +1,13 @@
 import ProgressBarContainer from '../transpiled/ProgressBarContainer';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import TestUtils from 'react-addons-test-utils';
+import ReactTestUtils from 'react-dom/test-utils';
 
 describe('ProgressBarContainer', () => {
   let progressBarContainer;
 
   beforeEach(() => {
-    progressBarContainer = TestUtils.renderIntoDocument(
+    progressBarContainer = ReactTestUtils.renderIntoDocument(
       <ProgressBarContainer/>
     );
   });
@@ -17,16 +17,16 @@ describe('ProgressBarContainer', () => {
   });
 
   it('renders the progress container', () => {
-    expect(TestUtils.findRenderedDOMComponentWithClass(progressBarContainer, 'rs-progress')).not.toBeNull();
+    expect(ReactTestUtils.findRenderedDOMComponentWithClass(progressBarContainer, 'rs-progress')).not.toBeNull();
   });
 
   it('renders the inner progress container', () => {
-    expect(TestUtils.findRenderedDOMComponentWithClass(progressBarContainer, 'rs-progress-inner')).not.toBeNull();
+    expect(ReactTestUtils.findRenderedDOMComponentWithClass(progressBarContainer, 'rs-progress-inner')).not.toBeNull();
   });
 
   describe('size', () => {
     const renderWithSize = (size) => {
-      progressBarContainer = TestUtils.renderIntoDocument(<ProgressBarContainer size={size} />);
+      progressBarContainer = ReactTestUtils.renderIntoDocument(<ProgressBarContainer size={size} />);
     };
 
     it('defaults to no size', () => {

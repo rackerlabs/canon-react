@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import ProgressBarContainer, { SIZE_CLASSES } from './ProgressBarContainer';
 import ProgressSegment, { STATUS_CLASSES, TYPE_CLASSES } from './ProgressSegment';
 
@@ -15,10 +16,10 @@ class ProgressBar extends React.Component {
 }
 
 ProgressBar.propTypes = {
-  progress: React.PropTypes.number,
-  status: React.PropTypes.oneOf(Object.keys(STATUS_CLASSES)),
-  type: React.PropTypes.oneOf(Object.keys(TYPE_CLASSES)),
-  size: React.PropTypes.oneOf(Object.keys(SIZE_CLASSES))
+  progress: PropTypes.number,
+  status: PropTypes.oneOf(Object.keys(STATUS_CLASSES)),
+  type: PropTypes.oneOf(Object.keys(TYPE_CLASSES)),
+  size: PropTypes.oneOf(Object.keys(SIZE_CLASSES))
 };
 
 ProgressBar.defaultProps = {

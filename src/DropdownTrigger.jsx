@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import Tether from 'tether';
 
@@ -133,8 +134,8 @@ class DropdownTrigger extends React.Component {
 }
 
 DropdownTrigger.propTypes = {
-  dropdown: React.PropTypes.element,
-  alignment: React.PropTypes.oneOf(['left', 'right'])
+  dropdown: PropTypes.element,
+  alignment: PropTypes.oneOf(['left', 'right'])
 };
 
 DropdownTrigger.defaultProps = {

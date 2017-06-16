@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import Tether from 'tether';
 
@@ -182,9 +183,9 @@ class TooltipTrigger extends React.Component {
 }
 
 TooltipTrigger.propTypes = {
-  onShow: React.PropTypes.func,
-  content: React.PropTypes.node.isRequired,
-  placement: React.PropTypes.oneOf(Object.keys(PLACEMENT))
+  onShow: PropTypes.func,
+  content: PropTypes.node.isRequired,
+  placement: PropTypes.oneOf(Object.keys(PLACEMENT))
 };
 
 TooltipTrigger.defaultProps = {

@@ -2,7 +2,8 @@ import Popover from '../transpiled/Popover';
 import FormPopover from '../transpiled/FormPopover';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import TestUtils from 'react-addons-test-utils';
+import ReactTestUtils from 'react-dom/test-utils';
+import { shallow } from 'enzyme';
 
 import Button from '../transpiled/Button';
 import Form from '../transpiled/Form';
@@ -56,7 +57,7 @@ describe('FormPopover', () => {
     });
 
     it('prevents default behavior on submit', () => {
-      TestUtils.Simulate.click(
+      ReactTestUtils.Simulate.click(
         document.querySelector('.rs-btn-primary'),
         { preventDefault: eventSpy }
       );
@@ -65,13 +66,13 @@ describe('FormPopover', () => {
     });
 
     it('fires the submit callback on click', () => {
-      TestUtils.Simulate.click(document.querySelector('.rs-btn-primary'));
+      ReactTestUtils.Simulate.click(document.querySelector('.rs-btn-primary'));
 
       expect(onSubmit).toHaveBeenCalled();
     });
 
     it('prevents default behavior on cancel', () => {
-      TestUtils.Simulate.click(
+      ReactTestUtils.Simulate.click(
         document.querySelector('.rs-btn-link'),
         { preventDefault: eventSpy }
       );
@@ -80,7 +81,7 @@ describe('FormPopover', () => {
     });
 
     it('fires the request close callback on cancel', () => {
-      TestUtils.Simulate.click(document.querySelector('.rs-btn-link'));
+      ReactTestUtils.Simulate.click(document.querySelector('.rs-btn-link'));
 
       expect(onCancel).toHaveBeenCalled();
     });
@@ -91,21 +92,26 @@ describe('FormPopover', () => {
       form, popover, popoverBody, popoverFooter, popoverOverlay, processingIndicator, submit;
 
     const shallowRenderPopover = (popoverProps) => {
-      const renderer = TestUtils.createRenderer();
-      renderer.render(formPopover(popoverProps));
+      let submitIndex, footerComponents, innerComponents;
+      submitIndex = 1;
+      popover = shallow(formPopover(popoverProps));
 
-      popover = renderer.getRenderOutput();
-      popoverOverlay = popover.props.children;
-      form = popoverOverlay.props.children;
-      [ popoverBody, popoverFooter ] = form.props.children;
-      [
-        errorIndicator,
-        submit,
-        additionalControls,
-        cancel,
-        additionalFooterContent,
-        processingIndicator
-      ] = popoverFooter.props.children;
+      popoverOverlay = popover.children();
+      form = popoverOverlay.children();
+      [ popoverBody, popoverFooter ] = form.children().map((n) => n);
+
+      footerComponents = popoverFooter.children();
+
+      errorIndicator = footerComponents.first();
+      submit = footerComponents.at(submitIndex);
+      processingIndicator = footerComponents.last();
+      innerComponents = footerComponents.slice(submitIndex + 1, footerComponents.length - 1);
+      additionalControls = innerComponents.findWhere((n) => n.type() === Button && !n.children().equals('Cancel'));
+      cancel = innerComponents.findWhere((n) => n.type() === Button && n.children().equals('Cancel'));
+      additionalFooterContent = innerComponents.last();
+      if (cancel.equals(additionalFooterContent.getNode())) {
+        additionalFooterContent = undefined;
+      }
     };
 
     beforeEach(() => {
@@ -114,78 +120,78 @@ describe('FormPopover', () => {
     });
 
     it('renders the Popover', () => {
-      expect(popover.type).toBe(Popover);
+      expect(popover.type()).toBe(Popover);
     });
 
     it('renders the PopoverOverlay', () => {
-      expect(popoverOverlay.type).toBe(PopoverOverlay);
+      expect(popoverOverlay.type()).toBe(PopoverOverlay);
     });
 
     it('renders the Form', () => {
-      expect(form.type).toBe(Form);
+      expect(form.type()).toBe(Form);
     });
 
     it('passes the size prop to the form', () => {
       shallowRenderPopover({ formSize: 'medium' });
-      expect(form.props.size).toBe('medium');
+      expect(form.prop('size')).toBe('medium');
     });
 
     it('defaults the horizontal prop to true', () => {
-      expect(form.props.horizontal).toBe(true);
+      expect(form.prop('horizontal')).toBe(true);
     });
 
     it('passes the horizontal prop to the form', () => {
       shallowRenderPopover({ horizontal: false });
-      expect(form.props.horizontal).toBe(false);
+      expect(form.prop('horizontal')).toBe(false);
     });
 
     it('renders the PopoverBody', () => {
-      expect(popoverBody.type).toBe(PopoverBody);
+      expect(popoverBody.type()).toBe(PopoverBody);
     });
 
     it('renders the children within the PopoverBody', () => {
-      expect(popoverBody.props.children).toEqual('testing child rendering');
+      expect(popoverBody.children().equals('testing child rendering')).toBe(true);
     });
 
     it('renders the PopoverFooter', () => {
-      expect(popoverFooter.type).toBe(PopoverFooter);
+      expect(popoverFooter.type()).toBe(PopoverFooter);
     });
 
     it('renders the ErrorIndicator', () => {
-      expect(errorIndicator.type).toBe(ErrorIndicator);
+      expect(errorIndicator.type()).toBe(ErrorIndicator);
     });
 
     it('passes errors to the error indicator', () => {
       shallowRenderPopover({ error: 'this is a test error message' });
-      expect(errorIndicator.props.value).toBe('this is a test error message');
+      expect(errorIndicator.prop('value')).toBe('this is a test error message');
     });
 
     it('renders the submit component', () => {
-      expect(submit.type).toBe(Button);
+      expect(submit.type()).toBe(Button);
     });
 
     it('has the correct canonStyle on the submit component', () => {
-      expect(submit.props.canonStyle).toBe('primary');
+      expect(submit.prop('canonStyle')).toBe('primary');
     });
 
     it('enables the submit component', () => {
-      expect(submit.props.enabled).toBe(true);
+      expect(submit.prop('enabled')).toBe(true);
     });
 
     it('renders the additionalControls if passed in', () => {
-      expect(additionalControls).toBe(anotherButton);
+      expect(additionalControls.equals(anotherButton)).toBe(true);
     });
 
     it('renders the cancel component', () => {
-      expect(cancel.type).toBe(Button);
+      expect(cancel.type()).toBe(Button);
     });
 
     it('has the correct canonStyle on the cancel component', () => {
-      expect(cancel.props.canonStyle).toBe('link');
+      expect(cancel.prop('canonStyle')).toBe('link');
     });
 
     it('shows the cancel component', () => {
-      expect(cancel.props.hidden).toBe(false);
+      expect(cancel.prop('hidden')).toBe(false);
     });
 
     describe('prop additionalFooterContent', () => {
@@ -196,8 +202,9 @@ describe('FormPopover', () => {
       });
 
       it('renders the content if prop is truthy', () => {
-        const actualContent = additionalFooterContent.props.children;
-        expect(actualContent).toBe(additionalContent);
+        expect(
+          additionalFooterContent.equals(<div className="rs-pull-right">{ additionalContent }</div>)
+        ).toBe(true);
       });
 
       it('does not render the wrapping element when prop is falsy', () => {
@@ -206,16 +213,16 @@ describe('FormPopover', () => {
       });
 
       it('pulls the content to the right', () => {
-        expect(additionalFooterContent.props.className).toBe('rs-pull-right');
+        expect(additionalFooterContent.hasClass('rs-pull-right')).toBe(true);
       });
     });
 
     it('renders the ProcessingIndicator', () => {
-      expect(processingIndicator.type).toBe(ProcessingIndicator);
+      expect(processingIndicator.type()).toBe(ProcessingIndicator);
     });
 
     it('hides the ProcessingIndicator', () => {
-      expect(processingIndicator.props.hidden).toBe(true);
+      expect(processingIndicator.prop('hidden')).toBe(true);
     });
 
     describe('while processing', () => {
@@ -224,15 +231,15 @@ describe('FormPopover', () => {
       });
 
       it('disables submit', () => {
-        expect(submit.props.enabled).toBe(false);
+        expect(submit.prop('enabled')).toBe(false);
       });
 
       it('hides cancel', () => {
-        expect(cancel.props.hidden).toBe(true);
+        expect(cancel.prop('hidden')).toBe(true);
       });
 
       it('shows the processing indicator', () => {
-        expect(processingIndicator.props.hidden).toBe(false);
+        expect(processingIndicator.prop('hidden')).toBe(false);
       });
     });
   });

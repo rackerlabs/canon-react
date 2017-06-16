@@ -1,7 +1,7 @@
 import DropdownItem from '../transpiled/DropdownItem';
 import ReactDOM from 'react-dom';
 import React from 'react';
-import TestUtils from 'react-addons-test-utils';
+import ReactTestUtils from 'react-dom/test-utils';
 
 describe('DropdownItem', () => {
   let dropdownItem, clickFunction, hideFunction;
@@ -10,7 +10,7 @@ describe('DropdownItem', () => {
     clickFunction = jasmine.createSpy('clickFunction');
     hideFunction = jasmine.createSpy('hideFunction');
 
-    dropdownItem = TestUtils.renderIntoDocument(
+    dropdownItem = ReactTestUtils.renderIntoDocument(
       <DropdownItem
         id='dropdown-id'
         className='test-dropdown-class'
@@ -27,7 +27,7 @@ describe('DropdownItem', () => {
   });
 
   it('renders a dropdownItem', () => {
-    expect(TestUtils.findRenderedDOMComponentWithTag(dropdownItem, 'li')).not.toBeNull();
+    expect(ReactTestUtils.findRenderedDOMComponentWithTag(dropdownItem, 'li')).not.toBeNull();
   });
 
   it('keeps the passed in classes', () => {
@@ -49,7 +49,7 @@ describe('DropdownItem', () => {
   });
 
   it('passes innerProps to innerElement', () => {
-    const innerElement = TestUtils.findRenderedDOMComponentWithTag(dropdownItem, 'a').getDOMNode();
+    const innerElement = ReactTestUtils.findRenderedDOMComponentWithTag(dropdownItem, 'a');
     expect(innerElement.href).toBe('https://rackerlabs.github.io/canon-react/');
   });
 
@@ -58,13 +58,13 @@ describe('DropdownItem', () => {
   });
 
   it('executes the click function when clicked', () => {
-    TestUtils.Simulate.click(ReactDOM.findDOMNode(dropdownItem));
+    ReactTestUtils.Simulate.click(ReactDOM.findDOMNode(dropdownItem));
 
     expect(clickFunction).toHaveBeenCalled();
   });
 
   it('executes the hide callback when clicked', () => {
-    TestUtils.Simulate.click(ReactDOM.findDOMNode(dropdownItem));
+    ReactTestUtils.Simulate.click(ReactDOM.findDOMNode(dropdownItem));
 
     expect(hideFunction).toHaveBeenCalled();
   });
@@ -72,48 +72,48 @@ describe('DropdownItem', () => {
   describe('dropdown types', () => {
     describe('link', () => {
       it('renders an rs-dropdown-link', () => {
-        dropdownItem = TestUtils.renderIntoDocument(
+        dropdownItem = ReactTestUtils.renderIntoDocument(
           <DropdownItem type='link'/>
         );
 
-        expect(TestUtils.findRenderedDOMComponentWithTag(dropdownItem, 'a').getDOMNode()).toHaveClass('rs-dropdown-link');
+        expect(ReactTestUtils.findRenderedDOMComponentWithTag(dropdownItem, 'a')).toHaveClass('rs-dropdown-link');
       });
     });
 
     describe('category', () => {
       it('renders an rs-dropdown-category', () => {
-        dropdownItem = TestUtils.renderIntoDocument(
+        dropdownItem = ReactTestUtils.renderIntoDocument(
           <DropdownItem type='category'/>
         );
 
-        expect(TestUtils.findRenderedDOMComponentWithTag(dropdownItem, 'span').getDOMNode()).toHaveClass('rs-dropdown-category');
+        expect(ReactTestUtils.findRenderedDOMComponentWithTag(dropdownItem, 'span')).toHaveClass('rs-dropdown-category');
       });
     });
 
     describe('text', () => {
       it('renders an rs-dropdown-text', () => {
-        dropdownItem = TestUtils.renderIntoDocument(
+        dropdownItem = ReactTestUtils.renderIntoDocument(
           <DropdownItem type='text'/>
         );
 
-        expect(TestUtils.findRenderedDOMComponentWithTag(dropdownItem, 'span').getDOMNode()).toHaveClass('rs-dropdown-text');
+        expect(ReactTestUtils.findRenderedDOMComponentWithTag(dropdownItem, 'span')).toHaveClass('rs-dropdown-text');
       });
     });
 
     describe('divider', () => {
       it('renders an rs-divider', () => {
-        dropdownItem = TestUtils.renderIntoDocument(
+        dropdownItem = ReactTestUtils.renderIntoDocument(
           <DropdownItem type='divider'/>
         );
 
-        expect(TestUtils.findRenderedDOMComponentWithTag(dropdownItem, 'div').getDOMNode()).toHaveClass('rs-divider');
+        expect(ReactTestUtils.findRenderedDOMComponentWithTag(dropdownItem, 'div')).toHaveClass('rs-divider');
       });
     });
   });
 
   describe('when disabled', () => {
     beforeEach(() => {
-      dropdownItem = TestUtils.renderIntoDocument(
+      dropdownItem = ReactTestUtils.renderIntoDocument(
         <DropdownItem enabled={false} onClick={clickFunction}>DropdownItem text</DropdownItem>
       );
     });
@@ -123,7 +123,7 @@ describe('DropdownItem', () => {
     });
 
     it('does not execute the click function when clicked', () => {
-      TestUtils.Simulate.click(ReactDOM.findDOMNode(dropdownItem));
+      ReactTestUtils.Simulate.click(ReactDOM.findDOMNode(dropdownItem));
 
       expect(clickFunction).not.toHaveBeenCalled();
     });

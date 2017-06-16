@@ -1,7 +1,8 @@
 import FacetsSection from '../transpiled/FacetsSection';
+import Criteria from '../transpiled/Criteria';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import TestUtils from 'react-addons-test-utils';
+import ReactTestUtils from 'react-dom/test-utils';
 
 describe('FacetsSection', () => {
   let section, child, selectedCriteria;
@@ -13,7 +14,7 @@ describe('FacetsSection', () => {
   const onClearAll = jasmine.createSpy('onClearAll');
 
   const renderFacetsSection = (selectedCriteria, children) => {
-    return TestUtils.renderIntoDocument(
+    return ReactTestUtils.renderIntoDocument(
       <FacetsSection
        sectionHeader="test header"
        selectedCriteria={selectedCriteria}
@@ -33,7 +34,7 @@ describe('FacetsSection', () => {
     onCriteriaDeselection.calls.reset();
     onFacetClear.calls.reset();
     onClearAll.calls.reset();
-    child = <div id='facetId' className='facetClass' />;
+    child = <Criteria id='criteriaId' label='criteriaLabel' />;
     selectedCriteria = {};
     section = renderFacetsSection(selectedCriteria, child);
   });
@@ -45,15 +46,15 @@ describe('FacetsSection', () => {
   it('hides the clear all link', () => {
     let clearLink;
 
-    clearLink = TestUtils.findRenderedDOMComponentWithClass(section, 'rs-facet-clear-link');
-    expect(clearLink.getDOMNode()).toHaveClass('rs-hidden');
+    clearLink = ReactTestUtils.findRenderedDOMComponentWithClass(section, 'rs-facet-clear-link');
+    expect(clearLink).toHaveClass('rs-hidden');
   });
 
   describe('onSelect', () => {
     beforeEach(() => {
       let childComponent;
 
-      childComponent = TestUtils.findRenderedDOMComponentWithClass(section, 'facetClass');
+      childComponent = ReactTestUtils.findRenderedComponentWithType(section, Criteria);
       childComponent.props.onSelectionChanged(true, 'facetId', 'criteriaId');
     });
 
@@ -73,17 +74,17 @@ describe('FacetsSection', () => {
     beforeEach(() => {
       selectedCriteria = {'facetId': {'criteriaId': true}};
       section = renderFacetsSection(selectedCriteria, child);
-      clearLink = TestUtils.findRenderedDOMComponentWithClass(section, 'rs-facet-clear-link');
-      childComponent = TestUtils.findRenderedDOMComponentWithClass(section, 'facetClass');
+      clearLink = ReactTestUtils.findRenderedDOMComponentWithClass(section, 'rs-facet-clear-link');
+      childComponent = ReactTestUtils.findRenderedComponentWithType(section, Criteria);
     });
 
     it('renders the clear all link', () => {
-      expect(clearLink.getDOMNode()).not.toHaveClass('rs-hidden');
+      expect(clearLink).not.toHaveClass('rs-hidden');
     });
 
     describe('on clear all', () => {
       beforeEach(() => {
-        TestUtils.Simulate.click(clearLink);
+        ReactTestUtils.Simulate.click(clearLink);
       });
 
       it('calls selection callbacks', () => {
@@ -139,7 +140,7 @@ describe('FacetsSection', () => {
     it('does not render anything', () => {
       let sectionComponents;
 
-      sectionComponents = TestUtils.scryRenderedDOMComponentsWithClass(section, 'rs-facets');
+      sectionComponents = ReactTestUtils.scryRenderedDOMComponentsWithClass(section, 'rs-facets');
       expect(sectionComponents.length).toBe(0);
     });
   });

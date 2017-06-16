@@ -1,39 +1,33 @@
 import ErrorIndicator from '../transpiled/ErrorIndicator';
 import React from 'react';
-import TestUtils from 'react-addons-test-utils';
+import { shallow } from 'enzyme';
 
 describe('ErrorIndicator', () => {
-  let renderer, indicator;
+  let indicator;
 
   const renderWithProps = (props) => {
-    renderer.render(
+    return shallow(
       <ErrorIndicator { ...props } />
     );
   };
 
-  beforeEach(() => {
-    renderer = TestUtils.createRenderer();
-  });
-
   describe('when value is passed in', () => {
     beforeEach(() => {
-      renderWithProps({ value: 'test message' });
-      indicator = renderer.getRenderOutput();
+      indicator = renderWithProps({ value: 'test message' });
     });
 
     it('has the correct error class', () => {
-      expect(indicator.props.className).toEqual('rs-status-error');
+      expect(indicator.hasClass('rs-status-error')).toBe(true);
     });
 
     it('displays the validation message', () => {
-      expect(indicator.props.children).toBe('test message');
+      expect(indicator.prop('children')).toBe('test message');
     });
   });
 
   it('returns noscript tag if no field is passed to it', () => {
-    renderWithProps({});
-    indicator = renderer.getRenderOutput();
+    indicator = renderWithProps({});
 
-    expect(indicator.type).toBe('noscript');
+    expect(indicator.type()).toBe('noscript');
   });
 });

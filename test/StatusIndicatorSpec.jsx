@@ -1,13 +1,13 @@
 import StatusIndicator from '../transpiled/StatusIndicator';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import TestUtils from 'react-addons-test-utils';
+import ReactTestUtils from 'react-dom/test-utils';
 
 describe('StatusIndicator', () => {
   let statusIndicator;
 
   beforeEach(() => {
-    statusIndicator = TestUtils.renderIntoDocument(
+    statusIndicator = ReactTestUtils.renderIntoDocument(
       <StatusIndicator id='statusindicator-id' className='test-statusindicator-class'>Status Indicator Text</StatusIndicator>
     );
   });
@@ -18,7 +18,7 @@ describe('StatusIndicator', () => {
   });
 
   it('renders a span', () => {
-    expect(TestUtils.findRenderedDOMComponentWithTag(statusIndicator, 'span')).not.toBeNull();
+    expect(ReactTestUtils.findRenderedDOMComponentWithTag(statusIndicator, 'span')).not.toBeNull();
   });
 
   it('keeps the passed in classes', () => {
@@ -38,7 +38,7 @@ describe('StatusIndicator', () => {
   });
 
   it('is hidden when hidden is true', () => {
-    statusIndicator = TestUtils.renderIntoDocument(
+    statusIndicator = ReactTestUtils.renderIntoDocument(
       <StatusIndicator hidden={true}>StatusIndicator Text</StatusIndicator>
     );
 
@@ -47,7 +47,7 @@ describe('StatusIndicator', () => {
 
   describe('statusindicator types', () => {
     it('ok', () => {
-      statusIndicator = TestUtils.renderIntoDocument(
+      statusIndicator = ReactTestUtils.renderIntoDocument(
         <StatusIndicator status='ok'>StatusIndicator Text</StatusIndicator>
       );
 
@@ -56,7 +56,7 @@ describe('StatusIndicator', () => {
     });
 
     it('processing', () => {
-      statusIndicator = TestUtils.renderIntoDocument(
+      statusIndicator = ReactTestUtils.renderIntoDocument(
         <StatusIndicator status='processing'>StatusIndicator Text</StatusIndicator>
       );
 
@@ -65,7 +65,7 @@ describe('StatusIndicator', () => {
     });
 
     it('warning', () => {
-      statusIndicator = TestUtils.renderIntoDocument(
+      statusIndicator = ReactTestUtils.renderIntoDocument(
         <StatusIndicator status='warning'>StatusIndicator Text</StatusIndicator>
       );
 
@@ -74,7 +74,7 @@ describe('StatusIndicator', () => {
     });
 
     it('error', () => {
-      statusIndicator = TestUtils.renderIntoDocument(
+      statusIndicator = ReactTestUtils.renderIntoDocument(
         <StatusIndicator status='error'>StatusIndicator Text</StatusIndicator>
       );
 
@@ -83,7 +83,7 @@ describe('StatusIndicator', () => {
     });
 
     it('disabled', () => {
-      statusIndicator = TestUtils.renderIntoDocument(
+      statusIndicator = ReactTestUtils.renderIntoDocument(
         <StatusIndicator status='disabled'>StatusIndicator Text</StatusIndicator>
       );
 

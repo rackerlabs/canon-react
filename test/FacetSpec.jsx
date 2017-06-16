@@ -1,7 +1,8 @@
 import Facet from '../transpiled/Facet';
+import Criteria from '../transpiled/Criteria';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import TestUtils from 'react-addons-test-utils';
+import ReactTestUtils from 'react-dom/test-utils';
 
 describe('Facet', () => {
   var facet;
@@ -10,7 +11,7 @@ describe('Facet', () => {
   const onFacetClear = jasmine.createSpy('onFacetClear');
 
   const renderFacet = (selectedCriteria, truncationLength, truncationEnabled) => {
-    return TestUtils.renderIntoDocument(
+    return ReactTestUtils.renderIntoDocument(
       <Facet
        label={'facetLabel'}
        id={'facetId'}
@@ -19,7 +20,7 @@ describe('Facet', () => {
        selectedCriteria={selectedCriteria}
        truncationLength={truncationLength}
        truncationEnabled={truncationEnabled}>
-        <div className='facet-child' id='criteriaId' />
+        <Criteria id='criteriaId' label='criteriaLabel' />
       </Facet>
     );
   };
@@ -37,35 +38,35 @@ describe('Facet', () => {
   it('has collapsed class', () => {
     let section;
 
-    section = TestUtils.findRenderedDOMComponentWithClass(facet, 'rs-facet-section');
-    expect(section.getDOMNode()).toHaveClass('collapsed');
+    section = ReactTestUtils.findRenderedDOMComponentWithClass(facet, 'rs-facet-section');
+    expect(section).toHaveClass('collapsed');
   });
 
   it('hides the clear link', () => {
     let clearLink;
 
-    clearLink = TestUtils.findRenderedDOMComponentWithClass(facet, 'rs-facet-clear-link');
-    expect(clearLink.getDOMNode()).toHaveClass('rs-hidden');
+    clearLink = ReactTestUtils.findRenderedDOMComponentWithClass(facet, 'rs-facet-clear-link');
+    expect(clearLink).toHaveClass('rs-hidden');
   });
 
   it('does not render a facet toggler', () => {
     let toggleComponents;
 
-    toggleComponents = TestUtils.scryRenderedDOMComponentsWithClass(facet, 'rs-facet-section-toggle');
+    toggleComponents = ReactTestUtils.scryRenderedDOMComponentsWithClass(facet, 'rs-facet-section-toggle');
     expect(toggleComponents.length).toBe(0);
   });
 
   it('passes selected state to child', () => {
     let child;
 
-    child = TestUtils.findRenderedDOMComponentWithClass(facet, 'facet-child');
+    child = ReactTestUtils.findRenderedComponentWithType(facet, Criteria);
     expect(child.props.isSelected).toBe(false);
   });
 
   it('passes onSelectionChanged callback to child', () => {
     let child;
 
-    child = TestUtils.findRenderedDOMComponentWithClass(facet, 'facet-child');
+    child = ReactTestUtils.findRenderedComponentWithType(facet, Criteria);
     child.props.onSelectionChanged(false, 'criteriaId');
     expect(onSelectionChanged).toHaveBeenCalledWith(false, 'facetId', 'criteriaId');
   });
@@ -76,22 +77,22 @@ describe('Facet', () => {
     beforeEach(() => {
       selectedCriteria = {'criteriaId': true};
       facet = renderFacet(selectedCriteria, 5, true);
-      clearLink = TestUtils.findRenderedDOMComponentWithClass(facet, 'rs-facet-clear-link');
+      clearLink = ReactTestUtils.findRenderedDOMComponentWithClass(facet, 'rs-facet-clear-link');
     });
 
     it('shows the clear link', () => {
-      expect(clearLink.getDOMNode()).not.toHaveClass('rs-hidden');
+      expect(clearLink).not.toHaveClass('rs-hidden');
     });
 
     it('calls onFacetClear when clear is clicked', () => {
-      TestUtils.Simulate.click(clearLink);
+      ReactTestUtils.Simulate.click(clearLink);
       expect(onFacetClear).toHaveBeenCalledWith('facetId');
     });
 
     it('passes selcted state to child', () => {
       let child;
 
-      child = TestUtils.findRenderedDOMComponentWithClass(facet, 'facet-child');
+      child = ReactTestUtils.findRenderedComponentWithType(facet, Criteria);
       expect(child.props.isSelected).toBe(true);
     });
   });
@@ -101,7 +102,7 @@ describe('Facet', () => {
 
     beforeEach(() => {
       facet = renderFacet({}, 0, true);
-      toggleComponent = TestUtils.findRenderedDOMComponentWithClass(facet, 'rs-facet-section-toggle');
+      toggleComponent = ReactTestUtils.findRenderedDOMComponentWithClass(facet, 'rs-facet-section-toggle');
     });
 
     it('renders a facet toggler', () => {
@@ -111,10 +112,10 @@ describe('Facet', () => {
     it('expands when the facet toggler is clicked', () => {
       let section;
 
-      TestUtils.Simulate.click(toggleComponent);
+      ReactTestUtils.Simulate.click(toggleComponent);
 
-      section = TestUtils.findRenderedDOMComponentWithClass(facet, 'rs-facet-section');
-      expect(section.getDOMNode()).toHaveClass('expanded');
+      section = ReactTestUtils.findRenderedDOMComponentWithClass(facet, 'rs-facet-section');
+      expect(section).toHaveClass('expanded');
     });
   });
 
@@ -126,7 +127,7 @@ describe('Facet', () => {
     it('does not render a facet toggler', () => {
       let toggleComponents;
 
-      toggleComponents = TestUtils.scryRenderedDOMComponentsWithClass(facet, 'rs-facet-section-toggle');
+      toggleComponents = ReactTestUtils.scryRenderedDOMComponentsWithClass(facet, 'rs-facet-section-toggle');
       expect(toggleComponents.length).toBe(0);
     });
   });

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 import FacetToggler from './FacetToggler';
@@ -107,13 +108,13 @@ Facet.defaultProps = {
 };
 
 Facet.propTypes = {
-  label: React.PropTypes.string.isRequired,
-  id: React.PropTypes.string.isRequired,
-  onSelectionChanged: React.PropTypes.func,
-  onFacetClear: React.PropTypes.func,
-  selectedCriteria: React.PropTypes.object,
-  truncationLength: React.PropTypes.number,
-  truncationEnabled: React.PropTypes.bool
+  label: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+  onSelectionChanged: PropTypes.func,
+  onFacetClear: PropTypes.func,
+  selectedCriteria: PropTypes.object,
+  truncationLength: PropTypes.number,
+  truncationEnabled: PropTypes.bool
 };
 
 export default Facet;

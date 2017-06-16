@@ -1,55 +1,49 @@
 import FormFieldValidationBlock from '../transpiled/FormFieldValidationBlock';
 import React from 'react';
-import TestUtils from 'react-addons-test-utils';
+import { shallow } from 'enzyme';
 
 describe('FormFieldValidationBlock', () => {
-  let renderer;
-
-  beforeEach(() => {
-    renderer = TestUtils.createRenderer();
-  });
-
   it('displays the validation indicator icon', () => {
-    renderer.render(<FormFieldValidationBlock value="test message" />);
-    const formFieldValidationBlock = renderer.getRenderOutput();
+    const formFieldValidationBlock = shallow(<FormFieldValidationBlock value="test message" />);
 
-    expect(formFieldValidationBlock.props.children[0].type).toBe('i');
-    expect(formFieldValidationBlock.props.children[0].props.className).toEqual('rs-validation-indicator');
+    expect(formFieldValidationBlock.childAt(0).type()).toBe('i');
+    expect(formFieldValidationBlock.childAt(0).hasClass('rs-validation-indicator')).toBe(true);
   });
 
   it('displays the validation message', () => {
-    renderer.render(<FormFieldValidationBlock value="test message" />);
-    const formFieldValidationBlock = renderer.getRenderOutput();
+    const formFieldValidationBlock = shallow(<FormFieldValidationBlock value="test message" />);
 
-    expect(formFieldValidationBlock.props.children[1]).toEqual(' ');
-    expect(formFieldValidationBlock.props.children[2]).toEqual('test message');
+    expect(formFieldValidationBlock.childAt(1).equals(' ')).toBe(true);
+    expect(formFieldValidationBlock.childAt(2).equals('test message')).toBe(true);
   });
 
   it('has the rs-validation-block class when not inline', () => {
-    renderer.render(<FormFieldValidationBlock value="test message" />);
-    const formFieldValidationBlock = renderer.getRenderOutput();
+    const formFieldValidationBlock = shallow(<FormFieldValidationBlock value="test message" />);
 
-    expect(formFieldValidationBlock.props.className).toEqual('rs-validation-block');
+    expect(formFieldValidationBlock.hasClass('rs-validation-block')).toBe(true);
   });
 
   it('has the rs-validation-inline class when inline', () => {
-    renderer.render(<FormFieldValidationBlock value="test message" inline />);
-    const formFieldValidationBlock = renderer.getRenderOutput();
+    const formFieldValidationBlock = shallow(<FormFieldValidationBlock value="test message" inline />);
 
-    expect(formFieldValidationBlock.props.className).toEqual('rs-validation-inline');
+    expect(formFieldValidationBlock.hasClass('rs-validation-inline')).toBe(true);
+  });
+
+  it('returns null if false is passed to it', () => {
+    const formFieldValidationBlock = shallow(<FormFieldValidationBlock value={ false } />);
+
+    expect(formFieldValidationBlock.type()).toBe('noscript');
   });
 
   it('returns null if no field is passed to it', () => {
-    renderer.render(<FormFieldValidationBlock />);
-    const formFieldValidationBlock = renderer.getRenderOutput();
+    const formFieldValidationBlock = shallow(<FormFieldValidationBlock />);
 
-    expect(formFieldValidationBlock.type).toBe('noscript');
+    expect(formFieldValidationBlock.type()).toBe('noscript');
   });
 
   it('has a text-top vertical align style', () => {
-    renderer.render(<FormFieldValidationBlock value="test message" />);
-    const formFieldValidationBlock = renderer.getRenderOutput();
+    const formFieldValidationBlock = shallow(<FormFieldValidationBlock value="test message" />);
 
-    expect(formFieldValidationBlock.props.style['vertical-align']).toEqual('text-top');
+    expect(formFieldValidationBlock.prop('style')['vertical-align']).toEqual('text-top');
   });
 });

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import DetailsSectionTitle from './DetailsSectionTitle';
 
@@ -18,11 +19,22 @@ class DetailsSection extends React.Component {
   }
 
   render() {
-    let { collapsible, isLoading } = this.props, { isCollapsed } = this.state;
+    const { isCollapsed } = this.state;
+    const {
+      title,
+      headers,
+      isLoading,
+      collapsible,
+      className,
+      subtitle,
+      children,
+      ...rest } = this.props;
+    delete rest.initialCollapsed;
+    delete rest.onToggleCollapsed;
 
     const classes = classnames(
       'rs-detail-section',
-      this.props.className,
+      className,
       {
         'rs-collapsible-section': collapsible,
         'collapsed': collapsible && isCollapsed,
@@ -32,16 +44,16 @@ class DetailsSection extends React.Component {
     );
 
     return (
-      <div { ...this.props }
+      <div { ...rest }
         className={ classes }>
         <div className='rs-detail-section-header' onClick={ this.toggleCollapsed.bind(this) }>
-          { this.props.headers }
+          { headers }
           { collapsible ? <div className='rs-caret'></div> : null }
-          { this.props.title ? <DetailsSectionTitle>{ this.props.title }</DetailsSectionTitle> : null}
-          { this.props.subtitle }
+          { title ? <DetailsSectionTitle>{ title }</DetailsSectionTitle> : null}
+          { subtitle }
         </div>
         <div className='rs-detail-section-body'>
-          {this.props.children}
+          { children }
         </div>
       </div>
     );
@@ -49,15 +61,15 @@ class DetailsSection extends React.Component {
 }
 
 DetailsSection.propTypes = {
-  title: React.PropTypes.node,
-  children: React.PropTypes.node,
-  headers: React.PropTypes.node,
-  isLoading: React.PropTypes.bool,
-  initialCollapsed: React.PropTypes.bool,
-  onToggleCollapsed: React.PropTypes.func,
-  collapsible: React.PropTypes.bool,
-  className: React.PropTypes.string,
-  subtitle: React.PropTypes.node
+  title: PropTypes.node,
+  children: PropTypes.node,
+  headers: PropTypes.node,
+  isLoading: PropTypes.bool,
+  initialCollapsed: PropTypes.bool,
+  onToggleCollapsed: PropTypes.func,
+  collapsible: PropTypes.bool,
+  className: PropTypes.string,
+  subtitle: PropTypes.node
 };
 
 DetailsSection.defaultProps = {

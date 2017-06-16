@@ -1,21 +1,19 @@
 import Divider from '../transpiled/Divider';
 import React from 'react';
-import TestUtils from 'react-addons-test-utils';
+import { shallow } from 'enzyme';
 
 describe('Divider', () => {
-  let divider, renderer;
+  let divider;
 
   beforeEach(() => {
-    renderer = TestUtils.createRenderer();
-    renderer.render(<Divider/>);
-    divider = renderer.getRenderOutput();
+    divider = shallow(<Divider/>);;
   });
 
   it('renders a divider', () => {
-    expect(divider.type).toBe('li');
+    expect(divider.type()).toBe('li');
   });
 
   it('has the correct class', () => {
-    expect(divider.props.className).toBe('rs-divider');
+    expect(divider.hasClass('rs-divider')).toBe(true);
   });
 });

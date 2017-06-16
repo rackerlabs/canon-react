@@ -1,25 +1,17 @@
 import FormFieldHelp from '../transpiled/FormFieldHelp';
 import React from 'react';
-import TestUtils from 'react-addons-test-utils';
+import { shallow } from 'enzyme';
 
 describe('FormFieldHelp', () => {
-  let renderer;
-
-  beforeEach(() => {
-    renderer = TestUtils.createRenderer();
-  });
-
   it('displays the help message', () => {
-    renderer.render(<FormFieldHelp help="test message" />);
-    const formFieldHelp = renderer.getRenderOutput();
+    const formFieldHelp = shallow(<FormFieldHelp help="test message" />);
 
-    expect(formFieldHelp.props.children).toEqual('test message');
+    expect(formFieldHelp.prop('children')).toEqual('test message');
   });
 
   it('renders noscript if no field is passed to it', () => {
-    renderer.render(<FormFieldHelp />);
-    const formFieldHelp = renderer.getRenderOutput();
+    const formFieldHelp = shallow(<FormFieldHelp />);
 
-    expect(formFieldHelp.type).toBe('noscript');
+    expect(formFieldHelp.type()).toBe('noscript');
   });
 });

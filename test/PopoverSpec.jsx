@@ -2,7 +2,7 @@ import Popover from '../transpiled/Popover';
 import PopoverOverlay from '../transpiled/PopoverOverlay';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import TestUtils from 'react-addons-test-utils';
+import ReactTestUtils from 'react-dom/test-utils';
 
 describe('Popover', () => {
   let popover, tether, requestCloseCallback, closeCallBackCalled;
@@ -189,7 +189,7 @@ describe('Popover', () => {
     it('when clicking outside of the popover', () => {
       renderPopover('right', true);
 
-      TestUtils.Simulate.click(document.getElementsByClassName('rs-popover-background-overlay')[0]);
+      ReactTestUtils.Simulate.click(document.getElementsByClassName('rs-popover-background-overlay')[0]);
 
       expect(closeCallBackCalled).toBe(true);
     });
@@ -209,7 +209,7 @@ describe('Popover', () => {
   it('renders PopoverBackground with a background color if isModal is true', () => {
     let backgroundStyle;
 
-    renderPopover('center', true, false, '', true);
+    renderPopover('center', true, false, {}, true);
     backgroundStyle = document.getElementsByClassName('rs-popover-background-overlay')[0].style;
 
     expect(backgroundStyle['background-color']).not.toEqual('');
@@ -218,7 +218,7 @@ describe('Popover', () => {
   it('renders PopoverBackground with no background color if isModal is false', () => {
     let backgroundStyle;
 
-    renderPopover('center', true, false, '', false);
+    renderPopover('center', true, false, {}, false);
     backgroundStyle = document.getElementsByClassName('rs-popover-background-overlay')[0].style;
 
     expect(backgroundStyle['background-color']).toEqual('');

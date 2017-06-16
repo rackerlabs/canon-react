@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import SortDirection from './SortDirection';
 
 class ListTableHeader extends React.Component {
@@ -38,9 +39,9 @@ ListTableHeader.defaultProps = {
 };
 
 ListTableHeader.propTypes = {
-  onSort: React.PropTypes.func,
-  sortColumn: React.PropTypes.string,
-  direction: React.PropTypes.oneOf(Object.values(SortDirection))
+  onSort: PropTypes.func,
+  sortColumn: PropTypes.string,
+  direction: PropTypes.oneOf(Object.values(SortDirection))
 };
 
 export default ListTableHeader;

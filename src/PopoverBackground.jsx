@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const PopoverBackground = (props) => {
   let style = {
@@ -18,8 +19,8 @@ const PopoverBackground = (props) => {
 };
 
 PopoverBackground.propTypes = {
-  isModal: React.PropTypes.bool,
-  onRequestClose: React.PropTypes.func
+  isModal: PropTypes.bool,
+  onRequestClose: PropTypes.func
 };
 
 export default PopoverBackground;

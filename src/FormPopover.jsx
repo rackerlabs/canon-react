@@ -1,5 +1,5 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
 import Button from './Button';
 import ErrorIndicator from './ErrorIndicator';
 import Form from './Form';
@@ -22,13 +22,17 @@ class FormPopover extends React.Component {
       { onClick: this._cancel.bind(this), hidden: this.props.processing }
     );
 
-    popoverProps = Object.assign({}, this.props);
-    delete popoverProps.children;
+    popoverProps = {
+      isOpen: this.props.isOpen,
+      target: this.props.target,
+      placement: this.props.placement,
+      onRequestClose: this.props.onRequestClose
+    };
 
     return (
       <Popover { ...popoverProps }>
         <PopoverOverlay>
-          <Form onsubmit={ this.props.onSubmit } size={ this.props.formSize } horizontal={ this.props.horizontal }>
+          <Form onSubmit={ this.props.onSubmit } size={ this.props.formSize } horizontal={ this.props.horizontal }>
             <PopoverBody>
               { this.props.children }
             </PopoverBody>
@@ -73,26 +77,26 @@ class FormPopover extends React.Component {
 
 FormPopover.propTypes = {
   // form
-  formSize: React.PropTypes.string,
-  horizontal: React.PropTypes.bool,
-  error: React.PropTypes.node,
-  processing: React.PropTypes.bool.isRequired,
-  onSubmit: React.PropTypes.func.isRequired,
+  formSize: PropTypes.string,
+  horizontal: PropTypes.bool,
+  error: PropTypes.node,
+  processing: PropTypes.bool.isRequired,
+  onSubmit: PropTypes.func.isRequired,
   // popover layout
-  cancelButton: React.PropTypes.element.isRequired,
-  submitButton: React.PropTypes.element.isRequired,
-  additionalControls: React.PropTypes.node,
-  additionalFooterContent: React.PropTypes.node,
+  cancelButton: PropTypes.element.isRequired,
+  submitButton: PropTypes.element.isRequired,
+  additionalControls: PropTypes.node,
+  additionalFooterContent: PropTypes.node,
   // popover content
-  children: React.PropTypes.node.isRequired,
+  children: PropTypes.node.isRequired,
   // popover
-  isOpen: React.PropTypes.bool.isRequired,
-  target: React.PropTypes.oneOfType([
-    React.PropTypes.string,
-    React.PropTypes.func
+  isOpen: PropTypes.bool.isRequired,
+  target: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.func
   ]).isRequired,
-  placement: React.PropTypes.string.isRequired,
-  onRequestClose: React.PropTypes.func.isRequired
+  placement: PropTypes.string.isRequired,
+  onRequestClose: PropTypes.func.isRequired
 };
 
 FormPopover.defaultProps = {

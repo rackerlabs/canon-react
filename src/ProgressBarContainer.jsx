@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 export const SIZE_CLASSES = {
@@ -27,7 +28,7 @@ class ProgressBarContainer extends React.Component {
 }
 
 ProgressBarContainer.propTypes = {
-  size: React.PropTypes.oneOf(Object.keys(SIZE_CLASSES))
+  size: PropTypes.oneOf(Object.keys(SIZE_CLASSES))
 };
 
 export default ProgressBarContainer;

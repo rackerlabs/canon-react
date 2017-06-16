@@ -1,7 +1,7 @@
 import Button from '../transpiled/Button';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import TestUtils from 'react-addons-test-utils';
+import ReactTestUtils from 'react-dom/test-utils';
 
 describe('Button', () => {
   let button, clickCalled;
@@ -11,7 +11,7 @@ describe('Button', () => {
   beforeEach(() => {
     clickCalled = false;
 
-    button = TestUtils.renderIntoDocument(
+    button = ReactTestUtils.renderIntoDocument(
       <Button id='button-id' className='test-button-class' onClick={clickFunction}>Button Text</Button>
     );
   });
@@ -26,7 +26,7 @@ describe('Button', () => {
   });
 
   it('renders a button', () => {
-    expect(TestUtils.findRenderedDOMComponentWithTag(button, 'button')).not.toBeNull();
+    expect(ReactTestUtils.findRenderedDOMComponentWithTag(button, 'button')).not.toBeNull();
   });
 
   it('keeps the passed in classes', () => {
@@ -42,7 +42,7 @@ describe('Button', () => {
   });
 
   it('executes the click function when clicked', () => {
-    TestUtils.Simulate.click(ReactDOM.findDOMNode(button));
+    ReactTestUtils.Simulate.click(ReactDOM.findDOMNode(button));
 
     expect(clickCalled).toBe(true);
   });
@@ -52,7 +52,7 @@ describe('Button', () => {
   });
 
   it('is hidden when hidden is true', () => {
-    button = TestUtils.renderIntoDocument(
+    button = ReactTestUtils.renderIntoDocument(
       <Button hidden={true}>Button Text</Button>
     );
 
@@ -61,7 +61,7 @@ describe('Button', () => {
 
   describe('button canonStyles', () => {
     const renderButton = (canonStyle) => {
-      button = TestUtils.renderIntoDocument(
+      button = ReactTestUtils.renderIntoDocument(
         <Button canonStyle={canonStyle}>Button Text</Button>
       );
     };
@@ -73,8 +73,8 @@ describe('Button', () => {
       expect(ReactDOM.findDOMNode(button)).toHaveClass('rs-btn-action');
       // The spaces before and after are present on an action button because the cog and caret item surround the text
       expect(ReactDOM.findDOMNode(button).textContent).toBe(' Button Text ');
-      expect(TestUtils.findRenderedDOMComponentWithClass(button, 'rs-cog')).not.toBeNull();
-      expect(TestUtils.findRenderedDOMComponentWithClass(button, 'rs-caret')).not.toBeNull();
+      expect(ReactTestUtils.findRenderedDOMComponentWithClass(button, 'rs-cog')).not.toBeNull();
+      expect(ReactTestUtils.findRenderedDOMComponentWithClass(button, 'rs-caret')).not.toBeNull();
     });
 
     it('primary', () => {
@@ -131,7 +131,7 @@ describe('Button', () => {
 
   describe('when disabled', () => {
     beforeEach(() => {
-      button = TestUtils.renderIntoDocument(
+      button = ReactTestUtils.renderIntoDocument(
         <Button enabled={false} onClick={clickFunction}>Button text</Button>
       );
     });
@@ -141,7 +141,7 @@ describe('Button', () => {
     });
 
     it('does not execute the click function when clicked', () => {
-      TestUtils.Simulate.click(ReactDOM.findDOMNode(button));
+      ReactTestUtils.Simulate.click(ReactDOM.findDOMNode(button));
 
       expect(clickCalled).toBe(false);
     });

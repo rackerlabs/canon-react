@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 const BUTTON_TYPES = {
@@ -22,25 +23,26 @@ class Button extends React.Component {
 
   render() {
     let classes;
+    const { canonStyle, enabled, className, hidden, children, ...rest } = this.props;
 
     classes = classNames(
-      this.props.className,
-      { 'disabled': !this.props.enabled },
-      BUTTON_TYPES[this.props.canonStyle],
-      { 'rs-hidden': this.props.hidden }
+      className,
+      { 'disabled': !enabled },
+      BUTTON_TYPES[canonStyle],
+      { 'rs-hidden': hidden }
     );
 
-    if (this.props.canonStyle === 'action') {
+    if (canonStyle === 'action') {
       return (
-        <button {...this.props} className={classes} onClick={this._handleClick.bind(this)}>
-          <span className='rs-cog'></span> {this.props.children} <span className='rs-caret'></span>
+        <button { ...rest } className={ classes } onClick={ this._handleClick.bind(this) }>
+          <span className='rs-cog'></span> { children } <span className='rs-caret'></span>
         </button>
       );
     }
 
     return (
-      <button {...this.props} className={classes} onClick={this._handleClick.bind(this)}>
-         {this.props.children}
+      <button { ...rest } className={ classes } onClick={ this._handleClick.bind(this) }>
+         { children }
       </button>
     );
   }
@@ -55,10 +57,10 @@ class Button extends React.Component {
 }
 
 Button.propTypes = {
-  enabled: React.PropTypes.bool,
-  onClick: React.PropTypes.func,
-  canonStyle: React.PropTypes.oneOf(Object.keys(BUTTON_TYPES)),
-  hidden: React.PropTypes.bool
+  enabled: PropTypes.bool,
+  onClick: PropTypes.func,
+  canonStyle: PropTypes.oneOf(Object.keys(BUTTON_TYPES)),
+  hidden: PropTypes.bool
 };
 
 Button.defaultProps = {

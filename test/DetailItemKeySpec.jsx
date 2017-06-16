@@ -1,47 +1,37 @@
 import DetailItemKey from '../transpiled/DetailItemKey';
 import React from 'react';
-import TestUtils from 'react-addons-test-utils';
+import { shallow } from 'enzyme';
 
 describe('DetailItemKey', () => {
-  let renderer;
-
   const renderWithProps = (props) => {
-    renderer.render(
+    return shallow(
       <DetailItemKey { ...props }>
         Test Detail Item Key
       </DetailItemKey>
     );
   };
 
-  beforeEach(() => {
-    renderer = TestUtils.createRenderer();
-  });
-
   it('renders provided class name correctly', () => {
-    renderWithProps({ id: 'detail-item-key-id', className: 'test-detail-item-key-class' });
-    const detailItemKey = renderer.getRenderOutput();
+    const detailItemKey = renderWithProps({ id: 'detail-item-key-id', className: 'test-detail-item-key-class' });
 
-    expect(detailItemKey.props.className).toEqual('rs-detail-key test-detail-item-key-class');
+    expect(detailItemKey.hasClass('rs-detail-key test-detail-item-key-class')).toBe(true);
   });
 
   it('has only default classs when custom class not provided', () => {
-    renderWithProps({ id: 'detail-item-key-id' });
-    const detailItemKey = renderer.getRenderOutput();
+    const detailItemKey = renderWithProps({ id: 'detail-item-key-id' });
 
-    expect(detailItemKey.props.className).toEqual('rs-detail-key');
+    expect(detailItemKey.hasClass('rs-detail-key')).toBe(true);
   });
 
   it('has correct id when passed in as prop', () => {
-    renderWithProps({ id: 'detail-item-key-id', className: 'test-detail-item-key-class' });
-    const detailItemKey = renderer.getRenderOutput();
+    const detailItemKey = renderWithProps({ id: 'detail-item-key-id', className: 'test-detail-item-key-class' });
 
-    expect(detailItemKey.props.id).toEqual('detail-item-key-id');
+    expect(detailItemKey.prop('id')).toEqual('detail-item-key-id');
   });
 
   it('renders passed in children', () => {
-    renderWithProps({ id: 'detail-item-key-id', className: 'test-detail-item-key-class' });
-    const detailItemKey = renderer.getRenderOutput();
+    const detailItemKey = renderWithProps({ id: 'detail-item-key-id', className: 'test-detail-item-key-class' });
 
-    expect(detailItemKey.props.children).toEqual('Test Detail Item Key');
+    expect(detailItemKey.prop('children')).toEqual('Test Detail Item Key');
   });
 });

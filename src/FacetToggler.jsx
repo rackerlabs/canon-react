@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class FacetToggler extends React.Component {
   constructor(props) {
@@ -23,8 +24,8 @@ class FacetToggler extends React.Component {
 }
 
 FacetToggler.propTypes = {
-  criteriaTruncated: React.PropTypes.bool.isRequired,
-  onToggleChange: React.PropTypes.func.isRequired
+  criteriaTruncated: PropTypes.bool.isRequired,
+  onToggleChange: PropTypes.func.isRequired
 };
 
 export default FacetToggler;

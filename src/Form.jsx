@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 const SIZE_CLASSES = {
@@ -10,28 +11,29 @@ const SIZE_CLASSES = {
 };
 
 const Form = (props) => {
+  const { create, className, horizontal, size, children, ...rest } = props;
   const classes = classNames(
     {
-      'rs-form-create': props.create,
-      'rs-form-horizontal': props.horizontal
+      'rs-form-create': create,
+      'rs-form-horizontal': horizontal
     },
-    props.className,
-    SIZE_CLASSES[props.size]
+    className,
+    SIZE_CLASSES[size]
   );
 
   return (
-    <form { ...props } className={ classes }>
-      { props.children }
+    <form { ...rest } className={ classes }>
+      { children }
     </form>
   );
 };
 
 Form.propTypes = {
-  create: React.PropTypes.bool,
-  className: React.PropTypes.string,
-  horizontal: React.PropTypes.bool,
-  size: React.PropTypes.oneOf(Object.keys(SIZE_CLASSES)),
-  children: React.PropTypes.node.isRequired
+  create: PropTypes.bool,
+  className: PropTypes.string,
+  horizontal: PropTypes.bool,
+  size: PropTypes.oneOf(Object.keys(SIZE_CLASSES)),
+  children: PropTypes.node.isRequired
 };
 
 Form.defaultProps = {

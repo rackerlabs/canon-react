@@ -1,47 +1,37 @@
 import DetailItem from '../transpiled/DetailItem';
 import React from 'react';
-import TestUtils from 'react-addons-test-utils';
+import { shallow } from 'enzyme';
 
 describe('DetailItem', () => {
-  let renderer;
-
   const renderWithProps = (props) => {
-    renderer.render(
+    return shallow(
       <DetailItem { ...props }>
         Test Detail Item
       </DetailItem>
     );
   };
 
-  beforeEach(() => {
-    renderer = TestUtils.createRenderer();
-  });
-
   it('renders provided class name correctly', () => {
-    renderWithProps({ id: 'detail-item-id', className: 'test-detail-item-class' });
-    const detailItem = renderer.getRenderOutput();
+    const detailItem = renderWithProps({ id: 'detail-item-id', className: 'test-detail-item-class' });
 
-    expect(detailItem.props.className).toEqual('rs-detail-item test-detail-item-class');
+    expect(detailItem.hasClass('rs-detail-item test-detail-item-class')).toBe(true);
   });
 
   it('has only default classs when custom class not provided', () => {
-    renderWithProps({ id: 'detail-item-id' });
-    const detailItem = renderer.getRenderOutput();
+    const detailItem = renderWithProps({ id: 'detail-item-id' });
 
-    expect(detailItem.props.className).toEqual('rs-detail-item');
+    expect(detailItem.hasClass('rs-detail-item')).toBe(true);
   });
 
   it('has correct id when passed in as prop', () => {
-    renderWithProps({ id: 'detail-item-id', className: 'test-detail-item-class' });
-    const detailItem = renderer.getRenderOutput();
+    const detailItem = renderWithProps({ id: 'detail-item-id', className: 'test-detail-item-class' });
 
-    expect(detailItem.props.id).toEqual('detail-item-id');
+    expect(detailItem.prop('id')).toEqual('detail-item-id');
   });
 
   it('renders passed in children', () => {
-    renderWithProps({ id: 'detail-item-id', className: 'test-detail-item-class' });
-    const detailItem = renderer.getRenderOutput();
+    const detailItem = renderWithProps({ id: 'detail-item-id', className: 'test-detail-item-class' });
 
-    expect(detailItem.props.children).toEqual('Test Detail Item');
+    expect(detailItem.prop('children')).toEqual('Test Detail Item');
   });
 });
